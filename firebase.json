@@ -9,6 +9,12 @@
         "source": "**",
         "destination": "/index.html"
       }
+      // TODO: Switch to ssr by uncommenting this rule and removing above rule
+      // when angularfire bug is fixed
+      // {
+      //   "source": "**",
+      //   "function": "client"
+      // }
     ]
   }
 }
