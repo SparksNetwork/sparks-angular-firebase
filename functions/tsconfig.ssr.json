@@ -1,7 +1,8 @@
 {
   "compileOnSave": false,
-  "files": [
-    "./client/src/main.ts"
+  "rootDirs": [
+    "./client/src",
+    "./shared/src"
   ],
   "compilerOptions": {
     "outDir": "./client/dist/ssr",
@@ -21,6 +22,6 @@
   },
   "angularCompilerOptions": {
       "genDir": "./client/dist/ngfactory",
-      "entryModule": "./client/src/app/app.module#AppModule"
+      "entryModule": "./client/src/app/app.server.module#AppServerModule"
   }  
 }

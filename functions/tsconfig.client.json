@@ -1,5 +1,8 @@
 {
   "compileOnSave": false,
+  "files": [
+    "./client/src/main.ts"
+  ],
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
     "sourceMap": true,

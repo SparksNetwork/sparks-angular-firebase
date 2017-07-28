@@ -1,8 +1,8 @@
-const functions = require('firebase-functions');
+/*
+firebase-functions is a bastard and will only deploy from ./functions.
+This bootstrap file just loads all the compiled functions from ./dist.
+*/
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
+"use strict";
+const x = require('./server/dist/server/src');
+Object.keys(x).forEach(function(k) { exports[k] = x[k] });
