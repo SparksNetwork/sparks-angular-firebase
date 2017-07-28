@@ -6,6 +6,10 @@
     "public": "functions/client/dist/bundled",
     "rewrites": [
       {
+        "source": "/api/**",
+        "function": "api"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }

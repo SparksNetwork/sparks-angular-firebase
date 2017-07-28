@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start:client": "ng serve",
-    "start:server": "npm run build && firebase serve --only functions",
+    "start:server": "npm run build && firebase serve --only hosting,functions",
     "build": "npm run build:client && npm run build:ssr && npm run build:server",
     "build:client": "ng build --prod",
     "build:ssr": "ngc -p tsconfig.ssr.json",
