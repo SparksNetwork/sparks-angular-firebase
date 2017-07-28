@@ -5,7 +5,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "npm run build:client && npm run build:ssr && npm run build:server",
+    "build:client": "ng build --prod",
+    "build:ssr": "ngc -p tsconfig.ssr.json",
+    "build:server": "tsc -p tsconfig.server.json",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
