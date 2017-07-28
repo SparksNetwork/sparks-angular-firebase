@@ -7,8 +7,6 @@ import * as express from 'express';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
-import { Foo } from '../../../shared'
-
 enableProdMode();
 
 const app = express();

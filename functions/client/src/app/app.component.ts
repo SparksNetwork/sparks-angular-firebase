@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Foo } from '../../../shared'
+import { sharedMoment } from '../../../shared/sharedMoment'
 
 @Component({
   selector: 'app-root',
@@ -8,5 +8,5 @@ import { Foo } from '../../../shared'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = sharedMoment().toString();
 }

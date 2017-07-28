@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start:client": "ng serve",
+    "start:server": "npm run build && firebase serve --only functions",
     "build": "npm run build:client && npm run build:ssr && npm run build:server",
     "build:client": "ng build --prod",
     "build:ssr": "ngc -p tsconfig.ssr.json",
@@ -29,6 +30,7 @@
     "express": "^4.15.3",
     "firebase-admin": "~4.2.1",
     "firebase-functions": "^0.5.7",
+    "moment": "^2.18.1",
     "reflect-metadata": "^0.1.10",
     "rxjs": "^5.4.1",
     "zone.js": "^0.8.14"
