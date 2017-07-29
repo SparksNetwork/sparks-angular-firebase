@@ -5,6 +5,13 @@ Project Structure:
   /functions # see note
     /client
       /src # started with ng cli
+        /app
+          /features # modules that route components, maps to route structure
+            /project
+          /core # service modules that are imported at the app level and made available to rest of app
+            /sn-domain # services that connect to backend
+          /shared # component modules that are imported in multiple places 
+            /sn-ui # generic components reused by many 
       /dist
         /bundled # result of ng build:client, target path deployed by firebase hosting
         /ngfactory # result of ng build:ssr, referenced by server-side express server running in `/functions/server/src/client`
