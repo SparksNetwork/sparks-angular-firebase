@@ -12,3 +12,12 @@
     </div>
   </div>
 </div>
+<div class='row'>
+  <div class='col-xs-12'>
+    <div class='segment'>
+      Current User: {{((user.current | async) | json) || 'none'}}
+      <br/>
+      <button (click)='user.auth.signInWithRedirect(user.googleProvider)'>Google</button>
+    </div>
+  </div>
+</div>
