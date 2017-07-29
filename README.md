@@ -1,4 +1,4 @@
-# Sparks Angular + Firebase Monorepo.
+Project Structure:
 
 ```
 /
@@ -14,7 +14,9 @@
       /src # TS containing http, database functions
       /dist # path referenced by /functions/index.js functions bootstrapper
 ```
-## Developing
+# Developing
+
+## How-To
 
 ### Client Only
 
@@ -30,7 +32,12 @@ The latest `firebase-functions` will run locally and you can hit `http://localho
 
 I am *somewhat sure* that this local development server will talk to the *local* version of the backend.
 
-## Deployment
+## Standards
+
+Use Angular-recommended best practices as [listed here](https://angular.io/guide/styleguide).
+
+
+# Deployment
 
 `firebase deploy` pushes the most recent built files to the cloud project that is selected.  Right now that is just one project.
 
