@@ -1,0 +1,17 @@
+@mixin background-size($background-size) {
+  -webkit-background-size: $background-size;
+     -moz-background-size: $background-size;
+       -o-background-size: $background-size;
+          background-size: $background-size;
+}
+
+@mixin border-radius($border) {
+	-webkit-border-radius: $border;
+	   -moz-border-radius: $border;
+			border-radius: $border;
+}
+
+@mixin block-nooverflow {
+  display: block;
+  overflow: hidden;
+}
