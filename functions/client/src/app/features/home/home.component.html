@@ -18,6 +18,8 @@
       Current User: {{((user.current | async) | json) || 'none'}}
       <br/>
       <button (click)='user.auth.signInWithRedirect(user.googleProvider)'>Google</button>
+      <br/>
+      <button (click)='user.auth.signOut()'>Sign Out</button>
     </div>
   </div>
 </div>
