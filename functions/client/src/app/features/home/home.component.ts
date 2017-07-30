@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth'
 
-import { UserService } from '../../core/snauth/user/user.service'
+import { ProviderFacebook } from '../../core/snauth/provider-facebook/provider-facebook.service'
+import { ProviderGoogle } from '../../core/snauth/provider-google/provider-google.service'
 
 @Component({
   selector: 'home-home',
@@ -8,7 +10,11 @@ import { UserService } from '../../core/snauth/user/user.service'
 })
 
 export class HomeComponent implements OnInit {
-  constructor(public user: UserService) { }
+  constructor(
+    public afa: AngularFireAuth,
+    public provFacebook: ProviderFacebook,
+    public provGoogle: ProviderGoogle,
+  ) { }
 
   ngOnInit() { }
 }

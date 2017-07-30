@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 
 import { AngularFireAuthModule } from 'angularfire2/auth'
 
-import { UserService } from './user/user.service';
+import { ProviderFacebook } from './provider-facebook/provider-facebook.service';
+import { ProviderGoogle } from './provider-google/provider-google.service';
 
 @NgModule({
   imports: [
@@ -11,7 +12,8 @@ import { UserService } from './user/user.service';
   exports: [],
   declarations: [],
   providers: [
-    UserService,
+    ProviderFacebook,
+    ProviderGoogle,
   ],
 })
 export class SNAuthModule { }
