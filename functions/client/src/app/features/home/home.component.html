@@ -1,0 +1,25 @@
+<snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
+  Placeholder Home Page
+</snui-header-simple>
+<div class='row'>
+  <div class='col-xs-12'>
+    <div class='segment'>
+      <ul>
+        <li>
+          Link to page under development
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class='row'>
+  <div class='col-xs-12'>
+    <div class='segment'>
+      Current User: {{((afa.authState | async) | json) || 'none'}}
+      <br/>
+      <button (click)='afa.auth.signInWithRedirect(provGoogle)'>Google</button>
+      <br/>
+      <button (click)='afa.auth.signOut()'>Sign Out</button>
+    </div>
+  </div>
+</div>
