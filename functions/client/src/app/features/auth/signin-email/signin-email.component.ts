@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core'
 import { Router, ActivatedRoute } from '@angular/router'
-import { EmailPasswordFormComponent } from '../email-password-form/email-password-form.component'
 
 import { AngularFireAuth } from 'angularfire2/auth'
 import { FirebaseError } from 'firebase/app'
+
+import { EmailPasswordFormComponent } from '../email-password-form/email-password-form.component'
 
 @Component({
   selector: 'auth-signin-email',
@@ -23,27 +24,32 @@ export class SigninEmailComponent implements OnInit {
     public route: ActivatedRoute,
   ) { }
 
-  public ngOnInit() {
-    this.epForm.credentialsForm.valueChanges.subscribe(values => {
-      this.email = values['email']
-      this.password = values['password']
-    })
+  public redirect() {
+    this.router.navigate([this.route.snapshot.parent.parent.params['redirectUrl']])
+  }
+
+  public handleError(error: FirebaseError) {
+    this.error = error
   }
 
   public signIn($event) {
-    this.afAuth.auth.signInWithEmailAndPassword(this.email, this.password)
-      .then(() => this.router.navigate([this.route.snapshot.parent.parent.params['redirectUrl']]))
-      .catch((error: FirebaseError) => {
-        this.error = error
-      })
+    this.error = null
+    this.afAuth.auth.signInWithEmailAndPassword(
+      this.epForm.credentialsForm.value.email,
+      this.epForm.credentialsForm.value.password
+    )
+      .then(() => this.redirect())
+      .catch((err: FirebaseError) => this.handleError(err))
   }
 
   public create($event) {
-    this.afAuth.auth.createUserWithEmailAndPassword(this.email, this.password)
+    this.error = null
+    this.afAuth.auth.createUserWithEmailAndPassword(
+      this.epForm.credentialsForm.value.email,
+      this.epForm.credentialsForm.value.password
+    )
       .then(result => this.afAuth.auth.signInWithEmailAndPassword(this.email, this.password))
-      .then(() => this.router.navigate([this.route.snapshot.parent.parent.params['redirectUrl']]))
-      .catch((error: FirebaseError) => {
-        this.error = error
-      })
+      .then(() => this.redirect())
+      .catch((err: FirebaseError) => this.handleError(err))
   }
 }
