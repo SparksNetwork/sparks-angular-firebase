@@ -1,9 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core'
-import { Router, ActivatedRoute } from '@angular/router'
+import { Component, ViewChild } from '@angular/core'
 
-import { AngularFireAuth } from 'angularfire2/auth'
-import { FirebaseError } from 'firebase/app'
-
+import { AuthService } from '../../../core/snauth/auth/auth.service'
 import { EmailPasswordFormComponent } from '../email-password-form/email-password-form.component'
 
 @Component({
@@ -11,45 +8,24 @@ import { EmailPasswordFormComponent } from '../email-password-form/email-passwor
   templateUrl: 'signin-email.component.html'
 })
 
-export class SigninEmailComponent implements OnInit {
+export class SigninEmailComponent {
   @ViewChild(EmailPasswordFormComponent) public epForm: EmailPasswordFormComponent
 
-  public error: FirebaseError
-  public email: string
-  public password: string
-
   constructor(
-    public afAuth: AngularFireAuth,
-    public router: Router,
-    public route: ActivatedRoute,
+    public auth: AuthService,
   ) { }
 
-  public redirect() {
-    this.router.navigate([this.route.snapshot.parent.parent.params['redirectUrl']])
-  }
-
-  public handleError(error: FirebaseError) {
-    this.error = error
-  }
-
-  public signIn($event) {
-    this.error = null
-    this.afAuth.auth.signInWithEmailAndPassword(
+  public signIn() {
+    this.auth.signInWithEmailAndPassword(
       this.epForm.credentialsForm.value.email,
       this.epForm.credentialsForm.value.password
     )
-      .then(() => this.redirect())
-      .catch((err: FirebaseError) => this.handleError(err))
   }
 
-  public create($event) {
-    this.error = null
-    this.afAuth.auth.createUserWithEmailAndPassword(
+  public create() {
+    this.auth.createWithEmailAndPassword(
       this.epForm.credentialsForm.value.email,
       this.epForm.credentialsForm.value.password
     )
-      .then(result => this.afAuth.auth.signInWithEmailAndPassword(this.email, this.password))
-      .then(() => this.redirect())
-      .catch((err: FirebaseError) => this.handleError(err))
   }
 }

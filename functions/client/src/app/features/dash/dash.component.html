@@ -16,7 +16,7 @@
   <div class='col-xs-12'>
     <div class='segment'>
       <button btn [routerLink]="['/auth', '/', 'signout']">Sign Out</button>
-      Current User: {{((afa.authState | async) | json) || 'none'}}
+      Current User: {{((auth.current | async) | json) || 'none'}}
     </div>
   </div>
 </div>

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 
-import { Router, ActivatedRoute } from '@angular/router'
-import { AngularFireAuth } from 'angularfire2/auth'
+import { AuthService } from '../../../core/snauth/auth/auth.service'
 
 @Component({
   selector: 'auth-signout',
@@ -10,15 +9,10 @@ import { AngularFireAuth } from 'angularfire2/auth'
 
 export class SignoutComponent implements OnInit {
   constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private afAuth: AngularFireAuth,
+    private auth: AuthService,
   ) { }
 
   ngOnInit() {
-    this.afAuth.auth.signOut()
-      .then(() => {
-        this.router.navigate([this.route.snapshot.paramMap.get('redirectUrl')])
-      })
+    this.auth.signOut()
   }
 }

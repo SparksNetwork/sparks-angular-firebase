@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { DashComponent } from './dash.component';
-import { RedirectIfNotAuthed } from '../../core/snauth/redirect-if-not-authed/redirect-if-not-authed.service'
+import { RequireAuth } from '../../core/snauth/require-auth/require-auth.service'
 
 const routes: Routes = [
   {
     path: '',
     component: DashComponent,
     canActivate: [
-      RedirectIfNotAuthed,
+      RequireAuth,
     ]
   },
 ];

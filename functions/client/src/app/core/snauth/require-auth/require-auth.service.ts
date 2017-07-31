@@ -8,7 +8,7 @@ import 'rxjs/add/operator/first'
 import 'rxjs/add/operator/map'
 
 @Injectable()
-export class RedirectIfNotAuthed implements CanActivate {
+export class RequireAuth implements CanActivate {
   constructor(
     public afAuth: AngularFireAuth,
     public router: Router,
@@ -19,7 +19,7 @@ export class RedirectIfNotAuthed implements CanActivate {
       .map(authState => authState ? true : false)
       .do(isAuthed => {
         if (!isAuthed) {
-          this.router.navigate([route.paramMap.get('redirectUrl')])
+          this.router.navigate(['/auth', state.url, 'signin'])
         }
       })
       .first()

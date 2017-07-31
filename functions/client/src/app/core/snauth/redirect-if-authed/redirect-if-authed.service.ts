@@ -18,7 +18,6 @@ export class RedirectIfAuthed implements CanActivate {
     return this.afAuth.authState
       .map(authState => authState ? true : false)
       .do(isAuthed => {
-        console.log('ifAuthed:isAuthed', isAuthed)
         if (isAuthed) {
           this.router.navigate([route.paramMap.get('redirectUrl')])
         }
