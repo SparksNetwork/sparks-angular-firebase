@@ -11,6 +11,8 @@ export class FirstAuth implements Resolve<firebase.User> {
   constructor(public afAuth: AngularFireAuth) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    return this.afAuth.authState.first()
+    return this.afAuth.authState
+      .do(authState => console.log('authState', authState))
+      .first()
   }
 }

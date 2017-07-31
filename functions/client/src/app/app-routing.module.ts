@@ -8,7 +8,6 @@ const routes: Routes = [
   },
   {
     path: '',
-    // pathMatch: 'full',
     loadChildren: './features/appbar/appbar.module#AppbarModule'
   },
 ];

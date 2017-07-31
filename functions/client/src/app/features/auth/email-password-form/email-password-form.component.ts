@@ -14,12 +14,13 @@ export class EmailPasswordFormComponent implements OnInit {
 
   constructor(
     public builder: FormBuilder,
-  ) { }
-
-  ngOnInit() {
+  ) {
     this.credentialsForm = this.builder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
     })
+  }
+
+  ngOnInit() {
   }
 }

@@ -6,6 +6,7 @@ import { SigninEmailComponent } from './signin-email/signin-email.component'
 import { SigninSocialComponent } from './signin-social/signin-social.component'
 import { SignoutComponent } from './signout/signout.component'
 import { RedirectIfAuthed } from '../../core/snauth/redirect-if-authed/redirect-if-authed.service'
+import { FirstAuth } from '../../core/snauth/first-auth/first-auth.service'
 
 export const routedComponents = [
   SigninComponent,
@@ -17,6 +18,9 @@ export const routedComponents = [
 const routes: Routes = [
   {
     path: ':redirectUrl',
+    resolve: [
+      FirstAuth,
+    ],
     children: [
       {
         path: 'signin',
