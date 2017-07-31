@@ -6,12 +6,15 @@ Project Structure:
     /client
       /src # started with ng cli
         /app
-          /features # modules that route components, maps to route structure
-            /project
+          /features # modules that route components, maps to route structure, including:
+            /appbar # encompasses all routes that use the appbar at the top of the page
+            /auth # logging in and logging out
+
           /core # service modules that are imported at the app level and made available to rest of app
-            /sn-domain # services that connect to backend
+            /snauth # thin wrapper over singletons (actually these should be provided values?)
+            /sndomain # services that connect to backend
           /shared # component modules that are imported in multiple places 
-            /sn-ui # generic components reused by many 
+            /snui # generic components reused by many 
       /dist
         /bundled # result of ng build:client, target path deployed by firebase hosting
         /ngfactory # result of ng build:ssr, referenced by server-side express server running in `/functions/server/src/client`
@@ -50,6 +53,8 @@ Use Angular-recommended best practices as [listed here](https://angular.io/guide
 
 TODO: `npm run deploy` to push to staging, this should be a CI action when new merge to develop.  Also `npm run deploy:production`, a CI action to push to staging when new merge to master.
 
+# Why This Way?
+
 ## Why Everything in /functions?
 
 A chain of tragic consequences...
@@ -57,6 +62,14 @@ A chain of tragic consequences...
 1. `firebase-functions` requires everything that it runs live in the `/functions` directory.  Nothing besides that gets deployed to the cloud.
 2. SSR implemented by `/functions/server/src/client` needs to get bits from angular app including html
 3. Both `/functions/client` and `/functions/server` code need to import shared code from `/functions/shared`
+
+## Why `appbar` feature?
+
+The `appbar` module provides most of the routing for the app.
+All routes in this module will have a consistent appbar at the top that won't rerender.
+Very few routes in the app won't use this: auth, printing, what else?
+
+# How Does This Work?
 
 ## How Backend Firebase-Functions Work
 

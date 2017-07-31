@@ -1,17 +1,26 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { FirstAuth } from '../../core/snauth/first-auth/first-auth.service'
+
 import { AppbarComponent } from './appbar.component'
 
 const routes: Routes = [
   {
     path: '',
     component: AppbarComponent,
+    resolve: [
+      FirstAuth,
+    ],
     children: [
+      {
+        path: 'dash',
+        loadChildren: '../dash/dash.module#DashModule',
+      },
       {
         path: '',
         loadChildren: '../home/home.module#HomeModule',
-      }
+      },
     ]
   }
 ];

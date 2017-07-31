@@ -6,23 +6,9 @@
     <div class='segment'>
       <ul>
         <li>
-          Testing Page link here
+          <a [routerLink]='["dash"]'>Dash (protected by auth)</a>
         </li>
       </ul>
-    </div>
-  </div>
-</div>
-<div class='row'>
-  <div class='col-xs-12'>
-    <div class='segment'>
-      <div *ngIf='afa.authState | async'>
-        <button (click)='afa.auth.signOut()'>Sign Out</button>
-        Current User: {{((afa.authState | async) | json) || 'none'}}
-      </div>
-      <div *ngIf='!(afa.authState | async)'>
-        <button [routerLink]='["auth", "/", "signin"]'>Sign In</button>
-      </div>
-      <br/>
     </div>
   </div>
 </div>

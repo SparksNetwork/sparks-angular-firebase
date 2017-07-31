@@ -4,11 +4,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { SigninComponent } from './signin/signin.component'
 import { SigninEmailComponent } from './signin-email/signin-email.component'
 import { SigninSocialComponent } from './signin-social/signin-social.component'
+import { SignoutComponent } from './signout/signout.component'
+import { RedirectIfAuthed } from '../../core/snauth/redirect-if-authed/redirect-if-authed.service'
 
 export const routedComponents = [
   SigninComponent,
   SigninEmailComponent,
   SigninSocialComponent,
+  SignoutComponent,
 ];
 
 const routes: Routes = [
@@ -18,6 +21,9 @@ const routes: Routes = [
       {
         path: 'signin',
         component: SigninComponent,
+        canActivate: [
+          RedirectIfAuthed,
+        ],
         children: [
           {
             path: '',
@@ -28,6 +34,10 @@ const routes: Routes = [
             component: SigninEmailComponent,
           },
         ]
+      },
+      {
+        path: 'signout',
+        component: SignoutComponent,
       }
     ]
   },
