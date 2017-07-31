@@ -4,6 +4,8 @@ import { Observable } from 'rxjs'
 import * as firebase from 'firebase'
 import { AngularFireAuth } from 'angularfire2/auth'
 
+import 'rxjs/add/operator/map'
+
 export type AuthError = firebase.FirebaseError
 export type User = firebase.User
 
@@ -28,9 +30,13 @@ const HUMAN_ERROR_MESSAGES = {
 @Injectable()
 export class AuthService {
   public auth: firebase.auth.Auth
+
   public current: Observable<User>
+  public isAuthed: Observable<boolean>
+
   public error = new EventEmitter<AuthError | null>()
   public errorMessage = new Observable<string | null>()
+
   private providers = {
     facebook: new FacebookProvider(),
     google: new GoogleProvider(),
@@ -40,11 +46,20 @@ export class AuthService {
     private afAuth: AngularFireAuth
   ) {
     this.current = this.afAuth.authState
+
+    this.errorMessage = this.error
+      .map(err => err ? (HUMAN_ERROR_MESSAGES[err.code] || err.message) as string : null)
+
+    this.isAuthed = this.afAuth.authState
+      .map(authState => authState ? true : false)
+
+    this.current.subscribe(authState => {
+      console.log('authState', authState)
+    })
+
     this.error.subscribe(err => {
       if (err) { console.log('auth error', err) }
     })
-    this.errorMessage = this.error
-      .map(err => err ? (HUMAN_ERROR_MESSAGES[err.code] || err.message) as string : null)
   }
 
   public signInWithGoogle() {
