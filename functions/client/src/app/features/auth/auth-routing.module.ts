@@ -10,6 +10,7 @@ import { RedirectIfNotAuthed } from '../../core/snauth/redirect-if-not-authed/re
 import { FirstAuth } from '../../core/snauth/first-auth/first-auth.service'
 import { EmailActionHandlerComponent } from "./email-action-handler/email-action-handler.component";
 import { VerifyEmailComponent } from "./verify-email/verify-email.component";
+import { EmailNotVerifiedComponent } from "./email-not-verified/email-not-verified.component";
 
 export const routedComponents = [
   SigninComponent,
@@ -18,6 +19,7 @@ export const routedComponents = [
   SignoutComponent,
   EmailActionHandlerComponent,
   VerifyEmailComponent,
+  EmailNotVerifiedComponent
 ];
 
 const routes: Routes = [
@@ -28,6 +30,10 @@ const routes: Routes = [
   {
     path: 'verify-email/:oobCode',
     component: VerifyEmailComponent
+  },
+   {
+    path: 'email-not-verified',
+    component: EmailNotVerifiedComponent
   },
   {
     path: ':redirectUrl',
