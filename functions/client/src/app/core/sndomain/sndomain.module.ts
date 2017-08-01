@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import {
-  ProjectCollectionService,
+  ProjectQueryService,
   ProjectActionService,
-  ProjectPaths,
+  ProjectPathsService,
 } from './project'
 
 @NgModule({
@@ -13,8 +13,8 @@ import {
   exports: [],
   declarations: [],
   providers: [
-    ProjectPaths,
-    ProjectCollectionService,
+    ProjectPathsService,
+    ProjectQueryService,
     ProjectActionService,
   ],
 })

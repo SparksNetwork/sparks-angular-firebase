@@ -6,7 +6,7 @@ import {
   BasePaths,
 } from '../../../../../../lib/firebase-universal/client'
 
-import { ProjectPaths } from './project-paths.service'
+import { ProjectPathsService } from './project-paths.service'
 
 const APIROOT = 'http://localhost:5002/sparks-development-sd/us-central1/api/project'
 
@@ -14,7 +14,7 @@ const APIROOT = 'http://localhost:5002/sparks-development-sd/us-central1/api/pro
 export class ProjectActionService extends BaseActionService {
 
   constructor(
-    @Inject(ProjectPaths) paths: BasePaths,
+    @Inject(ProjectPathsService) paths: BasePaths,
     public http: Http,
   ) {
     super(paths, http)

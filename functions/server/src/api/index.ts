@@ -9,6 +9,16 @@ import { sharedMoment } from '../../../shared/sharedMoment'
 console.log('functions config', functions.config().firebase)
 admin.initializeApp(functions.config().firebase)
 
+import { BaseCollection, BasePaths } from '../../../lib/firebase-universal/shared'
+
+import {
+  ProjectPaths,
+  ProjectCollection,
+} from '../../../shared/domain/project'
+
+const paths = new ProjectPaths()
+const collection = new ProjectCollection(admin.database().ref(paths.firebase))
+
 const app = express();
 app.use(cors({origin: true}))
 app.route('**/moment')
@@ -30,7 +40,8 @@ router.route(`**${apiRoot}/:key`)
 
 async function post(req, res, next) {
   console.log('Create/Post Project', JSON.stringify(req.body, null, 2))
-  const returned = await admin.database().ref('/project').push(req.body).then(ref => ref.key)
+  const returned = await collection.ref.push(req.body).then(ref => ref.key)
+  // const returned = await admin.database().ref('/project').push(req.body).then(ref => ref.key)
   return res.status(200).send(JSON.stringify(returned))
 }
 

@@ -3,7 +3,7 @@ import { FirebaseListObservable } from 'angularfire2/database'
 import { FormGroup, FormBuilder } from '@angular/forms'
 
 import {
-  ProjectCollectionService,
+  ProjectQueryService,
   ProjectActionService,
 } from '../../../core/sndomain/project'
 
@@ -20,11 +20,11 @@ export class ProjectListPageComponent implements OnInit {
   public newProject: FormGroup
 
   constructor(
-    public projectCollection: ProjectCollectionService,
+    public projectQuery: ProjectQueryService,
     public projectAction: ProjectActionService,
     public builder: FormBuilder,
   ) {
-    this.projects = projectCollection.all()
+    this.projects = projectQuery.all()
   }
 
   public ngOnInit() {

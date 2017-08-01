@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder } from '@angular/forms'
 import { Router, ActivatedRoute } from '@angular/router'
 
 import {
-  ProjectCollectionService,
+  ProjectQueryService,
   ProjectActionService,
 } from '../../../core/sndomain/project'
 
@@ -24,14 +24,14 @@ export class ProjectPageComponent implements OnInit {
   public editProject: FormGroup
 
   constructor(
-    public projectCollection: ProjectCollectionService,
+    public projectQuery: ProjectQueryService,
     public projectAction: ProjectActionService,
     public builder: FormBuilder,
     public route: ActivatedRoute,
     public router: Router,
   ) {
     this.key = this.route.snapshot.paramMap.get('key')
-    this.project = projectCollection.one(this.key)
+    this.project = projectQuery.one(this.key)
   }
 
   public ngOnInit() {

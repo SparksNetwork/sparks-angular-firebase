@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { Http } from '@angular/http'
 
-import { BasePaths } from './base-paths.service'
+import { BasePaths } from '../shared/base-paths.class'
 
 export class BaseActionService {
   public url: string
