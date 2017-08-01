@@ -82,7 +82,10 @@ export class AuthService {
   public createWithEmailAndPassword(email: string, password: string) {
     this.error.emit(null)
     this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-      .then(() => this.afAuth.auth.signInWithEmailAndPassword(email, password))
+      .then((user: User) => {
+        user.sendEmailVerification();
+        this.afAuth.auth.signInWithEmailAndPassword(email, password)
+      })
       .then(() => location.reload())
       .catch((err: AuthError) => this.error.emit(err))
   }
@@ -90,5 +93,10 @@ export class AuthService {
   public signOut() {
     this.afAuth.auth.signOut()
       .then(() => location.reload())
+  }
+
+  public applyActionCode(code: string) {
+    return this.afAuth.auth.applyActionCode(code)
+      .catch((err: AuthError) => this.error.emit(err));
   }
 }
