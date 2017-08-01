@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core'
-import { Http } from '@angular/http'
-import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database'
+import { FirebaseObjectObservable } from 'angularfire2/database'
 import { FormGroup, FormBuilder } from '@angular/forms'
 import { Router, ActivatedRoute } from '@angular/router'
 
-import { ProjectCollectionService } from '../../../core/sndomain/project-collection.service'
-import { ProjectActionService } from '../../../core/sndomain/project-action.service'
+import {
+  ProjectCollectionService,
+  ProjectActionService,
+} from '../../../core/sndomain/project'
+
 
 import 'rxjs/add/operator/do'
 import 'rxjs/add/operator/catch'

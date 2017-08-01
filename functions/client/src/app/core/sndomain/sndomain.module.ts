@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { ProjectCollectionService } from './project-collection.service';
-import { ProjectActionService } from './project-action.service'
+import {
+  ProjectCollectionService,
+  ProjectActionService,
+} from './project'
 
 @NgModule({
   imports: [
