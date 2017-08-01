@@ -21,11 +21,8 @@ export class ProjectListPageComponent implements OnInit {
   constructor(
     public projectCollection: ProjectCollectionService,
     public projectAction: ProjectActionService,
-    // public af: AngularFireDatabase,
-    // public http: Http,
     public builder: FormBuilder,
   ) {
-    // this.projects = af.list('/project')
     this.projects = projectCollection.all()
   }
 
@@ -37,13 +34,6 @@ export class ProjectListPageComponent implements OnInit {
   }
 
   public create() {
-    // console.log('create', this.newProject.value)
     this.projectAction.create(this.newProject.value)
-    // this.http.post(APIROOT, this.newProject.value)
-    //   .subscribe(data => {
-    //     console.log('data', data.json())
-    //   }, err => {
-    //     console.log('err', err.json())
-    //   })
   }
 }
