@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
 
-class BasePaths {
-  firebase: string
-  api: string
-}
+import { BasePaths } from '../../../../../../lib/firebase-universal/client'
 
 @Injectable()
 export class ProjectPaths extends BasePaths {
   firebase = '/project'
-  api = '/project'
+  api = 'http://localhost:5002/sparks-development-sd/us-central1/api/project'
 }
