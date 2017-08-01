@@ -26,4 +26,6 @@
   </div>
 
   <project-project-description [description]="project.description"></project-project-description>
+
+  <snui-opportunity-commitments *ngIf="opportunityCommitments && opportunityCommitments.length" [benefits]="opportunityCommitments[0].benefits" [contributions]="opportunityCommitments[0].contributions"></snui-opportunity-commitments>
 </div>
