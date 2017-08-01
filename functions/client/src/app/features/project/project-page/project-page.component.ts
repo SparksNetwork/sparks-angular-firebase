@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { Http } from '@angular/http'
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database'
 import { FormGroup, FormBuilder } from '@angular/forms'
-import { ActivatedRoute } from '@angular/router'
+import { Router, ActivatedRoute } from '@angular/router'
 
 import 'rxjs/add/operator/do'
 import 'rxjs/add/operator/catch'
@@ -13,7 +13,7 @@ const APIROOT = 'http://localhost:5002/sparks-development-sd/us-central1/api/pro
   templateUrl: 'project-page.component.html'
 })
 
-export class ProjectPageComponent {
+export class ProjectPageComponent implements OnInit {
   public key: string
   public project: FirebaseObjectObservable<any[]>
   public editProject: FormGroup
@@ -23,14 +23,25 @@ export class ProjectPageComponent {
     public http: Http,
     public builder: FormBuilder,
     public route: ActivatedRoute,
+    public router: Router,
   ) {
     this.key = this.route.snapshot.paramMap.get('key')
+    console.log('key', this.key)
     this.project = af.object(`/project/${this.key}`)
+  }
+
+  public ngOnInit() {
+    this.editProject = this.builder.group({
+      name: '',
+      description: '',
+    })
   }
 
   public replace() {
     console.log('replace', this.editProject.value)
-    this.http.post(`${APIROOT}/${this.key}`, this.editProject.value)
+    const url = `${APIROOT}/${this.key}`
+    console.log('url', url)
+    this.http.put(url, this.editProject.value)
       .subscribe(data => {
         console.log('data', data.json())
       }, err => {
@@ -39,10 +50,27 @@ export class ProjectPageComponent {
   }
 
   public update() {
-
+    console.log('update', this.editProject.value)
+    const url = `${APIROOT}/${this.key}`
+    console.log('url', url)
+    this.http.patch(url, this.editProject.value)
+      .subscribe(data => {
+        console.log('data', data.json())
+      }, err => {
+        console.log('err', err.json())
+      })
   }
 
   public delete() {
-
+    console.log('delete', this.editProject.value)
+    const url = `${APIROOT}/${this.key}`
+    console.log('url', url)
+    this.http.delete(url)
+      .subscribe(data => {
+        console.log('data', data.json())
+        this.router.navigate(['/project'])
+      }, err => {
+        console.log('err', err.json())
+      })
   }
 }

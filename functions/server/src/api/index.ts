@@ -24,19 +24,36 @@ router.route(`**${apiRoot}`)
   .post(post)
 
 router.route(`**${apiRoot}/:key`)
-  .put((req, res, next) => {
-    res.status(200).send('OK')
-  })
-  .patch((req, res, next) => {
-    res.status(200).send('OK')
-  })
-  .delete((req, res, next) => {
-    res.status(200).send('OK')
-  })
+  .put(put)
+  .patch(patch)
+  .delete(del)
 
 async function post(req, res, next) {
-  console.log('New Project', JSON.stringify(req.body, null, 2))
+  console.log('Create/Post Project', JSON.stringify(req.body, null, 2))
   const returned = await admin.database().ref('/project').push(req.body).then(ref => ref.key)
+  return res.status(200).send(JSON.stringify(returned))
+}
+
+async function put(req: express.Request, res, next) {
+  console.log('Replace/Put Project', JSON.stringify(req.body, null, 2))
+  console.log('key', req.params['key'])
+  const returned = await admin.database().ref('/project').child(req.params['key']).set(req.body).then(() => { return {} })
+  return res.status(200).send(JSON.stringify(returned))
+}
+
+async function patch(req: express.Request, res, next) {
+  console.log('Update/Patch Project', JSON.stringify(req.body, null, 2))
+  console.log('key', req.params['key'])
+  const obj = req.body
+  Object.keys(obj).forEach(k => (!obj[k] && obj[k] !== undefined) && delete obj[k])
+  const returned = await admin.database().ref('/project').child(req.params['key']).update(obj).then(() => { return {} })
+  return res.status(200).send(JSON.stringify(returned))
+}
+
+async function del(req: express.Request, res, next) {
+  console.log('Delete Project')
+  console.log('key', req.params['key'])
+  const returned = await admin.database().ref('/project').child(req.params['key']).remove().then(() => { return {} })
   return res.status(200).send(JSON.stringify(returned))
 }
 

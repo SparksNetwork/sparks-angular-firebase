@@ -1,3 +1,14 @@
 <snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
   {{(project | async)?.name}}
 </snui-header-simple>
+<div>
+  <h3>Description</h3>
+  {{(project | async)?.description}}
+</div>
+<form [formGroup]="editProject">
+  <input type="text" class="form-control" formControlName="name"/>
+  <input type="text" class="form-control" formControlName="description"/>
+  <button (click)='replace()'>Replace</button>
+  <button (click)='update()'>Update</button>
+  <button (click)='delete()'>Delete</button>
+</form>
