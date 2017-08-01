@@ -1,0 +1,11 @@
+<div class="row">
+      <div class="col-xs-12">
+            <div class="row">
+                  <carousel id="eventCarousel">
+                        <slide *ngFor="let src of images">
+                              <div class="item" [ngStyle]="{'background': 'url(' + src + ')'}"></div>
+                        </slide>
+                  </carousel>
+            </div>
+      </div>
+</div>
