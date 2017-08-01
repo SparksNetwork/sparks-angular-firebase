@@ -1,26 +1,22 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import { Injectable, Inject } from '@angular/core';
 
 import { AngularFireDatabase } from 'angularfire2/database'
-import * as firebase from 'firebase'
+
+import {
+  BaseCollectionService,
+  BasePaths,
+} from '../../../../../../lib/firebase-universal/client'
+
+import { ProjectPaths } from './project-paths.service'
 
 @Injectable()
-export class ProjectCollectionService {
-  public ref: firebase.database.Reference
+export class ProjectCollectionService extends BaseCollectionService {
 
   constructor(
+    @Inject(ProjectPaths) public paths: BasePaths,
     public af: AngularFireDatabase,
   ) {
-    this.ref = this.af.database.ref('/project')
-  }
-  
-  public one(key: string) {
-    return this.af.object(this.ref.child(key))
+    super(paths, af)
   }
 
-  public all() {
-    return this.af.list(this.ref)
-  }
 }

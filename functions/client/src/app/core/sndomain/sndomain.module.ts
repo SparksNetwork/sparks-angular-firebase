@@ -3,6 +3,7 @@ import { HttpModule } from '@angular/http';
 import {
   ProjectCollectionService,
   ProjectActionService,
+  ProjectPaths,
 } from './project'
 
 @NgModule({
@@ -12,6 +13,7 @@ import {
   exports: [],
   declarations: [],
   providers: [
+    ProjectPaths,
     ProjectCollectionService,
     ProjectActionService,
   ],

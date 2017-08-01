@@ -1,12 +1,7 @@
-import { Injectable, Inject } from '@angular/core'
+import { Injectable } from '@angular/core'
 import { Http } from '@angular/http'
 
-import {
-  BaseCollectionService,
-  BasePaths,
-} from '../../../../../../lib/firebase-universal/client'
-
-import { ProjectPaths } from './project-paths.service'
+import { BasePaths } from './base-paths.service'
 
 export class BaseActionService {
   public url: string
@@ -20,7 +15,7 @@ export class BaseActionService {
 
   public create(value) {
     console.log('create', value)
-    return this.http.post(APIROOT, value)
+    return this.http.post(this.url, value)
       .subscribe(data => {
         console.log('data', data.json())
       }, err => {
@@ -30,7 +25,7 @@ export class BaseActionService {
   
   public replace(key: string, value) {
     console.log('replace', value)
-    const url = `${APIROOT}/${key}`
+    const url = `${this.url}/${key}`
     console.log('url', url)
     this.http.put(url, value)
       .subscribe(data => {
@@ -42,7 +37,7 @@ export class BaseActionService {
 
   public update(key: string, value) {
     console.log('update', value)
-    const url = `${APIROOT}/${key}`
+    const url = `${this.url}/${key}`
     console.log('url', url)
     this.http.patch(url, value)
       .subscribe(data => {
@@ -54,7 +49,7 @@ export class BaseActionService {
 
   public delete(key: string) {
     console.log('delete', key)
-    const url = `${APIROOT}/${key}`
+    const url = `${this.url}/${key}`
     console.log('url', url)
     const action = this.http.delete(url)
     action
@@ -65,18 +60,4 @@ export class BaseActionService {
       })
     return action
   }
-}
-
-const APIROOT = 'http://localhost:5002/sparks-development-sd/us-central1/api/project'
-
-@Injectable()
-export class ProjectActionService extends BaseActionService {
-
-  constructor(
-    @Inject(ProjectPaths) paths: BasePaths,
-    public http: Http,
-  ) {
-    super(paths, http)
-  }
-
 }
