@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { DashComponent } from './dash.component';
 import { RequireAuth } from '../../core/snauth/require-auth/require-auth.service'
+import { RequireEmailVerification } from "../../core/snauth/require-email-verification/require-email-verification.service";
 
 const routes: Routes = [
   {
@@ -10,6 +11,7 @@ const routes: Routes = [
     component: DashComponent,
     canActivate: [
       RequireAuth,
+      RequireEmailVerification,
     ]
   },
 ];
