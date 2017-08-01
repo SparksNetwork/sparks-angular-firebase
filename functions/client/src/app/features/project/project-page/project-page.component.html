@@ -1,14 +1,31 @@
-<snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
-  {{(project | async)?.name}}
-</snui-header-simple>
-<div>
-  <h3>Description</h3>
-  {{(project | async)?.description}}
+<div *ngIf="project | async; let project; else loading">
+
+  <snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
+    {{project.name}}
+  </snui-header-simple>
+  <div>
+    <h3>Description</h3>
+    {{project.description}}
+  </div>
+  <form [formGroup]="editProject">
+    <input type="text" class="form-control" formControlName="name" />
+    <input type="text" class="form-control" formControlName="description" />
+    <button (click)='replace()'>Replace</button>
+    <button (click)='update()'>Update</button>
+    <button (click)='delete()'>Delete</button>
+  </form>
+
+  <!-- TODO add carousel header-->
+  <project-project-title [title]="project.title" [maxKarmaPoints]="project.maxKarmaPoints"></project-project-title>
+
+  <div class="col-xs-12">
+    <div class="event-date-location segment">
+      <project-project-date [startDateTime]="project.startDateTime" [endDateTime]="project.endDateTime"></project-project-date>
+      <project-project-location [location]="project.location"></project-project-location>
+    </div>
+  </div>
+
+  <project-project-description [description]="project.description"></project-project-description>
 </div>
-<form [formGroup]="editProject">
-  <input type="text" class="form-control" formControlName="name"/>
-  <input type="text" class="form-control" formControlName="description"/>
-  <button (click)='replace()'>Replace</button>
-  <button (click)='update()'>Update</button>
-  <button (click)='delete()'>Delete</button>
-</form>
+
+<ng-template #loading>Loading Project Data...</ng-template>
