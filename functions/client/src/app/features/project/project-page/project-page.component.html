@@ -1,4 +1,4 @@
-<div *ngIf="project | async; let project; else loading">
+<div *ngIf="project | async; let project">
 
   <snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
     {{project.name}}
@@ -27,5 +27,3 @@
 
   <project-project-description [description]="project.description"></project-project-description>
 </div>
-
-<ng-template #loading>Loading Project Data...</ng-template>
