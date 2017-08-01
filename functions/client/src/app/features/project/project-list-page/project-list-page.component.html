@@ -12,6 +12,6 @@
 <div>
   <h2>List of Projects</h2>
   <div *ngFor='let project of projects | async'>
-    Name: {{project.name}}
+    <a [routerLink]="[project.$key]">{{project.name}}</a>
   </div>
 </div>
