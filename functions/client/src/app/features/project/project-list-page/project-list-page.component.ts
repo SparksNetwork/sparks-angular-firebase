@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core'
+import { ActivatedRoute } from '@angular/router'
 import { FirebaseListObservable } from 'angularfire2/database'
 import { FormGroup, FormBuilder } from '@angular/forms'
 
 import {
-  ProjectQueryService,
+  // ProjectQueryService,
   ProjectActionService,
 } from '../../../core/sndomain/project'
 
@@ -20,11 +21,12 @@ export class ProjectListPageComponent implements OnInit {
   public newProject: FormGroup
 
   constructor(
-    public projectQuery: ProjectQueryService,
+    // public projectQuery: ProjectQueryService,
     public projectAction: ProjectActionService,
     public builder: FormBuilder,
+    public route: ActivatedRoute,
   ) {
-    this.projects = projectQuery.all()
+    this.projects = this.route.snapshot.data['sources']['projects']
   }
 
   public ngOnInit() {

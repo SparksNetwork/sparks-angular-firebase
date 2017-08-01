@@ -4,6 +4,8 @@ import { HttpModule } from '@angular/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { SNUIModule } from '../../shared/snui/snui.module'
 import { ProjectRoutingModule, routedComponents } from './project-routing.module'
+import { ProjectListSources } from './project-list-sources/project-list-sources.resolver'
+import { ProjectSources } from './project-sources/project-sources.resolver'
 
 @NgModule({
   declarations: routedComponents,
@@ -15,7 +17,10 @@ import { ProjectRoutingModule, routedComponents } from './project-routing.module
     SNUIModule,
     ProjectRoutingModule,
   ],
-  providers: [],
+  providers: [
+    ProjectListSources,
+    ProjectSources,
+  ],
 })
 export class ProjectModule { }
 

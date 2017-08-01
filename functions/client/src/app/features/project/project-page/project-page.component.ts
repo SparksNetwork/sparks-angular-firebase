@@ -24,14 +24,14 @@ export class ProjectPageComponent implements OnInit {
   public editProject: FormGroup
 
   constructor(
-    public projectQuery: ProjectQueryService,
     public projectAction: ProjectActionService,
     public builder: FormBuilder,
     public route: ActivatedRoute,
     public router: Router,
   ) {
     this.key = this.route.snapshot.paramMap.get('key')
-    this.project = projectQuery.one(this.key)
+    this.project = this.route.snapshot.data['sources']['project']
+    this.project.subscribe(p => console.log('project emit', p))
   }
 
   public ngOnInit() {
