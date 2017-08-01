@@ -2,8 +2,16 @@
   Placeholder Project List Page
 </snui-header-simple>
 <div>
-  Form for entering Project
+  <h2>Form for entering Project</h2>
+  <form [formGroup]="newProject" (ngSubmit)="create()">
+    <input type="text" class="form-control" formControlName="name"/>
+    <input type="text" class="form-control" formControlName="description"/>
+    <button type="submit">Add Project</button>
+  </form>
 </div>
 <div>
-  List of Projects
+  <h2>List of Projects</h2>
+  <div *ngFor='let project of projects | async'>
+    Name: {{project.name}}
+  </div>
 </div>

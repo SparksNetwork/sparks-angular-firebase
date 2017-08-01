@@ -2,6 +2,7 @@ import * as functions from 'firebase-functions'
 import * as admin from 'firebase-admin'
 import * as express from 'express'
 import * as bodyparser from 'body-parser'
+import * as cors from 'cors'
 
 import { sharedMoment } from '../../../shared/sharedMoment'
 
@@ -9,6 +10,7 @@ console.log('functions config', functions.config().firebase)
 admin.initializeApp(functions.config().firebase)
 
 const app = express();
+app.use(cors({origin: true}))
 app.route('**/moment')
   .get((req,res) => { res.status(200).send(sharedMoment().toString())})
 
@@ -16,6 +18,7 @@ const apiRoot = '/project'
 
 const router = express.Router()
 router.use(bodyparser.json())
+router.use(cors({origin: true}))
 
 router.route(`**${apiRoot}`)
   .post(post)
