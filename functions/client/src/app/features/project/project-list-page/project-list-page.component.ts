@@ -3,6 +3,8 @@ import { Http } from '@angular/http'
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database'
 import { FormGroup, FormBuilder } from '@angular/forms'
 
+import { ProjectCollectionService } from '../../../core/sndomain/project-collection.service'
+
 import 'rxjs/add/operator/do'
 import 'rxjs/add/operator/catch'
 
@@ -17,11 +19,13 @@ export class ProjectListPageComponent implements OnInit {
   public newProject: FormGroup
 
   constructor(
-    public af: AngularFireDatabase,
+    public projectCollection: ProjectCollectionService,
+    // public af: AngularFireDatabase,
     public http: Http,
     public builder: FormBuilder,
   ) {
-    this.projects = af.list('/project')
+    // this.projects = af.list('/project')
+    this.projects = projectCollection.all()
   }
 
   public ngOnInit() {

@@ -4,6 +4,8 @@ import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/data
 import { FormGroup, FormBuilder } from '@angular/forms'
 import { Router, ActivatedRoute } from '@angular/router'
 
+import { ProjectCollectionService } from '../../../core/sndomain/project-collection.service'
+
 import 'rxjs/add/operator/do'
 import 'rxjs/add/operator/catch'
 
@@ -19,15 +21,16 @@ export class ProjectPageComponent implements OnInit {
   public editProject: FormGroup
 
   constructor(
-    public af: AngularFireDatabase,
+    // public af: AngularFireDatabase,
     public http: Http,
+    public projectCollection: ProjectCollectionService,
     public builder: FormBuilder,
     public route: ActivatedRoute,
     public router: Router,
   ) {
     this.key = this.route.snapshot.paramMap.get('key')
     console.log('key', this.key)
-    this.project = af.object(`/project/${this.key}`)
+    this.project = projectCollection.one(this.key)
   }
 
   public ngOnInit() {

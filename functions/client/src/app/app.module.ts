@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { SNAuthModule } from './core/snauth/snauth.module'
-
+import { SNDomainModule } from './core/sndomain/sndomain.module'
 import { environment } from '../environments/environment'
 @NgModule({
   declarations: [
@@ -20,6 +20,7 @@ import { environment } from '../environments/environment'
     AngularFireDatabaseModule,
     AppRoutingModule,
     SNAuthModule,
+    SNDomainModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
