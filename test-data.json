@@ -1,0 +1,150 @@
+{
+  "Benefits" : [ {
+    "count" : 20,
+    "description" : "Get Badges, Accolades, and more by volunteering through the Sparks.Network",
+    "icon" : "glyphicon-star",
+    "title" : "Karma Points",
+    "type" : "KarmaPoints"
+  }, {
+    "description" : "Serve your neighbors on the Avenue!",
+    "icon" : "glyphicon-heart",
+    "title" : "To help your community",
+    "type" : "HelpNonProfit"
+  } ],
+  "Contributions" : [ {
+    "count" : 1,
+    "description" : "hours long of volunteering",
+    "icon" : "glyphicon-time",
+    "title" : "Shift",
+    "type" : "Shift",
+    "value" : 4
+  } ],
+  "Engagements" : [ {
+    "appliedOn" : "20170728T123000",
+    "opportunityKey" : 1,
+    "projectUserKey" : "1-0",
+    "status" : 0,
+    "userUID" : 0
+  } ],
+  "Opportunities" : [ {
+    "title" : "Volunteer"
+  }, {
+    "title" : "Regular"
+  }, {
+    "title" : "1-Shift"
+  }, {
+    "title" : "Pre-Event Builders"
+  }, {
+    "title" : "Setup"
+  }, {
+    "title" : "Teardown"
+  } ],
+  "OpportunityCommitments" : [ {
+    "benefits" : [ {
+      "benefitKey" : 0,
+      "description" : "Get Badges, Accolades, and more by volunteering through the Sparks.Network",
+      "icon" : "glyphicon-star",
+      "title" : "20 Karma Points"
+    }, {
+      "benefitKey" : 1,
+      "description" : "Serve your neighbors on the Avenue!",
+      "icon" : "glyphicon-heart",
+      "title" : "To help your community"
+    } ],
+    "contributions" : [ {
+      "contributionKey" : 0,
+      "description" : "Four hours long of volunteering work",
+      "icon" : "glyphicon-time",
+      "title" : "1 Shift"
+    } ],
+    "opportunityKey" : 0
+  } ],
+  "project" : [ {
+    "description" : "Make Kellog Park grat again! Help plant, paint, and beautify out community park.",
+    "images" : [ {
+      "imageUrl" : "http://placeimg.com/640/480/animals/grayscale"
+    }, {
+      "imageUrl" : "http://placeimg.com/640/480/nature/grayscale"
+    }, {
+      "imageUrl" : "http://placeimg.com/640/480/arch/grayscale"
+    } ],
+    "location" : {
+      "address" : "Kellog Park",
+      "city" : "Ventura",
+      "state" : "CA"
+    },
+    "maxKarmaPoints" : 20,
+    "opportunities" : [ {
+      "opportunityKey" : 0
+    } ],
+    "organizer" : {
+      "imageUrl" : "https://placeimg.com/40/40/people/grayscale",
+      "name" : "Miguel Rodriguez",
+      "organization" : "Colectiva Avenida",
+      "organizerKey" : 0
+    },
+    "projectPageUrl" : "https://firebase.google.com/",
+    "projectType" : "Simple",
+    "shareKarmaPoints" : 100,
+    "startDateTime" : "20170715T190000",
+    "title" : "Park Cleanup"
+  }, {
+    "description" : "Hello my magical unicorns! Come work and play with us at Lucidity Festival this year by joining the Dream Makers!",
+    "endDateTime" : "20170412T235959",
+    "images" : [ {
+      "imageUrl" : "https://placeimg.com/1140/410/people/grayscale"
+    }, {
+      "imageUrl" : "https://placeimg.com/1140/410/nature/grayscale"
+    }, {
+      "imageUrl" : "https://placeimg.com/1140/410/animals/grayscale"
+    } ],
+    "location" : {
+      "city" : "Santa Barbara",
+      "latitude" : 34.545587,
+      "longitude" : -119.878357,
+      "state" : "CA"
+    },
+    "maxKarmaPoints" : 1519,
+    "opportunities" : [ {
+      "description" : "$394 in value",
+      "icon" : "glyphicon-cog",
+      "opportunityKey" : 1,
+      "summary" : "85% discount",
+      "title" : "Regular $59"
+    }, {
+      "description" : "$374 in value",
+      "icon" : "glyphicon-glass",
+      "opportunityKey" : 2,
+      "summary" : "45% discount",
+      "title" : "1-Shift $209"
+    }, {
+      "description" : "$364 in value",
+      "icon" : "glyphicon-music",
+      "opportunityKey" : 3,
+      "title" : "Pre-Event Builders"
+    }, {
+      "description" : "$444 in value",
+      "icon" : "glyphicon-film",
+      "opportunityKey" : 4,
+      "summary" : "87% discount",
+      "title" : "Setup $59"
+    }, {
+      "description" : "$444 in value",
+      "icon" : "glyphicon-camera",
+      "opportunityKey" : 5,
+      "summary" : "87% discount",
+      "title" : "Teardown $59"
+    } ],
+    "organizer" : {
+      "imageUrl" : "https://placeimg.com/40/40/people/grayscale",
+      "name" : "Princess",
+      "organization" : "Lucidity Festival",
+      "organizerKey" : 1
+    },
+    "projectPageUrl" : "http://2017.lucidityfestival.com/",
+    "projectType" : "MultiDay",
+    "shareKarmaPoints" : 100,
+    "startDateTime" : "20170202T080000",
+    "title" : "Lucidity Crossroads"
+  } ]
+}
