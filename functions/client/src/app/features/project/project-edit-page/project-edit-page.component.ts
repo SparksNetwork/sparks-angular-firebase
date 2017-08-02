@@ -3,18 +3,11 @@ import { FirebaseObjectObservable } from 'angularfire2/database'
 import { FormGroup, FormBuilder } from '@angular/forms'
 import { Router, ActivatedRoute } from '@angular/router'
 
-import {
-  ProjectQueryService,
-  ProjectActionService,
-} from '../../../core/sndomain/project'
+import { ProjectActionService } from '../../../core/sndomain/project'
 
-
-import 'rxjs/add/operator/do'
-import 'rxjs/add/operator/catch'
 
 import { IProject } from "../../../../../../shared/interfaces/project.model";
 
-const APIROOT = 'http://localhost:5002/sparks-development-sd/us-central1/api/project'
 @Component({
   selector: 'project-project-edit-page',
   templateUrl: 'project-edit-page.component.html'
@@ -33,14 +26,6 @@ export class ProjectEditPageComponent implements OnInit {
   ) {
     this.key = this.route.snapshot.paramMap.get('key')
     this.project = this.route.snapshot.data['sources']['project']
-    this.project.subscribe((p: IProject) => {
-      console.log('project emit', p);
-
-      if (p.opportunities && p.opportunities.length === 1) {
-        console.log('load commitments');
-        //TODO this.getOpportunityCommitments(this.opportunityCards[0].opportunityKey);
-      }
-    })
   }
 
   public ngOnInit() {
