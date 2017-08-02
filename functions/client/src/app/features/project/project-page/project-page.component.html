@@ -13,6 +13,8 @@
   <project-project-description [description]="project.description"></project-project-description>
 
   <project-project-page-opps *ngIf="(opps | async)?.length > 1"></project-project-page-opps>
+  
   <project-project-page-single-opp [opp]="singleOpp | async" *ngIf="(opps | async)?.length == 1"></project-project-page-single-opp>
+
   <snui-opportunity-commitments *ngIf="opportunityCommitments && opportunityCommitments.length" [benefits]="opportunityCommitments[0].benefits" [contributions]="opportunityCommitments[0].contributions"></snui-opportunity-commitments>
 </div>

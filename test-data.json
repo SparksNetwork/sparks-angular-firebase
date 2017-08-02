@@ -62,15 +62,43 @@
   "opp": {
     "KPC1": {
       "projectKey": "KPC",
+      "icon" : "glyphicon-glass",
       "title": "Volunteer"
     },
     "LC1": {
       "projectKey": "LC",
+      "icon" : "glyphicon-music",
+      "contribValue": 209,
+      "benefitValue": 374,
       "title": "1-Shift"
     },
     "LC2": {
       "projectKey": "LC",
+      "icon" : "glyphicon-glass",
+      "contribValue": 59,
+      "benefitValue": 394,
       "title": "Regular"
+    },
+    "LC3": {
+      "projectKey": "LC",
+      "icon" : "glyphicon-film",
+      "contribValue": 0,
+      "benefitValue": 364,
+      "title": "Pre-Event Weekends"
+    },
+    "LC4": {
+      "projectKey": "LC",
+      "icon" : "glyphicon-camera",
+      "contribValue": 19,
+      "benefitValue": 444,
+      "title": "Setup"
+    },
+    "LC5": {
+      "projectKey": "LC",
+      "icon" : "glyphicon-cog",
+      "contribValue": 19,
+      "benefitValue": 444,
+      "title": "Strike"
     }
   },
   "project": {
