@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router'
 
 import { ProjectListPageComponent } from './project-list-page/project-list-page.component'
 import { ProjectPageComponent } from './project-page/project-page.component'
+import { ProjectPageOppsComponent } from './project-page-opps/project-page-opps.component'
+import { ProjectPageSingleOppComponent } from './project-page-single-opp/project-page-single-opp.component'
 import { ProjectEditPageComponent } from './project-edit-page/project-edit-page.component'
 import { ProjectListSources } from './project-list-sources/project-list-sources.resolver'
 import { ProjectSources } from './project-sources/project-sources.resolver'
@@ -47,6 +49,8 @@ export const routedComponents = [
   ProjectListPageComponent,
   ProjectEditPageComponent,
   ProjectPageComponent,
+  ProjectPageOppsComponent,
+  ProjectPageSingleOppComponent,
   ProjectTitleComponent,
   ProjectDateComponent,
   ProjectLocationComponent,
