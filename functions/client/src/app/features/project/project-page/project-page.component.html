@@ -1,20 +1,5 @@
 <div *ngIf="project | async; let project">
 
-  <snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
-    {{project.name}}
-  </snui-header-simple>
-  <div>
-    <h3>Description</h3>
-    {{project.description}}
-  </div>
-  <form [formGroup]="editProject">
-    <input type="text" class="form-control" formControlName="name" />
-    <input type="text" class="form-control" formControlName="description" />
-    <button (click)='replace()'>Replace</button>
-    <button (click)='update()'>Update</button>
-    <button (click)='delete()'>Delete</button>
-  </form>
-
   <snui-header-carousel [images]="project.images"></snui-header-carousel>
   <project-project-title [title]="project.title" [maxKarmaPoints]="project.maxKarmaPoints"></project-project-title>
 
