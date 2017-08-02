@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router'
 
 import { ProjectListPageComponent } from './project-list-page/project-list-page.component'
 import { ProjectPageComponent } from './project-page/project-page.component'
+import { ProjectEditPageComponent } from './project-edit-page/project-edit-page.component'
 import { ProjectListSources } from './project-list-sources/project-list-sources.resolver'
 import { ProjectSources } from './project-sources/project-sources.resolver'
 import { ProjectTitleComponent } from './project-title/project-title.component';
@@ -20,10 +21,19 @@ const routes: Routes = [
   },
   {
     path: ':key',
-    component: ProjectPageComponent,
     resolve: {
       sources: ProjectSources,
-    }
+    },
+    children: [
+      {
+        path: '',
+        component: ProjectPageComponent,
+      },
+      {
+        path: 'edit',
+        component: ProjectEditPageComponent,
+      },
+    ]
   }
 ];
 
@@ -35,6 +45,7 @@ export class ProjectRoutingModule { }
 
 export const routedComponents = [
   ProjectListPageComponent,
+  ProjectEditPageComponent,
   ProjectPageComponent,
   ProjectTitleComponent,
   ProjectDateComponent,

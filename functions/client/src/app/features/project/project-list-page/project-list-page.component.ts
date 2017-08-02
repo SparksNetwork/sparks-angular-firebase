@@ -31,7 +31,7 @@ export class ProjectListPageComponent implements OnInit {
 
   public ngOnInit() {
     this.newProject = this.builder.group({
-      name: '',
+      title: '',
       description: '',
     })
   }
