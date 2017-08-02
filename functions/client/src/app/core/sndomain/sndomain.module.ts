@@ -13,6 +13,12 @@ import {
   OppPathsService,
 } from './opp'
 
+import {
+  ContribQueryService,
+  ContribActionService,
+  ContribPathsService,
+} from './contrib'
+
 @NgModule({
   imports: [
     HttpModule,
@@ -27,6 +33,10 @@ import {
     OppQueryService,
     OppActionService,
     OppPathsService,
+
+  ContribQueryService,
+  ContribActionService,
+  ContribPathsService,
   ],
 })
 export class SNDomainModule { }

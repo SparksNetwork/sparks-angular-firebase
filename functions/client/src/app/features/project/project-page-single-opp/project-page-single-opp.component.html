@@ -28,10 +28,10 @@
       </ul>
     </div>
 
-    <div class="you-will-give-got segment" *ngIf="contributions?.length">
+    <div class="you-will-give-got segment" *ngIf="(contribs | async)?.length">
       <h3>You Will Give</h3>
       <ul>
-        <li *ngFor="let commitment of contributions">
+        <li *ngFor="let commitment of contribs | async">
           <snui-card-item [icon]="commitment.icon" [title]="commitment.title" [subtitle]="commitment.description">
 
           </snui-card-item>
