@@ -4,7 +4,7 @@
 <div>
   <h2>Form for entering Project</h2>
   <form [formGroup]="newProject" (ngSubmit)="create()">
-    <input type="text" class="form-control" formControlName="name"/>
+    <input type="text" class="form-control" formControlName="title"/>
     <input type="text" class="form-control" formControlName="description"/>
     <button type="submit">Add Project</button>
   </form>
