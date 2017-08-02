@@ -34,7 +34,7 @@ export class ProjectSources implements Resolve<any> {
       opps,
     }
     
-    return Observable.merge(
+    return Observable.combineLatest(
       project,
       opps,
     )

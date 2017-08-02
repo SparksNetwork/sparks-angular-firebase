@@ -5,6 +5,7 @@ import * as firebase from 'firebase'
 export class BaseCollection {
   constructor(
     public ref: any
+    // public ref: firebase.database.Reference
   ) {
   }
 

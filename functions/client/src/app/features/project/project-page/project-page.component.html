@@ -11,6 +11,11 @@
   </div>
 
   <project-project-description [description]="project.description"></project-project-description>
+  <div>
+    <h3>Opps</h3>
+    <div *ngFor="let opp of opps | async">
+      {{opp.title}}
+    </div>
 
   <snui-opportunity-commitments *ngIf="opportunityCommitments && opportunityCommitments.length" [benefits]="opportunityCommitments[0].benefits" [contributions]="opportunityCommitments[0].contributions"></snui-opportunity-commitments>
 </div>
