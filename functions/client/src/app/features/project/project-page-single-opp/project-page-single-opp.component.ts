@@ -11,10 +11,13 @@ import { IProject } from "../../../../../../shared/interfaces/project.model";
 
 export class ProjectPageSingleOppComponent {
   @Input() opp: any
+  public project: any
 
   constructor(
     public route: ActivatedRoute,
   ) {
+    this.project = this.route.snapshot.data['sources']['project']
+    this.project.subscribe(project => console.log('project in opp', project))
     // this.key = this.route.snapshot.paramMap.get('key')
     // this.opps = this.route.snapshot.data['sources']['opps']
   }

@@ -59,10 +59,23 @@
     } ],
     "opportunityKey" : 0
   } ],
+  "benefit": {
+  },
+  "contrib": {
+    "KPC1-1": {
+      "count" : 1,
+      "description" : "hours long of volunteering",
+      "icon" : "glyphicon-time",
+      "title" : "Shift",
+      "type" : "Shift",
+      "value" : 4
+    }
+  },
   "opp": {
     "KPC1": {
       "projectKey": "KPC",
       "icon" : "glyphicon-glass",
+      "karma": 20,
       "title": "Volunteer"
     },
     "LC1": {
@@ -111,6 +124,7 @@
       }, {
         "imageUrl" : "http://placeimg.com/640/480/arch/grayscale"
       } ],
+      "communityBenefit": "Serve your neighborhood",
       "location" : {
         "address" : "Kellog Park",
         "city" : "Ventura",
@@ -149,36 +163,6 @@
         "state" : "CA"
       },
       "maxKarmaPoints" : 1519,
-      "opportunities" : [ {
-        "description" : "$394 in value",
-        "icon" : "glyphicon-cog",
-        "opportunityKey" : 1,
-        "summary" : "85% discount",
-        "title" : "Regular $59"
-      }, {
-        "description" : "$374 in value",
-        "icon" : "glyphicon-glass",
-        "opportunityKey" : 2,
-        "summary" : "45% discount",
-        "title" : "1-Shift $209"
-      }, {
-        "description" : "$364 in value",
-        "icon" : "glyphicon-music",
-        "opportunityKey" : 3,
-        "title" : "Pre-Event Builders"
-      }, {
-        "description" : "$444 in value",
-        "icon" : "glyphicon-film",
-        "opportunityKey" : 4,
-        "summary" : "87% discount",
-        "title" : "Setup $59"
-      }, {
-        "description" : "$444 in value",
-        "icon" : "glyphicon-camera",
-        "opportunityKey" : 5,
-        "summary" : "87% discount",
-        "title" : "Teardown $59"
-      } ],
       "organizer" : {
         "imageUrl" : "https://placeimg.com/40/40/people/grayscale",
         "name" : "Princess",
