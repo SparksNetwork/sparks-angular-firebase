@@ -6,15 +6,16 @@ import {
   BaseCollection,
 } from '../shared'
 
-export class BaseQueryService {
+export class BaseQueryService<TCollection extends BaseCollection> {
   public static collectionClass: typeof BaseCollection
-  public collection: BaseCollection
+  public collection: TCollection
 
   constructor(
     public paths: BasePaths,
     public af: AngularFireDatabase,
   ) {
-    console.log(BaseQueryService.collectionClass)
+    console.log(this.constructor['collectionClass'])
+    console.log(this.paths.firebase)
     this.collection = new this.constructor['collectionClass'](this.af.database.ref(paths.firebase))
   }
 

@@ -15,4 +15,8 @@ export class BaseCollection {
   public all() {
     return this.ref
   }
+
+  public by(orderByChild: string, equalTo: string) {
+    return this.ref.orderByChild(orderByChild).equalTo(equalTo)
+  }
 }

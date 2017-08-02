@@ -8,16 +8,16 @@ import {
   BaseCollection,
 } from '../../../../../../lib/firebase-universal/client'
 
-import { ProjectPathsService } from './project-paths.service'
+import { OppPathsService } from './opp-paths.service'
 
-import { ProjectCollection } from '../../../../../../shared/domain/project'
+import { OppCollection } from '../../../../../../shared/domain/opp'
 
 @Injectable()
-export class ProjectQueryService extends BaseQueryService<ProjectCollection> {
-  public static collectionClass = ProjectCollection
+export class OppQueryService extends BaseQueryService<OppCollection> {
+  public static collectionClass = OppCollection
 
   constructor(
-    @Inject(ProjectPathsService) public paths: BasePaths,
+    @Inject(OppPathsService) public paths: BasePaths,
     public af: AngularFireDatabase,
   ) {
     super(paths, af)
