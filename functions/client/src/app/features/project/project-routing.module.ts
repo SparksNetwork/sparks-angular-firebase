@@ -11,9 +11,9 @@ import {
   // ResolveOppByOppKey,
 } from '../../core/sndomain/opp'
 
-import {
-  ResolveContribByOppKey,
-} from '../../core/sndomain/contrib'
+// import {
+//   ResolveContribByOppKey,
+// } from '../../core/sndomain/contrib'
 
 import { PageProjectsComponent } from './page-projects/page-projects.component'
 import { PageProjectHomeComponent } from './page-project-home/page-project-home.component'
@@ -23,6 +23,7 @@ import { PageProjectHomeEditComponent } from './page-project-home-edit/page-proj
 // import { PageProjectOppComponent } from './page-project-opp/page-project-opp.component'
 
 import { PageProjectHomeAllOppsGuard } from './page-project-home-all-opps-guard/page-project-home-all-opps-guard.service'
+import { ResolveContribByFirstOpp } from './resolve-contrib-by-first-opp/resolve-contrib-by-first-opp.service'
 
 import { AddToCalendarComponent } from './add-to-calendar/add-to-calendar.component'
 import { ProjectTitleComponent } from './project-title/project-title.component';
@@ -64,7 +65,7 @@ const routes: Routes = [
             path: 'join',
             component: PageProjectHomeSingleOppComponent,
             resolve: {
-              contribs: ResolveContribByOppKey,
+              contribs: ResolveContribByFirstOpp,
             }
           },
         ],

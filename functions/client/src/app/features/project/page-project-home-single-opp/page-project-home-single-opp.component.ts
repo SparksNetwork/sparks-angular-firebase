@@ -24,6 +24,7 @@ export class PageProjectHomeSingleOppComponent {
       .map(opps => opps && opps[0])
     this.project = this.route.parent.snapshot.data['project']
     this.contribs = this.route.snapshot.data['contribs']
+    this.contribs.subscribe(contribs => console.log('contribs', contribs))
     // this.key = this.route.snapshot.paramMap.get('key')
   }
 

@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import FileSaver from 'file-saver';
-// import { AddToCalendar } from "app/projects/add-to-calendar/add-to-calendar.model";
-// import { AddToCalendarService } from "app/projects/add-to-calendar/add-to-calendar.service";
 import * as moment from 'moment'
 
 function clearLineBreaks(input: string) {
@@ -70,13 +68,5 @@ export class AddToCalendarComponent implements OnInit {
     const icsBlob = new Blob([icsData], {type: 'application/octet-stream'})
 
     FileSaver.saveAs(icsBlob, fileName)
-
-    // if (!this.data) return;
-
-    // let fileName = this.addToCalendarService.getIcsFileName(this.data.title),
-    //   icsData = this.addToCalendarService.getIcsCalendar(this.data),
-    //   icsBlob = this.addToCalendarService.getIcsBlob(icsData);
-
-    // FileSaver.saveAs(icsBlob, fileName);
   }
 }

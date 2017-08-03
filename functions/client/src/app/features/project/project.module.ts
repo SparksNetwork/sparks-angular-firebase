@@ -6,6 +6,7 @@ import { SNUIModule } from '../../shared/snui/snui.module'
 import { ProjectRoutingModule, routedComponents } from './project-routing.module'
 
 import { PageProjectHomeAllOppsGuard } from './page-project-home-all-opps-guard/page-project-home-all-opps-guard.service'
+import { ResolveContribByFirstOpp } from './resolve-contrib-by-first-opp/resolve-contrib-by-first-opp.service'
 
 @NgModule({
   declarations: routedComponents,
@@ -19,6 +20,7 @@ import { PageProjectHomeAllOppsGuard } from './page-project-home-all-opps-guard/
   ],
   providers: [
     PageProjectHomeAllOppsGuard,
+    ResolveContribByFirstOpp,
   ],
 })
 export class ProjectModule { }
