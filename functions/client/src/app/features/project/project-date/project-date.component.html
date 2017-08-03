@@ -3,9 +3,21 @@
     <div class="icon">
       <span class="ic ic-calendar"></span>
     </div>
-    <div class="text">{{startDateTime | date:dateFormat}}{{endDateTime ? " - " + (endDateTime | date:dateFormat) : ""}}<br/>
+    <div class="text">
+      {{startDateTime | amDateFormat:'MMM D'}}
+      <span *ngIf='endDateTime'>
+        - {{endDateTime | amDateFormat:'MMM D'}}
+      </span>
+      <br/>
       <span>
-        <a target="_blank" href="#">add to calendar</a>
+        <project-add-to-calendar
+          [startDateTime]="startDateTime"
+          [endDateTime]="endDateTime"
+          [title]="title"
+          [location]="location"
+          [description]="description"
+          >
+        </project-add-to-calendar> 
       </span>
     </div>
   </a>

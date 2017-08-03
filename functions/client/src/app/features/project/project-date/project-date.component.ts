@@ -8,6 +8,9 @@ export class ProjectDateComponent implements OnInit {
 
   @Input() startDateTime:string;
   @Input() endDateTime:string;
+  @Input() title: string
+  @Input() location: string
+  @Input() description: string
 
   readonly dateFormat = 'MMM d';
 

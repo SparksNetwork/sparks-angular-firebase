@@ -17,8 +17,11 @@ export class LocationPipe implements PipeTransform {
         };
 
         let locStr = '';
+        if (location.name) {
+            locStr += location.name
+        };
         if (location.address) {
-            locStr += location.address
+            locStr += locStr ? `, ${location.address}` : location.address;
         };
         if (location.city) {
             locStr += locStr ? `, ${location.city}` : location.city
