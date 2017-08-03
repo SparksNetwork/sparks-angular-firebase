@@ -10,8 +10,7 @@ import { AuthService } from "../../../core/snauth/auth/auth.service";
 export class PageEmailActionHandlerComponent implements OnInit {
   public mode: string
   public oobCode: string
-  public title: string
-  public message: string
+  public title: string  
 
   constructor(
     private auth: AuthService,
@@ -40,8 +39,6 @@ export class PageEmailActionHandlerComponent implements OnInit {
           // location.reload()
           // let redirectUrl = 'dash'; // eventually from database, where they left off
           // this.router.navigate([redirectUrl]) // will redirect to auth/signin if they need it
-        }).catch((error) => {
-          this.message = error.message;
         });
         break;
       default:
