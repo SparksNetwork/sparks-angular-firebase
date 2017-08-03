@@ -1,16 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 
-import { AuthService } from "../../../core/snauth/auth/auth.service";
+import { AuthService, AuthError } from "../../../core/snauth/auth/auth.service";
+import { FormEmailPasswordComponent } from '../form-email-password/form-email-password.component';
 
 @Component({
   selector: 'auth-page-email-action-handler',
   templateUrl: './page-email-action-handler.component.html'
 })
-export class PageEmailActionHandlerComponent implements OnInit {
+export class PageEmailActionHandlerComponent {
   public mode: string
   public oobCode: string
-  public title: string  
+  public title: string
+  public verificationEmailExpired: boolean;
+
+  @ViewChild(FormEmailPasswordComponent) public epForm: FormEmailPasswordComponent
 
   constructor(
     private auth: AuthService,
@@ -39,11 +43,28 @@ export class PageEmailActionHandlerComponent implements OnInit {
           // location.reload()
           // let redirectUrl = 'dash'; // eventually from database, where they left off
           // this.router.navigate([redirectUrl]) // will redirect to auth/signin if they need it
+        }).catch((error: AuthError) => {
+          if (error.code == "auth/expired-action-code") {
+            this.verificationEmailExpired = true;
+          }
         });
         break;
       default:
         // TODO Error: invalid mode.
         console.log("invalid link");
     }
+  }
+
+  public signInAndResendVerificationEmail() {
+    this.auth.afAuth.auth.signInWithEmailAndPassword(
+      this.epForm.credentialsForm.value.email,
+      this.epForm.credentialsForm.value.password
+    )
+      .then((user) => {
+        user.sendEmailVerification().then(() => {
+          this.router.navigate(['dash'])
+        })
+      })
+      .catch((err: AuthError) => this.auth.error.emit(err))
   }
 }
