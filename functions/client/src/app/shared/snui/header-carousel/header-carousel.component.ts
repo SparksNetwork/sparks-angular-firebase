@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IImage } from "../../../../../../shared/interfaces/image.model";
+import { IImage } from "../../../../../../shared/models/image.model";
 
 @Component({
   selector: 'snui-header-carousel',

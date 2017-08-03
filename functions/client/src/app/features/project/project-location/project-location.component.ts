@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ILocation } from "../../../../../../shared/interfaces/location.model";
+import { ILocation } from "../../../../../../shared/models/location.model";
 
 @Component({
   selector: 'project-project-location',
