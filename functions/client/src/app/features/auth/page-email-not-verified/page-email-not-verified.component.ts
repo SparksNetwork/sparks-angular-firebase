@@ -5,10 +5,10 @@ import 'rxjs/add/operator/catch';
 import { AuthService, User } from "../../../core/snauth/auth/auth.service";
 
 @Component({
-  selector: 'app-email-not-verified',
-  templateUrl: './email-not-verified.component.html'
+  selector: 'auth-page-email-not-verified',
+  templateUrl: './page-email-not-verified.component.html'
 })
-export class EmailNotVerifiedComponent {
+export class PageEmailNotVerifiedComponent {
 
   notificationMessage: string;
 

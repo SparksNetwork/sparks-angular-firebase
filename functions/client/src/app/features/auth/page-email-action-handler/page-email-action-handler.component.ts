@@ -4,10 +4,10 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { AuthService } from "../../../core/snauth/auth/auth.service";
 
 @Component({
-  selector: 'app-email-action-handler',
-  templateUrl: './email-action-handler.component.html'
+  selector: 'auth-page-email-action-handler',
+  templateUrl: './page-email-action-handler.component.html'
 })
-export class EmailActionHandlerComponent implements OnInit {
+export class PageEmailActionHandlerComponent implements OnInit {
   public mode: string
   public oobCode: string
   public title: string

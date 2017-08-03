@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core'
 import { AuthService } from '../../../core/snauth/auth/auth.service'
 
 @Component({
-  selector: 'auth-signout',
+  selector: 'auth-page-signout',
   template: '<div>Signing out...</div>',
 })
 
-export class SignoutComponent implements OnInit {
+export class PageSignoutComponent implements OnInit {
   constructor(
     private auth: AuthService,
   ) { }
