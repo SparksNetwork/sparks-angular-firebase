@@ -7,6 +7,7 @@ import { SigninSocialComponent } from './signin-social/signin-social.component'
 import { SignoutComponent } from './signout/signout.component'
 import { RedirectIfAuthed } from '../../core/snauth/redirect-if-authed/redirect-if-authed.service'
 import { RedirectIfNotAuthed } from '../../core/snauth/redirect-if-not-authed/redirect-if-not-authed.service'
+import { RequireAuth } from '../../core/snauth/require-auth/require-auth.service'
 import { RequireNoEmailVerification } from '../../core/snauth/require-no-email-verification/require-no-email-verification.service'
 import { FirstAuth } from '../../core/snauth/first-auth/first-auth.service'
 import { EmailActionHandlerComponent } from "./email-action-handler/email-action-handler.component";
@@ -26,17 +27,17 @@ export const routedComponents = [
 const routes: Routes = [
   {
     path: "email-action-handler",
-    component: EmailActionHandlerComponent
+    component: EmailActionHandlerComponent,
+    canActivate: [
+      RequireNoEmailVerification,
+    ]
   },
   {
-    path: 'verify-email/:oobCode',
-    component: VerifyEmailComponent
-  },
-   {
     path: 'email-not-verified',
     component: EmailNotVerifiedComponent,
     canActivate: [
       RequireNoEmailVerification,
+      RequireAuth,
     ]
   },
   {

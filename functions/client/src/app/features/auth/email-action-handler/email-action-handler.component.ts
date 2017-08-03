@@ -1,25 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 
+import { AuthService } from "../../../core/snauth/auth/auth.service";
+
 @Component({
   selector: 'app-email-action-handler',
   templateUrl: './email-action-handler.component.html'
 })
 export class EmailActionHandlerComponent implements OnInit {
+  public mode: string
+  public oobCode: string
+  public title: string
+  public message: string
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private auth: AuthService,
+    private route: ActivatedRoute,
+    private router: Router,
+  ) {
+    this.mode = this.route.snapshot.queryParamMap.get('mode')
+    this.oobCode = this.route.snapshot.queryParamMap.get('oobCode')
 
-  ngOnInit() {
-    let mode = this.route.snapshot.queryParamMap.get('mode');
-    let oobCode = this.route.snapshot.queryParamMap.get('oobCode');
-
-    if (!mode || !oobCode) {
+    if (!this.mode || !this.oobCode) {
       // TODO remain on the same page or redirect to dash?
       console.log("invalid link");
-      return this.router.navigate(['']);
+      this.router.navigate(['']);
     }
 
-    switch (mode) {
+    switch (this.mode) {
       case 'resetPassword':
         // Display reset password handler and UI.        
         break;
@@ -27,8 +35,14 @@ export class EmailActionHandlerComponent implements OnInit {
         // Display email recovery handler and UI.        
         break;
       case 'verifyEmail':
-        // Display email verification handler and UI.
-        this.router.navigate(['auth/verify-email', oobCode])
+        this.title = 'Verifying your email...'
+        this.auth.applyActionCode(this.oobCode).then(() => {
+          location.reload()
+          // let redirectUrl = 'dash'; // eventually from database, where they left off
+          // this.router.navigate([redirectUrl]) // will redirect to auth/signin if they need it
+        }).catch((error) => {
+          this.message = error.message;
+        });
         break;
       default:
         // TODO Error: invalid mode.

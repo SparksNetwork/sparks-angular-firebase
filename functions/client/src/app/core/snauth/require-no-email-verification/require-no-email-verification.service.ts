@@ -16,8 +16,8 @@ export class RequireNoEmailVerification implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         return this.auth.current.map(user => {
-            if (!user || (user && user.emailVerified)) {
-                this.router.navigate(['/']);
+            if ((user && user.emailVerified)) {
+                this.router.navigate(['/dash']); // eventually from database
                 // return false;
             }
             return true;
