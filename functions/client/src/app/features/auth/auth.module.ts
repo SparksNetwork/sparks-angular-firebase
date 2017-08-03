@@ -9,6 +9,7 @@ import { EmailPasswordFormComponent } from './email-password-form/email-password
 import { GoogleLoginButtonComponent } from './google-login-button/google-login-button.component'
 import { FacebookLoginButtonComponent } from './facebook-login-button/facebook-login-button.component'
 import { SigninErrorAlertComponent } from './signin-error-alert/signin-error-alert.component'
+import { VerifyEmailErrorAlertComponent } from "./verify-email-error-alert/verify-email-error-alert.component";
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { SigninErrorAlertComponent } from './signin-error-alert/signin-error-ale
     GoogleLoginButtonComponent,
     FacebookLoginButtonComponent,
     SigninErrorAlertComponent,
+    VerifyEmailErrorAlertComponent,
   ],
   imports: [
     CommonModule,

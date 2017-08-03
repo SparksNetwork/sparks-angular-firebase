@@ -1,8 +1,5 @@
-import { Component, OnInit } from '@angular/core'
-
-import { AngularFireAuth } from 'angularfire2/auth'
-
-import { ProviderGoogle } from '../../../core/snauth/provider-google/provider-google.service'
+import { Component } from '@angular/core'
+import { AuthService } from '../../../core/snauth/auth/auth.service'
 
 @Component({
   selector: 'auth-google-login-button',
@@ -11,11 +8,10 @@ import { ProviderGoogle } from '../../../core/snauth/provider-google/provider-go
 
 export class GoogleLoginButtonComponent {
   constructor(
-    private afAuth: AngularFireAuth,
-    private providerGoogle: ProviderGoogle,
+    public auth: AuthService,
   ) {}
 
   click() {
-    this.afAuth.auth.signInWithRedirect(this.providerGoogle)
+    this.auth.signInWithGoogle()
   }
 }

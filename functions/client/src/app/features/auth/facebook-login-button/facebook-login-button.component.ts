@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 
-import { AngularFireAuth } from 'angularfire2/auth'
-
-import { ProviderFacebook } from '../../../core/snauth/provider-facebook/provider-facebook.service'
+import { AuthService } from '../../../core/snauth/auth/auth.service'
 
 @Component({
   selector: 'auth-facebook-login-button',
@@ -11,11 +9,10 @@ import { ProviderFacebook } from '../../../core/snauth/provider-facebook/provide
 
 export class FacebookLoginButtonComponent {
   constructor(
-    private afAuth: AngularFireAuth,
-    private providerFacebook: ProviderFacebook,
+    private auth: AuthService,
   ) {}
 
   click() {
-    this.afAuth.auth.signInWithRedirect(this.providerFacebook)
+    this.auth.signInWithFacebook()
   }
 }

@@ -1,27 +1,25 @@
 import { Injectable } from '@angular/core';
-import { Router, ActivatedRouteSnapshot, CanActivate } from '@angular/router';
+import { Router, ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from '@angular/router';
 
 import { AuthService } from '../auth/auth.service'
 
 import 'rxjs/add/operator/do'
 import 'rxjs/add/operator/first'
-import 'rxjs/add/operator/map'
 
 @Injectable()
-export class RedirectIfAuthed implements CanActivate {
+export class RequireAuth implements CanActivate {
   constructor(
     public auth: AuthService,
     public router: Router,
   ) { }
 
-  canActivate(route: ActivatedRouteSnapshot) {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     return this.auth.isAuthed
       .do(isAuthed => {
-        if (isAuthed) {
-          this.router.navigate([route.paramMap.get('redirectUrl')])
+        if (!isAuthed) {
+          this.router.navigate(['/auth', state.url, 'signin'])
         }
       })
-      .map(isAuthed => !isAuthed)
       .first()
   }
 }

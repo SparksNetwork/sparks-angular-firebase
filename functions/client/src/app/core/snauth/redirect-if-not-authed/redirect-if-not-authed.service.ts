@@ -1,27 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Router, ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from '@angular/router';
+import { Router, ActivatedRouteSnapshot, CanActivate } from '@angular/router';
 
-import { AngularFireAuth } from 'angularfire2/auth'
+import { AuthService } from '../auth/auth.service'
 
 import 'rxjs/add/operator/do'
 import 'rxjs/add/operator/first'
-import 'rxjs/add/operator/map'
 
 @Injectable()
 export class RedirectIfNotAuthed implements CanActivate {
   constructor(
-    public afAuth: AngularFireAuth,
+    public auth: AuthService,
     public router: Router,
   ) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    return this.afAuth.authState
-      .map(authState => authState ? true : false)
+  canActivate(route: ActivatedRouteSnapshot) {
+    return this.auth.isAuthed
       .do(isAuthed => {
-        console.log('unlessAuthed:isAuthed', isAuthed)
         if (!isAuthed) {
-          console.log('navigating with redirect',state.url)
-          this.router.navigate(['/auth', state.url, 'signin'])
+          this.router.navigate([route.paramMap.get('redirectUrl')])
         }
       })
       .first()

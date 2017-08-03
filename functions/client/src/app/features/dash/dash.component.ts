@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core'
-import { AngularFireAuth } from 'angularfire2/auth'
+import { AuthService } from '../../core/snauth/auth/auth.service'
 
 @Component({
   selector: 'dash-dash',
   templateUrl: 'dash.component.html'
 })
 
-export class DashComponent implements OnInit {
+export class DashComponent {
   constructor(
-    public afa: AngularFireAuth,
+    public auth: AuthService,
   ) { }
-
-  ngOnInit() { }
 }

@@ -11,7 +11,7 @@ Project Structure:
             /auth # logging in and logging out
 
           /core # service modules that are imported at the app level and made available to rest of app
-            /snauth # thin wrapper over singletons (actually these should be provided values?)
+            /snauth # thin wrapper over angularfire, plus guards and resolver
             /sndomain # services that connect to backend
           /shared # component modules that are imported in multiple places 
             /snui # generic components reused by many 
