@@ -37,7 +37,7 @@ export class EmailActionHandlerComponent implements OnInit {
       case 'verifyEmail':
         this.title = 'Verifying your email...'
         this.auth.applyActionCode(this.oobCode).then(() => {
-          location.reload()
+          // location.reload()
           // let redirectUrl = 'dash'; // eventually from database, where they left off
           // this.router.navigate([redirectUrl]) // will redirect to auth/signin if they need it
         }).catch((error) => {

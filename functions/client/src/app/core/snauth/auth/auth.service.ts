@@ -95,6 +95,7 @@ export class AuthService {
 
   public applyActionCode(code: string) {
     return this.afAuth.auth.applyActionCode(code)
+      .then(() => location.reload())
       .catch((err: AuthError) => this.error.emit(err));
   }
 }
