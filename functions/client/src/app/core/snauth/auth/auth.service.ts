@@ -82,10 +82,8 @@ export class AuthService {
   public createWithEmailAndPassword(email: string, password: string) {
     this.error.emit(null)
     this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-      .then((user: User) => {
-        user.sendEmailVerification();
-        this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      })
+      .then((user: User) => user.sendEmailVerification())
+      .then(() => this.afAuth.auth.signInWithEmailAndPassword(email, password))
       .then(() => location.reload())
       .catch((err: AuthError) => this.error.emit(err))
   }
