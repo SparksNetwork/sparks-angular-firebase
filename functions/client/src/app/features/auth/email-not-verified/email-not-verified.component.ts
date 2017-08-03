@@ -25,4 +25,8 @@ export class EmailNotVerifiedComponent {
         .catch(() => this.notificationMessage = "An error has occured please try again.")
     });
   }
+
+  signout() {
+    this.auth.signOut()
+  }
 }

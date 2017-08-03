@@ -8,6 +8,7 @@ import { RedirectIfNotAuthed } from './redirect-if-not-authed/redirect-if-not-au
 import { RedirectIfAuthed } from './redirect-if-authed/redirect-if-authed.service'
 import { FirstAuth } from './first-auth/first-auth.service'
 import { RequireEmailVerification } from "./require-email-verification/require-email-verification.service";
+import { RequireNoEmailVerification } from './require-no-email-verification/require-no-email-verification.service'
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { RequireEmailVerification } from "./require-email-verification/require-e
     RedirectIfNotAuthed,
     RedirectIfAuthed,
     FirstAuth,
-    RequireEmailVerification
+    RequireEmailVerification,
+    RequireNoEmailVerification,
   ],
 })
 export class SNAuthModule { }

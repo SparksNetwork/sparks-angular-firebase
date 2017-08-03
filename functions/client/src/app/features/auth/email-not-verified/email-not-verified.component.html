@@ -1,6 +1,16 @@
+<snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
+  Check Your Inbox!
+</snui-header-simple>
 <p>
-  Please verify your email addres in order to continue. 
+  We sent you an email at {{(auth.current | async)?.email}}.
+  It's got a verification link in it.
+  Go click on it.  We'll wait right here.
 </p>
-<p>Not received the validation email? Click <a href="#" (click)="sendValidationEmail($event)" >here</a> to resend. </p>
+<p>
+  Not received the validation email? Click <a href="#" (click)="sendValidationEmail($event)" >here</a> to resend.
+</p>
+<p>
+  Not your account?
+  <button btn (click)='signout()'>Sign Out</button>
 <br/>
 {{notificationMessage}}
