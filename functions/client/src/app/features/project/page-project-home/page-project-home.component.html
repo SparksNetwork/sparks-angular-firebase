@@ -10,7 +10,12 @@
           <div class="icon">
             <span class="ic ic-calendar"></span>
           </div>
-          <div class="text">{{project.startDateTime}}{{project.endDateTime ? " - " + project.endDateTime : ""}}<br/>
+          <div class="text">
+            {{project.startDateTime | amDateFormat:'MMM D'}}
+            <span *ngIf='project.endDateTime'>
+              - {{project.endDateTime | amDateFormat:'MMM D'}}
+            </span>
+            <br/>
             <span>
               <project-add-to-calendar
                 [startDateTime]="project.startDateTime"

@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { SNUIModule } from '../../shared/snui/snui.module'
 import { ProjectRoutingModule, routedComponents } from './project-routing.module'
+import { MomentModule } from 'angular2-moment'
 
 import { PageProjectHomeAllOppsGuard } from './page-project-home-all-opps-guard/page-project-home-all-opps-guard.service'
 import { ResolveContribByFirstOpp } from './resolve-contrib-by-first-opp/resolve-contrib-by-first-opp.service'
@@ -15,6 +16,7 @@ import { ResolveContribByFirstOpp } from './resolve-contrib-by-first-opp/resolve
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
+    MomentModule,
     SNUIModule,
     ProjectRoutingModule,
   ],
