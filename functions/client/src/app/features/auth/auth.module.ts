@@ -8,8 +8,7 @@ import { AuthRoutingModule, routedComponents } from './auth-routing.module'
 import { EmailPasswordFormComponent } from './email-password-form/email-password-form.component'
 import { GoogleLoginButtonComponent } from './google-login-button/google-login-button.component'
 import { FacebookLoginButtonComponent } from './facebook-login-button/facebook-login-button.component'
-import { SigninErrorAlertComponent } from './signin-error-alert/signin-error-alert.component'
-import { VerifyEmailErrorAlertComponent } from "./verify-email-error-alert/verify-email-error-alert.component";
+import { ErrorAlertComponent } from './error-alert/error-alert.component'
 
 @NgModule({
   declarations: [
@@ -17,8 +16,7 @@ import { VerifyEmailErrorAlertComponent } from "./verify-email-error-alert/verif
     EmailPasswordFormComponent,
     GoogleLoginButtonComponent,
     FacebookLoginButtonComponent,
-    SigninErrorAlertComponent,
-    VerifyEmailErrorAlertComponent,
+    ErrorAlertComponent,
   ],
   imports: [
     CommonModule,

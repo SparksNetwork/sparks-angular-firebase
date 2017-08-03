@@ -11,7 +11,6 @@ import { RequireAuth } from '../../core/snauth/require-auth/require-auth.service
 import { RequireNoEmailVerification } from '../../core/snauth/require-no-email-verification/require-no-email-verification.service'
 import { FirstAuth } from '../../core/snauth/first-auth/first-auth.service'
 import { EmailActionHandlerComponent } from "./email-action-handler/email-action-handler.component";
-import { VerifyEmailComponent } from "./verify-email/verify-email.component";
 import { EmailNotVerifiedComponent } from "./email-not-verified/email-not-verified.component";
 
 export const routedComponents = [
@@ -20,7 +19,6 @@ export const routedComponents = [
   SigninSocialComponent,
   SignoutComponent,
   EmailActionHandlerComponent,
-  VerifyEmailComponent,
   EmailNotVerifiedComponent
 ];
 
