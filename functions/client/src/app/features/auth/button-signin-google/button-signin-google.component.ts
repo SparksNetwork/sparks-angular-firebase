@@ -2,11 +2,11 @@ import { Component } from '@angular/core'
 import { AuthService } from '../../../core/snauth/auth/auth.service'
 
 @Component({
-  selector: 'auth-google-login-button',
-  templateUrl: 'google-login-button.component.html'
+  selector: 'auth-button-signin-google',
+  templateUrl: 'button-signin-google.component.html'
 })
 
-export class GoogleLoginButtonComponent {
+export class ButtonSigninGoogleComponent {
   constructor(
     public auth: AuthService,
   ) {}

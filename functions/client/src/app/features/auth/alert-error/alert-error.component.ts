@@ -4,11 +4,11 @@ import { AuthService } from '../../../core/snauth/auth/auth.service'
 import { Observable } from 'rxjs'
 
 @Component({
-  selector: 'auth-error-alert',
-  templateUrl: 'error-alert.component.html'
+  selector: 'auth-alert-error',
+  templateUrl: 'alert-error.component.html'
 })
 
-export class ErrorAlertComponent {
+export class AlertErrorComponent {
   public message: string
 
   constructor(

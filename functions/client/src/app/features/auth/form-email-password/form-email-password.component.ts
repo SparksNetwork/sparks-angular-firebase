@@ -5,11 +5,11 @@ import { Observable } from 'rxjs'
 import 'rxjs/add/operator/map'
 
 @Component({
-  selector: 'auth-email-password-form',
-  templateUrl: 'email-password-form.component.html'
+  selector: 'auth-form-email-password',
+  templateUrl: 'form-email-password.component.html'
 })
 
-export class EmailPasswordFormComponent implements OnInit {
+export class FormEmailPasswordComponent implements OnInit {
   public credentialsForm: FormGroup
 
   constructor(

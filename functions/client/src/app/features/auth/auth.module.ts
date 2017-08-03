@@ -5,18 +5,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SNUIModule } from '../../shared/snui/snui.module'
 import { AuthRoutingModule, routedComponents } from './auth-routing.module'
 
-import { EmailPasswordFormComponent } from './email-password-form/email-password-form.component'
-import { GoogleLoginButtonComponent } from './google-login-button/google-login-button.component'
-import { FacebookLoginButtonComponent } from './facebook-login-button/facebook-login-button.component'
-import { ErrorAlertComponent } from './error-alert/error-alert.component'
+import { FormEmailPasswordComponent } from './form-email-password/form-email-password.component'
+import { ButtonSigninGoogleComponent } from './button-signin-google/button-signin-google.component'
+import { ButtonSigninFacebookComponent } from './button-signin-facebook/button-signin-facebook.component'
+import { AlertErrorComponent } from './alert-error/alert-error.component'
 
 @NgModule({
   declarations: [
     routedComponents,
-    EmailPasswordFormComponent,
-    GoogleLoginButtonComponent,
-    FacebookLoginButtonComponent,
-    ErrorAlertComponent,
+    FormEmailPasswordComponent,
+    ButtonSigninGoogleComponent,
+    ButtonSigninFacebookComponent,
+    AlertErrorComponent,
   ],
   imports: [
     CommonModule,
