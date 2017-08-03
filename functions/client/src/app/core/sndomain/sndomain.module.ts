@@ -20,6 +20,7 @@ import {
   ContribQueryService,
   ContribActionService,
   ContribPathsService,
+  ResolveContribByOppKey,
 } from './contrib'
 
 @NgModule({
@@ -43,6 +44,7 @@ import {
     ContribQueryService,
     ContribActionService,
     ContribPathsService,
+    ResolveContribByOppKey,
   ],
 })
 export class SNDomainModule { }

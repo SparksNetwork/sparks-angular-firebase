@@ -3,19 +3,47 @@
   <snui-header-carousel [images]="project.images"></snui-header-carousel>
   <project-project-title [title]="project.title" [maxKarmaPoints]="project.maxKarmaPoints"></project-project-title>
 
-  <router-outlet></router-outlet>
-  <!-- <div class="col-xs-12">
+  <div class="col-xs-12">
     <div class="event-date-location segment">
-      <project-project-date [startDateTime]="project.startDateTime" [endDateTime]="project.endDateTime"></project-project-date>
-      <project-project-location [location]="project.location"></project-project-location>
+      <div class="event-date col-xs-6 text-right">
+        <a href="#">
+          <div class="icon">
+            <span class="ic ic-calendar"></span>
+          </div>
+          <div class="text">{{project.startDateTime}}{{project.endDateTime ? " - " + project.endDateTime : ""}}<br/>
+            <span>
+              <project-add-to-calendar
+                [startDateTime]="project.startDateTime"
+                [endDateTime]="project.endDateTime"
+                [title]="project.title"
+                [location]="project.location"
+                [description]="project.description"
+                >
+              </project-add-to-calendar> 
+            </span>
+          </div>
+        </a>
+      </div>
+      <div class="event-location col-xs-6">
+        <a target="_blank" href="https://www.google.com/maps?saddr=My+Location&daddr={{project.location?.latitude}},{{project.location?.longitude}}">
+          <div class="text">
+            {{project.location?.name}}<br/>
+            {{project.location?.city}}, {{project.location?.state}}<br/>
+            <span>get directions</span>
+          </div>
+          <div class="icon">
+            <span class="ic ic-map-marker"></span>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 
-  <project-project-description [description]="project.description"></project-project-description>
+  <div class="col-xs-12">
+    <div class="event-description segment">
+      <p class="card-text">{{project.description}}</p>
+    </div>
+  </div>
 
-  <project-project-page-opps *ngIf="(opps | async)?.length > 1"></project-project-page-opps>
-  
-  <project-project-page-single-opp [opp]="singleOpp | async" *ngIf="(opps | async)?.length == 1"></project-project-page-single-opp>
-
-  <snui-opportunity-commitments *ngIf="opportunityCommitments && opportunityCommitments.length" [benefits]="opportunityCommitments[0].benefits" [contributions]="opportunityCommitments[0].contributions"></snui-opportunity-commitments> -->
+  <router-outlet></router-outlet>
 </div>

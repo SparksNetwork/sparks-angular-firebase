@@ -11,8 +11,11 @@ import {
   // ResolveOppByOppKey,
 } from '../../core/sndomain/opp'
 
+import {
+  ResolveContribByOppKey,
+} from '../../core/sndomain/contrib'
+
 import { PageProjectsComponent } from './page-projects/page-projects.component'
-import { PageProjectComponent } from './page-project/page-project.component'
 import { PageProjectHomeComponent } from './page-project-home/page-project-home.component'
 import { PageProjectHomeAllOppsComponent } from './page-project-home-all-opps/page-project-home-all-opps.component'
 import { PageProjectHomeSingleOppComponent } from './page-project-home-single-opp/page-project-home-single-opp.component'
@@ -21,6 +24,7 @@ import { PageProjectHomeEditComponent } from './page-project-home-edit/page-proj
 
 import { PageProjectHomeAllOppsGuard } from './page-project-home-all-opps-guard/page-project-home-all-opps-guard.service'
 
+import { AddToCalendarComponent } from './add-to-calendar/add-to-calendar.component'
 import { ProjectTitleComponent } from './project-title/project-title.component';
 import { ProjectDateComponent } from './project-date/project-date.component';
 import { ProjectLocationComponent } from "./project-location/project-location.component";
@@ -59,6 +63,9 @@ const routes: Routes = [
           {
             path: 'join',
             component: PageProjectHomeSingleOppComponent,
+            resolve: {
+              contribs: ResolveContribByOppKey,
+            }
           },
         ],
       },
@@ -87,6 +94,7 @@ export const routedComponents = [
   PageProjectHomeSingleOppComponent,
   PageProjectHomeEditComponent,
 
+  AddToCalendarComponent,
   ProjectTitleComponent,
   ProjectDateComponent,
   ProjectLocationComponent,

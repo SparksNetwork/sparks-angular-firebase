@@ -64,11 +64,13 @@
   "contrib": {
     "KPC1-1": {
       "count" : 1,
+      "oppKey": "KPC1",
+      "shiftMinLength": 4,
+      "shiftMaxLength": 4,
       "description" : "hours long of volunteering",
       "icon" : "glyphicon-time",
       "title" : "Shift",
-      "type" : "Shift",
-      "value" : 4
+      "type" : "Shift"
     }
   },
   "opp": {
@@ -126,7 +128,8 @@
       } ],
       "communityBenefit": "Serve your neighborhood",
       "location" : {
-        "address" : "Kellog Park",
+        "name": "Kellogg Park",
+        "address" : "1234 Kellogg",
         "city" : "Ventura",
         "state" : "CA"
       },
@@ -157,6 +160,7 @@
         "imageUrl" : "https://placeimg.com/1140/410/animals/grayscale"
       } ],
       "location" : {
+        "name": "Live Oak Campground",
         "city" : "Santa Barbara",
         "latitude" : 34.545587,
         "longitude" : -119.878357,

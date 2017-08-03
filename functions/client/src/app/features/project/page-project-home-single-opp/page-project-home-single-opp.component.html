@@ -14,14 +14,16 @@
         <li>
           <snui-card-item
             icon="glyphicon-star"
-            [title]="opp?.karma + ' Karma Points'"
+            [title]="(opp | async)?.karma + ' Karma Points'"
             subtitle="Get Badges, Accolades, and more by volunteering through the Sparks Network">
           </snui-card-item>
         </li>
         <div *ngIf="benefits?.length">
           <li *ngFor="let commitment of benefits">
-            <snui-card-item [icon]="commitment.icon" [title]="commitment.title" [subtitle]="commitment.description">
-
+            <snui-card-item
+              [icon]="commitment.icon"
+              [title]="commitment.title"
+              [subtitle]="commitment.description">
             </snui-card-item>
           </li>
         </div>
@@ -32,8 +34,10 @@
       <h3>You Will Give</h3>
       <ul>
         <li *ngFor="let commitment of contribs | async">
-          <snui-card-item [icon]="commitment.icon" [title]="commitment.title" [subtitle]="commitment.description">
-
+          <snui-card-item
+            [icon]="commitment.icon"
+            [title]="commitment.count + ' ' + commitment.title"
+            [subtitle]="((commitment.shiftMinLength == commitment.shiftMaxLength) ? commitment.shiftMinLength : 'from ' + commitment.shiftMinLength + ' to ' + commitment.shiftMaxLength) + ' hours long.'">
           </snui-card-item>
         </li>
       </ul>
