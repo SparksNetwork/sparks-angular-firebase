@@ -7,7 +7,7 @@ function clearLineBreaks(input: string) {
 }
 
 function uid() {
-    return Math.random().toString(36).substr(2);
+  return Math.random().toString(36).substr(2);
 }
 
 function universalTime(timestamp?: string, timezone?: number) : string {
