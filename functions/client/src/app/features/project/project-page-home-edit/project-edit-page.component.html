@@ -1,0 +1,24 @@
+Edit Page
+<div *ngIf="project | async; let project">
+  <!-- <snui-header-carousel [images]="project.images"></snui-header-carousel>
+  <project-project-title [title]="project.title" [maxKarmaPoints]="project.maxKarmaPoints"></project-project-title> -->
+
+  <div class="col-xs-12">
+    <div class="event-date-location segment">
+      <project-project-date [startDateTime]="project.startDateTime" [endDateTime]="project.endDateTime"></project-project-date>
+      <project-project-location [location]="project.location"></project-project-location>
+    </div>
+  </div>
+
+  <form [formGroup]="editProject">
+    <input type="text" class="form-control" formControlName="title" />
+    <input type="text" class="form-control" formControlName="description" />
+    <button (click)='replace()'>Replace</button>
+    <button (click)='update()'>Update</button>
+    <button (click)='delete()'>Delete</button>
+  </form>
+
+  <project-project-description [description]="project.description"></project-project-description>
+
+  <snui-opportunity-commitments *ngIf="opportunityCommitments && opportunityCommitments.length" [benefits]="opportunityCommitments[0].benefits" [contributions]="opportunityCommitments[0].contributions"></snui-opportunity-commitments>
+</div>

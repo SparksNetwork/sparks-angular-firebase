@@ -4,7 +4,6 @@ import { FirebaseListObservable } from 'angularfire2/database'
 import { FormGroup, FormBuilder } from '@angular/forms'
 
 import {
-  // ProjectQueryService,
   ProjectActionService,
 } from '../../../core/sndomain/project'
 
@@ -12,11 +11,11 @@ import 'rxjs/add/operator/do'
 import 'rxjs/add/operator/catch'
 
 @Component({
-  selector: 'project-project-list-page',
-  templateUrl: 'project-list-page.component.html'
+  selector: 'project-page-projects',
+  templateUrl: 'page-projects.component.html'
 })
 
-export class ProjectListPageComponent implements OnInit {
+export class PageProjectsComponent implements OnInit {
   public projects: FirebaseListObservable<any[]>
   public newProject: FormGroup
 
@@ -26,7 +25,7 @@ export class ProjectListPageComponent implements OnInit {
     public builder: FormBuilder,
     public route: ActivatedRoute,
   ) {
-    this.projects = this.route.snapshot.data['sources']['projects']
+    this.projects = this.route.snapshot.data['projects']
   }
 
   public ngOnInit() {

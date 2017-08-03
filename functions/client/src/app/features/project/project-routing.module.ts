@@ -1,13 +1,26 @@
 import { NgModule } from '@angular/core'
 import { Routes, RouterModule } from '@angular/router'
 
-import { ProjectListPageComponent } from './project-list-page/project-list-page.component'
-import { ProjectPageComponent } from './project-page/project-page.component'
-import { ProjectPageOppsComponent } from './project-page-opps/project-page-opps.component'
-import { ProjectPageSingleOppComponent } from './project-page-single-opp/project-page-single-opp.component'
-import { ProjectEditPageComponent } from './project-edit-page/project-edit-page.component'
-import { ProjectListSources } from './project-list-sources/project-list-sources.resolver'
-import { ProjectSources } from './project-sources/project-sources.resolver'
+import {
+  ResolveProjectByProjectKey,
+  ResolveProjectAll,
+} from '../../core/sndomain/project'
+
+import {
+  ResolveOppByProjectKey,
+  // ResolveOppByOppKey,
+} from '../../core/sndomain/opp'
+
+import { PageProjectsComponent } from './page-projects/page-projects.component'
+import { PageProjectComponent } from './page-project/page-project.component'
+import { PageProjectHomeComponent } from './page-project-home/page-project-home.component'
+import { PageProjectHomeAllOppsComponent } from './page-project-home-all-opps/page-project-home-all-opps.component'
+import { PageProjectHomeSingleOppComponent } from './page-project-home-single-opp/page-project-home-single-opp.component'
+import { PageProjectHomeEditComponent } from './page-project-home-edit/page-project-home-edit.component'
+// import { PageProjectOppComponent } from './page-project-opp/page-project-opp.component'
+
+import { PageProjectHomeAllOppsGuard } from './page-project-home-all-opps-guard/page-project-home-all-opps-guard.service'
+
 import { ProjectTitleComponent } from './project-title/project-title.component';
 import { ProjectDateComponent } from './project-date/project-date.component';
 import { ProjectLocationComponent } from "./project-location/project-location.component";
@@ -16,25 +29,46 @@ import { ProjectDescriptionComponent } from "./project-description/project-descr
 const routes: Routes = [
   {
     path: '',
-    component: ProjectListPageComponent,
+    component: PageProjectsComponent,
     resolve: {
-      sources: ProjectListSources,
+      projects: ResolveProjectAll,
     }
   },
   {
-    path: ':key',
+    path: ':projectKey',
     resolve: {
-      sources: ProjectSources,
+      project: ResolveProjectByProjectKey,
+      opps: ResolveOppByProjectKey,
     },
     children: [
       {
         path: '',
-        component: ProjectPageComponent,
+        component: PageProjectHomeComponent,
+        children: [
+          {
+            path: '',
+            component: PageProjectHomeAllOppsComponent,
+            canActivate: [
+              PageProjectHomeAllOppsGuard,
+            ]
+          },
+          {
+            path: 'edit',
+            component: PageProjectHomeEditComponent,
+          },
+          {
+            path: 'join',
+            component: PageProjectHomeSingleOppComponent,
+          },
+        ],
       },
-      {
-        path: 'edit',
-        component: ProjectEditPageComponent,
-      },
+      // {
+      //   path: 'opp/:oppKey',
+      //   component: PageProjectOppComponent,
+      //   resolve: {
+      //     opp: ResolveOppByOppKey,
+      //   }
+      // },
     ]
   }
 ];
@@ -46,11 +80,13 @@ const routes: Routes = [
 export class ProjectRoutingModule { }
 
 export const routedComponents = [
-  ProjectListPageComponent,
-  ProjectEditPageComponent,
-  ProjectPageComponent,
-  ProjectPageOppsComponent,
-  ProjectPageSingleOppComponent,
+  PageProjectsComponent,
+
+  PageProjectHomeComponent,
+  PageProjectHomeAllOppsComponent,
+  PageProjectHomeSingleOppComponent,
+  PageProjectHomeEditComponent,
+
   ProjectTitleComponent,
   ProjectDateComponent,
   ProjectLocationComponent,

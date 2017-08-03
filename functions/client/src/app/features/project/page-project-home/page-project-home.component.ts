@@ -8,11 +8,11 @@ import 'rxjs/add/operator/map'
 import { IProject } from "../../../../../../shared/interfaces/project.model";
 
 @Component({
-  selector: 'project-project-page',
-  templateUrl: 'project-page.component.html'
+  selector: 'project-page-project-home',
+  templateUrl: 'page-project-home.component.html'
 })
 
-export class ProjectPageComponent implements OnInit {
+export class PageProjectHomeComponent {
   public key: string
   public project: FirebaseObjectObservable<IProject>
   public opps: FirebaseListObservable<any[]>
@@ -22,9 +22,9 @@ export class ProjectPageComponent implements OnInit {
     public route: ActivatedRoute,
   ) {
     this.key = this.route.snapshot.paramMap.get('key')
-    this.project = this.route.snapshot.data['sources']['project']
-    this.opps = this.route.snapshot.data['sources']['opps']
-    this.singleOpp = this.opps.map(opps => opps && opps[0])
+    this.project = this.route.snapshot.data['project']
+    // this.opps = this.route.snapshot.data['sources']['opps']
+    // this.singleOpp = this.opps.map(opps => opps && opps[0])
   }
 
 }

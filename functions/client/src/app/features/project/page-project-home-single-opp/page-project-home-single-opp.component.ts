@@ -5,20 +5,22 @@ import { ActivatedRoute } from '@angular/router'
 import { IProject } from "../../../../../../shared/interfaces/project.model";
 
 @Component({
-  selector: 'project-project-page-opps',
-  templateUrl: 'project-page-opps.component.html'
+  selector: 'project-page-project-home-single-opp',
+  templateUrl: 'page-project-home-single-opp.component.html'
 })
 
-export class ProjectPageOppsComponent {
-  // @Input() opps: any[]
-  // public key: string
-  public opps: FirebaseListObservable<any>
+export class PageProjectHomeSingleOppComponent {
+  @Input() opp: any
+  public project: any
+  public contribs: any
 
   constructor(
     public route: ActivatedRoute,
   ) {
+    this.project = this.route.snapshot.data['project']
+    this.contribs = this.route.snapshot.data['contribs']
     // this.key = this.route.snapshot.paramMap.get('key')
-    this.opps = this.route.snapshot.data['sources']['opps']
+    // this.opps = this.route.snapshot.data['sources']['opps']
   }
 
 }

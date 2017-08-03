@@ -4,8 +4,8 @@ import { HttpModule } from '@angular/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { SNUIModule } from '../../shared/snui/snui.module'
 import { ProjectRoutingModule, routedComponents } from './project-routing.module'
-import { ProjectListSources } from './project-list-sources/project-list-sources.resolver'
-import { ProjectSources } from './project-sources/project-sources.resolver'
+
+import { PageProjectHomeAllOppsGuard } from './page-project-home-all-opps-guard/page-project-home-all-opps-guard.service'
 
 @NgModule({
   declarations: routedComponents,
@@ -18,8 +18,7 @@ import { ProjectSources } from './project-sources/project-sources.resolver'
     ProjectRoutingModule,
   ],
   providers: [
-    ProjectListSources,
-    ProjectSources,
+    PageProjectHomeAllOppsGuard,
   ],
 })
 export class ProjectModule { }

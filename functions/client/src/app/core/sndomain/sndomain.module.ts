@@ -5,12 +5,15 @@ import {
   ProjectQueryService,
   ProjectActionService,
   ProjectPathsService,
+  ResolveProjectAll,
+  ResolveProjectByProjectKey,
 } from './project'
 
 import {
   OppQueryService,
   OppActionService,
   OppPathsService,
+  ResolveOppByProjectKey,
 } from './opp'
 
 import {
@@ -29,14 +32,17 @@ import {
     ProjectPathsService,
     ProjectQueryService,
     ProjectActionService,
+    ResolveProjectAll,
+    ResolveProjectByProjectKey,
 
     OppQueryService,
     OppActionService,
     OppPathsService,
+    ResolveOppByProjectKey,
 
-  ContribQueryService,
-  ContribActionService,
-  ContribPathsService,
+    ContribQueryService,
+    ContribActionService,
+    ContribPathsService,
   ],
 })
 export class SNDomainModule { }

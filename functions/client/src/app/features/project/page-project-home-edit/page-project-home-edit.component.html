@@ -1,5 +1,5 @@
-<div *ngIf="project | async; let project">
-  <snui-header-carousel [images]="project.images"></snui-header-carousel>
+<!-- <div *ngIf="project | async; let project"> -->
+  <!-- <snui-header-carousel [images]="project.images"></snui-header-carousel>
   <project-project-title [title]="project.title" [maxKarmaPoints]="project.maxKarmaPoints"></project-project-title>
 
   <div class="col-xs-12">
@@ -7,7 +7,7 @@
       <project-project-date [startDateTime]="project.startDateTime" [endDateTime]="project.endDateTime"></project-project-date>
       <project-project-location [location]="project.location"></project-project-location>
     </div>
-  </div>
+  </div> -->
 
   <form [formGroup]="editProject">
     <input type="text" class="form-control" formControlName="title" />
@@ -17,7 +17,7 @@
     <button (click)='delete()'>Delete</button>
   </form>
 
-  <project-project-description [description]="project.description"></project-project-description>
+  <!-- <project-project-description [description]="project.description"></project-project-description> -->
 
-  <snui-opportunity-commitments *ngIf="opportunityCommitments && opportunityCommitments.length" [benefits]="opportunityCommitments[0].benefits" [contributions]="opportunityCommitments[0].contributions"></snui-opportunity-commitments>
-</div>
+  <!-- <snui-opportunity-commitments *ngIf="opportunityCommitments && opportunityCommitments.length" [benefits]="opportunityCommitments[0].benefits" [contributions]="opportunityCommitments[0].contributions"></snui-opportunity-commitments> -->
+<!-- </div> -->

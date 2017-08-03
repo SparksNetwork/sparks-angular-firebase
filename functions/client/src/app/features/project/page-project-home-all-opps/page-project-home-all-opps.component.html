@@ -3,9 +3,9 @@
     <div class="event-requirements">
       <div class="col-xs-12 event-req-row">
         <div class="row">
-          <ng-container *ngFor="let opp of opps | async; let i=index">
-            <div class="col-xs-6">
               <!-- <a href="" [routerLink]="['opportunity', opp.$key]"> -->
+           <ng-container *ngFor="let opp of opps | async; let i=index">
+            <div class="col-xs-6">
               <a href="">
                 <snui-card-item
                   [icon]="opp.icon"
@@ -16,7 +16,7 @@
               </a>
             </div>
             <div class="clearfix" *ngIf="i%2==1"></div>
-          </ng-container>
+          </ng-container> 
         </div>
       </div>
     </div>

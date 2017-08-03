@@ -3,20 +3,21 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/first'
 
-import { ProjectQueryService } from '../../../core/sndomain/project'
+import { ProjectQueryService } from './project-query.service'
 
 @Injectable()
-export class ProjectListSources implements Resolve<any> {
+export class ResolveProjectByProjectKey implements Resolve<any> {
 
   constructor(
     public projectQuery: ProjectQueryService,
   ) { }
 
   public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const projects = this.projectQuery.all()
-    const sources = { projects }
-    return projects
-      .map(() => sources)
+    const projectKey = route.paramMap.get('projectKey')
+    const project = this.projectQuery.one(projectKey)
+
+    return project
+      .map(() => project)
       .first()
   }
 }
