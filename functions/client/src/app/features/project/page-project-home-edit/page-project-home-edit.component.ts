@@ -24,7 +24,7 @@ export class PageProjectHomeEditComponent implements OnInit {
     public route: ActivatedRoute,
     public router: Router,
   ) {
-    this.key = this.route.snapshot.paramMap.get('projectKey')
+    this.key = this.route.parent.snapshot.paramMap.get('projectKey')
     // this.project = this.route.snapshot.data['project']
   }
 
