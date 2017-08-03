@@ -6,20 +6,12 @@
     <div class='segment'>
       <ul>
         <li>
+          <a [routerLink]='["dash"]'>Dash (protected by auth)</a>
+        </li>
+        <li>
           <a [routerLink]="['/project']">Starter Project Page</a>
         </li>
       </ul>
-    </div>
-  </div>
-</div>
-<div class='row'>
-  <div class='col-xs-12'>
-    <div class='segment'>
-      Current User: {{((afa.authState | async) | json) || 'none'}}
-      <br/>
-      <button (click)='afa.auth.signInWithRedirect(provGoogle)'>Google</button>
-      <br/>
-      <button (click)='afa.auth.signOut()'>Sign Out</button>
     </div>
   </div>
 </div>

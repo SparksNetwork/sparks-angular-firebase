@@ -1,0 +1,22 @@
+<snui-header-simple imageUrl='https://placeimg.com/1140/410/animals/grayscale'>
+  Placeholder Dash
+</snui-header-simple>
+<div class='row'>
+  <div class='col-xs-12'>
+    <div class='segment'>
+      <ul>
+        <li>
+          You are on the dashboard!  Users only.
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class='row'>
+  <div class='col-xs-12'>
+    <div class='segment'>
+      <button btn [routerLink]="['/auth', '/', 'signout']">Sign Out</button>
+      Current User: {{((auth.current | async) | json) || 'none'}}
+    </div>
+  </div>
+</div>
