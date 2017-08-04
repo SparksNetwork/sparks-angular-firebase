@@ -1,8 +1,10 @@
-import { IsNumber, IsInt } from 'class-validator/decorator/decorators'
+import { IsNumber, IsInt, IsNotEmpty } from 'class-validator/decorator/decorators'
 
 export class Opportunity {
+    @IsNotEmpty()
     oppKey: string;
 
+    @IsNotEmpty()
     projectKey: string;
 
     title: string;

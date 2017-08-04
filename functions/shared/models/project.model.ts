@@ -2,9 +2,10 @@ import { ProjectType } from "../enums/project-type.enum";
 import { Location } from "./location.model";
 import { Image } from "./image.model";
 import { Organizer } from "./organizer.model";
-import { IsEnum, IsDateString, ValidateNested, IsNumber, IsInt, IsUrl } from 'class-validator/decorator/decorators'
+import { IsEnum, IsDateString, ValidateNested, IsNumber, IsInt, IsUrl, IsNotEmpty } from 'class-validator/decorator/decorators'
 
 export class Project {
+    @IsNotEmpty()
     projectKey: string;
 
     @IsEnum(ProjectType)

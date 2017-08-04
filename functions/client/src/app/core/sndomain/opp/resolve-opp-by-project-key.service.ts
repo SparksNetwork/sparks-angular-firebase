@@ -3,12 +3,14 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/first'
 import { transformAndValidate } from 'class-transformer-validator';
+import { Observable } from "rxjs/Observable";
 
 import { OppQueryService } from './opp-query.service'
 import { Opportunity } from "../../../../../../shared/models/opportunity.model";
 
+
 @Injectable()
-export class ResolveOppByProjectKey implements Resolve<Promise<Opportunity[]>> {
+export class ResolveOppByProjectKey implements Resolve<Observable<Opportunity[]>> {
 
   constructor(
     public oppQuery: OppQueryService,
@@ -23,17 +25,17 @@ export class ResolveOppByProjectKey implements Resolve<Promise<Opportunity[]>> {
       },
     });
 
-    const validateOpt = {validator: {skipMissingProperties: true}};
+    const validateOpt = { validator: { skipMissingProperties: true } };
 
     return opps
-      .map((o: any[]) => transformAndValidate(Opportunity, o, validateOpt).then((o: Opportunity[]) => {
-          return o;
-        })  
+      .map((o: any[]) => Observable.fromPromise(transformAndValidate(Opportunity, o, validateOpt).then((o: Opportunity[]) => {
+        return o;
+      })
         .catch(error => {
           // TODO handle error on transformation (invalid JSON) or validation error
           console.log(error);
         })
-      )
+      ))
       .first();
   }
 }
