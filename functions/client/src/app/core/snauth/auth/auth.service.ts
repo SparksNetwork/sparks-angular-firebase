@@ -131,4 +131,15 @@ export class AuthService {
     return this.afAuth.auth.verifyPasswordResetCode(code)
       .catch((err: AuthError) => this.error.emit(err));
   }
+
+  /**
+   * 
+   * @param code 
+   * @param newPassword
+   * @description https://firebase.google.com/docs/reference/js/firebase.auth.Auth#confirmPasswordReset
+   */
+  public confirmPasswordReset(code: string, newPassword: string) {
+    return this.afAuth.auth.confirmPasswordReset(code, newPassword)
+      .catch((err: AuthError) => this.error.emit(err));
+  }
 }

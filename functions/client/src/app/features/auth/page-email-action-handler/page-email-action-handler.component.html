@@ -22,7 +22,7 @@
   <snui-action-bar>
     <div class="row">
       <div class="col-xs-6 pull-right">
-        <button class="btn btn-default btn-block">Reset</button>
+        <button class="btn btn-default btn-block" [disabled]="!frpForm.resetPasswordForm.valid" (click)="confirmPasswordReset()">Reset</button>
       </div>
     </div>
   </snui-action-bar>

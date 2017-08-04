@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 
 import { AuthService, AuthError } from "../../../core/snauth/auth/auth.service";
 import { FormEmailPasswordComponent } from '../form-email-password/form-email-password.component';
+import { FormResetPasswordComponent } from '../form-reset-password/form-reset-password.component';
 
 @Component({
   selector: 'auth-page-email-action-handler',
@@ -16,6 +17,7 @@ export class PageEmailActionHandlerComponent {
   public resetPasswordEmail: string;
 
   @ViewChild(FormEmailPasswordComponent) public epForm: FormEmailPasswordComponent
+  @ViewChild(FormResetPasswordComponent) public frpForm: FormResetPasswordComponent
 
   constructor(
     private auth: AuthService,
@@ -44,7 +46,6 @@ export class PageEmailActionHandlerComponent {
           if (!email) return;
 
           this.resetPasswordEmail = email;
-
         })
         break;
       case 'recoverEmail':
@@ -73,5 +74,16 @@ export class PageEmailActionHandlerComponent {
         if (!user) return;
         user.sendEmailVerification().then(() => this.router.navigate(['dash']));
       });
+  }
+
+  public confirmPasswordReset() {
+    this.auth.confirmPasswordReset(
+      this.oobCode,
+      this.frpForm.resetPasswordForm.value.password
+    ).then(newPassword => {
+      // TODO: Display a link back to the app, or sign-in the user directly
+      // this.auth.signInWithEmailAndPassword(accountEmail, newPassword);
+      console.log("newPassword")
+    });
   }
 }
