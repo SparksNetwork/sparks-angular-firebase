@@ -2,7 +2,7 @@ import { ProjectType } from "../enums/project-type.enum";
 import { Location } from "./location.model";
 import { Image } from "./image.model";
 import { Organizer } from "./organizer.model";
-import { IsEnum, IsDateString, IsOptional, ValidateNested, IsNumber, IsInt, IsUrl } from 'class-validator/decorator/decorators'
+import { IsEnum, IsDateString, ValidateNested, IsNumber, IsInt, IsUrl } from 'class-validator/decorator/decorators'
 
 export class Project {
     projectKey: string;
@@ -38,7 +38,6 @@ export class Project {
     @IsUrl()
     projectPageUrl?: string;
 
-    @IsOptional()
     @IsInt()
     shareKarmaPoints?: number;
 }

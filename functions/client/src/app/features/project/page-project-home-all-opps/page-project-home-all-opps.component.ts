@@ -2,7 +2,7 @@ import { Component } from '@angular/core'
 import { FirebaseListObservable } from 'angularfire2/database'
 import { ActivatedRoute } from '@angular/router'
 
-import { Project } from "../../../../../../shared/models/project.model";
+import { Opportunity } from "../../../../../../shared/models/opportunity.model";
 
 @Component({
   selector: 'project-page-project-home-all-opps',
@@ -10,7 +10,7 @@ import { Project } from "../../../../../../shared/models/project.model";
 })
 
 export class PageProjectHomeAllOppsComponent {
-  public opps: FirebaseListObservable<Project[]>
+  public opps: FirebaseListObservable<Opportunity[]>
 
   constructor(
     public route: ActivatedRoute,

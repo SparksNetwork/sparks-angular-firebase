@@ -18,15 +18,14 @@ export class ResolveProjectByProjectKey implements Resolve<Promise<Project>> {
     const projectKey = route.paramMap.get('projectKey')
     const project = this.projectQuery.one(projectKey)
 
-    const opt = {validator: {skipMissingProperties: true}};
+    const validateOpt = {validator: {skipMissingProperties: true}};
 
     return project
-      .map((p) => transformAndValidate(Project, p, opt).then((p: Project) => {
+      .map((p) => transformAndValidate(Project, p, validateOpt).then((p: Project) => {
           return p;
         })  
         .catch(error => {
-          // here you can handle error on transformation (invalid JSON)
-          // or validation error (e.g. invalid email property)
+          // TODO handle error on transformation (invalid JSON) or validation error
           console.log(error);
         })
       )
