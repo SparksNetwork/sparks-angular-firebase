@@ -110,4 +110,14 @@ export class AuthService {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .catch((err: AuthError) => this.error.emit(err));
   }
+
+  /**
+   * 
+   * @param email 
+   * @description https://firebase.google.com/docs/reference/js/firebase.auth.Auth#sendPasswordResetEmail
+   */
+  public sendPasswordResetEmail(email: string) {
+    return this.afAuth.auth.sendPasswordResetEmail(email)
+      .catch((err: AuthError) => this.error.emit(err));
+  }
 }
