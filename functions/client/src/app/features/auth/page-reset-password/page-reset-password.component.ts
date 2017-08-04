@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { AuthService } from "../../../core/snauth/auth/auth.service";
+import { AuthService, AuthError } from "../../../core/snauth/auth/auth.service";
 
 @Component({
   selector: 'app-page-reset-password',
@@ -9,6 +9,7 @@ import { AuthService } from "../../../core/snauth/auth/auth.service";
 export class PageResetPasswordComponent implements OnInit {
 
   public passwordResetEmailForm: FormGroup
+  public resetEmailSentTo: string;
 
   constructor(
     public builder: FormBuilder,
@@ -20,9 +21,14 @@ export class PageResetPasswordComponent implements OnInit {
   }
 
   public sendPasswordResetEmail() {
-    this.auth.sendPasswordResetEmail(this.passwordResetEmailForm.value.email).then(() => {
-      console.log("email sent")
-    });
+    this.resetEmailSentTo = null;
+
+    this.auth.sendPasswordResetEmail(this.passwordResetEmailForm.value.email).then((email) => {
+      if (!email) return;
+
+      this.resetEmailSentTo = email;
+      this.passwordResetEmailForm.reset();
+    })
   }
 
   ngOnInit() {

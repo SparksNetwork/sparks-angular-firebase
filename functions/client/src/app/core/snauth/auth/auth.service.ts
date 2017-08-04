@@ -118,6 +118,7 @@ export class AuthService {
    */
   public sendPasswordResetEmail(email: string) {
     return this.afAuth.auth.sendPasswordResetEmail(email)
+      .then(() => { return email; })
       .catch((err: AuthError) => this.error.emit(err));
   }
 }
