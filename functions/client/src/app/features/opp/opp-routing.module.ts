@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     component: OppHeaderDetailsComponent,
     resolve: {
-      projects: ResolveOppByProjectKey,
+      opps: ResolveOppByProjectKey,
     }
   }
 ];

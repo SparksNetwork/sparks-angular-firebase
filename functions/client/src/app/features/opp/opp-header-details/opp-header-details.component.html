@@ -1,3 +1,30 @@
-<p>
-  opp-header-details works!
-</p>
+<snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
+
+</snui-header-simple>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="opportunity-head segment">
+      <div class="col-xs-6">
+        <div class="row">
+          <h3>{{opportunity?.title}}</h3>
+        </div>
+      </div>
+
+      <div class="col-xs-6">
+        <div class="dropdown opportunity-selector">
+          <button class="btn btn-default btn-lg dropdown-toggle" type="button" id="dropdownMenuOpportunity" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="true">
+            {{opportunity?.summary}}
+            <span class="caret"></span>
+          </button>
+           <ul *ngIf='opps' class="dropdown-menu" aria-labelledby="dropdownMenuOpportunity">
+            <li *ngFor="let oppHeaderItem of opps "><a href="" [routerLink]="[oppHeaderItem.key]">{{oppHeaderItem.summary}}</a></li>
+          </ul> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

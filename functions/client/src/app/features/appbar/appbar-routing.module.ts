@@ -26,7 +26,7 @@ const routes: Routes = [
         loadChildren: '../project/project.module#ProjectModule',
       },
       {
-        path: 'project/:projectKey/opportunity/:key',
+        path: 'project/:projectKey/opportunity/:oppKey',
         loadChildren: '../opp/opp.module#OppModule',
       },
     ]
