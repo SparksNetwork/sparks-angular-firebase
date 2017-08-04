@@ -34,7 +34,7 @@ export class PageEmailActionHandlerComponent {
     }
 
     this.auth.error.subscribe(error => {
-      if (error.code == "auth/expired-action-code") {
+      if (this.mode == 'verifyEmail' && error.code == "auth/expired-action-code") {
         this.verificationEmailExpired = true;
       }
     })
