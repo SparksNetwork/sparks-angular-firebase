@@ -26,11 +26,38 @@ Project Structure:
 ```
 # Developing
 
-## How-To
+## Branching
+
+This project is using branch standards based on [this article](http://nvie.com/posts/a-successful-git-branching-model/).
+
+### Core branches
+
+* `master` - this will be deployed to production servers by CI
+* `develop` - this branch collects all completed work, is deployed to a staging server (eventually by CI)
+
+### Release branches
+
+When we have our first release... create a new `release/0.1` branch from `develop`, make any changes needed for production, and then merge into `master`.
+
+### Working Branches
+
+Each of these branches is where developers actually make changes.  Three different types of working branches semantically identify the kind of changes.  $BRANCH_NAME should be a long and meaningful name.
+
+* `feat/$BRANCH_NAME` - implement new user stories
+* `refactor/$BRANCH_NAME` - refactoring of existing code
+* `devops/$BRANCH_NAME` - changes to documentation, deployment, environment
+
+### Feature Branches
+
+Feature branches should have an identifier that corresponds to a ticket on the scrum board and describes what user-facing behavior is implemented by the branch.  E.g. `feat/guest-sees-projects-on-home`
+
+## Setup
+
+Check out the branch and `npm install` to get all the dependencies installed.
 
 ### Client Only
 
-If you run `npm run start:client`, you will get a JIT version of the client on your local machine.
+If you run `npm run start:client`, you will get a JIT version of the client on your local machine.  This is just running `ng serve`.
 
 I am *pretty sure* that this local development server will talk to the *deployed* version of the backend.
 
@@ -42,10 +69,24 @@ The latest `firebase-functions` will run locally and you can hit `http://localho
 
 I am *somewhat sure* that this local development server will talk to the *local* version of the backend.
 
-## Standards
+## Code Standards
 
 Use Angular-recommended best practices as [listed here](https://angular.io/guide/styleguide).
 
+Additional standards include...
+
+### Feature, Core, and Shared directories in Client
+
+* Modules in `/features` are all routable.  Each one should have a `$FEATURE_NAME-routing.module.ts` file in the root directory of the module.
+* All modules in `/core` should be imported at the `app-routing.module.ts` level and are made available to all other modules in the project.
+* Everything in `/shared` is designed to be imported separately in different features as needed.
+
+### Feature components
+
+Within a single `feature` module, individual component names are prefixed with the type of component that they are.  E.g.:
+
+* `page` prefix means that the component is a routing destination.  It may be a child route that is included in a `router-outlet`.
+* `button`, `alert`, `form`, etc are all UI components.
 
 # Deployment
 
