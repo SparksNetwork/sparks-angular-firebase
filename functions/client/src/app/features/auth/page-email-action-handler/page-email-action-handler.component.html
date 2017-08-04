@@ -16,7 +16,8 @@
 
 <div [hidden]="!resetPasswordEmail">
   <div class='segment'>
-    <p>link is valid display a password reset form here for {{resetPasswordEmail}}.</p>
+    <p>Resetting password for: {{resetPasswordEmail}}.</p>
+    <auth-form-reset-password></auth-form-reset-password>
   </div>
   <snui-action-bar>
     <div class="row">
