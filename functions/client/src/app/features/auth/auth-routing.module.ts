@@ -13,6 +13,7 @@ import { RedirectIfNotAuthed } from '../../core/snauth/redirect-if-not-authed/re
 import { RequireAuth } from '../../core/snauth/require-auth/require-auth.service'
 import { RequireNoEmailVerification } from '../../core/snauth/require-no-email-verification/require-no-email-verification.service'
 import { FirstAuth } from '../../core/snauth/first-auth/first-auth.service'
+import { PageResetPasswordComponent } from "./page-reset-password/page-reset-password.component";
 
 export const routedComponents = [
   PageSigninComponent,
@@ -20,7 +21,8 @@ export const routedComponents = [
   PageSigninSocialComponent,
   PageSignoutComponent,
   PageEmailActionHandlerComponent,
-  PageEmailNotVerifiedComponent
+  PageEmailNotVerifiedComponent,
+  PageResetPasswordComponent,
 ];
 
 const routes: Routes = [
@@ -38,6 +40,10 @@ const routes: Routes = [
       RequireNoEmailVerification,
       RequireAuth,
     ]
+  },
+  {
+    path: 'reset-password',
+    component: PageResetPasswordComponent
   },
   {
     path: ':redirectUrl',
