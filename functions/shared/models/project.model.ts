@@ -1,9 +1,8 @@
 import { ProjectType } from "../enums/project-type.enum";
-import { ILocation } from "./location.model";
+import { Location } from "./location.model";
 import { IImage } from "./image.model";
 import { IOrganizer } from "./organizer.model";
 import { IsEnum, IsDateString, IsOptional, ValidateNested, IsNumber, IsInt, IsUrl } from 'class-validator/decorator/decorators'
-import { ValidateIf } from "class-validator";
 
 export class Project {
     projectKey: string;
@@ -22,7 +21,7 @@ export class Project {
     endDateTime?: string;
 
     @ValidateNested()
-    location: ILocation;
+    location: Location;
 
     @ValidateNested()
     images: IImage[];
