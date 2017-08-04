@@ -13,6 +13,7 @@ export class PageEmailActionHandlerComponent {
   public oobCode: string
   public title: string
   public verificationEmailExpired: boolean;
+  public resetPasswordEmail: string;
 
   @ViewChild(FormEmailPasswordComponent) public epForm: FormEmailPasswordComponent
 
@@ -38,7 +39,13 @@ export class PageEmailActionHandlerComponent {
 
     switch (this.mode) {
       case 'resetPassword':
-        // Display reset password handler and UI.        
+        this.title = 'Reset your user password';
+        this.auth.verifyPasswordResetCode(this.oobCode).then((email) => {
+          if (!email) return;
+
+          this.resetPasswordEmail = email;
+
+        })
         break;
       case 'recoverEmail':
         // Display email recovery handler and UI.        

@@ -121,4 +121,14 @@ export class AuthService {
       .then(() => { return email; })
       .catch((err: AuthError) => this.error.emit(err));
   }
+
+  /**
+   * 
+   * @param code 
+   * @description https://firebase.google.com/docs/reference/js/firebase.auth.Auth#verifyPasswordResetCode
+   */
+  public verifyPasswordResetCode(code: string) {
+    return this.afAuth.auth.verifyPasswordResetCode(code)
+      .catch((err: AuthError) => this.error.emit(err));
+  }
 }
