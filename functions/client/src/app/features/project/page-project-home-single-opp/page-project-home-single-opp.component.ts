@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core'
 import { FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database'
 import { ActivatedRoute } from '@angular/router'
-
-import { IProject } from "../../../../../../shared/interfaces/project.model";
-
-import { Observable } from 'rxjs'
 import 'rxjs/add/operator/map'
+import { Observable } from 'rxjs'
+
+import { Project } from "../../../../../../shared/models/project.model";
+import { Contribution } from "../../../../../../shared/models/contribution.model";
+import { Opportunity } from "../../../../../../shared/models/opportunity.model";
 
 @Component({
   selector: 'project-page-project-home-single-opp',
@@ -13,9 +14,9 @@ import 'rxjs/add/operator/map'
 })
 
 export class PageProjectHomeSingleOppComponent {
-  public opp: Observable<any>
-  public project: FirebaseObjectObservable<IProject>
-  public contribs: FirebaseListObservable<any[]>
+  public opp: Observable<Opportunity>
+  public project: FirebaseObjectObservable<Project>
+  public contribs: FirebaseListObservable<Contribution[]>
 
   constructor(
     public route: ActivatedRoute,

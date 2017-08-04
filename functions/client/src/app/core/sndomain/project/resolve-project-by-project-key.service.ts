@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core'
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router'
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/first'
+import { transformAndValidate } from 'class-transformer-validator';
+import { Observable } from "rxjs/Observable";
 
 import { ProjectQueryService } from './project-query.service'
+import { Project } from "../../../../../../shared/models/project.model";
 
 @Injectable()
-export class ResolveProjectByProjectKey implements Resolve<any> {
+export class ResolveProjectByProjectKey implements Resolve<Observable<Project>> {
 
   constructor(
     public projectQuery: ProjectQueryService,
@@ -16,8 +19,17 @@ export class ResolveProjectByProjectKey implements Resolve<any> {
     const projectKey = route.paramMap.get('projectKey')
     const project = this.projectQuery.one(projectKey)
 
+    const validateOpt = { validator: { skipMissingProperties: true } };
+
     return project
-      .map(() => project)
-      .first()
+      .map((p) => Observable.fromPromise(transformAndValidate(Project, p, validateOpt).then((p: Project) => {
+        return p;
+      })
+        .catch(error => {
+          // TODO handle error on transformation (invalid JSON) or validation error
+          console.log(error);
+        })
+      ))
+      .first();
   }
 }

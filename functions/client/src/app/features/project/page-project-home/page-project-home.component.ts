@@ -2,7 +2,7 @@ import { Component } from '@angular/core'
 import { FirebaseObjectObservable } from 'angularfire2/database'
 import { ActivatedRoute } from '@angular/router'
 
-import { IProject } from "../../../../../../shared/interfaces/project.model";
+import { Project } from "../../../../../../shared/models/project.model";
 
 @Component({
   selector: 'project-page-project-home',
@@ -10,7 +10,7 @@ import { IProject } from "../../../../../../shared/interfaces/project.model";
 })
 
 export class PageProjectHomeComponent {
-  public project: FirebaseObjectObservable<IProject>
+  public project: FirebaseObjectObservable<Project>
 
   constructor(
     public route: ActivatedRoute,

@@ -1,5 +1,5 @@
-import { ICard } from "./card.model";
+import { Card } from "./card.model";
 
-export interface IOpportunityCard extends ICard {
+export class OpportunityCard extends Card {
     summary?: string;
 }

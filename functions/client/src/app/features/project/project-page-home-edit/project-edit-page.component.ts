@@ -6,7 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router'
 import { ProjectActionService } from '../../../core/sndomain/project'
 
 
-import { IProject } from "../../../../../../shared/interfaces/project.model";
+import { Project } from "../../../../../../shared/models/project.model";
 
 @Component({
   selector: 'project-project-edit-page',
@@ -15,7 +15,7 @@ import { IProject } from "../../../../../../shared/interfaces/project.model";
 
 export class ProjectEditPageComponent implements OnInit {
   public key: string
-  public project: FirebaseObjectObservable<IProject>
+  public project: FirebaseObjectObservable<Project>
   public editProject: FormGroup
 
   constructor(

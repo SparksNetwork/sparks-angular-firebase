@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ICard } from "../../../../../../shared/interfaces/card.model";
+import { Card } from "../../../../../../shared/interfaces/card.model";
 
 @Component({
   selector: 'snui-opportunity-commitments',
@@ -7,8 +7,8 @@ import { ICard } from "../../../../../../shared/interfaces/card.model";
 })
 export class OpportunityCommitmentsComponent implements OnInit {
 
-  @Input() private benefits: ICard[];
-  @Input() private contributions: ICard[];
+  @Input() private benefits: Card[];
+  @Input() private contributions: Card[];
 
   constructor() { }
 
