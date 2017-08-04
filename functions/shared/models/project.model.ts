@@ -1,7 +1,7 @@
 import { ProjectType } from "../enums/project-type.enum";
 import { Location } from "./location.model";
-import { IImage } from "./image.model";
-import { IOrganizer } from "./organizer.model";
+import { Image } from "./image.model";
+import { Organizer } from "./organizer.model";
 import { IsEnum, IsDateString, IsOptional, ValidateNested, IsNumber, IsInt, IsUrl } from 'class-validator/decorator/decorators'
 
 export class Project {
@@ -24,7 +24,7 @@ export class Project {
     location: Location;
 
     @ValidateNested()
-    images: IImage[];
+    images: Image[];
 
     @IsNumber()
     ticketPrice?: number;
@@ -33,7 +33,7 @@ export class Project {
     maxKarmaPoints: number;
 
     @ValidateNested()
-    organizer: IOrganizer;
+    organizer: Organizer;
 
     @IsUrl()
     projectPageUrl?: string;
