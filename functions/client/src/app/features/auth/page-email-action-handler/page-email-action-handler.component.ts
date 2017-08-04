@@ -30,6 +30,12 @@ export class PageEmailActionHandlerComponent {
       this.router.navigate(['']);
     }
 
+    this.auth.error.subscribe(error => {
+      if (error.code == "auth/expired-action-code") {
+        this.verificationEmailExpired = true;
+      }
+    })
+
     switch (this.mode) {
       case 'resetPassword':
         // Display reset password handler and UI.        
@@ -43,11 +49,7 @@ export class PageEmailActionHandlerComponent {
           // location.reload()
           // let redirectUrl = 'dash'; // eventually from database, where they left off
           // this.router.navigate([redirectUrl]) // will redirect to auth/signin if they need it
-        }).catch((error: AuthError) => {
-          if (error.code == "auth/expired-action-code") {
-            this.verificationEmailExpired = true;
-          }
-        });
+        })
         break;
       default:
         // TODO Error: invalid mode.
@@ -56,15 +58,13 @@ export class PageEmailActionHandlerComponent {
   }
 
   public signInAndResendVerificationEmail() {
-    this.auth.afAuth.auth.signInWithEmailAndPassword(
+    this.auth.signInWithEmailAndPasswordWithoutRedirect(
       this.epForm.credentialsForm.value.email,
       this.epForm.credentialsForm.value.password
     )
       .then((user) => {
-        user.sendEmailVerification().then(() => {
-          this.router.navigate(['dash'])
-        })
-      })
-      .catch((err: AuthError) => this.auth.error.emit(err))
+        if (!user) return;
+        user.sendEmailVerification().then(() => this.router.navigate(['dash']));
+      });
   }
 }
