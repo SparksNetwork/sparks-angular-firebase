@@ -1,0 +1,15 @@
+<div class='segment'>
+  <auth-alert-error></auth-alert-error>
+  <auth-form-email-password></auth-form-email-password>
+  <div class="row">
+     <div class="col-xs-6">
+      <button btn (click)='create()' [disabled]="!epForm.credentialsForm.valid">Join</button>
+    </div> 
+    <div class="col-xs-6">
+      <button btn (click)='signIn()' [disabled]="!epForm.credentialsForm.valid">Sign In</button>
+    </div>
+  </div>
+</div>
+<!-- <div class="segment reset-link">
+  Forgot Your Password? Reset it
+</div> -->

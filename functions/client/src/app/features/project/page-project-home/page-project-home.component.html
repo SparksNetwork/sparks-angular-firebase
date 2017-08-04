@@ -1,0 +1,23 @@
+<div *ngIf="project | async; let project">
+
+  <snui-header-carousel [images]="project.images"></snui-header-carousel>
+  <project-project-title [title]="project.title" [maxKarmaPoints]="project.maxKarmaPoints"></project-project-title>
+
+  <div class="col-xs-12">
+    <div class="event-date-location segment">
+      <project-project-date 
+        [startDateTime]="project.startDateTime" 
+        [endDateTime]="project.endDateTime" 
+        [title]="project.title"
+        [location]="project.location"
+        [description]="project.description">
+      </project-project-date>
+
+      <project-project-location [location]="project.location"></project-project-location>
+    </div>
+  </div>
+
+  <project-project-description [description]="project.description"></project-project-description>
+
+  <router-outlet></router-outlet>
+</div>
