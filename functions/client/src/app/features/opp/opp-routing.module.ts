@@ -5,7 +5,7 @@ import { ResolveOppByProjectKey } from "../../core/sndomain/opp/resolve-opp-by-p
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':oppKey',
     component: OppHeaderDetailsComponent,
     resolve: {
       opps: ResolveOppByProjectKey,

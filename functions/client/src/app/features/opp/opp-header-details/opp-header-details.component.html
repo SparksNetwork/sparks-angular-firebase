@@ -19,7 +19,7 @@
             <span class="caret"></span>
           </button>
            <ul *ngIf='opps' class="dropdown-menu" aria-labelledby="dropdownMenuOpportunity">
-            <li *ngFor="let oppHeaderItem of opps "><a href="" [routerLink]="[oppHeaderItem.key]">{{oppHeaderItem.summary}}% discount</a></li>
+            <li *ngFor="let opp of opps "><a href="" >{{opp.summary}}% discount</a></li>
           </ul> 
         </div>
       </div>
