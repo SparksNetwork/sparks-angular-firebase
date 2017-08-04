@@ -3,11 +3,15 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/mergeMap'
 import 'rxjs/add/operator/first'
+import { Observable } from "rxjs/Observable";
+import { transformAndValidate } from 'class-transformer-validator';
 
 import { ContribQueryService } from '../../../core/sndomain/contrib/contrib-query.service'
+import { Contribution } from "../../../../../../shared/models/contribution.model";
+
 
 @Injectable()
-export class ResolveContribByFirstOpp implements Resolve<any> {
+export class ResolveContribByFirstOpp implements Resolve<Observable<Contribution[]>> {
 
   constructor(
     public contribQuery: ContribQueryService,
@@ -22,10 +26,19 @@ export class ResolveContribByFirstOpp implements Resolve<any> {
           orderByChild: 'oppKey',
           equalTo: opp.$key,
         }
-      }))
+      }));
+
+    const validateOpt = { validator: { skipMissingProperties: true } };
 
     return contribs
-      .map(() => contribs)
+      .map((c: any[]) => Observable.fromPromise(transformAndValidate(Contribution, c, validateOpt).then((c: Contribution[]) => {
+        return c;
+      })
+        .catch(error => {
+          // TODO handle error on transformation (invalid JSON) or validation error
+          console.log(error);
+        })
+      ))
       .first()
   }
 }
