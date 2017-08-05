@@ -7,7 +7,7 @@
     <div class="opportunity-head segment">
       <div class="col-xs-6">
         <div class="row">
-          <h3>{{opportunity?.title}}</h3>
+          <h3>{{(opp | async)?.title}}</h3>
         </div>
       </div>
 
@@ -15,16 +15,14 @@
         <div class="dropdown opportunity-selector">
           <button class="btn btn-default btn-lg dropdown-toggle" type="button" id="dropdownMenuOpportunity" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="true">
-            {{opportunity?.summary}}
+            {{(opp | async)?.summary}}
             <span class="caret"></span>
           </button>
-           <ul *ngIf='opps' class="dropdown-menu" aria-labelledby="dropdownMenuOpportunity">
-            <li *ngFor="let opp of opps "><a href="" >{{opp.summary}}% discount</a></li>
+           <ul *ngIf='opps | async' class="dropdown-menu" aria-labelledby="dropdownMenuOpportunity">
+            <li *ngFor="let _opp of opps | async"><a [routerLink]="['..', _opp.$key]" >{{_opp.summary}}% discount</a></li>
           </ul> 
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<router-outlet></router-outlet>

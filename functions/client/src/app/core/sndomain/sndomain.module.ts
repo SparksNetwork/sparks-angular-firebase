@@ -14,6 +14,7 @@ import {
   OppActionService,
   OppPathsService,
   ResolveOppByProjectKey,
+  ResolveOppByOppKey,
 } from './opp'
 
 import {
@@ -40,6 +41,7 @@ import {
     OppActionService,
     OppPathsService,
     ResolveOppByProjectKey,
+    ResolveOppByOppKey,
 
     ContribQueryService,
     ContribActionService,
