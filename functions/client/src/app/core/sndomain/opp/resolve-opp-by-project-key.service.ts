@@ -19,6 +19,7 @@ export class ResolveOppByProjectKey implements Resolve<any> {
     const projectKey = route.paramMap.get('projectKey')
     // this fails
     // const opps = this.oppQuery.af.list(this.oppQuery.collection.byProjectKey(projectKey))
+    // see https://github.com/angular/angularfire2/issues/1094
     // this works
     const opps = this.oppQuery.af.list('/opp', {
       query: {
