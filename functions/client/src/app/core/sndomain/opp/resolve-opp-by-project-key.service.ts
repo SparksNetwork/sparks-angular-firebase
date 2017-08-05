@@ -17,15 +17,16 @@ export class ResolveOppByProjectKey implements Resolve<any> {
 
   public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const projectKey = route.paramMap.get('projectKey')
+    // this fails
+    // const opps = this.oppQuery.af.list(this.oppQuery.collection.byProjectKey(projectKey))
+    // this works
     const opps = this.oppQuery.af.list('/opp', {
       query: {
         orderByChild: 'projectKey',
         equalTo: projectKey,
       },
     })
-      .do(opps => console.log('source', opps))
       .mergeMap(OppTransform)
-      .do(opps => console.log('transormed', opps))
 
     return opps
       .map(() => opps)
