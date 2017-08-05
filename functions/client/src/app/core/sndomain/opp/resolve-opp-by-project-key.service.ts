@@ -20,6 +20,7 @@ export class ResolveOppByProjectKey implements Resolve<any> {
         equalTo: projectKey,
       },
     })
+      .map(opps => opps.map(opp => {opp.discountDescription = 'bar'; return opp}))
 
     return opps
       .map(() => opps)

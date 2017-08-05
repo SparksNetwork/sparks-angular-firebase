@@ -22,9 +22,7 @@ export class PageProjectOppComponent implements OnInit {
   ngOnInit() {
     this.route.data.subscribe(data => {
       this.opp = this.route.snapshot.data['opp']
-        .map(opp => {opp.discountDescription = 'bar'; return opp})
-      this.opps = (this.route.snapshot.data['opps'] as FirebaseListObservable<any>)
-        .map(opps => opps.map(opp => {opp.discountDescription = 'foo'; return opp}))
+      this.opps = this.route.snapshot.data['opps']
 
     })
   }

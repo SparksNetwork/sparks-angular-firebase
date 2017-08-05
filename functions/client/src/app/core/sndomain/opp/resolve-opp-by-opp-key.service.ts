@@ -15,6 +15,7 @@ export class ResolveOppByOppKey implements Resolve<any> {
   public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const oppKey = route.paramMap.get('oppKey')
     const opp = this.query.one(oppKey)
+      .map(opp => {opp.discountDescription = 'bar'; return opp})
 
     return opp
       .map(() => opp)
