@@ -15,11 +15,11 @@
         <div class="dropdown opportunity-selector">
           <button class="btn btn-default btn-lg dropdown-toggle" type="button" id="dropdownMenuOpportunity" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="true">
-            {{(opp | async)?.summary}}
+            {{(opp | async)?.discountDescription}}
             <span class="caret"></span>
           </button>
            <ul *ngIf='opps | async' class="dropdown-menu" aria-labelledby="dropdownMenuOpportunity">
-            <li *ngFor="let _opp of opps | async"><a [routerLink]="['..', _opp.$key]" >{{_opp.summary}}% discount</a></li>
+            <li *ngFor="let _opp of opps | async"><a [routerLink]="['..', _opp.$key]" >{{_opp.discountDescription}}</a></li>
           </ul> 
         </div>
       </div>
