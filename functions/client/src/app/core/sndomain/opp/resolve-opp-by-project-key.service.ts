@@ -6,7 +6,7 @@ import 'rxjs/add/operator/mergemap'
 import 'rxjs/add/operator/first'
 
 import { OppQueryService } from './opp-query.service'
-import { Opp, OppTransform } from '../../../../../../shared/domain/opp'
+import { Opp, OppsTransform } from '../../../../../../shared/domain/opp'
 
 @Injectable()
 export class ResolveOppByProjectKey implements Resolve<any> {
@@ -15,7 +15,7 @@ export class ResolveOppByProjectKey implements Resolve<any> {
     public oppQuery: OppQueryService,
   ) { }
 
-  public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<Opp[]>> {
     const projectKey = route.paramMap.get('projectKey')
     // this fails
     // const opps = this.oppQuery.af.list(this.oppQuery.collection.byProjectKey(projectKey))
@@ -27,7 +27,7 @@ export class ResolveOppByProjectKey implements Resolve<any> {
         equalTo: projectKey,
       },
     })
-      .mergeMap(OppTransform)
+      .mergeMap(OppsTransform)
 
     return opps
       .map(() => opps)

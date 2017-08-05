@@ -18,7 +18,7 @@ export class ResolveOppByOppKey implements Resolve<any> {
 
   public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<Opp>> {
     const oppKey = route.paramMap.get('oppKey')
-    const opp = this.query.one(oppKey)
+    const opp = this.query.af.object(this.query.collection.one(oppKey))
       .mergeMap(OppTransform)
 
     return opp

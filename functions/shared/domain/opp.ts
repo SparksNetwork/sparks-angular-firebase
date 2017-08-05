@@ -36,14 +36,19 @@ export class Opp {
   }
 }
 
-// leave this as promise for now bc im pretty sure thats how the server will use it
-export const OppTransform = (input: object | object[]) =>
-  transformAndValidate<Opp>(Opp, input)
+// we have two transform functions for type safety, not sure why overloading isnt working see below
+export function OppTransform(input: object): Promise<Opp> {
+  return transformAndValidate<Opp>(Opp, input)
+}
 
-// i did not realize that rxjs.mergemap spoke promise
-// https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/promises.md
-// export const OppTransformObservable = (input: object | object[]) => {
-//   return Observable.fromPromise(
-//     transformAndValidate<Opp>(Opp, input)
-//   )
+export function OppsTransform(input: object[]): Promise<Opp[]> {
+  return transformAndValidate<Opp>(Opp, input)
+}
+
+// not sure why this doesnt work, think it is because mergeMap passes any?
+// export function OppTransform(input: object): Promise<Opp>;
+// export function OppTransform(input: object[]): Promise<Opp[]>;
+// export function OppTransform(input: object | object[]): Promise<Opp | Opp[]> {
+//   return transformAndValidate<Opp>(Opp, input)
 // }
+
