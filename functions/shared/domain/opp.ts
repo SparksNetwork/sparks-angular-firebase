@@ -14,13 +14,6 @@ export class OppPaths extends BasePaths {
   // api = 'https://sparksnetwork-6de8b.firebaseio.com/Projects'
 }
 
-// any methods here will be available on both client and server
-export class OppCollection extends BaseCollection {
-  public byProjectKey(key: string) {
-    return this.by('projectKey', key)
-  }
-}
-
 export class Opp {
   @Expose()
   public $key: string
@@ -36,16 +29,19 @@ export class Opp {
   }
 }
 
-// we have two transform functions for type safety, not sure why overloading isnt working see below
-export function OppTransform(input: object): Promise<Opp> {
-  return transformAndValidate<Opp>(Opp, input)
+// any methods here will be available on both client and server
+export class OppCollection extends BaseCollection {
+  public byProjectKey(key: string) {
+    return this.by('projectKey', key)
+  }
 }
 
-export function OppsTransform(input: object[]): Promise<Opp[]> {
-  return transformAndValidate<Opp>(Opp, input)
-}
+// we have two transform functions for type safety, not sure why overloading isnt working see below
+export const oppTransform = (input: object) => transformAndValidate<Opp>(Opp, input)
+export const oppsTransform = (input: object[]) => transformAndValidate<Opp>(Opp, input)
 
 // not sure why this doesnt work, think it is because mergeMap passes any?
+// when i do .mergeMap<object, Opp> it works
 // export function OppTransform(input: object): Promise<Opp>;
 // export function OppTransform(input: object[]): Promise<Opp[]>;
 // export function OppTransform(input: object | object[]): Promise<Opp | Opp[]> {
