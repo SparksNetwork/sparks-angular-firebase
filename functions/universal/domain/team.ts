@@ -7,7 +7,7 @@ import {
     BaseCollection,
 } from '../../lib/firebase-universal/shared'
 
-export class TeamsPaths extends BasePaths {
+export class TeamPaths extends BasePaths {
     firebase = '/teams'
     api = 'http://localhost:5002/sparks-development-sd/us-central1/api/teams'
 }
