@@ -21,9 +21,7 @@ export class ProjectOppDetailComponent implements OnInit {
     ngOnInit() {
         this.route.data.subscribe(data => {
             this.project = data['project'];
-            this.project.subscribe((s) => { console.log(s) });
             this.opp = data['opp'];
-            this.opp.subscribe((s) => { console.log(s) });
         });
     }
 }
