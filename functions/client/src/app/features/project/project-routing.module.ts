@@ -30,6 +30,7 @@ import { ProjectTitleComponent } from './project-title/project-title.component';
 import { ProjectDateComponent } from './project-date/project-date.component';
 import { ProjectLocationComponent } from "./project-location/project-location.component";
 import { ProjectDescriptionComponent } from "./project-description/project-description.component";
+import { ProjectOppDetailComponent } from "./project-opp-detail/project-opp-detail.component";
 
 const routes: Routes = [
   {
@@ -75,7 +76,13 @@ const routes: Routes = [
         component: PageProjectOppComponent,
         resolve: {
           opp: ResolveOppByOppKey,
-        }
+        },
+        children:[
+          {
+            path:'',
+            component: ProjectOppDetailComponent
+          }
+        ]
       },
     ]
   }
@@ -95,6 +102,7 @@ export const routedComponents = [
   PageProjectHomeSingleOppComponent,
   PageProjectHomeEditComponent,
   PageProjectOppComponent,
+  ProjectOppDetailComponent,
 
   AddToCalendarComponent,
   ProjectTitleComponent,
