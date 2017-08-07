@@ -3,7 +3,7 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 
 import { Observable } from 'rxjs'
 import 'rxjs/add/operator/map'
-import 'rxjs/add/operator/mergemap'
+import 'rxjs/add/operator/mergeMap'
 import 'rxjs/add/operator/first'
 
 import { OppQueryService } from './opp-query.service'
