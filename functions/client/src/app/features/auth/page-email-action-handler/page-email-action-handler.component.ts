@@ -80,10 +80,6 @@ export class PageEmailActionHandlerComponent {
     this.auth.confirmPasswordReset(
       this.oobCode,
       this.frpForm.resetPasswordForm.value.password
-    ).then(newPassword => {
-      // TODO: Display a link back to the app, or sign-in the user directly
-      // this.auth.signInWithEmailAndPassword(accountEmail, newPassword);
-      console.log("newPassword")
-    });
+    ).then(() => this.router.navigate(['dash']));
   }
 }
