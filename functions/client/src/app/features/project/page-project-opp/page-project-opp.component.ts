@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { FirebaseListObservable, FirebaseObjectObservable } from "angularfire2/database";
-import { ICard } from "../../../core/interfaces/card.model";
-import { IOpportunityCard } from "../../../core/interfaces/opportunity-card.model";
 
 import { Observable } from 'rxjs'
 
