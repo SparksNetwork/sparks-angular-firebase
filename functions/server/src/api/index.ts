@@ -4,7 +4,7 @@ import * as express from 'express'
 import * as bodyparser from 'body-parser'
 import * as cors from 'cors'
 
-import { sharedMoment } from '../../../shared/sharedMoment'
+import { sharedMoment } from '../../../universal/sharedMoment'
 
 console.log('functions config', functions.config().firebase)
 admin.initializeApp(functions.config().firebase)
@@ -14,7 +14,7 @@ import { BaseCollection, BasePaths } from '../../../lib/firebase-universal/share
 import {
   ProjectPaths,
   ProjectCollection,
-} from '../../../shared/domain/project'
+} from '../../../universal/domain/project'
 
 const paths = new ProjectPaths()
 const collection = new ProjectCollection(admin.database().ref(paths.firebase))

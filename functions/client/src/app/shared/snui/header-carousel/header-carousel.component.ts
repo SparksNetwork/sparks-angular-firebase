@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IImage } from "../../../../../../shared/interfaces/image.model";
+import { ImageRef } from "../../../../../../universal/domain/imageRef";
 
 @Component({
   selector: 'snui-header-carousel',
@@ -7,7 +7,7 @@ import { IImage } from "../../../../../../shared/interfaces/image.model";
   styleUrls: ['./header-carousel.component.css']
 })
 export class HeaderCarouselComponent implements OnInit {
-  @Input() images: IImage[];
+  @Input() images: ImageRef[];
 
   constructor() { }
 

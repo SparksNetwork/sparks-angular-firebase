@@ -72,6 +72,13 @@ export class AuthService {
     this.afAuth.auth.signInWithRedirect(this.providers.facebook)
   }
 
+  /**
+   * 
+   * @param email 
+   * @param password
+   * @description Sign in with the provided email and password.
+   * If the login succedes reload page to be consistent with social login that does a reload. 
+   */
   public signInWithEmailAndPassword(email: string, password: string) {
     this.error.emit(null)
     this.afAuth.auth.signInWithEmailAndPassword(email, password)
@@ -96,6 +103,11 @@ export class AuthService {
   public applyActionCode(code: string) {
     return this.afAuth.auth.applyActionCode(code)
       .then(() => location.reload())
+      .catch((err: AuthError) => this.error.emit(err))
+  }
+
+  public signInWithEmailAndPasswordWithoutRedirect(email: string, password: string) {
+    return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .catch((err: AuthError) => this.error.emit(err));
   }
 }

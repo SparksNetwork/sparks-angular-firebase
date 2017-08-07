@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router'
 import 'rxjs/add/operator/map'
-import 'rxjs/add/operator/mergemap'
+import 'rxjs/add/operator/mergeMap'
 import 'rxjs/add/operator/first'
 
 import { ContribQueryService } from '../../../core/sndomain/contrib/contrib-query.service'

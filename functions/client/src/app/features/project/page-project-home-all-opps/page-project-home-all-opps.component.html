@@ -5,14 +5,14 @@
         <div class="row">
            <ng-container *ngFor="let opp of opps | async; let i=index">
             <div class="col-xs-6">
-              <!-- <a href="" [routerLink]="['opportunity', opp.$key]"> -->
+               <a href="" [routerLink]="['opp', opp.$key]"> 
                 <snui-card-item
                   [icon]="opp.icon"
                   [title]="opp.title + ' ' + ((opp.contribValue > 0) ? (opp.contribValue | currency:'USD':true:'1.0-0') : '')"
                   [subtitle]="(opp.benefitValue | currency:'USD':true:'1.0-0') + ' in value'"
                   [description]="(opp.contribValue > 0) ? ((1-(opp.contribValue / opp.benefitValue)) | percent:'1.0-0') + ' discount' : ''">
                 </snui-card-item>
-              <!-- </a> -->
+               </a> 
             </div>
             <div class="clearfix" *ngIf="i%2==1"></div>
           </ng-container> 

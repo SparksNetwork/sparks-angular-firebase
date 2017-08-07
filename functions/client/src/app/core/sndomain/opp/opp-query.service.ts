@@ -10,7 +10,7 @@ import {
 
 import { OppPathsService } from './opp-paths.service'
 
-import { OppCollection } from '../../../../../../shared/domain/opp'
+import { OppCollection } from '../../../../../../universal/domain/opp'
 
 @Injectable()
 export class OppQueryService extends BaseQueryService<OppCollection> {

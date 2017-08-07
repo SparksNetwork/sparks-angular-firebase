@@ -10,7 +10,7 @@ import {
 
 import { ContribPathsService } from './contrib-paths.service'
 
-import { ContribCollection } from '../../../../../../shared/domain/contrib'
+import { ContribCollection } from '../../../../../../universal/domain/contrib'
 
 @Injectable()
 export class ContribQueryService extends BaseQueryService<ContribCollection> {

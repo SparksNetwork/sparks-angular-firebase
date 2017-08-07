@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core'
 import { FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database'
 import { ActivatedRoute } from '@angular/router'
 
-import { IProject } from "../../../../../../shared/interfaces/project.model";
+import { Project } from "../../../../../../universal/domain/project";
 
 import { Observable } from 'rxjs'
 import 'rxjs/add/operator/map'
@@ -14,7 +14,7 @@ import 'rxjs/add/operator/map'
 
 export class PageProjectHomeSingleOppComponent {
   public opp: Observable<any>
-  public project: FirebaseObjectObservable<IProject>
+  public project: FirebaseObjectObservable<Project>
   public contribs: FirebaseListObservable<any[]>
 
   constructor(

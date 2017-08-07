@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ILocation } from "../../../../../../shared/interfaces/location.model";
+import { Location } from "../../../../../../universal/domain/location";
 
 @Component({
   selector: 'project-project-location',
@@ -7,7 +7,7 @@ import { ILocation } from "../../../../../../shared/interfaces/location.model";
 })
 export class ProjectLocationComponent implements OnInit {
 
-  @Input() location: ILocation;
+  @Input() location: Location;
 
   constructor() { }
 

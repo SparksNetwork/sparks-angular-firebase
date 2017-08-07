@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { sharedMoment } from '../../../shared/sharedMoment'
+import { sharedMoment } from '../../../universal/sharedMoment'
 
 @Component({
   selector: 'app-root',

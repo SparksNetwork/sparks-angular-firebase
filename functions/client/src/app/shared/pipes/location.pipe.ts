@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ILocation } from "../../../../../../shared/interfaces/location";
+import { Location } from "../../../../../universal/domain/location";
 
 @Pipe({ name: 'location' })
 export class LocationPipe implements PipeTransform {
-    transform(location: ILocation, forDirections: boolean = false): string {
+    transform(location: Location, forDirections: boolean = false): string {
         if (!location) {
             return ''
         };
@@ -11,7 +11,7 @@ export class LocationPipe implements PipeTransform {
         return forDirections ? this.getLocationForDirections(location) : this.getLocationString(location);
     }
 
-    private getLocationString(location: ILocation): string {
+    private getLocationString(location: Location): string {
         if (!location) {
             return ''
         };
@@ -32,7 +32,7 @@ export class LocationPipe implements PipeTransform {
         return locStr;
     }
 
-    private getLocationForDirections(location: ILocation): string {
+    private getLocationForDirections(location: Location): string {
         if (!location) {
             return ''
         };
