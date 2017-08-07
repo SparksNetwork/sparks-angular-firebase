@@ -1,6 +1,6 @@
 import { transformAndValidate } from "class-transformer-validator"
 import { Expose } from 'class-transformer'
-import { IsNotEmpty, ValidationError } from 'class-validator'
+import { IsNotEmpty, IsEnum, ValidationError, IsDateString, ValidateNested, IsNumber, IsInt, IsUrl } from 'class-validator'
 
 import {
   BasePaths,
@@ -19,32 +19,52 @@ export class ProjectPaths extends BasePaths {
   // api = 'https://sparksnetwork-6de8b.firebaseio.com/Projects'
 }
 
-export enum ProjectType { 
-  Simple, 
-  MultiDay, 
-  LongTerm, 
-  Donor 
+export enum ProjectType {
+  Simple,
+  MultiDay,
+  LongTerm,
+  Donor
 }
 
 export class Project {
   @Expose()
-  public $key: string
+  @IsNotEmpty()
+  public $key: string;
 
-  projectKey: string;
+  @IsEnum(ProjectType)
   projectType: ProjectType;
 
   @IsNotEmpty()
   title: string;
 
+  @IsNotEmpty()
   description: string;
+
+  @IsDateString()
   startDateTime: string;
+
+  @IsDateString()
   endDateTime?: string;
+
+  @ValidateNested()
   location: Location;
+
+  @ValidateNested()
   images: ImageRef[];
+
+  @IsNumber()
   ticketPrice?: number;
+
+  @IsInt()
   maxKarmaPoints: number;
+
+  @ValidateNested()
   organizer: Organizer;
+
+  @IsUrl()
   projectPageUrl?: string;
+
+  @IsInt()
   shareKarmaPoints?: number;
 
   // test validation works
@@ -53,7 +73,7 @@ export class Project {
 }
 
 // any methods here will be available on both client and server
-export class ProjectCollection extends BaseCollection {}
+export class ProjectCollection extends BaseCollection { }
 
 // move this elsewhere when we need to use it in another domain object
 function logErrors(errs: ValidationError[]) {
@@ -64,11 +84,13 @@ function logErrors(errs: ValidationError[]) {
   })
 }
 
+const validateOpt = { validator: { skipMissingProperties: true } };
+
 // we have two transform functions for type safety, not sure why overloading isnt working see below
 export const projectTransform = (input: object) =>
-  transformAndValidate<Project>(Project, input)
+  transformAndValidate<Project>(Project, input, validateOpt)
     .catch(logErrors)
 
 export const projectsTransform = (input: object[]) =>
-  transformAndValidate<Project>(Project, input)
+  transformAndValidate<Project>(Project, input, validateOpt)
     .catch(logErrors)

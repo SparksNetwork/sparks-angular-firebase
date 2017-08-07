@@ -1,3 +1,6 @@
+import { IsNotEmpty, IsEnum, IsInt } from 'class-validator/decorator/decorators'
+import { transformAndValidate } from "class-transformer-validator";
+
 import {
   BasePaths,
   BaseCollection,
@@ -10,9 +13,46 @@ export class ContribPaths extends BasePaths {
   // api = 'https://sparksnetwork-6de8b.firebaseio.com/Projects'
 }
 
+export enum ContribType { 
+   Shift,
+   PrePayment,
+   Deposit,
+   Donation
+}
+
+export class Contrib {
+    @IsNotEmpty()
+    contribKey: string;
+
+    @IsNotEmpty()
+    oppKey: string;
+
+    @IsEnum(ContribType)
+    type: ContribType;
+
+    title: string;
+
+    description: string;
+
+    icon?: string;
+
+    @IsInt()
+    shiftMinLength?: number;
+
+    @IsInt()
+    shiftMaxLength?: number;
+}
+
+
 // any methods here will be available on both client and server
 export class ContribCollection extends BaseCollection {
   public byOppKey(key: string) {
     return this.by('oppKey', key)
   }
 }
+
+const validateOpt = { validator: { skipMissingProperties: true } };
+
+// we have two transform functions for type safety, not sure why overloading isnt working see below
+export const contribTransform = (input: object) => transformAndValidate<Contrib>(Contrib, input, validateOpt)
+export const contribsTransform = (input: object[]) => transformAndValidate<Contrib>(Contrib, input, validateOpt)

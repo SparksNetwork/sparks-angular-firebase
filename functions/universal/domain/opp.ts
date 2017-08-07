@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs'
 import { transformAndValidate } from "class-transformer-validator"
 import { Expose } from 'class-transformer'
+import { IsNotEmpty, IsEnum, ValidationError, IsDateString, ValidateNested, IsNumber, IsInt, IsUrl } from 'class-validator'
 
 import {
   BasePaths,
@@ -16,13 +17,22 @@ export class OppPaths extends BasePaths {
 
 export class Opp {
   @Expose()
-  public $key: string
+  @IsNotEmpty()
+  public $key: string;
 
-  public projectKey: string
-  public icon: string
-  public contribValue: number
-  public benefitValue: number
-  public title: string
+  @IsNotEmpty()
+  public projectKey: string;
+
+  public icon: string;
+
+  @IsNumber()
+  public contribValue: number;
+
+  @IsNumber()
+  public benefitValue: number;
+
+  @IsNotEmpty()
+  public title: string;
 
   get discount(): number {
     return 1 - (this.contribValue / this.benefitValue)
@@ -36,9 +46,11 @@ export class OppCollection extends BaseCollection {
   }
 }
 
+const validateOpt = { validator: { skipMissingProperties: true } };
+
 // we have two transform functions for type safety, not sure why overloading isnt working see below
-export const oppTransform = (input: object) => transformAndValidate<Opp>(Opp, input)
-export const oppsTransform = (input: object[]) => transformAndValidate<Opp>(Opp, input)
+export const oppTransform = (input: object) => transformAndValidate<Opp>(Opp, input, validateOpt)
+export const oppsTransform = (input: object[]) => transformAndValidate<Opp>(Opp, input, validateOpt)
 
 // not sure why this doesnt work, think it is because mergeMap passes any?
 // when i do .mergeMap<object, Opp> it works
