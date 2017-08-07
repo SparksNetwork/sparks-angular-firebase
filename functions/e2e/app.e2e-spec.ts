@@ -1,54 +1,25 @@
-import * as firebase from 'firebase/app';
-import { ClientPage } from './app.po';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabase } from 'angularfire2/database';
-import { inject } from '@angular/core/testing';
+import { ClientPage } from "./app.po";
+var firebaseAccessHandler =  require ('./setup/firebaseAccess');
 
-//imports for test bed initialiation and set up
-import 'core-js'; // ES6 + reflect-metadata
-// zone.js
-import 'zone.js/dist/zone-node';
-import 'zone.js/dist/proxy';
-import 'zone.js/dist/sync-test';
-import 'zone.js/dist/async-test';
-import 'zone.js/dist/jasmine-patch';
-import { TestBed } from '@angular/core/testing';
-import {
-  BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting,
-} from '@angular/platform-browser-dynamic/testing';
+describe("test", () => {
+    let page: ClientPage;
 
-var firebaseConfigModule = require('./firebase.conf');
-var firebaseDb;
+    beforeAll(() => {
+        firebaseAccessHandler.loadFile("./e2e/exampleFile.json","Benefits");         
+    });
 
-describe('client App', () => {
-  let page: ClientPage;
-  let firebaseDb: AngularFireDatabase;
+    afterAll(()=>{
+      firebaseAccessHandler.deleteLoadedData("Benefits",2,3);
+    });
 
-  beforeEach(() => {
+    beforeEach(() => {
+        page = new ClientPage();
+    });
 
-    page = new ClientPage();
+    it('test ', () => {
+        page.navigateTo();
+        expect(true).toBe(true);
+    });
 
-    TestBed.initTestEnvironment(
-      BrowserDynamicTestingModule,
-      platformBrowserDynamicTesting()
-    );
-
-    TestBed.configureTestingModule({
-      imports: [AngularFireModule.initializeApp(firebaseConfigModule.firebaseConfig)]
-    }).compileComponents();
-
-
-    //If I comment out this piece of code it will not work
-    //I have not found another way to inject the AngularFireDatabase class in my tests
-    //inject([AngularFireDatabase], (angularFireDatabase: AngularFireDatabase) => {
-      //firebaseDb = angularFireDatabase;
-    //})();
-  });
-
-  it('test', () => {
-    page.navigateTo();
-    expect(true).toBe(true);
-  });
 
 });
