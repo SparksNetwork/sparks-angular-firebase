@@ -8,7 +8,7 @@ import {
 
 import {
   ResolveOppByProjectKey,
-  // ResolveOppByOppKey,
+  ResolveOppByOppKey,
 } from '../../core/sndomain/opp'
 
 // import {
@@ -20,7 +20,7 @@ import { PageProjectHomeComponent } from './page-project-home/page-project-home.
 import { PageProjectHomeAllOppsComponent } from './page-project-home-all-opps/page-project-home-all-opps.component'
 import { PageProjectHomeSingleOppComponent } from './page-project-home-single-opp/page-project-home-single-opp.component'
 import { PageProjectHomeEditComponent } from './page-project-home-edit/page-project-home-edit.component'
-// import { PageProjectOppComponent } from './page-project-opp/page-project-opp.component'
+import { PageProjectOppComponent } from './page-project-opp/page-project-opp.component'
 
 import { PageProjectHomeAllOppsGuard } from './page-project-home-all-opps-guard/page-project-home-all-opps-guard.service'
 import { ResolveContribByFirstOpp } from './resolve-contrib-by-first-opp/resolve-contrib-by-first-opp.service'
@@ -70,13 +70,13 @@ const routes: Routes = [
           },
         ],
       },
-      // {
-      //   path: 'opp/:oppKey',
-      //   component: PageProjectOppComponent,
-      //   resolve: {
-      //     opp: ResolveOppByOppKey,
-      //   }
-      // },
+      {
+        path: 'opp/:oppKey',
+        component: PageProjectOppComponent,
+        resolve: {
+          opp: ResolveOppByOppKey,
+        }
+      },
     ]
   }
 ];
@@ -94,6 +94,7 @@ export const routedComponents = [
   PageProjectHomeAllOppsComponent,
   PageProjectHomeSingleOppComponent,
   PageProjectHomeEditComponent,
+  PageProjectOppComponent,
 
   AddToCalendarComponent,
   ProjectTitleComponent,
