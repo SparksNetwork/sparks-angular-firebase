@@ -1,17 +1,17 @@
 <ng-container *ngIf="project | async; let project">
-<!-- <div class="row">
+ <div class="row">
   <div class="col-xs-12">
     <div class="segment">
       <div class="icon">
         <span class="ic ic-calendar"></span>
       </div>
-      <div class="text" *ngIf="opportunity.price">
-        <h4>${{projectTicketPrice}} value for ${{opportunity?.price}}</h4>
-        <p><span>The regular ticket price is reduced to the price of ${{opportunity?.price}}</span></p>
+      <div class="text">
+        <h4>${{project.ticketPrice}} value for $ opportunity.price</h4>
+        <p><span>The regular ticket price is reduced to the price of $ opportunity.price</span></p>
       </div>
     </div>
   </div>
-</div> -->
+</div> 
 
 <div class="row">
   <div class="col-xs-12">

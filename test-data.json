@@ -147,7 +147,8 @@
       "projectType" : "Simple",
       "shareKarmaPoints" : 100,
       "startDateTime" : "20170715T190000",
-      "title" : "Park Cleanup"
+      "title" : "Park Cleanup",
+	  "ticketPrice" : 345
     },
     "LC": {
       "description" : "Hello my magical unicorns! Come work and play with us at Lucidity Festival this year by joining the Dream Makers!",
@@ -177,7 +178,8 @@
       "projectType" : "MultiDay",
       "shareKarmaPoints" : 100,
       "startDateTime" : "20170202T080000",
-      "title" : "Lucidity Crossroads"
+      "title" : "Lucidity Crossroads",
+	  "ticketPrice" : 235
     }
   }
 }
