@@ -7,7 +7,7 @@ import 'rxjs/add/operator/mergeMap'
 import 'rxjs/add/operator/first'
 
 import { OppQueryService } from './opp-query.service'
-import { Opp, oppTransform } from '../../../../../../shared/domain/opp'
+import { Opp, oppTransform } from '../../../../../../universal/domain/opp'
 
 @Injectable()
 export class ResolveOppByOppKey implements Resolve<any> {
