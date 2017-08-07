@@ -146,12 +146,12 @@
       "projectPageUrl" : "https://firebase.google.com/",
       "projectType" : "Simple",
       "shareKarmaPoints" : 100,
-      "startDateTime" : "20170715T190000",
+      "startDateTime" : "2017-07-15T19:00:00.000Z",
       "title" : "Park Cleanup"
     },
     "LC": {
       "description" : "Hello my magical unicorns! Come work and play with us at Lucidity Festival this year by joining the Dream Makers!",
-      "endDateTime" : "20170412T235959",
+      "endDateTime" : "2017-04-12T23:59:59.000Z",
       "images" : [ {
         "imageUrl" : "https://placeimg.com/1140/410/people/grayscale"
       }, {
@@ -176,7 +176,7 @@
       "projectPageUrl" : "http://2017.lucidityfestival.com/",
       "projectType" : "MultiDay",
       "shareKarmaPoints" : 100,
-      "startDateTime" : "20170202T080000",
+      "startDateTime" : "2017-02-02T08:00:00.000Z",
       "title" : "Lucidity Crossroads"
     }
   }
