@@ -32,13 +32,20 @@ import { ProjectDateComponent } from './project-date/project-date.component';
 import { ProjectLocationComponent } from "./project-location/project-location.component";
 import { ProjectDescriptionComponent } from "./project-description/project-description.component";
 
+import { RequireAuth } from "../../core/snauth/require-auth/require-auth.service";
+import { RequireEmailVerification } from "../../core/snauth/require-email-verification/require-email-verification.service";
+
 const routes: Routes = [
   {
     path: '',
     component: PageProjectsComponent,
     resolve: {
       projects: ResolveProjectAll,
-    }
+    },
+    canActivate: [
+      RequireAuth,
+      RequireEmailVerification,
+    ]
   },
   {
     path: ':projectKey',
@@ -46,6 +53,10 @@ const routes: Routes = [
       project: ResolveProjectByProjectKey,
       opps: ResolveOppByProjectKey,
     },
+    canActivate: [
+      RequireAuth,
+      RequireEmailVerification,
+    ],
     children: [
       {
         path: '',
