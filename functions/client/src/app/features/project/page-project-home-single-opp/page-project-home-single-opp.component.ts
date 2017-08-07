@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core'
 import { FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database'
 import { ActivatedRoute } from '@angular/router'
 
-import { Project } from "../../../../../../shared/domain/project";
+import { Project } from "../../../../../../universal/domain/project";
 
 import { Observable } from 'rxjs'
 import 'rxjs/add/operator/map'

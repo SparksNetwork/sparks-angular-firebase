@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Location } from "../../../../../shared/domain/location";
+import { Location } from "../../../../../universal/domain/location";
 
 @Pipe({ name: 'location' })
 export class LocationPipe implements PipeTransform {

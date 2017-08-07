@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Location } from "../../../../../../shared/domain/location";
+import { Location } from "../../../../../../universal/domain/location";
 
 @Component({
   selector: 'project-project-location',

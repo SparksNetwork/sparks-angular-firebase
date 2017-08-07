@@ -7,7 +7,7 @@ import 'rxjs/add/operator/mergeMap'
 import 'rxjs/add/operator/first'
 
 import { ProjectQueryService } from './project-query.service'
-import { Project, projectsTransform } from '../../../../../../shared/domain/project'
+import { Project, projectsTransform } from '../../../../../../universal/domain/project'
 
 @Injectable()
 export class ResolveProjectAll implements Resolve<any> {

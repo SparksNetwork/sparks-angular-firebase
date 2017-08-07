@@ -10,7 +10,7 @@ import {
 
 import { ProjectPathsService } from './project-paths.service'
 
-import { ProjectCollection } from '../../../../../../shared/domain/project'
+import { ProjectCollection } from '../../../../../../universal/domain/project'
 
 @Injectable()
 export class ProjectQueryService extends BaseQueryService<ProjectCollection> {

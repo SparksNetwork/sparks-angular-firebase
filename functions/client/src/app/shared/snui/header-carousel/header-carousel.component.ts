@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ImageRef } from "../../../../../../shared/domain/imageRef";
+import { ImageRef } from "../../../../../../universal/domain/imageRef";
 
 @Component({
   selector: 'snui-header-carousel',

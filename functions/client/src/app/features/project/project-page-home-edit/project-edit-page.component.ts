@@ -6,7 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router'
 import { ProjectActionService } from '../../../core/sndomain/project'
 
 
-import { Project } from "../../../../../../shared/domain/project";
+import { Project } from "../../../../../../universal/domain/project";
 
 @Component({
   selector: 'project-project-edit-page',
