@@ -1,4 +1,4 @@
-export interface IOrganizer {
+export class Organizer {
     organizerKey: string;
     name: string;
     organization: string;

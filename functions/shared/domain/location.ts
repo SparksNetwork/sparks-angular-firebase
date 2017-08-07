@@ -1,4 +1,4 @@
-export interface ILocation {
+export class Location {
     name: string;
     address: string;
     city?: string;

@@ -6,7 +6,6 @@ import { LocationPipe } from "../pipes/location.pipe";
 import { HeaderCarouselComponent } from "./header-carousel/header-carousel.component";
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CardItemComponent } from "./card-item/card-item.component";
-import { OpportunityCommitmentsComponent } from "./opportunity-commitments/opportunity-commitments.component";
 import { ActionBarComponent } from './action-bar/action-bar.component'
 import { BtnDirective } from './btn/btn.directive'
 
@@ -16,7 +15,6 @@ const COMPONENTS = [
   BtnDirective,
   HeaderCarouselComponent,
   CardItemComponent,
-  OpportunityCommitmentsComponent,
   LocationPipe
 ]
 

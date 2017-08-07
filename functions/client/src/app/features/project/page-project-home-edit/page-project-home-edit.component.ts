@@ -4,9 +4,6 @@ import { Router, ActivatedRoute } from '@angular/router'
 
 import { ProjectActionService } from '../../../core/sndomain/project'
 
-
-import { IProject } from "../../../../../../shared/interfaces/project.model";
-
 @Component({
   selector: 'project-page-project-home-edit',
   templateUrl: 'page-project-home-edit.component.html'
