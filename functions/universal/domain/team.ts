@@ -30,7 +30,7 @@ export class OppCollection extends BaseCollection {
 }
 
 // we have two transform functions for type safety, not sure why overloading isnt working see below
-export const oppTransform = (input: object) => transformAndValidate<Team>(Team, input)
-export const oppsTransform = (input: object[]) => transformAndValidate<Team>(Team, input)
+export const teamTransform = (input: object) => transformAndValidate<Team>(Team, input)
+export const teamsTransform = (input: object[]) => transformAndValidate<Team>(Team, input)
 
 
