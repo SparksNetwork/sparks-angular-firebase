@@ -61,19 +61,16 @@ import {
     ContribActionService,
     ContribPathsService,
     ResolveContribByOppKey,
-<<<<<<< HEAD
  
     TeamQueryService,
     TeamActionService,
     ResolveTeamByOppKey,
-    TeamPathsService
-=======
+    TeamPathsService,
 
     BenefitQueryService,
     BenefitActionService,
     BenefitPathsService,
     ResolveBenefitByOppKey,
->>>>>>> 820250f... Display benefits loaded from the DB
   ],
 })
 export class SNDomainModule { }
