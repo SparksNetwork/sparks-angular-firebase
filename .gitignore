@@ -1,3 +1,6 @@
+# firebase admin credentials
+firebaseAdminCredentials.*.json
+
 # Built files
 dist
 
