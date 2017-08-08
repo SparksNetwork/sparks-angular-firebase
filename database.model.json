@@ -148,6 +148,18 @@
                 "shiftMinLength": { "type": "integer" },
                 "shiftMaxLength": { "type": "integer" }
             }
+        },
+        "benefitDef": {
+            "required": [
+                "oppKey", "title", "description"
+            ],
+            "properties": {
+                "oppKey": { "type": "string" },
+                "type": { "type": "integer" },
+                "title": { "type": "string" },
+                "description": { "type": "string" },
+                "icon": { "type": "string" }
+            }
         }
     }
 }
