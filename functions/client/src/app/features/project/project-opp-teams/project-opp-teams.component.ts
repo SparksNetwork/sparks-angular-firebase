@@ -7,12 +7,19 @@ import { Team } from "../../../../../../universal/domain/team";
 })
 
 export class ProjectOppTeamsComponent implements OnChanges {
-    @Input() teams: Array<Team>;
+    @Input() private teams: Array<Team>;
+    private displayedTeams: Array<Team>;
+    private collapsedTeams: Array<Team>;
+    private collapsedTeamNames: string;
 
     constructor() { }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (this.teams)
-            console.log(this.teams);
+        if (this.teams) {
+            let limit = Math.min(this.teams.length, 3);
+            this.displayedTeams = this.teams.slice(0, limit);
+            this.collapsedTeams = this.teams.slice(limit, this.teams.length);
+            this.collapsedTeamNames = this.collapsedTeams.map((team) => team.title).join(', ');
+        }
     }
 }
