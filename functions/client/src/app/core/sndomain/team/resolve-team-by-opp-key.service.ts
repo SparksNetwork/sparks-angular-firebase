@@ -18,7 +18,7 @@ export class ResolveTeamByOppKey implements Resolve<any> {
 
   public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<Team[]>> {
     const oppKey = route.paramMap.get('oppKey')
-    const teams = this.teamQuery.af.list('/teams', {
+    const teams = this.teamQuery.af.list('/team', {
       query: {
         orderByChild: 'oppKey',
         equalTo: oppKey,
