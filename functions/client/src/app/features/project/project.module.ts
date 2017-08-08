@@ -8,6 +8,7 @@ import { MomentModule } from 'angular2-moment'
 
 import { PageProjectHomeAllOppsGuard } from './page-project-home-all-opps-guard/page-project-home-all-opps-guard.service'
 import { ResolveContribByFirstOpp } from './resolve-contrib-by-first-opp/resolve-contrib-by-first-opp.service'
+import { ResolveBenefitByFirstOpp } from "./resolve-benefit-by-first-opp/resolve-benefit-by-first-opp.service";
 
 @NgModule({
   declarations: routedComponents,
@@ -23,6 +24,7 @@ import { ResolveContribByFirstOpp } from './resolve-contrib-by-first-opp/resolve
   providers: [
     PageProjectHomeAllOppsGuard,
     ResolveContribByFirstOpp,
+    ResolveBenefitByFirstOpp
   ],
 })
 export class ProjectModule { }

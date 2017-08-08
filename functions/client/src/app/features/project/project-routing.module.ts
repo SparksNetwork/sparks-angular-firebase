@@ -28,6 +28,7 @@ import { PageProjectOppComponent } from './page-project-opp/page-project-opp.com
 
 import { PageProjectHomeAllOppsGuard } from './page-project-home-all-opps-guard/page-project-home-all-opps-guard.service'
 import { ResolveContribByFirstOpp } from './resolve-contrib-by-first-opp/resolve-contrib-by-first-opp.service'
+import { ResolveBenefitByFirstOpp } from "./resolve-benefit-by-first-opp/resolve-benefit-by-first-opp.service";
 
 import { AddToCalendarComponent } from './add-to-calendar/add-to-calendar.component'
 import { ProjectTitleComponent } from './project-title/project-title.component';
@@ -73,6 +74,7 @@ const routes: Routes = [
             component: PageProjectHomeSingleOppComponent,
             resolve: {
               contribs: ResolveContribByFirstOpp,
+              benefits: ResolveBenefitByFirstOpp
             }
           },
         ],

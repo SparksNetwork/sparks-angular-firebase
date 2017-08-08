@@ -31,6 +31,12 @@ import {
   TeamPathsService
 } from "./team";
 
+import {
+  BenefitQueryService,
+  BenefitActionService,
+  BenefitPathsService,
+  ResolveBenefitByOppKey,
+} from './benefit'
 
 @NgModule({
   imports: [
@@ -55,11 +61,19 @@ import {
     ContribActionService,
     ContribPathsService,
     ResolveContribByOppKey,
+<<<<<<< HEAD
  
     TeamQueryService,
     TeamActionService,
     ResolveTeamByOppKey,
     TeamPathsService
+=======
+
+    BenefitQueryService,
+    BenefitActionService,
+    BenefitPathsService,
+    ResolveBenefitByOppKey,
+>>>>>>> 820250f... Display benefits loaded from the DB
   ],
 })
 export class SNDomainModule { }
