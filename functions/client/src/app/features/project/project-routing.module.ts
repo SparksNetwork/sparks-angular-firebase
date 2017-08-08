@@ -36,6 +36,7 @@ import { ProjectLocationComponent } from "./project-location/project-location.co
 import { ProjectDescriptionComponent } from "./project-description/project-description.component";
 import { ProjectOppDetailComponent } from "./project-opp-detail/project-opp-detail.component";
 import { ProjectOppTeamsComponent } from "./project-opp-teams/project-opp-teams.component";
+import { ProjectOppVisitRequirementsComponent } from "./project-opp-visit-requirements/project-opp-visit-requirements.component";
 
 const routes: Routes = [
   {
@@ -91,6 +92,10 @@ const routes: Routes = [
           {
             path: '',
             component: ProjectOppTeamsComponent
+          },
+           {
+            path: '',
+            component: ProjectOppVisitRequirementsComponent
           }
         ],
       },
@@ -119,5 +124,7 @@ export const routedComponents = [
   ProjectTitleComponent,
   ProjectDateComponent,
   ProjectLocationComponent,
-  ProjectDescriptionComponent
+  ProjectDescriptionComponent,
+
+  ProjectOppVisitRequirementsComponent 
 ];
