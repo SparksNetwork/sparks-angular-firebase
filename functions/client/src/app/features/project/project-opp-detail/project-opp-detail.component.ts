@@ -18,8 +18,8 @@ export class ProjectOppDetailComponent implements OnInit {
     public project: Observable<Project>;
     public opp: Observable<Opp>;
     public teams: Observable<Team[]>;
-    public benefits: Benefit[];
-    public contribs: Contrib[];
+    public benefits: Observable<Benefit[]>;
+    public contribs: Observable<Contrib[]>;
     public actionBarType = ActionBarType;
 
     constructor(
@@ -31,8 +31,8 @@ export class ProjectOppDetailComponent implements OnInit {
             this.project = data['project'];
             this.opp = data['opp'];
             this.teams = data['teams'];
-            data['benefits'].subscribe((b) => this.benefits = b);
-            data['contribs'].subscribe((c)=> this.contribs = c);
+            this.benefits = data['benefits'];
+            this.contribs = data['contribs'];
         });
     }
 }
