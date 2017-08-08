@@ -1,7 +1,6 @@
-const json = require('firebase-json');
 const fs = require('fs');
 const firebaseAdmin = require("firebase-admin");
-const serviceAccount = require("../adminsdk.json");
+const serviceAccount = require("./adminsdk.json");
 firebaseAdmin.initializeApp({
     credential: firebaseAdmin.credential.cert(serviceAccount),
     databaseURL: "https://sparksnetworktest.firebaseio.com/"
@@ -13,7 +12,7 @@ export const loadFile = function (filePath:string, parentRefName:string) {
     let fileContent = fs.readFileSync(filePath, 'utf8');
 
     let parentRef = db.ref(parentRefName);
-    parentRef.update((json.parse(fileContent)));
+    parentRef.update((JSON.parse(fileContent)));
 
 }
 
