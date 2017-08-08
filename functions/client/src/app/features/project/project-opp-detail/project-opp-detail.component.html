@@ -28,5 +28,8 @@
       <project-opp-teams *ngIf='teams.length > 0' [teams]='teams'></project-opp-teams>
     </ng-container>
     <project-opp-visit-requirements></project-opp-visit-requirements>
+    <snui-action-bar [type]="actionBarType.Organizer">
+      <a href="#" class="btn btn-primary btn-block" title="Join Now">Join Now</a>
+    </snui-action-bar>
   </ng-container>
 </ng-container>

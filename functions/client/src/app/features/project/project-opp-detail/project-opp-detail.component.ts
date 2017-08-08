@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Project } from "../../../../../../universal/domain/project";
 import { Opp } from "../../../../../../universal/domain/opp";
 import { Team } from "../../../../../../universal/domain/team";
+import { ActionBarType } from "../../../shared/snui/action-bar/action-bar.component";
 
 @Component({
     selector: 'project-opp-detail',
@@ -15,6 +16,7 @@ export class ProjectOppDetailComponent implements OnInit {
     public project: Observable<Project>;
     public opp: Observable<Opp>;
     public teams: Observable<Team>;
+    public actionBarType = ActionBarType;
 
     constructor(
         public route: ActivatedRoute
