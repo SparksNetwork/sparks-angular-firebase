@@ -1,0 +1,128 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "Sparks.Network data model",
+    "type": "object",
+    "required": [
+        "project", "opp", "contrib", "benefit", "team"
+    ],
+    "properties": {
+        "project": {
+            "type": "object",
+            "required": [
+                "$key"
+            ],
+            "properties": {
+                "$key": {
+                    "type": "object",
+                    "$ref": "#/definitions/projectDef"
+                }
+            }
+        },
+        "opp": {
+            "type": "object",
+            "required": [
+                "$key"
+            ],
+            "properties": {
+                "$key": {
+                    "type": "object",
+                    "$ref": "#/definitions/oppDef"
+                }
+            }
+        },
+        "contrib": {
+            "type": "object",
+            "required": [
+                "$key"
+            ],
+            "properties": {
+                "$key": {
+                    "type": "object",
+                    "$ref": "#/definitions/contribDef"
+                }
+            }
+        },
+        "benefit": {
+            "type": "object",
+            "required": [
+                "$key"
+            ],
+            "properties": {
+                "$key": {
+                    "type": "object",
+                    "$ref": "#/definitions/benefitDef"
+                }
+            }
+        },
+        "team": {
+            "type": "object",
+            "required": [
+                "$key"
+            ],
+            "properties": {
+                "$key": {
+                    "type": "object",
+                    "$ref": "#/definitions/teamDef"
+                }
+            }
+        }
+    },
+    "definitions": {
+        "projectDef": {
+            "required": [
+                "title", "description", "startDateTime"
+            ],
+            "properties": {
+                "title": { "type": "string" },
+                "description": { "type": "string" },
+                "projectType": { "type": "integer" }, 
+                "startDateTime": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "endDateTime": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "location": {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string" },
+                        "address": { "type": "string" },
+                        "city": { "type": "string" },
+                        "state": { "type": "string" },
+                        "latitude": { "type": "number" },
+                        "longitude": { "type": "number" }
+                    }
+                },
+                "images": {
+                    "type": "array",
+                    "items": { 
+                        "type": "object",
+                        "required": [ "imageUrl"],
+                         "properties": {
+                             "imageUrl": { "type": "string", "format": "uri" }
+                         }
+                    }
+                },
+                "maxKarmaPoints": { "type": "integer" },
+                "shareKarmaPoints": { "type": "integer" },
+                "organizer": {
+                    "type": "object",
+                    "required": [ "organizerKey", "name", "organization", "imageUrl"],
+                    "properties": {
+                        "organizerKey": { "type": "string" },
+                        "name": { "type": "string"},
+                        "organization": { "type": "string"},
+                        "imageUrl": { "type": "string", "format": "uri" }
+                    }
+                },
+                "projectPageUrl": { "type": "string", "format": "uri" },
+                "comminityBenefit": { "type": "string"}
+            }
+        },
+        "oppDef": {
+
+        }
+    }
+}
