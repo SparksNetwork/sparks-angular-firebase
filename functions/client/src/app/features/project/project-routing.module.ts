@@ -39,6 +39,7 @@ import { ProjectOppDetailComponent } from "./project-opp-detail/project-opp-deta
 import { ProjectOppTeamsComponent } from "./project-opp-teams/project-opp-teams.component";
 import { ProjectOppVisitRequirementsComponent } from "./project-opp-visit-requirements/project-opp-visit-requirements.component";
 import { ProjectOppCommitmentsComponent } from "./project-opp-commitments/project-opp-commitments.component";
+import { ResolveBenefitByOppKey } from "../../core/sndomain/benefit/resolve-benefit-by-opp-key.service";
 
 const routes: Routes = [
   {
@@ -85,7 +86,8 @@ const routes: Routes = [
         component: PageProjectOppComponent,
         resolve: {
           opp: ResolveOppByOppKey,
-          teams: ResolveTeamByOppKey
+          teams: ResolveTeamByOppKey,
+          benefits: ResolveBenefitByOppKey
         },
         children: [
           {

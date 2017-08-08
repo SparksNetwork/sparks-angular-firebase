@@ -6,6 +6,7 @@ import { Project } from "../../../../../../universal/domain/project";
 import { Opp } from "../../../../../../universal/domain/opp";
 import { Team } from "../../../../../../universal/domain/team";
 import { ActionBarType } from "../../../shared/snui/action-bar/action-bar.component";
+import { Benefit } from "../../../../../../universal/domain/benefit";
 
 @Component({
     selector: 'project-opp-detail',
@@ -15,7 +16,8 @@ import { ActionBarType } from "../../../shared/snui/action-bar/action-bar.compon
 export class ProjectOppDetailComponent implements OnInit {
     public project: Observable<Project>;
     public opp: Observable<Opp>;
-    public teams: Observable<Team>;
+    public teams: Observable<Team[]>;
+    public benefits: Observable<Benefit[]>;
     public actionBarType = ActionBarType;
 
     constructor(
@@ -27,6 +29,7 @@ export class ProjectOppDetailComponent implements OnInit {
             this.project = data['project'];
             this.opp = data['opp'];
             this.teams = data['teams'];
+            this.benefits = data['benefits'];
         });
     }
 }

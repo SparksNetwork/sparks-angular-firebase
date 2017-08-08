@@ -24,7 +24,9 @@
         </div>
       </div>
     </div>
-    <project-opp-commitments></project-opp-commitments>
+    <ng-container *ngIf='benefits | async; let benefits;'>
+      <project-opp-commitments [benefits]='benefits'></project-opp-commitments>
+    </ng-container>
     <ng-container *ngIf='teams | async; let teams;'>
       <project-opp-teams *ngIf='teams.length > 0' [teams]='teams'></project-opp-teams>
     </ng-container>
