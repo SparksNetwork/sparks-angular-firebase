@@ -87,13 +87,11 @@ const routes: Routes = [
           {
             path: '',
             component: ProjectOppDetailComponent,
-            children: [
-              {
-                path: '',
-                component: ProjectOppTeamsComponent
-              }
-            ]
           },
+          {
+            path: '',
+            component: ProjectOppTeamsComponent
+          }
         ],
       },
     ]
