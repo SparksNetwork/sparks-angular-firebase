@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs'
 import { transformAndValidate } from "class-transformer-validator"
 import { Expose } from 'class-transformer'
-import { IsNotEmpty, IsEnum, ValidationError, IsDateString, ValidateNested, IsNumber, IsInt, IsUrl } from 'class-validator'
+import { IsNotEmpty, IsEnum, ValidationError, IsDateString, ValidateNested, IsNumber, IsInt, IsUrl, IsDefined } from 'class-validator'
 
 import {
   BasePaths,
@@ -17,20 +17,23 @@ export class OppPaths extends BasePaths {
 
 export class Opp {
   @Expose()
+  @IsDefined()
   @IsNotEmpty()
   public $key: string;
 
+  @IsDefined()
   @IsNotEmpty()
   public projectKey: string;
 
   public icon: string;
 
   @IsNumber()
-  public contribValue: number;
+  public contribValue?: number;
 
   @IsNumber()
-  public benefitValue: number;
+  public benefitValue?: number;
 
+  @IsDefined()
   @IsNotEmpty()
   public title: string;
 

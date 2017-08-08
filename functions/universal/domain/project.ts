@@ -1,6 +1,6 @@
 import { transformAndValidate } from "class-transformer-validator"
 import { Expose } from 'class-transformer'
-import { IsNotEmpty, IsEnum, ValidationError, IsDateString, ValidateNested, IsNumber, IsInt, IsUrl } from 'class-validator'
+import { IsNotEmpty, IsEnum, ValidationError, IsDateString, ValidateNested, IsNumber, IsInt, IsUrl, IsDefined } from 'class-validator'
 
 import {
   BasePaths,
@@ -28,24 +28,29 @@ export enum ProjectType {
 
 export class Project {
   @Expose()
+  @IsDefined()
   @IsNotEmpty()
   public $key: string;
 
   @IsEnum(ProjectType)
   projectType: ProjectType;
 
+  @IsDefined()
   @IsNotEmpty()
   title: string;
 
+  @IsDefined()
   @IsNotEmpty()
   description: string;
 
+  @IsDefined()
   @IsDateString()
   startDateTime: string;
 
   @IsDateString()
   endDateTime?: string;
 
+  @IsDefined()
   @ValidateNested()
   location: Location;
 
@@ -55,9 +60,11 @@ export class Project {
   @IsNumber()
   ticketPrice?: number;
 
+  @IsDefined()
   @IsInt()
   maxKarmaPoints: number;
 
+  @IsDefined()
   @ValidateNested()
   organizer: Organizer;
 

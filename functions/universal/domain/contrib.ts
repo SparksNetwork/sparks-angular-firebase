@@ -1,4 +1,5 @@
-import { IsNotEmpty, IsEnum, IsInt } from 'class-validator/decorator/decorators'
+import { Expose } from "class-transformer";
+import { IsNotEmpty, IsEnum, IsInt, IsDefined } from 'class-validator/decorator/decorators'
 import { transformAndValidate } from "class-transformer-validator";
 
 import {
@@ -21,17 +22,22 @@ export enum ContribType {
 }
 
 export class Contrib {
+    @Expose()
+    @IsDefined()
     @IsNotEmpty()
-    contribKey: string;
+    public $key: string;
 
+    @IsDefined()
     @IsNotEmpty()
     oppKey: string;
 
     @IsEnum(ContribType)
     type: ContribType;
 
+    @IsDefined()
     title: string;
 
+    @IsDefined()
     description: string;
 
     icon?: string;
