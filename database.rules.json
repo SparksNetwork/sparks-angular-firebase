@@ -1,81 +1,18 @@
 {
   "rules": {
-    ".read": true,
-    "Arrivals": {
-      ".indexOn": [
-        "profileKey",
-        "projectKey"
-      ]
+    ".read": "true",
+    ".write": "auth != null",
+    "opp": {
+      ".indexOn": ["projectKey"]
     },
-    "Engagements": {
-      ".indexOn": [
-        "profileKey",
-        "oppKey",
-        "transaction/id"
-      ]
+    "contrib": {
+      ".indexOn": ["oppKey"]
     },
-    "Shifts": {
-      ".indexOn": "teamKey"
+    "benefit": {
+      ".indexOn": ["oppKey"]
     },
-    "Opps": {
-      ".indexOn": "projectKey"
-    },
-    "Profiles": {
-      ".indexOn": [
-        "uid",
-        "email"
-      ]
-    },
-    "Projects": {
-      ".indexOn": "ownerProfileKey"
-    },
-    "Teams": {
-      ".indexOn": "projectKey"
-    },
-    "Commitments": {
-      ".indexOn": "oppKey"
-    },
-    "Assignments": {
-      ".indexOn": [
-        "profileKey",
-        "shiftKey",
-        "oppKey",
-        "engagementKey",
-        "engagementKey|shiftKey",
-        "status"
-      ]
-    },
-    "Memberships": {
-      ".indexOn": [
-        "engagementKey",
-        "teamKey"
-      ]
-    },
-    "Organizers": {
-      ".indexOn": [
-        "projectKey",
-        "profileKey"
-      ]
-    },
-    "!queue": {
-      "tasks": {
-        ".indexOn": "_state",
-        "$taskId": {
-          ".write": true,
-          ".validate": "newData.child('uid').val() == auth.uid"
-        }
-      },
-      "responses": {
-        "$taskId": {
-          ".write": true
-        }
-      },
-      "brokenResponses": {
-        "$taskId": {
-          ".write": true,
-          ".validate": "(newData.child('uid').val() == auth.uid) || ((newData.val() == null) && (data.child('uid').val() == auth.uid))"
-        }
-      }
+    "team": {
+      ".indexOn": ["oppKey"]
     }
   }
 }
