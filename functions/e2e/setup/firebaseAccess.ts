@@ -9,7 +9,7 @@ firebaseAdmin.initializeApp({
 });
 const db = firebaseAdmin.database();
 
-const getEnvironment = () => {
+function getEnvironment() {
     const envName = process.env['ANGULAR_ENV'] || 'qa'
     console.log('*** running in angular environment', envName)
     return require('../../client/src/environments/environment.' + envName).environment
