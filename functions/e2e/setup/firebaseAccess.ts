@@ -1,11 +1,19 @@
-const fs = require('fs');
-const firebaseAdmin = require("firebase-admin");
-const serviceAccount = require("./adminsdk.json");
+import * as fs from 'fs'
+import * as firebaseAdmin from 'firebase-admin'
+
+const environment = getEnvironment()
+const serviceAccount = require("../../../" + environment.firebaseAdminCredentialFilename)
 firebaseAdmin.initializeApp({
     credential: firebaseAdmin.credential.cert(serviceAccount),
-    databaseURL: "https://sparksnetworktest.firebaseio.com/"
+    databaseURL: environment.firebase.databaseURL,
 });
 const db = firebaseAdmin.database();
+
+const getEnvironment = () => {
+    const envName = process.env['ANGULAR_ENV'] || 'qa'
+    console.log('*** running in angular environment', envName)
+    return require('../../client/src/environments/environment.' + envName).environment
+}
 
 export const loadFile = function (filePath:string, parentRefName:string) {
 
