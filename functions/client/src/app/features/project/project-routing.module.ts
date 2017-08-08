@@ -40,6 +40,7 @@ import { ProjectOppTeamsComponent } from "./project-opp-teams/project-opp-teams.
 import { ProjectOppVisitRequirementsComponent } from "./project-opp-visit-requirements/project-opp-visit-requirements.component";
 import { ProjectOppCommitmentsComponent } from "./project-opp-commitments/project-opp-commitments.component";
 import { ResolveBenefitByOppKey } from "../../core/sndomain/benefit/resolve-benefit-by-opp-key.service";
+import { ResolveContribByOppKey } from "../../core/sndomain/contrib/resolve-contrib-by-opp-key.service";
 
 const routes: Routes = [
   {
@@ -87,7 +88,8 @@ const routes: Routes = [
         resolve: {
           opp: ResolveOppByOppKey,
           teams: ResolveTeamByOppKey,
-          benefits: ResolveBenefitByOppKey
+          benefits: ResolveBenefitByOppKey,
+          contribs: ResolveContribByOppKey
         },
         children: [
           {

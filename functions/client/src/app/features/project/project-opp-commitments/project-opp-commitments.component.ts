@@ -1,5 +1,6 @@
 import { Component, OnChanges, SimpleChanges, Input } from '@angular/core';
 import { Benefit } from "../../../../../../universal/domain/benefit";
+import { Contrib } from "../../../../../../universal/domain/contrib";
 
 @Component({
     selector: 'project-opp-commitments',
@@ -8,12 +9,10 @@ import { Benefit } from "../../../../../../universal/domain/benefit";
 
 export class ProjectOppCommitmentsComponent implements OnChanges {
     @Input() benefits: Benefit[];
+    @Input() contribs: Contrib[];
 
     constructor() { }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if(this.benefits){
-            console.log(this.benefits);
-        }
     }
 }
