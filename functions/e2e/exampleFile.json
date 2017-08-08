@@ -1,0 +1,15 @@
+{
+    "2": {
+        "count": 9,
+        "description": "Get Badges, Accolades, and more by volunteering through the Sparks.Network",
+        "icon": "glyphicon-star",
+        "title": "Karma Points",
+        "type": "KarmaPoints"
+    },
+    "3": {
+        "description": "Serve your neighbors on the Avenue!",
+        "icon": "glyphicon-heart",
+        "title": "To help your community",
+        "type": "HelpNonProfit"
+    }
+}

@@ -12,12 +12,20 @@ export const environment = {
       storageBucket: 'gs://sparks-development-sd.appspot.com',
       // messagingSenderId: '277847429817',
     }, */
+  // firebase: {
+  //   apiKey: "AIzaSyCQXrtWwVgGjZ0dOo5W92HnFvkWl9kgns4",
+  //   authDomain: "sparksnetwork-6de8b.firebaseapp.com",
+  //   databaseURL: "https://sparksnetwork-6de8b.firebaseio.com",
+  //   projectId: "sparksnetwork-6de8b",
+  //   storageBucket: "sparksnetwork-6de8b.appspot.com",
+  //   messagingSenderId: "683448204097"
+  // },
   firebase: {
-    apiKey: "AIzaSyCQXrtWwVgGjZ0dOo5W92HnFvkWl9kgns4",
-    authDomain: "sparksnetwork-6de8b.firebaseapp.com",
-    databaseURL: "https://sparksnetwork-6de8b.firebaseio.com",
-    projectId: "sparksnetwork-6de8b",
-    storageBucket: "sparksnetwork-6de8b.appspot.com",
-    messagingSenderId: "683448204097"
+    apiKey: "AIzaSyBlSVwhkyWAJG2HAJb1cucEQzSiYH1t-gE",
+    authDomain: "sparksnetworktest.firebaseapp.com",
+    databaseURL: "https://sparksnetworktest.firebaseio.com",
+    projectId: "sparksnetworktest",
+    storageBucket: "sparksnetworktest.appspot.com",
+    messagingSenderId: "529336251324"
   }
 };

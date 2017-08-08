@@ -115,3 +115,17 @@ Very few routes in the app won't use this: auth, printing, what else?
 ## How Backend Firebase-Functions Work
 
 When you `firebase deploy`, all of the names exported by `/functions/index.js` start running in the cloud.
+
+#End-to-end testing
+
+The application needs to be connected to test database, in the file 
+`/functions/client/src/environments/environment.ts` uncomment only the firebase configuration with the
+following databaseURL: "https://sparksnetworktest.firebaseio.com".
+
+The end-to-end tests use Firebase Admin to manipulate directly the data. Firebase Admin needs a configuration
+file named `adminsdk.json` that will be placed in: `/functions/e2e`. In order to obtain the file:
+- open Firebase console for the Sparks Network Test database
+- go to settings 
+- select the tab Service Accounts
+- click the button: GENERATE NEW PRIVATE KEY
+- rename the downloaded file to `adminsdk.json` and place it in `/functions/e2e`
