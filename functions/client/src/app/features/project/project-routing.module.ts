@@ -11,6 +11,10 @@ import {
   ResolveOppByOppKey,
 } from '../../core/sndomain/opp'
 
+import {
+  ResolveTeamByOppKey
+} from "../../core/sndomain/team/resolve-team-by-opp-key.service";
+
 // import {
 //   ResolveContribByOppKey,
 // } from '../../core/sndomain/contrib'
@@ -31,6 +35,7 @@ import { ProjectDateComponent } from './project-date/project-date.component';
 import { ProjectLocationComponent } from "./project-location/project-location.component";
 import { ProjectDescriptionComponent } from "./project-description/project-description.component";
 import { ProjectOppDetailComponent } from "./project-opp-detail/project-opp-detail.component";
+import { ProjectOppTeamsComponent } from "./project-opp-teams/project-opp-teams.component";
 
 const routes: Routes = [
   {
@@ -76,13 +81,20 @@ const routes: Routes = [
         component: PageProjectOppComponent,
         resolve: {
           opp: ResolveOppByOppKey,
+          teams: ResolveTeamByOppKey
         },
-        children:[
+        children: [
           {
-            path:'',
-            component: ProjectOppDetailComponent
-          }
-        ]
+            path: '',
+            component: ProjectOppDetailComponent,
+            children: [
+              {
+                path: '',
+                component: ProjectOppTeamsComponent
+              }
+            ]
+          },
+        ],
       },
     ]
   }
@@ -103,6 +115,7 @@ export const routedComponents = [
   PageProjectHomeEditComponent,
   PageProjectOppComponent,
   ProjectOppDetailComponent,
+  ProjectOppTeamsComponent,
 
   AddToCalendarComponent,
   ProjectTitleComponent,
