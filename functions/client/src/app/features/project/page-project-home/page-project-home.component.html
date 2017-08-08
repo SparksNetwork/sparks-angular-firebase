@@ -22,4 +22,6 @@
   <router-outlet></router-outlet>
 
   <project-project-links [projectPageUrl]="project.projectPageUrl" [shareKarmaPoints]="project.shareKarmaPoints"></project-project-links>
+  
+  <snui-action-bar><a *ngIf="isSingleOpp" href="#" class="btn btn-primary btn-block" title="Join Now">Join Now</a></snui-action-bar>
 </div>

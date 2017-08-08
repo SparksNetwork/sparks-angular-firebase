@@ -103,6 +103,6 @@ export const routedComponents = [
   ProjectDateComponent,
   ProjectLocationComponent,
   ProjectDescriptionComponent,
-  ProjectLinksComponent
+  ProjectLinksComponent,
   ProjectSocialComponent
 ];

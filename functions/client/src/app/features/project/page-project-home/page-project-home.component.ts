@@ -11,11 +11,15 @@ import { Project } from "../../../../../../universal/domain/project";
 
 export class PageProjectHomeComponent {
   public project: FirebaseObjectObservable<Project>
+  public isSingleOpp: boolean;
 
   constructor(
     public route: ActivatedRoute,
   ) {
-    this.project = this.route.snapshot.data['project']
+    this.project = this.route.snapshot.data['project'];
+    this.route.snapshot.data['opps'].subscribe(opps => {
+      this.isSingleOpp = opps && opps.length === 1;
+    });
   }
 
 }
