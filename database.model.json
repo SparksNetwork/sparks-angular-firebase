@@ -134,6 +134,20 @@
                 "contribValue": { "type": "number" },
                 "benefitValue": { "type": "number" }
             }
+        },
+        "contribDef": {
+            "required": [
+                "oppKey", "title", "description"
+            ],
+            "properties": {
+                "oppKey": { "type": "string" },
+                "type": { "type": "integer" },
+                "title": { "type": "string" },
+                "description": { "type": "string" },
+                "icon": { "type": "string" },
+                "shiftMinLength": { "type": "integer" },
+                "shiftMaxLength": { "type": "integer" }
+            }
         }
     }
 }
