@@ -185,5 +185,62 @@
       "startDateTime" : "20170202T080000",
       "title" : "Lucidity Crossroads"
     }
+  },
+  "team": {
+    "TLC3-1": {
+      "description": "Feed hundreds of dreamers in the most amazing kitchen ever.",
+      "icon": "glyphicon-grain",
+      "oppKey": "LC3",
+      "title": "Mindful Feeding"
+    },
+    "TLC3-2": {
+      "description": "Take tickets and give people a big warm welcome!",
+      "icon": "glyphicon-sunglasses",
+      "oppKey": "LC3",
+      "title": "Gatekeepers"
+    },
+    "TLC3-3": {
+      "description": "Take tickets and give people a big warm welcome!",
+      "icon": "glyphicon-sunglasses",
+      "oppKey": "LC3",
+      "title": "Gatekeepers 2"
+    },
+    "TLC3-4": {
+      "description": "Take tickets and give people a big warm welcome!",
+      "icon": "glyphicon-sunglasses",
+      "oppKey": "LC3",
+      "title": "Gatekeepers 3"
+    },
+    "TLC3-5": {
+      "description": "Take tickets and give people a big warm welcome!",
+      "icon": "glyphicon-sunglasses",
+      "oppKey": "LC3",
+      "title": "Gatekeepers 4"
+    },
+    "TLC3-6": {
+      "description": "Take tickets and give people a big warm welcome!",
+      "icon": "glyphicon-sunglasses",
+      "oppKey": "LC3",
+      "title": "Gatekeepers 5"
+    },
+    "TLC3-7": {
+      "description": "Take tickets and give people a big warm welcome!",
+      "icon": "glyphicon-sunglasses",
+      "oppKey": "LC3",
+      "title": "Gatekeepers 6"
+    },
+    "TLC3-8": {
+      "description": "Take tickets and give people a big warm welcome!",
+      "icon": "glyphicon-sunglasses",
+      "oppKey": "LC3",
+      "title": "Gatekeepers 7"
+    },
+    "TLC3-9": {
+      "description": "Take tickets and give people a big warm welcome!",
+      "icon": "glyphicon-sunglasses",
+      "oppKey": "LC3",
+      "title": "Gatekeepers 8"
+    }
   }
+
 }
