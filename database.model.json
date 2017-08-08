@@ -70,7 +70,7 @@
     "definitions": {
         "projectDef": {
             "required": [
-                "title", "description", "startDateTime"
+                "title", "description", "startDateTime", "location", "organizer", "maxKarmaPoints", "images", "projectPageUrl"
             ],
             "properties": {
                 "title": { "type": "string" },
@@ -118,7 +118,7 @@
                     }
                 },
                 "projectPageUrl": { "type": "string", "format": "uri" },
-                "comminityBenefit": { "type": "string"}
+                "communityBenefit": { "type": "string"}
             }
         },
         "oppDef": {
