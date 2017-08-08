@@ -122,7 +122,18 @@
             }
         },
         "oppDef": {
-
+            "required": [
+                "projectKey", "title", "description"
+            ],
+            "properties": {
+                "projectKey": { "type": "string" },
+                "title": { "type": "string" },
+                "description": { "type": "string" },
+                "icon": { "type": "string" },
+                "karma": { "type": "integer" },
+                "contribValue": { "type": "number" },
+                "benefitValue": { "type": "number" }
+            }
         }
     }
 }
