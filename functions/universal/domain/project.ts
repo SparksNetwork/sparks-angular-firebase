@@ -85,10 +85,14 @@ export class ProjectCollection extends BaseCollection { }
 // move this elsewhere when we need to use it in another domain object
 function logErrors(errs: ValidationError[]) {
   console.log('Validation Errors:')
-  errs.forEach(err => {
-    console.log('property', err.property)
-    Object.keys(err.constraints).forEach(cKey => console.log(err.constraints[cKey]))
-  })
+  if (errs instanceof Error) {
+    console.log(errs.message);
+  } else {
+    errs.forEach(err => {
+        console.log('property', err.property)
+        Object.keys(err.constraints).forEach(cKey => console.log(err.constraints[cKey]))
+      })
+  }
 }
 
 const validateOpt = { validator: { skipMissingProperties: true } };
