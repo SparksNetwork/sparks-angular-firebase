@@ -68,6 +68,10 @@
         }
     },
     "definitions": {
+         "nonEmptyString": {
+            "type": "string",
+            "minLength": 1
+        },
         "projectDef": {
             "required": [
                 "title", "description", "startDateTime", "location", "organizer", "maxKarmaPoints", "images", "projectPageUrl"
@@ -159,6 +163,17 @@
                 "title": { "type": "string" },
                 "description": { "type": "string" },
                 "icon": { "type": "string" }
+            }
+        },
+        "teamDef":{
+            "required": [
+                "title", "description", "oppKey"
+            ],
+            "properties": {
+                "title": {  "$ref": "#/definitions/nonEmptyString" },
+                "description": { "$ref": "#/definitions/nonEmptyString" },               
+                "icon": { "type": "string" },
+                "oppKey": {"$ref": "#/definitions/nonEmptyString"}
             }
         }
     }
