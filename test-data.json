@@ -91,11 +91,13 @@
         "organization": "Colectiva Avenida",
         "organizerKey": 0
       },
-      "projectPageUrl": "https://firebase.google.com/",
-      "projectType": "Simple",
-      "shareKarmaPoints": 100,
-      "startDateTime": "20170715T190000",
-      "title": "Park Cleanup"
+      "projectPageUrl" : "https://firebase.google.com/",
+      "projectType" : "Simple",
+      "shareKarmaPoints" : 100,
+      "startDateTime" : "20170715T190000",
+      "facebookUrl": "commiesgame",
+      "twitterUrl": "TripWestGames",
+      "title" : "Park Cleanup"
     },
     "LC": {
       "description": "Hello my magical unicorns! Come work and play with us at Lucidity Festival this year by joining the Dream Makers!",
@@ -125,11 +127,13 @@
         "organization": "Lucidity Festival",
         "organizerKey": 1
       },
-      "projectPageUrl": "http://2017.lucidityfestival.com/",
-      "projectType": "MultiDay",
-      "shareKarmaPoints": 100,
-      "startDateTime": "20170202T080000",
-      "title": "Lucidity Crossroads"
+      "projectPageUrl" : "http://2017.lucidityfestival.com/",
+      "projectType" : "MultiDay",
+      "shareKarmaPoints" : 100,
+      "startDateTime" : "20170202T080000",
+      "facebookUrl": "commiesgame",
+      "twitterUrl": "TripWestGames",
+      "title" : "Lucidity Crossroads"
     }
   }
 }

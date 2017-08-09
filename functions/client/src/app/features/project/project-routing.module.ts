@@ -31,6 +31,7 @@ import { ProjectTitleComponent } from './project-title/project-title.component';
 import { ProjectDateComponent } from './project-date/project-date.component';
 import { ProjectLocationComponent } from "./project-location/project-location.component";
 import { ProjectDescriptionComponent } from "./project-description/project-description.component";
+import { ProjectLinksComponent } from "./project-links/project-links.component";
 import { ProjectOrganizerComponent } from "./project-organizer/project-organizer.component";
 
 const routes: Routes = [
@@ -104,5 +105,6 @@ export const routedComponents = [
   ProjectDateComponent,
   ProjectLocationComponent,
   ProjectDescriptionComponent,
+  ProjectLinksComponent,
   ProjectOrganizerComponent
 ];
