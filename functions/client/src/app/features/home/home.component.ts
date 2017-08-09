@@ -9,13 +9,13 @@ import { Project } from "../../../../../universal/domain/project";
 })
 
 export class HomeComponent implements OnInit {
-  public project: FirebaseObjectObservable<Project>;
+  public projects: FirebaseObjectObservable<Project[]>;
 
   constructor(public route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
-      this.project = data['projects'];
+      this.projects = data['projects'];
     })
   }
 }
