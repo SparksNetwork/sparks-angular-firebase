@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { SNUIModule } from '../../shared/snui/snui.module'
 import { ProjectRoutingModule, routedComponents } from './project-routing.module'
 import { MomentModule } from 'angular2-moment'
+import { CollapseModule } from 'ngx-bootstrap'
 
 import { PageProjectHomeAllOppsGuard } from './page-project-home-all-opps-guard/page-project-home-all-opps-guard.service'
 import { ResolveFirstOpp } from './resolve-first-opp/resolve-first-opp.service'
@@ -22,6 +23,7 @@ import { ResolveTeamByFirstOpp } from "./resolve-team-by-first-opp/resolve-team-
     MomentModule,
     SNUIModule,
     ProjectRoutingModule,
+    CollapseModule,
   ],
   providers: [
     PageProjectHomeAllOppsGuard,

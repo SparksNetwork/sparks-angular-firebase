@@ -11,6 +11,7 @@ export class ProjectOppTeamsComponent implements OnChanges {
     private displayedTeams: Array<Team>;
     private collapsedTeams: Array<Team>;
     private collapsedTeamNames: string;
+    private showCollapsed = false
 
     constructor() { }
 

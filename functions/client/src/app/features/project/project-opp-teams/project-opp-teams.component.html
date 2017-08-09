@@ -13,7 +13,7 @@
                     </div>
                 </li>
 
-                <li *ngIf="collapsedTeams" class="list-other" data-toggle="collapse" data-target="#list-other">
+                <li (click)="showCollapsed=true" [collapse]="!collapsedTeams || showCollapsed" class="list-other">
                     <div class="icon">
                         <div class="list-other-counter">+{{collapsedTeams.length}}</div>
                         <div>more</div>
@@ -24,7 +24,7 @@
                 </li>
             </ul>
 
-            <ul id="list-other" class="collapse" *ngIf="collapsedTeams">
+            <ul id="list-other" class="collapse" [collapse]="!collapsedTeams || !showCollapsed">
                 <li *ngFor="let team of collapsedTeams">
                     <div class="icon">
                         <span class="glyphicon glyphicon-lg {{team.icon}}"></span>
@@ -34,6 +34,7 @@
                         <p>{{team.description}}</p>
                     </div>
                 </li>
+                <li (click)="showCollapsed=false">Hide additional teams</li>
             </ul>
         </div>
     </div>
