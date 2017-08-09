@@ -25,10 +25,10 @@
         "imageUrl": "https://placeimg.com/40/40/people/grayscale",
         "name": "Miguel Rodriguez",
         "organization": "Colectiva Avenida",
-        "organizerKey": 0
+        "organizerKey": "ORG-1"
       },
       "projectPageUrl": "https://firebase.google.com/",
-      "projectType": "Simple",
+      "projectType": 0,
       "shareKarmaPoints": 100,
       "startDateTime": "2017-07-15T19:00:00.000Z",
       "facebookUrl": "commiesgame",
@@ -62,10 +62,10 @@
         "imageUrl": "https://placeimg.com/40/40/people/grayscale",
         "name": "Princess",
         "organization": "Lucidity Festival",
-        "organizerKey": 1
+        "organizerKey": "ORG-2"
       },
       "projectPageUrl": "http://2017.lucidityfestival.com/",
-      "projectType": "MultiDay",
+      "projectType": 1,
       "shareKarmaPoints": 100,
       "startDateTime": "2017-02-02T08:00:00.000Z",
       "facebookUrl": "commiesgame",
@@ -99,10 +99,10 @@
         "imageUrl": "https://placeimg.com/40/40/people/grayscale",
         "name": "Paul Jenkin",
         "organization": "Ventura Surfrider",
-        "organizerKey": 1
+        "organizerKey": "ORG-3"
       },
       "projectPageUrl": "https://ventura.surfrider.org/2017-beach-cleanup-schedule/",
-      "projectType": "MultiDay",
+      "projectType": 1,
       "shareKarmaPoints": 100,
       "startDateTime": "2017-02-02T08:00:00.000Z",
       "facebookUrl": "commiesgame",
