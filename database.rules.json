@@ -1,21 +1,18 @@
 {
   "rules": {
-    ".read": "auth != null",
+    ".read": "true",
     ".write": "auth != null",
     "opp": {
-      ".indexOn": [
-        "projectKey"
-      ]
+      ".indexOn": ["projectKey"]
     },
     "contrib": {
-      ".indexOn": [
-        "oppKey"
-      ]
+      ".indexOn": ["oppKey"]
     },
     "benefit": {
-      ".indexOn": [
-        "oppKey"
-      ]
+      ".indexOn": ["oppKey"]
+    },
+    "team": {
+      ".indexOn": ["oppKey"]
     }
   }
 }

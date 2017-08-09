@@ -42,9 +42,9 @@ export class Benefit {
 
 // any methods here will be available on both client and server
 export class BenefitCollection extends BaseCollection {
-    public byOppKey(key: string) {
-        return this.by('oppKey', key)
-    }
+  public byOppKey(key: string) {
+    return this.by('oppKey', key)
+  }
 }
 
 const validateOpt = { validator: { skipMissingProperties: true } };
