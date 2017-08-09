@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import {
-    ResolveOppByProjectKey,
+    ResolveOppByOppKey,
 } from '../../core/sndomain/opp'
 
 import { RequireAuth } from '../../core/snauth/require-auth/require-auth.service'
@@ -16,6 +16,7 @@ import { ResolveTeamByTeamKey } from "./resolve-team-by-team-key/resolve-team-by
 import { OppTeamsSelectedComponent } from "./opp-teams-selected/opp-teams-selected.component";
 import { OppTeamsNotSelectedComponent } from "./opp-teams-not-selected/opp-teams-not-selected.component";
 
+
 const routes: Routes = [
     {
         path: ':oppKey',
@@ -24,7 +25,7 @@ const routes: Routes = [
             //    RequireEmailVerification,
         ],
         resolve: {
-            opps: ResolveOppByProjectKey
+            opp: ResolveOppByOppKey
         },
         children: [
             {
