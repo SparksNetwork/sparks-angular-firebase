@@ -34,4 +34,4 @@ const routes: Routes = [
 })
 export class ApplyRoutingModule { }
 
-export const routedComponents = [];
+export const routedComponents = [ PageCompleteProfileComponent ];

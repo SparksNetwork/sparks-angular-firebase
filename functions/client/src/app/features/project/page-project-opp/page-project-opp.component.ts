@@ -14,9 +14,10 @@ import { ActionBarType } from "../../../shared/snui/action-bar/action-bar.compon
   templateUrl: './page-project-opp.component.html'
 })
 export class PageProjectOppComponent implements OnInit {
-  private project: Observable<Project>
-  private opps: Observable<Opp[]>
-  private opp: Observable<Opp>
+  private project: Observable<Project>;
+  private opps: Observable<Opp[]>;
+  private opp: Observable<Opp>;
+  private oppKey: string;
   public teams: Observable<Team[]>;
   public benefits: Observable<Benefit[]>;
   public contribs: Observable<Contrib[]>;
@@ -29,9 +30,10 @@ export class PageProjectOppComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe(data => {
-      this.project = this.route.snapshot.data['project']
-      this.opp = this.route.snapshot.data['opp']
-      this.opps = this.route.snapshot.data['opps']
+      this.project = this.route.snapshot.data['project'];
+      this.opp = this.route.snapshot.data['opp'];
+      this.opps = this.route.snapshot.data['opps'];
+      this.oppKey = this.route.snapshot.paramMap.get('oppKey');
       this.teams = data['teams'];
       this.benefits = data['benefits'];
       this.contribs = data['contribs'];
