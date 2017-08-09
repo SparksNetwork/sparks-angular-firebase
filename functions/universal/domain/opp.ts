@@ -51,9 +51,11 @@ export class OppCollection extends BaseCollection {
   }
 }
 
+const validateOpt = { validator: { skipMissingProperties: true } };
+
 // we have two transform functions for type safety, not sure why overloading isnt working see below
-export const oppTransform = (input: object) => transformAndValidate<Opp>(Opp, input).catch(logErrors)
-export const oppsTransform = (input: object[]) => transformAndValidate<Opp>(Opp, input).catch(logErrors)
+export const oppTransform = (input: object) => transformAndValidate<Opp>(Opp, input, validateOpt).catch(logErrors)
+export const oppsTransform = (input: object[]) => transformAndValidate<Opp>(Opp, input, validateOpt).catch(logErrors)
 
 // not sure why this doesnt work, think it is because mergeMap passes any?
 // when i do .mergeMap<object, Opp> it works
