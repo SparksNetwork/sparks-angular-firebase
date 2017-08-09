@@ -179,49 +179,49 @@
       "icon": "glyphicon-ice-lolly-tasted",
       "oppKey": "KPC1",
       "title": "Food & Drink",
-      "type": "FoodDrink"
+      "type": 3
     },
     "LC1-1": {
       "description": "Snacks and water while you work",
       "icon": "glyphicon-ice-lolly-tasted",
       "oppKey": "LC1",
       "title": "Food & Drink",
-      "type": "FoodDrink"
+      "type": 3
     },
     "LC2-1": {
       "description": "Snacks and water while you work",
       "icon": "glyphicon-ice-lolly-tasted",
       "oppKey": "LC2",
       "title": "Food & Drink",
-      "type": "FoodDrink"
+      "type": 3
     },
     "LC3-1": {
       "description": "Snacks and water while you work",
       "icon": "glyphicon-ice-lolly-tasted",
       "oppKey": "LC3",
       "title": "Food & Drink",
-      "type": "FoodDrink"
+      "type": 3
     },
     "LC4-1": {
       "description": "Snacks and water while you work",
       "icon": "glyphicon-ice-lolly-tasted",
       "oppKey": "LC4",
       "title": "Food & Drink",
-      "type": "FoodDrink"
+      "type": 3
     },
     "LC5-1": {
       "description": "Snacks and water while you work",
       "icon": "glyphicon-ice-lolly-tasted",
       "oppKey": "LC5",
       "title": "Food & Drink",
-      "type": "FoodDrink"
+      "type": 3
     },
     "SRBC1-1": {
       "description": "Free Pizza from PizzaManDans",
       "icon": "glyphicon-ice-lolly-tasted",
       "oppKey": "LC5",
       "title": "Food & Drink",
-      "type": "FoodDrink"
+      "type": 3
     }
   },
   "contrib": {
