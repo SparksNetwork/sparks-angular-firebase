@@ -1,5 +1,6 @@
-<ng-container *ngIf="project | async; let project">
-  <ng-container *ngIf='opp | async; let opportunity'>
+<ng-container *ngIf="project">
+<!-- <ng-container *ngIf="project | async; let project"> -->
+  <ng-container *ngIf='opp'>
     <div class="row">
       <div class="col-xs-12">
         <div class="segment">
@@ -7,8 +8,8 @@
             <span class="ic ic-calendar"></span>
           </div>
           <div class="text">
-            <h4>{{opportunity.benefitValue | currency:'USD':true }} value for {{opportunity.contribValue | currency:'USD':true}}</h4>
-            <p><span>The regular ticket price is reduced to the price of {{opportunity.contribValue | currency:'USD':true}}</span></p>
+            <h4>{{opp.benefitValue | currency:'USD':true }} value for {{opp.contribValue | currency:'USD':true}}</h4>
+            <p><span>The regular ticket price is reduced to the price of {{opp.contribValue | currency:'USD':true}}</span></p>
           </div>
         </div>
       </div>
@@ -17,7 +18,7 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="opportunity-description segment">
-          <p class="card-text">{{opportunity?.description}}</p>
+          <p class="card-text">{{opp?.description}}</p>
           <p class="card-location lineabove" *ngIf="project.location">{{project.location.address}}, {{project.location.city}}, {{project.location.state}}
             <a target="_blank" href="https://www.google.com/maps?saddr=My+Location&daddr={{ project.location | location:true}}">Get directions</a>
           </p>
@@ -31,4 +32,4 @@
       <a href="#" class="btn btn-primary btn-block" title="Join Now">Join Now</a>
     </snui-action-bar>
   </ng-container>
-</ng-container>
+ </ng-container> 

@@ -93,24 +93,6 @@ const routes: Routes = [
           benefits: ResolveBenefitByOppKey,
           contribs: ResolveContribByOppKey
         },
-        children: [
-          {
-            path: '',
-            component: ProjectOppDetailComponent,
-          },
-          {
-            path: '',
-            component: ProjectOppTeamsComponent
-          },
-          {
-            path: '',
-            component: ProjectOppVisitRequirementsComponent
-          },
-          {
-            path: '',
-            component: ProjectOppCommitmentsComponent
-          }
-        ],
       },
     ]
   }
