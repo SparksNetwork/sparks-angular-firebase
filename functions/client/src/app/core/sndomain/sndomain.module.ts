@@ -24,6 +24,13 @@ import {
   ResolveContribByOppKey,
 } from './contrib'
 
+import {
+  BenefitQueryService,
+  BenefitActionService,
+  BenefitPathsService,
+  ResolveBenefitByOppKey,
+} from './benefit'
+
 @NgModule({
   imports: [
     HttpModule,
@@ -47,6 +54,11 @@ import {
     ContribActionService,
     ContribPathsService,
     ResolveContribByOppKey,
+
+    BenefitQueryService,
+    BenefitActionService,
+    BenefitPathsService,
+    ResolveBenefitByOppKey,
   ],
 })
 export class SNDomainModule { }
