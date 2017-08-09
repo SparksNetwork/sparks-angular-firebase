@@ -147,6 +147,8 @@
       "projectType" : "Simple",
       "shareKarmaPoints" : 100,
       "startDateTime" : "20170715T190000",
+      "facebookUrl": "commiesgame",
+      "twitterUrl": "TripWestGames",
       "title" : "Park Cleanup"
     },
     "LC": {
@@ -177,6 +179,8 @@
       "projectType" : "MultiDay",
       "shareKarmaPoints" : 100,
       "startDateTime" : "20170202T080000",
+      "facebookUrl": "commiesgame",
+      "twitterUrl": "TripWestGames",
       "title" : "Lucidity Crossroads"
     }
   }

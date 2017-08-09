@@ -8,6 +8,8 @@ export class ProjectLinksComponent implements OnInit {
 
   @Input() projectPageUrl: string;
   @Input() shareKarmaPoints: number;
+  @Input() facebookUrl: number;
+  @Input() twitterUrl: number;
   
   constructor() { }
 

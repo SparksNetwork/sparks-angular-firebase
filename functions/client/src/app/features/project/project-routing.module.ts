@@ -31,7 +31,6 @@ import { ProjectDateComponent } from './project-date/project-date.component';
 import { ProjectLocationComponent } from "./project-location/project-location.component";
 import { ProjectDescriptionComponent } from "./project-description/project-description.component";
 import { ProjectLinksComponent } from "./project-links/project-links.component";
-import { ProjectSocialComponent } from "./project-social/project-social.component";
 
 const routes: Routes = [
   {
@@ -104,5 +103,4 @@ export const routedComponents = [
   ProjectLocationComponent,
   ProjectDescriptionComponent,
   ProjectLinksComponent,
-  ProjectSocialComponent
 ];
