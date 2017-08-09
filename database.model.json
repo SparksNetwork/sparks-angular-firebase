@@ -67,6 +67,7 @@
             "required": [
                 "title", "description", "startDateTime", "location", "organizer", "maxKarmaPoints", "images", "projectPageUrl"
             ],
+            "additionalProperties": false,
             "properties": {
                 "title": { "$ref": "#/constraints/nonEmptyString" },
                 "description": { "$ref": "#/constraints/nonEmptyString" },
@@ -113,13 +114,16 @@
                     }
                 },
                 "projectPageUrl": { "type": "string", "format": "uri" },
-                "communityBenefit": { "type": "string"}
+                "communityBenefit": { "type": "string"},
+                "facebookUrl": { "$ref": "#/constraints/nonEmptyString" },
+                "twitterUrl": { "$ref": "#/constraints/nonEmptyString" }
             }
         },
         "oppDef": {
             "required": [
                 "projectKey", "title", "description"
             ],
+            "additionalProperties": false,
             "properties": {
                 "projectKey": { "$ref": "#/constraints/nonEmptyString" },
                 "title": { "$ref": "#/constraints/nonEmptyString" },
@@ -134,9 +138,11 @@
             "required": [
                 "oppKey", "title", "description"
             ],
+            "additionalProperties": false,
             "properties": {
                 "oppKey": { "$ref": "#/constraints/nonEmptyString" },
                 "type": { "type": "integer" },
+                "count": { "type": "integer" },
                 "title": { "$ref": "#/constraints/nonEmptyString" },
                 "description": { "$ref": "#/constraints/nonEmptyString" },
                 "icon": { "type": "string" },
@@ -148,6 +154,7 @@
             "required": [
                 "oppKey", "title", "description"
             ],
+            "additionalProperties": false,
             "properties": {
                 "oppKey": { "$ref": "#/constraints/nonEmptyString" },
                 "type": { "type": "integer" },
@@ -160,6 +167,7 @@
             "required": [
                 "title", "description"
             ],
+            "additionalProperties": false,
             "properties": {
                 "title": { "$ref": "#/constraints/nonEmptyString" },
                 "description": { "$ref": "#/constraints/nonEmptyString" },               
@@ -170,6 +178,7 @@
             "required": [
                 "oppKey", "teamKey", "team"
             ],
+            "additionalProperties": false,
             "properties": {
                 "oppKey": { "$ref": "#/constraints/nonEmptyString" },
                 "teamKey": { "$ref": "#/constraints/nonEmptyString" },
