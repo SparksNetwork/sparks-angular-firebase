@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home.component';
 import { ResolveProjectAll } from "../../core/sndomain/project/resolve-project-all.service";
+import { HomeAllProjectsComponent } from "./home-all-projects/home-all-projects.component";
 
 const routes: Routes = [
   {
@@ -10,7 +11,13 @@ const routes: Routes = [
     component: HomeComponent,
     resolve: {
       projects: ResolveProjectAll
-    }
+    },
+    children: [
+      {
+        path: '',
+        component: HomeAllProjectsComponent
+      }
+    ]
   },
 ];
 
@@ -20,4 +27,4 @@ const routes: Routes = [
 })
 export class HomeRoutingModule { }
 
-export const routedComponents = [HomeComponent];
+export const routedComponents = [HomeComponent, HomeAllProjectsComponent];
