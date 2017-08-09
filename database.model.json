@@ -3,7 +3,7 @@
     "description": "Sparks.Network data model",
     "type": "object",
     "required": [
-        "project", "opp", "contrib", "benefit", "team"
+        "project", "opp", "contrib", "benefit", "team", "oppAllowedTeam"
     ],
     "properties": {
         "project": {
@@ -65,13 +65,21 @@
                     "$ref": "#/definitions/teamDef"
                 }
             }
+        },
+        "oppAllowedTeam": {
+            "type": "object",
+            "required": [
+                "$key"
+            ],
+            "properties": {
+                "$key": {
+                    "type": "object",
+                    "$ref": "#/definitions/oppAllowedTeamDef"
+                }
+            }
         }
     },
     "definitions": {
-         "nonEmptyString": {
-            "type": "string",
-            "minLength": 1
-        },
         "projectDef": {
             "required": [
                 "title", "description", "startDateTime", "location", "organizer", "maxKarmaPoints", "images", "projectPageUrl"
@@ -170,11 +178,35 @@
                 "title", "description", "oppKey"
             ],
             "properties": {
-                "title": {  "$ref": "#/definitions/nonEmptyString" },
-                "description": { "$ref": "#/definitions/nonEmptyString" },               
+                "title": { "$ref": "#/constraints/nonEmptyString" },
+                "description": { "$ref": "#/constraints/nonEmptyString" },               
                 "icon": { "type": "string" },
-                "oppKey": {"$ref": "#/definitions/nonEmptyString"}
+                "oppKey": { "$ref": "#/constraints/nonEmptyString" }
             }
+        },
+        "oppAllowedTeamDef": {
+            "required": [
+                "oppKey", "teamKey", "team"
+            ],
+            "properties": {
+                "oppKey": { "$ref": "#/constraints/nonEmptyString" },
+                "teamKey": { "$ref": "#/constraints/nonEmptyString" },
+                "team": {
+                    "type": "object",
+                    "required": [ "title", "description"],
+                    "properties": {
+                        "title": { "$ref": "#/constraints/nonEmptyString" },
+                        "description": { "$ref": "#/constraints/nonEmptyString" },               
+                        "icon": { "type": "string" }
+                    }
+                }
+            }
+        }
+    },
+    "constraints": {
+        "nonEmptyString": {
+            "type": "string",
+            "minLength": 1
         }
     }
 }
