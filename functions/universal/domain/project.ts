@@ -11,6 +11,7 @@ import {
 import { Location } from './location'
 import { ImageRef } from './imageRef'
 import { Organizer } from './organizer'
+import { logErrors } from "../logger/logger";
 
 export class ProjectPaths extends BasePaths {
   firebase = '/project'
@@ -81,19 +82,6 @@ export class Project {
 
 // any methods here will be available on both client and server
 export class ProjectCollection extends BaseCollection { }
-
-// move this elsewhere when we need to use it in another domain object
-function logErrors(errs: ValidationError[]) {
-  console.log('Validation Errors:')
-  if (errs instanceof Error) {
-    console.log(errs.message);
-  } else {
-    errs.forEach(err => {
-        console.log('property', err.property)
-        Object.keys(err.constraints).forEach(cKey => console.log(err.constraints[cKey]))
-      })
-  }
-}
 
 const validateOpt = { validator: { skipMissingProperties: true } };
 

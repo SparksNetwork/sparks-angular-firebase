@@ -9,6 +9,7 @@ import { FormEmailPasswordComponent } from './form-email-password/form-email-pas
 import { ButtonSigninGoogleComponent } from './button-signin-google/button-signin-google.component'
 import { ButtonSigninFacebookComponent } from './button-signin-facebook/button-signin-facebook.component'
 import { AlertErrorComponent } from './alert-error/alert-error.component'
+import { FormResetPasswordComponent } from './form-reset-password/form-reset-password.component'
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AlertErrorComponent } from './alert-error/alert-error.component'
     ButtonSigninGoogleComponent,
     ButtonSigninFacebookComponent,
     AlertErrorComponent,
+    FormResetPasswordComponent,
   ],
   imports: [
     CommonModule,

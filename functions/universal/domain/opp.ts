@@ -3,10 +3,12 @@ import { transformAndValidate } from "class-transformer-validator"
 import { Expose } from 'class-transformer'
 import { IsNotEmpty, IsEnum, ValidationError, IsDateString, ValidateNested, IsNumber, IsInt, IsUrl, IsDefined } from 'class-validator'
 
+
 import {
   BasePaths,
   BaseCollection,
 } from '../../lib/firebase-universal/shared'
+import { logErrors } from "../logger/logger";
 
 export class OppPaths extends BasePaths {
   firebase = '/opp'
@@ -49,11 +51,9 @@ export class OppCollection extends BaseCollection {
   }
 }
 
-const validateOpt = { validator: { skipMissingProperties: true } };
-
 // we have two transform functions for type safety, not sure why overloading isnt working see below
-export const oppTransform = (input: object) => transformAndValidate<Opp>(Opp, input, validateOpt)
-export const oppsTransform = (input: object[]) => transformAndValidate<Opp>(Opp, input, validateOpt)
+export const oppTransform = (input: object) => transformAndValidate<Opp>(Opp, input).catch(logErrors)
+export const oppsTransform = (input: object[]) => transformAndValidate<Opp>(Opp, input).catch(logErrors)
 
 // not sure why this doesnt work, think it is because mergeMap passes any?
 // when i do .mergeMap<object, Opp> it works
