@@ -2,12 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import {
-    ResolveOppByProjectKey,
+    ResolveOppByOppKey,
 } from '../../core/sndomain/opp'
 
 import { RequireAuth } from '../../core/snauth/require-auth/require-auth.service'
 import { RequireEmailVerification } from "../../core/snauth/require-email-verification/require-email-verification.service";
 import { PageCompleteProfileComponent } from "./page-complete-profile/page-complete-profile.component";
+
 
 const routes: Routes = [
     {
@@ -17,7 +18,7 @@ const routes: Routes = [
             RequireEmailVerification,
         ],
         resolve: {
-            opps: ResolveOppByProjectKey
+            opp: ResolveOppByOppKey
         },
         children: [
             {
