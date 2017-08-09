@@ -233,7 +233,7 @@
       "description": "hours long of volunteering",
       "icon": "glyphicon-time",
       "title": "Shift",
-      "type": "Shift"
+      "type": 0
     },
     "LC1-1": {
       "count": 1,
@@ -243,7 +243,7 @@
       "description": "hours long of volunteering",
       "icon": "glyphicon-time",
       "title": "Shift",
-      "type": "Shift"
+      "type": 0
     },
     "LC2-1": {
       "count": 3,
@@ -253,7 +253,7 @@
       "description": "hours long of volunteering",
       "icon": "glyphicon-time",
       "title": "Shift",
-      "type": "Shift"
+      "type": 0
     },
     "LC3-1": {
       "count": 6,
@@ -263,7 +263,7 @@
       "description": "hours long of volunteering",
       "icon": "glyphicon-time",
       "title": "Shift",
-      "type": "Shift"
+      "type": 0
     },
     "LC4-1": {
       "count": 4,
@@ -273,7 +273,7 @@
       "description": "hours long of volunteering",
       "icon": "glyphicon-time",
       "title": "Shift",
-      "type": "Shift"
+      "type": 0
     },
     "LC5-1": {
       "count": 4,
@@ -283,7 +283,7 @@
       "description": "hours long of volunteering",
       "icon": "glyphicon-time",
       "title": "Shift",
-      "type": "Shift"
+      "type": 0
     },
     "SRBC1-1": {
       "count": 4,
@@ -293,7 +293,7 @@
       "description": "hours long of volunteering",
       "icon": "glyphicon-time",
       "title": "Shift",
-      "type": "Shift"
+      "type": 0
     }
   },
   "team": {
