@@ -1,14 +1,25 @@
-import { ClientPage } from './app.po';
+import { ClientPage } from "./app.po";
+var firebaseAccessHandler =  require ('./setup/firebaseAccess');
 
-describe('client App', () => {
-  let page: ClientPage;
+describe("test", () => {
+    let page: ClientPage;
 
-  beforeEach(() => {
-    page = new ClientPage();
-  });
+    beforeAll(() => {
+        firebaseAccessHandler.loadFile("./e2e/exampleFile.json","Benefits");         
+    });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
-  });
+    afterAll(()=>{
+      firebaseAccessHandler.deleteLoadedData("Benefits",2,3);
+    });
+
+    beforeEach(() => {
+        page = new ClientPage();
+    });
+
+    it('test ', () => {
+        page.navigateTo();
+        expect(true).toBe(true);
+    });
+
+
 });

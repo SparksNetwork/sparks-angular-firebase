@@ -41,6 +41,8 @@ import { ProjectOppVisitRequirementsComponent } from "./project-opp-visit-requir
 import { ProjectOppCommitmentsComponent } from "./project-opp-commitments/project-opp-commitments.component";
 import { ResolveBenefitByOppKey } from "../../core/sndomain/benefit/resolve-benefit-by-opp-key.service";
 import { ResolveContribByOppKey } from "../../core/sndomain/contrib/resolve-contrib-by-opp-key.service";
+import { ProjectLinksComponent } from "./project-links/project-links.component";
+import { ProjectOrganizerComponent } from "./project-organizer/project-organizer.component";
 
 const routes: Routes = [
   {
@@ -139,4 +141,6 @@ export const routedComponents = [
 
   ProjectOppVisitRequirementsComponent,
   ProjectOppCommitmentsComponent
+  ProjectLinksComponent,
+  ProjectOrganizerComponent
 ];

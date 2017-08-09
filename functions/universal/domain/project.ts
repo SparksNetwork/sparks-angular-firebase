@@ -11,6 +11,7 @@ import {
 import { Location } from './location'
 import { ImageRef } from './imageRef'
 import { Organizer } from './organizer'
+import { logErrors } from "../logger/logger";
 
 export class ProjectPaths extends BasePaths {
   firebase = '/project'
@@ -19,11 +20,11 @@ export class ProjectPaths extends BasePaths {
   // api = 'https://sparksnetwork-6de8b.firebaseio.com/Projects'
 }
 
-export enum ProjectType { 
-  Simple, 
-  MultiDay, 
-  LongTerm, 
-  Donor 
+export enum ProjectType {
+  Simple,
+  MultiDay,
+  LongTerm,
+  Donor
 }
 
 export class Project {
@@ -53,16 +54,7 @@ export class Project {
 }
 
 // any methods here will be available on both client and server
-export class ProjectCollection extends BaseCollection {}
-
-// move this elsewhere when we need to use it in another domain object
-function logErrors(errs: ValidationError[]) {
-  console.log('Validation Errors:')
-  errs.forEach(err => {
-    console.log('property', err.property)
-    Object.keys(err.constraints).forEach(cKey => console.log(err.constraints[cKey]))
-  })
-}
+export class ProjectCollection extends BaseCollection { }
 
 // we have two transform functions for type safety, not sure why overloading isnt working see below
 export const projectTransform = (input: object) =>

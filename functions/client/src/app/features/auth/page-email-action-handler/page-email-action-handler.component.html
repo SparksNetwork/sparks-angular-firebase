@@ -13,3 +13,17 @@
     </div>
   </div>
 </div>
+
+<div [hidden]="!resetPasswordEmail">
+  <div class='segment'>
+    <p>Resetting password for: {{resetPasswordEmail}}.</p>
+    <auth-form-reset-password></auth-form-reset-password>
+  </div>
+  <snui-action-bar>
+    <div class="row">
+      <div class="col-xs-6 pull-right">
+        <button class="btn btn-default btn-block" [disabled]="!frpForm.resetPasswordForm.valid" (click)="confirmPasswordReset()">Reset</button>
+      </div>
+    </div>
+  </snui-action-bar>
+</div>

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 
 import { AuthService, AuthError } from "../../../core/snauth/auth/auth.service";
 import { FormEmailPasswordComponent } from '../form-email-password/form-email-password.component';
+import { FormResetPasswordComponent } from '../form-reset-password/form-reset-password.component';
 
 @Component({
   selector: 'auth-page-email-action-handler',
@@ -13,8 +14,10 @@ export class PageEmailActionHandlerComponent {
   public oobCode: string
   public title: string
   public verificationEmailExpired: boolean;
+  public resetPasswordEmail: string;
 
   @ViewChild(FormEmailPasswordComponent) public epForm: FormEmailPasswordComponent
+  @ViewChild(FormResetPasswordComponent) public frpForm: FormResetPasswordComponent
 
   constructor(
     private auth: AuthService,
@@ -31,14 +34,19 @@ export class PageEmailActionHandlerComponent {
     }
 
     this.auth.error.subscribe(error => {
-      if (error.code == "auth/expired-action-code") {
+      if (this.mode == 'verifyEmail' && error.code == "auth/expired-action-code") {
         this.verificationEmailExpired = true;
       }
     })
 
     switch (this.mode) {
       case 'resetPassword':
-        // Display reset password handler and UI.        
+        this.title = 'Reset your user password';
+        this.auth.verifyPasswordResetCode(this.oobCode).then((email) => {
+          if (!email) return;
+
+          this.resetPasswordEmail = email;
+        })
         break;
       case 'recoverEmail':
         // Display email recovery handler and UI.        
@@ -66,5 +74,12 @@ export class PageEmailActionHandlerComponent {
         if (!user) return;
         user.sendEmailVerification().then(() => this.router.navigate(['dash']));
       });
+  }
+
+  public confirmPasswordReset() {
+    this.auth.confirmPasswordReset(
+      this.oobCode,
+      this.frpForm.resetPasswordForm.value.password
+    ).then(() => this.router.navigate(['dash']));
   }
 }

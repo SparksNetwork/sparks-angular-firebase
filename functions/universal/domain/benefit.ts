@@ -3,22 +3,23 @@ import { transformAndValidate } from "class-transformer-validator";
 import { Expose } from "class-transformer";
 
 import {
-  BasePaths,
-  BaseCollection,
+    BasePaths,
+    BaseCollection,
 } from '../../lib/firebase-universal/shared'
+import { logErrors } from "../logger/logger";
 
 
 export class BenefitPaths extends BasePaths {
-  firebase = '/benefit'
-  api = 'http://localhost:5002/sparks-development-sd/us-central1/api/benefit'
+    firebase = '/benefit'
+    api = 'http://localhost:5002/sparks-development-sd/us-central1/api/benefit'
 }
 
-export enum BenefitType { 
-   FoodTicket,
-   EventTicket,
-   Gifts,
-   FoodDrink,
-   HelpNonProfit
+export enum BenefitType {
+    FoodTicket,
+    EventTicket,
+    Gifts,
+    FoodDrink,
+    HelpNonProfit
 }
 
 export class Benefit {
@@ -49,5 +50,10 @@ export class BenefitCollection extends BaseCollection {
 const validateOpt = { validator: { skipMissingProperties: true } };
 
 // we have two transform functions for type safety, not sure why overloading isnt working see below
-export const benefitTransform = (input: object) => transformAndValidate<Benefit>(Benefit, input, validateOpt)
-export const benefitsTransform = (input: object[]) => transformAndValidate<Benefit>(Benefit, input, validateOpt)
+export const benefitTransform = (input: object) =>
+    transformAndValidate<Benefit>(Benefit, input, validateOpt)
+        .catch(logErrors)
+
+export const benefitsTransform = (input: object[]) =>
+    transformAndValidate<Benefit>(Benefit, input, validateOpt)
+        .catch(logErrors)
