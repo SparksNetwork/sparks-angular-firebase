@@ -1,4 +1,12 @@
-
-<div *ngIf='projects'>
-    <snui-project-card-item></snui-project-card-item>
+<div *ngIf='projects' class="row row-small-pad dashboard-events">
+    <snui-project-card-item 
+        *ngFor='let project of projects' 
+        [title]='project.title'
+        [image]='project.images.length > 0 ? project.images[0] : null'
+        [startDateTime]='project.startDateTime'
+        [endDateTime]='project.endDateTime'
+        [location]='project.location'
+        [maxKarmaPoints]='project.maxKarmaPoints'
+    >
+    </snui-project-card-item>
 </div>
