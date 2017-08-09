@@ -5,20 +5,16 @@ import { HomeComponent } from './home.component';
 import { ResolveProjectAll } from "../../core/sndomain/project/resolve-project-all.service";
 import { HomeAllProjectsComponent } from "./home-all-projects/home-all-projects.component";
 
+
+
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
     resolve: {
       projects: ResolveProjectAll
-    },
-    children: [
-      {
-        path: '',
-        component: HomeAllProjectsComponent
-      }
-    ]
-  },
+    }
+  }
 ];
 
 @NgModule({
