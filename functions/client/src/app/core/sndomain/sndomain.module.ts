@@ -32,6 +32,11 @@ import {
 } from "./team";
 
 import {
+  OppAllowedTeamQueryService,
+  OppAllowedTeamPathsService
+} from "./oppAllowedTeam";
+
+import {
   BenefitQueryService,
   BenefitActionService,
   BenefitPathsService,
@@ -66,6 +71,9 @@ import {
     TeamActionService,
     ResolveTeamByOppKey,
     TeamPathsService,
+
+    OppAllowedTeamPathsService,
+    OppAllowedTeamQueryService,
 
     BenefitQueryService,
     BenefitActionService,

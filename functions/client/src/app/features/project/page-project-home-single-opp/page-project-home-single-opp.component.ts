@@ -25,11 +25,11 @@ export class PageProjectHomeSingleOppComponent {
     public route: ActivatedRoute,
   ) {
     this.route.data.subscribe(data => {
-      this.opp = this.route.snapshot.data['opp'].do(data => console.log('found opp', data))
-      this.project = this.route.parent.snapshot.data['project'].do(data => console.log('found project', data))
-      this.contribs = data['contribs'].do(data => console.log('found contribs', data))
-      this.benefits = data['benefits'].do(data => console.log('found benefits', data))
-      this.teams = data['teams'].do(data => console.log('found teams', data))
+      this.opp = this.route.snapshot.data['opp']
+      this.project = this.route.parent.snapshot.data['project']
+      this.contribs = data['contribs']
+      this.benefits = data['benefits']
+      this.teams = data['teams']
     })
   }
 
