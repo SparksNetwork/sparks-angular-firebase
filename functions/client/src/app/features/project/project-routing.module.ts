@@ -27,8 +27,10 @@ import { PageProjectHomeEditComponent } from './page-project-home-edit/page-proj
 import { PageProjectOppComponent } from './page-project-opp/page-project-opp.component'
 
 import { PageProjectHomeAllOppsGuard } from './page-project-home-all-opps-guard/page-project-home-all-opps-guard.service'
+import { ResolveFirstOpp } from './resolve-first-opp/resolve-first-opp.service'
 import { ResolveContribByFirstOpp } from './resolve-contrib-by-first-opp/resolve-contrib-by-first-opp.service'
 import { ResolveBenefitByFirstOpp } from "./resolve-benefit-by-first-opp/resolve-benefit-by-first-opp.service";
+import { ResolveTeamByFirstOpp } from "./resolve-team-by-first-opp/resolve-team-by-first-opp.service";
 
 import { AddToCalendarComponent } from './add-to-calendar/add-to-calendar.component'
 import { ProjectTitleComponent } from './project-title/project-title.component';
@@ -38,7 +40,6 @@ import { ProjectDescriptionComponent } from "./project-description/project-descr
 import { ProjectOppDetailComponent } from "./project-opp-detail/project-opp-detail.component";
 import { ProjectOppTeamsComponent } from "./project-opp-teams/project-opp-teams.component";
 import { ProjectOppVisitRequirementsComponent } from "./project-opp-visit-requirements/project-opp-visit-requirements.component";
-import { ProjectOppCommitmentsComponent } from "./project-opp-commitments/project-opp-commitments.component";
 import { ResolveBenefitByOppKey } from "../../core/sndomain/benefit/resolve-benefit-by-opp-key.service";
 import { ResolveContribByOppKey } from "../../core/sndomain/contrib/resolve-contrib-by-opp-key.service";
 import { ProjectLinksComponent } from "./project-links/project-links.component";
@@ -78,6 +79,8 @@ const routes: Routes = [
             path: 'join',
             component: PageProjectHomeSingleOppComponent,
             resolve: {
+              opp: ResolveFirstOpp,
+              teams: ResolveTeamByFirstOpp,
               contribs: ResolveContribByFirstOpp,
               benefits: ResolveBenefitByFirstOpp
             }
@@ -122,7 +125,6 @@ export const routedComponents = [
   ProjectDescriptionComponent,
 
   ProjectOppVisitRequirementsComponent,
-  ProjectOppCommitmentsComponent
   ProjectLinksComponent,
   ProjectOrganizerComponent
 ];

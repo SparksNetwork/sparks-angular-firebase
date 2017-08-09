@@ -28,8 +28,11 @@
  <project-opp-detail
   [project]='project|async'
   [opp]='opp|async'
-  [teams]='teams'
-  [benefits]='benefits'
-  [contribs]='contribs'
+  [teams]='teams|async'
+  [benefits]='benefits|async'
+  [contribs]='contribs|async'
 >
 </project-opp-detail>
+  <snui-action-bar [type]="actionBarType.Organizer">
+    <a href="#" class="btn btn-primary btn-block" title="Join Now">Join Now</a>
+  </snui-action-bar>

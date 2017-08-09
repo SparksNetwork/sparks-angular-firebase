@@ -7,6 +7,7 @@ import { Project } from "../../../../../../universal/domain/project";
 import { Team } from "../../../../../../universal/domain/team";
 import { Benefit } from "../../../../../../universal/domain/benefit";
 import { Contrib } from "../../../../../../universal/domain/contrib";
+import { ActionBarType } from "../../../shared/snui/action-bar/action-bar.component";
 
 @Component({
   selector: 'project-page-project-opp',
@@ -19,6 +20,7 @@ export class PageProjectOppComponent implements OnInit {
   public teams: Observable<Team[]>;
   public benefits: Observable<Benefit[]>;
   public contribs: Observable<Contrib[]>;
+  public actionBarType = ActionBarType;
 
   constructor(
     public route: ActivatedRoute

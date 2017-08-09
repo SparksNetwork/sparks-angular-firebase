@@ -1,35 +1,74 @@
-<ng-container *ngIf="project">
-<!-- <ng-container *ngIf="project | async; let project"> -->
-  <ng-container *ngIf='opp'>
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="segment">
-          <div class="icon">
-            <span class="ic ic-calendar"></span>
-          </div>
-          <div class="text">
-            <h4>{{opp.benefitValue | currency:'USD':true }} value for {{opp.contribValue | currency:'USD':true}}</h4>
-            <p><span>The regular ticket price is reduced to the price of {{opp.contribValue | currency:'USD':true}}</span></p>
-          </div>
+<ng-container *ngIf="project && opp && teams && benefits && contribs">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="segment">
+        <div class="icon">
+          <span class="ic ic-calendar"></span>
+        </div>
+        <div class="text">
+          <h4>{{opp.benefitValue | currency:'USD':true }} value for {{opp.contribValue | currency:'USD':true}}</h4>
+          <p><span>The regular ticket price is reduced to the price of {{opp.contribValue | currency:'USD':true}}</span></p>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="opportunity-description segment">
-          <p class="card-text">{{opp?.description}}</p>
-          <p class="card-location lineabove" *ngIf="project.location">{{project.location.address}}, {{project.location.city}}, {{project.location.state}}
-            <a target="_blank" href="https://www.google.com/maps?saddr=My+Location&daddr={{ project.location | location:true}}">Get directions</a>
-          </p>
-        </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="opportunity-description segment">
+        <p class="card-text">{{opp?.description}}</p>
+        <p class="card-location lineabove" *ngIf="project.location">{{project.location.address}}, {{project.location.city}}, {{project.location.state}}
+          <a target="_blank" href="https://www.google.com/maps?saddr=My+Location&daddr={{ project.location | location:true}}">Get directions</a>
+        </p>
       </div>
     </div>
-    <project-opp-commitments [benefits]='benefits | async' [contribs]='contribs | async'></project-opp-commitments>
-    <project-opp-teams [teams]='teams | async'></project-opp-teams> 
-    <project-opp-visit-requirements></project-opp-visit-requirements>
-    <snui-action-bar [type]="actionBarType.Organizer">
-      <a href="#" class="btn btn-primary btn-block" title="Join Now">Join Now</a>
-    </snui-action-bar>
-  </ng-container>
- </ng-container> 
+  </div>
+
+  <!-- Project Benefits -->
+  <div class="you-will-give-got segment">
+    <h3>You Will Get</h3>
+    <ul>
+      <li *ngIf="project.communityBenefit">
+        <snui-card-item
+          icon="glyphicon-heart"
+          title="To help your community"
+          [subtitle]="project.communityBenefit">
+        </snui-card-item>
+      </li>
+      <li *ngIf="opp.karma">
+        <snui-card-item
+          icon="glyphicon-star"
+          [title]="opp.karma + ' Karma Points'"
+          subtitle="Get Badges, Accolades, and more by volunteering through the Sparks Network">
+        </snui-card-item>
+      </li>
+      <div *ngIf="benefits.length">
+        <li *ngFor="let commitment of benefits">
+          <snui-card-item
+            [icon]="commitment.icon"
+            [title]="commitment.title"
+            [subtitle]="commitment.description">
+          </snui-card-item>
+        </li>
+      </div>
+    </ul>
+  </div>
+
+  <!-- Project Contribs -->
+  <div class="you-will-give-got segment" *ngIf="contribs.length">
+    <h3>You Will Give</h3>
+    <ul>
+      <li *ngFor="let commitment of contribs">
+        <snui-card-item
+          [icon]="commitment.icon"
+          [title]="commitment.count + ' ' + commitment.title"
+          [subtitle]="((commitment.shiftMinLength == commitment.shiftMaxLength) ? commitment.shiftMinLength : 'from ' + commitment.shiftMinLength + ' to ' + commitment.shiftMaxLength) + ' hours long.'">
+        </snui-card-item>
+      </li>
+    </ul>
+  </div> 
+
+  <project-opp-teams [teams]='teams'></project-opp-teams>  
+  <project-opp-visit-requirements></project-opp-visit-requirements>
+
+</ng-container> 

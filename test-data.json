@@ -6,6 +6,41 @@
       "oppKey": "KPC1",
       "title": "Food & Drink",
       "type": "FoodDrink"
+    },
+    "LC1-1": {
+      "description": "Snacks and water while you work",
+      "icon": "glyphicon-ice-lolly-tasted",
+      "oppKey": "LC1",
+      "title": "Food & Drink",
+      "type": "FoodDrink"
+    },
+    "LC2-1": {
+      "description": "Snacks and water while you work",
+      "icon": "glyphicon-ice-lolly-tasted",
+      "oppKey": "LC2",
+      "title": "Food & Drink",
+      "type": "FoodDrink"
+    },
+    "LC3-1": {
+      "description": "Snacks and water while you work",
+      "icon": "glyphicon-ice-lolly-tasted",
+      "oppKey": "LC3",
+      "title": "Food & Drink",
+      "type": "FoodDrink"
+    },
+    "LC4-1": {
+      "description": "Snacks and water while you work",
+      "icon": "glyphicon-ice-lolly-tasted",
+      "oppKey": "LC4",
+      "title": "Food & Drink",
+      "type": "FoodDrink"
+    },
+    "LC5-1": {
+      "description": "Snacks and water while you work",
+      "icon": "glyphicon-ice-lolly-tasted",
+      "oppKey": "LC5",
+      "title": "Food & Drink",
+      "type": "FoodDrink"
     }
   },
   "contrib": {
@@ -14,6 +49,56 @@
       "oppKey": "KPC1",
       "shiftMinLength": 4,
       "shiftMaxLength": 4,
+      "description": "hours long of volunteering",
+      "icon": "glyphicon-time",
+      "title": "Shift",
+      "type": "Shift"
+    },
+    "LC1-1": {
+      "count": 1,
+      "oppKey": "LC1",
+      "shiftMinLength": 4,
+      "shiftMaxLength": 7,
+      "description": "hours long of volunteering",
+      "icon": "glyphicon-time",
+      "title": "Shift",
+      "type": "Shift"
+    },
+    "LC2-1": {
+      "count": 3,
+      "oppKey": "LC2",
+      "shiftMinLength": 4,
+      "shiftMaxLength": 7,
+      "description": "hours long of volunteering",
+      "icon": "glyphicon-time",
+      "title": "Shift",
+      "type": "Shift"
+    },
+    "LC3-1": {
+      "count": 6,
+      "oppKey": "LC3",
+      "shiftMinLength": 6,
+      "shiftMaxLength": 6,
+      "description": "hours long of volunteering",
+      "icon": "glyphicon-time",
+      "title": "Shift",
+      "type": "Shift"
+    },
+    "LC4-1": {
+      "count": 4,
+      "oppKey": "LC4",
+      "shiftMinLength": 8,
+      "shiftMaxLength": 8,
+      "description": "hours long of volunteering",
+      "icon": "glyphicon-time",
+      "title": "Shift",
+      "type": "Shift"
+    },
+    "LC5-1": {
+      "count": 4,
+      "oppKey": "LC5",
+      "shiftMinLength": 8,
+      "shiftMaxLength": 8,
       "description": "hours long of volunteering",
       "icon": "glyphicon-time",
       "title": "Shift",
@@ -143,6 +228,12 @@
     }
   },
   "team": {
+    "KPC1": {
+      "description": "Single team description shouldn't show",
+      "icon": "glyphicon-grain",
+      "oppKey": "KPC1",
+      "title": "Single Team Example"
+    },
     "TLC3-1": {
       "description": "Feed hundreds of dreamers in the most amazing kitchen ever.",
       "icon": "glyphicon-grain",
