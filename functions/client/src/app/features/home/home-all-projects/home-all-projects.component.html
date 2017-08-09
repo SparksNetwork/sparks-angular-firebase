@@ -1,12 +1,15 @@
 <div *ngIf='projects' class="row row-small-pad dashboard-events">
-    <snui-project-card-item 
-        *ngFor='let project of projects' 
-        [title]='project.title'
-        [image]='project.images.length > 0 ? project.images[0] : null'
-        [startDateTime]='project.startDateTime'
-        [endDateTime]='project.endDateTime'
-        [location]='project.location'
-        [maxKarmaPoints]='project.maxKarmaPoints'
-    >
-    </snui-project-card-item>
+   <ng-container *ngFor='let project of projects' >
+    <a href="" [routerLink]="['project', project.$key]"> 
+        <snui-project-card-item 
+            [title]='project.title'
+            [image]='project.images.length > 0 ? project.images[0] : null'
+            [startDateTime]='project.startDateTime'
+            [endDateTime]='project.endDateTime'
+            [location]='project.location'
+            [maxKarmaPoints]='project.maxKarmaPoints'
+        >
+        </snui-project-card-item>   
+   </a>
+   </ng-container>
 </div>
