@@ -50,6 +50,33 @@ describe('Testing the model validation attributes for organizer', () => {
 
     });
 
-    //Nested part is not implemented
+    it('Test organizer @ValidateNested() ', () => {
+        firebaseAccessHandler.loadFile("./e2e/project/testDataFiles/organizerNotNested.json", "project");
+        browser.sleep(500);
+        page.navigateTo();
+        browser.sleep(1000);
+
+        browser.manage().logs().get('browser').then(function (browserLogs) {
+
+            let isValidationErrorsStringPresent = false;
+            let isOrganizerNestedStringPresent = false;
+
+            browserLogs.forEach(function (log) {
+                if (log.message.includes("Validation Errors:")) {
+                    isValidationErrorsStringPresent = true;
+                }
+                if (log.message.includes("Only objects and arrays are supported to nested validation")) {
+                    isOrganizerNestedStringPresent = true;
+                }
+            });
+
+            expect(isValidationErrorsStringPresent)
+                .toBe(true, "String `Validation Errors:` was not present");;
+            expect(isOrganizerNestedStringPresent)
+                .toBe(true, "String `Only objects and arrays are supported to nested validation` was not present");
+           
+        });
+
+    });
 
 })
