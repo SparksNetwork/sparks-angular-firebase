@@ -12,7 +12,7 @@ import { ActionBarType } from "../../../shared/snui/action-bar/action-bar.compon
 
 export class PageProjectHomeComponent {
   public project: FirebaseObjectObservable<Project>
-  public isSingleOpp: boolean;
+  public oppKey: string;
   public actionBarType = ActionBarType;
 
   constructor(
@@ -21,7 +21,7 @@ export class PageProjectHomeComponent {
     this.project = this.route.snapshot.data['project'];
 
     this.route.snapshot.data['opps'].subscribe(opps => {
-      this.isSingleOpp = opps && opps.length === 1;
+      this.oppKey = (opps && opps.length === 1) ? opps[0].$key : null;
     });
   }
 
