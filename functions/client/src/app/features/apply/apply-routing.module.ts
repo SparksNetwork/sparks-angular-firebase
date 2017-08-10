@@ -10,6 +10,8 @@ import { RequireEmailVerification } from "../../core/snauth/require-email-verifi
 import { PageCompleteProfileComponent } from "./page-complete-profile/page-complete-profile.component";
 import { ResolveTeamByOppKey } from "../../core/sndomain/team/resolve-team-by-opp-key.service";
 import { PageOppTeamsComponent } from "./page-opp-teams/page-opp-teams.component";
+import { PageOppTeamComponent } from "./page-opp-team/page-opp-team.component";
+import { ResolveTeamByTeamKey } from "../../core/sndomain/team/resolve-team-by-team-key.service";
 
 const routes: Routes = [
     {
@@ -32,6 +34,13 @@ const routes: Routes = [
                 resolve: {
                     teams: ResolveTeamByOppKey
                 }
+            },
+            {
+                path: 'teams/:teamKey',
+                component: PageOppTeamComponent,
+                resolve: {
+                    team: ResolveTeamByTeamKey
+                }
             }
         ]
     }
@@ -43,4 +52,4 @@ const routes: Routes = [
 })
 export class ApplyRoutingModule { }
 
-export const routedComponents = [PageCompleteProfileComponent, PageOppTeamsComponent];
+export const routedComponents = [PageCompleteProfileComponent, PageOppTeamsComponent, PageOppTeamComponent];
