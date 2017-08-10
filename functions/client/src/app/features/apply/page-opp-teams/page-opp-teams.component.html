@@ -12,7 +12,21 @@
 <div class="row" *ngIf='teams | async; let teams'>
   <div class="col-xs-12">
     <ng-container *ngFor='let team of teams'>
-      <snui-team-card-item></snui-team-card-item>
+      <snui-team-card-item 
+        [title]='team.title' 
+        [description]='team.description' 
+        [icon]='team.icon'>
+      </snui-team-card-item>
     </ng-container>
   </div>
 </div>
+<snui-action-bar [type]="actionBarType.Organizer">
+  <div class="col-xs-8 bottom-nav">
+    <div class="btn-group" role="group">
+      <a href="#" class="btn btn-block btn-default">Previous</a>
+    </div>
+    <div class="btn-group" role="group">
+      <button class="btn btn-block btn-default">Next</button >
+        </div>
+      </div>
+</snui-action-bar>

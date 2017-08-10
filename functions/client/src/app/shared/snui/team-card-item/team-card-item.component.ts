@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     selector: 'snui-team-card-item',
@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class TeamCardItemComponent implements OnInit {
+    @Input() title: string = '';
+    @Input() description: string = '';
+    @Input() icon: string = '';
+
     constructor() { }
 
     ngOnInit() { }
