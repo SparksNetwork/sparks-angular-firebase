@@ -1,1 +1,14 @@
-it works
+<ng-container *ngIf='team | async; let team'>
+    <snui-header-simple imageUrl='https://placeimg.com/1140/410/animals/grayscale'>
+        Join <br/> {{team.title}}
+    </snui-header-simple>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="segment">
+                <p class="card-text">
+                    {{team.description}}
+                </p>
+            </div>
+        </div>
+    </div>
+</ng-container>
