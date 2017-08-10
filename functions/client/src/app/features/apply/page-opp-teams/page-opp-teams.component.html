@@ -1,10 +1,18 @@
-
 <snui-header-simple imageUrl='https://placeimg.com/1140/410/animals/grayscale'>
-    The Best Part: <br/>Pick your Teams!
+  The Best Part: <br/>Pick your Teams!
 </snui-header-simple>
-
 <div class="row">
   <div class="col-xs-12">
-    <snui-team-card-item></snui-team-card-item>
+    <div class="segment">
+      <p class="card-text">What kind of things do you want to work on?</p>
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf='teams | async; let teams'>
+  <div class="col-xs-12">
+    <ng-container *ngFor='let team of teams'>
+      <snui-team-card-item></snui-team-card-item>
+    </ng-container>
   </div>
 </div>
