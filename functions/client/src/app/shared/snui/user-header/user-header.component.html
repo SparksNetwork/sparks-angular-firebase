@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="profile-hero">
+    <div class="item">
+      <div class="profile-hero-content">
+
+        <div class="col-xs-8 text-left dashboard-text">
+          <h2>Hello {{prefferedName}},</h2>
+          <h3>{{message}}</h3>
+        </div>
+        <div class="col-xs-4 text-center">
+          <div class="profile-img">
+          <img class="img-responsive img-circle" [src]="imageUrl" />
+          <div *ngIf='profileScore' class="profile-score">{{profileScore}}</div>
+          </div>
+        </div>
+      </div>
+      <!-- TODO parameterize for the authenticated dashboard -->
+      <div class="profile-progress">
+        <div class="col-xs-6 text-left">Currently: none <span class="ic ic-star"></span></div>
+        <div class="col-xs-6 text-right">Next level: 200 <span class="ic ic-star"></span></div>
+        <div class="col-xs-12">
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+              0%
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

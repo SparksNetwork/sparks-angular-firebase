@@ -9,6 +9,8 @@ import { CollapseModule } from 'ngx-bootstrap/collapse'
 import { CardItemComponent } from "./card-item/card-item.component";
 import { ActionBarComponent } from './action-bar/action-bar.component'
 import { BtnDirective } from './btn/btn.directive'
+import { ProjectCardItemComponent } from "./project-card-item/project-card-item.component";
+import { UserHeaderComponent } from "./user-header/user-header.component";
 
 const COMPONENTS = [
   HeaderSimpleComponent,
@@ -16,7 +18,9 @@ const COMPONENTS = [
   BtnDirective,
   HeaderCarouselComponent,
   CardItemComponent,
-  LocationPipe
+  LocationPipe,
+  ProjectCardItemComponent,
+  UserHeaderComponent
 ]
 
 @NgModule({
