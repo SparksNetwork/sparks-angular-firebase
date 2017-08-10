@@ -11,6 +11,7 @@ import { ActionBarComponent } from './action-bar/action-bar.component'
 import { BtnDirective } from './btn/btn.directive'
 import { ProjectCardItemComponent } from "./project-card-item/project-card-item.component";
 import { UserHeaderComponent } from "./user-header/user-header.component";
+import { TeamCardItemComponent } from "./team-card-item/team-card-item.component";
 
 const COMPONENTS = [
   HeaderSimpleComponent,
@@ -20,7 +21,8 @@ const COMPONENTS = [
   CardItemComponent,
   LocationPipe,
   ProjectCardItemComponent,
-  UserHeaderComponent
+  UserHeaderComponent,
+  TeamCardItemComponent
 ]
 
 @NgModule({
