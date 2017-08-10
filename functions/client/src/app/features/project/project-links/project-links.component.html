@@ -1,0 +1,18 @@
+<div class="page-social row" *ngIf="projectPageUrl || shareKarmaPoints">
+  <div class="col-xs-8"><a href="{{projectPageUrl}}" target="_blank">View Event Page <span class="ic ic-link"></span></a></div>
+  <div class="col-xs-4 text-center">
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+      <div class="btn-group" role="group">
+        <a href="https://www.facebook.com/{{facebookUrl}}" target="_blank"><span class="ic ic-cog"></span></a>
+      </div>
+      <div class="btn-group" role="group">
+        <a href="https://twitter.com/{{twitterUrl}}" target="_blank"><span class="ic ic-cog"></span></a>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12">
+    <div id="share-for-karma">
+      <span>Share for {{shareKarmaPoints}} Karma Points</span>
+    </div>
+  </div>
+</div>

@@ -24,6 +24,25 @@ import {
   ResolveContribByOppKey,
 } from './contrib'
 
+import {
+  ResolveTeamByOppKey, 
+  TeamQueryService,
+  TeamActionService,
+  TeamPathsService
+} from "./team";
+
+import {
+  OppAllowedTeamQueryService,
+  OppAllowedTeamPathsService
+} from "./oppAllowedTeam";
+
+import {
+  BenefitQueryService,
+  BenefitActionService,
+  BenefitPathsService,
+  ResolveBenefitByOppKey,
+} from './benefit'
+
 @NgModule({
   imports: [
     HttpModule,
@@ -47,6 +66,19 @@ import {
     ContribActionService,
     ContribPathsService,
     ResolveContribByOppKey,
+ 
+    TeamQueryService,
+    TeamActionService,
+    ResolveTeamByOppKey,
+    TeamPathsService,
+
+    OppAllowedTeamPathsService,
+    OppAllowedTeamQueryService,
+
+    BenefitQueryService,
+    BenefitActionService,
+    BenefitPathsService,
+    ResolveBenefitByOppKey,
   ],
 })
 export class SNDomainModule { }

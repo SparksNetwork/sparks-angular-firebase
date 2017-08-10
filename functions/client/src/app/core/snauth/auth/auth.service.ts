@@ -110,4 +110,36 @@ export class AuthService {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .catch((err: AuthError) => this.error.emit(err));
   }
+
+  /**
+   * 
+   * @param email 
+   * @description https://firebase.google.com/docs/reference/js/firebase.auth.Auth#sendPasswordResetEmail
+   */
+  public sendPasswordResetEmail(email: string) {
+    return this.afAuth.auth.sendPasswordResetEmail(email)
+      .then(() => { return email; })
+      .catch((err: AuthError) => this.error.emit(err));
+  }
+
+  /**
+   * 
+   * @param code 
+   * @description https://firebase.google.com/docs/reference/js/firebase.auth.Auth#verifyPasswordResetCode
+   */
+  public verifyPasswordResetCode(code: string) {
+    return this.afAuth.auth.verifyPasswordResetCode(code)
+      .catch((err: AuthError) => this.error.emit(err));
+  }
+
+  /**
+   * 
+   * @param code 
+   * @param newPassword
+   * @description https://firebase.google.com/docs/reference/js/firebase.auth.Auth#confirmPasswordReset
+   */
+  public confirmPasswordReset(code: string, newPassword: string) {
+    return this.afAuth.auth.confirmPasswordReset(code, newPassword)
+      .catch((err: AuthError) => this.error.emit(err));
+  }
 }
