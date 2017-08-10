@@ -1,0 +1,42 @@
+{
+    "LCTest1": {
+        "benefitValue": 374,
+        "contribValue": 209,
+        "description": "opp description",
+        "icon": "glyphicon-music",
+        "projectKey": "LCTest",
+        "title": "1-Shift"
+    },
+    "LCTest2": {
+        "benefitValue": 394,
+        "contribValue": 59,
+        "description": "opp description",
+        "icon": "glyphicon-glass",
+        "projectKey": "LCTest",
+        "title": "Regular"
+    },
+    "LCTest3": {
+        "benefitValue": 364,
+        "contribValue": 0,
+        "description": "opp description",
+        "icon": "glyphicon-film",
+        "projectKey": "LCTest",
+        "title": "Pre-Event Weekends"
+    },
+    "LCTest4": {
+        "benefitValue": 444,
+        "contribValue": 19,
+        "description": "opp description",
+        "icon": "glyphicon-camera",
+        "projectKey": "LCTest",
+        "title": "Setup"
+    },
+    "LCTest5": {
+        "benefitValue": 444,
+        "contribValue": 19,
+        "description": "opp description",
+        "icon": "glyphicon-cog",
+        "projectKey": "LCTest",
+        "title": "Strike"
+    }
+}
