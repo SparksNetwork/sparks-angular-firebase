@@ -15,8 +15,8 @@ const routes: Routes = [
     {
         path: ':oppKey',
         canActivate: [
-        //    RequireAuth,
-        //    RequireEmailVerification,
+            RequireAuth,
+            RequireEmailVerification,
         ],
         resolve: {
             opps: ResolveOppByProjectKey
