@@ -3,7 +3,7 @@ import { browser } from "protractor/built";
 
 var firebaseAccessHandler = require('../setup/firebaseAccess');
 
-describe("Project with multiple oportunities", () => {
+describe("[ProjectPage] Project with multiple oportunities", () => {
     let page: ProjectPage;
 
     beforeAll(() => {
