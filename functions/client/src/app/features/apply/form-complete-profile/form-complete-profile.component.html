@@ -14,28 +14,40 @@
             </div>
           </div>
         </div>
-        <div class="form-input">
+
+        <div class="form-input" [class.has-error]="!profileForm.get('preferredName').valid && profileForm.get('preferredName').touched">
           <div class="icon">
             <span class="ic ic-user"></span>
           </div>
           <div class="text">
-            <input type="text" class="form-control" placeholder="What's Your Preferred Name?">
+            <input type="text" class="form-control" placeholder="What's Your Preferred Name?" formControlName="preferredName">
+            <div class="error" *ngIf="profileForm.get('preferredName').hasError('required') && profileForm.get('preferredName').touched ">
+              Preferred Name is required
+            </div>
           </div>
         </div>
-        <div class="form-input">
+
+        <div class="form-input" [class.has-error]="!profileForm.get('phone').valid && profileForm.get('phone').touched">
           <div class="icon">
             <span class="ic ic-phone"></span>
           </div>
           <div class="text">
-            <input type="tel" class="form-control" placeholder="What's Your Phone Number?">
+            <input type="tel" class="form-control" placeholder="What's Your Phone Number?" formControlName="phone">
+            <div class="error" *ngIf="profileForm.get('phone').hasError('required') && profileForm.get('phone').touched ">
+              Phone Number is required
+            </div>
           </div>
         </div>
-        <div class="form-input">
+
+        <div class="form-input" [class.has-error]="!profileForm.get('birthday').valid && profileForm.get('birthday').touched">
           <div class="icon">
             <span class="ic ic-calendar"></span>
           </div>
           <div class="text">
-            <input type="date" class="form-control" placeholder="What's Your Birthday">
+            <input type="date" class="form-control" placeholder="What's Your Birthday" formControlName="birthday">
+            <div class="error" *ngIf="profileForm.get('birthday').hasError('required') && profileForm.get('birthday').touched ">
+              Birthday is required
+            </div>
           </div>
         </div>
 
