@@ -69,11 +69,18 @@ h3 {
     cursor: pointer;
 }
 
+label{
+    color: #A5A7A9;
+}
+
 
 /* General */
 
 .segment-title {
     margin: 0;
+    &.selected-team-title{
+        opacity: 0.6;
+    }
 }
 
 .segment-title-link-container {
@@ -93,6 +100,9 @@ h3 {
     &.no-padding-tb {
         padding-top: 15px;
         padding-bottom: 15px;
+    }
+    &.no-brd {
+        border: none;
     }
     &:before,
     &:after {
@@ -338,13 +348,14 @@ h3 {
 .event-karma {
     width: 90px;
     float: right;
+    overflow: hidden;
     div {
         display: block;
         float: left;
     }
     .event-karma-count {
         font-size: 24px;
-        font-weight: regular;
+        font-weight: normal;
         p {
             margin: 0;
             font-size: 15px;
@@ -397,9 +408,18 @@ h3 {
         padding-bottom: 15px;
     
         border-right: 1px solid $light-gray;
-         // &:last-child {
-        //     border-bottom: none;
-        // }
+        &:nth-of-type(2) {
+            border-right: none;
+        }
+        &:nth-of-type(5) {
+            border-right: none;
+        }
+        &:nth-of-type(7) {
+            border-right: none;
+        }
+        &:nth-of-type(10) {
+            border-right: none;
+        }
         /* only two items */
         // &:first-child:nth-last-child(2),
         // &:first-child:nth-last-child(2) ~ li {
@@ -467,6 +487,14 @@ h3 {
         .description {
             width: calc(100% - 40px);
             float: right;
+        }
+    }
+    &.shift-list{
+        ul{
+            li{
+                min-height: 65px;
+                border-bottom: 2px solid $light-gray;
+            }
         }
     }
 }
@@ -678,7 +706,7 @@ h3 {
         }
         .event-karma-count {
             font-size: 12px;
-            font-weight: regular;
+            font-weight: normal;
             p {
                 margin: 0;
                 font-size: 15px;
@@ -700,6 +728,10 @@ h3 {
     }
 }
 
+.selected-team-list{
+    margin-top: 20px;
+}
+
 
 /* Footer Nav */
 
@@ -711,4 +743,59 @@ h3 {
             width: auto;
         }
     }
+}
+
+/* Modal */
+.modal-content{
+    @include border-radius(0);
+    .modal-header{
+        background: url( 'https://placeimg.com/600/190/people/grayscale' ) top center no-repeat;
+        .input-group{
+            margin: 30px 0;
+            padding: 10px;
+            background: #FFF;
+            border: 1px solid #000;
+            .form-control{
+                border: none;
+                box-shadow: none;
+            }
+            .input-group-btn{
+                border: 1px solid #F7F7F7;
+            }
+        }
+    }
+    .close{
+        font-size: 30px;
+        background: #FFF;
+        @include border-radius(50%);
+        width: 30px;
+        opacity: 1;
+        margin-right: -22px;
+        margin-top: -22px;
+    }
+
+    .modal-footer{
+        .btn{
+            float: left;
+        }
+    }
+}
+
+.btn-ask{
+    cursor: pointer;
+}
+
+.team-mates-avatar{
+    width: 100%;
+    @include block-nooverflow;
+    img{
+        float: right;
+        margin-left: -15px;
+        border: 2px solid #FFF;
+    }
+}
+.team-mates-count{
+    width: 100%;
+    @include block-nooverflow;
+    font-size: 12px;
 }

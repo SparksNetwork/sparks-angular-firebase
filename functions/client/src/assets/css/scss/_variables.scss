@@ -57,13 +57,33 @@
     &.ic-envelope-o,
     &.ic-key,
     &.ic-pencil,
-    &.ic-circle{
+    &.ic-circle,
+    &.ic-delete,
+    &.ic-commenting-o,
+    &.ic-bars,
+    &.ic-paypal,
+    &.ic-credit-card{
     font-family: FontAwesome;
     }
 }
 
+.ic.ic-paypal::before {
+    content: "\f1ed";
+}
+.ic.ic-credit-card::before {
+    content: "\f09d";
+}
+
 .ic.ic-circle::before {
     content: "\f1db";
+}
+
+.ic.ic-delete::before {
+    content: "\f00d";
+}
+
+.ic.ic-commenting-o::before {
+    content: "\f27b";
 }
 
 
@@ -85,6 +105,10 @@
 
 .ic.ic-pencil::before {
     content: "\F040";
+}
+
+.ic.ic-bars::before {
+    content: "\f0c9";
 }
 
 // Colors
