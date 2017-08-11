@@ -143,12 +143,12 @@ Put the file you downloaded in the root of the project directory and name it wha
 
 ### Create a shortcut script to run it
 
-`ng e2e` does not support an `--env` flag, so you have to specify a non-standard `environment.ts` with a command-line environment variable.
+`ng e2e` does not support an `--env` flag, although it uses the `--env` flag in the `ng serve` that you run.  In order for the e2e tests to set up test data in the database, you also have to specify a non-standard `environment.ts` with a command-line environment variable.
 
 In the `package.json` scripts section, add a new script that specifies the environment you want to use.  Make sure you use `cross-env` in order to ensure compatibility between Windows and real operating systems. :)
 
 ```
-    "e2e:dev-sd": "cross-env ANGULAR_ENV=dev-sd ng e2e"
+    "e2e:dev-sd": "cross-env ANGULAR_ENV=dev-sd ng e2e --env=dev-sd"
 ```
 
 Now you can run the e2e tests locally against your own database with 
@@ -180,3 +180,17 @@ Very few routes in the app won't use this: auth, printing, what else?
 ## How Backend Firebase-Functions Work
 
 When you `firebase deploy`, all of the names exported by `/functions/index.js` start running in the cloud.
+
+#End-to-end testing
+
+The application needs to be connected to test database, in the file 
+`/functions/client/src/environments/environment.ts` uncomment only the firebase configuration with the
+following databaseURL: "https://sparksnetworktest.firebaseio.com".
+
+The end-to-end tests use Firebase Admin to manipulate directly the data. Firebase Admin needs a configuration
+file named `adminsdk.json` that will be placed in: `/functions/e2e`. In order to obtain the file:
+- open Firebase console for the Sparks Network Test database
+- go to settings 
+- select the tab Service Accounts
+- click the button: GENERATE NEW PRIVATE KEY
+- rename the downloaded file to `adminsdk.json` and place it in `/functions/e2e`

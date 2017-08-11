@@ -1,6 +1,6 @@
 import { transformAndValidate } from "class-transformer-validator"
 import { Expose } from 'class-transformer'
-import { IsNotEmpty, ValidationError } from 'class-validator'
+import { IsNotEmpty, IsEnum, ValidationError, IsDateString, ValidateNested, IsNumber, IsInt, IsUrl, IsDefined } from 'class-validator'
 
 import {
   BasePaths,
@@ -29,23 +29,50 @@ export enum ProjectType {
 
 export class Project {
   @Expose()
-  public $key: string
+  @IsDefined()
+  @IsNotEmpty()
+  public $key: string;
 
-  projectKey: string;
+  @IsEnum(ProjectType)
   projectType: ProjectType;
 
+  @IsDefined()
   @IsNotEmpty()
   title: string;
 
+  @IsDefined()
+  @IsNotEmpty()
   description: string;
+
+  @IsDefined()
+  @IsDateString()
   startDateTime: string;
+
+  @IsDateString()
   endDateTime?: string;
+
+  @IsDefined()
+  @ValidateNested()
   location: Location;
+
+  @ValidateNested()
   images: ImageRef[];
+
+  @IsNumber()
   ticketPrice?: number;
+
+  @IsDefined()
+  @IsInt()
   maxKarmaPoints: number;
+
+  @IsDefined()
+  @ValidateNested()
   organizer: Organizer;
+
+  @IsUrl()
   projectPageUrl?: string;
+
+  @IsInt()
   shareKarmaPoints?: number;
 
   // test validation works
@@ -56,11 +83,13 @@ export class Project {
 // any methods here will be available on both client and server
 export class ProjectCollection extends BaseCollection { }
 
+const validateOpt = { validator: { skipMissingProperties: true } };
+
 // we have two transform functions for type safety, not sure why overloading isnt working see below
 export const projectTransform = (input: object) =>
-  transformAndValidate<Project>(Project, input)
+  transformAndValidate<Project>(Project, input, validateOpt)
     .catch(logErrors)
 
 export const projectsTransform = (input: object[]) =>
-  transformAndValidate<Project>(Project, input)
+  transformAndValidate<Project>(Project, input, validateOpt)
     .catch(logErrors)
