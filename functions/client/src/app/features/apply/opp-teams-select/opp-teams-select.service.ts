@@ -6,13 +6,13 @@ export class OppTeamsSelectService {
 
     constructor() { }
 
-    public addTeam(key: string){
-        if(this._selectedTeamKeys.indexOf(key)  === -1){
+    public addTeamKey(key: string) {
+        if (this._selectedTeamKeys.indexOf(key) === -1) {
             this._selectedTeamKeys.push(key);
         }
     }
 
-    public getTeams(){
+    public getTeamKeys() {
         return this._selectedTeamKeys;
     }
 
