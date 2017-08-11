@@ -17,8 +17,22 @@
                 <p class="card-text">
                     {{team.question}}
                 </p>
-                
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <textarea rows="4" cols="50" placeholder="Type Your Answer"></textarea>
+        </div>
+    </div>
+    <snui-action-bar [type]="actionBarType.Organizer">
+        <div class="col-xs-8 bottom-nav">
+            <div class="btn-group" role="group">
+                <a href="#" class="btn btn-block btn-default">Previous</a>
+            </div>
+            <div class="btn-group" role="group">
+                <button class="btn btn-block btn-default">Join</button >
+        </div>
+      </div>
+    </snui-action-bar>
 </ng-container>
