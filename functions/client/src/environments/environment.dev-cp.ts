@@ -30,14 +30,14 @@ export const environment = {
   //   storageBucket: "sparksnetworktest.appspot.com",
   //   messagingSenderId: "529336251324"
   // }
-    firebaseAdminCredentialFilename: 'firebaseAdminCredentials.dev-cp.json',
-    firebase: {
-      apiKey: "AIzaSyCcUFP8fLHycrnbWl0edVRPUN2lhF-_-mA",
-      authDomain: "sparksnetworkcp.firebaseapp.com",
-      databaseURL: "https://sparksnetworkcp.firebaseio.com",
-      projectId: "sparksnetworkcp",
-      storageBucket: "sparksnetworkcp.appspot.com",
-      messagingSenderId: "137007279310"
+  firebaseAdminCredentialFilename: 'firebaseAdminCredentials.dev-cp.json',
+  firebase: {
+    apiKey: "AIzaSyCcUFP8fLHycrnbWl0edVRPUN2lhF-_-mA",
+    authDomain: "sparksnetworkcp.firebaseapp.com",
+    databaseURL: "https://sparksnetworkcp.firebaseio.com",
+    projectId: "sparksnetworkcp",
+    storageBucket: "sparksnetworkcp.appspot.com",
+    messagingSenderId: "137007279310"
   },
-   
+
 };

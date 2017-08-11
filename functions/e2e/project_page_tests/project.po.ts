@@ -74,6 +74,19 @@ export class ProjectPage {
       .$$('div.text').first().all(by.css('p')).first().getText();
   }
 
+  getDescriptionText(){
+    return element(by.className('event-description segment')).$('p').getText();
+  }
+
+  getLocationLink(){
+    return element(by.className('event-date-location segment'))
+    .element(by.css('project-project-location')).$$('a').first(); 
+  }
+
+  getLocationName(){
+    return element(by.className('event-date-location segment'))
+    .element(by.css('project-project-location')).$$('a').first().$('div.text').getText();
+  }
 
 
 }
