@@ -25,6 +25,10 @@ const routes: Routes = [
         path: 'project',
         loadChildren: '../project/project.module#ProjectModule',
       },
+      {
+        path: 'apply',
+        loadChildren: '../apply/apply.module#ApplyModule',
+      },
     ]
   }
 ];
