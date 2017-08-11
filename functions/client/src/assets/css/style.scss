@@ -282,8 +282,8 @@ label {
     &.navbar-default {
         border: none;
         background-color: #FFF;
-        color: rgba(255, 255, 255, 0.7);
         min-height: 85px;
+        padding: 0 15px;
         >.container {
             padding: 23px 15px;
             .navbar-brand {
