@@ -143,12 +143,12 @@ Put the file you downloaded in the root of the project directory and name it wha
 
 ### Create a shortcut script to run it
 
-`ng e2e` does not support an `--env` flag, so you have to specify a non-standard `environment.ts` with a command-line environment variable.
+`ng e2e` does not support an `--env` flag, although it uses the `--env` flag in the `ng serve` that you run.  In order for the e2e tests to set up test data in the database, you also have to specify a non-standard `environment.ts` with a command-line environment variable.
 
 In the `package.json` scripts section, add a new script that specifies the environment you want to use.  Make sure you use `cross-env` in order to ensure compatibility between Windows and real operating systems. :)
 
 ```
-    "e2e:dev-sd": "cross-env ANGULAR_ENV=dev-sd ng e2e"
+    "e2e:dev-sd": "cross-env ANGULAR_ENV=dev-sd ng e2e --env=dev-sd"
 ```
 
 Now you can run the e2e tests locally against your own database with 
