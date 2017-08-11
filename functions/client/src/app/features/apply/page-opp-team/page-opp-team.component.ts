@@ -11,14 +11,19 @@ import { ActionBarType } from "../../../shared/snui/action-bar/action-bar.compon
 export class PageOppTeamComponent implements OnInit {
     public team: Observable<Team>;
     public actionBarType = ActionBarType;
+    public answer: string;
 
     constructor(
         public route: ActivatedRoute
     ) { }
 
-    ngOnInit() { 
-         this.route.data.subscribe(data => {
+    ngOnInit() {
+        this.route.data.subscribe(data => {
             this.team = data['team'];
         })
+    }
+    
+    join(){
+        console.log(this.answer);
     }
 }

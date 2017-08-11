@@ -22,7 +22,7 @@
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <textarea rows="4" cols="50" placeholder="Type Your Answer"></textarea>
+            <textarea [(ngModel)]='answer' rows="4" cols="50" placeholder="Type Your Answer"></textarea>
         </div>
     </div>
     <snui-action-bar [type]="actionBarType.Organizer">
@@ -31,7 +31,7 @@
                 <a href="#" class="btn btn-block btn-default">Previous</a>
             </div>
             <div class="btn-group" role="group">
-                <button class="btn btn-block btn-default">Join</button >
+                <button class="btn btn-block btn-default" (click)='join()'>Join</button >
         </div>
       </div>
     </snui-action-bar>
