@@ -9,9 +9,9 @@
   </div>
 </div>
 
-<div class="row" *ngIf='teams | async; let teams'>
+<div class="row" *ngIf='notSelectedTeams'>
   <div class="col-xs-12">
-    <ng-container *ngFor='let team of teams'>
+    <ng-container *ngFor='let team of notSelectedTeams'>
           <a [routerLink]="['..',team.$key]">
             <snui-team-card-item 
               [title]='team.title' 
