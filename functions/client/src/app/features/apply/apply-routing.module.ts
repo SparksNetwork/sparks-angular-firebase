@@ -12,6 +12,7 @@ import { ResolveTeamByOppKey } from "../../core/sndomain/team/resolve-team-by-op
 import { PageOppTeamsComponent } from "./page-opp-teams/page-opp-teams.component";
 import { PageOppTeamComponent } from "./page-opp-team/page-opp-team.component";
 import { PageOppHomeTeamsComponent } from "./page-opp-home-teams/page-opp-home-teams.component";
+import { ResolveTeamByTeamKey } from "./resolve-team-by-team-key/resolve-team-by-team-key.service";
 
 const routes: Routes = [
     {
@@ -40,8 +41,11 @@ const routes: Routes = [
                         component: PageOppTeamsComponent
                     },
                     {
-                        path: 'teams/:teamKey',
-                        component: PageOppTeamComponent
+                        path: ':teamKey',
+                        component: PageOppTeamComponent,
+                        resolve: {
+                            team: ResolveTeamByTeamKey
+                        }
                     }
                 ]
             }
