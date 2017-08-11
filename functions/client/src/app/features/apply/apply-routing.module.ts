@@ -11,14 +11,13 @@ import { PageCompleteProfileComponent } from "./page-complete-profile/page-compl
 import { ResolveTeamByOppKey } from "../../core/sndomain/team/resolve-team-by-opp-key.service";
 import { PageOppTeamsComponent } from "./page-opp-teams/page-opp-teams.component";
 import { PageOppTeamComponent } from "./page-opp-team/page-opp-team.component";
-import { ResolveTeamByTeamKey } from "../../core/sndomain/team/resolve-team-by-team-key.service";
 
 const routes: Routes = [
     {
         path: ':oppKey',
         canActivate: [
-        //    RequireAuth,
-        //    RequireEmailVerification,
+            //    RequireAuth,
+            //    RequireEmailVerification,
         ],
         resolve: {
             opps: ResolveOppByProjectKey
@@ -33,14 +32,13 @@ const routes: Routes = [
                 component: PageOppTeamsComponent,
                 resolve: {
                     teams: ResolveTeamByOppKey
-                }
-            },
-            {
-                path: 'teams/:teamKey',
-                component: PageOppTeamComponent,
-                resolve: {
-                    team: ResolveTeamByTeamKey
-                }
+                },
+                children: [
+                    {
+                        path: ':teamKey',
+                        component: PageOppTeamComponent
+                    }
+                ]
             }
         ]
     }
