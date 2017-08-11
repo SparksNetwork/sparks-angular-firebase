@@ -27,14 +27,17 @@
           </div>
         </div>
 
-        <div class="form-input" [class.has-error]="!profileForm.get('phone').valid && profileForm.get('phone').touched">
+        <div class="form-input" [class.has-error]="!profileForm.get('phoneNumber').valid && profileForm.get('phoneNumber').touched">
           <div class="icon">
             <span class="ic ic-phone"></span>
           </div>
           <div class="text">
-            <input type="tel" class="form-control" placeholder="What's Your Phone Number?" formControlName="phone">
-            <div class="error" *ngIf="profileForm.get('phone').hasError('required') && profileForm.get('phone').touched ">
+            <input type="tel" class="form-control" placeholder="What's Your Phone Number?" formControlName="phoneNumber">
+            <div class="error" *ngIf="profileForm.get('phoneNumber').hasError('required') && profileForm.get('phoneNumber').touched ">
               Phone Number is required
+            </div>
+            <div class="error" *ngIf="profileForm.get('phoneNumber').hasError('phone') && profileForm.get('phoneNumber').touched ">
+              Phone Number is invalid
             </div>
           </div>
         </div>
@@ -47,6 +50,9 @@
             <input type="date" class="form-control" placeholder="What's Your Birthday" formControlName="birthday">
             <div class="error" *ngIf="profileForm.get('birthday').hasError('required') && profileForm.get('birthday').touched ">
               Birthday is required
+            </div>
+            <div class="error" *ngIf="profileForm.get('birthday').hasError('date') && profileForm.get('birthday').touched ">
+              Birthday is invalid
             </div>
           </div>
         </div>

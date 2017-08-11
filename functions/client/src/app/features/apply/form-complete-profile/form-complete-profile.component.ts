@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ValidatorService } from "../../../shared/validators/validator.service";
 
 @Component({
   selector: 'apply-form-complete-profile',
@@ -13,8 +14,8 @@ export class FormCompleteProfileComponent implements OnInit {
     this.profileForm = this.builder.group({
       legalName: ['', [Validators.required]],
       preferredName: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
-      birthday: ['', [Validators.required]]
+      phoneNumber: ['', [Validators.required, ValidatorService.phoneNumberValidator]],
+      birthday: ['', [Validators.required, ValidatorService.dateValidator]]
     })
   }
 
