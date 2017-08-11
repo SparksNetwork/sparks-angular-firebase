@@ -20,6 +20,7 @@ export class Team {
     public title: string
     public description: string
     public icon: string
+    public question: string
 }
 
 // any methods here will be available on both client and server
