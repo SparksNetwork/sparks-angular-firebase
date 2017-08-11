@@ -93,8 +93,16 @@ export class ProjectPage {
       .element(by.css('project-project-date')).$$('a').first().$('div.text').getText();
   }
 
-  getLinkToAddToCalendar(){
+  getLinkToAddToCalendar() {
     return element(by.css('project-project-date a'));
+  }
+
+  getMaximumKarmaPoints() {
+    return element(by.css('div.event-karma > div.event-karma-count')).getText();
+  }
+
+  getShareKarmaPoints() {
+    return element(by.id('share-for-karma')).element(by.css('span')).getText();
   }
 
 }

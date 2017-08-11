@@ -218,6 +218,26 @@ describe("Project with multiple oportunities", () => {
 
     });
 
+    it('It should display maximum karma points', function () {
+
+        page.navigateTo();
+        browser.sleep(3000);
+        browser.waitForAngularEnabled(false);
+
+        page.getMaximumKarmaPoints().then(function (str) { expect(str).toContain("1519") });
+
+    });
+
+    it('It should display the karma points received if the user shares the event', function () {
+
+        page.navigateTo();
+        browser.sleep(3000);
+        browser.waitForAngularEnabled(false);
+
+        page.getShareKarmaPoints().then(function (str) { expect(str).toContain("100") });
+
+    });
+
 
 
 });
