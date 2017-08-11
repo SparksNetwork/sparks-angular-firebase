@@ -238,6 +238,30 @@ describe("Project with multiple oportunities", () => {
 
     });
 
+    it('It should display a link to Event Page', function () {
+
+        page.navigateTo();
+        browser.sleep(3000);
+        browser.waitForAngularEnabled(false);
+
+        let eventPageLink = page.getLinkToEventPage();
+        let hrefAttribute = eventPageLink.getAttribute('href');
+
+        hrefAttribute.then(function (str)
+        { expect(str).toMatch("http://2017.lucidityfestival.com/", "The link was not correct") });
+
+        eventPageLink.click().then(function () {
+            browser.getAllWindowHandles().then(function (handles) {
+                let newWindowHandle = handles[1]; // this is the new window
+
+                browser.switchTo().window(newWindowHandle).then(function () {
+                    expect(browser.getCurrentUrl()).toEqual(hrefAttribute, "The link did not open");
+                });
+                browser.close();
+                browser.switchTo().window(handles[0]);
+            });
+        });       
+    });
 
 
 });

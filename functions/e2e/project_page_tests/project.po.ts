@@ -105,4 +105,8 @@ export class ProjectPage {
     return element(by.id('share-for-karma')).element(by.css('span')).getText();
   }
 
+  getLinkToEventPage(){
+    return element(by.css('div.page-social.row')).$$('a').first();
+  }
+
 }
