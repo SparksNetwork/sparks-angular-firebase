@@ -11,6 +11,7 @@ import { PageCompleteProfileComponent } from "./page-complete-profile/page-compl
 import { ResolveTeamByOppKey } from "../../core/sndomain/team/resolve-team-by-opp-key.service";
 import { PageOppTeamsComponent } from "./page-opp-teams/page-opp-teams.component";
 import { PageOppTeamComponent } from "./page-opp-team/page-opp-team.component";
+import { PageOppHomeTeamsComponent } from "./page-opp-home-teams/page-opp-home-teams.component";
 
 const routes: Routes = [
     {
@@ -29,13 +30,17 @@ const routes: Routes = [
             },
             {
                 path: 'teams',
-                component: PageOppTeamsComponent,
+                component: PageOppHomeTeamsComponent,
                 resolve: {
                     teams: ResolveTeamByOppKey
                 },
                 children: [
                     {
-                        path: ':teamKey',
+                        path: '',
+                        component: PageOppTeamsComponent
+                    },
+                    {
+                        path: 'teams/:teamKey',
                         component: PageOppTeamComponent
                     }
                 ]
@@ -50,4 +55,4 @@ const routes: Routes = [
 })
 export class ApplyRoutingModule { }
 
-export const routedComponents = [PageCompleteProfileComponent, PageOppTeamsComponent, PageOppTeamComponent];
+export const routedComponents = [PageCompleteProfileComponent, PageOppHomeTeamsComponent, PageOppTeamsComponent, PageOppTeamComponent];
