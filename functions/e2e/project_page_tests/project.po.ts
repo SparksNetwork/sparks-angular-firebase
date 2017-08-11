@@ -74,19 +74,27 @@ export class ProjectPage {
       .$$('div.text').first().all(by.css('p')).first().getText();
   }
 
-  getDescriptionText(){
+  getDescriptionText() {
     return element(by.className('event-description segment')).$('p').getText();
   }
 
-  getLocationLink(){
+  getLocationLink() {
     return element(by.className('event-date-location segment'))
-    .element(by.css('project-project-location')).$$('a').first(); 
+      .element(by.css('project-project-location')).$$('a').first();
   }
 
-  getLocationName(){
+  getLocationName() {
     return element(by.className('event-date-location segment'))
-    .element(by.css('project-project-location')).$$('a').first().$('div.text').getText();
+      .element(by.css('project-project-location')).$$('a').first().$('div.text').getText();
   }
 
+  getDate() {
+    return element(by.className('event-date-location segment'))
+      .element(by.css('project-project-date')).$$('a').first().$('div.text').getText();
+  }
+
+  getLinkToAddToCalendar(){
+    return element(by.css('project-project-date a'));
+  }
 
 }

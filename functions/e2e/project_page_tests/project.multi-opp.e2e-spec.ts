@@ -199,5 +199,25 @@ describe("Project with multiple oportunities", () => {
         { expect(str).toContain('CA', "State was not correct") });
     });
 
+    it('Time interval should be: Feb 2 - Apr 13', function () {
+
+        page.navigateTo();
+        browser.sleep(3000);
+        browser.waitForAngularEnabled(false);
+        page.getDate().then(function (str) { expect(str).toMatch("Feb 2 - Apr 13") });
+
+    });
+
+    it('It should display a link to add event to calendar', function () {
+
+        page.navigateTo();
+        browser.sleep(3000);
+        browser.waitForAngularEnabled(false);
+
+        page.getDate().then(function (link) { expect(link).not.toBeNull() });
+
+    });
+
+
 
 });
