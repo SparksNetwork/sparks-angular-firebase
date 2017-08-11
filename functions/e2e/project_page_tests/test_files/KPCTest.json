@@ -1,0 +1,31 @@
+{
+     "KPCTest" : {
+      "communityBenefit" : "Serve your neighborhood",
+      "description" : "Make Kellog Park grat again! Help plant, paint, and beautify out community park.",
+      "images" : [ {
+        "imageUrl" : "http://placeimg.com/640/480/animals/grayscale"
+      }, {
+        "imageUrl" : "http://placeimg.com/640/480/nature/grayscale"
+      }, {
+        "imageUrl" : "http://placeimg.com/640/480/arch/grayscale"
+      } ],
+      "location" : {
+        "address" : "1234 Kellogg",
+        "city" : "Ventura",
+        "name" : "Kellogg Park",
+        "state" : "CA"
+      },
+      "maxKarmaPoints" : 20,
+      "organizer" : {
+        "imageUrl" : "https://placeimg.com/40/40/people/grayscale",
+        "name" : "Miguel Rodriguez",
+        "organization" : "Colectiva Avenida",
+        "organizerKey" : 0
+      },
+      "projectPageUrl" : "https://firebase.google.com/",
+      "projectType" : "Simple",
+      "shareKarmaPoints" : 100,
+      "startDateTime" : "2017-07-15T19:00:00.000Z",
+      "title" : "Park Cleanup"
+    }
+}

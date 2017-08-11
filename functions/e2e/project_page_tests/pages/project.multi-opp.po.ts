@@ -1,6 +1,6 @@
 import { browser, by, element } from 'protractor';
 
-export class ProjectPage {
+export class ProjectMultiOppPage {
 
   navigateTo() {
     return browser.get('/project/LCTest');
@@ -91,10 +91,6 @@ export class ProjectPage {
   getDate() {
     return element(by.className('event-date-location segment'))
       .element(by.css('project-project-date')).$$('a').first().$('div.text').getText();
-  }
-
-  getLinkToAddToCalendar() {
-    return element(by.css('project-project-date a'));
   }
 
   getMaximumKarmaPoints() {

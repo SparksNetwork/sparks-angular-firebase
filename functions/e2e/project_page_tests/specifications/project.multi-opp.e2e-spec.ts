@@ -1,10 +1,10 @@
-import { ProjectPage } from "./project.po";
 import { browser } from "protractor/built";
+import { ProjectMultiOppPage } from "../pages/project.multi-opp.po";
 
-var firebaseAccessHandler = require('../setup/firebaseAccess');
+var firebaseAccessHandler = require('../../setup/firebaseAccess');
 
 describe("[ProjectPage] Project with multiple oportunities", () => {
-    let page: ProjectPage;
+    let page: ProjectMultiOppPage;
 
     beforeAll(() => {
         firebaseAccessHandler.loadFile('./e2e/project_page_tests/test_files/LCTest.json', "project");
@@ -23,10 +23,10 @@ describe("[ProjectPage] Project with multiple oportunities", () => {
     });
 
     beforeEach(() => {
-        page = new ProjectPage();
+        page = new ProjectMultiOppPage();
     });
 
-    it('Title shoudld be `Lucidity Crossroads`', function () {
+    it('Title should be `Lucidity Crossroads`', function () {
 
         page.navigateTo();
         browser.sleep(3000);
@@ -205,16 +205,6 @@ describe("[ProjectPage] Project with multiple oportunities", () => {
         browser.sleep(3000);
         browser.waitForAngularEnabled(false);
         page.getDate().then(function (str) { expect(str).toMatch("Feb 2 - Apr 13") });
-
-    });
-
-    it('It should display a link to add event to calendar', function () {
-
-        page.navigateTo();
-        browser.sleep(3000);
-        browser.waitForAngularEnabled(false);
-
-        page.getDate().then(function (link) { expect(link).not.toBeNull() });
 
     });
 
