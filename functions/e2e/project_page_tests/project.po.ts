@@ -109,4 +109,18 @@ export class ProjectPage {
     return element(by.css('div.page-social.row')).$$('a').first();
   }
 
+  getAskOrganizerLinkText(){
+     return element(by.id('event-contact')).element(by.css('a')).element(by.css('div.text')).getText();
+  }
+
+  getOrganizerDetails(){
+    return element(by.className("event-organizer segment"))
+    .$('div.row').$('div.col-xs-9').getText();
+  }
+
+  getOrganizerImage(){
+    return element(by.className("event-organizer segment"))
+     .$('div.row').$('div.col-xs-3').$('img.img-circle');
+  }
+
 }

@@ -87,24 +87,24 @@ describe("Project with multiple oportunities", () => {
             .then(function (str) { expect(str).toContain("glyphicon-cog") });
     });
 
-    it('First oportunity should have the title: 1-Shift $209', function () {
+    it('First oportunity should have the contribution value: 209', function () {
 
         page.navigateTo();
         browser.sleep(3000);
         browser.waitForAngularEnabled(false);
 
         page.getFirstOportunityTitle()
-            .then(function (str) { expect(str).toEqual('1-Shift $209') });
+            .then(function (str) { expect(str).toContain('209') });
     });
 
-    it('First oportunity should have the contribution value: $374 in value', function () {
+    it('First oportunity should have the benefit value: 374', function () {
 
         page.navigateTo();
         browser.sleep(3000);
         browser.waitForAngularEnabled(false);
 
         page.getFirstOportunityContribValue()
-            .then(function (str) { expect(str).toEqual('$374 in value') });
+            .then(function (str) { expect(str).toContain('374') });
     });
 
     it('First oportunity should have a 44% discount', function () {
@@ -127,14 +127,14 @@ describe("Project with multiple oportunities", () => {
             .then(function (str) { expect(str).toEqual('Pre-Event Weekends') });
     });
 
-    it('Third oportunity should have the contribution value: $364 in value', function () {
+    it('Third oportunity should have the contribution value: 364', function () {
 
         page.navigateTo();
         browser.sleep(3000);
         browser.waitForAngularEnabled(false);
 
         page.getThirdOportunityContribValue()
-            .then(function (str) { expect(str).toEqual('$364 in value') });
+            .then(function (str) { expect(str).toContain('364') });
     });
 
     it('The description should be: Hello my magical unicorns! Come work and play with us at '
@@ -261,6 +261,43 @@ describe("Project with multiple oportunities", () => {
                 browser.switchTo().window(handles[0]);
             });
         });       
+    });
+
+    it('It should display a link to ask the organizer', function () {
+
+        page.navigateTo();
+        browser.sleep(3000);
+        browser.waitForAngularEnabled(false);
+
+        page.getAskOrganizerLinkText().then(function (str) { expect(str).toContain("Ask The Organizer") });
+
+    });
+
+    it('It should display: name and organization for the organizer', function () {
+
+        page.navigateTo();
+        browser.sleep(3000);
+        browser.waitForAngularEnabled(false);
+
+        let organizerDetails =page.getOrganizerDetails();
+
+
+        organizerDetails.then(function (str) 
+        { expect(str).toContain("Princess","Name was not correctly displayed") });
+        organizerDetails.then(function (str) 
+        { expect(str).toContain("Lucidity Festival","Organization was not correctly displayed") });
+
+    });
+        it('It should display the image of the organizer', function () {
+
+        page.navigateTo();
+        browser.sleep(3000);
+        browser.waitForAngularEnabled(false);
+
+        page.getOrganizerImage().getAttribute('src').then(function (str) 
+        { expect(str).toMatch("https://placeimg.com/40/40/people/grayscale") });
+
+
     });
 
 
