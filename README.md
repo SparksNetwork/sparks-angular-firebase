@@ -155,9 +155,43 @@ Now you can run the e2e tests locally against your own database with
 
 # Deployment
 
-`firebase deploy` pushes the most recent built files to the cloud project that is selected.  Right now that is just one project.
+You use the `firebase` command line tool in order to deploy the project to the firebase cloud.  There are a few things to coordinate.
 
-TODO: `npm run deploy` to push to staging, this should be a CI action when new merge to develop.  Also `npm run deploy:production`, a CI action to push to staging when new merge to master.
+## Switching Firebase Projects
+
+`firebase use` will show you what projects are configured, and the aliases for those projects. We currently have:
+
+* `qa` is intended for use with automated testing during CI.
+* `staging` is used for pre-release deployment to a final "sanity check" server
+* `prod` is the live production environment
+* `dev-$$` environments exist for each individual developer
+
+When you're working locally, you should `firebase use` your personal development environment.  You can switch to `staging` or `prod` when you are ready to deploy to either of those environments.
+
+## First time project setup
+
+You will need to do a couple of things to a firebase project the first time you use it, or subsequent times if the test data changes.
+
+* In the firebase console -> Authentication -> Sign-In Method, make sure you enable at least Email/Password and Google.  Enabling Facebook requires you to have an actual Facebook app so it's OK to skip it.
+
+* In the firebase console -> Database -> ... -> Import JSON to import the latest `test-data.json` from the repo so that the database is loaded with valid data.
+
+## Building client
+
+There are `npm` scripts that automate this for you, see: `npm run build:client:prod`, `npm run build:client:staging`, etc.  Under the covers, these scripts do two things:
+
+* Set the target to `production` so that `ngc` compiles with AOT options for a faster client experience.
+* Selects the specific `environment` so that the correct settings are compiled into the dist.
+
+# Building server
+
+For now, as there is no difference in server environments, just use `npm run build:server` to compile everything from `/functions/server/src` to `/functions/server/dist`.
+
+# Deploying to firebase
+
+*MAKE SURE THAT YOU ARE `use`ING THE CORRECT PROJECT BEFORE YOU DO THIS!!!11!!1!*
+
+`npm run deploy` will deploy the latest client and server files to the currently `use`'d firebase project.  All it does is `firebase deploy --only hosting,functions`.
 
 # Why This Way?
 
@@ -183,9 +217,7 @@ When you `firebase deploy`, all of the names exported by `/functions/index.js` s
 
 #End-to-end testing
 
-The application needs to be connected to test database, in the file 
-`/functions/client/src/environments/environment.ts` uncomment only the firebase configuration with the
-following databaseURL: "https://sparksnetworktest.firebaseio.com".
+Make sure you are `firebase use`ing either your development environment or the qa environment when you run the e2e tests.
 
 The end-to-end tests use Firebase Admin to manipulate directly the data. Firebase Admin needs a configuration
 file named `adminsdk.json` that will be placed in: `/functions/e2e`. In order to obtain the file:
