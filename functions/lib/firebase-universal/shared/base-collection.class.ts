@@ -1,5 +1,4 @@
 import { AngularFireDatabase } from 'angularfire2/database'
-import { BasePaths } from './base-paths.class'
 import * as firebase from 'firebase'
 
 export interface CollectionPaths {
@@ -16,10 +15,6 @@ export type Database = firebase.database.Database | IDatabase
 export interface IReference extends IQuery {
   key: string
   child: (path: string) => IReference
-  // push: (any) => Promise<IReference>
-  // set: (any) => Promise<any>
-  // update: (any) => Promise<any>
-  // remove: () => Promise<any>
   push: (any) => firebase.Thenable<any>
   set: (any) => firebase.Thenable<any>
   update: (any) => firebase.Thenable<any>
@@ -37,16 +32,11 @@ export interface IQuery {
 export type RefOrQuery = IReference | IQuery
 
 export class BaseCollection {
-  // public ref: firebase.database.Reference
   public ref: Reference
 
   constructor(
     public db: Database,
-    // public db: firebase.database.Database,
     public paths: CollectionPaths,
-
-    // public ref: any
-    // public ref: firebase.database.Reference
   ) {
     this.ref = db.ref(paths.firebase)
   }

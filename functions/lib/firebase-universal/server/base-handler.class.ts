@@ -2,7 +2,7 @@ import * as express from 'express'
 import * as bodyparser from 'body-parser'
 import * as cors from 'cors'
 
-import { BaseCollection, BasePaths } from '../../../lib/firebase-universal/shared'
+import { BaseCollection } from '../../../lib/firebase-universal/shared'
 
 export class BaseHandler {
   constructor(

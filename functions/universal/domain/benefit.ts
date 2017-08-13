@@ -3,7 +3,6 @@ import { transformAndValidate } from 'class-transformer-validator'
 import { Expose } from 'class-transformer'
 
 import {
-    BasePaths,
     BaseCollection,
     Database,
 } from '../../lib/firebase-universal/shared'
@@ -22,11 +21,6 @@ export class BenefitCollection extends BaseCollection {
     public byOppKey(key: string) {
         return this.by('oppKey', key)
     }
-}
-
-export class BenefitPaths extends BasePaths {
-    firebase = '/benefit'
-    api = 'http://localhost:5002/sparks-development-sd/us-central1/api/benefit'
 }
 
 export enum BenefitType {

@@ -3,19 +3,25 @@ import { transformAndValidate } from "class-transformer-validator"
 import { Expose } from 'class-transformer'
 import { IsNotEmpty, IsEnum, ValidationError, IsDateString, ValidateNested, IsNumber, IsInt, IsUrl, IsDefined } from 'class-validator'
 
-
 import {
-  BasePaths,
   BaseCollection,
   Database,
 } from '../../lib/firebase-universal/shared'
+
 import { logErrors } from "../logger/logger";
 
-export class OppPaths extends BasePaths {
-  firebase = '/opp'
-  api = 'http://localhost:5002/sparks-development-sd/us-central1/api/opp'
-  // firebase = '/Projects'
-  // api = 'https://sparksnetwork-6de8b.firebaseio.com/Projects'
+// any methods here will be available on both client and server
+export class OppCollection extends BaseCollection {
+  constructor(public db: Database) {
+    super(db, {
+      api: '/opp',
+      firebase: '/opp'
+    })
+  }
+
+  public byProjectKey(key: string) {
+    return this.by('projectKey', key)
+  }
 }
 
 export class Opp {
@@ -42,20 +48,6 @@ export class Opp {
 
   get discount(): number {
     return 1 - (this.contribValue / this.benefitValue)
-  }
-}
-
-// any methods here will be available on both client and server
-export class OppCollection extends BaseCollection {
-  constructor(public db: Database) {
-    super(db, {
-      api: '/opp',
-      firebase: '/opp'
-    })
-  }
-
-  public byProjectKey(key: string) {
-    return this.by('projectKey', key)
   }
 }
 

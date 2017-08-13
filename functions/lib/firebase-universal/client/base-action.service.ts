@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core'
 import { Http } from '@angular/http'
-
-import { BasePaths } from '../shared/base-paths.class'
-
+import { CollectionPaths } from '../shared'
 export class BaseActionService {
   public url: string
 
   constructor(
-    public paths: BasePaths,
+    public apiRoot: string,
+    public apiPath: string,
     public http: Http,
   ) {
-    this.url = this.paths.api
+    this.url = apiRoot + apiPath
   }
 
   public create(value) {
@@ -22,7 +21,7 @@ export class BaseActionService {
         console.log('err', err.json())
       })
   }
-  
+
   public replace(key: string, value) {
     console.log('replace', value)
     const url = `${this.url}/${key}`

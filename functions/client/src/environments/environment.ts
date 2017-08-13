@@ -6,6 +6,7 @@
 export const environment = {
   production: false,
   firebaseAdminCredentialFilename: '',
+  apiRoot: 'http://localhost:5002/sparks-sparksnetwork-6de8b/us-central1/api',
   firebase: {
     apiKey: "AIzaSyCQXrtWwVgGjZ0dOo5W92HnFvkWl9kgns4",
     authDomain: "sparksnetwork-6de8b.firebaseapp.com",

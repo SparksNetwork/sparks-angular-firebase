@@ -3,7 +3,6 @@ import { IsNotEmpty, IsEnum, IsInt, IsDefined } from 'class-validator/decorator/
 import { transformAndValidate } from 'class-transformer-validator'
 
 import {
-  BasePaths,
   BaseCollection,
   Database,
 } from '../../lib/firebase-universal/shared'
@@ -12,19 +11,14 @@ import {
 export class ContribCollection extends BaseCollection {
   constructor(public db: Database) {
     super(db, {
-      api: '/opp',
-      firebase: '/opp'
+      api: '/contrib',
+      firebase: '/contrib'
     })
   }
 
   public byOppKey(key: string) {
     return this.by('oppKey', key)
   }
-}
-
-export class ContribPaths extends BasePaths {
-  firebase = '/contrib'
-  api = 'http://localhost:5002/sparks-development-sd/us-central1/api/contrib'
 }
 
 export enum ContribType {
