@@ -17,12 +17,6 @@ export class ResolveContribByOppKey implements Resolve<any> {
   public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const oppKey = route.paramMap.get('oppKey')
     const contribs = list(this.contribQuery.collection.byOppKey(oppKey))
-    // const contribs = this.contribQuery.af.list('/contrib', {
-    //   query: {
-    //     orderByChild: 'oppKey',
-    //     equalTo: oppKey,
-    //   },
-    // })
 
     return contribs
       .map(() => contribs)

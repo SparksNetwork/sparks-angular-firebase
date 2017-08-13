@@ -4,6 +4,8 @@ import {
   OppQueryService,
 } from '../../../core/sndomain/opp/opp-query.service'
 
+import { list } from '../../../../../../lib/firebase-angular-observables'
+
 @Injectable()
 export class PageProjectHomeAllOppsGuard implements CanActivate {
   constructor(
@@ -13,12 +15,7 @@ export class PageProjectHomeAllOppsGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const projectKey = route.paramMap.get('projectKey')
-    return this.oppQuery.af.list('/opp', {
-        query: {
-          orderByChild: 'projectKey',
-          equalTo: projectKey,
-        }
-      })
+    return list(this.oppQuery.collection.byProjectKey(projectKey))
       .do(opps => {
         console.log('guard found opps', opps)
         if (opps && (opps.length == 1)) {

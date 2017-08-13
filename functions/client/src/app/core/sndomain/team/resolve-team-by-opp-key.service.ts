@@ -10,7 +10,6 @@ import { OppAllowedTeamQueryService } from "../oppAllowedTeam/oppAllowedTeam-que
 // import { OppAllowedTeamQueryService }
 import { list } from '../../../../../../lib/firebase-angular-observables'
 
-
 @Injectable()
 export class ResolveTeamByOppKey implements Resolve<any> {
 
@@ -21,12 +20,6 @@ export class ResolveTeamByOppKey implements Resolve<any> {
   public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<Team[]>> {
     const oppKey = route.paramMap.get('oppKey')
     const teams = list(this.query.collection.by('oppKey', oppKey))
-    // const teams = this.query.af.list('/oppAllowedTeam', {
-    //   query: {
-    //     orderByChild: 'oppKey',
-    //     equalTo: oppKey,
-    //   },
-    // })
       .map(oppAllowedTeams => oppAllowedTeams.map(oAT => ({$key: oAT.teamKey, ...oAT.team})))
       .mergeMap(teamsTransform)
 

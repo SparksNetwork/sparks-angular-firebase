@@ -8,6 +8,8 @@ import { Observable } from "rxjs/Observable";
 import { BenefitQueryService } from '../../../core/sndomain/benefit/benefit-query.service'
 import { Benefit } from "../../../../../../universal/domain/benefit";
 
+import { list } from '../../../../../../lib/firebase-angular-observables'
+
 @Injectable()
 export class ResolveBenefitByFirstOpp implements Resolve<any> {
 
@@ -19,12 +21,7 @@ export class ResolveBenefitByFirstOpp implements Resolve<any> {
     const opps = route.parent.data['opps']
     const firstOpp = opps.map(opps => opps[0])
     const Benefits = firstOpp
-      .mergeMap(opp => this.benefitQuery.af.list('/benefit', {
-        query: {
-          orderByChild: 'oppKey',
-          equalTo: opp.$key,
-        }
-      }))
+      .mergeMap(opp => list(this.benefitQuery.collection.byOppKey(opp.$key)))
 
     return Benefits
       .map(() => Benefits)

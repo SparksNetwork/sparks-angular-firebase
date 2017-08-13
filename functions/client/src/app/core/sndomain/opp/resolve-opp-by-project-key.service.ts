@@ -24,12 +24,6 @@ export class ResolveOppByProjectKey implements Resolve<any> {
     // see https://github.com/angular/angularfire2/issues/1094
     // this works
     const opps = list(this.query.collection.byProjectKey(projectKey))
-    // const opps = this.oppQuery.af.list('/opp', {
-    //   query: {
-    //     orderByChild: 'projectKey',
-    //     equalTo: projectKey,
-    //   },
-    // })
       .mergeMap(oppsTransform)
 
     return opps
