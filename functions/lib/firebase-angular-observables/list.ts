@@ -6,7 +6,7 @@ import { Observable } from 'rxjs'
 export type RefOrQuery = Reference | Query
 
 function arrayFromValueSnap(snap) {
-  const vals = snap.val()
+  const vals = snap.val() || {}
   return Object.keys(vals).map($key => ({$key, ...vals[$key]}))
 }
 
