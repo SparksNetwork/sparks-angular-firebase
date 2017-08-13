@@ -1,5 +1,5 @@
-import { Component, OnChanges, SimpleChanges, Input } from '@angular/core';
-import { Team } from "../../../../../../universal/domain/team";
+import { Component, OnChanges, SimpleChanges, Input } from '@angular/core'
+import { Team } from '../../../../../../universal/domain/team'
 
 @Component({
     selector: 'project-opp-teams',
@@ -7,7 +7,7 @@ import { Team } from "../../../../../../universal/domain/team";
 })
 
 export class ProjectOppTeamsComponent implements OnChanges {
-    @Input() private teams: Array<Team>;
+    @Input() public teams: Array<Team>;
     private displayedTeams: Array<Team>;
     private collapsedTeams: Array<Team>;
     private collapsedTeamNames: string;
@@ -17,7 +17,7 @@ export class ProjectOppTeamsComponent implements OnChanges {
 
     ngOnChanges(changes: SimpleChanges): void {
         if (this.teams) {
-            let limit = Math.min(this.teams.length, 3);
+            const limit = Math.min(this.teams.length, 3);
             this.displayedTeams = this.teams.slice(0, limit);
             this.collapsedTeams = this.teams.slice(limit, this.teams.length);
             this.collapsedTeamNames = this.collapsedTeams.map((team) => team.title).join(', ');

@@ -1,18 +1,12 @@
 export const environment = {
   production: true,
-  /*   firebase: {
-      apiKey: 'AIzaSyAd6U9h9zzhm8RO17-O05IQeeMmZbcJ7oc',
-      authDomain: 'sparks-development-sd.firebaseapp.com',
-      databaseURL: 'https://sparks-development-sd.firebaseio.com',
-      storageBucket: 'gs://sparks-development-sd.appspot.com',
-      // messagingSenderId: '277847429817',
-    }, */
+  apiRoot: 'https://us-central1-sparks-staging-773ac.cloudfunctions.net/api',
   firebase: {
-    apiKey: "AIzaSyCQXrtWwVgGjZ0dOo5W92HnFvkWl9kgns4",
-    authDomain: "sparksnetwork-6de8b.firebaseapp.com",
-    databaseURL: "https://sparksnetwork-6de8b.firebaseio.com",
-    projectId: "sparksnetwork-6de8b",
-    storageBucket: "sparksnetwork-6de8b.appspot.com",
-    messagingSenderId: "683448204097"
+    "apiKey": "AIzaSyABUPfaGI1yT68eYOD6ByCPVgOdhhwpzjc",
+    "databaseURL": "https://sparks-prod-93f55.firebaseio.com",
+    "storageBucket": "sparks-prod-93f55.appspot.com",
+    "authDomain": "sparks-prod-93f55.firebaseapp.com",
+    "messagingSenderId": "388630855982",
+    "projectId": "sparks-prod-93f55"
   }
 };
