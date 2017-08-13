@@ -6,7 +6,7 @@ import 'rxjs/add/operator/mergeMap'
 import 'rxjs/add/operator/first'
 
 import { Team, teamsTransform } from "../../../../../../universal/domain/team";
-import { TeamQueryService } from '../../../core/sndomain/team/team-query.service'
+// import { TeamQueryService } from '../../../core/sndomain/team/team-query.service'
 import { OppAllowedTeamQueryService } from '../../../core/sndomain/oppAllowedTeam/oppAllowedTeam-query.service'
 import { list } from '../../../../../../lib/firebase-angular-observables'
 
@@ -14,7 +14,7 @@ import { list } from '../../../../../../lib/firebase-angular-observables'
 export class ResolveTeamByFirstOpp implements Resolve<any> {
 
   constructor(
-    public contribQuery: TeamQueryService,
+    // public contribQuery: TeamQueryService,
     public oppAllowedTeamQuery: OppAllowedTeamQueryService,
   ) { }
 
@@ -22,7 +22,7 @@ export class ResolveTeamByFirstOpp implements Resolve<any> {
     const opps = route.parent.data['opps']
     const firstOpp = opps.map(opps => opps[0])
     const teams = firstOpp
-      .mergeMap(opp => list(this.oppAllowedTeamQuery.collection.by('oppKey', opp.$key)))
+      .mergeMap(opp => list(this.oppAllowedTeamQuery.by('oppKey', opp.$key)))
       .map(oppAllowedTeams => oppAllowedTeams.map(oAT => ({$key: oAT.teamKey, ...oAT.team})))
       .mergeMap(teamsTransform)
       .do(teams => console.log('teams found', teams))

@@ -1,23 +1,18 @@
-import { Injectable, Inject } from '@angular/core'
+import { Injectable } from '@angular/core'
 import { Http } from '@angular/http'
 
-import {
-  BaseActionService,
-  BasePaths,
-} from '../../../../../../lib/firebase-universal/client'
+import { BaseActionService } from '../../../../../../lib/firebase-universal/client'
 
-import { BenefitPathsService } from './benefit-paths.service'
-
-const APIROOT = 'http://localhost:5002/sparks-development-sd/us-central1/api/project'
+import { BenefitQueryService } from './benefit-query.service'
 
 @Injectable()
 export class BenefitActionService extends BaseActionService {
 
   constructor(
-    @Inject(BenefitPathsService) paths: BasePaths,
+    public query: BenefitQueryService,
     public http: Http,
   ) {
-    super(paths, http)
+    super(query.paths, http)
   }
 
 }

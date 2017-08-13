@@ -1,23 +1,18 @@
-import { Injectable, Inject } from '@angular/core'
+import { Injectable } from '@angular/core'
 import { Http } from '@angular/http'
 
-import {
-  BaseActionService,
-  BasePaths,
-} from '../../../../../../lib/firebase-universal/client'
+import { BaseActionService } from '../../../../../../lib/firebase-universal/client'
 
-import { OppPathsService } from './opp-paths.service'
-
-const APIROOT = 'http://localhost:5002/sparks-development-sd/us-central1/api/project'
+import { OppQueryService } from './opp-query.service'
 
 @Injectable()
 export class OppActionService extends BaseActionService {
 
   constructor(
-    @Inject(OppPathsService) paths: BasePaths,
+    public query: OppQueryService,
     public http: Http,
   ) {
-    super(paths, http)
+    super(query.paths, http)
   }
 
 }

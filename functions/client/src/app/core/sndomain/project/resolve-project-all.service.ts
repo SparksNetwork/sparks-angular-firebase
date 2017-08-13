@@ -19,7 +19,7 @@ export class ResolveProjectAll implements Resolve<any> {
   ) { }
 
   public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<Project[] | void>> {
-    const projects = list(this.projectQuery.collection.all())
+    const projects = list(this.projectQuery.all())
 
     return projects
       .map(() => projects)

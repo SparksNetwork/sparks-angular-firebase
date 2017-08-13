@@ -15,10 +15,10 @@ export class PageProjectHomeAllOppsGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const projectKey = route.paramMap.get('projectKey')
-    return list(this.oppQuery.collection.byProjectKey(projectKey))
+    return list(this.oppQuery.byProjectKey(projectKey))
       .do(opps => {
         console.log('guard found opps', opps)
-        if (opps && (opps.length == 1)) {
+        if (opps && (opps.length === 1)) {
           this.router.navigate(['/project', projectKey, 'join'])
         }
       })

@@ -1,27 +1,13 @@
-import { Injectable, Inject } from '@angular/core';
+// import { Injectable, Inject } from '@angular/core';
+// import { AngularFireDatabase } from 'angularfire2/database'
 
-import { AngularFireDatabase } from 'angularfire2/database'
+// import { TeamCollection } from '../../../../../../universal/domain/team'
 
-import {
-  BaseQueryService,
-  BasePaths,
-  BaseCollection,
-} from '../../../../../../lib/firebase-universal/client'
-
-
-
-import { OppCollection } from '../../../../../../universal/domain/opp'
-import { TeamPathsService } from "./team-paths.service";
-
-@Injectable()
-export class TeamQueryService extends BaseQueryService<OppCollection> {
-  public static collectionClass = OppCollection
-
-  constructor(
-    @Inject(TeamPathsService) public paths: BasePaths,
-    public af: AngularFireDatabase,
-  ) {
-    super(paths, af)
-  }
-
-}
+// @Injectable()
+// export class TeamQueryService extends TeamCollection {
+//   constructor(
+//     public af: AngularFireDatabase,
+//   ) {
+//     super(af.database)
+//   }
+// }

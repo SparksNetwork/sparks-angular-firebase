@@ -1,10 +1,12 @@
 import * as admin from 'firebase-admin'
+import * as firebase from 'firebase'
 import {
   BaseHandler,
+  Database,
 } from '../../../lib/firebase-universal/server'
 
 import {
-  ProjectPaths,
+  // ProjectPaths,
   ProjectCollection,
 } from '../../../universal/domain/project'
 
@@ -12,7 +14,7 @@ export class ProjectHandler extends BaseHandler {
   constructor() {
     super(
       '/project',
-      new ProjectCollection(admin.database().ref('/project'))
+      new ProjectCollection(admin.database())
     )
   }
 

@@ -19,11 +19,11 @@ export class BaseQueryService<TCollection extends BaseCollection> {
     this.collection = new this.constructor['collectionClass'](this.af.database.ref(paths.firebase))
   }
 
-  public one(key: string) {
-    return this.af.object(this.collection.one(key))
-  }
+  // public one(key: string) {
+  //   return this.af.object(this.collection.one(key))
+  // }
 
-  public all() {
-    return this.af.list(this.collection.all())
-  }
+  // public all() {
+  //   return this.af.list(this.collection.all())
+  // }
 }

@@ -23,7 +23,7 @@ export class ResolveOppByProjectKey implements Resolve<any> {
     // const opps = this.oppQuery.af.list(this.oppQuery.collection.byProjectKey(projectKey))
     // see https://github.com/angular/angularfire2/issues/1094
     // this works
-    const opps = list(this.query.collection.byProjectKey(projectKey))
+    const opps = list(this.query.byProjectKey(projectKey))
       .mergeMap(oppsTransform)
 
     return opps

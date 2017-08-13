@@ -1,20 +1,33 @@
-import { Expose } from "class-transformer";
+import { Expose } from 'class-transformer'
 import { IsNotEmpty, IsEnum, IsInt, IsDefined } from 'class-validator/decorator/decorators'
-import { transformAndValidate } from "class-transformer-validator";
+import { transformAndValidate } from 'class-transformer-validator'
 
 import {
   BasePaths,
   BaseCollection,
+  Database,
 } from '../../lib/firebase-universal/shared'
+
+// any methods here will be available on both client and server
+export class ContribCollection extends BaseCollection {
+  constructor(public db: Database) {
+    super(db, {
+      api: '/opp',
+      firebase: '/opp'
+    })
+  }
+
+  public byOppKey(key: string) {
+    return this.by('oppKey', key)
+  }
+}
 
 export class ContribPaths extends BasePaths {
   firebase = '/contrib'
   api = 'http://localhost:5002/sparks-development-sd/us-central1/api/contrib'
-  // firebase = '/Projects'
-  // api = 'https://sparksnetwork-6de8b.firebaseio.com/Projects'
 }
 
-export enum ContribType { 
+export enum ContribType {
    Shift,
    PrePayment,
    Deposit,
@@ -47,14 +60,6 @@ export class Contrib {
 
     @IsInt()
     shiftMaxLength?: number;
-}
-
-
-// any methods here will be available on both client and server
-export class ContribCollection extends BaseCollection {
-  public byOppKey(key: string) {
-    return this.by('oppKey', key)
-  }
 }
 
 const validateOpt = { validator: { skipMissingProperties: true } };

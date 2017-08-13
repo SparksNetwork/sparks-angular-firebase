@@ -1,13 +1,28 @@
 import { IsNotEmpty, IsEnum } from 'class-validator/decorator/decorators'
-import { transformAndValidate } from "class-transformer-validator";
-import { Expose } from "class-transformer";
+import { transformAndValidate } from 'class-transformer-validator'
+import { Expose } from 'class-transformer'
 
 import {
     BasePaths,
     BaseCollection,
+    Database,
 } from '../../lib/firebase-universal/shared'
-import { logErrors } from "../logger/logger";
 
+import { logErrors } from '../logger/logger'
+
+// any methods here will be available on both client and server
+export class BenefitCollection extends BaseCollection {
+    constructor(public db: Database) {
+        super(db, {
+            api: '/benefit',
+            firebase: '/benefit'
+        })
+    }
+
+    public byOppKey(key: string) {
+        return this.by('oppKey', key)
+    }
+}
 
 export class BenefitPaths extends BasePaths {
     firebase = '/benefit'
@@ -38,13 +53,6 @@ export class Benefit {
     description: string;
 
     icon?: string;
-}
-
-// any methods here will be available on both client and server
-export class BenefitCollection extends BaseCollection {
-  public byOppKey(key: string) {
-    return this.by('oppKey', key)
-  }
 }
 
 const validateOpt = { validator: { skipMissingProperties: true } };

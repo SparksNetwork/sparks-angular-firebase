@@ -4,7 +4,6 @@ import { HttpModule } from '@angular/http';
 import {
   ProjectQueryService,
   ProjectActionService,
-  ProjectPathsService,
   ResolveProjectAll,
   ResolveProjectByProjectKey,
 } from './project'
@@ -12,7 +11,6 @@ import {
 import {
   OppQueryService,
   OppActionService,
-  OppPathsService,
   ResolveOppByProjectKey,
   ResolveOppByOppKey,
 } from './opp'
@@ -20,26 +18,22 @@ import {
 import {
   ContribQueryService,
   ContribActionService,
-  ContribPathsService,
   ResolveContribByOppKey,
 } from './contrib'
 
 import {
-  ResolveTeamByOppKey, 
-  TeamQueryService,
-  TeamActionService,
-  TeamPathsService
-} from "./team";
+  ResolveTeamByOppKey,
+  // TeamQueryService,
+  // TeamActionService,
+} from './team'
 
 import {
   OppAllowedTeamQueryService,
-  OppAllowedTeamPathsService
-} from "./oppAllowedTeam";
+} from './oppAllowedTeam'
 
 import {
   BenefitQueryService,
   BenefitActionService,
-  BenefitPathsService,
   ResolveBenefitByOppKey,
 } from './benefit'
 
@@ -50,7 +44,6 @@ import {
   exports: [],
   declarations: [],
   providers: [
-    ProjectPathsService,
     ProjectQueryService,
     ProjectActionService,
     ResolveProjectAll,
@@ -58,26 +51,21 @@ import {
 
     OppQueryService,
     OppActionService,
-    OppPathsService,
     ResolveOppByProjectKey,
     ResolveOppByOppKey,
 
     ContribQueryService,
     ContribActionService,
-    ContribPathsService,
     ResolveContribByOppKey,
  
-    TeamQueryService,
-    TeamActionService,
+    // TeamQueryService,
+    // TeamActionService,
     ResolveTeamByOppKey,
-    TeamPathsService,
 
-    OppAllowedTeamPathsService,
     OppAllowedTeamQueryService,
 
     BenefitQueryService,
     BenefitActionService,
-    BenefitPathsService,
     ResolveBenefitByOppKey,
   ],
 })

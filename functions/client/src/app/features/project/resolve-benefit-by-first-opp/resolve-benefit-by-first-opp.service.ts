@@ -14,14 +14,14 @@ import { list } from '../../../../../../lib/firebase-angular-observables'
 export class ResolveBenefitByFirstOpp implements Resolve<any> {
 
   constructor(
-    public benefitQuery: BenefitQueryService,
+    public query: BenefitQueryService,
   ) { }
 
   public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<Benefit[]>> {
     const opps = route.parent.data['opps']
     const firstOpp = opps.map(opps => opps[0])
     const Benefits = firstOpp
-      .mergeMap(opp => list(this.benefitQuery.collection.byOppKey(opp.$key)))
+      .mergeMap(opp => list(this.query.byOppKey(opp.$key)))
 
     return Benefits
       .map(() => Benefits)

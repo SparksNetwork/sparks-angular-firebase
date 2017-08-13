@@ -19,7 +19,7 @@ export class ResolveTeamByOppKey implements Resolve<any> {
 
   public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<Team[]>> {
     const oppKey = route.paramMap.get('oppKey')
-    const teams = list(this.query.collection.by('oppKey', oppKey))
+    const teams = list(this.query.by('oppKey', oppKey))
       .map(oppAllowedTeams => oppAllowedTeams.map(oAT => ({$key: oAT.teamKey, ...oAT.team})))
       .mergeMap(teamsTransform)
 

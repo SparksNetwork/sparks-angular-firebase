@@ -19,7 +19,7 @@ export class BaseHandler {
   public async put(req: express.Request, res, next) {
     console.log('Replace/Put Project', JSON.stringify(req.body, null, 2))
     console.log('key', req.params['key'])
-    const returned = await this.collection.ref.child(req.params['key']).set(req.body).then(() => { return {} })
+    const returned = await this.collection.ref.child(req.params['key']).set(req.body).then(() => ({}))
     return res.status(200).send(JSON.stringify(returned))
   }
 
@@ -28,22 +28,15 @@ export class BaseHandler {
     console.log('key', req.params['key'])
     const obj = req.body
     Object.keys(obj).forEach(k => (!obj[k] && obj[k] !== undefined) && delete obj[k])
-    const returned = await this.collection.ref.child(req.params['key']).update(obj).then(() => { return {} })
+    const returned = await this.collection.ref.child(req.params['key']).update(obj).then(() => ({}))
     return res.status(200).send(JSON.stringify(returned))
   }
 
   public async del(req: express.Request, res, next) {
     console.log('Delete Project')
     console.log('key', req.params['key'])
-    const returned = await this.collection.ref.child(req.params['key']).remove().then(() => { return {} })
+    const returned = await this.collection.ref.child(req.params['key']).remove().then(() => ({}))
     return res.status(200).send(JSON.stringify(returned))
-  }
-}
-
-class ProjectHandler extends BaseHandler {
-  public async post(req, res, next) {
-    console.log('do something extra')
-    return super.post(req, res, next)
   }
 }
 
@@ -59,6 +52,6 @@ export function routeHandler(handler: BaseHandler) {
     .put(handler.put.bind(handler))
     .patch(handler.patch.bind(handler))
     .delete(handler.del.bind(handler))
-  
+
   return router
 }

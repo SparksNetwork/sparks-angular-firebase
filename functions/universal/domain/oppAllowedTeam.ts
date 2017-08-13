@@ -5,6 +5,7 @@ import { Expose } from 'class-transformer'
 import {
   BasePaths,
   BaseCollection,
+  Database,
 } from '../../lib/firebase-universal/shared'
 import { logErrors } from "../logger/logger";
 
@@ -30,6 +31,12 @@ export class OppAllowedTeam {
 
 // any methods here will be available on both client and server
 export class OppAllowedTeamCollection extends BaseCollection {
+  constructor(public db: Database) {
+    super(db, {
+      api: '/oppAllowedTeam',
+      firebase: '/oppAllowedTeam'
+    })
+  }
   // public byProjectKey(key: string) {
   //   return this.by('projectKey', key)
   // }

@@ -7,6 +7,7 @@ import { IsNotEmpty, IsEnum, ValidationError, IsDateString, ValidateNested, IsNu
 import {
   BasePaths,
   BaseCollection,
+  Database,
 } from '../../lib/firebase-universal/shared'
 import { logErrors } from "../logger/logger";
 
@@ -46,6 +47,13 @@ export class Opp {
 
 // any methods here will be available on both client and server
 export class OppCollection extends BaseCollection {
+  constructor(public db: Database) {
+    super(db, {
+      api: '/opp',
+      firebase: '/opp'
+    })
+  }
+
   public byProjectKey(key: string) {
     return this.by('projectKey', key)
   }

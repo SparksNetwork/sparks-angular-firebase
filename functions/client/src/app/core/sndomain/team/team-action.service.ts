@@ -1,23 +1,18 @@
-import { Injectable, Inject } from '@angular/core'
-import { Http } from '@angular/http'
+// import { Injectable } from '@angular/core'
+// import { Http } from '@angular/http'
 
-import {
-  BaseActionService,
-  BasePaths,
-} from '../../../../../../lib/firebase-universal/client'
-import { TeamPathsService } from "./team-paths.service";
+// import { BaseActionService } from '../../../../../../lib/firebase-universal/client'
 
+// import { TeamQueryService } from './team-query.service'
 
-const APIROOT = 'http://localhost:5002/sparks-development-sd/us-central1/api/team'
+// @Injectable()
+// export class TeamActionService extends BaseActionService {
 
-@Injectable()
-export class TeamActionService extends BaseActionService {
+//   constructor(
+//     public query: TeamQueryService,
+//     public http: Http,
+//   ) {
+//     super(query.paths, http)
+//   }
 
-  constructor(
-    @Inject(TeamPathsService) paths: BasePaths,
-    public http: Http,
-  ) {
-    super(paths, http)
-  }
-
-}
+// }
