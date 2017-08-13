@@ -25,7 +25,6 @@ export class ResolveTeamByFirstOpp implements Resolve<any> {
       .mergeMap(opp => list(this.oppAllowedTeamQuery.by('oppKey', opp.$key)))
       .map(oppAllowedTeams => oppAllowedTeams.map(oAT => ({$key: oAT.teamKey, ...oAT.team})))
       .mergeMap(teamsTransform)
-      .do(teams => console.log('teams found', teams))
 
     return teams
       .map(() => teams)
