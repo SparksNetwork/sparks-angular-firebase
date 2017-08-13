@@ -34,6 +34,7 @@
         "dev": "environments/environment.ts",
         "dev-sd": "environments/environment.dev-sd.ts",
         "qa": "environments/environment.qa.ts",
+        "staging": "environments/environment.staging.ts",
         "prod": "environments/environment.prod.ts"
       }
     }
