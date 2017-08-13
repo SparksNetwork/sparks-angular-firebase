@@ -8,7 +8,7 @@ import {
 import { TeamPathsService } from "./team-paths.service";
 
 
-const APIROOT = 'http://localhost:5002/sparks-development-sd/us-central1/api/teams'
+const APIROOT = 'http://localhost:5002/sparks-development-sd/us-central1/api/team'
 
 @Injectable()
 export class TeamActionService extends BaseActionService {

@@ -8,8 +8,8 @@ import {
 } from '../../lib/firebase-universal/shared'
 
 export class TeamPaths extends BasePaths {
-    firebase = '/teams'
-    api = 'http://localhost:5002/sparks-development-sd/us-central1/api/teams'
+    firebase = '/team'
+    api = 'http://localhost:5002/sparks-development-sd/us-central1/api/team'
 }
 
 export class Team {
@@ -20,6 +20,7 @@ export class Team {
     public title: string
     public description: string
     public icon: string
+    public question: string
 }
 
 // any methods here will be available on both client and server

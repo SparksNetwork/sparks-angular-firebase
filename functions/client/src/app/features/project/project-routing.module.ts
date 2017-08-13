@@ -44,6 +44,7 @@ import { ResolveBenefitByOppKey } from "../../core/sndomain/benefit/resolve-bene
 import { ResolveContribByOppKey } from "../../core/sndomain/contrib/resolve-contrib-by-opp-key.service";
 import { ProjectLinksComponent } from "./project-links/project-links.component";
 import { ProjectOrganizerComponent } from "./project-organizer/project-organizer.component";
+import { ActionbarOppJoinComponent } from './actionbar-opp-join/actionbar-opp-join.component'
 
 const routes: Routes = [
   {
@@ -123,6 +124,7 @@ export const routedComponents = [
   ProjectDateComponent,
   ProjectLocationComponent,
   ProjectDescriptionComponent,
+  ActionbarOppJoinComponent,
 
   ProjectOppVisitRequirementsComponent,
   ProjectLinksComponent,
