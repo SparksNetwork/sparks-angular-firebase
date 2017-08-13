@@ -12,14 +12,6 @@ export class ResolveFirstOpp implements Resolve<any> {
   public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const opps = route.parent.data['opps']
     const opp = opps.map(opps => opps[0])
-    // const teams = firstOpp
-    //   .mergeMap(opp => this.contribQuery.af.list('/team', {
-    //     query: {
-    //       orderByChild: 'oppKey',
-    //       equalTo: opp.$key,
-    //     }
-    //   }))
-    //   .do(teams => console.log('teams found', teams))
 
     return opp
       .map(() => opp)

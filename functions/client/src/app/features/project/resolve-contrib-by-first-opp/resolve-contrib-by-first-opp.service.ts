@@ -8,6 +8,8 @@ import { ContribQueryService } from '../../../core/sndomain/contrib/contrib-quer
 import { Contrib, contribsTransform } from "../../../../../../universal/domain/contrib";
 import { Observable } from "rxjs/Observable";
 
+import { list } from '../../../../../../lib/firebase-angular-observables'
+
 @Injectable()
 export class ResolveContribByFirstOpp implements Resolve<any> {
 
@@ -19,12 +21,7 @@ export class ResolveContribByFirstOpp implements Resolve<any> {
     const opps = route.parent.data['opps']
     const firstOpp = opps.map(opps => opps[0])
     const contribs = firstOpp
-      .mergeMap(opp => this.contribQuery.af.list('/contrib', {
-        query: {
-          orderByChild: 'oppKey',
-          equalTo: opp.$key,
-        }
-      }))
+      .mergeMap(opp => list(this.contribQuery.collection.byOppKey(opp.$key)))
       .mergeMap(contribsTransform)
 
     return contribs
