@@ -3,13 +3,14 @@ import { transformAndValidate } from "class-transformer-validator"
 import { Expose } from 'class-transformer'
 
 import {
-    BasePaths,
     BaseCollection,
 } from '../../lib/firebase-universal/shared'
 
-export class TeamPaths extends BasePaths {
-    firebase = '/team'
-    api = 'http://localhost:5002/sparks-development-sd/us-central1/api/team'
+// any methods here will be available on both client and server
+export class TeamCollection extends BaseCollection {
+    public byProjectKey(key: string) {
+        return this.by('projectKey', key)
+    }
 }
 
 export class Team {
@@ -21,13 +22,6 @@ export class Team {
     public description: string
     public icon: string
     public question: string
-}
-
-// any methods here will be available on both client and server
-export class OppCollection extends BaseCollection {
-    public byProjectKey(key: string) {
-        return this.by('teamKey', key)
-    }
 }
 
 // we have two transform functions for type safety, not sure why overloading isnt working see below

@@ -13,12 +13,12 @@ import { list } from '../../../../../../lib/firebase-angular-observables'
 export class ResolveBenefitByOppKey implements Resolve<any> {
 
   constructor(
-    public benefitQuery: BenefitQueryService,
+    public query: BenefitQueryService,
   ) { }
 
   public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<Benefit[]>> {
     const oppKey = route.paramMap.get('oppKey')
-    const benefits = list(this.benefitQuery.collection.byOppKey(oppKey))
+    const benefits = list(this.query.byOppKey(oppKey))
 
     return benefits
       .map(() => benefits)

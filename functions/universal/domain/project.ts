@@ -3,8 +3,8 @@ import { Expose } from 'class-transformer'
 import { IsNotEmpty, IsEnum, ValidationError, IsDateString, ValidateNested, IsNumber, IsInt, IsUrl, IsDefined } from 'class-validator'
 
 import {
-  BasePaths,
   BaseCollection,
+  Database,
 } from '../../lib/firebase-universal/shared'
 
 // uncomfortable about including these as we haven't started developing any features with them yet
@@ -13,11 +13,14 @@ import { ImageRef } from './imageRef'
 import { Organizer } from './organizer'
 import { logErrors } from "../logger/logger";
 
-export class ProjectPaths extends BasePaths {
-  firebase = '/project'
-  api = 'http://localhost:5002/sparks-development-sd/us-central1/api/project'
-  // firebase = '/Projects'
-  // api = 'https://sparksnetwork-6de8b.firebaseio.com/Projects'
+// any methods here will be available on both client and server
+export class ProjectCollection extends BaseCollection {
+  constructor(public db: Database) {
+    super(db, {
+      api: '/project',
+      firebase: '/project'
+    })
+  }
 }
 
 export enum ProjectType {
@@ -79,9 +82,6 @@ export class Project {
   // @IsNotEmpty()
   // foo: string
 }
-
-// any methods here will be available on both client and server
-export class ProjectCollection extends BaseCollection { }
 
 const validateOpt = { validator: { skipMissingProperties: true } };
 

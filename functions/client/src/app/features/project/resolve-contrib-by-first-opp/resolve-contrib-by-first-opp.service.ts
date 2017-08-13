@@ -14,14 +14,14 @@ import { list } from '../../../../../../lib/firebase-angular-observables'
 export class ResolveContribByFirstOpp implements Resolve<any> {
 
   constructor(
-    public contribQuery: ContribQueryService,
+    public query: ContribQueryService,
   ) { }
 
-  public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : Observable<Observable<Contrib[]>> {
+  public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<Contrib[]>> {
     const opps = route.parent.data['opps']
     const firstOpp = opps.map(opps => opps[0])
     const contribs = firstOpp
-      .mergeMap(opp => list(this.contribQuery.collection.byOppKey(opp.$key)))
+      .mergeMap(opp => list(this.query.byOppKey(opp.$key)))
       .mergeMap(contribsTransform)
 
     return contribs

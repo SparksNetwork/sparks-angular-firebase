@@ -9,7 +9,7 @@ import 'rxjs/add/operator/first'
 import { ProjectQueryService } from './project-query.service'
 import { Project, projectTransform } from '../../../../../../universal/domain/project'
 
-import { list } from '../../../../../../lib/firebase-angular-observables'
+import { obj } from '../../../../../../lib/firebase-angular-observables'
 
 @Injectable()
 export class ResolveProjectByProjectKey implements Resolve<any> {
@@ -20,12 +20,11 @@ export class ResolveProjectByProjectKey implements Resolve<any> {
 
   public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<Project | void>> {
     const projectKey = route.paramMap.get('projectKey')
-    const projects = this.query.af.object(this.query.collection.one(projectKey))
+    const projects = obj(this.query.one(projectKey))
       .mergeMap(projectTransform)
 
     return projects
       .map(() => projects)
       .first()
-
   }
 }

@@ -1,6 +1,6 @@
 {
   "rulesDirectory": [
-    "node_modules/codelyzer"
+    "functions/node_modules/codelyzer"
   ],
   "rules": {
     "arrow-return-shorthand": true,
@@ -86,7 +86,7 @@
     ],
     "radix": true,
     "semicolon": [
-      true,
+      false,
       "always"
     ],
     "triple-equals": [

@@ -6,6 +6,7 @@
 export const environment = {
   production: false,
   firebaseAdminCredentialFilename: 'firebaseAdminCredentials.dev-sd.json',
+  apiRoot: 'http://localhost:5002/sparks-development-sd/us-central1/api',
   firebase: {
     apiKey: 'AIzaSyAd6U9h9zzhm8RO17-O05IQeeMmZbcJ7oc',
     authDomain: 'sparks-development-sd.firebaseapp.com',
@@ -13,4 +14,4 @@ export const environment = {
     storageBucket: 'gs://sparks-development-sd.appspot.com',
     messagingSenderId: '277847429817',
   },
-};
+}

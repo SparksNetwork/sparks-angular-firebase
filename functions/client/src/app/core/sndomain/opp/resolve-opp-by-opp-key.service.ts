@@ -9,6 +9,8 @@ import 'rxjs/add/operator/first'
 import { OppQueryService } from './opp-query.service'
 import { Opp, oppTransform } from '../../../../../../universal/domain/opp'
 
+import { obj } from '../../../../../../lib/firebase-angular-observables'
+
 @Injectable()
 export class ResolveOppByOppKey implements Resolve<any> {
 
@@ -16,9 +18,9 @@ export class ResolveOppByOppKey implements Resolve<any> {
     public query: OppQueryService,
   ) { }
 
-  public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<Opp>> {
+  public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<Opp | void>> {
     const oppKey = route.paramMap.get('oppKey')
-    const opp = this.query.af.object(this.query.collection.one(oppKey))
+    const opp = obj(this.query.one(oppKey))
       .mergeMap(oppTransform)
 
     return opp

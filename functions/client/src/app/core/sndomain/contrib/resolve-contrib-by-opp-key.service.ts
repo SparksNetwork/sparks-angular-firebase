@@ -11,12 +11,12 @@ import { list } from '../../../../../../lib/firebase-angular-observables'
 export class ResolveContribByOppKey implements Resolve<any> {
 
   constructor(
-    public contribQuery: ContribQueryService,
+    public query: ContribQueryService,
   ) { }
 
   public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const oppKey = route.paramMap.get('oppKey')
-    const contribs = list(this.contribQuery.collection.byOppKey(oppKey))
+    const contribs = list(this.query.byOppKey(oppKey))
 
     return contribs
       .map(() => contribs)
