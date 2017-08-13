@@ -30,14 +30,14 @@
       "projectPageUrl" : "https://firebase.google.com/",
       "projectType" : "Simple",
       "shareKarmaPoints" : 100,
-      "startDateTime" : "20170715T190000",
+      "startDateTime" : "2017-07-15T19:00:00.000Z",
       "facebookUrl": "commiesgame",
       "twitterUrl": "TripWestGames",
       "title" : "Park Cleanup"
     },
     "LC": {
       "description": "Hello my magical unicorns! Come work and play with us at Lucidity Festival this year by joining the Dream Makers!",
-      "endDateTime": "20170412T235959",
+      "endDateTime": "2017-04-12T23:59:59.000Z",
       "communityBenefit": "Your Lucidfamily, old and new",
       "maxKarmaPoints": 1519,
       "images": [
@@ -67,14 +67,13 @@
       "projectPageUrl" : "http://2017.lucidityfestival.com/",
       "projectType" : "MultiDay",
       "shareKarmaPoints" : 100,
-      "startDateTime" : "20170202T080000",
+      "startDateTime" : "2017-02-02T08:00:00.000Z",
       "facebookUrl": "commiesgame",
       "twitterUrl": "TripWestGames",
       "title" : "Lucidity Crossroads"
     },
     "SRBC": {
       "description": "Keep our local beach beautiful",
-      "endDateTime": "20170412T235959",
       "communityBenefit": "Your fellow humans",
       "maxKarmaPoints": 343,
       "images": [
@@ -104,7 +103,7 @@
       "projectPageUrl" : "https://ventura.surfrider.org/2017-beach-cleanup-schedule/",
       "projectType" : "MultiDay",
       "shareKarmaPoints" : 100,
-      "startDateTime" : "20170202T080000",
+      "startDateTime" : "2017-02-02T08:00:00.000Z",
       "facebookUrl": "commiesgame",
       "twitterUrl": "TripWestGames",
       "title" : "Surfer's Point Beach Cleanup"
