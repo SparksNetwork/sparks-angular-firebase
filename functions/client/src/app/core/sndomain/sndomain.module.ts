@@ -9,6 +9,11 @@ import {
 } from './project'
 
 import {
+  ProfileQueryService,
+  RequireProfileCompleteService,
+} from './profile'
+
+import {
   OppQueryService,
   OppActionService,
   ResolveOppByProjectKey,
@@ -49,6 +54,9 @@ import {
     ResolveProjectAll,
     ResolveProjectByProjectKey,
 
+    ProfileQueryService,
+    RequireProfileCompleteService,
+
     OppQueryService,
     OppActionService,
     ResolveOppByProjectKey,
@@ -57,7 +65,7 @@ import {
     ContribQueryService,
     ContribActionService,
     ResolveContribByOppKey,
- 
+
     // TeamQueryService,
     // TeamActionService,
     ResolveTeamByOppKey,
