@@ -12,6 +12,7 @@ import { ResolveTeamByOppKey } from "../../core/sndomain/team/resolve-team-by-op
 import { PageOppTeamsComponent } from "./page-opp-teams/page-opp-teams.component";
 import { PageOppTeamComponent } from "./page-opp-team/page-opp-team.component";
 import { PageOppHomeTeamsComponent } from "./page-opp-home-teams/page-opp-home-teams.component";
+import { PageAnswerQuestionComponent } from './page-answer-question/page-answer-question.component'
 import { ResolveTeamByTeamKey } from "./resolve-team-by-team-key/resolve-team-by-team-key.service";
 import { OppTeamsSelectedComponent } from "./opp-teams-selected/opp-teams-selected.component";
 import { OppTeamsNotSelectedComponent } from "./opp-teams-not-selected/opp-teams-not-selected.component";
@@ -21,8 +22,8 @@ const routes: Routes = [
     {
         path: ':oppKey',
         canActivate: [
-            //    RequireAuth,
-            //    RequireEmailVerification,
+           RequireAuth,
+           RequireEmailVerification,
         ],
         resolve: {
             opp: ResolveOppByOppKey
@@ -31,6 +32,10 @@ const routes: Routes = [
             {
                 path: 'complete-profile',
                 component: PageCompleteProfileComponent
+            },
+            {
+                path: 'answer-question',
+                component: PageAnswerQuestionComponent
             },
             {
                 path: 'teams',
@@ -64,6 +69,7 @@ export class ApplyRoutingModule { }
 
 export const routedComponents = [
     PageCompleteProfileComponent, 
+    PageAnswerQuestionComponent,
     PageOppHomeTeamsComponent, 
     PageOppTeamsComponent, 
     PageOppTeamComponent,
