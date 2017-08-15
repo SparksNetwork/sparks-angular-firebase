@@ -10,6 +10,7 @@ import {
 
 import {
   ProfileQueryService,
+  ProfileActionService,
   RequireProfileCompleteService,
 } from './profile'
 
@@ -55,6 +56,7 @@ import {
     ResolveProjectByProjectKey,
 
     ProfileQueryService,
+    ProfileActionService,
     RequireProfileCompleteService,
 
     OppQueryService,

@@ -1,4 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
+import { Router } from '@angular/router'
+
+import { AuthService } from '../../../core/snauth/auth/auth.service'
+import {
+  ProfileActionService,
+  ProfileQueryService,
+} from '../../../core/sndomain/profile'
 
 import { FormCompleteProfileComponent } from '../form-complete-profile/form-complete-profile.component'
 
@@ -9,9 +16,34 @@ import { FormCompleteProfileComponent } from '../form-complete-profile/form-comp
 export class PageCompleteProfileComponent {
   @ViewChild(FormCompleteProfileComponent) public profForm: FormCompleteProfileComponent
 
-  constructor() { }
+  constructor(
+    public router: Router,
+    public auth: AuthService,
+    public action: ProfileActionService,
+    public query: ProfileQueryService,
+  ) { }
 
   public next() {
     console.log('completed profile?', this.profForm.profileForm.value)
+    this.auth.current.first().subscribe(user => {
+      console.log('uid', user.uid)
+      this.action.replace(user.uid, this.profForm.profileForm.value)
+        .subscribe(res => {
+          if (res.ok) {
+            console.log('success!')
+            this.query.current.subscribe(profile => {
+              if (profile &&
+                  profile.birthday &&
+                  profile.legalName &&
+                  profile.phoneNumber &&
+                  profile.preferredName) {
+                this.router.navigate(['/apply', 'KPC1', 'answer-question'])
+              }
+            })
+          } else {
+            console.log('failed')
+          }
+        })
+    })
   }
 }

@@ -1,4 +1,5 @@
 import * as express from 'express'
+import { Request, Response, NextFunction } from 'express'
 import * as bodyparser from 'body-parser'
 import * as cors from 'cors'
 
@@ -10,20 +11,20 @@ export class BaseHandler {
     public collection: BaseCollection,
   ) {}
 
-  public async post(req, res, next) {
+  public async post(req: Request, res: Response, next: NextFunction): Promise<Response> {
     console.log('Create/Post Project', JSON.stringify(req.body, null, 2))
     const returned = await this.collection.ref.push(req.body).then(ref => ref.key)
     return res.status(200).send(JSON.stringify(returned))
   }
 
-  public async put(req: express.Request, res, next) {
+  public async put(req: Request, res: Response, next: NextFunction): Promise<Response> {
     console.log('Replace/Put Project', JSON.stringify(req.body, null, 2))
     console.log('key', req.params['key'])
     const returned = await this.collection.ref.child(req.params['key']).set(req.body).then(() => ({}))
     return res.status(200).send(JSON.stringify(returned))
   }
 
-  public async patch(req: express.Request, res, next) {
+  public async patch(req: Request, res: Response, next: NextFunction): Promise<Response> {
     console.log('Update/Patch Project', JSON.stringify(req.body, null, 2))
     console.log('key', req.params['key'])
     const obj = req.body
@@ -32,7 +33,7 @@ export class BaseHandler {
     return res.status(200).send(JSON.stringify(returned))
   }
 
-  public async del(req: express.Request, res, next) {
+  public async del(req: Request, res: Response, next: NextFunction): Promise<Response> {
     console.log('Delete Project')
     console.log('key', req.params['key'])
     const returned = await this.collection.ref.child(req.params['key']).remove().then(() => ({}))

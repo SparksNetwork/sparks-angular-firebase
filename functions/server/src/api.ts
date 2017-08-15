@@ -8,7 +8,8 @@ import {
 } from '../../lib/firebase-universal/server'
 
 import {
-  ProjectHandler
+  ProjectHandler,
+  ProfileHandler,
 } from './handlers'
 
 console.log('functions config', functions.config().firebase)
@@ -18,6 +19,7 @@ const app = express();
 app.use(cors({origin: true}))
 
 app.use(routeHandler(new ProjectHandler()))
+app.use(routeHandler(new ProfileHandler()))
 
 export const api = functions.https.onRequest((req, res) => {
   // NOTE: You need to add a trailing slash to the root URL becasue of this issue: https://github.com/firebase/firebase-functions/issues/27
