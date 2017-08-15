@@ -9,7 +9,10 @@ import { AppComponent } from './app.component';
 
 import { SNAuthModule } from './core/snauth/snauth.module'
 import { SNDomainModule } from './core/sndomain/sndomain.module'
+import { SorryModule } from './core/sorry/sorry.module'
+
 import { environment } from '../environments/environment'
+
 @NgModule({
   declarations: [
     AppComponent
@@ -21,6 +24,7 @@ import { environment } from '../environments/environment'
     AppRoutingModule,
     SNAuthModule,
     SNDomainModule,
+    SorryModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

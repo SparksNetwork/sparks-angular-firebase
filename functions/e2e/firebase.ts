@@ -22,7 +22,11 @@ export const db = firebaseAdmin.database()
 export const auth = firebaseAdmin.auth()
 
 export function setData(firebasePath, data) {
-  db.ref(firebasePath).set(data)
+  return db.ref(firebasePath).set(data)
+}
+
+export function updateData(firebasePath, data) {
+  return db.ref(firebasePath).update(data)
 }
 
 export function setUsers(users = USERS) {
