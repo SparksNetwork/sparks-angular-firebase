@@ -36,13 +36,21 @@ export function setUsers(users = USERS) {
 }
 
 export function signOut() {
-  return browser.executeScript(() => {
-    window['auth'].signOut()
-  })
+  return browser.executeAsyncScript(`
+var callback = arguments[arguments.length - 1]
+return window['auth']
+  .signOut()
+  .then(function() { callback() })
+`)
 }
 
 export function signIn(email: string, password: string) {
-  return browser.executeScript(
-    `window['auth'].signInWithEmailAndPassword('${email}', '${password}')`
+  return browser.executeAsyncScript(`
+var callback = arguments[arguments.length - 1]
+return window['auth']
+  .signInWithEmailAndPassword('${email}', '${password}')
+  .then(function() { callback() })
+`
   )
+
 }
