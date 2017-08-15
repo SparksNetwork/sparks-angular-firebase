@@ -43,7 +43,7 @@ export class AuthService {
   }
 
   constructor(
-    private afAuth: AngularFireAuth
+    public afAuth: AngularFireAuth
   ) {
     this.current = this.afAuth.authState
 
@@ -60,6 +60,9 @@ export class AuthService {
     this.error.subscribe(err => {
       if (err) { console.log('auth error', err) }
     })
+
+    // this is some super-hacky shit that exposes auth to e2e tests
+    window['auth'] = this.afAuth.auth
   }
 
   public signInWithGoogle() {
