@@ -1,3 +1,19 @@
-<p>
-  page-complete-profile works!
-</p>
+<snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
+  Who Are You? Fill In The Blanks.
+</snui-header-simple>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="segment">
+      <p class="card-text">In order to complete your volunteering we need to fill in some blanks.</p>
+    </div>
+  </div>
+</div>
+
+<apply-form-complete-profile></apply-form-complete-profile>
+
+<snui-action-bar>
+  <div class="btn-group" role="group">
+    <button id='next' (click)='next()' [disabled]="!profForm.profileForm.valid" class="btn btn-block btn-default">Next</button>
+  </div>
+</snui-action-bar>

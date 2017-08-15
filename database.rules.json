@@ -11,7 +11,7 @@
     "benefit": {
       ".indexOn": ["oppKey"]
     },
-    "team": {
+    "oppAllowedTeam": {
       ".indexOn": ["oppKey"]
     }
   }

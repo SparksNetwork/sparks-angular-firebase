@@ -15,10 +15,12 @@
     "build:ssr": "ngc -p tsconfig.ssr.json",
     "build:server": "tsc -p tsconfig.json",
     "deploy": "firebase deploy --only hosting,functions",
+    "deploy:staging": "firebase use staging && npm run build:client:staging && firebase deploy --only hosting,functions",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "e2e:dev-sd": "cross-env ANGULAR_ENV=dev-sd ng e2e --env=dev-sd"
+    "e2e:dev-sd": "cross-env ANGULAR_ENV=dev-sd ng e2e --env=dev-sd",
+    "e2e:dev-id": "cross-env ANGULAR_ENV=dev-id ng e2e --env=dev-id"
   },
   "private": true,
   "dependencies": {

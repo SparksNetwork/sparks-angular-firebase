@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import {
-    ResolveOppByProjectKey,
+    ResolveOppByOppKey,
 } from '../../core/sndomain/opp'
 
 import { RequireAuth } from '../../core/snauth/require-auth/require-auth.service'
@@ -12,19 +12,21 @@ import { ResolveTeamByOppKey } from "../../core/sndomain/team/resolve-team-by-op
 import { PageOppTeamsComponent } from "./page-opp-teams/page-opp-teams.component";
 import { PageOppTeamComponent } from "./page-opp-team/page-opp-team.component";
 import { PageOppHomeTeamsComponent } from "./page-opp-home-teams/page-opp-home-teams.component";
+import { PageAnswerQuestionComponent } from './page-answer-question/page-answer-question.component'
 import { ResolveTeamByTeamKey } from "./resolve-team-by-team-key/resolve-team-by-team-key.service";
 import { OppTeamsSelectedComponent } from "./opp-teams-selected/opp-teams-selected.component";
 import { OppTeamsNotSelectedComponent } from "./opp-teams-not-selected/opp-teams-not-selected.component";
+import { RequireProfileCompleteService } from '../../core/sndomain/profile'
 
 const routes: Routes = [
     {
         path: ':oppKey',
         canActivate: [
-            //    RequireAuth,
-            //    RequireEmailVerification,
+           RequireAuth,
+           RequireEmailVerification,
         ],
         resolve: {
-            opps: ResolveOppByProjectKey
+            opp: ResolveOppByOppKey
         },
         children: [
             {
@@ -32,11 +34,21 @@ const routes: Routes = [
                 component: PageCompleteProfileComponent
             },
             {
+                path: 'answer-question',
+                component: PageAnswerQuestionComponent,
+                canActivate: [
+                    RequireProfileCompleteService,
+                ]
+            },
+            {
                 path: 'teams',
                 component: PageOppHomeTeamsComponent,
                 resolve: {
                     teams: ResolveTeamByOppKey
                 },
+                canActivate: [
+                    RequireProfileCompleteService,
+                ],
                 children: [
                     {
                         path: '',
@@ -63,6 +75,7 @@ export class ApplyRoutingModule { }
 
 export const routedComponents = [
     PageCompleteProfileComponent, 
+    PageAnswerQuestionComponent,
     PageOppHomeTeamsComponent, 
     PageOppTeamsComponent, 
     PageOppTeamComponent,

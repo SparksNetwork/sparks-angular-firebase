@@ -29,9 +29,9 @@ export class PageProjectOppComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe(data => {
-      this.project = this.route.snapshot.data['project']
-      this.opp = this.route.snapshot.data['opp']
-      this.opps = this.route.snapshot.data['opps']
+      this.project = this.route.snapshot.data['project'];
+      this.opp = this.route.snapshot.data['opp'];
+      this.opps = this.route.snapshot.data['opps'];
       this.teams = data['teams'];
       this.benefits = data['benefits'];
       this.contribs = data['contribs'];
