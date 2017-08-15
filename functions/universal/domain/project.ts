@@ -88,8 +88,8 @@ const validateOpt = { validator: { skipMissingProperties: true } };
 // we have two transform functions for type safety, not sure why overloading isnt working see below
 export const projectTransform = (input: object) =>
   transformAndValidate<Project>(Project, input, validateOpt)
-    .catch(logErrors)
+    // .catch(logErrors)
 
 export const projectsTransform = (input: object[]) =>
   transformAndValidate<Project>(Project, input, validateOpt)
-    .catch(logErrors)
+    // .catch(logErrors)
