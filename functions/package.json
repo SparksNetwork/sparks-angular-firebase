@@ -15,6 +15,7 @@
     "build:ssr": "ngc -p tsconfig.ssr.json",
     "build:server": "tsc -p tsconfig.json",
     "deploy": "firebase deploy --only hosting,functions",
+    "deploy:staging": "firebase use staging && npm run build:client:staging && firebase deploy --only hosting,functions",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
