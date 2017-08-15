@@ -3,7 +3,7 @@ import { browser, element, by, ExpectedConditions } from 'protractor'
 import { setData, setUsers, signOut, signIn } from '../firebase'
 import { USER_VERIFIED_NO_PROFILE, USER_VERIFIED_PROFILE } from '../fixtures/users'
 
-fdescribe('Applying to projects', () => {
+describe('Applying to projects', () => {
   beforeEach(done => {
     browser.waitForAngularEnabled(false)
     setUsers()
@@ -12,7 +12,8 @@ fdescribe('Applying to projects', () => {
   })
 
   beforeEach(done => {
-    signOut()
+    browser.get('/')
+      .then(signOut)
       .then(done)
   })
 
