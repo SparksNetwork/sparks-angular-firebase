@@ -2,7 +2,7 @@ import { browser } from "protractor/built";
 import { ProjectPage } from "../project.po";
 var firebaseAccessHandler = require('../../setup/firebaseAccess');
 
-describe('Testing the model validation attributes for title', () => {
+xdescribe('Testing the model validation attributes for title', () => {
     let page: ProjectPage;
 
     beforeEach(() => {

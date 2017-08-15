@@ -2,7 +2,7 @@ import { browser } from "protractor/built";
 import { ProjectPage } from "../project.po";
 var firebaseAccessHandler = require('../../setup/firebaseAccess');
 
-describe('Testing the model validation attributes for endDateTime', () => {
+xdescribe('Testing the model validation attributes for endDateTime', () => {
     let page: ProjectPage;
 
     beforeEach(() => {
