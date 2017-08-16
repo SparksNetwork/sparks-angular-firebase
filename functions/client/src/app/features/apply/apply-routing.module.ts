@@ -55,8 +55,12 @@ const routes: Routes = [
                         path: '',
                         component: PageOppTeamsComponent
                     },
+                     {
+                        path: 'remove-all',
+                        component: OppTeamsSelectedRemoveComponent
+                    }, 
                     {
-                        path: 'remove',
+                        path: 'remove/:teamKey',
                         component: OppTeamsSelectedRemoveComponent
                     },
                     {
