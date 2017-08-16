@@ -34,14 +34,10 @@ export const deleteLoadedData = function (parentRefName:string,startingKey:numbe
         let ref = db.ref(parentRefName+"/"+i);
         ref.remove();
     }
-<<<<<<< HEAD
    
 }
-
 export const deleteItemByKey = function (parentRefName:string, key:string){
      let parentRef = db.ref(parentRefName);
      var ref = db.ref(parentRefName+"/"+key);
      ref.remove();
-=======
->>>>>>> e033fd0dead8621af55c6731b2abf25da1e86cca
 }

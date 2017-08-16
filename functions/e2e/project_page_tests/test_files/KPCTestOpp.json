@@ -1,9 +1,0 @@
-{
-    "KPCTest1": {
-        "description": "opp description",
-        "icon": "glyphicon-glass",
-        "karma": 20,
-        "projectKey": "KPCTest",
-        "title": "Volunteer"
-    }
-}

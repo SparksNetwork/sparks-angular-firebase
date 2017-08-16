@@ -1,9 +1,0 @@
-    {
-        "KPCTest1-1": {
-            "description": "Eat at the Saloon while you work",
-            "icon": "glyphicon-ice-lolly-tasted",
-            "oppKey": "KPCTest1",
-            "title": "Food & Drink",
-            "type": "FoodDrink"
-        }
-    }
