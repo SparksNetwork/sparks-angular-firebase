@@ -1,0 +1,29 @@
+<snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
+  {{title}}
+</snui-header-simple>
+
+<auth-alert-error></auth-alert-error>
+
+<div class='segment' [hidden]='!verificationEmailExpired'>
+  <p class='text-danger'>Sign in below to recive a new verification email.</p>
+  <auth-form-email-password></auth-form-email-password>
+  <div class="row">
+    <div class="col-xs-6">
+      <button btn (click)='signInAndResendVerificationEmail()' [disabled]="!epForm.credentialsForm.valid">Sign In</button>
+    </div>
+  </div>
+</div>
+
+<div [hidden]="!resetPasswordEmail">
+  <div class='segment'>
+    <p>Resetting password for: {{resetPasswordEmail}}.</p>
+    <auth-form-reset-password></auth-form-reset-password>
+  </div>
+  <snui-action-bar>
+    <div class="row">
+      <div class="col-xs-6 pull-right">
+        <button class="btn btn-default btn-block" [disabled]="!frpForm.resetPasswordForm.valid" (click)="confirmPasswordReset()">Reset</button>
+      </div>
+    </div>
+  </snui-action-bar>
+</div>

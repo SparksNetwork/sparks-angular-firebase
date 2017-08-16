@@ -1,0 +1,25 @@
+{
+  "compileOnSave": false,
+  "files": [
+    "./server/src/index.ts"
+  ],
+  "compilerOptions": {
+    "outDir": "./server/dist",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2016",
+      "dom"
+    ]
+  },
+  "include": [
+    "client/**/*"
+  ]
+}
