@@ -46,9 +46,9 @@ const routes: Routes = [
                 resolve: {
                     teams: ResolveTeamByOppKey
                 },
-                canActivate: [
+               /*  canActivate: [
                     RequireProfileCompleteService,
-                ],
+                ], */
                 children: [
                     {
                         path: '',
