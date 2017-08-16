@@ -1,0 +1,28 @@
+{
+  "compileOnSave": false,
+  "files": [
+    "./client/src/main.ts",
+    "./client/src/app/features/auth/auth.module.ts",
+    "./client/src/app/features/appbar/appbar.module.ts",
+    "./client/src/app/features/dash/dash.module.ts",
+    "./client/src/app/features/home/home.module.ts",
+    "./client/src/app/features/project/project.module.ts",
+    "./client/src/app/features/apply/apply.module.ts"
+  ],
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2016",
+      "dom"
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "compileOnSave": false,
+  "rootDirs": [
+    "./client/src",
+    "./shared/src"
+  ],
+  "compilerOptions": {
+    "outDir": "./client/dist/ssr",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2016",
+      "dom"
+    ]
+  },
+  "angularCompilerOptions": {
+      "genDir": "./client/dist/ngfactory",
+      "entryModule": "./client/src/app/app.server.module#AppServerModule"
+  }  
+}
