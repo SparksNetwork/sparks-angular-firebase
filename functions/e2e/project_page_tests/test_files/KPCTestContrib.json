@@ -1,0 +1,12 @@
+{
+     "KPCTest1-1" : {
+      "count" : 1,
+      "description" : "hours long of volunteering",
+      "icon" : "glyphicon-time",
+      "oppKey" : "KPCTest1",
+      "shiftMaxLength" : 4,
+      "shiftMinLength" : 4,
+      "title" : "Shift",
+      "type" : "Shift"
+    }
+}

@@ -21,24 +21,11 @@ export class ProjectOppDetailComponent implements OnInit {
     @Input() public benefits: Benefit[];
     @Input() public contribs: Contrib[];
     public actionBarType = ActionBarType;
-    // public project: Observable<Project>
-    // public opp: Observable<Opp>;
-    // public teams: Observable<Team[]>;
-    // public benefits: Observable<Benefit[]>;
-    // public contribs: Observable<Contrib[]>;
-    // public actionBarType = ActionBarType;
 
     constructor(
         public route: ActivatedRoute
     ) { }
 
     ngOnInit() {
-        // this.route.data.subscribe(data => {
-            // this.project = data['project'];
-            // this.opp = data['opp'];
-            // this.teams = data['teams'];
-            // this.benefits = data['benefits'];
-            // this.contribs = data['contribs'];
-        // });
     }
 }

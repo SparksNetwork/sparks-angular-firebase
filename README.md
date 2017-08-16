@@ -143,21 +143,55 @@ Put the file you downloaded in the root of the project directory and name it wha
 
 ### Create a shortcut script to run it
 
-`ng e2e` does not support an `--env` flag, so you have to specify a non-standard `environment.ts` with a command-line environment variable.
+`ng e2e` does not support an `--env` flag, although it uses the `--env` flag in the `ng serve` that you run.  In order for the e2e tests to set up test data in the database, you also have to specify a non-standard `environment.ts` with a command-line environment variable.
 
 In the `package.json` scripts section, add a new script that specifies the environment you want to use.  Make sure you use `cross-env` in order to ensure compatibility between Windows and real operating systems. :)
 
 ```
-    "e2e:dev-sd": "cross-env ANGULAR_ENV=dev-sd ng e2e"
+    "e2e:dev-sd": "cross-env ANGULAR_ENV=dev-sd ng e2e --env=dev-sd"
 ```
 
 Now you can run the e2e tests locally against your own database with 
 
 # Deployment
 
-`firebase deploy` pushes the most recent built files to the cloud project that is selected.  Right now that is just one project.
+You use the `firebase` command line tool in order to deploy the project to the firebase cloud.  There are a few things to coordinate.
 
-TODO: `npm run deploy` to push to staging, this should be a CI action when new merge to develop.  Also `npm run deploy:production`, a CI action to push to staging when new merge to master.
+## Switching Firebase Projects
+
+`firebase use` will show you what projects are configured, and the aliases for those projects. We currently have:
+
+* `qa` is intended for use with automated testing during CI.
+* `staging` is used for pre-release deployment to a final "sanity check" server
+* `prod` is the live production environment
+* `dev-$$` environments exist for each individual developer
+
+When you're working locally, you should `firebase use` your personal development environment.  You can switch to `staging` or `prod` when you are ready to deploy to either of those environments.
+
+## First time project setup
+
+You will need to do a couple of things to a firebase project the first time you use it, or subsequent times if the test data changes.
+
+* In the firebase console -> Authentication -> Sign-In Method, make sure you enable at least Email/Password and Google.  Enabling Facebook requires you to have an actual Facebook app so it's OK to skip it.
+
+* In the firebase console -> Database -> ... -> Import JSON to import the latest `test-data.json` from the repo so that the database is loaded with valid data.
+
+## Building client
+
+There are `npm` scripts that automate this for you, see: `npm run build:client:prod`, `npm run build:client:staging`, etc.  Under the covers, these scripts do two things:
+
+* Set the target to `production` so that `ngc` compiles with AOT options for a faster client experience.
+* Selects the specific `environment` so that the correct settings are compiled into the dist.
+
+# Building server
+
+For now, as there is no difference in server environments, just use `npm run build:server` to compile everything from `/functions/server/src` to `/functions/server/dist`.
+
+# Deploying to firebase
+
+*MAKE SURE THAT YOU ARE `use`ING THE CORRECT PROJECT BEFORE YOU DO THIS!!!11!!1!*
+
+`npm run deploy` will deploy the latest client and server files to the currently `use`'d firebase project.  All it does is `firebase deploy --only hosting,functions`.
 
 # Why This Way?
 
@@ -180,3 +214,15 @@ Very few routes in the app won't use this: auth, printing, what else?
 ## How Backend Firebase-Functions Work
 
 When you `firebase deploy`, all of the names exported by `/functions/index.js` start running in the cloud.
+
+#End-to-end testing
+
+Make sure you are `firebase use`ing either your development environment or the qa environment when you run the e2e tests.
+
+The end-to-end tests use Firebase Admin to manipulate directly the data. Firebase Admin needs a configuration
+file named `adminsdk.json` that will be placed in: `/functions/e2e`. In order to obtain the file:
+- open Firebase console for the Sparks Network Test database
+- go to settings 
+- select the tab Service Accounts
+- click the button: GENERATE NEW PRIVATE KEY
+- rename the downloaded file to `adminsdk.json` and place it in `/functions/e2e`
