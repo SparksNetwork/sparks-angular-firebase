@@ -20,10 +20,10 @@ export class ProjectPaths extends BasePaths {
 }
 
 export enum ProjectType { 
-  Simple, 
-  MultiDay, 
-  LongTerm, 
-  Donor 
+  Simple = "Simple", 
+  MultiDay = "MultiDay", 
+  LongTerm = "LongTerm", 
+  Donor = "Donor"
 }
 
 export class Project {
