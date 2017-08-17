@@ -141,7 +141,7 @@
             "additionalProperties": false,
             "properties": {
                 "oppKey": { "$ref": "#/constraints/nonEmptyString" },
-                "type": { "type": "integer" },
+                "type": { "type": "string", "enum": [ "Shift", "PrePayment", "Deposit", "Donation" ] },
                 "count": { "type": "integer" },
                 "title": { "$ref": "#/constraints/nonEmptyString" },
                 "description": { "$ref": "#/constraints/nonEmptyString" },
@@ -157,7 +157,7 @@
             "additionalProperties": false,
             "properties": {
                 "oppKey": { "$ref": "#/constraints/nonEmptyString" },
-                "type": { "type": "integer" },
+                "type": { "type": "string", "enum": [ "FoodTicket", "EventTicket", "Gifts", "FoodDrink", "HelpNonProfit" ] },
                 "title": { "$ref": "#/constraints/nonEmptyString" },
                 "description": { "$ref": "#/constraints/nonEmptyString" },
                 "icon": { "type": "string" }

@@ -179,49 +179,49 @@
       "icon": "glyphicon-ice-lolly-tasted",
       "oppKey": "KPC1",
       "title": "Food & Drink",
-      "type": 3
+      "type": "FoodDrink"
     },
     "LC1-1": {
       "description": "Snacks and water while you work",
       "icon": "glyphicon-ice-lolly-tasted",
       "oppKey": "LC1",
       "title": "Food & Drink",
-      "type": 3
+      "type": "FoodDrink"
     },
     "LC2-1": {
       "description": "Snacks and water while you work",
       "icon": "glyphicon-ice-lolly-tasted",
       "oppKey": "LC2",
       "title": "Food & Drink",
-      "type": 3
+      "type": "FoodDrink"
     },
     "LC3-1": {
       "description": "Snacks and water while you work",
       "icon": "glyphicon-ice-lolly-tasted",
       "oppKey": "LC3",
       "title": "Food & Drink",
-      "type": 3
+      "type": "FoodDrink"
     },
     "LC4-1": {
       "description": "Snacks and water while you work",
       "icon": "glyphicon-ice-lolly-tasted",
       "oppKey": "LC4",
       "title": "Food & Drink",
-      "type": 3
+      "type": "FoodDrink"
     },
     "LC5-1": {
       "description": "Snacks and water while you work",
       "icon": "glyphicon-ice-lolly-tasted",
       "oppKey": "LC5",
       "title": "Food & Drink",
-      "type": 3
+      "type": "FoodDrink"
     },
     "SRBC1-1": {
       "description": "Free Pizza from PizzaManDans",
       "icon": "glyphicon-ice-lolly-tasted",
       "oppKey": "LC5",
       "title": "Food & Drink",
-      "type": 3
+      "type": "FoodDrink"
     }
   },
   "contrib": {
@@ -233,7 +233,7 @@
       "description": "hours long of volunteering",
       "icon": "glyphicon-time",
       "title": "Shift",
-      "type": 0
+      "type": "Shift"
     },
     "LC1-1": {
       "count": 1,
@@ -243,7 +243,7 @@
       "description": "hours long of volunteering",
       "icon": "glyphicon-time",
       "title": "Shift",
-      "type": 0
+      "type": "Shift"
     },
     "LC2-1": {
       "count": 3,
@@ -253,7 +253,7 @@
       "description": "hours long of volunteering",
       "icon": "glyphicon-time",
       "title": "Shift",
-      "type": 0
+      "type": "Shift"
     },
     "LC3-1": {
       "count": 6,
@@ -263,7 +263,7 @@
       "description": "hours long of volunteering",
       "icon": "glyphicon-time",
       "title": "Shift",
-      "type": 0
+      "type": "Shift"
     },
     "LC4-1": {
       "count": 4,
@@ -273,7 +273,7 @@
       "description": "hours long of volunteering",
       "icon": "glyphicon-time",
       "title": "Shift",
-      "type": 0
+      "type": "Shift"
     },
     "LC5-1": {
       "count": 4,
@@ -283,7 +283,7 @@
       "description": "hours long of volunteering",
       "icon": "glyphicon-time",
       "title": "Shift",
-      "type": 0
+      "type": "Shift"
     },
     "SRBC1-1": {
       "count": 4,
@@ -293,7 +293,7 @@
       "description": "hours long of volunteering",
       "icon": "glyphicon-time",
       "title": "Shift",
-      "type": 0
+      "type": "Shift"
     }
   },
   "team": {
