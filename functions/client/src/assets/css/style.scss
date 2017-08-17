@@ -1,16 +1,30 @@
-/* demo */
-
-// .container{
-//   width: 370px;
-//   &.main-content{
-//     -webkit-box-shadow: 5px 5px 20px 3px #858585;
-//     box-shadow: 5px 5px 20px 3px #858585;
-//   }
-// }
 // -- Helpers -- //
 @import "scss/layout";
 @import "scss/variables";
 @import "scss/mixins";
+
+/* demo */
+.container-fluid{
+    width: 370px;
+    padding: 0;
+    @include box-shadow(5px,5px,20px,3px,#858585,false);
+    .container.no-gutter{
+        width: 370px !important;
+        padding: 0 15px !important;
+        .col-md-6{
+            width: 100%;
+            .col-md-offset-6{
+                margin-left: 0;
+            }
+        }
+        .col-md-8{
+            width: 100%;
+            &.col-md-offset-2{
+                margin-left: 0;
+            }
+        }
+    }
+}
 
 /* Design */
 
