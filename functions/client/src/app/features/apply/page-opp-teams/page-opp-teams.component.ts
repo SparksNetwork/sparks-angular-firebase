@@ -12,7 +12,9 @@ import { OppTeamsSelectService } from "../opp-teams-select.service";
 
 export class PageOppTeamsComponent implements OnInit {
     public teams: Observable<Team[]>;
+    public applicationTeams: Observable<Team[]>;
     public actionBarType = ActionBarType;
+    public notSelectedTeams: any;
 
     constructor(
         public route: ActivatedRoute
@@ -21,6 +23,11 @@ export class PageOppTeamsComponent implements OnInit {
     ngOnInit() {
         this.route.data.subscribe(data => {
             this.teams = data['teams'];
-        })
+            this.applicationTeams = data['teams'];
+            this.notSelectedTeams = Observable.combineLatest(
+                this.teams,
+                this.applicationTeams
+            ).map(([all, applied]) => all)             
+        });
     }
 }
