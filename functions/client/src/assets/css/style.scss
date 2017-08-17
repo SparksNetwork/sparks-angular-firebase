@@ -12,32 +12,14 @@
 @import "scss/variables";
 @import "scss/mixins";
 
-/* Design */
-
-.pg-auth {
-    background: rgba(191, 30, 89, 1);
-    background: -moz-linear-gradient(45deg, rgba(191, 30, 89, 1) 0%, rgba(128, 107, 173, 1) 59%, rgba(36, 174, 224, 1) 100%);
-    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(191, 30, 89, 1)), color-stop(59%, rgba(128, 107, 173, 1)), color-stop(100%, rgba(36, 174, 224, 1)));
-    background: -webkit-linear-gradient(45deg, rgba(191, 30, 89, 1) 0%, rgba(128, 107, 173, 1) 59%, rgba(36, 174, 224, 1) 100%);
-    background: -o-linear-gradient(45deg, rgba(191, 30, 89, 1) 0%, rgba(128, 107, 173, 1) 59%, rgba(36, 174, 224, 1) 100%);
-    background: -ms-linear-gradient(45deg, rgba(191, 30, 89, 1) 0%, rgba(128, 107, 173, 1) 59%, rgba(36, 174, 224, 1) 100%);
-    background: linear-gradient(45deg, rgba(191, 30, 89, 1) 0%, rgba(128, 107, 173, 1) 59%, rgba(36, 174, 224, 1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf1e59', endColorstr='#24aee0', GradientType=1);
-}
-
-.clr{
-    display: block;
-    overflow: hidden;
-    clear: both;
-}
-
 /* Typography */
 
 body {
-    font-family: $regular_font_family;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     color: $base-color;
-    font-size: 16px;
+    font-size: 15px;
+    font-weight: lighter;
     a {
         color: $base-color;
         &:hover {
@@ -49,18 +31,8 @@ body {
 h1 {
     &.event-title,
     &.page-title {
-        font-size: 30px;
+        font-size: 38px;
         margin-top: 0;
-        color: #FFF;
-        letter-spacing: 1.22px;
-        margin-bottom: 12px;
-        font-weight: normal;
-        .pg-auth & {
-            font-size: 40px;
-            letter-spacing: 1.6px;
-            line-height: 40px;
-            margin: 0;
-        }
     }
 }
 
@@ -104,20 +76,6 @@ label {
 
 /* General */
 
-.nopadding {
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
-.no-gutter {
-    padding-right: 0;
-    padding-left: 0;
-    >[class*='col-'] {
-        padding-right: 0;
-        padding-left: 0;
-    }
-}
-
 .segment-title {
     margin: 0;
     &.selected-team-title {
@@ -136,12 +94,9 @@ label {
 }
 
 .segment {
-    border-bottom: 1px solid #FFF;
+    border-bottom: 1px solid $light-gray;
     padding-top: 15px;
     padding-bottom: 15px;
-    &.auth-with-email-container{
-        padding: 0;
-    }
     &.no-padding-tb {
         padding-top: 15px;
         padding-bottom: 15px;
@@ -270,45 +225,24 @@ label {
 }
 
 .btn {
-    @include border-radius(4px);
-    text-transform: uppercase;
+    border-radius: 0;
     &.btn-primary {
-        color: $off-white;
-        background-color: transparent;
-        border: 1px solid #FFF;
+        color: #fff;
+        background-color: #737676;
+        border-color: #737676;
         &:hover {
-            color: $base-color;
-            background-color: transparent;
+            background-color: #515455;
         }
-    }
-    &.btn-default {
-        color: $base-color;
-        background-color: transparent;
-        border-color: $base-color;
     }
     &.dropdown-toggle {
         border: none;
     }
     &.btn-social-login {
-        @include border-radius(7.5px);
-        text-transform: none;
-        font-size: 16px;
-        text-align: left;
-        background: #FFF;
+        background: #F3F4F4;
         border: none;
         padding: 12px 12px;
-        color: $pink;
-        margin-bottom: 25px;
-        &.btn-trans{
-            color: $off-white;
-            background-color: transparent;
-            border: 1px solid #FFF;
-        }
         &:hover {
             background: #DEDFE0;
-        }
-        .ic{
-            margin-right: 55px;
         }
     }
 }
@@ -324,12 +258,13 @@ label {
 /* Forms */
 
 .form-control {
-    @include border-radius(0);
+    border-radius: 0;
 }
 
-// .input-group {
-//     margin-bottom: 15px;
-// }
+.input-group {
+    margin-bottom: 15px;
+}
+
 .icon {
     display: block;
 }
@@ -344,37 +279,27 @@ label {
 /* Nav */
 
 .navbar {
-    .ic{
-        font-size: 25px;
-    }
-    .btn {
-        font-size: 16px;
-        line-height: 16px;
-        font-weight: 600;
-    }
     &.navbar-default {
         border: none;
         background-color: #FFF;
         min-height: 85px;
-        padding: 23px 0;
-        margin: 0;
-        .pg-auth & {
-            background-color: transparent;
-        }
-        .navbar-brand {
-            width: 38px;
-            height: 40px;
-            padding: 0;
-            margin: 0;
-            img {
-                width: 100%;
-                height: 100%;
+        padding: 0 15px;
+        >.container {
+            padding: 23px 15px;
+            .navbar-brand {
+                width: 38px;
+                height: 40px;
+                padding: 0;
+                margin: 0;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
             }
         }
         .navbar-toggle {
             border: none;
-            padding: 0;
-            @include border-radius(0);
+            color: #1e1e1e;
             &:focus,
             &:hover {
                 background-color: transparent;
@@ -384,36 +309,24 @@ label {
             display: block;
             position: relative;
             float: right;
-            margin: 7px 15px;
-            height: 30px;
-            .ic {
-                line-height: 30px;
-            }
-            &.btn {
-                width: 80px;
-            }
+            padding: 9px 10px;
+            margin: 8px 15px 0 8px;
+            border: 1px solid transparent;
             @include MQ(S) {
                 display: none;
-            }
-            .pg-auth & {
-                color: #FFF;
-                &:hover {
-                    color: $base-color;
-                }
             }
         }
         .navbar-collapse {
             border: none;
-            box-shadow: unset;
             .navbar-menu {
                 display: none;
                 @include MQ(S) {
                     display: block;
+                    margin-top: 5px;
                 }
             }
             .navbar-form {
-                box-shadow: unset;
-                margin: 7px 0;
+                border: none;
             }
         }
     }
@@ -696,22 +609,17 @@ label {
 
 .page-hero {
     .item {
-        .pg-auth & {
-            padding: 45px 0;
-        }
-        .pg-default & {
-            height: 410px;
-            width: 100%;
-            background-repeat: no-repeat !important;
-            background-position: center center !important;
-            @include background-size(cover !important);
-            display: table;
-            padding: 0 15px;
-            .page-title {
-                display: table-cell;
-                vertical-align: middle;
-                float: none;
-            }
+        height: 410px;
+        width: 100%;
+        background-repeat: no-repeat !important;
+        background-position: center center !important;
+        @include background-size(cover !important);
+        display: table;
+        padding: 0 15px;
+        .page-title {
+            display: table-cell;
+            vertical-align: middle;
+            float: none;
         }
     }
 }
@@ -839,38 +747,6 @@ label {
 
 
 /* Footer Nav */
-
-.footertext{
-    color: #FFF;
-    font-size: 14px;
-    letter-spacing: 0.56px;
-    line-height: 20px;
-}
-
-.question-bar{
-    margin-top: 35px;
-    @extend .footertext;
-    a{
-        @extend .footertext;
-        &:hover{
-            text-decoration: underline;
-        }
-    }
-}
-.footer{
-    @extend .footertext;
-    @include Opacity(0.4);
-    border-top: 1px solid #FFF;
-    padding: 10px 0;
-    margin: 10px 0;
-}
-
-.reset-link{
-    @extend .footertext;
-    a{
-        @extend .footertext;
-    }
-}
 
 .bottom-nav {
     .btn-group {
