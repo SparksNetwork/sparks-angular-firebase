@@ -71,7 +71,7 @@
             "properties": {
                 "title": { "$ref": "#/constraints/nonEmptyString" },
                 "description": { "$ref": "#/constraints/nonEmptyString" },
-                "projectType": { "type": "integer" }, 
+                "projectType": { "type": "string", "enum" : ["Simple", "MultiDay", "LongTerm", "Donor"] }, 
                 "startDateTime": {
                     "type": "string",
                     "format": "date-time"

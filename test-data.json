@@ -28,7 +28,7 @@
         "organizerKey": "ORG-1"
       },
       "projectPageUrl": "https://firebase.google.com/",
-      "projectType": 0,
+      "projectType": "Simple",
       "shareKarmaPoints": 100,
       "startDateTime": "2017-07-15T19:00:00.000Z",
       "facebookUrl": "commiesgame",
@@ -65,7 +65,7 @@
         "organizerKey": "ORG-2"
       },
       "projectPageUrl": "http://2017.lucidityfestival.com/",
-      "projectType": 1,
+      "projectType": "MultiDay",
       "shareKarmaPoints": 100,
       "startDateTime": "2017-02-02T08:00:00.000Z",
       "facebookUrl": "commiesgame",
@@ -102,7 +102,7 @@
         "organizerKey": "ORG-3"
       },
       "projectPageUrl": "https://ventura.surfrider.org/2017-beach-cleanup-schedule/",
-      "projectType": 1,
+      "projectType": "MultiDay",
       "shareKarmaPoints": 100,
       "startDateTime": "2017-02-02T08:00:00.000Z",
       "facebookUrl": "commiesgame",
