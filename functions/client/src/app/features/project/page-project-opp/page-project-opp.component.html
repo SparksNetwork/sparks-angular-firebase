@@ -1,5 +1,4 @@
 <snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
-
 </snui-header-simple>
 
 <div class="row">
@@ -26,3 +25,15 @@
     </div>
   </div>
 </div>
+
+<project-opp-detail
+  [project]='project|async'
+  [opp]='opp|async'
+  [teams]='teams|async'
+  [benefits]='benefits|async'
+  [contribs]='contribs|async'
+>
+</project-opp-detail>
+
+<project-actionbar-opp-join [opp]='opp|async'>
+</project-actionbar-opp-join>

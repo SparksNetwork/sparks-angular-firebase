@@ -110,6 +110,7 @@
       "title": "Surfer's Point Beach Cleanup"
     }
   },
+
   "opp": {
     "KPC1": {
       "projectKey": "KPC",
@@ -173,6 +174,7 @@
       "description": "opp description"
     }
   },
+
   "benefit": {
     "KPC1-1": {
       "description": "Eat at the Saloon while you work",
@@ -224,6 +226,7 @@
       "type": "FoodDrink"
     }
   },
+
   "contrib": {
     "KPC1-1": {
       "count": 1,
@@ -296,12 +299,14 @@
       "type": "Shift"
     }
   },
+  
   "team": {
     "KPC1": {
       "description": "Single team description shouldn't show",
       "icon": "glyphicon-grain",
       "title": "Single Team Example"
     },
+
     "LC1": {
       "description": "Feed hundreds of dreamers in the most amazing kitchen ever.",
       "icon": "glyphicon-grain",
@@ -311,7 +316,7 @@
       "description": "Take tickets and give people a big warm welcome!",
       "icon": "glyphicon-sunglasses",
       "title": "Gatekeepers"
-    },
+    },    
     "LC3": {
       "description": "Shuttleguides description",
       "icon": "glyphicon-sunglasses",
@@ -368,6 +373,7 @@
       "title": "Sorters"
     }
   },
+  
   "oppAllowedTeam": {
     "KPC1-1": {
       "oppKey": "KPC1",
@@ -375,16 +381,19 @@
       "team": {
         "description": "Single team description shouldn't show",
         "icon": "glyphicon-grain",
-        "title": "Single Team Example"
+        "title": "Single Team Example",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
+
     "LC1-LC1": {
       "oppKey": "LC1",
       "teamKey": "LC1",
       "team": {
         "description": "Feed hundreds of dreamers in the most amazing kitchen ever.",
         "icon": "glyphicon-grain",
-        "title": "Mindful Feeding"
+        "title": "Mindful Feeding",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
     "LC1-LC2": {
@@ -393,7 +402,8 @@
       "team": {
         "description": "Take tickets and give people a big warm welcome!",
         "icon": "glyphicon-sunglasses",
-        "title": "Gatekeepers"
+        "title": "Gatekeepers",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
     "LC1-LC3": {
@@ -402,7 +412,8 @@
       "team": {
         "description": "Shuttleguides description",
         "icon": "glyphicon-sunglasses",
-        "title": "Shuttleguides"
+        "title": "Shuttleguides",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
     "LC1-LC4": {
@@ -411,7 +422,8 @@
       "team": {
         "description": "Autotetris description",
         "icon": "glyphicon-sunglasses",
-        "title": "Autotetris"
+        "title": "Autotetris",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
     "LC1-LC5": {
@@ -420,7 +432,8 @@
       "team": {
         "description": "dIRT description",
         "icon": "glyphicon-sunglasses",
-        "title": "dIRT"
+        "title": "dIRT",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
     "LC1-LC6": {
@@ -429,7 +442,8 @@
       "team": {
         "description": "Artist Hospitality description",
         "icon": "glyphicon-sunglasses",
-        "title": "Artist Hospitality"
+        "title": "Artist Hospitality",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
     "LC1-LC7": {
@@ -438,7 +452,8 @@
       "team": {
         "description": "Technocrats description",
         "icon": "glyphicon-sunglasses",
-        "title": "Technocrats"
+        "title": "Technocrats",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
     "LC1-LC8": {
@@ -447,16 +462,20 @@
       "team": {
         "description": "Boneyard description",
         "icon": "glyphicon-sunglasses",
-        "title": "Boneyard"
+        "title": "Boneyard",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
+
+
     "LC2-LC1": {
       "oppKey": "LC2",
       "teamKey": "LC1",
       "team": {
         "description": "Feed hundreds of dreamers in the most amazing kitchen ever.",
         "icon": "glyphicon-grain",
-        "title": "Mindful Feeding"
+        "title": "Mindful Feeding",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
     "LC2-LC2": {
@@ -465,7 +484,8 @@
       "team": {
         "description": "Take tickets and give people a big warm welcome!",
         "icon": "glyphicon-sunglasses",
-        "title": "Gatekeepers"
+        "title": "Gatekeepers",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
     "LC2-LC3": {
@@ -474,7 +494,8 @@
       "team": {
         "description": "Shuttleguides description",
         "icon": "glyphicon-sunglasses",
-        "title": "Shuttleguides"
+        "title": "Shuttleguides",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
     "LC2-LC4": {
@@ -483,7 +504,8 @@
       "team": {
         "description": "Autotetris description",
         "icon": "glyphicon-sunglasses",
-        "title": "Autotetris"
+        "title": "Autotetris",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
     "LC2-LC5": {
@@ -492,7 +514,8 @@
       "team": {
         "description": "dIRT description",
         "icon": "glyphicon-sunglasses",
-        "title": "dIRT"
+        "title": "dIRT",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
     "LC2-LC6": {
@@ -501,7 +524,8 @@
       "team": {
         "description": "Artist Hospitality description",
         "icon": "glyphicon-sunglasses",
-        "title": "Artist Hospitality"
+        "title": "Artist Hospitality",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
     "LC2-LC7": {
@@ -510,7 +534,8 @@
       "team": {
         "description": "Technocrats description",
         "icon": "glyphicon-sunglasses",
-        "title": "Technocrats"
+        "title": "Technocrats",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
     "LC2-LC8": {
@@ -519,16 +544,19 @@
       "team": {
         "description": "Boneyard description",
         "icon": "glyphicon-sunglasses",
-        "title": "Boneyard"
+        "title": "Boneyard",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
+
     "LC3-LC9": {
       "oppKey": "LC3",
       "teamKey": "LC9",
       "team": {
         "description": "Help out at the build office in the weeks before the festial.",
         "icon": "glyphicon-grain",
-        "title": "Nikki's Elves"
+        "title": "Nikki's Elves",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
     "LC4-LC1": {
@@ -537,7 +565,8 @@
       "team": {
         "description": "Feed hundreds of dreamers in the most amazing kitchen ever.",
         "icon": "glyphicon-grain",
-        "title": "Mindful Feeding"
+        "title": "Mindful Feeding",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
     "LC4-LC5": {
@@ -546,7 +575,8 @@
       "team": {
         "description": "dIRT description",
         "icon": "glyphicon-sunglasses",
-        "title": "dIRT"
+        "title": "dIRT",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
     "LC4-LC7": {
@@ -555,7 +585,8 @@
       "team": {
         "description": "Technocrats description",
         "icon": "glyphicon-sunglasses",
-        "title": "Technocrats"
+        "title": "Technocrats",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
     "LC4-LC8": {
@@ -564,7 +595,8 @@
       "team": {
         "description": "Boneyard description",
         "icon": "glyphicon-sunglasses",
-        "title": "Boneyard"
+        "title": "Boneyard",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
     "LC4-LC10": {
@@ -573,7 +605,8 @@
       "team": {
         "description": "Build Beasts description",
         "icon": "glyphicon-sunglasses",
-        "title": "Build Beasts"
+        "title": "Build Beasts",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
     "LC5-LC1": {
@@ -582,7 +615,8 @@
       "team": {
         "description": "Feed hundreds of dreamers in the most amazing kitchen ever.",
         "icon": "glyphicon-grain",
-        "title": "Mindful Feeding"
+        "title": "Mindful Feeding",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
     "LC5-LC5": {
@@ -591,7 +625,8 @@
       "team": {
         "description": "dIRT description",
         "icon": "glyphicon-sunglasses",
-        "title": "dIRT"
+        "title": "dIRT",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
     "LC5-LC7": {
@@ -600,7 +635,8 @@
       "team": {
         "description": "Technocrats description",
         "icon": "glyphicon-sunglasses",
-        "title": "Technocrats"
+        "title": "Technocrats",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
     "LC5-LC8": {
@@ -609,7 +645,8 @@
       "team": {
         "description": "Boneyard description",
         "icon": "glyphicon-sunglasses",
-        "title": "Boneyard"
+        "title": "Boneyard",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
     "LC5-LC11": {
@@ -618,16 +655,19 @@
       "team": {
         "description": "Strike Tigers description",
         "icon": "glyphicon-sunglasses",
-        "title": "Strike Tigers"
+        "title": "Strike Tigers",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
+
     "SRBC1-SRBC1": {
       "oppKey": "SRBC1",
       "teamKey": "SRBC1",
       "team": {
         "description": "Beachcombers description",
         "icon": "glyphicon-sunglasses",
-        "title": "Beachcombers"
+        "title": "Beachcombers",
+        "question": "Do you have any commercial kitchen experience?"
       }
     },
     "SRBC1-SRBC2": {
@@ -636,8 +676,10 @@
       "team": {
         "description": "Sorters description",
         "icon": "glyphicon-sunglasses",
-        "title": "Sorters"
+        "title": "Sorters",
+        "question": "Do you have any commercial kitchen experience?"
       }
     }
+
   }
 }

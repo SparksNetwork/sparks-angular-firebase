@@ -4,15 +4,19 @@ import { HttpModule } from '@angular/http';
 import {
   ProjectQueryService,
   ProjectActionService,
-  ProjectPathsService,
   ResolveProjectAll,
   ResolveProjectByProjectKey,
 } from './project'
 
 import {
+  ProfileQueryService,
+  ProfileActionService,
+  RequireProfileCompleteService,
+} from './profile'
+
+import {
   OppQueryService,
   OppActionService,
-  OppPathsService,
   ResolveOppByProjectKey,
   ResolveOppByOppKey,
 } from './opp'
@@ -20,9 +24,24 @@ import {
 import {
   ContribQueryService,
   ContribActionService,
-  ContribPathsService,
   ResolveContribByOppKey,
 } from './contrib'
+
+import {
+  ResolveTeamByOppKey,
+  // TeamQueryService,
+  // TeamActionService,
+} from './team'
+
+import {
+  OppAllowedTeamQueryService,
+} from './oppAllowedTeam'
+
+import {
+  BenefitQueryService,
+  BenefitActionService,
+  ResolveBenefitByOppKey,
+} from './benefit'
 
 @NgModule({
   imports: [
@@ -31,22 +50,33 @@ import {
   exports: [],
   declarations: [],
   providers: [
-    ProjectPathsService,
     ProjectQueryService,
     ProjectActionService,
     ResolveProjectAll,
     ResolveProjectByProjectKey,
 
+    ProfileQueryService,
+    ProfileActionService,
+    RequireProfileCompleteService,
+
     OppQueryService,
     OppActionService,
-    OppPathsService,
     ResolveOppByProjectKey,
     ResolveOppByOppKey,
 
     ContribQueryService,
     ContribActionService,
-    ContribPathsService,
     ResolveContribByOppKey,
+
+    // TeamQueryService,
+    // TeamActionService,
+    ResolveTeamByOppKey,
+
+    OppAllowedTeamQueryService,
+
+    BenefitQueryService,
+    BenefitActionService,
+    ResolveBenefitByOppKey,
   ],
 })
 export class SNDomainModule { }

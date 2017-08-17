@@ -32,6 +32,10 @@
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
+        "dev-sd": "environments/environment.dev-sd.ts",
+        "dev-id": "environments/environment.dev-id.ts",
+        "qa": "environments/environment.qa.ts",
+        "staging": "environments/environment.staging.ts",
         "prod": "environments/environment.prod.ts"
       }
     }

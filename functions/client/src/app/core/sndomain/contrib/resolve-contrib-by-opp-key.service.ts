@@ -5,21 +5,18 @@ import 'rxjs/add/operator/first'
 
 import { ContribQueryService } from './contrib-query.service'
 
+import { list } from '../../../../../../lib/firebase-angular-observables'
+
 @Injectable()
 export class ResolveContribByOppKey implements Resolve<any> {
 
   constructor(
-    public contribQuery: ContribQueryService,
+    public query: ContribQueryService,
   ) { }
 
   public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const oppKey = route.paramMap.get('oppKey')
-    const contribs = this.contribQuery.af.list('/contrib', {
-      query: {
-        orderByChild: 'oppKey',
-        equalTo: oppKey,
-      },
-    })
+    const contribs = list(this.query.byOppKey(oppKey))
 
     return contribs
       .map(() => contribs)

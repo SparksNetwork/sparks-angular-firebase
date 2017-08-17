@@ -20,4 +20,13 @@
   <project-project-description [description]="project.description"></project-project-description>
 
   <router-outlet></router-outlet>
+
+  <project-project-links
+    [projectPageUrl]="project.projectPageUrl"
+    [facebookUrl]="project.facebookUrl"
+    [twitterUrl]="project.twitterUrl"
+    [shareKarmaPoints]="project.shareKarmaPoints">
+  </project-project-links>
+
+  <project-project-organizer [organizer]="project.organizer"></project-project-organizer>
 </div>
