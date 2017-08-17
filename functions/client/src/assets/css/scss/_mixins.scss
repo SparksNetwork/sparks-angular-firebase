@@ -15,10 +15,3 @@
   display: block;
   overflow: hidden;
 }
-
-@mixin Opacity($value){
-  $IEValue: $value*100;
-  opacity: $value;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$IEValue+")";
-  filter: alpha(opacity=$IEValue);
-}
