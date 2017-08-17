@@ -11,7 +11,7 @@ import {
 import { Location } from './location'
 import { ImageRef } from './imageRef'
 import { Organizer } from './organizer'
-import { logErrors } from "../logger/logger";
+import { logErrors } from '../logger/logger';
 
 // any methods here will be available on both client and server
 export class ProjectCollection extends BaseCollection {
@@ -23,11 +23,11 @@ export class ProjectCollection extends BaseCollection {
   }
 }
 
-export enum ProjectType { 
-  Simple = "Simple", 
-  MultiDay = "MultiDay", 
-  LongTerm = "LongTerm", 
-  Donor = "Donor"
+export enum ProjectType {
+  Simple = 'Simple',
+  MultiDay = 'MultiDay',
+  LongTerm = 'LongTerm',
+  Donor = 'Donor'
 }
 
 export class Project {
