@@ -4,6 +4,7 @@ sans-serif;
 // Colors
 $base-color: #a8acb0;
 $off-white: #FEFFFF;
+$pink: #AE3572;
 
 $base-light: lighten( $base-color,
 10%);
@@ -37,7 +38,6 @@ $linkedin-color: #1E87BE;
     /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-size: 25px;
 }
 
 .ic-calendar:before {
