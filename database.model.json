@@ -16,6 +16,15 @@
                 }
             }
         },
+        "profile": {
+            "type": "object",
+            "patternProperties": {
+                "^[a-zA-Z0-9-_]+$": {
+                    "type": "object",
+                    "$ref": "#/definitions/profileDef"
+                }
+            }
+        },
         "opp": {
             "type": "object",
             "patternProperties": {
@@ -63,6 +72,9 @@
         }
     },
     "definitions": {
+        "profileDef": {
+
+        },
         "projectDef": {
             "required": [
                 "title", "description", "startDateTime", "location", "organizer", "maxKarmaPoints", "images", "projectPageUrl"
