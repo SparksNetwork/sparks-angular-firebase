@@ -14,7 +14,7 @@
 
 /* Design */
 
-.pg-landing {
+.pg-auth {
     background: rgba(191, 30, 89, 1);
     background: -moz-linear-gradient(45deg, rgba(191, 30, 89, 1) 0%, rgba(128, 107, 173, 1) 59%, rgba(36, 174, 224, 1) 100%);
     background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(191, 30, 89, 1)), color-stop(59%, rgba(128, 107, 173, 1)), color-stop(100%, rgba(36, 174, 224, 1)));
@@ -25,6 +25,11 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf1e59', endColorstr='#24aee0', GradientType=1);
 }
 
+.clr{
+    display: block;
+    overflow: hidden;
+    clear: both;
+}
 
 /* Typography */
 
@@ -32,7 +37,7 @@ body {
     font-family: $regular_font_family;
     font-weight: 400;
     color: $base-color;
-    font-size: 15px;
+    font-size: 16px;
     a {
         color: $base-color;
         &:hover {
@@ -49,10 +54,12 @@ h1 {
         color: #FFF;
         letter-spacing: 1.22px;
         margin-bottom: 12px;
-        .pg-landing & {
+        font-weight: normal;
+        .pg-auth & {
             font-size: 40px;
             letter-spacing: 1.6px;
             line-height: 40px;
+            margin: 0;
         }
     }
 }
@@ -129,9 +136,12 @@ label {
 }
 
 .segment {
-    border-bottom: 1px solid $light-gray;
+    border-bottom: 1px solid #FFF;
     padding-top: 15px;
     padding-bottom: 15px;
+    &.auth-with-email-container{
+        padding: 0;
+    }
     &.no-padding-tb {
         padding-top: 15px;
         padding-bottom: 15px;
@@ -280,11 +290,25 @@ label {
         border: none;
     }
     &.btn-social-login {
-        background: #F3F4F4;
+        @include border-radius(7.5px);
+        text-transform: none;
+        font-size: 16px;
+        text-align: left;
+        background: #FFF;
         border: none;
         padding: 12px 12px;
+        color: $pink;
+        margin-bottom: 25px;
+        &.btn-trans{
+            color: $off-white;
+            background-color: transparent;
+            border: 1px solid #FFF;
+        }
         &:hover {
             background: #DEDFE0;
+        }
+        .ic{
+            margin-right: 55px;
         }
     }
 }
@@ -320,6 +344,9 @@ label {
 /* Nav */
 
 .navbar {
+    .ic{
+        font-size: 25px;
+    }
     .btn {
         font-size: 16px;
         line-height: 16px;
@@ -331,7 +358,7 @@ label {
         min-height: 85px;
         padding: 23px 0;
         margin: 0;
-        .pg-landing & {
+        .pg-auth & {
             background-color: transparent;
         }
         .navbar-brand {
@@ -368,7 +395,7 @@ label {
             @include MQ(S) {
                 display: none;
             }
-            .pg-landing & {
+            .pg-auth & {
                 color: #FFF;
                 &:hover {
                     color: $base-color;
@@ -669,17 +696,22 @@ label {
 
 .page-hero {
     .item {
-        height: 410px;
-        width: 100%;
-        background-repeat: no-repeat !important;
-        background-position: center center !important;
-        @include background-size(cover !important);
-        display: table;
-        padding: 0 15px;
-        .page-title {
-            display: table-cell;
-            vertical-align: middle;
-            float: none;
+        .pg-auth & {
+            padding: 45px 0;
+        }
+        .pg-default & {
+            height: 410px;
+            width: 100%;
+            background-repeat: no-repeat !important;
+            background-position: center center !important;
+            @include background-size(cover !important);
+            display: table;
+            padding: 0 15px;
+            .page-title {
+                display: table-cell;
+                vertical-align: middle;
+                float: none;
+            }
         }
     }
 }
@@ -807,6 +839,38 @@ label {
 
 
 /* Footer Nav */
+
+.footertext{
+    color: #FFF;
+    font-size: 14px;
+    letter-spacing: 0.56px;
+    line-height: 20px;
+}
+
+.question-bar{
+    margin-top: 35px;
+    @extend .footertext;
+    a{
+        @extend .footertext;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
+.footer{
+    @extend .footertext;
+    @include Opacity(0.4);
+    border-top: 1px solid #FFF;
+    padding: 10px 0;
+    margin: 10px 0;
+}
+
+.reset-link{
+    @extend .footertext;
+    a{
+        @extend .footertext;
+    }
+}
 
 .bottom-nav {
     .btn-group {
