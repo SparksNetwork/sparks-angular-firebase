@@ -1,24 +1,23 @@
 <!-- @TODO generate GENERAL CONTACT component -->
-<div class="row">
-  <div class="col-xs-12">
-    <div class="row segment">
-      <div class="col-xs-4">
-        <div id="event-contact" class="row">
-          <a href="#">
-            <div class="icon">
-              <span class="ic ic-cog"></span>
-            </div>
-            <div class="text">
-              <span>Ask {{askLabel}}</span>
-            </div>
-          </a>
-        </div>
-      </div>
 
-      <div class="col-xs-8 bottom-nav">
-        <ng-content></ng-content>
+<div class="col-xs-12">
+  <div class="row">
+    <div class="col-xs-4">
+      <div class="question-bar row">
+        Have a Question? <a href="#">Ask Sparks!</a>
       </div>
+    </div>
+    <div class="col-xs-8 bottom-nav">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>
 
+
+<div class="col-xs-12 col-sm-8 col-md-6">
+  <div class="row">
+    <div class="footer">
+      Copyright 2017 &copy; Sparks Network
     </div>
   </div>
 </div>
