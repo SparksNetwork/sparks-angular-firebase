@@ -17,12 +17,14 @@
   <auth-alert-error></auth-alert-error>
   <auth-form-email-password></auth-form-email-password>
 
+</div>
+<div class="segment no-brd">
   <div class="row">
     <div class="col-xs-6">
       <button class="btn btn-block btn-primary" [routerLink]='["../signup"]'>Cancel</button>
     </div>
     <div class="col-xs-6">
-      <button class="btn btn-block btn-primary" id='signin' (click)='createWithEmailAndPassword()' [disabled]="!epForm.credentialsForm.valid">Join</button>
+      <button class="btn btn-block btn-secondary" id='signin' (click)='createWithEmailAndPassword()' [disabled]="!epForm.credentialsForm.valid">Join</button>
     </div>
   </div>
 </div>
