@@ -1,7 +1,7 @@
 import 'jasmine'
 import { browser, ExpectedConditions } from "protractor/built";
 import { setData, setUsers } from "../../firebase";
-import { ProjectSingleOppPage } from "../pages/project.single-opp.po";
+import { ProjectSingleOppPage } from "../../po/project.single-opp.po";
 
 const waitTimeout = 5000;
 

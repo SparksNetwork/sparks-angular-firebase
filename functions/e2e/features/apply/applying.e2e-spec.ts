@@ -1,13 +1,13 @@
 import 'jasmine' // to clear lint errors
 import { browser, element, by, ExpectedConditions } from 'protractor'
-import { setData, setUsers, signOut, signIn } from '../firebase'
-import { USER_VERIFIED_NO_PROFILE, USER_VERIFIED_PROFILE } from '../fixtures/users'
+import { setData, setUsers, signOut, signIn } from '../../firebase'
+import { USER_VERIFIED_NO_PROFILE, USER_VERIFIED_PROFILE } from '../../fixtures/users'
 
 describe('Applying to projects', () => {
   beforeEach(done => {
     browser.waitForAngularEnabled(false)
     setUsers()
-      .then(() => setData('/', require('../fixtures/fully-loaded.json')))
+      .then(() => setData('/', require('../../fixtures/fully-loaded.json')))
       .then(done)
   })
 

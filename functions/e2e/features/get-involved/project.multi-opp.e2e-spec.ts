@@ -1,6 +1,6 @@
 import 'jasmine'
 import { browser, ExpectedConditions } from "protractor/built";
-import { ProjectMultiOppPage } from "../pages/project.multi-opp.po";
+import { ProjectMultiOppPage } from "../../po/project.multi-opp.po";
 import { setData, setUsers } from "../../firebase";
 
 const waitTimeout = 5000;

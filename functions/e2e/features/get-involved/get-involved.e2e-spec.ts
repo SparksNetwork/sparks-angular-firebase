@@ -1,19 +1,19 @@
 import 'jasmine' // to clear lint errors
 import { browser, element, by, ExpectedConditions } from 'protractor'
-import { setData, updateData, setUsers } from '../firebase'
-import { USER_VERIFIED_NO_PROFILE, USER_VERIFIED_PROFILE } from '../fixtures/users'
+import { setData, updateData, setUsers } from '../../firebase'
+import { USER_VERIFIED_NO_PROFILE, USER_VERIFIED_PROFILE } from '../../fixtures/users'
 
 describe('User browsing projects', () => {
   beforeEach(done => {
     browser.waitForAngularEnabled(false)
     setUsers()
-      .then(() => setData('/', require('../fixtures/fully-loaded.json')))
+      .then(() => setData('/', require('../../fixtures/fully-loaded.json')))
       .then(done)
   })
 
   describe('with an invalid project', () => {
 
-    const invalidProject = require('../fixtures/project/invalid.json')
+    const invalidProject = require('../../fixtures/project/invalid.json')
     const invalidProjectKey = Object.keys(invalidProject)[0]
 
     beforeEach(done => {
