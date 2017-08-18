@@ -3,7 +3,7 @@ import { browser, element, by, ExpectedConditions } from 'protractor'
 import { setData, setUsers, signOut, signIn } from '../../firebase'
 import { USER_VERIFIED_NO_PROFILE, USER_VERIFIED_PROFILE } from '../../fixtures/users'
 
-describe('Applying to projects', () => {
+describe('Apply: user must auth before starting application', () => {
   beforeEach(done => {
     browser.waitForAngularEnabled(false)
     setUsers()
