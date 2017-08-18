@@ -9,8 +9,9 @@ var timeStamp = today.getMonth() + 1 + '-' + today.getDate() + '-' + today.getFu
 var titleReport = today.getMonth() + 1 + '/' + today.getDate() + '/' + today.getFullYear() + ' ' + today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
 var reporter = new HtmlScreenshotReporter({
   userCss: '../../my-report-styles.css',
-  dest: './e2e/Screenshots' + timeStamp,
-  filename: 'my-report.html',
+  dest: './e2e/report',
+  // dest: './e2e/Screenshots' + timeStamp,
+  filename: 'index.html',
   preserveDirectory: true,
   reportOnlyFailedSpecs: false,
   captureOnlyFailedSpecs: false,
