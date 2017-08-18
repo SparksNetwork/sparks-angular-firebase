@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Team } from "../../../../../../universal/domain/team";
-import { OppTeamsSelectService } from "../opp-teams-select.service";
+import { ApplicationTeam } from "../../../../../../universal/domain/applicationTeam";
 
 @Component({
     selector: 'opp-teams-selected',
@@ -8,17 +8,21 @@ import { OppTeamsSelectService } from "../opp-teams-select.service";
 })
 
 export class OppTeamsSelectedComponent implements OnChanges {
-    @Input() private allTeams: Team[];
+    @Input() private allTeams: any;
     teams: Team[];
 
-    constructor(
-        private oppTeamsSelectService: OppTeamsSelectService
-    ) { }
+    constructor() { }
     
     ngOnChanges(changes: SimpleChanges): void {
         if (this.allTeams) {
-            let selectedKeys = this.oppTeamsSelectService.getTeamKeys();
-            this.teams = this.allTeams.filter(t => selectedKeys.indexOf(t.$key) > -1);
+            let all = <Array<Team>>this.allTeams[0];
+            let appTeams = <Array<ApplicationTeam>>this.allTeams[1];
+            if (appTeams) {
+                let appTeamKeys = appTeams.map(s => s.teamKey);
+                this.teams = all.filter(t => appTeamKeys.indexOf(t.$key) !== -1);
+            }
+            else
+                this.teams = all;
         }
     }
 }

@@ -12,10 +12,10 @@ import { ApplicationTeam } from "../../../../../../universal/domain/applicationT
 })
 
 export class PageOppTeamsComponent implements OnInit {
-    public teams: Observable<Team[]>;
-    public applicationTeams: Observable<ApplicationTeam[]>;
+    private teams: Observable<Team[]>;
+    private applicationTeams: Observable<ApplicationTeam[]>;
     public actionBarType = ActionBarType;
-    public notSelectedTeams: any;
+    public allTeams: any;
 
     constructor(
         public route: ActivatedRoute
@@ -25,15 +25,10 @@ export class PageOppTeamsComponent implements OnInit {
         this.route.data.subscribe(data => {
             this.teams = data['teams'];
             this.applicationTeams = data['appTeams'];
-            this.notSelectedTeams = Observable.combineLatest(
+            this.allTeams = Observable.combineLatest(
                 this.teams,
                 this.applicationTeams
-            ).map(([all, applied]) => {
-                let teamKeys = applied.map(s => s.teamKey);
-                if(teamKeys)
-                    return all.filter(a => teamKeys.indexOf(a.$key) === -1)
-                return all;
-            })
+            )
         });
     }
 }
