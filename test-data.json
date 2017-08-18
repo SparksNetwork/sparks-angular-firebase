@@ -109,7 +109,16 @@
       "title" : "Surfer's Point Beach Cleanup"
     }
   },
-
+  "applicationTeam" : {
+    "APT1" : {
+      "appKey" : "AP1",
+      "teamKey" : "LC1"
+    },
+    "APT2" : {
+      "appKey" : "AP1",
+      "teamKey" : "LC2"
+    }
+  },
   "opp": {
     "KPC1": {
       "projectKey": "KPC",
