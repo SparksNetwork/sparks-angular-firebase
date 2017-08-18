@@ -45,7 +45,8 @@ import {
 
 import{
   ResolveApplicationTeamByAppKey, 
-  ApplicationTeamQueryService
+  ApplicationTeamQueryService,
+  ApplicationTeamActionService
 } from './applicationTeam'
 
 @NgModule({
@@ -84,6 +85,7 @@ import{
     ResolveBenefitByOppKey,
 
     ApplicationTeamQueryService,
+    ApplicationTeamActionService,
     ResolveApplicationTeamByAppKey
   ],
 })

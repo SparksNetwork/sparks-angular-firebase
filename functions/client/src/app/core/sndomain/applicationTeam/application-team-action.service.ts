@@ -1,14 +1,16 @@
 
 import { Injectable } from "@angular/core";
 import { ApplicationTeamQueryService } from "./index";
+import { BaseActionService } from "../../../../../../lib/firebase-universal/client";
+import { Http } from "@angular/http";
+import { environment } from "../../../../environments/environment";
 
 @Injectable()
-export class ApplicationTeamActionService {
-    constructor(
-      public query: ApplicationTeamQueryService
-    ){}
-/*   
-    add(foo) { this.query.emitter.emit([foo, ...this.query.vals]) }
-  
-    remove(key) { this.query.emitter.emit(this.query.vals.filter(f => f.key !== key))} */
+export class ApplicationTeamActionService extends BaseActionService {
+  constructor(
+    public query: ApplicationTeamQueryService,
+    public http: Http
+  ) {
+    super(environment.apiRoot, query.paths.api, http)
   }
+}
