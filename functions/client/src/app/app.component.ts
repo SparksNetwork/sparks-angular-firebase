@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.router.events.filter(event => event instanceof NavigationStart)
       .subscribe((event: NavigationStart) => {
-        this.isAuth = event.url.startsWith('/auth');
+        this.isAuth = event.url.indexOf('/signin') > -1;
       });
 
   }
