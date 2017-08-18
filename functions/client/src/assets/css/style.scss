@@ -92,6 +92,9 @@ h3 {
     .dashboard-text & {
         margin: 0;
     }
+    &.sub-title{
+        color: $base-dark;
+    }
 }
 
 .title-link {
