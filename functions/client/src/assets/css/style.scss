@@ -1,16 +1,32 @@
-/* demo */
-
-// .container{
-//   width: 370px;
-//   &.main-content{
-//     -webkit-box-shadow: 5px 5px 20px 3px #858585;
-//     box-shadow: 5px 5px 20px 3px #858585;
-//   }
-// }
 // -- Helpers -- //
 @import "scss/layout";
 @import "scss/variables";
 @import "scss/mixins";
+
+/* demo */
+
+.container-fluid {
+    width: 370px;
+    padding: 0;
+    @include box-shadow(5px, 5px, 20px, 3px, #858585, false);
+    .container.no-gutter {
+        width: 370px !important;
+        padding: 0 15px !important;
+        .col-md-6 {
+            width: 100%;
+            .col-md-offset-6 {
+                margin-left: 0;
+            }
+        }
+        .col-md-8 {
+            width: 100%;
+            &.col-md-offset-2 {
+                margin-left: 0;
+            }
+        }
+    }
+}
+
 
 /* Design */
 
@@ -25,11 +41,12 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf1e59', endColorstr='#24aee0', GradientType=1);
 }
 
-.clr{
+.clr {
     display: block;
     overflow: hidden;
     clear: both;
 }
+
 
 /* Typography */
 
@@ -139,7 +156,7 @@ label {
     border-bottom: 1px solid #FFF;
     padding-top: 15px;
     padding-bottom: 15px;
-    &.auth-with-email-container{
+    &.auth-with-email-container {
         padding: 0;
     }
     &.no-padding-tb {
@@ -299,7 +316,7 @@ label {
         padding: 12px 12px;
         color: $pink;
         margin-bottom: 25px;
-        &.btn-trans{
+        &.btn-trans {
             color: $off-white;
             background-color: transparent;
             border: 1px solid #FFF;
@@ -307,7 +324,7 @@ label {
         &:hover {
             background: #DEDFE0;
         }
-        .ic{
+        .ic {
             margin-right: 55px;
         }
     }
@@ -344,7 +361,7 @@ label {
 /* Nav */
 
 .navbar {
-    .ic{
+    .ic {
         font-size: 25px;
     }
     .btn {
@@ -447,24 +464,14 @@ label {
 .event-karma {
     width: 90px;
     float: right;
-    overflow: hidden;
-    div {
-        display: block;
-        float: left;
-    }
-    .event-karma-count {
-        font-size: 24px;
-        font-weight: normal;
-        p {
-            margin: 0;
-            font-size: 15px;
-            font-weight: lighter;
-        }
-    }
-    .icon-karma {
-        font-size: 35px;
-        float: right;
-    }
+    overflow: hidden; // .event-karma-count {
+    //     font-size: 24px;
+    //     font-weight: normal;
+    // }
+    // .icon-karma {
+    //     font-size: 35px;
+    //     float: right;
+    // }
 }
 
 .event-date-location {
@@ -723,6 +730,7 @@ label {
 }
 
 .profile-hero {
+    margin-bottom: 25px;
     .item {
         height: 410px;
         width: 100%;
@@ -785,7 +793,11 @@ label {
     }
 }
 
-.dashboard-events {
+.dashboard-projects {
+    a,
+    h3 {
+        color: $base-dark;
+    }
     .event-img {
         height: 230px;
         position: relative;
@@ -797,39 +809,47 @@ label {
             padding: 0 10px;
         }
     }
-    .event-title {
+    .project-title {
         width: calc( 100% - 60px);
         float: left;
         margin: 0;
+        line-height: 20px;
+        color: $base-dark;
+        font-size: 18px;
+        letter-spacing: 0.72px;
+        font-weight: 600;
     }
     .event-karma {
         width: 50px;
         float: right;
+        text-align: center;
         div {
             display: block;
-            float: left;
-        }
-        .event-karma-count {
-            font-size: 12px;
-            font-weight: normal;
-            p {
-                margin: 0;
-                font-size: 15px;
-                font-weight: lighter;
+            width: 100%;
+            span {
+                margin: 0 auto;
             }
         }
-        .icon-karma {
-            font-size: 10px;
-            float: right;
+        .event-karma-count {
+            font-size: 14px;
+            letter-spacing: 0.56px;
+            font-weight: 600;
+            line-height: 15px;
         }
+        .icon-karma {
+            font-size: 10px; // float: right;
+        }
+    }
+    .event-date {
+        margin-top: 12px;
     }
     .event-date,
     .event-location {
         width: 100%;
         @include block-nooverflow;
-        font-size: 12px;
-        font-weight: lighter;
-        opacity: 0.8;
+        line-height: 20px;
+        font-size: 14px;
+        letter-spacing: 0.56px;
     }
 }
 
@@ -840,24 +860,25 @@ label {
 
 /* Footer Nav */
 
-.footertext{
+.footertext {
     color: #FFF;
     font-size: 14px;
     letter-spacing: 0.56px;
     line-height: 20px;
 }
 
-.question-bar{
+.question-bar {
     margin-top: 35px;
     @extend .footertext;
-    a{
+    a {
         @extend .footertext;
-        &:hover{
+        &:hover {
             text-decoration: underline;
         }
     }
 }
-.footer{
+
+.footer {
     @extend .footertext;
     @include Opacity(0.4);
     border-top: 1px solid #FFF;
@@ -865,9 +886,9 @@ label {
     margin: 10px 0;
 }
 
-.reset-link{
+.reset-link {
     @extend .footertext;
-    a{
+    a {
         @extend .footertext;
     }
 }
