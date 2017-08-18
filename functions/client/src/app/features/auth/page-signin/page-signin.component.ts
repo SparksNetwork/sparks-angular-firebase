@@ -11,7 +11,16 @@ import { FormEmailPasswordComponent } from "../form-email-password/form-email-pa
 export class PageSigninComponent {
   @ViewChild(FormEmailPasswordComponent) public epForm: FormEmailPasswordComponent
 
-  constructor(private auth: AuthService) { }
+  public isSignUp: boolean;
+  public title: string;
+  public caption: string;
+  public switchBtnCaption: string;
+  public switchBtnTitle: string;
+  public switchAction: any;
+
+  constructor(private auth: AuthService) {
+    this.toLogin()
+  }
 
   signInWithFacebook() {
     this.auth.signInWithFacebook()
@@ -27,4 +36,23 @@ export class PageSigninComponent {
       this.epForm.credentialsForm.value.password
     )
   }
+
+  toSignup() {
+    this.isSignUp = true;
+    this.caption = 'Sign up';
+    this.title = 'Wellcome to Sparks.Network'
+    this.switchBtnCaption = 'Log in';
+    this.switchBtnTitle = 'Log in to Sparks.Network'
+    this.switchAction = this.toLogin;
+  }
+
+  toLogin() {
+    this.isSignUp = false;
+    this.caption = 'Log in'
+    this.title = 'Log in to Sparks.Network';
+    this.switchBtnCaption = 'Sign up'
+    this.switchBtnTitle = 'Wellcome to Sparks.Network'
+    this.switchAction = this.toSignup;
+  }
+
 }
