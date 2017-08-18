@@ -20,19 +20,26 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <textarea [(ngModel)]='answer' rows="4" cols="50" placeholder="Type Your Answer"></textarea>
-        </div>
-    </div>
-    <snui-action-bar [type]="actionBarType.Organizer">
-        <div class="col-xs-8 bottom-nav">
-            <div class="btn-group" role="group">
-                <a [routerLink]="['..']" class="btn btn-block btn-default">Previous</a>
+    <form novalidate [formGroup]="answerForm">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-input" [class.has-error]="!answerForm.get('answer').valid && answerForm.get('answer').touched">
+                    <textarea formControlName="answer" rows="4" cols="50" placeholder="Type Your Answer"></textarea>
+                </div>
             </div>
-            <div class="btn-group" role="group">
-                <button class="btn btn-block btn-default" (click)='join(team.$key)'>Join</button >
+            <div class="error" *ngIf="answerForm.get('answer').hasError('required') && answerForm.get('answer').touched">
+                Answer is required
+            </div>
+        </div>
+        <snui-action-bar [type]="actionBarType.Organizer">
+            <div class="col-xs-8 bottom-nav">
+                <div class="btn-group" role="group">
+                    <a [routerLink]="['..']" class="btn btn-block btn-default">Previous</a>
+                </div>
+                <div class="btn-group" role="group">
+                    <button class="btn btn-block btn-default" [disabled]='!answerForm.valid' (click)='join(team.$key)'>Join</button >
         </div>
       </div>
     </snui-action-bar>
+    </form>
 </ng-container>
