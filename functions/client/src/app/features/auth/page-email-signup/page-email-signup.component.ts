@@ -4,10 +4,10 @@ import { FormEmailPasswordComponent } from "../form-email-password/form-email-pa
 import { AuthService } from "../../../core/snauth/auth/auth.service";
 
 @Component({
-  selector: 'app-page-email-sign-up',
-  templateUrl: './page-email-sign-up.component.html', 
+  selector: 'app-page-email-signup',
+  templateUrl: './page-email-signup.component.html', 
 })
-export class PageEmailSignUpComponent {
+export class PageEmailSignupComponent {
   @ViewChild(FormEmailPasswordComponent) public epForm: FormEmailPasswordComponent
 
   constructor(private auth: AuthService) { }  

@@ -12,17 +12,17 @@ import { RequireAuth } from '../../core/snauth/require-auth/require-auth.service
 import { RequireNoEmailVerification } from '../../core/snauth/require-no-email-verification/require-no-email-verification.service'
 import { FirstAuth } from '../../core/snauth/first-auth/first-auth.service'
 import { PageResetPasswordComponent } from "./page-reset-password/page-reset-password.component";
-import { PageEmailSignUpComponent } from "./page-email-sign-up/page-email-sign-up.component";
+import { PageEmailSignupComponent } from "./page-email-signup/page-email-signup.component";
 import { PageSignupComponent } from "./page-signup/page-signup.component";
 
 export const routedComponents = [
   PageSigninComponent,
   PageSignupComponent,
+  PageEmailSignupComponent,
   PageSignoutComponent,
   PageEmailActionHandlerComponent,
   PageEmailNotVerifiedComponent,
   PageResetPasswordComponent,
-  PageEmailSignUpComponent,
 ];
 
 const routes: Routes = [
@@ -56,14 +56,21 @@ const routes: Routes = [
         component: PageSigninComponent,
         canActivate: [
           RedirectIfAuthed,
-        ]        
+        ]
       },
       {
         path: 'signup',
         component: PageSignupComponent,
         canActivate: [
           RedirectIfAuthed,
-        ]        
+        ]
+      },
+      {
+        path: 'email-signup',
+        component: PageEmailSignupComponent,
+        canActivate: [
+          RedirectIfAuthed,
+        ]
       },
       {
         path: 'signout',
@@ -71,12 +78,6 @@ const routes: Routes = [
         canActivate: [
           RedirectIfNotAuthed,
         ]
-      },{
-        path: 'email-signup',
-        component: PageEmailSignUpComponent,
-        canActivate: [
-          RedirectIfAuthed,
-        ]    
       }
     ]
   },
