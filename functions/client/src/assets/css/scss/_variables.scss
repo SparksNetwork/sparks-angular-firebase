@@ -4,6 +4,12 @@ sans-serif;
 // Colors
 $base-color: #a8acb0;
 $off-white: #FEFFFF;
+$base-dark: #253039;
+$pink: #bf1e59; /* #AE3572; */
+$blue: #24aee0;
+$purple: #806bad;
+
+
 
 $base-light: lighten( $base-color,
 10%);
@@ -37,7 +43,6 @@ $linkedin-color: #1E87BE;
     /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-size: 25px;
 }
 
 .ic-calendar:before {
@@ -115,58 +120,65 @@ $linkedin-color: #1E87BE;
     opacity: 0.5;
 }
 
+.ic-karma-points-color-01{
+    background: url('../img/karma points color-01.svg') top center no-repeat;
+    width: 25px;
+    height: 18px;
+    display: block;
+}
+
 .ic-karma-points-color-01 .path1:before {
     content: "\e90c";
-    color: rgb(0, 0, 0);
+    color: #897fba;
     opacity: 0.9;
 }
 
 .ic-karma-points-color-01 .path2:before {
     content: "\e90d";
     margin-left: -1em;
-    color: rgb(0, 0, 0);
+    color: #897fba;
     opacity: 0.9;
 }
 
 .ic-karma-points-color-01 .path3:before {
     content: "\e90e";
     margin-left: -1em;
-    color: rgb(0, 0, 0);
+    color:  #b9bddc;
     opacity: 0.5;
 }
 
 .ic-karma-points-color-01 .path4:before {
     content: "\e90f";
     margin-left: -1em;
-    color: rgb(0, 0, 0);
+   color:  #b9bddc;
     opacity: 0.5;
 }
 
 .ic-karma-points-color-01 .path5:before {
     content: "\e910";
     margin-left: -1em;
-    color: rgb(0, 0, 0);
+    color:  #b9bddc;
     opacity: 0.5;
 }
 
 .ic-karma-points-color-01 .path6:before {
     content: "\e911";
     margin-left: -1em;
-    color: rgb(0, 0, 0);
+    color:  #b9bddc;
     opacity: 0.5;
 }
 
 .ic-karma-points-color-01 .path7:before {
     content: "\e912";
     margin-left: -1em;
-    color: rgb(0, 0, 0);
+    color: $pink;
     opacity: 0.5;
 }
 
 .ic-karma-points-color-01 .path8:before {
     content: "\e913";
     margin-left: -1em;
-    color: rgb(0, 0, 0);
+    color: $pink;
     opacity: 0.5;
 }
 

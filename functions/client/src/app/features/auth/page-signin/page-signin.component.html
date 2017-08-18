@@ -1,49 +1,24 @@
 <nav class="navbar navbar-default">
   <div class="navbar-header">
-    <a href="#" class="navbar-menu btn btn-primary" title="Signup">Signup</a>
-    <a href="#" class="navbar-menu" title="Dashboard">
-                <span class="ic ic-profile"></span>
-            </a>
-    <button type="button" class="navbar-menu navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-      aria-controls="navbar">
-                <span class="ic ic-search"></span>
-            </button>
+    <a class="navbar-menu btn btn-primary" title="Signup">Signup</a>
     <a class="navbar-brand" [routerLink]="['/']"><img src="assets/img/logo_sparksnetwork_white.svg" alt="sparks.network"/></a>
-
   </div>
   <div id="navbar" class="navbar-collapse collapse">
-    <a href="#" class="navbar-menu" title="Dashboard">
-                <span class="ic ic-profile"></span>
-            </a>
-    <a href="#" class="navbar-menu btn btn-primary" title="Login">Login</a>
-    <form class="navbar-form navbar-right">
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search for">
-        <span class="input-group-btn">
-              <button class="btn btn-primary" type="button"><span class="ic ic-search"></span></button>
-        </span>
-      </div>
-    </form>
+    <a class="navbar-menu btn btn-primary" title="Signup">Signup</a>
   </div>
   <!--/.nav-collapse -->
 </nav>
 <!-- <router-outlet></router-outlet> -->
 
-<!-- <snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'> -->
 <snui-header-simple imageUrl="">
-  Sign In to<br/>the Sparks.Network
+  Sign In to<br/>Sparks.Network
 </snui-header-simple>
 
-<div class="row">
-  <div class="col-xs-12">
-    <div class="social-login segment">
-      <div class="btn-group" role="group">
-        <auth-button-signin-facebook></auth-button-signin-facebook>
-      </div>
-      <div class="btn-group" role="group">
-        <auth-button-signin-google></auth-button-signin-google>
-      </div>
-    </div>
+
+<div class="col-xs-12 col-sm-8 col-md-6">
+  <div class="row">
+      <auth-button-signin-facebook></auth-button-signin-facebook>
+      <auth-button-signin-google></auth-button-signin-google>
   </div>
 </div>
 
