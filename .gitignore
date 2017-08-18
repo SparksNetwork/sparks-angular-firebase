@@ -1,5 +1,5 @@
 # e2e output
-e2e/report
+report
 
 # firebase admin credentials
 firebaseAdminCredentials.*.json
