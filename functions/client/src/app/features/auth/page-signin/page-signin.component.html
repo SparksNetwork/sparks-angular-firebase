@@ -25,6 +25,22 @@
   </div>
 </div>
 
-<router-outlet></router-outlet>
+<div class='segment'>
+  <auth-alert-error></auth-alert-error>
+  <auth-form-email-password></auth-form-email-password>
+
+  <div class="reset-link">
+    Forgot Your Password? <a [routerLink]="['/auth', 'reset-password']">Reset it</a>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-6">
+      <button class="btn btn-block btn-primary" routerLink='["/"]'>Cancel</button>
+    </div>
+    <div class="col-xs-6">
+      <button class="btn btn-block btn-primary" id='signin' (click)='signInWithEmailAndPassword()' [disabled]="!epForm.credentialsForm.valid">Sign In</button>
+    </div>
+  </div>
+</div>
 
 <snui-action-bar></snui-action-bar>

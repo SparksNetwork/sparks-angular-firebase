@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { PageSigninComponent } from './page-signin/page-signin.component'
 import { PageSigninEmailComponent } from './page-signin-email/page-signin-email.component'
-import { PageSigninSocialComponent } from './page-signin-social/page-signin-social.component'
 import { PageSignoutComponent } from './page-signout/page-signout.component'
 import { PageEmailActionHandlerComponent } from "./page-email-action-handler/page-email-action-handler.component"
 import { PageEmailNotVerifiedComponent } from "./page-email-not-verified/page-email-not-verified.component";
@@ -18,7 +17,6 @@ import { PageResetPasswordComponent } from "./page-reset-password/page-reset-pas
 export const routedComponents = [
   PageSigninComponent,
   PageSigninEmailComponent,
-  PageSigninSocialComponent,
   PageSignoutComponent,
   PageEmailActionHandlerComponent,
   PageEmailNotVerifiedComponent,
@@ -56,17 +54,7 @@ const routes: Routes = [
         component: PageSigninComponent,
         canActivate: [
           RedirectIfAuthed,
-        ],
-        children: [
-          {
-            path: '',
-            component: PageSigninSocialComponent,
-          },
-          {
-            path: 'email',
-            component: PageSigninEmailComponent,
-          },
-        ]
+        ]        
       },
       {
         path: 'signout',
