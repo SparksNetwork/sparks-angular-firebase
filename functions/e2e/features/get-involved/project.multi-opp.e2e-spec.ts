@@ -5,7 +5,7 @@ import { setData, setUsers } from '../../firebase';
 
 const waitTimeout = 5000;
 
-fdescribe('Get-Involved: project with multiple opportunities', () => {
+describe('Get-Involved: project with multiple opportunities', () => {
     let page: ProjectMultiOppPage;
     const fullyLoaded = require('../../fixtures/fully-loaded.json')
     const project = fullyLoaded['project']['LC']
@@ -18,7 +18,7 @@ fdescribe('Get-Involved: project with multiple opportunities', () => {
         page = new ProjectMultiOppPage();
     })
 
-    describe('exploring a project page', () => {
+    describe('exploring the project page', () => {
         beforeAll(() => {
             page.navigateTo()
         })
