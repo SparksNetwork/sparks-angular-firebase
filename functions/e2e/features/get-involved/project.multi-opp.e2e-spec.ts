@@ -5,57 +5,50 @@ import { setData, setUsers } from '../../firebase';
 
 const waitTimeout = 5000;
 
-describe('[ProjectPage] Project with multiple oportunities', () => {
+fdescribe('[ProjectPage] Project with multiple oportunities', () => {
     let page: ProjectMultiOppPage;
     const fullyLoaded = require('../../fixtures/fully-loaded.json')
+    const projectMultiple = fullyLoaded['project']['LC']
+    const projectSingle = fullyLoaded['project']['KPC']
 
-    beforeEach(done => {
+    beforeAll(done => {
         browser.waitForAngularEnabled(false)
         setUsers()
             .then(() => setData('/', require('../../fixtures/fully-loaded.json')))
             .then(done)
+        page = new ProjectMultiOppPage();
     })
 
+    describe('exploring a project page', () => {
+        beforeAll(() => {
+            page.navigateTo()
+        })
 
-    beforeEach(() => {
-        page = new ProjectMultiOppPage();
-    });
-
-    describe('Presentation tests', () => {
-        it('Title should be ' + fullyLoaded['project']['LC']['title'], () => {
-            page.navigateTo();
+        it('Title should be ' + projectMultiple['title'], () => {
             const title = page.getProjectTitleElement();
-            browser.wait(ExpectedConditions.textToBePresentInElement(title, fullyLoaded['project']['LC']['title'])
+            browser.wait(ExpectedConditions.textToBePresentInElement(title, projectMultiple['title'])
                 , waitTimeout, 'Title was not correct')
             expect(true).toBeTruthy();
         })
 
-        it('Carousel last indicator should display the image ' + fullyLoaded['project']['LC']['images'][2]['imageUrl'], function () {
-
-            page.navigateTo();
+        it('Carousel last indicator should display the image ' + projectMultiple['images'][2]['imageUrl'], function () {
             const lastCarouselIndicator = page.getLastCarouselIndicator();
             browser.wait(ExpectedConditions.elementToBeClickable(lastCarouselIndicator)
                 , waitTimeout, 'Carousel not working');
             lastCarouselIndicator.click();
             page.getCarouselActiveImageDiv().getAttribute('style')
-                .then(function (str) { expect(str).toContain(fullyLoaded['project']['LC']['images'][2]['imageUrl']) });
+                .then(function (str) { expect(str).toContain(projectMultiple['images'][2]['imageUrl']) });
 
         });
 
-        it('The description should be: ' + fullyLoaded['project']['LC']['description'], function () {
-
-            page.navigateTo();
+        it('The description should be: ' + projectMultiple['description'], function () {
             browser.wait(ExpectedConditions.textToBePresentInElement(page.getDescriptionElement(),
-                fullyLoaded['project']['LC']['description']), waitTimeout, 'Description was not correct');
+                projectMultiple['description']), waitTimeout, 'Description was not correct');
             expect(true).toBeTruthy();
         });
-    })
 
-    describe('Oportunity tests', () => {
+        // multiple opportunities
         it('It should display 5 oportunity links', function () {
-
-            page.navigateTo();
-
             // force the browser to wait until the page loads
             browser.wait(ExpectedConditions.textToBePresentInElement(page.getFirstOportunityTitleElement(), '')
                 , waitTimeout, 'Oportunity links were not present')
@@ -64,9 +57,6 @@ describe('[ProjectPage] Project with multiple oportunities', () => {
         });
 
         it('It should display a specific icon for each oportunity ', function () {
-
-            page.navigateTo();
-
             browser.wait(ExpectedConditions.textToBePresentInElement(page.getFirstOportunityTitleElement(), '')
                 , waitTimeout, 'Oportunity links were not present')
 
@@ -87,8 +77,6 @@ describe('[ProjectPage] Project with multiple oportunities', () => {
         });
 
         it('First oportunity should have the contribution value: ' + fullyLoaded['opp']['LC1']['contribValue'], function () {
-
-            page.navigateTo();
             browser.wait(ExpectedConditions.textToBePresentInElement(page.getFirstOportunityTitleElement(), '')
                 , waitTimeout, 'Oportunity links were not present')
 
@@ -97,8 +85,6 @@ describe('[ProjectPage] Project with multiple oportunities', () => {
         });
 
         it('First oportunity should have the benefit value: ' + fullyLoaded['opp']['LC1']['benefitValue'], function () {
-
-            page.navigateTo();
             browser.wait(ExpectedConditions.textToBePresentInElement(page.getFirstOportunityTitleElement(), '')
                 , waitTimeout, 'Oportunity links were not present')
 
@@ -107,8 +93,6 @@ describe('[ProjectPage] Project with multiple oportunities', () => {
         });
 
         it('First oportunity should have a 44% discount', function () {
-
-            page.navigateTo();
             browser.wait(ExpectedConditions.textToBePresentInElement(page.getFirstOportunityTitleElement(), '', )
                 , waitTimeout, 'Oportunity links were not present')
 
@@ -118,8 +102,6 @@ describe('[ProjectPage] Project with multiple oportunities', () => {
         });
 
         it('Third oportunity should have the title: ' + fullyLoaded['opp']['LC3']['title'], function () {
-
-            page.navigateTo();
             browser.wait(ExpectedConditions.textToBePresentInElement(page.getFirstOportunityTitleElement(), '')
                 , waitTimeout, 'Oportunity links were not present')
 
@@ -128,20 +110,68 @@ describe('[ProjectPage] Project with multiple oportunities', () => {
         });
 
         it('Third oportunity should have the benefit value: ' + fullyLoaded['opp']['LC3']['benefitValue'], function () {
-
-            page.navigateTo();
             browser.wait(ExpectedConditions.textToBePresentInElement(page.getFirstOportunityTitleElement(), '')
                 , waitTimeout, 'Oportunity links were not present')
 
             page.getThirdOportunityContribValue()
                 .then(function (str) { expect(str).toContain(fullyLoaded['opp']['LC3']['benefitValue']) });
         });
+
+        it('It should display maximum karma points', function () {
+            browser.wait(ExpectedConditions.presenceOf(page.getMaximumKarmaPointsElement()), waitTimeout, 'Maximum karma points was not present')
+
+            page.getMaximumKarmaPoints().then(function (str) { expect(str).toContain(projectMultiple['maxKarmaPoints']) });
+
+        });
+        it('It should display the karma points received if the user shares the event', function () {
+            browser.wait(ExpectedConditions.presenceOf(page.getShareKarmaPointsElement()), waitTimeout, 'Share karma points was not present')
+
+            page.getShareKarmaPoints().then(function (str) { expect(str).toContain(projectMultiple['shareKarmaPoints']) });
+
+        });
+
+        it('It should display: name and organization for the organizer', function () {
+            browser.wait(ExpectedConditions.presenceOf(page.getOrganizerDetailsElement()), waitTimeout, 'Organizer details were not present')
+
+            const organizerDetails = page.getOrganizerDetails();
+
+            organizerDetails.then(function (str)
+            { expect(str).toContain(projectMultiple['organizer']['name'], 'Name was not correctly displayed') });
+            organizerDetails.then(function (str)
+            { expect(str).toContain(projectMultiple['organizer']['organization'], 'Organization was not correctly displayed') });
+
+        });
+
+        it('It should display the image of the organizer', function () {
+            const organizerImage = page.getOrganizerImage();
+            browser.wait(ExpectedConditions.presenceOf(organizerImage), waitTimeout, 'Organizer image was not present')
+
+            page.getOrganizerImage().getAttribute('src').then(function (str)
+            { expect(str).toMatch(projectMultiple['organizer']['imageUrl']) });
+
+        });
+
+        it('It should display:location name, city and state', function () {
+            browser.wait(ExpectedConditions.presenceOf(page.getLocationElement()), waitTimeout, 'Location element was not present')
+
+            const locationName = page.getLocationName();
+            locationName.then(function (str)
+            { expect(str).toContain(projectMultiple['location']['city'], 'City was not correct') });
+            locationName.then(function (str)
+            { expect(str).toContain(projectMultiple['location']['name'], 'Location name was not correct') });
+            locationName.then(function (str)
+            { expect(str).toContain(projectMultiple['location']['state'], 'State was not correct') });
+        });
+
     })
 
-    describe('Date and place tests', () => {
+    describe('getting directions and more info', () => {
+        beforeEach(() => {
+            page.navigateTo();
+        })
+
         it('Location link should open in a new tab Google Maps directions for reaching destination', function () {
 
-            page.navigateTo();
             const locationLink = page.getLocationLink();
             browser.wait(ExpectedConditions.presenceOf(locationLink), waitTimeout, 'Location link was not present')
 
@@ -149,9 +179,9 @@ describe('[ProjectPage] Project with multiple oportunities', () => {
 
             // check to see if the latitude and longitude are taken from firebase
             hrefAttribute.then(function (str)
-            { expect(str).toContain(fullyLoaded['project']['LC']['location']['longitude'], 'The longitude was not correct') }); ;
+            { expect(str).toContain(projectMultiple['location']['longitude'], 'The longitude was not correct') }); ;
             hrefAttribute.then(function (str)
-            { expect(str).toContain(fullyLoaded['project']['LC']['location']['latitude'], 'The latitude was not correct') }); ;
+            { expect(str).toContain(projectMultiple['location']['latitude'], 'The latitude was not correct') }); ;
 
             // check to see if one point is the user location
             hrefAttribute.then(function (str)
@@ -172,51 +202,15 @@ describe('[ProjectPage] Project with multiple oportunities', () => {
             });
         });
 
-        it('It should display:location name, city and state', function () {
-
-            page.navigateTo();
-            browser.wait(ExpectedConditions.presenceOf(page.getLocationElement()), waitTimeout, 'Location element was not present')
-
-            const locationName = page.getLocationName();
-            locationName.then(function (str)
-            { expect(str).toContain(fullyLoaded['project']['LC']['location']['city'], 'City was not correct') });
-            locationName.then(function (str)
-            { expect(str).toContain(fullyLoaded['project']['LC']['location']['name'], 'Location name was not correct') });
-            locationName.then(function (str)
-            { expect(str).toContain(fullyLoaded['project']['LC']['location']['state'], 'State was not correct') });
-        });
-    })
-
-    describe('Karma points tests', () => {
-        it('It should display maximum karma points', function () {
-
-            page.navigateTo();
-            browser.wait(ExpectedConditions.presenceOf(page.getMaximumKarmaPointsElement()), waitTimeout, 'Maximum karma points was not present')
-
-            page.getMaximumKarmaPoints().then(function (str) { expect(str).toContain(fullyLoaded['project']['LC']['maxKarmaPoints']) });
-
-        });
-        it('It should display the karma points received if the user shares the event', function () {
-
-            page.navigateTo();
-            browser.wait(ExpectedConditions.presenceOf(page.getShareKarmaPointsElement()), waitTimeout, 'Share karma points was not present')
-
-            page.getShareKarmaPoints().then(function (str) { expect(str).toContain(fullyLoaded['project']['LC']['shareKarmaPoints']) });
-
-        });
-    })
-
-    describe('Event Page tests', () => {
         it('It should display a link to Event Page', function () {
 
-            page.navigateTo();
             const eventPageLink = page.getLinkToEventPage();
             browser.wait(ExpectedConditions.presenceOf(eventPageLink), waitTimeout, 'Link to event page was not present')
 
             const hrefAttribute = eventPageLink.getAttribute('href');
 
             hrefAttribute.then(function (str)
-            { expect(str).toMatch(fullyLoaded['project']['LC']['projectPageUrl'], 'The link was not correct') });
+            { expect(str).toMatch(projectMultiple['projectPageUrl'], 'The link was not correct') });
 
             eventPageLink.click().then(function () {
                 browser.getAllWindowHandles().then(function (handles) {
@@ -232,32 +226,4 @@ describe('[ProjectPage] Project with multiple oportunities', () => {
         });
     })
 
-    describe('Organizer tests', () => {
-        it('It should display: name and organization for the organizer', function () {
-
-            page.navigateTo();
-            browser.wait(ExpectedConditions.presenceOf(page.getOrganizerDetailsElement()), waitTimeout, 'Organizer details were not present')
-
-            const organizerDetails = page.getOrganizerDetails();
-
-            organizerDetails.then(function (str)
-            { expect(str).toContain(fullyLoaded['project']['LC']['organizer']['name'], 'Name was not correctly displayed') });
-            organizerDetails.then(function (str)
-            { expect(str).toContain(fullyLoaded['project']['LC']['organizer']['organization'], 'Organization was not correctly displayed') });
-
-        });
-
-        it('It should display the image of the organizer', function () {
-
-            page.navigateTo();
-            const organizerImage = page.getOrganizerImage();
-            browser.wait(ExpectedConditions.presenceOf(organizerImage), waitTimeout, 'Organizer image was not present')
-
-            page.getOrganizerImage().getAttribute('src').then(function (str)
-            { expect(str).toMatch(fullyLoaded['project']['LC']['organizer']['imageUrl']) });
-
-
-        });
-
-    })
 });
