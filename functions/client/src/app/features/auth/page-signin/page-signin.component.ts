@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from "../../../core/snauth/auth/auth.service";
 
 @Component({
   selector: 'auth-page-signin',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
 })
 
 export class PageSigninComponent {
-  constructor() { }
+  constructor(private auth: AuthService) { }
+
+  signInWithFacebook() {
+    this.auth.signInWithFacebook()
+  }
 }

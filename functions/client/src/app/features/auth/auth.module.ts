@@ -7,7 +7,6 @@ import { AuthRoutingModule, routedComponents } from './auth-routing.module'
 
 import { FormEmailPasswordComponent } from './form-email-password/form-email-password.component'
 import { ButtonSigninGoogleComponent } from './button-signin-google/button-signin-google.component'
-import { ButtonSigninFacebookComponent } from './button-signin-facebook/button-signin-facebook.component'
 import { AlertErrorComponent } from './alert-error/alert-error.component'
 import { FormResetPasswordComponent } from './form-reset-password/form-reset-password.component'
 
@@ -16,7 +15,6 @@ import { FormResetPasswordComponent } from './form-reset-password/form-reset-pas
     routedComponents,
     FormEmailPasswordComponent,
     ButtonSigninGoogleComponent,
-    ButtonSigninFacebookComponent,
     AlertErrorComponent,
     FormResetPasswordComponent,
   ],
