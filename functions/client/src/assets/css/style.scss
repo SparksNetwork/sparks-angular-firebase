@@ -12,17 +12,36 @@
     margin: 0 auto;
     .sn-container{
         width: 100% !important;
+        .col-md-6,
+        .col-md-8{
+            width: 100% !important;
+        }
+        .question-bar{
+            width: 100% !important;
+        }
     }
 }
 
 /* Design */
+html, body {
+    height: 100%;
+}
 
 .sn-container{
     padding: 0 15px;
     width: 100%;
     margin: 0 auto;
+    min-height: 100%;
     @include MQ(S) {
         width: 66.66666667%;
+    }
+    &:before,
+    &:after {
+        display: table;
+        content: " ";
+    }
+    &:after {
+        clear: both;
     }
 }
 
@@ -35,6 +54,14 @@
     background: -ms-linear-gradient(45deg, rgba(191, 30, 89, 1) 0%, rgba(128, 107, 173, 1) 59%, rgba(36, 174, 224, 1) 100%);
     background: linear-gradient(45deg, rgba(191, 30, 89, 1) 0%, rgba(128, 107, 173, 1) 59%, rgba(36, 174, 224, 1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf1e59', endColorstr='#24aee0', GradientType=1);
+    color: #FFF;
+}
+
+.pg-default{
+    color: $base-color;
+    a{
+        color: $base-color;
+    }
 }
 
 .clr {
@@ -75,6 +102,10 @@ h1 {
             margin: 0;
         }
     }
+
+    &.event-title{
+        color: $base-dark;
+    }
 }
 
 h2 {
@@ -112,6 +143,13 @@ h3 {
 
 label {
     color: #A5A7A9;
+}
+
+.title-bordered{
+    text-align: center;
+    font-size: 16px;
+    letter-spacing: 0.64px;
+    line-height: 20px;
 }
 
 
@@ -294,6 +332,10 @@ label {
             background-color: transparent;
         }
     }
+    &.btn-secondary{
+        background: #FFF;
+        color: $pink;
+    }
     &.btn-default {
         color: $base-color;
         background-color: transparent;
@@ -335,7 +377,6 @@ label {
 
 
 /* Forms */
-
 .form-control {
     @include border-radius(0);
 }
@@ -351,6 +392,11 @@ label {
     display: block;
     overflow: hidden;
     margin-bottom: 15px;
+    
+    
+    // .ic{
+    //     color: $pink;
+    // }
 }
 
 
@@ -410,14 +456,16 @@ label {
             }
             .pg-auth & {
                 color: #FFF;
+                margin-right: 0;
                 &:hover {
-                    color: $base-color;
+                    color: #FFF;
                 }
             }
         }
         .navbar-collapse {
             border: none;
             box-shadow: unset;
+            padding: 0;
             .navbar-menu {
                 display: none;
                 @include MQ(S) {
@@ -861,6 +909,9 @@ label {
     font-size: 14px;
     letter-spacing: 0.56px;
     line-height: 20px;
+    .pg-default &{
+        color: $base-color;
+    }
 }
 
 .question-bar {
@@ -868,6 +919,14 @@ label {
     @extend .footertext;
     a {
         @extend .footertext;
+        &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+}
+.reset-link{
+    a{
         &:hover {
             text-decoration: underline;
         }

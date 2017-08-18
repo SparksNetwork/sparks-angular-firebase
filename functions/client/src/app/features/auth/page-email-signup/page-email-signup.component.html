@@ -1,4 +1,15 @@
-<snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
+<nav class="navbar navbar-default">
+  <div class="navbar-header">
+    <a [routerLink]="['../signup']" class="navbar-menu btn btn-primary" title="Sign up to Sparks.Network">Sign up</a>
+    <a class="navbar-brand" [routerLink]="['/']"><img src="assets/img/logo_sparksnetwork_white.svg" alt="sparks.network"/></a>
+  </div>
+  <div id="navbar" class="navbar-collapse collapse">
+    <a [routerLink]="['../signup']" class="navbar-menu btn btn-primary" title="Sign up to Sparks.Network">Sign up</a>
+  </div>
+  <!--/.nav-collapse -->
+</nav>
+
+<snui-header-simple imageUrl="">
   Create a new account
 </snui-header-simple>
 
@@ -6,12 +17,16 @@
   <auth-alert-error></auth-alert-error>
   <auth-form-email-password></auth-form-email-password>
 
+</div>
+<div class="segment no-brd">
   <div class="row">
     <div class="col-xs-6">
       <button class="btn btn-block btn-primary" [routerLink]='["../signup"]'>Cancel</button>
     </div>
     <div class="col-xs-6">
-      <button class="btn btn-block btn-primary" id='signin' (click)='createWithEmailAndPassword()' [disabled]="!epForm.credentialsForm.valid">Join</button>
+      <button class="btn btn-block btn-secondary" id='signin' (click)='createWithEmailAndPassword()' [disabled]="!epForm.credentialsForm.valid">Join</button>
     </div>
   </div>
 </div>
+
+<snui-action-bar></snui-action-bar>
