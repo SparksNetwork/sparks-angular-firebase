@@ -18,7 +18,8 @@ export class ResolveApplicationTeamByAppKey implements Resolve<any> {
   ) { }
 
   public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<ApplicationTeam[]>> {
-    const appKey = route.paramMap.get('appKey')
+    //const appKey = route.paramMap.get('appKey')
+    const appKey = 'AP1'
     const appTeams = list(this.query.byAppKey(appKey))
 
     return appTeams

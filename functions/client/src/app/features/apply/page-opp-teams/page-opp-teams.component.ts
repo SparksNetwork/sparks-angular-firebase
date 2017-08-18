@@ -4,6 +4,7 @@ import { Observable } from "rxjs/Rx";
 import { Team } from "../../../../../../universal/domain/team";
 import { ActionBarType } from "../../../shared/snui/action-bar/action-bar.component";
 import { OppTeamsSelectService } from "../opp-teams-select.service";
+import { ApplicationTeam } from "../../../../../../universal/domain/applicationTeam";
 
 
 @Component({
@@ -12,7 +13,7 @@ import { OppTeamsSelectService } from "../opp-teams-select.service";
 
 export class PageOppTeamsComponent implements OnInit {
     public teams: Observable<Team[]>;
-    public applicationTeams: Observable<Team[]>;
+    public applicationTeams: Observable<ApplicationTeam[]>;
     public actionBarType = ActionBarType;
     public notSelectedTeams: any;
 
@@ -23,11 +24,16 @@ export class PageOppTeamsComponent implements OnInit {
     ngOnInit() {
         this.route.data.subscribe(data => {
             this.teams = data['teams'];
-            this.applicationTeams = data['teams'];
+            this.applicationTeams = data['appTeams'];
             this.notSelectedTeams = Observable.combineLatest(
                 this.teams,
                 this.applicationTeams
-            ).map(([all, applied]) => all)             
+            ).map(([all, applied]) => {
+                let teamKeys = applied.map(s => s.teamKey);
+                if(teamKeys)
+                    return all.filter(a => teamKeys.indexOf(a.$key) === -1)
+                return all;
+            })
         });
     }
 }

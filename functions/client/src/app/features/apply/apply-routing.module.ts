@@ -17,7 +17,7 @@ import { ResolveTeamByTeamKey } from "./resolve-team-by-team-key/resolve-team-by
 import { OppTeamsSelectedComponent } from "./opp-teams-selected/opp-teams-selected.component";
 import { OppTeamsNotSelectedComponent } from "./opp-teams-not-selected/opp-teams-not-selected.component";
 import { RequireProfileCompleteService } from '../../core/sndomain/profile'
-import { OppTeamsSelectedRemoveComponent } from "./opp-teams-selected-remove/opp-teams-selected-remove.component";
+import { ResolveApplicationTeamByAppKey } from "../../core/sndomain/applicationTeam/resolve-application-team-by-app-key.service";
 
 const routes: Routes = [
     {
@@ -45,24 +45,17 @@ const routes: Routes = [
                 path: 'teams',
                 component: PageOppHomeTeamsComponent,
                 resolve: {
-                    teams: ResolveTeamByOppKey
+                    teams: ResolveTeamByOppKey,
+                    appTeams: ResolveApplicationTeamByAppKey
                 },
-                canActivate: [
+               /*  canActivate: [
                     RequireProfileCompleteService,
-                ],
+                ], */
                 children: [
                     {
                         path: '',
                         component: PageOppTeamsComponent
-                    },
-                     {
-                        path: 'remove-all',
-                        component: OppTeamsSelectedRemoveComponent
-                    }, 
-                    {
-                        path: 'remove/:teamKey',
-                        component: OppTeamsSelectedRemoveComponent
-                    },
+                    },                   
                     {
                         path: ':teamKey',
                         component: PageOppTeamComponent,
@@ -89,6 +82,5 @@ export const routedComponents = [
     PageOppTeamsComponent, 
     PageOppTeamComponent,
     OppTeamsSelectedComponent,
-    OppTeamsNotSelectedComponent,
-    OppTeamsSelectedRemoveComponent
+    OppTeamsNotSelectedComponent
 ];
