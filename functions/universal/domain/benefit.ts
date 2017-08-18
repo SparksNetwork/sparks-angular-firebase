@@ -24,11 +24,11 @@ export class BenefitCollection extends BaseCollection {
 }
 
 export enum BenefitType {
-    FoodTicket,
-    EventTicket,
-    Gifts,
-    FoodDrink,
-    HelpNonProfit
+    FoodTicket = "FoodTicket",
+    EventTicket = "EventTicket",
+    Gifts = "Gifts",
+    FoodDrink = "FoodDrink",
+    HelpNonProfit = "HelpNonProfit"
 }
 
 export class Benefit {

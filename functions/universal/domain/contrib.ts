@@ -22,10 +22,10 @@ export class ContribCollection extends BaseCollection {
 }
 
 export enum ContribType {
-   Shift,
-   PrePayment,
-   Deposit,
-   Donation
+   Shift = "Shift",
+   PrePayment = "PrePayment",
+   Deposit = "Deposit",
+   Donation = "Donation"
 }
 
 export class Contrib {
