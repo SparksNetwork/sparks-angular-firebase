@@ -1,30 +1,25 @@
 <nav class="navbar navbar-default">
   <div class="navbar-header">
-    <button (click)="switchAction()" class="navbar-menu btn btn-primary" title="{{switchBtnTitle}}">{{switchBtnCaption}}</button>
+    <a [routerLink]="['../signup']" class="navbar-menu btn btn-primary" title="Sign up to Sparks.Network">Sign up</a>
     <a class="navbar-brand" [routerLink]="['/']"><img src="assets/img/logo_sparksnetwork_white.svg" alt="sparks.network"/></a>
   </div>
   <div id="navbar" class="navbar-collapse collapse">
-    <button (click)="switchAction()" class="navbar-menu btn btn-primary" title="{{switchBtnTitle}}">{{switchBtnCaption}}</button>
+    <a [routerLink]="['../signup']" class="navbar-menu btn btn-primary" title="Sign up to Sparks.Network">Sign up</a>
   </div>
   <!--/.nav-collapse -->
 </nav>
-<!-- <router-outlet></router-outlet> -->
 
 <snui-header-simple imageUrl="">
-    <span *ngIf="!isSignUp">Sign In to<br/>Sparks.Network</span>
-    <span *ngIf="isSignUp">Wellcome to<br/>Sparks.Network</span>
-  </snui-header-simple>
+  Sign In to<br/>Sparks.Network
+</snui-header-simple>
 
 <div class="col-xs-12 col-sm-8 col-md-6">
   <div class="row">
     <auth-social-block label="Sign in"></auth-social-block>
-    <button *ngIf="isSignUp" id='signin-with-email'[routerLink]="['../email-signup']" class="btn btn-block btn-social-login btn-trans">
-        <span class="ic ic-envelope" aria-hidden="true"></span> Sign up with Email
-      </button>
   </div>
 </div>
 
-<div class='segment' [hidden]="isSignUp">
+<div class='segment'>
   <auth-alert-error></auth-alert-error>
   <auth-form-email-password></auth-form-email-password>
 
