@@ -34,4 +34,8 @@ export class OppTeamsSelectedComponent implements OnChanges {
             }
         }
     }
+
+    delete(key: string) {
+        this.applicationTeamAction.delete(key).subscribe();
+    }
 }
