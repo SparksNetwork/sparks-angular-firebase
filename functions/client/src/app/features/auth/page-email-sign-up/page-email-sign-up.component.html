@@ -1,0 +1,17 @@
+<snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
+  Create a new account
+</snui-header-simple>
+
+<div class='segment'>
+  <auth-alert-error></auth-alert-error>
+  <auth-form-email-password></auth-form-email-password>
+
+  <div class="row">
+    <div class="col-xs-6">
+      <button class="btn btn-block btn-primary" [routerLink]='["../signin"]'>Cancel</button>
+    </div>
+    <div class="col-xs-6">
+      <button class="btn btn-block btn-primary" id='signin' (click)='createWithEmailAndPassword()' [disabled]="!epForm.credentialsForm.valid">Join</button>
+    </div>
+  </div>
+</div>
