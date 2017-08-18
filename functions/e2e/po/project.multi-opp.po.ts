@@ -119,17 +119,17 @@ export class ProjectMultiOppPage {
   }
 
   getOrganizerDetailsElement() {
-    return element(by.className("event-organizer segment"))
+    return element(by.className('event-organizer segment'))
       .$('div.row').$('div.col-xs-9');
   }
 
   getOrganizerDetails() {
-    return element(by.className("event-organizer segment"))
+    return element(by.className('event-organizer segment'))
       .$('div.row').$('div.col-xs-9').getText();
   }
 
   getOrganizerImage() {
-    return element(by.className("event-organizer segment"))
+    return element(by.className('event-organizer segment'))
       .$('div.row').$('div.col-xs-3').$('img.img-circle');
   }
 
