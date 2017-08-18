@@ -5,7 +5,7 @@ import { setData, setUsers } from '../../firebase';
 
 const waitTimeout = 5000;
 
-fdescribe('[ProjectPage] Project with multiple oportunities', () => {
+fdescribe('Get-Involved: project with multiple opportunities', () => {
     let page: ProjectMultiOppPage;
     const fullyLoaded = require('../../fixtures/fully-loaded.json')
     const projectMultiple = fullyLoaded['project']['LC']
