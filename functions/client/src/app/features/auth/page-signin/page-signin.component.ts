@@ -12,4 +12,8 @@ export class PageSigninComponent {
   signInWithFacebook() {
     this.auth.signInWithFacebook()
   }
+
+  signInWithGoogle() {
+    this.auth.signInWithGoogle()
+  }
 }
