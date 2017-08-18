@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { PageSigninComponent } from './page-signin/page-signin.component'
-import { PageSigninEmailComponent } from './page-signin-email/page-signin-email.component'
 import { PageSignoutComponent } from './page-signout/page-signout.component'
 import { PageEmailActionHandlerComponent } from "./page-email-action-handler/page-email-action-handler.component"
 import { PageEmailNotVerifiedComponent } from "./page-email-not-verified/page-email-not-verified.component";
@@ -17,7 +16,6 @@ import { PageEmailSignUpComponent } from "./page-email-sign-up/page-email-sign-u
 
 export const routedComponents = [
   PageSigninComponent,
-  PageSigninEmailComponent,
   PageSignoutComponent,
   PageEmailActionHandlerComponent,
   PageEmailNotVerifiedComponent,
