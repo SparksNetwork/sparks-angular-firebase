@@ -17,12 +17,7 @@
 
 <div class="col-xs-12 col-sm-8 col-md-6">
   <div class="row">
-    <button type="button" (click)="signInWithFacebook()" class="btn btn-block btn-social-login">
-        <span class="ic ic-facebook" aria-hidden="true"></span> {{ caption }} in with Facebook
-    </button>
-    <button type="button" (click)="signInWithGoogle()" class="btn btn-block btn-social-login">
-        <span class="ic ic-google" aria-hidden="true"></span> {{ caption }} in with Google
-    </button>
+    <auth-social-block label="Sign in"></auth-social-block>
     <button *ngIf="isSignUp" id='signin-with-email'[routerLink]="['../email-signup']" class="btn btn-block btn-social-login btn-trans">
         <span class="ic ic-envelope" aria-hidden="true"></span> Sign up with Email
       </button>

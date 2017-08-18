@@ -22,14 +22,6 @@ export class PageSigninComponent {
     this.toLogin()
   }
 
-  signInWithFacebook() {
-    this.auth.signInWithFacebook()
-  }
-
-  signInWithGoogle() {
-    this.auth.signInWithGoogle()
-  }
-
   signInWithEmailAndPassword() {
     this.auth.signInWithEmailAndPassword(
       this.epForm.credentialsForm.value.email,
