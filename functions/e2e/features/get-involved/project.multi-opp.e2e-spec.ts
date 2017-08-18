@@ -8,8 +8,7 @@ const waitTimeout = 5000;
 fdescribe('Get-Involved: project with multiple opportunities', () => {
     let page: ProjectMultiOppPage;
     const fullyLoaded = require('../../fixtures/fully-loaded.json')
-    const projectMultiple = fullyLoaded['project']['LC']
-    const projectSingle = fullyLoaded['project']['KPC']
+    const project = fullyLoaded['project']['LC']
 
     beforeAll(done => {
         browser.waitForAngularEnabled(false)
@@ -24,26 +23,26 @@ fdescribe('Get-Involved: project with multiple opportunities', () => {
             page.navigateTo()
         })
 
-        it('Title should be ' + projectMultiple['title'], () => {
+        it('Title should be ' + project['title'], () => {
             const title = page.getProjectTitleElement();
-            browser.wait(ExpectedConditions.textToBePresentInElement(title, projectMultiple['title'])
+            browser.wait(ExpectedConditions.textToBePresentInElement(title, project['title'])
                 , waitTimeout, 'Title was not correct')
             expect(true).toBeTruthy();
         })
 
-        it('Carousel last indicator should display the image ' + projectMultiple['images'][2]['imageUrl'], function () {
+        it('Carousel last indicator should display the image ' + project['images'][2]['imageUrl'], function () {
             const lastCarouselIndicator = page.getLastCarouselIndicator();
             browser.wait(ExpectedConditions.elementToBeClickable(lastCarouselIndicator)
                 , waitTimeout, 'Carousel not working');
             lastCarouselIndicator.click();
             page.getCarouselActiveImageDiv().getAttribute('style')
-                .then(function (str) { expect(str).toContain(projectMultiple['images'][2]['imageUrl']) });
+                .then(function (str) { expect(str).toContain(project['images'][2]['imageUrl']) });
 
         });
 
-        it('The description should be: ' + projectMultiple['description'], function () {
+        it('The description should be: ' + project['description'], function () {
             browser.wait(ExpectedConditions.textToBePresentInElement(page.getDescriptionElement(),
-                projectMultiple['description']), waitTimeout, 'Description was not correct');
+                project['description']), waitTimeout, 'Description was not correct');
             expect(true).toBeTruthy();
         });
 
@@ -120,13 +119,13 @@ fdescribe('Get-Involved: project with multiple opportunities', () => {
         it('It should display maximum karma points', function () {
             browser.wait(ExpectedConditions.presenceOf(page.getMaximumKarmaPointsElement()), waitTimeout, 'Maximum karma points was not present')
 
-            page.getMaximumKarmaPoints().then(function (str) { expect(str).toContain(projectMultiple['maxKarmaPoints']) });
+            page.getMaximumKarmaPoints().then(function (str) { expect(str).toContain(project['maxKarmaPoints']) });
 
         });
         it('It should display the karma points received if the user shares the event', function () {
             browser.wait(ExpectedConditions.presenceOf(page.getShareKarmaPointsElement()), waitTimeout, 'Share karma points was not present')
 
-            page.getShareKarmaPoints().then(function (str) { expect(str).toContain(projectMultiple['shareKarmaPoints']) });
+            page.getShareKarmaPoints().then(function (str) { expect(str).toContain(project['shareKarmaPoints']) });
 
         });
 
@@ -136,9 +135,9 @@ fdescribe('Get-Involved: project with multiple opportunities', () => {
             const organizerDetails = page.getOrganizerDetails();
 
             organizerDetails.then(function (str)
-            { expect(str).toContain(projectMultiple['organizer']['name'], 'Name was not correctly displayed') });
+            { expect(str).toContain(project['organizer']['name'], 'Name was not correctly displayed') });
             organizerDetails.then(function (str)
-            { expect(str).toContain(projectMultiple['organizer']['organization'], 'Organization was not correctly displayed') });
+            { expect(str).toContain(project['organizer']['organization'], 'Organization was not correctly displayed') });
 
         });
 
@@ -147,7 +146,7 @@ fdescribe('Get-Involved: project with multiple opportunities', () => {
             browser.wait(ExpectedConditions.presenceOf(organizerImage), waitTimeout, 'Organizer image was not present')
 
             page.getOrganizerImage().getAttribute('src').then(function (str)
-            { expect(str).toMatch(projectMultiple['organizer']['imageUrl']) });
+            { expect(str).toMatch(project['organizer']['imageUrl']) });
 
         });
 
@@ -156,11 +155,11 @@ fdescribe('Get-Involved: project with multiple opportunities', () => {
 
             const locationName = page.getLocationName();
             locationName.then(function (str)
-            { expect(str).toContain(projectMultiple['location']['city'], 'City was not correct') });
+            { expect(str).toContain(project['location']['city'], 'City was not correct') });
             locationName.then(function (str)
-            { expect(str).toContain(projectMultiple['location']['name'], 'Location name was not correct') });
+            { expect(str).toContain(project['location']['name'], 'Location name was not correct') });
             locationName.then(function (str)
-            { expect(str).toContain(projectMultiple['location']['state'], 'State was not correct') });
+            { expect(str).toContain(project['location']['state'], 'State was not correct') });
         });
 
     })
@@ -179,9 +178,9 @@ fdescribe('Get-Involved: project with multiple opportunities', () => {
 
             // check to see if the latitude and longitude are taken from firebase
             hrefAttribute.then(function (str)
-            { expect(str).toContain(projectMultiple['location']['longitude'], 'The longitude was not correct') }); ;
+            { expect(str).toContain(project['location']['longitude'], 'The longitude was not correct') }); ;
             hrefAttribute.then(function (str)
-            { expect(str).toContain(projectMultiple['location']['latitude'], 'The latitude was not correct') }); ;
+            { expect(str).toContain(project['location']['latitude'], 'The latitude was not correct') }); ;
 
             // check to see if one point is the user location
             hrefAttribute.then(function (str)
@@ -210,7 +209,7 @@ fdescribe('Get-Involved: project with multiple opportunities', () => {
             const hrefAttribute = eventPageLink.getAttribute('href');
 
             hrefAttribute.then(function (str)
-            { expect(str).toMatch(projectMultiple['projectPageUrl'], 'The link was not correct') });
+            { expect(str).toMatch(project['projectPageUrl'], 'The link was not correct') });
 
             eventPageLink.click().then(function () {
                 browser.getAllWindowHandles().then(function (handles) {
