@@ -5,30 +5,26 @@
 
 /* demo */
 
-.container-fluid {
+.fake-mobile {
     width: 370px;
     padding: 0;
     @include box-shadow(5px, 5px, 20px, 3px, #858585, false);
-    .container.no-gutter {
-        width: 370px !important;
-        padding: 0 15px !important;
-        .col-md-6 {
-            width: 100%;
-            .col-md-offset-6 {
-                margin-left: 0;
-            }
-        }
-        .col-md-8 {
-            width: 100%;
-            &.col-md-offset-2 {
-                margin-left: 0;
-            }
-        }
+    margin: 0 auto;
+    .sn-container{
+        width: 100% !important;
     }
 }
 
-
 /* Design */
+
+.sn-container{
+    padding: 0 15px;
+    width: 100%;
+    margin: 0 auto;
+    @include MQ(S) {
+        width: 66.66666667%;
+    }
+}
 
 .pg-auth {
     background: rgba(191, 30, 89, 1);
