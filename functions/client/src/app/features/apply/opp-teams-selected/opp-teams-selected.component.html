@@ -6,7 +6,7 @@
           <h3 class="segment-title">Selected Teams</h3>
         </div>
         <div class="col-xs-4 segment-title-link-container">
-          <a href="#">delete all <span class="ic ic-delete" aria-hidden="true"></span></a>
+          <a [routerLink]="['remove-all']">delete all <span class="ic ic-delete" aria-hidden="true"></span></a>
         </div>
       </div>
       <div class="row">
@@ -16,7 +16,7 @@
               <h4 class="segment-title selected-team-title">{{team.title}}</h4>
             </div>
             <div class="col-xs-4 segment-title-link-container">
-              <a href="#">delete <span class="ic ic-delete" aria-hidden="true"></span></a>
+              <a [routerLink]="['remove', team.$key]">delete <span class="ic ic-delete" aria-hidden="true"></span></a>
             </div>
           </div>
         </div>

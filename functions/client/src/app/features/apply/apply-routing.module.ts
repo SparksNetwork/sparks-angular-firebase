@@ -17,6 +17,7 @@ import { ResolveTeamByTeamKey } from "./resolve-team-by-team-key/resolve-team-by
 import { OppTeamsSelectedComponent } from "./opp-teams-selected/opp-teams-selected.component";
 import { OppTeamsNotSelectedComponent } from "./opp-teams-not-selected/opp-teams-not-selected.component";
 import { RequireProfileCompleteService } from '../../core/sndomain/profile'
+import { OppTeamsSelectedRemoveComponent } from "./opp-teams-selected-remove/opp-teams-selected-remove.component";
 
 const routes: Routes = [
     {
@@ -54,6 +55,14 @@ const routes: Routes = [
                         path: '',
                         component: PageOppTeamsComponent
                     },
+                     {
+                        path: 'remove-all',
+                        component: OppTeamsSelectedRemoveComponent
+                    }, 
+                    {
+                        path: 'remove/:teamKey',
+                        component: OppTeamsSelectedRemoveComponent
+                    },
                     {
                         path: ':teamKey',
                         component: PageOppTeamComponent,
@@ -80,5 +89,6 @@ export const routedComponents = [
     PageOppTeamsComponent, 
     PageOppTeamComponent,
     OppTeamsSelectedComponent,
-    OppTeamsNotSelectedComponent
+    OppTeamsNotSelectedComponent,
+    OppTeamsSelectedRemoveComponent
 ];

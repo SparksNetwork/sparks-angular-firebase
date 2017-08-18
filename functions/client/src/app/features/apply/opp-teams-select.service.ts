@@ -16,4 +16,14 @@ export class OppTeamsSelectService {
         return this._selectedTeamKeys;
     }
 
+    public removeAllTeamKeys() {
+        this._selectedTeamKeys = new Array<string>();
+    }
+
+    public removeTeamByKey(key: string) {
+        let index = this._selectedTeamKeys.indexOf(key);
+        if (index !== -1)
+            this._selectedTeamKeys.splice(index, 1);
+    }
+
 }
