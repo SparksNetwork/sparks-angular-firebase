@@ -39,4 +39,11 @@ export class OppTeamsSelectedComponent implements OnChanges {
     delete(key: string) {
         this.applicationTeamAction.delete(key).subscribe();
     }
+
+    deleteAll() {
+        this.teams.forEach(s => {
+            this.applicationTeamAction.delete(s.appTeamKey).subscribe();
+        });
+    }
+
 }
