@@ -125,6 +125,9 @@ h3 {
     .dashboard-text & {
         margin: 0;
     }
+    &.sub-title{
+        color: $base-dark;
+    }
 }
 
 .title-link {
@@ -722,6 +725,10 @@ label {
 .page-social {
     padding-top: 15px;
     padding-bottom: 15px;
+    .ic{
+        font-size: 20px;
+        color: $base-dark;
+    }
     .requirements-link {
         .ic {
             float: right;
