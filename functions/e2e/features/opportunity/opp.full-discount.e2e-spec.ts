@@ -1,7 +1,7 @@
 import 'jasmine'
 import { browser, ExpectedConditions } from 'protractor/built';
 import { setData, setUsers } from '../../firebase';
-import { OpportunityFullDiscountPage } from "../../po/opp.full-discount.po";
+import { OpportunityFullDiscountPage } from '../../po/opp.full-discount.po';
 
 const waitTimeout = 5000;
 
@@ -51,7 +51,7 @@ describe('Opportunity: volunteer obtains a partial discount', () => {
             browser.wait(ExpectedConditions.presenceOf(receivedKarmaPointsElement),
                 waitTimeout, 'Received karma points were not present')
             receivedKarmaPointsElement.getText().then(function (str)
-            { expect(str).toContain(opp["karma"]) });
+            { expect(str).toContain(opp['karma']) });
         })
 
         it('It should display the benefits', function () {
@@ -118,7 +118,7 @@ describe('Opportunity: volunteer obtains a partial discount', () => {
             discountValue = ((secondOpp['benefitValue'] - secondOpp['contribValue']) / (secondOpp['benefitValue'])) * 100;
             discountValue = Math.trunc(discountValue);
             discountSecondValue.getText().then(function (str)
-            { expect(str).toContain(discountValue.toString(), "The discount value was not correct") });
+            { expect(str).toContain(discountValue.toString(), 'The discount value was not correct') });
 
             discountSecondValue.click();
 
