@@ -13,6 +13,7 @@
     "build:client:staging": "ng build --target=production --env=staging",
     "build:client:prod": "ng build --target=production --env=prod",
     "build:client:dev-sd": "ng build --target=production --env=dev-sd",
+    "build:client:dev-ts": "ng build --target=production --env=dev-ts",
     "build:ssr": "ngc -p tsconfig.ssr.json",
     "build:server": "tsc -p tsconfig.json",
     "deploy": "firebase deploy --only hosting,functions",

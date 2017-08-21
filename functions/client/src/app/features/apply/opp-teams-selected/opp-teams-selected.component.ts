@@ -19,6 +19,7 @@ export class OppTeamsSelectedComponent implements OnChanges {
 
     ngOnChanges(changes: SimpleChanges): void {
         if (this.allTeams) {
+            this.teams = new Array<SelectedTeam>();
             let all = <Array<Team>>this.allTeams[0];
             let appTeams = <Array<ApplicationTeam>>this.allTeams[1];
             if (appTeams) {
