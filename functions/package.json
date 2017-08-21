@@ -7,6 +7,7 @@
     "start:client": "ng serve",
     "start:server": "npm run build:server && firebase serve --only functions",
     "start:server:dev-sd": "npm run build:server && firebase serve --only functions",
+    "start:server:dev-ts": "npm run build:server && firebase serve --only functions",
     "build": "npm run build:client && npm run build:ssr && npm run build:server",
     "build:client": "ng build --target=production --env=qa",
     "build:client:staging": "ng build --target=production --env=staging",
