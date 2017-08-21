@@ -27,8 +27,8 @@ export class Application {
     @IsNotEmpty()
     oppKey: string;
 
-    @IsNotEmpty()
-    appKey: string;
+/*     @IsNotEmpty()
+    projectKey: string; */
  
     @IsNotEmpty()
     profileKey: string;

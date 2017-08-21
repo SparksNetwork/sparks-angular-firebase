@@ -6,7 +6,7 @@ import { Http } from "@angular/http";
 import { environment } from "../../../../environments/environment";
 
 @Injectable()
-export class ApplicationTeamActionService extends BaseActionService {
+export class ApplicationActionService extends BaseActionService {
   constructor(
     public query: ApplicationQueryService,
     public http: Http
