@@ -3,20 +3,18 @@
   <snui-header-carousel [images]="project.images"></snui-header-carousel>
   <project-project-title [title]="project.title" [maxKarmaPoints]="project.maxKarmaPoints"></project-project-title>
 
-  <div class="col-xs-12">
-    <div class="event-date-location segment">
-      <project-project-date 
-        [startDateTime]="project.startDateTime" 
-        [endDateTime]="project.endDateTime" 
-        [title]="project.title"
-        [location]="project.location"
-        [description]="project.description">
-      </project-project-date>
+  <div class="project-date-location">
+    <project-project-date 
+      [startDateTime]="project.startDateTime" 
+      [endDateTime]="project.endDateTime" 
+      [title]="project.title"
+      [location]="project.location"
+      [description]="project.description">
+    </project-project-date>
 
-      <project-project-location [location]="project.location"></project-project-location>
-    </div>
+    <project-project-location [location]="project.location"></project-project-location>
   </div>
-
+ 
   <project-project-description [description]="project.description"></project-project-description>
 
   <router-outlet></router-outlet>
@@ -30,3 +28,5 @@
 
   <project-project-organizer [organizer]="project.organizer"></project-project-organizer>
 </div>
+
+<snui-action-bar></snui-action-bar>

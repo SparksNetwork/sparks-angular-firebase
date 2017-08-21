@@ -2,11 +2,11 @@
     <div class="event-img" [ngStyle]="{ 'background': 'url(' + image?.imageUrl + ')'}">
     </div>
     <h3 class="project-title">{{title}}</h3>
-    <div class="event-karma">
+    <div class="project-karma">
         <div class="icon-karma">
-            <span class="ic ic-karma-points-color-01"></span>
+            <span class="ic ic-karma-points"></span>
         </div>
-        <div class="event-karma-count">{{maxKarmaPoints}}</div>
+        <div class="project-karma-count">{{maxKarmaPoints}}</div>
     </div>
     <div class="event-date"> {{startDateTime | date : 'longDate'}}
         <ng-container *ngIf='endDateTime'>
