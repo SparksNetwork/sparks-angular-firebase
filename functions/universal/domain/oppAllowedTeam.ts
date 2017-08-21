@@ -43,8 +43,8 @@ export class OppAllowedTeam {
 // we have two transform functions for type safety, not sure why overloading isnt working see below
 export const oppAllowedTeamTransform = (input: object) =>
   transformAndValidate<OppAllowedTeam>(OppAllowedTeam, input)
-    .catch(logErrors)
+    //.catch(logErrors)
 
 export const oppAllowedTeamsTransform = (input: object[]) =>
   transformAndValidate<OppAllowedTeam>(OppAllowedTeam, input)
-    .catch(logErrors)
+    //.catch(logErrors)

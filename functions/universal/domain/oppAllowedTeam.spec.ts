@@ -4,25 +4,25 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { ValidationError } from 'class-validator'
 
-import { profileTransform } from './profile'
+import { oppAllowedTeamTransform } from './oppAllowedTeam'
 
 function validationFailure(errs: ValidationError[], property: string, constraint: string) {
   return errs.find(err => err.property === property).constraints[constraint]
 }
 
-describe('profileTransform', () => {
+describe('oppAllowedTeamTransform', () => {
 
-  it('requires fields to be in correct format', done => {
-    profileTransform({
-        phoneNumber: '123',
-        birthday: '03-01-1900'
+  it('requires several fields to be defined', done => {
+    oppAllowedTeamTransform({
+
     })
       .then(() => {
         expect(false).toBeTruthy()
       })
       .catch((errs: ValidationError[]) => {
-        expect(validationFailure(errs, 'phoneNumber', 'isMobilePhone')).toBeTruthy()
-        expect(validationFailure(errs, 'birthday', 'isIso8601')).toBeTruthy()
+        expect(validationFailure(errs, '$key', 'isDefined')).toBeTruthy()
+        expect(validationFailure(errs, 'oppKey', 'isDefined')).toBeTruthy()
+        expect(validationFailure(errs, 'teamKey', 'isDefined')).toBeTruthy()
       })
       .then(done)
   });
