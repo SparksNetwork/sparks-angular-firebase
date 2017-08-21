@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs'
 import { transformAndValidate } from "class-transformer-validator"
 import { Expose } from 'class-transformer'
+import { IsNotEmpty, IsDefined, ValidateNested } from 'class-validator'
 
 import {
   BaseCollection,
@@ -23,11 +24,19 @@ export class OppAllowedTeamCollection extends BaseCollection {
 
 export class OppAllowedTeam {
   @Expose()
+  @IsDefined()
+  @IsNotEmpty()
   public $key: string
 
+  @IsDefined()
+  @IsNotEmpty()
   public oppKey: string
+
+  @IsDefined()
+  @IsNotEmpty()
   public teamKey: string
-  // public opp: Opp
+  
+  @ValidateNested()
   public team: Team
 }
 
