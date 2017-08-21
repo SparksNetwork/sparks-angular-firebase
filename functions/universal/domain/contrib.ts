@@ -1,5 +1,5 @@
 import { Expose } from 'class-transformer'
-import { IsNotEmpty, IsEnum, IsInt, IsDefined } from 'class-validator/decorator/decorators'
+import { IsNotEmpty, IsEnum, IsInt, IsDefined } from 'class-validator'
 import { transformAndValidate } from 'class-transformer-validator'
 
 import {
@@ -42,9 +42,11 @@ export class Contrib {
     type: ContribType;
 
     @IsDefined()
+    @IsNotEmpty()
     title: string;
 
     @IsDefined()
+    @IsNotEmpty()
     description: string;
 
     icon?: string;
