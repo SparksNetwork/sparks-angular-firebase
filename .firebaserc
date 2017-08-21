@@ -1,9 +1,5 @@
 {
   "projects": {
-    "default": "sparks-qa",
-    "prod": "sparks-prod-93f55",
-    "staging": "sparks-staging-773ac",
-    "qa": "sparks-qa",
-    "dev-sd": "sparks-development-sd"
+    "dev-cp": "sparksnetworkcp"
   }
 }

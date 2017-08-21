@@ -67,7 +67,7 @@ describe('Opportunity: volunteer obtains a partial discount', () => {
         it('It should display the benefits', function () {
             const benefitElement = page.getBenefitElement();
             browser.wait(ExpectedConditions.presenceOf(benefitElement),
-             waitTimeout, 'The benefit was not present')
+                waitTimeout, 'The benefit was not present')
             page.getBenefitTitle().then(function (str)
             { expect(str).toContain(fullyLoaded['benefit']['LC1-1']['title'], 'Benefit title was not correct') });
             page.getBenefitDescription().then(function (str)
@@ -84,16 +84,111 @@ describe('Opportunity: volunteer obtains a partial discount', () => {
             { expect(str).toContain(fullyLoaded['contrib']['LC1-1']['title'], 'Benefit title was not correct') });
             contribTitle.then(function (str)
             { expect(str).toContain(fullyLoaded['contrib']['LC1-1']['count'], 'Benefit title was not complete') });
-            
+
             let contribDescription = page.getContribDescription();
             contribDescription.then(function (str)
             { expect(str).toContain(fullyLoaded['contrib']['LC1-1']['shiftMinLength'], 'Minimum value of shift was not present') });
-           
+
             contribDescription.then(function (str)
             { expect(str).toContain(fullyLoaded['contrib']['LC1-1']['shiftMaxLength'], 'Maximum value of shift was not present') });
-        
+
         });
+
+    })
+
+
+    describe('Info about the available teams', () => {
+
+        it('It should display the title of the first team', () => {
+            let firstTeam = page.getFirstTeam()
+            browser.wait(ExpectedConditions.presenceOf(firstTeam),
+                waitTimeout, 'The first team was not present')
+
+            firstTeam.getText().then(function (str)
+            { expect(str).toContain(fullyLoaded['oppAllowedTeam']['LC1-LC1']['team']['title']) });
+        })
+
+        it('If there are more than 4 teams it should collapse and expand them', () => {
+
+            let expandLink = page.getExtendElement();
+            browser.wait(ExpectedConditions.presenceOf(expandLink),
+                waitTimeout, 'The expand link was not present')
+
+            let hiddenTeams = page.getHiddenTeams();
+
+            hiddenTeams.count().then(function (str) {
+                if (str > 0) {
+                    hiddenTeams.each(function (element) {
+                        browser.wait(ExpectedConditions.invisibilityOf(element),
+                            waitTimeout, 'The team was not hidden')
+                    });
+                }
+            })
+
+            expandLink.click();
+
+            hiddenTeams.count().then(function (str) {
+                if (str > 0) {
+                    hiddenTeams.each(function (element) {
+                        browser.wait(ExpectedConditions.visibilityOf(element),
+                            waitTimeout, 'The team was not hidden')
+                    });
+                }
+            })
+
+            const collapseLink = page.getCollapseLink()
+            browser.wait(ExpectedConditions.presenceOf(collapseLink),
+                waitTimeout, 'The collapse link was not present')
+
+            collapseLink.click();
+            hiddenTeams.count().then(function (str) {
+                if (str > 0) {
+                    hiddenTeams.each(function (element) {
+                        browser.wait(ExpectedConditions.invisibilityOf(element),
+                            waitTimeout, 'The team was not hidden')
+                    });
+                }
+            })
+
+
+        })
+    })
+
+    describe('Changing the discount value', () => {
+        it('Changing the value of the discount should open a new oppportunity page', () => {
+
+            let discountElement = page.getDiscountElement();
+            browser.wait(ExpectedConditions.presenceOf(discountElement),
+                waitTimeout, 'Discount value was not present')
+
+            discountElement.click();
+
+            let discountSecondValue = page.getSecondDiscount()
+            browser.wait(ExpectedConditions.presenceOf(discountSecondValue),
+                waitTimeout, 'The second discount value was not present')
+
+            let discountValue: number;
+            let secondOpp = fullyLoaded['opp']['LC2']
+            discountValue = ((secondOpp['benefitValue'] - secondOpp['contribValue']) / (secondOpp['benefitValue'])) * 100;
+            discountValue = Math.trunc(discountValue);
+            discountSecondValue.getText().then(function (str)
+            { expect(str).toContain(discountValue.toString(), "The discount value was not correct") });
+
+            discountSecondValue.click();
+
+            browser.wait(ExpectedConditions.urlContains('project/LC/opp/LC2'),
+                waitTimeout, 'The link to second aopportunity was not correct')
+
+            let titleElement = page.getTitleElement();
+            browser.wait(ExpectedConditions.presenceOf(titleElement),
+                waitTimeout, 'Opportunity title was not present')
+            titleElement.getText().then(function (str) { expect(str).toMatch(secondOpp['title']) });
+
+            //return to first opportunity
+            page.navigateTo();
+        })
 
 
     })
+
 })
