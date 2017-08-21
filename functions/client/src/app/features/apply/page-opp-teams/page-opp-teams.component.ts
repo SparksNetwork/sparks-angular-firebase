@@ -3,7 +3,6 @@ import { ActivatedRoute } from "@angular/router";
 import { Observable } from "rxjs/Rx";
 import { Team } from "../../../../../../universal/domain/team";
 import { ActionBarType } from "../../../shared/snui/action-bar/action-bar.component";
-import { OppTeamsSelectService } from "../opp-teams-select.service";
 import { ApplicationTeam } from "../../../../../../universal/domain/applicationTeam";
 
 

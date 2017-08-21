@@ -3,7 +3,8 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Team } from "../../../../../../universal/domain/team";
 import { Observable } from "rxjs/Rx";
 import { ActionBarType } from "../../../shared/snui/action-bar/action-bar.component";
-import { OppTeamsSelectService } from "../opp-teams-select.service";
+import { ApplicationTeamActionService } from "../../../core/sndomain/applicationTeam/application-team-action.service";
+import { ApplicationTeam } from "../../../../../../universal/domain/applicationTeam";
 
 @Component({
     templateUrl: 'page-opp-team.component.html'
@@ -17,7 +18,7 @@ export class PageOppTeamComponent implements OnInit {
     constructor(
         public route: ActivatedRoute,
         public router: Router,
-        private oppTeamsSelectService: OppTeamsSelectService
+        public applicationTeamAction: ApplicationTeamActionService
     ) { }
 
     ngOnInit() {
@@ -28,7 +29,10 @@ export class PageOppTeamComponent implements OnInit {
 
     join(key: string) {
         console.log(this.answer);
-        this.oppTeamsSelectService.addTeamKey(key);
-        this.router.navigate(['../'], {relativeTo: this.route}) ;        
+        let appTeam = new ApplicationTeam();
+        appTeam.appKey = "AP1";
+        appTeam.teamKey = key;
+        this.applicationTeamAction.create(appTeam)
+            .subscribe((s) => { this.router.navigate(['../'], { relativeTo: this.route }) });
     }
 }
