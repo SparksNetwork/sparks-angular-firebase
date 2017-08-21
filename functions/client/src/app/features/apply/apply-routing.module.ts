@@ -18,6 +18,7 @@ import { OppTeamsSelectedComponent } from "./opp-teams-selected/opp-teams-select
 import { OppTeamsNotSelectedComponent } from "./opp-teams-not-selected/opp-teams-not-selected.component";
 import { RequireProfileCompleteService } from '../../core/sndomain/profile'
 import { ResolveApplicationTeamByAppKey } from "../../core/sndomain/applicationTeam/resolve-application-team-by-app-key.service";
+import { ResolveApplicationByKey } from "../../core/sndomain/application/resolve-application-by-key.service";
 
 const routes: Routes = [
     {
@@ -46,7 +47,8 @@ const routes: Routes = [
                 component: PageOppHomeTeamsComponent,
                 resolve: {
                     teams: ResolveTeamByOppKey,
-                    appTeams: ResolveApplicationTeamByAppKey
+                    appTeams: ResolveApplicationTeamByAppKey,
+                    application: ResolveApplicationByKey
                 },
                  canActivate: [
                     RequireProfileCompleteService,
