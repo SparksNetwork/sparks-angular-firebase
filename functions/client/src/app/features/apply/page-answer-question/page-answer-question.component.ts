@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApplicationActionService } from "../../../core/sndomain/application";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Application } from "../../../../../../universal/domain/application";
+import { Application, ApplicationStatus } from "../../../../../../universal/domain/application";
 
 @Component({
   selector: 'apply-page-answer-question',
@@ -26,6 +26,7 @@ export class PageAnswerQuestionComponent implements OnInit {
     application.oppQuestion = "Opp Question";
     application.oppAnswer = "Opp Answer";
     application.oppKey = this.oppKey;
+    application.status = ApplicationStatus.Pending;
     this.applicationAction.create(application)
       .subscribe(s => {
         this.router.navigate(['..', 'application', s.json(), 'teams',], { relativeTo: this.route });

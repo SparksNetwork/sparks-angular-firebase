@@ -8,7 +8,7 @@ import {
 } from '../../lib/firebase-universal/shared'
 
 import { logErrors } from '../logger/logger'
-import { IsDefined } from "class-validator";
+import { IsDefined, IsEnum } from "class-validator";
 
 // any methods here will be available on both client and server
 export class ApplicationCollection extends BaseCollection {
@@ -18,6 +18,12 @@ export class ApplicationCollection extends BaseCollection {
             firebase: '/application'
         })
     }
+}
+
+export enum ApplicationStatus {
+    Pending,
+    Applied,
+    Accepted
 }
 
 export class Application {
@@ -36,6 +42,9 @@ export class Application {
 
     oppQuestion: string;
     oppAnswer: string;
+
+    @IsEnum(ApplicationStatus)
+    status: ApplicationStatus
 
 }
 
