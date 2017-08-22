@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApplicationActionService, ApplicationDataService } from "../../../core/sndomain/application";
+import { ApplicationActionService } from "../../../core/sndomain/application";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Application } from "../../../../../../universal/domain/application";
 
@@ -11,7 +11,6 @@ export class PageAnswerQuestionComponent implements OnInit {
 
   constructor(
     public applicationAction: ApplicationActionService,
-    public applicationDataService: ApplicationDataService,
     public route: ActivatedRoute,
     public router: Router) { }
 
@@ -25,8 +24,7 @@ export class PageAnswerQuestionComponent implements OnInit {
     application.oppKey = "LC2";
     this.applicationAction.create(application)
       .subscribe(s => {
-        this.applicationDataService.$key = s.json();
-        this.router.navigate(['..', 'teams'], { relativeTo: this.route });
+        this.router.navigate(['..', 'teams', 'application', s.json()], { relativeTo: this.route });
       })
   }
 

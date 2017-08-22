@@ -52,7 +52,6 @@ import {
 import {
   ApplicationQueryService,
   ApplicationActionService,
-  ApplicationDataService,
   ResolveApplicationByKey
 } from "./application/index";
 
@@ -97,7 +96,6 @@ import {
 
     ApplicationQueryService,
     ApplicationActionService,
-    ApplicationDataService,
     ResolveApplicationByKey
   ],
 })

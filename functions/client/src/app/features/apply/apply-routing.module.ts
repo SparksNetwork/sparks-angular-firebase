@@ -43,7 +43,7 @@ const routes: Routes = [
                 ]
             },
             {
-                path: 'teams',
+                path: 'teams/application/:applicationKey',
                 component: PageOppHomeTeamsComponent,
                 resolve: {
                     teams: ResolveTeamByOppKey,
