@@ -21,6 +21,7 @@ export class ApplicationCollection extends BaseCollection {
 }
 
 export enum ApplicationStatus {
+    Incomplete,
     Pending,
     Applied,
     Accepted
