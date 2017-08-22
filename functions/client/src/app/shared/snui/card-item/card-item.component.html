@@ -2,7 +2,7 @@
 <div>
   <div class="icon">
     <span class="ic {{icon}}"></span>
-    <div class="status">
+    <div class="status" *ngIf="status"><!-- top pick -->
       <!-- <div [ngSwitch]="status">
         <div *ngSwitchCase="cardItemStatus.Active">
           active

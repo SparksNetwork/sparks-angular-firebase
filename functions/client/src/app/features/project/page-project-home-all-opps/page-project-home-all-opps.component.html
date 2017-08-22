@@ -1,4 +1,4 @@
-<div class="project-opportunities">
+<div class="project-opportunities segment">
   <div class="row row-small-pad row-eq-height">
     <ng-container *ngFor="let opp of opps | async; let i=index">
       <div class="col-xs-6 opp-item">
@@ -13,7 +13,7 @@
                </a>
        
       </div>
-      <div class="clearfix" *ngIf="i%2==1"></div>
+       <div class="clearfix" *ngIf="i%2==1"></div> 
     </ng-container>
   </div>
 </div>
