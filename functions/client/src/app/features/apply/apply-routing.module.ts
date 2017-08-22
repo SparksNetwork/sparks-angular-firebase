@@ -47,6 +47,8 @@ const routes: Routes = [
                 path: 'application/:applicationKey/review-detail',
                 component: PageReviewDetailComponent,
                 resolve: {
+                    teams: ResolveTeamByOppKey,
+                    appTeams: ResolveApplicationTeamByAppKey,
                     application: ResolveApplicationByKey
                 }
             },
