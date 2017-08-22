@@ -34,11 +34,13 @@ export class PageOppTeamComponent implements OnInit {
         })
     }
 
-    join(key: string) {
+    join(key: string, question: string) {
         let appTeam = new ApplicationTeam();
         appTeam.appKey = this.application.$key;
         appTeam.teamKey = key;
-        this.applicationTeamAction.create(appTeam)
-            .subscribe((s) => { this.router.navigate(['../'], { relativeTo: this.route }) });
+        appTeam.answer = this.answer;
+        appTeam.question = question;
+            this.applicationTeamAction.create(appTeam)
+                .subscribe((s) => { this.router.navigate(['../'], { relativeTo: this.route }) });
     }
 }

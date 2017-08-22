@@ -33,6 +33,9 @@ export class ApplicationTeam {
 
     @IsNotEmpty()
     appKey: string;
+
+    question: string;
+    answer: string;
 }
 
 const validateOpt = { validator: { skipMissingProperties: true } };
