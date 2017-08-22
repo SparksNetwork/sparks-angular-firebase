@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Router } from '@angular/router'
+import { Router, ActivatedRoute } from '@angular/router'
 
 import { AuthService } from '../../../core/snauth/auth/auth.service'
 import {
@@ -21,7 +21,15 @@ export class PageCompleteProfileComponent {
     public auth: AuthService,
     public action: ProfileActionService,
     public query: ProfileQueryService,
-  ) { }
+    public route: ActivatedRoute,
+  ) { 
+    this.route.snapshot.data['profile'].subscribe(profile => {
+      this.profForm.profileForm.get('legalName').setValue(profile.legalName);
+      this.profForm.profileForm.get('preferredName').setValue(profile.preferredName);
+      this.profForm.profileForm.get('phoneNumber').setValue(profile.phoneNumber);
+      this.profForm.profileForm.get('birthday').setValue(profile.birthday);
+    });
+  }
 
   public next() {
     console.log('completed profile?', this.profForm.profileForm.value)
