@@ -19,6 +19,7 @@ import { OppTeamsNotSelectedComponent } from "./opp-teams-not-selected/opp-teams
 import { RequireProfileCompleteService } from '../../core/sndomain/profile'
 import { ResolveApplicationTeamByAppKey } from "../../core/sndomain/applicationTeam/resolve-application-team-by-app-key.service";
 import { ResolveApplicationByKey } from "../../core/sndomain/application/resolve-application-by-key.service";
+import { PageReviewDetailComponent } from "./page-review-detail/page-review-detail.component";
 
 const routes: Routes = [
     {
@@ -41,6 +42,10 @@ const routes: Routes = [
                 canActivate: [
                     RequireProfileCompleteService,
                 ]
+            },
+            {
+                path: 'application/:applicationKey/review-detail',
+                component: PageReviewDetailComponent
             },
             {
                 path: 'application/:applicationKey/teams',
@@ -84,5 +89,6 @@ export const routedComponents = [
     PageOppTeamsComponent, 
     PageOppTeamComponent,
     OppTeamsSelectedComponent,
-    OppTeamsNotSelectedComponent
+    OppTeamsNotSelectedComponent,
+    PageReviewDetailComponent
 ];
