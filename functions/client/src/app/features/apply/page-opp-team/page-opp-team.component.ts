@@ -5,6 +5,7 @@ import { Observable } from "rxjs/Rx";
 import { ActionBarType } from "../../../shared/snui/action-bar/action-bar.component";
 import { ApplicationTeamActionService } from "../../../core/sndomain/applicationTeam/application-team-action.service";
 import { ApplicationTeam } from "../../../../../../universal/domain/applicationTeam";
+import { Application } from "../../../../../../universal/domain/application";
 
 @Component({
     templateUrl: 'page-opp-team.component.html'
@@ -12,6 +13,7 @@ import { ApplicationTeam } from "../../../../../../universal/domain/applicationT
 
 export class PageOppTeamComponent implements OnInit {
     public team: Observable<Team>;
+    private application: Application;
     public actionBarType = ActionBarType;
     public answer: string;
 
@@ -24,13 +26,15 @@ export class PageOppTeamComponent implements OnInit {
     ngOnInit() {
         this.route.data.subscribe(data => {
             this.team = data['team'];
+            data['application'].subscribe(
+                a => this.application = a
+            )
         })
     }
 
     join(key: string) {
-        console.log(this.answer);
         let appTeam = new ApplicationTeam();
-        appTeam.appKey = "AP1";
+        appTeam.appKey = this.application.$key;
         appTeam.teamKey = key;
         this.applicationTeamAction.create(appTeam)
             .subscribe((s) => { this.router.navigate(['../'], { relativeTo: this.route }) });

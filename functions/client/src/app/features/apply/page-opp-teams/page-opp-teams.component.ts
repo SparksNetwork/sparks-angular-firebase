@@ -28,9 +28,6 @@ export class PageOppTeamsComponent implements OnInit {
                 this.teams,
                 this.applicationTeams
             )
-            data['application'].subscribe(
-                s => console.log(s)
-            )
-    });
-}
+        });
+    }
 }
