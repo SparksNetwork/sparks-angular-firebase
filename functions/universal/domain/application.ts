@@ -30,12 +30,13 @@ export class Application {
     @IsDefined()
     oppKey: string;
 
-/*     @IsNotEmpty()
-    projectKey: string; */
- 
     @IsNotEmpty()
     @IsDefined()
     profileKey: string;
+
+    oppQuestion: string;
+    oppAnswer: string;
+
 }
 
 const validateOpt = { validator: { skipMissingProperties: true } };

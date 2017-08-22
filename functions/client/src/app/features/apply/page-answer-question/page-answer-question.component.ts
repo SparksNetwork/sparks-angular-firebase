@@ -12,7 +12,8 @@ export class PageAnswerQuestionComponent implements OnInit {
   constructor(
     public applicationAction: ApplicationActionService,
     public route: ActivatedRoute,
-    public router: Router) { }
+    public router: Router
+  ) { }
 
   ngOnInit() {
 
@@ -22,6 +23,8 @@ export class PageAnswerQuestionComponent implements OnInit {
     let application = new Application();
     application.profileKey = "PnDuT5wx8wThD3L1lgOTjubs0C03";
     application.oppKey = "LC2";
+    application.oppQuestion = "Opp Question";
+    application.oppAnswer = "Opp Answer";
     this.applicationAction.create(application)
       .subscribe(s => {
         this.router.navigate(['..', 'application', s.json(), 'teams', ], { relativeTo: this.route });
