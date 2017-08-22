@@ -8,6 +8,7 @@ import { Application } from "../../../../../../universal/domain/application";
   templateUrl: './page-answer-question.component.html',
 })
 export class PageAnswerQuestionComponent implements OnInit {
+  private oppKey: string;
 
   constructor(
     public applicationAction: ApplicationActionService,
@@ -16,18 +17,18 @@ export class PageAnswerQuestionComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    this.oppKey = this.route.snapshot.params["oppKey"];
   }
 
   navigateToTeams() {
     let application = new Application();
     application.profileKey = "PnDuT5wx8wThD3L1lgOTjubs0C03";
-    application.oppKey = "LC2";
     application.oppQuestion = "Opp Question";
     application.oppAnswer = "Opp Answer";
+    application.oppKey = this.oppKey;
     this.applicationAction.create(application)
       .subscribe(s => {
-        this.router.navigate(['..', 'application', s.json(), 'teams', ], { relativeTo: this.route });
+        this.router.navigate(['..', 'application', s.json(), 'teams',], { relativeTo: this.route });
       })
   }
 
