@@ -8,6 +8,7 @@ import {
 } from '../../lib/firebase-universal/shared'
 
 import { logErrors } from '../logger/logger'
+import { IsDefined } from "class-validator";
 
 // any methods here will be available on both client and server
 export class ApplicationCollection extends BaseCollection {
@@ -22,15 +23,18 @@ export class ApplicationCollection extends BaseCollection {
 export class Application {
     @IsNotEmpty()
     @Expose()
+    @IsDefined()
     public $key: string
 
     @IsNotEmpty()
+    @IsDefined()
     oppKey: string;
 
 /*     @IsNotEmpty()
     projectKey: string; */
  
     @IsNotEmpty()
+    @IsDefined()
     profileKey: string;
 }
 
