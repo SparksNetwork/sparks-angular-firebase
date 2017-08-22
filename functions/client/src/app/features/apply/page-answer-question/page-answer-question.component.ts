@@ -21,7 +21,7 @@ export class PageAnswerQuestionComponent implements OnInit {
     this.oppKey = this.route.snapshot.params["oppKey"];
     let application = new Application();
     application.profileKey = "PnDuT5wx8wThD3L1lgOTjubs0C03"; //I will use a new service from develop
-    application.oppQuestion = "Opp Question";
+    application.oppQuestion = "Opp Question"; //should be implemented in another branch
     application.oppAnswer = "Opp Answer";
     application.oppKey = this.oppKey;
     application.status = ApplicationStatus.Incomplete;
