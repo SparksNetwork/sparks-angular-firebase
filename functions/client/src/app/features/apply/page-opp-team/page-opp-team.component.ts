@@ -26,9 +26,11 @@ export class PageOppTeamComponent implements OnInit {
     ngOnInit() {
         this.route.data.subscribe(data => {
             this.team = data['team'];
-            data['application'].subscribe(
-                a => this.application = a
-            )
+        })
+        this.route.parent.data.subscribe(data => {
+            data['application'].subscribe(a => {
+                this.application = a;
+            })
         })
     }
 

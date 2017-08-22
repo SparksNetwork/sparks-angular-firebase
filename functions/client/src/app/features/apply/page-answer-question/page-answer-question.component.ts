@@ -24,7 +24,7 @@ export class PageAnswerQuestionComponent implements OnInit {
     application.oppKey = "LC2";
     this.applicationAction.create(application)
       .subscribe(s => {
-        this.router.navigate(['..', 'teams', 'application', s.json()], { relativeTo: this.route });
+        this.router.navigate(['..', 'application', s.json(), 'teams', ], { relativeTo: this.route });
       })
   }
 
