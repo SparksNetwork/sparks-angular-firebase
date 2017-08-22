@@ -27,4 +27,23 @@ describe('oppAllowedTeamTransform', () => {
       .then(done)
   });
 
+  it('requires several fields to not be empty', done => {
+    oppAllowedTeamTransform({
+      $key: "",
+      oppKey: "",
+      teamKey: "",
+    })
+      .then(() => {
+        expect(false).toBeTruthy()
+      })
+      .catch((errs: ValidationError[]) => {
+        expect(validationFailure(errs, '$key', 'isNotEmpty')).toBeTruthy()
+        expect(validationFailure(errs, 'oppKey', 'isNotEmpty')).toBeTruthy()
+        expect(validationFailure(errs, 'teamKey', 'isNotEmpty')).toBeTruthy()
+      })
+      .then(done)
+  });
+
+
 });
+ 

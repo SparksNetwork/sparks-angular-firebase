@@ -27,4 +27,24 @@ describe('teamTransform', () => {
       .then(done)
   });
 
+  it('requires several fields to not be empty', done => {
+    teamTransform({
+      $key: "",
+      oppKey: "1",
+      title: "",
+      description: "",
+      icon: "",
+      question: "?"
+    })
+      .then(() => {
+        expect(false).toBeTruthy()
+      })
+      .catch((errs: ValidationError[]) => {
+        expect(validationFailure(errs, '$key', 'isNotEmpty')).toBeTruthy()
+        expect(validationFailure(errs, 'title', 'isNotEmpty')).toBeTruthy()
+        expect(validationFailure(errs, 'description', 'isNotEmpty')).toBeTruthy()
+      })
+      .then(done)
+  });
+
 });

@@ -31,7 +31,14 @@ describe('benefitTransform', () => {
 
   it('requires several fields to not be empty', done => {
 
-    benefitTransform({ $key: "", description: "", icon: "", oppKey: "", title: "", type: "FoodDrink" })
+    benefitTransform({
+      $key: "",
+      description: "",
+      icon: "",
+      oppKey: "",
+      title: "",
+      type: "FoodDrink"
+    })
       .then(() => {
         expect(false).toBeTruthy()
       })
