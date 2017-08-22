@@ -1,7 +1,7 @@
 <!-- <div [ngClass]="{'disabled':status === cardItemStatus.Disabled, 'active':status === cardItemStatus.Active,'pending':status === cardItemStatus.Pending}"> -->
 <div>
   <div class="icon">
-    <span class="glyphicon {{icon}} glyphicon-lg"></span>
+    <span class="ic {{icon}}"></span>
     <div class="status">
       <!-- <div [ngSwitch]="status">
         <div *ngSwitchCase="cardItemStatus.Active">
@@ -14,7 +14,7 @@
     </div>
   </div>
   <div class="text">
-    <h4>{{title}}</h4>
+    <h3>{{title}}</h3>
     <p *ngIf="subtitle">{{subtitle}}</p>
     <p *ngIf="description"><span>{{description}}</span></p>
   </div>

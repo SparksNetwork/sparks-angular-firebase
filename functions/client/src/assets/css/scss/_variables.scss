@@ -2,10 +2,11 @@
 $regular_font_family: 'Source Sans Pro',
 sans-serif;
 // Colors
-$base-color: #92979c ; /*#a8acb0; */
+$base-color: #92979C ; /*#a8acb0; */
 $off-white: #FEFFFF;
 $base-dark: #253039;
 $base-dark2: #444547; /* card-text */
+$color-separator: #e9eaeb;
 
 
 
@@ -215,24 +216,20 @@ $linkedin-color: #1E87BE;
     opacity: 0.4;
 }
 
-.ic-opp1:before {
-    content: "\e923";
-    color: #93989c;
+.ic-opp1{
+    background: url('../img/opp1.svg') top center no-repeat;
 }
 
-.ic-opp2:before {
-    content: "\e924";
-    color: #93989c;
+.ic-opp2{
+    background: url('../img/opp2.svg') top center no-repeat;
 }
 
-.ic-opp3:before {
-    content: "\e925";
-    color: #93989c;
+.ic-opp3{
+    background: url('../img/opp3.svg') top center no-repeat;
 }
 
-.ic-opp4:before {
-    content: "\e926";
-    color: #93989c;
+.ic-opp4{
+    background: url('../img/opp4.svg') top center no-repeat;
 }
 
 .ic-profile:before {
