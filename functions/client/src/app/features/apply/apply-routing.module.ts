@@ -20,6 +20,7 @@ import { RequireProfileCompleteService } from '../../core/sndomain/profile'
 import { ResolveApplicationTeamByAppKey } from "../../core/sndomain/applicationTeam/resolve-application-team-by-app-key.service";
 import { ResolveApplicationByKey } from "../../core/sndomain/application/resolve-application-by-key.service";
 import { PageReviewDetailComponent } from "./page-review-detail/page-review-detail.component";
+import { PageApplyConfirmationComponent } from "./page-apply-confirmation/page-apply-confirmation.component";
 
 const routes: Routes = [
     {
@@ -76,6 +77,10 @@ const routes: Routes = [
                         }
                     }
                 ]
+            },
+            {
+                path: 'apply-cofirmation',
+                component: PageApplyConfirmationComponent
             }
         ]
     }
@@ -95,5 +100,6 @@ export const routedComponents = [
     PageOppTeamComponent,
     OppTeamsSelectedComponent,
     OppTeamsNotSelectedComponent,
-    PageReviewDetailComponent
+    PageReviewDetailComponent,
+    PageApplyConfirmationComponent
 ];
