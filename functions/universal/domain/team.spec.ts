@@ -5,10 +5,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ValidationError } from 'class-validator'
 
 import { teamTransform } from './team'
+import { validationFailure } from '../validation/validation';
 
-function validationFailure(errs: ValidationError[], property: string, constraint: string) {
-  return errs.find(err => err.property === property).constraints[constraint]
-}
 
 describe('teamTransform', () => {
 
