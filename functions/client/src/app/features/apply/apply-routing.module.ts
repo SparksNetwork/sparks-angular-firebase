@@ -21,6 +21,7 @@ import { ResolveApplicationTeamByAppKey } from "../../core/sndomain/applicationT
 import { ResolveApplicationByKey } from "../../core/sndomain/application/resolve-application-by-key.service";
 import { PageReviewDetailComponent } from "./page-review-detail/page-review-detail.component";
 import { PageApplyConfirmationComponent } from "./page-apply-confirmation/page-apply-confirmation.component";
+import { PageApplicationComponent } from "./page-application/page-application.component";
 
 const routes: Routes = [
     {
@@ -45,43 +46,44 @@ const routes: Routes = [
                 ]
             },
             {
-                path: 'application/:applicationKey/review-detail',
-                component: PageReviewDetailComponent,
-                resolve: {
-                    teams: ResolveTeamByOppKey,
-                    appTeams: ResolveApplicationTeamByAppKey,
-                    application: ResolveApplicationByKey
-                }
-            },
-            {
-                path: 'application/:applicationKey/teams',
-                component: PageOppHomeTeamsComponent,
+                path: 'application/:applicationKey',
+                component: PageApplicationComponent,
                 resolve: {
                     teams: ResolveTeamByOppKey,
                     appTeams: ResolveApplicationTeamByAppKey,
                     application: ResolveApplicationByKey
                 },
-                 canActivate: [
-                    RequireProfileCompleteService,
-                ], 
-                children: [
+                children:[
                     {
-                        path: '',
-                        component: PageOppTeamsComponent
-                    },                   
+                        path: 'teams',
+                        component: PageOppHomeTeamsComponent,
+                        canActivate: [
+                            RequireProfileCompleteService,
+                        ], 
+                        children: [
+                            {
+                                path: '',
+                                component: PageOppTeamsComponent
+                            },                   
+                            {
+                                path: ':teamKey',
+                                component: PageOppTeamComponent,
+                                resolve: {
+                                    team: ResolveTeamByTeamKey
+                                }
+                            }
+                        ]
+                    },
                     {
-                        path: ':teamKey',
-                        component: PageOppTeamComponent,
-                        resolve: {
-                            team: ResolveTeamByTeamKey
-                        }
+                        path: 'review-detail',
+                        component: PageReviewDetailComponent
+                    },
+                    {
+                        path: 'apply-cofirmation',
+                        component: PageApplyConfirmationComponent
                     }
                 ]
-            },
-            {
-                path: 'application/:applicationKey/apply-cofirmation',
-                component: PageApplyConfirmationComponent
-            }
+            }      
         ]
     }
 ];
@@ -101,5 +103,6 @@ export const routedComponents = [
     OppTeamsSelectedComponent,
     OppTeamsNotSelectedComponent,
     PageReviewDetailComponent,
-    PageApplyConfirmationComponent
+    PageApplyConfirmationComponent,
+    PageApplicationComponent
 ];

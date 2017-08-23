@@ -25,7 +25,7 @@ export class PageReviewDetailComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.route.data.subscribe(data => {
+        this.route.parent.data.subscribe(data => {
             data['application'].subscribe(a => this.application = <Application>a);
             this.teams = data['teams'];
             this.applicationTeams = data['appTeams'];
