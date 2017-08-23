@@ -46,6 +46,8 @@ export class Opp {
   @IsNotEmpty()
   public title: string;
 
+  public question: string;
+
   get discount(): number {
     return 1 - (this.contribValue / this.benefitValue)
   }

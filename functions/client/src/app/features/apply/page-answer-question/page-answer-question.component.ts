@@ -3,14 +3,15 @@ import { ApplicationActionService } from "../../../core/sndomain/application";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Application, ApplicationStatus } from "../../../../../../universal/domain/application";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Opp } from "../../../../../../universal/domain/opp";
 
 @Component({
   selector: 'apply-page-answer-question',
   templateUrl: './page-answer-question.component.html',
 })
 export class PageAnswerQuestionComponent implements OnInit {
-  private oppKey: string;
-  private applicationKey: string;
+  public opp: Opp;
+  public applicationKey: string;
   public answerForm: FormGroup;
 
   constructor(
@@ -25,12 +26,18 @@ export class PageAnswerQuestionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.oppKey = this.route.snapshot.params["oppKey"];
+    this.route.data.subscribe(data => {
+      data['opp'].subscribe(
+        o => this.onLoadedOpp(o)
+      )
+    });
+  }
+
+  private onLoadedOpp(opp: Opp) {
+    this.opp = opp;
     let application = new Application();
     application.profileKey = "PnDuT5wx8wThD3L1lgOTjubs0C03"; //I will use a new service from develop
-    application.oppQuestion = "Opp Question"; //should be implemented in another branch
-    application.oppAnswer = "Opp Answer";
-    application.oppKey = this.oppKey;
+    application.oppKey = this.opp.$key;
     application.status = ApplicationStatus.Incomplete;
     this.applicationAction.create(application)
       .subscribe(s => {
@@ -38,8 +45,16 @@ export class PageAnswerQuestionComponent implements OnInit {
       })
   }
 
-  navigateToTeams() {
-    this.router.navigate(['..', 'application', this.applicationKey, 'teams',], { relativeTo: this.route });
+  submit() {
+    let answer = this.answerForm.get("answer").value;
+    let value = {
+      oppQuestion: this.opp.question,
+      oppAnswer: answer
+    }
+    this.applicationAction.update(this.applicationKey, value).subscribe(
+      s => this.router.navigate(['..', 'application', this.applicationKey, 'teams'], { relativeTo: this.route })
+    )
+
   }
 
 }
