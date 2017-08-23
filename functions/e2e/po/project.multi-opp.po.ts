@@ -115,7 +115,7 @@ export class ProjectMultiOppPage {
   }
 
   getLinkToEventPage() {
-    return element(by.css('div.page-social.row')).$$('a').first();
+    return element(by.css('div.project-social.row')).$$('a').first();
   }
 
   getOrganizerDetailsElement() {
