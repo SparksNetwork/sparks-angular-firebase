@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Router } from '@angular/router'
+import { Router, ActivatedRoute } from '@angular/router'
 
 import { AuthService } from '../../../core/snauth/auth/auth.service'
 import {
@@ -16,12 +16,19 @@ import { FormCompleteProfileComponent } from '../form-complete-profile/form-comp
 export class PageCompleteProfileComponent {
   @ViewChild(FormCompleteProfileComponent) public profForm: FormCompleteProfileComponent
 
+  public oppKey: string
+
   constructor(
     public router: Router,
+    public route: ActivatedRoute,
     public auth: AuthService,
     public action: ProfileActionService,
     public query: ProfileQueryService,
-  ) { }
+  ) {
+    this.route.snapshot.data['opp'].subscribe(opp => {
+      this.oppKey = opp.$key;
+    });
+   }
 
   public next() {
     console.log('completed profile?', this.profForm.profileForm.value)
@@ -37,7 +44,7 @@ export class PageCompleteProfileComponent {
                   profile.legalName &&
                   profile.phoneNumber &&
                   profile.preferredName) {
-                this.router.navigate(['/apply', 'KPC1', 'answer-question'])
+                this.router.navigate(['/apply', this.oppKey, 'answer-question'])
               }
             })
           } else {
