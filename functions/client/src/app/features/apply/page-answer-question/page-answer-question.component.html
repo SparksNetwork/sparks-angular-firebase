@@ -1,17 +1,26 @@
 <snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
   The Organizer wants to know...
 </snui-header-simple>
-
-<div class="row">
-  <div class="col-xs-12">
-    <div class="segment">
-      <p class="card-text">Question here</p>
+<form novalidate [formGroup]="answerForm">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="segment">
+        <p class="card-text">Question here</p>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="form-input" [class.has-error]="!answerForm.get('answer').valid && answerForm.get('answer').touched">
+        <textarea formControlName="answer" rows="4" cols="50" placeholder="Type Your Answer"></textarea>
+      </div>
+    </div>
+    <div class="error" *ngIf="answerForm.get('answer').hasError('required') && answerForm.get('answer').touched">
+      Answer is required
     </div>
   </div>
-</div>
 
-<snui-action-bar>
-  <div class="btn-group" role="group">
-    <a (click)="navigateToTeams()" class="btn btn-block btn-default">Next</a>
-  </div>
-</snui-action-bar>
+  <snui-action-bar>
+    <div class="btn-group" role="group">
+      <button (click)="navigateToTeams()" [disabled]='!answerForm.valid' class="btn btn-block btn-default">Next</button>
+    </div>
+  </snui-action-bar>
+</form>
