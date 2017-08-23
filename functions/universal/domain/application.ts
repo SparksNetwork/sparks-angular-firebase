@@ -52,10 +52,10 @@ export class Application {
 const validateOpt = { validator: { skipMissingProperties: true } };
 
 // we have two transform functions for type safety, not sure why overloading isnt working see below
-export const applicationTeamTransform = (input: object) =>
+export const applicationTransform = (input: object) =>
     transformAndValidate<Application>(Application, input, validateOpt)
         .catch(logErrors)
 
-export const applicationTeamsTransform = (input: object[]) =>
+export const applicationsTransform = (input: object[]) =>
     transformAndValidate<Application>(Application, input, validateOpt)
         .catch(logErrors)
