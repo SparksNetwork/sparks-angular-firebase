@@ -6,8 +6,18 @@ import { ValidationError } from 'class-validator'
 
 import { projectTransform } from './project'
 
-function validationFailure(errs: ValidationError[], property: string, constraint: string) {
-  return errs.find(err => err.property === property).constraints[constraint]
+function validationFailure(errs: ValidationError[], property: string, constraint: string, isNested: boolean = false, childProperty:string = null) {
+  const propertyError = errs.find(err => err.property === property);
+
+  if (isNested) {
+    for (let i=0; i < propertyError.children.length; i++) {
+      const childError = propertyError.children[i].children.find(c => c.property === childProperty);
+      if (childError) {
+        return childError.constraints[constraint];
+      }
+    }
+  }
+  return propertyError.constraints[constraint]
 }
 
 describe('projectTransform', () => {
@@ -26,6 +36,7 @@ describe('projectTransform', () => {
         expect(validationFailure(errs, 'startDateTime', 'isDefined')).toBeTruthy()
         expect(validationFailure(errs, 'location', 'isDefined')).toBeTruthy()
         expect(validationFailure(errs, 'maxKarmaPoints', 'isDefined')).toBeTruthy()
+        expect(validationFailure(errs, 'organizer', 'isDefined')).toBeTruthy()
       })
       .then(done)
   });
@@ -39,7 +50,7 @@ describe('projectTransform', () => {
       startDateTime: "2017-07-15T19:00:00.000Z",
       endDateTime: "2017-07-15T19:00:00.000Z",
       location: {},
-      images: [{}],
+      images: [{ imageUrl: "" }],
       ticketPrice: 3,
       maxKarmaPoints: 3,
       organizer: {},
@@ -53,7 +64,7 @@ describe('projectTransform', () => {
         expect(validationFailure(errs, '$key', 'isNotEmpty')).toBeTruthy()
         expect(validationFailure(errs, 'title', 'isNotEmpty')).toBeTruthy()
         expect(validationFailure(errs, 'description', 'isNotEmpty')).toBeTruthy()
-
+        expect(validationFailure(errs, 'images', 'isNotEmpty', true, 'imageUrl')).toBeTruthy()
       })
       .then(done)
   });
@@ -162,7 +173,7 @@ describe('projectTransform', () => {
       .then(done)
   });
 
-  it('requires projectPageUrl to be URL', done => {
+  it('requires projectPageUrl and imageUrl to be URL', done => {
     projectTransform({
       $key: "1",
       projectType: "Simple",
@@ -171,7 +182,7 @@ describe('projectTransform', () => {
       startDateTime: "2017-07-15",
       endDateTime: "2017-07-15",
       location: {},
-      images: [{}],
+      images: [{ imageUrl: "" }],
       ticketPrice: 3,
       maxKarmaPoints: 3.3,
       organizer: {},
@@ -183,6 +194,7 @@ describe('projectTransform', () => {
       })
       .catch((errs: ValidationError[]) => {
         expect(validationFailure(errs, 'projectPageUrl', 'isUrl')).toBeTruthy()
+        expect(validationFailure(errs, 'images', 'isUrl', true, 'imageUrl')).toBeTruthy()
       })
       .then(done)
   });
