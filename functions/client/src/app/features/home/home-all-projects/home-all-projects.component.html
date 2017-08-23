@@ -1,5 +1,5 @@
 <div *ngIf='projects' class="row row-small-pad dashboard-projects">
-   <ng-container *ngFor='let project of projects' >
+  <ng-container *ngFor='let project of projects'>
     <a href="" [routerLink]="['project', project.$key]"> 
         <snui-project-card-item 
             [title]='project.title'
@@ -8,8 +8,10 @@
             [endDateTime]='project.endDateTime'
             [location]='project.location'
             [maxKarmaPoints]='project.maxKarmaPoints'
-        >
-        </snui-project-card-item>   
+            [status]='getStatusByProjectKey(project.$key)'
+            >
+        </snui-project-card-item>
+       
    </a>
-   </ng-container>
+  </ng-container>
 </div>
