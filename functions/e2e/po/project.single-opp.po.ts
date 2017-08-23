@@ -59,17 +59,17 @@ export class ProjectSingleOppPage {
     }
 
     getOrganizerDetailsElement() {
-        return element(by.className("event-organizer segment"))
-            .$('div.row').$('div.col-xs-9');
+        return element(by.className("project-organizer segment"))
+            .$('div.row').$('div.col-xs-9 .organizedby');
     }
 
     getOrganizerDetails() {
-        return element(by.className("event-organizer segment"))
-            .$('div.row').$('div.col-xs-9').getText();
+        return element(by.className("project-organizer segment"))
+            .$('div.row').$('div.col-xs-9 .organizedby').getText();
     }
 
     getOrganizerImage() {
-        return element(by.className("event-organizer segment"))
+        return element(by.className("project-organizer segment"))
             .$('div.row').$('div.col-xs-3').$('img.img-circle');
     }
 

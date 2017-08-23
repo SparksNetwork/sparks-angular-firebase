@@ -81,12 +81,12 @@ body {
 }
 
 .clearfix:after {
-  visibility: hidden;
-  display: block;
-  font-size: 0;
-  content: " ";
-  clear: both;
-  height: 0;
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
 }
 
 
@@ -135,16 +135,33 @@ h2 {
 }
 
 h3 {
-    /* @TODO */
-    font-size: 18px;
+    /* @TODO general sub title style */
+    margin: 0;
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: 0.8px;
+    color: $base-dark;
+    .dashboard-projects &.project-title {
+        font-size: 18px;
+        letter-spacing: 0.72px;
+        line-height: 20px;
+        font-weight: 600;
+    }
+    span {
+        font-size: 18px;
+        letter-spacing: 0.72px;
+        color: $base-dark2;
+        font-weight: 300;
+        &.organizedby {
+            display: block;
+            margin-top: 5px;
+        }
+    }
     &.profile-name {
         margin-top: 0;
     }
     .dashboard-text & {
         margin: 0;
-    }
-    &.sub-title {
-        color: $base-dark;
     }
 }
 
@@ -153,8 +170,6 @@ h3 {
     margin-bottom: 10px;
     display: block;
 }
-
-
 
 *[data-toggle="collapse"] {
     cursor: pointer;
@@ -301,9 +316,6 @@ label {
     width: calc(100% - 60px);
     float: right;
     font-size: 14px;
-    h3{
-        margin: 0;
-    }
     h4 {
         margin: 0;
         font-size: 16px;
@@ -592,7 +604,7 @@ label {
 }
 
 .project-opportunities {
-    .clearfix{
+    .clearfix {
         margin-bottom: 15px;
         width: 100%;
     }
@@ -629,11 +641,10 @@ label {
         .disabled {
             opacity: 0.6;
         }
-        .icon{
+        .icon {
             width: 100%;
             margin-bottom: 10px;
-            .ic{
-                // font-size: 60px;
+            .ic {
                 width: 43px;
                 height: 60.5px;
                 display: block;
@@ -643,14 +654,10 @@ label {
         }
         .text,
         .description {
-            width: 100%;    
+            width: 100%;
             text-align: center;
             h3 {
                 margin-bottom: 10px;
-                font-size: 20px;
-                line-height: 20px;
-                letter-spacing: 0.8px;
-                color: $base-dark;
             }
             p {
                 font-size: 16px;
@@ -662,6 +669,16 @@ label {
                     // letter-spacing: 0.48px;
                 }
             }
+        }
+    }
+}
+
+.project-organizer {
+    .organizer-img {
+        text-align: right;
+        img {
+            height: 45px;
+            width: 45px;
         }
     }
 }
@@ -929,12 +946,6 @@ label {
     .project-title {
         width: calc( 100% - 60px);
         float: left;
-        margin: 0;
-        line-height: 20px;
-        color: $base-dark;
-        font-size: 18px;
-        letter-spacing: 0.72px;
-        font-weight: 600;
     }
     .project-karma {
         width: 50px;

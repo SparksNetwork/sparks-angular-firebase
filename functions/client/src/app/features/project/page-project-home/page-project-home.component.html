@@ -19,6 +19,8 @@
 
   <router-outlet></router-outlet>
 
+  <project-project-organizer [organizer]="project.organizer"></project-project-organizer>
+  
   <project-project-links
     [projectPageUrl]="project.projectPageUrl"
     [facebookUrl]="project.facebookUrl"
@@ -26,7 +28,6 @@
     [shareKarmaPoints]="project.shareKarmaPoints">
   </project-project-links>
 
-  <project-project-organizer [organizer]="project.organizer"></project-project-organizer>
 </div>
 
 <snui-action-bar></snui-action-bar>
