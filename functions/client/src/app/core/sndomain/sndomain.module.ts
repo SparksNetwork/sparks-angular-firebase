@@ -46,7 +46,8 @@ import {
 import {
   ApplicationQueryService,
   ApplicationActionService,
-  ResolveApplicationByKey
+  ResolveApplicationByKey,
+  ResolveApplicationByProfileKey,
 } from "./application/index";
 
 @NgModule({
@@ -86,7 +87,8 @@ import {
 
     ApplicationQueryService,
     ApplicationActionService,
-    ResolveApplicationByKey
+    ResolveApplicationByKey,
+    ResolveApplicationByProfileKey,
   ],
 })
 export class SNDomainModule { }
