@@ -21,10 +21,10 @@ export class ApplicationCollection extends BaseCollection {
 }
 
 export enum ApplicationStatus {
-    Incomplete,
-    Pending,
-    Applied,
-    Accepted
+    Incomplete = "Incomplete",
+    Pending = "Pending",
+    Applied = "Applied",
+    Accepted = "Accepted"
 }
 
 export class Application {
