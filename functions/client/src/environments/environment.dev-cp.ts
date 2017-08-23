@@ -39,6 +39,6 @@ export const environment = {
     storageBucket: "sparksnetworkcp.appspot.com",
     messagingSenderId: "137007279310"
   },
-   apiRoot: 'http://localhost:5002/sparksnetworkcp/us-central1/api',
+   apiRoot: 'http://localhost:5000/sparksnetworkcp/us-central1/api',
 
 };
