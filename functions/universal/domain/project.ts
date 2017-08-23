@@ -56,6 +56,7 @@ export class Project {
 
   @IsDefined()
   @ValidateNested()
+  @Type(() => Location)
   location: Location;
 
   @ValidateNested()

@@ -210,4 +210,33 @@ describe('projectTransform', () => {
       .then(done)
   });
 
+  it('requires location coordinate fields to match a pattern', done => {
+    projectTransform({
+      $key: "1",
+      projectType: "Simple",
+      title: "title",
+      description: "",
+      startDateTime: "2017-07-15",
+      endDateTime: "2017-07-15",
+      location: {
+        latitude: "",
+        longitude: ""
+      },
+      images: [{ }],
+      ticketPrice: 3,
+      maxKarmaPoints: 3.3,
+      organizer: { },
+      projectPageUrl: "test-test",
+      shareKarmaPoints: 2.4,
+    })
+      .then(() => {
+        expect(false).toBeTruthy()
+      })
+      .catch((errs: ValidationError[]) => {
+        expect(validationFailure(errs, 'location', 'matches', NESTED, 'latitude')).toBeTruthy()
+        expect(validationFailure(errs, 'location', 'matches', NESTED, 'latitude')).toBeTruthy()
+      })
+      .then(done)
+  });
+
 });
