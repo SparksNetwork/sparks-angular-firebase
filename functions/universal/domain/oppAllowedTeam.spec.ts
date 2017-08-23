@@ -5,7 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ValidationError } from 'class-validator'
 
 import { oppAllowedTeamTransform } from './oppAllowedTeam'
-import { validationFailure } from '../validation/validation';
+import { validationFailure, NESTED } from '../validation/validation';
 
 
 describe('oppAllowedTeamTransform', () => {
@@ -30,6 +30,7 @@ describe('oppAllowedTeamTransform', () => {
       $key: "",
       oppKey: "",
       teamKey: "",
+      team: {}
     })
       .then(() => {
         expect(false).toBeTruthy()
@@ -38,6 +39,9 @@ describe('oppAllowedTeamTransform', () => {
         expect(validationFailure(errs, '$key', 'isNotEmpty')).toBeTruthy()
         expect(validationFailure(errs, 'oppKey', 'isNotEmpty')).toBeTruthy()
         expect(validationFailure(errs, 'teamKey', 'isNotEmpty')).toBeTruthy()
+        expect(validationFailure(errs, 'team', 'isNotEmpty', NESTED, '$key')).toBeTruthy()
+        expect(validationFailure(errs, 'team', 'isNotEmpty', NESTED, 'title')).toBeTruthy()
+        expect(validationFailure(errs, 'team', 'isNotEmpty', NESTED, 'description')).toBeTruthy()
       })
       .then(done)
   });

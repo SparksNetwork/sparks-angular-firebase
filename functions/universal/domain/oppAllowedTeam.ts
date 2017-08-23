@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs'
 import { transformAndValidate } from "class-transformer-validator"
-import { Expose } from 'class-transformer'
+import { Expose, Type } from 'class-transformer'
 import { IsNotEmpty, IsDefined, ValidateNested } from 'class-validator'
 
 import {
@@ -37,6 +37,7 @@ export class OppAllowedTeam {
   public teamKey: string
   
   @ValidateNested()
+  @Type(() => Team)
   public team: Team
 }
 
