@@ -6,18 +6,33 @@ import { ValidationError } from 'class-validator'
 
 import { projectTransform } from './project'
 
-function validationFailure(errs: ValidationError[], property: string, constraint: string, isNested: boolean = false, childProperty:string = null) {
-  const propertyError = errs.find(err => err.property === property);
+const NESTED = true
+const ARRAY = true
 
-  if (isNested) {
-    for (let i=0; i < propertyError.children.length; i++) {
-      const childError = propertyError.children[i].children.find(c => c.property === childProperty);
+function validationFailure(errs: ValidationError[], property: string, constraint: string, isNested: boolean = false, childProperty: string = null, isArray: boolean = false) {
+  const validationError = getValidationError(errs, property, isNested, childProperty, isArray);
+  return validationError.constraints[constraint]
+}
+
+function getValidationError(errs: ValidationError[], property: string, isNested: boolean = false, childProperty: string = null, isArray: boolean = false): ValidationError {
+   if (!isNested) {
+     return errs.find(err => err.property === property);
+   }
+   
+   const parentError = errs.find(err => err.property === property);
+
+   if (isArray) {
+    for (let i = 0; i < parentError.children.length; i++) {
+      const childError = parentError.children[i].children.find(c => c.property === childProperty);
       if (childError) {
-        return childError.constraints[constraint];
+        return childError;
       }
     }
-  }
-  return propertyError.constraints[constraint]
+   } else {
+     return parentError.children.find(c => c.property === childProperty);
+   }
+
+   return null;
 }
 
 describe('projectTransform', () => {
@@ -41,6 +56,21 @@ describe('projectTransform', () => {
       .then(done)
   });
 
+  it('requires several organizer fields to be defined', done => {
+    projectTransform({
+      organizer: {}
+    })
+      .then(() => {
+        expect(false).toBeTruthy()
+      })
+      .catch((errs: ValidationError[]) => {
+        expect(validationFailure(errs, 'organizer', 'isDefined', NESTED, 'organizerKey')).toBeTruthy()
+        expect(validationFailure(errs, 'organizer', 'isDefined', NESTED, 'name')).toBeTruthy()
+        expect(validationFailure(errs, 'organizer', 'isDefined', NESTED, 'organization')).toBeTruthy()
+      })
+      .then(done)
+  });
+
   it('requires several fields to not be empty', done => {
     projectTransform({
       $key: "",
@@ -53,7 +83,11 @@ describe('projectTransform', () => {
       images: [{ imageUrl: "" }],
       ticketPrice: 3,
       maxKarmaPoints: 3,
-      organizer: {},
+      organizer: {
+        organizerKey: "",
+        name: "",
+        organization: ""
+      },
       projectPageUrl: "",
       shareKarmaPoints: 2,
     })
@@ -64,7 +98,10 @@ describe('projectTransform', () => {
         expect(validationFailure(errs, '$key', 'isNotEmpty')).toBeTruthy()
         expect(validationFailure(errs, 'title', 'isNotEmpty')).toBeTruthy()
         expect(validationFailure(errs, 'description', 'isNotEmpty')).toBeTruthy()
-        expect(validationFailure(errs, 'images', 'isNotEmpty', true, 'imageUrl')).toBeTruthy()
+        expect(validationFailure(errs, 'images', 'isNotEmpty', NESTED, 'imageUrl', ARRAY)).toBeTruthy()
+        expect(validationFailure(errs, 'organizer', 'isNotEmpty', NESTED, 'organizerKey')).toBeTruthy()
+        expect(validationFailure(errs, 'organizer', 'isNotEmpty', NESTED, 'name')).toBeTruthy()
+        expect(validationFailure(errs, 'organizer', 'isNotEmpty', NESTED, 'organization')).toBeTruthy()
       })
       .then(done)
   });
@@ -173,7 +210,7 @@ describe('projectTransform', () => {
       .then(done)
   });
 
-  it('requires projectPageUrl and imageUrl to be URL', done => {
+  it('requires several fields to be URL', done => {
     projectTransform({
       $key: "1",
       projectType: "Simple",
@@ -185,7 +222,7 @@ describe('projectTransform', () => {
       images: [{ imageUrl: "" }],
       ticketPrice: 3,
       maxKarmaPoints: 3.3,
-      organizer: {},
+      organizer: { imageUrl: "" },
       projectPageUrl: "test-test",
       shareKarmaPoints: 2.4,
     })
@@ -194,7 +231,8 @@ describe('projectTransform', () => {
       })
       .catch((errs: ValidationError[]) => {
         expect(validationFailure(errs, 'projectPageUrl', 'isUrl')).toBeTruthy()
-        expect(validationFailure(errs, 'images', 'isUrl', true, 'imageUrl')).toBeTruthy()
+        expect(validationFailure(errs, 'images', 'isUrl', NESTED, 'imageUrl', ARRAY)).toBeTruthy()
+        expect(validationFailure(errs, 'organizer', 'isUrl', NESTED, 'imageUrl')).toBeTruthy()
       })
       .then(done)
   });
