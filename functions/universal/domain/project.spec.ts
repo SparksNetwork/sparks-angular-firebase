@@ -132,7 +132,7 @@ describe('projectTransform', () => {
       .then(done)
   });
 
-  it('requires ticketPrice to be a number', done => {
+  it('requires several fields to be a number', done => {
     projectTransform({
       $key: "1",
       projectType: "Simple",
@@ -140,7 +140,10 @@ describe('projectTransform', () => {
       description: "",
       startDateTime: "2017-07-15",
       endDateTime: "2017-07-15",
-      location: {},
+      location: {
+        latitude: "",
+        longitude: ""
+      },
       images: [{}],
       ticketPrice: "d",
       maxKarmaPoints: 3,
@@ -153,6 +156,8 @@ describe('projectTransform', () => {
       })
       .catch((errs: ValidationError[]) => {
         expect(validationFailure(errs, 'ticketPrice', 'isNumber')).toBeTruthy()
+        expect(validationFailure(errs, 'location', 'isNumber', NESTED, 'latitude')).toBeTruthy()
+        expect(validationFailure(errs, 'location', 'isNumber', NESTED, 'longitude')).toBeTruthy()
       })
       .then(done)
   });
@@ -206,35 +211,6 @@ describe('projectTransform', () => {
         expect(validationFailure(errs, 'projectPageUrl', 'isUrl')).toBeTruthy()
         expect(validationFailure(errs, 'images', 'isUrl', NESTED, 'imageUrl', ARRAY)).toBeTruthy()
         expect(validationFailure(errs, 'organizer', 'isUrl', NESTED, 'imageUrl')).toBeTruthy()
-      })
-      .then(done)
-  });
-
-  it('requires location coordinate fields to match a pattern', done => {
-    projectTransform({
-      $key: "1",
-      projectType: "Simple",
-      title: "title",
-      description: "",
-      startDateTime: "2017-07-15",
-      endDateTime: "2017-07-15",
-      location: {
-        latitude: "",
-        longitude: ""
-      },
-      images: [{ }],
-      ticketPrice: 3,
-      maxKarmaPoints: 3.3,
-      organizer: { },
-      projectPageUrl: "test-test",
-      shareKarmaPoints: 2.4,
-    })
-      .then(() => {
-        expect(false).toBeTruthy()
-      })
-      .catch((errs: ValidationError[]) => {
-        expect(validationFailure(errs, 'location', 'matches', NESTED, 'latitude')).toBeTruthy()
-        expect(validationFailure(errs, 'location', 'matches', NESTED, 'latitude')).toBeTruthy()
       })
       .then(done)
   });
