@@ -43,6 +43,12 @@ import {
   ResolveBenefitByOppKey,
 } from './benefit'
 
+import {
+  ApplicationQueryService,
+  ApplicationActionService,
+  ResolveApplicationByKey
+} from "./application/index";
+
 @NgModule({
   imports: [
     HttpModule,
@@ -77,6 +83,10 @@ import {
     BenefitQueryService,
     BenefitActionService,
     ResolveBenefitByOppKey,
+
+    ApplicationQueryService,
+    ApplicationActionService,
+    ResolveApplicationByKey
   ],
 })
 export class SNDomainModule { }
