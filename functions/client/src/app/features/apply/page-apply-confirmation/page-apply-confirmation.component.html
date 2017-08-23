@@ -1,1 +1,22 @@
-it works
+<snui-header-simple imageUrl='https://placeimg.com/1140/410/animals/grayscale'>
+    All Done!<br/> Your Acceptance Is Coming Soon
+</snui-header-simple>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="segment">
+            <p class="card-text">
+                Your application has been sent to the organizer.
+                Watch your inbox for a notice that you've been accepted,
+                or just sign in to the Sparks.Network to check any time!
+            </p>
+        </div>
+    </div>
+</div>
+
+<snui-action-bar [type]="actionBarType.Organizer">
+    <div class="col-xs-8 bottom-nav">
+        <div class="btn-group" role="group">
+            <a [routerLink]="['../../../dash']" class="btn btn-block btn-default">Return to Dashboard</a>
+        </div>
+      </div>
+</snui-action-bar>

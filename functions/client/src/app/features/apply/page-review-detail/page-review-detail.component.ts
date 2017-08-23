@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Application, ApplicationStatus } from "../../../../../../universal/domain/application";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { ApplicationTeam } from "../../../../../../universal/domain/applicationTeam";
 import { Observable } from "rxjs/Rx";
 import { Team } from "../../../../../../universal/domain/team";
@@ -20,7 +20,8 @@ export class PageReviewDetailComponent implements OnInit {
 
     constructor(
         public route: ActivatedRoute,
-        public applicationAction: ApplicationActionService, ) {
+        public router: Router,
+        public applicationAction: ApplicationActionService) {
     }
 
     ngOnInit() {
@@ -39,8 +40,9 @@ export class PageReviewDetailComponent implements OnInit {
         this.application.status = ApplicationStatus.Pending;
         let key = this.application.$key;
         let value = this.applicationAction.formatToDb(this.application);
-        this.applicationAction.replace(key, value).subscribe(
-            s => console.log(s)
+        this.applicationAction.replace(key, value).subscribe(s =>
+            //send email
+            this.router.navigate(['../apply-cofirmation'], { relativeTo: this.route })
         )
     }
 }

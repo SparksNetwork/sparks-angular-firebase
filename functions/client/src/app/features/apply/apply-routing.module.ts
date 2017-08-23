@@ -79,7 +79,7 @@ const routes: Routes = [
                 ]
             },
             {
-                path: 'apply-cofirmation',
+                path: 'application/:applicationKey/apply-cofirmation',
                 component: PageApplyConfirmationComponent
             }
         ]
