@@ -1,6 +1,6 @@
 <div *ngIf='projects' class="row row-small-pad dashboard-projects">
   <ng-container *ngFor='let project of projects'>
-    <a href="" [routerLink]="['project', project.$key]"> 
+    <a href="" (click)="selectProject($event, project.$key)"> 
         <snui-project-card-item 
             [title]='project.title'
             [image]='project.images.length > 0 ? project.images[0] : null'
@@ -8,7 +8,7 @@
             [endDateTime]='project.endDateTime'
             [location]='project.location'
             [maxKarmaPoints]='project.maxKarmaPoints'
-            [status]='getStatusByProjectKey(project.$key)'
+            [status]='getStatusDisplayByProjectKey(project.$key)'
             >
         </snui-project-card-item>
        
