@@ -11,16 +11,42 @@
             </div>
         </div>
     </div>
+
     <div class="row">
         <div class="col-xs-12">
-            Your information!
-            <!-- reuse from another branch -->
+            <div class="profile-details segment">
+                <div class="row">
+                    <div class="col-xs-7">
+                        <h3 class="segment-title">Your information</h3>
+                    </div>
+                    <div class="col-xs-5 text-right"><a href="profile/edit-contact-info">edit <span class="ic ic-pencil" aria-hidden="true"></span></a></div>
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-xs-5">Stephen DeBaun</div>
+                            <div class="col-xs-7 text-right">Legal Name</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-5">Reverend Stevo</div>
+                            <div class="col-xs-7 text-right">Preferred Name</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-5">(805 312 9100)</div>
+                            <div class="col-xs-7 text-right">Phone Number</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-5">October 25th, 1974</div>
+                            <div class="col-xs-7 text-right">Birthday</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
     <div class="row">
         <div class="col-xs-12">
-           <p> {{application.oppQuestion}} </p>
-           <p> {{application.oppAnswer}}</p>
+            <p> {{application.oppQuestion}} </p>
+            <p> {{application.oppAnswer}}</p>
         </div>
     </div>
     <opp-teams-selected [allTeams]='allTeams | async'></opp-teams-selected>
