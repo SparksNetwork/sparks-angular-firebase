@@ -45,6 +45,10 @@ export class Application {
     @IsDefined()
     projectKey: string;
 
+    @IsNotEmpty()
+    @IsDefined()
+    projectProfileKey: string;
+
     oppQuestion: string;
     oppAnswer: string;
 
