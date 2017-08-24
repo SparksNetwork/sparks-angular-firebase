@@ -13,6 +13,9 @@
     },
     "oppAllowedTeam": {
       ".indexOn": ["oppKey"]
+    },
+    "applicationTeam":{
+      ".indexOn": ["appKey"]
     }
   }
 }
