@@ -31,6 +31,8 @@ export class HomeAllProjectsComponent {
         switch (application.status) {
             case ApplicationStatus.Incomplete:
                 return "Incomplete";
+            case ApplicationStatus.Pending:
+                return "Pending";
             default: return null;
         }
     }
@@ -46,6 +48,7 @@ export class HomeAllProjectsComponent {
             case ApplicationStatus.Incomplete:
                 this.router.navigate(['/apply', application.oppKey, 'answer-question'])
                 break;
+            case ApplicationStatus.Pending:
             default:
                 this.router.navigate(['project', projectKey]);
                 break;
