@@ -81,6 +81,10 @@ const routes: Routes = [
                     {
                         path: 'apply-cofirmation',
                         component: PageApplyConfirmationComponent
+                    },
+                    {
+                        path: 'answer-question',
+                        component: PageAnswerQuestionComponent
                     }
                 ]
             }      

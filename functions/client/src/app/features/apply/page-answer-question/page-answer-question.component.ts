@@ -13,6 +13,7 @@ export class PageAnswerQuestionComponent implements OnInit {
   public opp: Opp;
   public applicationKey: string;
   public answerForm: FormGroup;
+  private edit: boolean = false;
 
   constructor(
     public applicationAction: ApplicationActionService,
@@ -27,10 +28,28 @@ export class PageAnswerQuestionComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe(data => {
-      data['opp'].subscribe(
-        o => this.onLoadedOpp(o)
-      )
+      if (data['opp']) {
+        data['opp'].subscribe(
+          o => this.onLoadedOpp(o)
+        )
+      }
     });
+    this.route.parent.data.subscribe(data => {
+      if (data['opp']) {
+        data['opp'].subscribe(
+          o => this.opp = o
+        )
+      }
+      if (data['application']) {
+        data['application'].subscribe(
+          a => {
+            this.applicationKey = a.$key;
+            this.answerForm.get("answer").setValue(a.oppAnswer);
+            this.edit = true;
+          }
+        )
+      }
+    })
   }
 
   private onLoadedOpp(opp: Opp) {
@@ -52,9 +71,13 @@ export class PageAnswerQuestionComponent implements OnInit {
       oppAnswer: answer
     }
     this.applicationAction.update(this.applicationKey, value).subscribe(
-      s => this.router.navigate(['..', 'application', this.applicationKey, 'teams'], { relativeTo: this.route })
+      s => {
+        if (this.edit)
+          this.router.navigate(['../', 'teams'], { relativeTo: this.route })
+        else
+          this.router.navigate(['..', 'application', this.applicationKey, 'teams'], { relativeTo: this.route })
+      }
     )
-
   }
 
 }
