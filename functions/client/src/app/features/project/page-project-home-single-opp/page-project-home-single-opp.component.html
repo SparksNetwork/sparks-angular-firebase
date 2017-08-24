@@ -1,6 +1,4 @@
-<div class="row">
-  <div class="col-xs-12">
-    <h2>Join this Project</h2>
+<div class="project-single-opp">
     <project-opp-detail
       [project]='project|async'
       [opp]='opp|async'
@@ -8,7 +6,7 @@
       [contribs]='contribs|async'
       [benefits]='benefits|async'
     ></project-opp-detail>
-  </div>
+
   <project-actionbar-opp-join [opp]='opp|async'>
   </project-actionbar-opp-join>
 </div>

@@ -74,36 +74,36 @@ export class ProjectSingleOppPage {
     }
 
     getFirstBenefitElement() {
-        return element.all(by.className('you-will-give-got segment')).first()
+        return element.all(by.className('you-get-give-join segment')).first()
             .$('ul').all(by.css('li')).first().element(by.css('snui-card-item'));
     }
 
     getCommunityBenefit() {
-        return element.all(by.className('you-will-give-got segment')).first()
+        return element.all(by.className('you-get-give-join segment')).first()
             .$('ul').all(by.css('li')).first()
             .element(by.css('snui-card-item'))
             .$$('div.text').first().getText();
     }
 
     getReceivedKarmaPointsElement() {
-        return element.all(by.className('you-will-give-got segment')).first()
+        return element.all(by.className('you-get-give-join segment')).first()
             .$('ul').all(by.css('li')).get(1).element(by.css('snui-card-item'));
     }
 
     getReceivedKarmaPoints() {
-        return element.all(by.className('you-will-give-got segment')).first()
+        return element.all(by.className('you-get-give-join segment')).first()
             .$('ul').all(by.css('li')).get(1)
             .element(by.css('snui-card-item'))
             .$$('h4').first().getText();
     }
 
     getBenefitElement() {
-        return element.all(by.className('you-will-give-got segment')).first()
+        return element.all(by.className('you-get-give-join segment')).first()
             .$('ul').all(by.css('li')).get(2).element(by.css('snui-card-item'));
     }
 
     getBenefitTitle() {
-        return element.all(by.className('you-will-give-got segment')).first()
+        return element.all(by.className('you-get-give-join segment')).first()
             .$('ul').all(by.css('li')).get(2)
             .element(by.css('snui-card-item'))
             .$$('h4').first().getText();
@@ -111,7 +111,7 @@ export class ProjectSingleOppPage {
     }
 
     getBenefitDescription() {
-        return element.all(by.className('you-will-give-got segment')).first()
+        return element.all(by.className('you-get-give-join segment')).first()
             .$('ul').all(by.css('li')).get(2)
             .element(by.css('snui-card-item'))
             .$$('div.text').first().getText();
@@ -119,7 +119,7 @@ export class ProjectSingleOppPage {
     }
 
     getContribElement() {
-        return element.all(by.className('you-will-give-got segment')).get(1)
+        return element.all(by.className('you-get-give-join segment')).get(1)
             .$('ul').all(by.css('li')).get(0).element(by.css('snui-card-item'));
     }
 

@@ -166,6 +166,20 @@ h3 {
     }
 }
 
+h4 {
+    margin: 0;
+    font-size: 16px;
+    letter-spacing: 0.64px;
+    color: $base-dark;
+    line-height: 15px;
+    span {
+        font-size: inherit;
+        .text & {
+            font-size: inherit;
+        }
+    }
+}
+
 .title-link {
     margin-top: 16px;
     margin-bottom: 10px;
@@ -191,8 +205,22 @@ label {
 /* General */
 
 .separator {
+    /*ok*/
     border-bottom: 1px solid $color-separator;
     @include block-nooverflow;
+}
+
+.lineabove {
+    /*ok?*/
+    margin-top: 5px;
+    &:before {
+        content: '';
+        width: 175px;
+        height: 1px;
+        background: $color-separator;
+        position: absolute;
+        margin-top: -15px;
+    }
 }
 
 .nopadding {
@@ -278,17 +306,6 @@ label {
     }
 }
 
-.lineabove {
-    &:before {
-        content: '';
-        width: 120px;
-        height: 1px;
-        background: $light-gray;
-        position: absolute;
-        margin-top: -5px;
-    }
-}
-
 .icon-desc-container {
     width: 75%;
     float: left;
@@ -317,15 +334,16 @@ label {
     width: calc(100% - 60px);
     float: right;
     font-size: 14px;
-    h4 {
-        margin: 0;
-        font-size: 16px;
-        letter-spacing: 0.64px;
-        color: $base-dark;
-        span {
-            font-size: inherit;
-        }
-    }
+    line-height: 16px;
+    letter-spacing: 0.56px; // h4 {
+    //     margin: 0;
+    //     font-size: 16px;
+    //     letter-spacing: 0.64px;
+    //     color: $base-dark;
+    //     span {
+    //         font-size: inherit;
+    //     }
+    // }
     p {
         margin-bottom: 0;
     }
@@ -362,6 +380,12 @@ label {
     }
 }
 
+.user-action-container{
+    position: relative;
+    z-index: 1;
+    padding: 25px 0;
+}
+
 .btn {
     @include border-radius(4px);
     text-transform: uppercase;
@@ -385,6 +409,32 @@ label {
     }
     &.dropdown-toggle {
         border: none;
+    }
+    &.btn-bordered {
+        font-size: 16px;
+        line-height: 16px;
+        letter-spacing: 0.64px;
+        color: $violetblue;
+        text-transform: none;
+        @include border-radius(7.5px);
+        border: 2px solid transparent;
+        background: #ffffff;
+        background-clip: padding-box;
+        position: relative;
+        outline: none;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        &:after {
+            position: absolute;
+            top: -2px;
+            bottom: -2px;
+            left: -2px;
+            right: -2px;
+            background: linear-gradient(to right, #3acfd5, #be5a97);
+            content: '';
+            z-index: -1;
+            @include border-radius(7.5px);
+        }
     }
     &.btn-social-login {
         @include border-radius(7.5px);
@@ -686,6 +736,9 @@ label {
 
 .project-social {
     padding-top: 20px;
+    &.segment {
+        padding-bottom: 20px;
+    }
     .ic {
         font-size: 20px;
         color: $base-dark;
@@ -698,7 +751,6 @@ label {
             float: right;
         }
     }
-    
     .btn-group {
         .share-facebook,
         .share-twitter {
@@ -722,45 +774,47 @@ label {
     }
 }
 
-
-.you-will-give-got,
+.you-get-give-join,
 .quests,
 .timeline {
     ul {
-        margin: 0;
+        margin: 25px 0 0 0;
         padding: 0;
         list-style: none;
         li {
             display: block;
             overflow: hidden;
-            margin-bottom: 15px;
+            margin-bottom: 25px;
+            &:last-child {
+                margin-bottom: 0;
+            }
             .profile-badges & {
                 width: 25%;
                 float: left;
             }
             &.list-other {
                 cursor: pointer;
-                .text,
-                .description {
-                    &:before {
-                        content: '';
-                        width: 120px;
-                        height: 1px;
-                        background: $light-gray;
-                        position: absolute;
-                        margin-top: -5px;
-                    }
+                margin-top: -10px;
+                font-size: 12px;
+                background: red;
+                .list-other-counter {
+                    font-size: 25px;
+                }
+                .text {
+                    @extend .lineabove;
+                    margin-top: 15px;
                 }
             }
         }
         .icon {
-            width: 30px;
-            float: left;
+            width: 45px;
         }
-        .text,
-        .description {
-            width: calc(100% - 40px);
-            float: right;
+        .text {
+            width: calc(100% - 45px);
+            h3 {
+                @extend h4;
+                margin-bottom: 5px;
+            }
         }
     }
     &.shift-list {
@@ -833,7 +887,6 @@ label {
         }
     }
 }
-
 
 
 /* Opportunity, Page Details */

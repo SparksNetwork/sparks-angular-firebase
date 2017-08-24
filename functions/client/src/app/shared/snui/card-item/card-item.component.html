@@ -14,7 +14,7 @@
     </div>
   </div>
   <div class="text">
-    <h3>{{title}}</h3>
+    <h3>{{title}} <span *ngIf="benefitValue">/ ${{benefitValue}} value</span></h3>
     <p *ngIf="subtitle">{{subtitle}}</p>
     <p *ngIf="description"><span>{{description}}</span></p>
   </div>
