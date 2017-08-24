@@ -23,20 +23,6 @@ export class HomeAllProjectsComponent {
         return this.applications.find(application => application.projectKey == projectKey);
     }
 
-    getStatusDisplayByProjectKey(projectKey: string) {
-        const application = this.getApplicationByProjectkey(projectKey);
-
-        if (!application) return null;
-
-        switch (application.status) {
-            case ApplicationStatus.Incomplete:
-                return "Incomplete";
-            case ApplicationStatus.Pending:
-                return "Pending";
-            default: return null;
-        }
-    }
-
     selectProject(event, projectKey: string) {
         event.preventDefault();
 

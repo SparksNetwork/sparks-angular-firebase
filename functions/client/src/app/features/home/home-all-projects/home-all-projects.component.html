@@ -8,10 +8,9 @@
             [endDateTime]='project.endDateTime'
             [location]='project.location'
             [maxKarmaPoints]='project.maxKarmaPoints'
-            [status]='getStatusDisplayByProjectKey(project.$key)'
+            [status]='getApplicationByProjectkey(project.$key)?.status | snApplicationStatus'
             >
         </snui-project-card-item>
-       
    </a>
   </ng-container>
 </div>
