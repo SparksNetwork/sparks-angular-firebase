@@ -58,6 +58,8 @@ export class PageAnswerQuestionComponent implements OnInit {
     application.profileKey = "PnDuT5wx8wThD3L1lgOTjubs0C03"; //I will use a new service from develop
     application.oppKey = this.opp.$key;
     application.status = ApplicationStatus.Incomplete;
+    application.projectKey = this.opp.projectKey;
+    application.projectProfileKey =  this.applicationAction.query.generateProjectProfileKey(application.projectKey, application.profileKey)
     this.applicationAction.create(application)
       .subscribe(s => {
         this.applicationKey = s.json();
