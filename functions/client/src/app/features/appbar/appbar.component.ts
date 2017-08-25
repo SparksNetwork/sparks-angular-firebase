@@ -1,12 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AuthService } from "../../core/snauth/auth/auth.service";
+
 @Component({
   selector: 'appbar-appbar',
   templateUrl: 'appbar.component.html'
 })
 
 export class AppbarComponent implements OnInit {
-  constructor() { }
+  public isAuthed: boolean;
+
+  constructor(private auth: AuthService) {
+    this.auth.isAuthed.subscribe(isAuthed => this.isAuthed = isAuthed)    
+  }
 
   ngOnInit() { }
 }

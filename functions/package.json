@@ -16,11 +16,14 @@
     "build:client:dev-ts": "ng build --target=production --env=dev-ts",
     "build:ssr": "ngc -p tsconfig.ssr.json",
     "build:server": "tsc -p tsconfig.json",
+    "preload": "ts-node ./bin/load-test-data.ts",
+    "preload:dev-sd": "cross-env ANGULAR_ENV=dev-sd npm run preload",
     "deploy": "firebase deploy --only hosting,functions",
     "deploy:staging": "firebase use staging && npm run build:client:staging && firebase deploy --only hosting,functions",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "e2e:dev-cp": "cross-env ANGULAR_ENV=dev-cp ng e2e --env=dev-cp",
     "e2e:dev-sd": "cross-env ANGULAR_ENV=dev-sd ng e2e --env=dev-sd",
     "e2e:dev-id": "cross-env ANGULAR_ENV=dev-id ng e2e --env=dev-id"
   },
@@ -70,6 +73,7 @@
     "cross-env": "^5.0.5",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
+    "jsonschema": "^1.1.1",
     "karma": "~1.7.0",
     "karma-chrome-launcher": "~2.1.1",
     "karma-cli": "~1.0.1",
@@ -77,8 +81,9 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.1.2",
-    "ts-node": "~3.0.4",
-    "tslint": "^5.3.2",
-    "typescript": "~2.3.3"
+    "protractor-jasmine2-screenshot-reporter": "^0.4.0",
+    "ts-node": "~3.1.0",
+    "tslint": "~5.3.2",
+    "typescript": "~2.4.2"
   }
 }

@@ -1,4 +1,6 @@
-<div class="container">
-  <router-outlet></router-outlet>
-</div><!-- /.container -->
+<div class="fake-mobile">
+  <div class="sn-container pg-base" [class.pg-auth]="isAuth" [class.pg-default]="!isAuth">
+    <router-outlet></router-outlet>
+  </div>
+</div>
 <sorry-modal-sorry></sorry-modal-sorry>

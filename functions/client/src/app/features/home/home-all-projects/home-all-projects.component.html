@@ -1,4 +1,4 @@
-<div *ngIf='projects' class="row row-small-pad dashboard-events">
+<div *ngIf='projects' class="row row-small-pad dashboard-projects">
    <ng-container *ngFor='let project of projects' >
     <a href="" [routerLink]="['project', project.$key]"> 
         <snui-project-card-item 
