@@ -11,6 +11,7 @@ import { SelectedTeam } from "./selected-team";
 
 export class OppTeamsSelectedComponent implements OnChanges {
     @Input() private allTeams: any;
+    @Input() editable: boolean = true;
     teams: SelectedTeam[] = new Array<SelectedTeam>();
 
     constructor(
