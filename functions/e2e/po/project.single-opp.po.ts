@@ -7,7 +7,7 @@ export class ProjectSingleOppPage {
     }
 
     getProjectTitleElement() {
-        return element(by.css('h1.event-title'));
+        return element(by.css('h1.project-title'));
     }
 
     getLastCarouselIndicator() {
@@ -15,7 +15,7 @@ export class ProjectSingleOppPage {
     }
 
     getDescriptionElement() {
-        return element(by.className('event-description segment')).$('p');
+        return element(by.className('project-description segment')).$('p');
     }
 
     getCarouselActiveImageDiv() {
@@ -25,25 +25,25 @@ export class ProjectSingleOppPage {
     }
 
     getLocationLink() {
-        return element(by.className('event-date-location segment'))
-            .element(by.css('project-project-location')).$$('a').first();
+        return element(by.className('project-location'))
+            .$('a');
     }
 
     getLocationElement() {
-        return element(by.className('event-date-location segment'))
-            .element(by.css('project-project-location')).$$('a').first().$('div.text');
+        return element(by.className('project-location'))
+            .$('a').$('div.text');
     }
     getLocationName() {
-        return element(by.className('event-date-location segment'))
-            .element(by.css('project-project-location')).$$('a').first().$('div.text').getText();
+        return element(by.className('project-location'))
+            .$('a').$('div.text').getText();
     }
 
     getMaximumKarmaPointsElement() {
-        return element(by.css('div.event-karma > div.event-karma-count'));
+        return element(by.css('div.project-karma > div.project-karma-count'));
     }
 
     getMaximumKarmaPoints() {
-        return element(by.css('div.event-karma > div.event-karma-count')).getText();
+        return element(by.css('div.project-karma > div.project-karma-count')).getText();
     }
 
     getShareKarmaPointsElement() {
