@@ -10,6 +10,8 @@ export class ApplicationStatusPipe implements PipeTransform {
                 return "Incomplete";
             case ApplicationStatus.Pending:
                 return "Pending";
+            case ApplicationStatus.Accepted:
+                return "Active";
             default: return null;
         }
     }

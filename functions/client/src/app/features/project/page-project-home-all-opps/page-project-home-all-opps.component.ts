@@ -29,9 +29,18 @@ export class PageProjectHomeAllOppsComponent {
   }
 
   public isOppDisabled(opp: Opp, applications: Application[]) {
-    if (!applications || !applications.length || applications[0].status != ApplicationStatus.Pending)
-      return false;    
+    if (!applications || !applications.length)
+      return false;
 
-    return opp.$key != applications[0].oppKey;
+    const application = applications[0];
+
+    switch (application.status) {
+      case ApplicationStatus.Pending:
+        return opp.$key != application.oppKey
+      case ApplicationStatus.Accepted:
+        return opp.$key == application.oppKey
+      default:
+        return false
+    }
   }
 }
