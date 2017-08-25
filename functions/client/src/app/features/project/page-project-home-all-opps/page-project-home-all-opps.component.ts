@@ -2,7 +2,7 @@ import { Component } from '@angular/core'
 import { FirebaseListObservable } from 'angularfire2/database'
 import { ActivatedRoute } from '@angular/router'
 
-import { Application } from "../../../../../../universal/domain/application";
+import { Application, ApplicationStatus } from "../../../../../../universal/domain/application";
 import { Opp } from "../../../../../../universal/domain/opp";
 
 @Component({
@@ -26,5 +26,12 @@ export class PageProjectHomeAllOppsComponent {
 
     const application = applications[0];
     return (application && opp.$key == application.oppKey) ? application.status : null;
+  }
+
+  public isOppDisabled(opp: Opp, applications: Application[]) {
+    if (!applications || !applications.length || applications[0].status != ApplicationStatus.Pending)
+      return false;    
+
+    return opp.$key != applications[0].oppKey;
   }
 }

@@ -1,5 +1,5 @@
 <!-- <div [ngClass]="{'disabled':status === cardItemStatus.Disabled, 'active':status === cardItemStatus.Active,'pending':status === cardItemStatus.Pending}"> -->
-<div>
+<div [class.disabled]='disabled'>
   <div class="icon">
     <span class="glyphicon {{icon}} glyphicon-lg"></span>
     <div class="status">{{status}}
