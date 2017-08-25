@@ -16,9 +16,6 @@
         .col-md-8 {
             width: 100% !important;
         }
-        .question-bar {
-            width: 100% !important;
-        }
     }
 }
 
@@ -770,7 +767,7 @@ label {
         text-align: right;
         border-bottom: 1px solid $color-separator;
         line-height: 0.1em;
-        margin: 20px 0;
+        margin-top: 20px;
         span {
             background: #fff;
             padding: 0 10px;
@@ -1054,15 +1051,17 @@ label {
     letter-spacing: 0.56px;
     line-height: 20px;
     .pg-default & {
-        color: $base-color;
+        color: $base-dark;
     }
 }
 
 .question-bar {
     margin-top: 35px;
     @extend .footertext;
+    @include Opacity(0.8);
     a {
         @extend .footertext;
+        
         &:hover {
             text-decoration: underline;
             cursor: pointer;
@@ -1080,10 +1079,13 @@ label {
 
 .footer {
     @extend .footertext;
-    @include Opacity(0.4);
     border-top: 1px solid #FFF;
     padding: 10px 0;
     margin: 10px 0;
+    border-top: 1px solid $color-separator;
+    .pg-auth & {
+        @include Opacity(0.4);
+    }
 }
 
 .reset-link {
