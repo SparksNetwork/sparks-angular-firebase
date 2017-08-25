@@ -25,9 +25,7 @@ export class PageCompleteProfileComponent {
     public action: ProfileActionService,
     public query: ProfileQueryService,
   ) { 
-    this.route.snapshot.data['opp'].subscribe(opp => {
-      this.oppKey = opp.$key;
-    });
+    this.oppKey = this.route.snapshot.params["oppKey"];
 
     this.route.snapshot.data['profile'].subscribe(profile => {
       this.profForm.profileForm.get('legalName').setValue(profile.legalName);

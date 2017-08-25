@@ -10,17 +10,23 @@ import { Application, ApplicationStatus } from "../../../../../../universal/doma
 export class PageAnswerQuestionComponent implements OnInit {
   private oppKey: string;
   private applicationKey: string;
+  private profileKey: string;
 
   constructor(
     public applicationAction: ApplicationActionService,
     public route: ActivatedRoute,
     public router: Router
-  ) { }
+  ) { 
+    this.route.snapshot.data["profile"].subscribe(profile => {
+      this.profileKey = profile.$key;
+    })
+  }
 
   ngOnInit() {
     this.oppKey = this.route.snapshot.params["oppKey"];
+
     let application = new Application();
-    application.profileKey = "PnDuT5wx8wThD3L1lgOTjubs0C03"; //I will use a new service from develop
+    application.profileKey = this.profileKey;
     application.oppQuestion = "Opp Question"; //should be implemented in another branch
     application.oppAnswer = "Opp Answer";
     application.oppKey = this.oppKey;

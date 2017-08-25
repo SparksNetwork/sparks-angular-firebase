@@ -1,6 +1,6 @@
 import { transformAndValidate } from 'class-transformer-validator'
 import { Expose } from 'class-transformer'
-// import { IsNotEmpty, IsEnum, ValidationError, IsDateString, ValidateNested, IsNumber, IsInt, IsUrl, IsDefined } from 'class-validator'
+import { IsNotEmpty,IsDefined } from 'class-validator'
 
 import {
   BaseCollection,
@@ -24,14 +24,16 @@ export class ProfileCollection extends BaseCollection {
 }
 
 export class Profile {
+  @Expose()
+  @IsDefined()
+  @IsNotEmpty()
+  public $key: string;
+
   legalName: string
   preferredName: string
   phoneNumber: string
   birthday: string
-  // @Expose()
-  // @IsDefined()
-  // @IsNotEmpty()
-  // public $key: string;
+  
 
   // @IsEnum(ProjectType)
   // projectType: ProjectType;

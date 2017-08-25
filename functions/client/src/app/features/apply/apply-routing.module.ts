@@ -31,15 +31,13 @@ const routes: Routes = [
            RequireEmailVerification,
         ],
         resolve: {
-            opp: ResolveOppByOppKey
+            opp: ResolveOppByOppKey,
+            profile : ResolveProfile
         },
         children: [
             {
                 path: 'complete-profile',
-                component: PageCompleteProfileComponent,
-                resolve: {
-                    profile : ResolveProfile
-                }
+                component: PageCompleteProfileComponent
             },
             {
                 path: 'answer-question',
@@ -79,15 +77,16 @@ const routes: Routes = [
                     },
                     {
                         path: 'review-detail',
-                        component: PageReviewDetailComponent,
-                        resolve: {
-                            profile : ResolveProfile
-                        }
+                        component: PageReviewDetailComponent
                     },
                     {
                         path: 'apply-cofirmation',
                         component: PageApplyConfirmationComponent
-                    }
+                    },
+                    {
+                        path: 'edit-profile',
+                        component: PageCompleteProfileComponent
+                    },
                 ]
             }      
         ]
