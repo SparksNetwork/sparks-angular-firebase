@@ -23,19 +23,18 @@ export class ResolveProjectByOpp implements Resolve<any> {
 
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<Project | void>> {
         if (route.parent.data) {
-            route.parent.data["opp"].subscribe(
+         return route.parent.data["opp"].map(
                 opp => {
                     if (opp && opp.projectKey) {
                         const project = obj(this.query.one(opp.projectKey))
                             .switchMap(this.sorry.intercept(projectTransform))
                         return project
-                            .map(() => project)
-                            .first() 
                     }
                 }
-            )
+            ).first()
         }
-        return Observable.of(null);
+        else
+            return Observable.of(null);
     }
 
 }
