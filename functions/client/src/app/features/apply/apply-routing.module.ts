@@ -79,7 +79,10 @@ const routes: Routes = [
                     },
                     {
                         path: 'review-detail',
-                        component: PageReviewDetailComponent
+                        component: PageReviewDetailComponent,
+                        resolve: {
+                            profile : ResolveProfile
+                        }
                     },
                     {
                         path: 'apply-cofirmation',
