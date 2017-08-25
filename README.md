@@ -50,6 +50,24 @@ stevo:functions sdebaun$ ng serve --env=dev-sd
 
 Note that this does *not* work with `ng e2e`, you have to do one additional step (see below).
 
+### Loading Test Data
+
+When you're developing locally, you usually want to preload the database with some valid test data so that the app has something to work with.  There is an npm script to do this, that operates by default against the `qa` env:
+
+```
+% npm run preload
+```
+
+This overwrites whatever is in the specified firebase project with the contents of our main fixtures file, `/functions/e2e/fixtures/fully-loaded.json`.
+
+Before it does that, it runs json schema validation against that data using the schema found at `/functions/database.model.json`.
+
+You are encouraged to create your own versions of the npm script that pass in your ANGULAR_ENV to control what firebase project is written to.  E.g.
+
+```
+"preload:dev-sd": "cross-env ANGULAR_ENV=dev-sd npm run preload"
+```
+
 ### Client Only
 
 If you run `npm run start:client`, you will get a JIT version of the client on your local machine.  This is just running `ng serve`.

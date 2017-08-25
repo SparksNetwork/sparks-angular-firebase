@@ -6,6 +6,7 @@ import { ActionBarType } from "../../../shared/snui/action-bar/action-bar.compon
 import { ApplicationTeamActionService } from "../../../core/sndomain/applicationTeam/application-team-action.service";
 import { ApplicationTeam } from "../../../../../../universal/domain/applicationTeam";
 import { Application } from "../../../../../../universal/domain/application";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
     templateUrl: 'page-opp-team.component.html'
@@ -16,12 +17,18 @@ export class PageOppTeamComponent implements OnInit {
     private application: Application;
     public actionBarType = ActionBarType;
     public answer: string;
+    public answerForm: FormGroup;
 
     constructor(
         public route: ActivatedRoute,
         public router: Router,
-        public applicationTeamAction: ApplicationTeamActionService
-    ) { }
+        public applicationTeamAction: ApplicationTeamActionService,
+        public builder: FormBuilder
+    ) {
+        this.answerForm = builder.group({
+            answer: ['', [Validators.required]]
+        })
+    }
 
     ngOnInit() {
         this.route.data.subscribe(data => {

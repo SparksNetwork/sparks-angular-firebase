@@ -33,6 +33,7 @@
       "environments": {
         "dev": "environments/environment.ts",
         "dev-sd": "environments/environment.dev-sd.ts",
+        "dev-cp": "environments/environment.dev-cp.ts",
         "dev-id": "environments/environment.dev-id.ts",
         "dev-ts": "environments/environment.dev-ts.ts",
         "qa": "environments/environment.qa.ts",
