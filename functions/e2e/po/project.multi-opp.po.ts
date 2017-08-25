@@ -17,7 +17,7 @@ export class ProjectMultiOppPage {
   getCarouselActiveImageDiv() {
     return element(by.className('item carousel-item active'))
       .element(by.css('div.item.active'))
-      .element(by.css('div.item'));
+      .element(by.css('div.image'));
   }
 
   getNumberOfOportunityLinks() {

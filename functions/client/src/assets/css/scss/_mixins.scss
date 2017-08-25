@@ -1,52 +1,70 @@
 @mixin background-size($background-size) {
-  -webkit-background-size: $background-size;
-     -moz-background-size: $background-size;
-       -o-background-size: $background-size;
-          background-size: $background-size;
+    -webkit-background-size: $background-size;
+    -moz-background-size: $background-size;
+    -o-background-size: $background-size;
+    background-size: $background-size;
 }
 
 @mixin border-radius($radius) {
-	-webkit-border-radius: $radius;
-	   -moz-border-radius: $radius;
-			border-radius: $radius;
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
 }
 
 @mixin border-radius-targeted($topleft, $topright, $bottomright, $bottomleft) {
-	border-top-left-radius: $topleft;
-	border-top-right-radius: $topright;
-	border-bottom-right-radius: $bottomright;
-	border-bottom-left-radius: $bottomleft;
-	-webkit-border-top-left-radius: $topleft;
-	-webkit-border-top-right-radius: $topright;
-	-webkit-border-bottom-right-radius: $bottomright;
-	-webkit-border-bottom-left-radius: $bottomleft;
-	-moz-border-radius-topleft: $topleft;
-	-moz-border-radius-topright: $topright;
-	-moz-border-radius-bottomright: $bottomright;
-	-moz-border-radius-bottomleft: $bottomleft;
+    border-top-left-radius: $topleft;
+    border-top-right-radius: $topright;
+    border-bottom-right-radius: $bottomright;
+    border-bottom-left-radius: $bottomleft;
+    -webkit-border-top-left-radius: $topleft;
+    -webkit-border-top-right-radius: $topright;
+    -webkit-border-bottom-right-radius: $bottomright;
+    -webkit-border-bottom-left-radius: $bottomleft;
+    -moz-border-radius-topleft: $topleft;
+    -moz-border-radius-topright: $topright;
+    -moz-border-radius-bottomright: $bottomright;
+    -moz-border-radius-bottomleft: $bottomleft;
 }
 
 @mixin block-nooverflow {
-  display: block;
-  overflow: hidden;
+    display: block;
+    overflow: hidden;
 }
 
+/* @include box-shadow(1px,1px,1px,0, #fff, true); */
 @mixin box-shadow($top, $left, $blur, $size, $color, $inset: false) {
     @if $inset {
-        -webkit-box-shadow:inset $top $left $blur $size $color;
-        -moz-box-shadow:inset $top $left $blur $size $color;
-        box-shadow:inset $top $left $blur $size $color;
-    } @else {
+        -webkit-box-shadow: inset $top $left $blur $size $color;
+        -moz-box-shadow: inset $top $left $blur $size $color;
+        box-shadow: inset $top $left $blur $size $color;
+    }
+    @else {
         -webkit-box-shadow: $top $left $blur $size $color;
         -moz-box-shadow: $top $left $blur $size $color;
         box-shadow: $top $left $blur $size $color;
     }
 }
-/* @include box-shadow(1px,1px,1px,0, #fff, true); */
 
-@mixin Opacity($value){
-  $IEValue: $value*100;
-  opacity: $value;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$IEValue+")";
-  filter: alpha(opacity=$IEValue);
+@mixin Opacity($value) {
+    $IEValue: $value*100;
+    opacity: $value;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$IEValue+")";
+    filter: alpha(opacity=$IEValue);
+}
+
+/* @include gradient(#000, #FFF, 0%, 100%, 0deg); */
+@mixin gradient($start-color: #000, $end-color: #FFF, $start-percent: 0%, $end-percent: 100%, $deg: 0deg) {
+    //background-repeat: repeat-x;
+    background-image: -webkit-linear-gradient($deg, $start-color $start-percent, $end-color $end-percent);
+    background-image: -o-linear-gradient($deg, $start-color $start-percent, $end-color $end-percent);
+    background-image: linear-gradient($deg, $start-color $start-percent, $end-color $end-percent);
+}
+
+/* @include gradient-horizontal-three-colors($start-color,$mid-color,$end-color); */
+@mixin gradient-horizontal-three-colors($start-color: $pink, $mid-color: $purple, $end-color: $blue) {
+  background-image: -webkit-linear-gradient(left, $start-color, $mid-color 50%, $end-color);
+  background-image: -o-linear-gradient(left, $start-color, $mid-color 50%, $end-color);
+  background-image: linear-gradient(to right, $start-color, $mid-color 50%, $end-color);
+  background-repeat: no-repeat;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=1); // IE9 and down, gets no color-stop at all for proper fallback
 }
