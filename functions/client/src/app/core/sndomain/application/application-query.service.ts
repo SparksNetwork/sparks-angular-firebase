@@ -21,7 +21,9 @@ export class ApplicationQueryService extends ApplicationCollection {
   }
 
   public byProjectProfileKey(projectKey: string, profileKey: string) {
-    return obj(this.by('projectProfileKey', projectKey+'-'+profileKey))
+    const projectProfileKey = this.generateProjectProfileKey(projectKey, profileKey);
+
+    return list(this.by('projectProfileKey', projectProfileKey))
       .switchMap(this.sorry.intercept(applicationsTransform));
   }
 }

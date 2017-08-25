@@ -18,6 +18,10 @@ export class ApplicationCollection extends BaseCollection {
             firebase: '/application'
         })
     }
+
+    public generateProjectProfileKey(projectKey: string, profileKey: string) {
+        return `${projectKey}-${profileKey}`;
+    }
 }
 
 export enum ApplicationStatus {
