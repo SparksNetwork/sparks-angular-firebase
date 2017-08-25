@@ -48,6 +48,7 @@ import {
   ApplicationActionService,
   ResolveApplicationByKey,
   ResolveApplicationByProfileKey,
+  ResolveApplicationByProjectProfileKey,
 } from "./application/index";
 
 @NgModule({
@@ -89,6 +90,7 @@ import {
     ApplicationActionService,
     ResolveApplicationByKey,
     ResolveApplicationByProfileKey,
+    ResolveApplicationByProjectProfileKey,
   ],
 })
 export class SNDomainModule { }
