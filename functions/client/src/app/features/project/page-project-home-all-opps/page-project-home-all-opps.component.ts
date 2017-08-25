@@ -2,10 +2,8 @@ import { Component } from '@angular/core'
 import { FirebaseListObservable } from 'angularfire2/database'
 import { ActivatedRoute } from '@angular/router'
 
-import { Project } from "../../../../../../universal/domain/project";
-import { Observable } from "rxjs/Observable";
-import 'rxjs/add/operator/mergeMap';
 import { Application } from "../../../../../../universal/domain/application";
+import { Opp } from "../../../../../../universal/domain/opp";
 
 @Component({
   selector: 'project-page-project-home-all-opps',
@@ -13,19 +11,20 @@ import { Application } from "../../../../../../universal/domain/application";
 })
 
 export class PageProjectHomeAllOppsComponent {
-  public opps: FirebaseListObservable<Project[]>
-  public applications: FirebaseListObservable<Application[]>
+  public applications: FirebaseListObservable<Application[]>;
+  public opps: FirebaseListObservable<Opp[]>
 
   constructor(
     public route: ActivatedRoute,
   ) {
     this.opps = this.route.snapshot.data['opps'];
+    this.applications = this.route.snapshot.data['application'];
+  }
 
-    Observable.combineLatest(
-      this.route.snapshot.data['opps'],
-      this.route.snapshot.data['application']
-    )
-      //.map(([opps, application]: [Project[], Application[]]) => ({ opps, application }))
-      .subscribe(console.log)
+  public getOppStatus(opp: Opp, applications: Application[]) {
+    if (!applications || !applications.length) return null;
+
+    const application = applications[0];
+    return (application && opp.$key == application.oppKey) ? application.status : null;
   }
 }
