@@ -1,4 +1,5 @@
 <div class="col-xs-6">
+    <div *ngIf="status">Status: {{status}}</div>
     <div class="event-img" [ngStyle]="{ 'background': 'url(' + image?.imageUrl + ')'}">
     </div>
     <h3 class="project-title">{{title}}</h3>
