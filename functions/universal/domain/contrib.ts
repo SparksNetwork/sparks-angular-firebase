@@ -1,5 +1,5 @@
 import { Expose } from 'class-transformer'
-import { IsNotEmpty, IsEnum, IsInt, IsDefined } from 'class-validator/decorator/decorators'
+import { IsNotEmpty, IsEnum, IsInt, IsDefined } from 'class-validator'
 import { transformAndValidate } from 'class-transformer-validator'
 
 import {
@@ -22,10 +22,10 @@ export class ContribCollection extends BaseCollection {
 }
 
 export enum ContribType {
-   Shift,
-   PrePayment,
-   Deposit,
-   Donation
+   Shift = "Shift",
+   PrePayment = "PrePayment",
+   Deposit = "Deposit",
+   Donation = "Donation"
 }
 
 export class Contrib {
@@ -42,9 +42,11 @@ export class Contrib {
     type: ContribType;
 
     @IsDefined()
+    @IsNotEmpty()
     title: string;
 
     @IsDefined()
+    @IsNotEmpty()
     description: string;
 
     icon?: string;

@@ -69,6 +69,24 @@
                     "$ref": "#/definitions/oppAllowedTeamDef"
                 }
             }
+        },
+        "applicationTeam": {
+            "type": "object",
+            "patternProperties": {
+                "^[a-zA-Z0-9-_]+$": {
+                    "type": "object",
+                    "$ref": "#/definitions/applicationTeamDef"
+                }
+            }
+        },
+        "application": {
+            "type": "object",
+            "patternProperties": {
+                "^[a-zA-Z0-9-_]+$": {
+                    "type": "object",
+                    "$ref": "#/definitions/applicationDef"
+                }
+            }
         }
     },
     "definitions": {
@@ -203,6 +221,31 @@
                         "icon": { "type": "string" }
                     }
                 }
+            }
+        },
+        "applicationTeamDef": {
+            "required": [
+                "appKey", "teamKey"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "appKey": { "$ref": "#/constraints/nonEmptyString" },
+                "teamKey": { "$ref": "#/constraints/nonEmptyString" }
+            }
+        },
+        "applicationDef": {
+            "required": [
+                "oppKey", "profileKey","status"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "oppKey": { "$ref": "#/constraints/nonEmptyString" },
+                "profileKey": { "$ref": "#/constraints/nonEmptyString" },
+                "projectKey": { "$ref": "#/constraints/nonEmptyString" },
+                "projectProfileKey": { "$ref": "#/constraints/nonEmptyString" },
+                "status": { "type": "string", "enum": [ "Incomplete", "Pending", "Applied", "Accepted" ] },
+                "oppQuestion": { "type": "string"},
+                "oppAnswer": { "type": "string"}
             }
         }
     },

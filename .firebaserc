@@ -5,6 +5,12 @@
     "staging": "sparks-staging-773ac",
     "qa": "sparks-qa",
     "dev-sd": "sparks-development-sd",
-    "dev-ev": "sparks-network-emanuel"
+    "dev-ev": "sparks-network-emanuel",
+    "dev-id": "sparksnetworkildi",
+    "dev-mnq": "sparksnetwork-mnq",
+    "dev-ev": "sparks-network-emanuel",
+    "dev-id": "sparksnetworkildi",
+    "dev-cp": "sparksnetworkcp",
+    "dev-ts": "sparksnetwork-6de8b"
   }
 }

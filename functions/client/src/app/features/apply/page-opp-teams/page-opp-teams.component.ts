@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Observable } from "rxjs/Rx";
 import { Team } from "../../../../../../universal/domain/team";
 import { ActionBarType } from "../../../shared/snui/action-bar/action-bar.component";
-import { OppTeamsSelectService } from "../opp-teams-select.service";
+import { ApplicationTeam } from "../../../../../../universal/domain/applicationTeam";
 
 
 @Component({
@@ -11,16 +11,32 @@ import { OppTeamsSelectService } from "../opp-teams-select.service";
 })
 
 export class PageOppTeamsComponent implements OnInit {
-    public teams: Observable<Team[]>;
+    private teams: Observable<Team[]>;
+    private applicationTeams: Observable<ApplicationTeam[]>;
     public actionBarType = ActionBarType;
+    public allTeams: any;
 
     constructor(
-        public route: ActivatedRoute
+        public route: ActivatedRoute,
+        public router: Router
     ) { }
 
     ngOnInit() {
-        this.route.data.subscribe(data => {
+        this.route.parent.parent.data.subscribe(data => {
             this.teams = data['teams'];
-        })
+            this.applicationTeams = data['appTeams'];
+            this.allTeams = Observable.combineLatest(
+                this.teams,
+                this.applicationTeams
+            )
+        });
+    }
+
+    next() {
+        this.router.navigate(['../review-detail'], { relativeTo: this.route.parent })
+    }
+
+    previous() {
+        this.router.navigate(['../answer-question'], { relativeTo: this.route.parent })
     }
 }

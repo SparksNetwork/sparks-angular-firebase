@@ -12,6 +12,7 @@ export class CardItemComponent implements OnInit {
   @Input() summary: string;
   @Input() icon: string;
   @Input() status: string;
+  @Input() benefitValue: number;
 
   constructor() { }
 
