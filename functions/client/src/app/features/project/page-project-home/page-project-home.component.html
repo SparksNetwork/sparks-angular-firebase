@@ -4,6 +4,7 @@
   <project-project-title [title]="project.title" [maxKarmaPoints]="project.maxKarmaPoints"></project-project-title>
 
   <div class="project-date-location">
+    <div class="row row-small-pad">
     <project-project-date 
       [startDateTime]="project.startDateTime" 
       [endDateTime]="project.endDateTime" 
@@ -13,6 +14,7 @@
     </project-project-date>
 
     <project-project-location [location]="project.location"></project-project-location>
+    </div>
   </div>
  
   <project-project-description [description]="project.description"></project-project-description>

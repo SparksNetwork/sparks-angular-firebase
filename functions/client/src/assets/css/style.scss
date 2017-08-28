@@ -34,7 +34,7 @@ body {
     height: 100%;
 }
 
-.sn-gradient{
+.sn-gradient {
     background: rgba(191, 30, 89, 1);
     background: -moz-linear-gradient(45deg, rgba(191, 30, 89, 1) 0%, rgba(128, 107, 173, 1) 59%, rgba(36, 174, 224, 1) 100%);
     background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(191, 30, 89, 1)), color-stop(59%, rgba(128, 107, 173, 1)), color-stop(100%, rgba(36, 174, 224, 1)));
@@ -332,7 +332,8 @@ label {
 .icon {
     width: 60px;
     float: left;
-    text-align: center;
+    text-align: left;
+    display: block;
     .ic {
         font-size: 30px;
     }
@@ -344,15 +345,11 @@ label {
     float: right;
     font-size: 14px;
     line-height: 16px;
-    letter-spacing: 0.56px; // h4 {
-    //     margin: 0;
-    //     font-size: 16px;
-    //     letter-spacing: 0.64px;
-    //     color: $base-dark;
-    //     span {
-    //         font-size: inherit;
-    //     }
-    // }
+    letter-spacing: 0.56px;
+    a {
+        font-size: 12px;
+        letter-spacing: 0.48px;
+    }
     p {
         margin-bottom: 0;
     }
@@ -436,7 +433,7 @@ label {
             bottom: -1px;
             left: -1px;
             right: -1px;
-            @include gradient-horizontal-three-colors($pink,$purple,$blue);
+            @include gradient-horizontal-three-colors($pink, $purple, $blue);
             content: '';
             z-index: -1;
             @include border-radius(7.5px);
@@ -483,9 +480,6 @@ label {
 // .input-group {
 //     margin-bottom: 15px;
 // }
-.icon {
-    display: block;
-}
 
 .form-input {
     display: block;
@@ -523,9 +517,8 @@ label {
         padding: 23px 15px;
         margin: 0 -15px;
         .pg-default & {
-            @include box-shadow(0px,1px,9.2px,0.8px,rgba(0, 0, 0, 0.15));
+            @include box-shadow(0px, 1px, 9.2px, 0.8px, rgba(0, 0, 0, 0.15));
         }
-        
         .pg-auth & {
             background-color: transparent;
         }
@@ -644,7 +637,6 @@ label {
                 left: 0;
                 @extend .sn-gradient;
                 @include Opacity(0.1);
-                
             }
         }
     }
@@ -690,6 +682,7 @@ label {
     .project-location {
         .icon {
             float: right;
+            text-align: right;
         }
         .text,
         .description {
@@ -747,6 +740,7 @@ label {
         .icon {
             width: 100%;
             margin-bottom: 10px;
+            text-align: center;
             .ic {
                 width: 43px;
                 height: 60.5px;
