@@ -6,14 +6,18 @@ export class UserHomePage {
     return browser.get('/')
   }
 
-  getWelcomeMessage(){
+  getCurrentElementFinder(oldProjectElementFinder: ElementFinder) {
+    return element(oldProjectElementFinder);
+  }
+
+  getWelcomeMessage() {
     return element(by.css('user-header div.profile-hero div.profile-hero-content h2'))
   }
   getListOfProjectLinks() {
     return element.all(by.css('home-all-projects a'));
   }
 
-  getProjectLink(projectIndex:number){
+  getProjectLink(projectIndex: number) {
     return element.all(by.css('home-all-projects a')).get(projectIndex);
   }
 
@@ -21,7 +25,7 @@ export class UserHomePage {
     return element.all(by.css('home-all-projects a h3'));
   }
 
-  getProjectTitle(el:ElementFinder) {
+  getProjectTitle(el: ElementFinder) {
     return el.element(by.css('h3'))
   }
 
