@@ -98,7 +98,8 @@ const routes: Routes = [
           opp: ResolveOppByOppKey,
           teams: ResolveTeamByOppKey,
           benefits: ResolveBenefitByOppKey,
-          contribs: ResolveContribByOppKey
+          contribs: ResolveContribByOppKey,
+          application: ResolveApplicationByProjectProfileKey
         },
       },
     ]

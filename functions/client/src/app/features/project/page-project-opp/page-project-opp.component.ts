@@ -8,6 +8,8 @@ import { Team } from '../../../../../../universal/domain/team'
 import { Benefit } from '../../../../../../universal/domain/benefit'
 import { Contrib } from '../../../../../../universal/domain/contrib'
 import { ActionBarType } from '../../../shared/snui/action-bar/action-bar.component'
+import { FirebaseListObservable } from "angularfire2/database";
+import { Application } from "../../../../../../universal/domain/application";
 
 @Component({
   selector: 'project-page-project-opp',
@@ -20,6 +22,7 @@ export class PageProjectOppComponent implements OnInit {
   public teams: Observable<Team[]>;
   public benefits: Observable<Benefit[]>;
   public contribs: Observable<Contrib[]>;
+  public applications: FirebaseListObservable<Application[]>;
   public actionBarType = ActionBarType;
 
   constructor(
@@ -35,6 +38,7 @@ export class PageProjectOppComponent implements OnInit {
       this.teams = data['teams'];
       this.benefits = data['benefits'];
       this.contribs = data['contribs'];
+      this.applications = data['application'];
     })
   }
 }
