@@ -28,7 +28,14 @@ export class PageCompleteProfileComponent {
     this.route.snapshot.data['opp'].subscribe(opp => {
       this.oppKey = opp.$key;
     });
-   }
+
+    this.route.snapshot.data['profile'].subscribe(profile => {
+      this.profForm.profileForm.get('legalName').setValue(profile.legalName);
+      this.profForm.profileForm.get('preferredName').setValue(profile.preferredName);
+      this.profForm.profileForm.get('phoneNumber').setValue(profile.phoneNumber);
+      this.profForm.profileForm.get('birthday').setValue(profile.birthday);
+    });
+  }
 
   public next() {
     console.log('completed profile?', this.profForm.profileForm.value)

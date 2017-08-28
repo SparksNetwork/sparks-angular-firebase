@@ -1,8 +1,8 @@
 <!-- <div [ngClass]="{'disabled':status === cardItemStatus.Disabled, 'active':status === cardItemStatus.Active,'pending':status === cardItemStatus.Pending}"> -->
 <div>
   <div class="icon">
-    <span class="glyphicon {{icon}} glyphicon-lg"></span>
-    <div class="status">
+    <span class="ic {{icon}}"></span>
+    <div class="status" *ngIf="status"><!-- top pick -->
       <!-- <div [ngSwitch]="status">
         <div *ngSwitchCase="cardItemStatus.Active">
           active
@@ -14,7 +14,7 @@
     </div>
   </div>
   <div class="text">
-    <h4>{{title}}</h4>
+    <h4>{{title}} <span class="opp-benefit" *ngIf="benefitValue">/ ${{benefitValue}} value</span></h4>
     <p *ngIf="subtitle">{{subtitle}}</p>
     <p *ngIf="description"><span>{{description}}</span></p>
   </div>
