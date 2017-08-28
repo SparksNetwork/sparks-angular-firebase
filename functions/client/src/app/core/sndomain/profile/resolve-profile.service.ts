@@ -21,7 +21,7 @@ export class ResolveProfile implements Resolve<any> {
         const profile = this.query.current
             .mergeMap(this.sorry.intercept(profileTransform));
 
-        return profile        
+        return profile
             .map(() => profile)
             .first()
     }

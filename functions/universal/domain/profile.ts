@@ -11,7 +11,6 @@ import {
 // import { Location } from './location'
 // import { ImageRef } from './imageRef'
 // import { Organizer } from './organizer'
-import { logErrors } from '../logger/logger'
 
 
 // any methods here will be available on both client and server
@@ -40,8 +39,6 @@ const validateOpt = { validator: { skipMissingProperties: true } };
 // we have two transform functions for type safety, not sure why overloading isnt working see below
 export const profileTransform = (input: object) =>
   transformAndValidate<Profile>(Profile, input, validateOpt)
-    //.catch(logErrors)
 
 export const profilesTransform = (input: object[]) =>
   transformAndValidate<Profile>(Profile, input, validateOpt)
-    //.catch(logErrors)
