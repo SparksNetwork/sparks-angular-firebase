@@ -12,6 +12,7 @@ import {
   ProfileQueryService,
   ProfileActionService,
   RequireProfileCompleteService,
+  ResolveProfile,
 } from './profile'
 
 import {
@@ -43,6 +44,12 @@ import {
   ResolveBenefitByOppKey,
 } from './benefit'
 
+import{
+  ResolveApplicationTeamByAppKey, 
+  ApplicationTeamQueryService,
+  ApplicationTeamActionService
+} from './applicationTeam'
+
 @NgModule({
   imports: [
     HttpModule,
@@ -58,6 +65,7 @@ import {
     ProfileQueryService,
     ProfileActionService,
     RequireProfileCompleteService,
+    ResolveProfile,
 
     OppQueryService,
     OppActionService,
@@ -77,6 +85,10 @@ import {
     BenefitQueryService,
     BenefitActionService,
     ResolveBenefitByOppKey,
+
+    ApplicationTeamQueryService,
+    ApplicationTeamActionService,
+    ResolveApplicationTeamByAppKey
   ],
 })
 export class SNDomainModule { }
