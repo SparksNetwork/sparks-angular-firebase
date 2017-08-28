@@ -53,6 +53,8 @@ export class Benefit {
     description: string;
 
     icon?: string;
+
+    value: number;
 }
 
 const validateOpt = { validator: { skipMissingProperties: true } };
