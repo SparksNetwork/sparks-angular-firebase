@@ -54,6 +54,9 @@ const routes: Routes = [
                     appTeams: ResolveApplicationTeamByAppKey,
                     application: ResolveApplicationByKey
                 },
+                canActivate: [
+                    RequireProfileCompleteService,
+                ],
                 children:[
                     {
                         path: 'teams',
@@ -86,6 +89,10 @@ const routes: Routes = [
                     {
                         path: 'edit-profile',
                         component: PageCompleteProfileComponent
+                    },
+                    {
+                        path: 'answer-question',
+                        component: PageAnswerQuestionComponent
                     },
                 ]
             }      
