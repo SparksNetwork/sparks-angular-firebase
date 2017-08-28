@@ -3,8 +3,7 @@ import { ImageRef } from "../../../../../../universal/domain/imageRef";
 
 @Component({
   selector: 'snui-header-carousel',
-  templateUrl: './header-carousel.component.html',
-  styleUrls: ['./header-carousel.component.css']
+  templateUrl: './header-carousel.component.html'
 })
 export class HeaderCarouselComponent implements OnInit {
   @Input() images: ImageRef[];

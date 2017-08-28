@@ -21,10 +21,10 @@ export class ApplicationCollection extends BaseCollection {
 }
 
 export enum ApplicationStatus {
-    Incomplete,
-    Pending,
-    Applied,
-    Accepted
+    Incomplete = "Incomplete",
+    Pending = "Pending",
+    Applied = "Applied",
+    Accepted = "Accepted"
 }
 
 export class Application {
@@ -50,7 +50,6 @@ export class Application {
 
     @IsEnum(ApplicationStatus)
     status: ApplicationStatus
-
 }
 
 const validateOpt = { validator: { skipMissingProperties: true } };

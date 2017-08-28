@@ -1,5 +1,5 @@
 import { transformAndValidate } from "class-transformer-validator"
-import { Expose } from 'class-transformer'
+import { Expose, Type } from 'class-transformer'
 import { IsNotEmpty, IsEnum, ValidationError, IsDateString, ValidateNested, IsNumber, IsInt, IsUrl, IsDefined } from 'class-validator'
 
 import {
@@ -56,9 +56,11 @@ export class Project {
 
   @IsDefined()
   @ValidateNested()
+  @Type(() => Location)
   location: Location;
 
   @ValidateNested()
+  @Type(() => ImageRef)
   images: ImageRef[];
 
   @IsNumber()
@@ -70,6 +72,7 @@ export class Project {
 
   @IsDefined()
   @ValidateNested()
+  @Type(() => Organizer)
   organizer: Organizer;
 
   @IsUrl()
@@ -77,10 +80,6 @@ export class Project {
 
   @IsInt()
   shareKarmaPoints?: number;
-
-  // test validation works
-  // @IsNotEmpty()
-  // foo: string
 }
 
 const validateOpt = { validator: { skipMissingProperties: true } };
