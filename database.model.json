@@ -190,7 +190,8 @@
                 "type": { "type": "string", "enum": [ "FoodTicket", "EventTicket", "Gifts", "FoodDrink", "HelpNonProfit" ] },
                 "title": { "$ref": "#/constraints/nonEmptyString" },
                 "description": { "$ref": "#/constraints/nonEmptyString" },
-                "icon": { "type": "string" }
+                "icon": { "type": "string" },
+                "value": { "type": "number" }
             }
         },
         "teamDef":{

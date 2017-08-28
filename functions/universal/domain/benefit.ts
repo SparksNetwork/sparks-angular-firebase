@@ -7,7 +7,6 @@ import {
     Database,
 } from '../../lib/firebase-universal/shared'
 
-import { logErrors } from '../logger/logger'
 
 // any methods here will be available on both client and server
 export class BenefitCollection extends BaseCollection {
@@ -62,8 +61,6 @@ const validateOpt = { validator: { skipMissingProperties: true } };
 // we have two transform functions for type safety, not sure why overloading isnt working see below
 export const benefitTransform = (input: object) =>
     transformAndValidate<Benefit>(Benefit, input, validateOpt)
-        // .catch(logErrors)
 
 export const benefitsTransform = (input: object[]) =>
     transformAndValidate<Benefit>(Benefit, input, validateOpt)
-        // .catch(logErrors)
