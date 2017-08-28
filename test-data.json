@@ -1,12 +1,4 @@
 {
-  "profile": {
-    "USER_VERIFIED_PROFILE": {
-      "fullName": "Test User With Profile",
-      "preferredName": "Testie",
-      "phoneNumber": "8053129100",
-      "birthday": "10251974"
-    }
-  },
   "project": {
     "KPC": {
       "description": "Make Kellog Park great again!  New paint and plants donated by local businesses will make our community park more beautiful.",
@@ -33,15 +25,15 @@
         "imageUrl": "https://placeimg.com/40/40/people/grayscale",
         "name": "Miguel Rodriguez",
         "organization": "Colectiva Avenida",
-        "organizerKey": "ORG-1"
+        "organizerKey": 0
       },
-      "projectPageUrl": "https://varvy.com/pagespeed/wicked-fast.html",
-      "projectType": "Simple",
-      "shareKarmaPoints": 100,
-      "startDateTime": "2017-07-15T19:00:00.000Z",
+      "projectPageUrl" : "https://firebase.google.com/",
+      "projectType" : "Simple",
+      "shareKarmaPoints" : 100,
+      "startDateTime" : "2017-07-15T19:00:00.000Z",
       "facebookUrl": "commiesgame",
       "twitterUrl": "TripWestGames",
-      "title": "Park Cleanup"
+      "title" : "Park Cleanup"
     },
     "LC": {
       "description": "Hello my magical unicorns! Come work and play with us at Lucidity Festival this year by joining the Dream Makers!",
@@ -70,19 +62,18 @@
         "imageUrl": "https://placeimg.com/40/40/people/grayscale",
         "name": "Princess",
         "organization": "Lucidity Festival",
-        "organizerKey": "ORG-2"
+        "organizerKey": 1
       },
-      "projectPageUrl": "https://varvy.com/pagespeed/wicked-fast.html",
-      "projectType": "MultiDay",
-      "shareKarmaPoints": 100,
-      "startDateTime": "2017-02-02T08:00:00.000Z",
+      "projectPageUrl" : "http://2017.lucidityfestival.com/",
+      "projectType" : "MultiDay",
+      "shareKarmaPoints" : 100,
+      "startDateTime" : "2017-02-02T08:00:00.000Z",
       "facebookUrl": "commiesgame",
       "twitterUrl": "TripWestGames",
-      "title": "Lucidity Crossroads"
+      "title" : "Lucidity Crossroads"
     },
     "SRBC": {
       "description": "Keep our local beach beautiful",
-      "endDateTime": "2017-04-12T23:59:59.000Z",
       "communityBenefit": "Your fellow humans",
       "maxKarmaPoints": 343,
       "images": [
@@ -107,25 +98,25 @@
         "imageUrl": "https://placeimg.com/40/40/people/grayscale",
         "name": "Paul Jenkin",
         "organization": "Ventura Surfrider",
-        "organizerKey": "ORG-3"
+        "organizerKey": 1
       },
-      "projectPageUrl": "https://varvy.com/pagespeed/wicked-fast.html",
-      "projectType": "MultiDay",
-      "shareKarmaPoints": 100,
-      "startDateTime": "2017-02-02T08:00:00.000Z",
+      "projectPageUrl" : "https://ventura.surfrider.org/2017-beach-cleanup-schedule/",
+      "projectType" : "MultiDay",
+      "shareKarmaPoints" : 100,
+      "startDateTime" : "2017-02-02T08:00:00.000Z",
       "facebookUrl": "commiesgame",
       "twitterUrl": "TripWestGames",
-      "title": "Surfer's Point Beach Cleanup"
+      "title" : "Surfer's Point Beach Cleanup"
     }
   },
-  "applicationTeam": {
-    "APT1": {
-      "appKey": "AP1",
-      "teamKey": "LC1"
+  "applicationTeam" : {
+    "APT1" : {
+      "appKey" : "AP1",
+      "teamKey" : "LC1"
     },
-    "APT2": {
-      "appKey": "AP1",
-      "teamKey": "LC2"
+    "APT2" : {
+      "appKey" : "AP1",
+      "teamKey" : "LC2"
     }
   },
   "opp": {
@@ -134,7 +125,7 @@
       "icon": "glyphicon-glass",
       "karma": 20,
       "title": "Volunteer",
-      "description": "opp description"
+      "description":"opp description"
     },
     "LC1": {
       "projectKey": "LC",
@@ -143,7 +134,7 @@
       "contribValue": 209,
       "benefitValue": 374,
       "title": "1-Shift",
-      "description": "opp description"
+      "description":"opp description"
     },
     "LC2": {
       "projectKey": "LC",
@@ -152,7 +143,7 @@
       "contribValue": 59,
       "benefitValue": 394,
       "title": "Regular",
-      "description": "opp description"
+      "description":"opp description"
     },
     "LC3": {
       "projectKey": "LC",
@@ -161,7 +152,7 @@
       "contribValue": 0,
       "benefitValue": 364,
       "title": "Pre-Event Weekends",
-      "description": "opp description"
+      "description":"opp description"
     },
     "LC4": {
       "projectKey": "LC",
@@ -170,7 +161,7 @@
       "contribValue": 19,
       "benefitValue": 444,
       "title": "Setup",
-      "description": "opp description"
+      "description":"opp description"
     },
     "LC5": {
       "projectKey": "LC",
@@ -179,7 +170,7 @@
       "contribValue": 19,
       "benefitValue": 444,
       "title": "Strike",
-      "description": "opp description"
+      "description":"opp description"
     },
     "SRBC1": {
       "projectKey": "SRBC",
@@ -188,9 +179,10 @@
       "contribValue": 0,
       "benefitValue": 10,
       "title": "Beach Cleanup",
-      "description": "opp description"
+      "description":"opp description"
     }
   },
+
   "benefit": {
     "KPC1-1": {
       "description": "Eat at the Saloon while you work",
@@ -242,6 +234,8 @@
       "type": "FoodDrink"
     }
   },
+
+
   "contrib": {
     "KPC1-1": {
       "count": 1,
@@ -303,7 +297,7 @@
       "title": "Shift",
       "type": "Shift"
     },
-    "SRBC1-1": {
+      "SRBC1-1": {
       "count": 4,
       "oppKey": "SRBC1",
       "shiftMinLength": 4,
@@ -314,12 +308,17 @@
       "type": "Shift"
     }
   },
+
+
   "team": {
     "KPC1": {
       "description": "Single team description shouldn't show",
       "icon": "glyphicon-grain",
+      "oppKey": "KPC1",
       "title": "Single Team Example"
     },
+    
+
     "LC1": {
       "description": "Feed hundreds of dreamers in the most amazing kitchen ever.",
       "icon": "glyphicon-grain",
@@ -329,7 +328,7 @@
       "description": "Take tickets and give people a big warm welcome!",
       "icon": "glyphicon-sunglasses",
       "title": "Gatekeepers"
-    },
+    },    
     "LC3": {
       "description": "Shuttleguides description",
       "icon": "glyphicon-sunglasses",
@@ -375,6 +374,8 @@
       "icon": "glyphicon-sunglasses",
       "title": "Strike Tigers"
     },
+
+
     "SRBC1": {
       "description": "Beachcombers description",
       "icon": "glyphicon-sunglasses",
@@ -386,6 +387,7 @@
       "title": "Sorters"
     }
   },
+
   "oppAllowedTeam": {
     "KPC1-1": {
       "oppKey": "KPC1",
@@ -397,6 +399,8 @@
         "question": "Do you have any commercial kitchen experience?"
       }
     },
+
+
     "LC1-LC1": {
       "oppKey": "LC1",
       "teamKey": "LC1",
@@ -477,6 +481,9 @@
         "question": "Do you have any commercial kitchen experience?"
       }
     },
+
+
+
     "LC2-LC1": {
       "oppKey": "LC2",
       "teamKey": "LC1",
@@ -557,6 +564,7 @@
         "question": "Do you have any commercial kitchen experience?"
       }
     },
+
     "LC3-LC9": {
       "oppKey": "LC3",
       "teamKey": "LC9",
@@ -567,6 +575,7 @@
         "question": "Do you have any commercial kitchen experience?"
       }
     },
+
     "LC4-LC1": {
       "oppKey": "LC4",
       "teamKey": "LC1",
@@ -617,6 +626,7 @@
         "question": "Do you have any commercial kitchen experience?"
       }
     },
+  
     "LC5-LC1": {
       "oppKey": "LC5",
       "teamKey": "LC1",
@@ -667,6 +677,7 @@
         "question": "Do you have any commercial kitchen experience?"
       }
     },
+
     "SRBC1-SRBC1": {
       "oppKey": "SRBC1",
       "teamKey": "SRBC1",
@@ -687,5 +698,8 @@
         "question": "Do you have any commercial kitchen experience?"
       }
     }
+
   }
+
+
 }
