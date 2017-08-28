@@ -1,11 +1,6 @@
-<div class="row">
-  <div class="col-xs-12">
-    <div class="event-organizer segment">
-      <h3 class="sub-title">Organized by</h3>
-      <div class="row">
-        <div class="col-xs-9">{{organizer.name}} from {{organizer.organization}}</div>
-        <div class="col-xs-3" *ngIf="organizer.imageUrl"><img class="img-circle" src="{{organizer.imageUrl}}" /></div>
-      </div>
-    </div>
+<div class="project-organizer segment">
+  <div class="row">
+    <div class="col-xs-9"><h3>Organized by <span class="organizedby">{{organizer.name}} from {{organizer.organization}}</span></h3></div>
+    <div class="col-xs-3 organizer-img" *ngIf="organizer.imageUrl"><img class="img-circle" src="{{organizer.imageUrl}}" /></div>
   </div>
 </div>

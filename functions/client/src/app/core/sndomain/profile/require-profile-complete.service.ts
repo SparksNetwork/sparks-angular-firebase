@@ -23,7 +23,7 @@ export class RequireProfileCompleteService implements CanActivate {
             !profile.preferredName ||
             !profile.phoneNumber ||
             !profile.birthday) {
-          this.router.navigate(['/apply', 'KPC1', 'complete-profile'])
+          this.router.navigate(['/apply', route.paramMap.get('oppKey'), 'complete-profile'])
         }
         return true
       })

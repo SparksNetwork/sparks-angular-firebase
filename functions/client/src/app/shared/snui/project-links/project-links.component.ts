@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'project-project-links',
+  selector: 'snui-project-project-links',
   templateUrl: './project-links.component.html'
 })
 export class ProjectLinksComponent implements OnInit {

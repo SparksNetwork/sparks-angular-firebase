@@ -11,7 +11,7 @@ export class ResolveTeamByTeamKey implements Resolve<any> {
   ) { }
 
   public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const teams = route.parent.data['teams'];
+    const teams = route.parent.parent.data['teams'];
     const teamKey = route.paramMap.get("teamKey");
     const team = teams.map(teams => teams.find(s=>s.$key === teamKey));
 

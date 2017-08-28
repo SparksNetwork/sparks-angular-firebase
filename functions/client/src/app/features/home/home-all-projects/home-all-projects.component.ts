@@ -28,7 +28,7 @@ export class HomeAllProjectsComponent {
 
         const application = this.getApplicationByProjectkey(projectKey);
 
-        if (!application) return null;
+        if (!application) return this.router.navigate(['project', projectKey]);
 
         switch (application.status) {
             case ApplicationStatus.Incomplete:

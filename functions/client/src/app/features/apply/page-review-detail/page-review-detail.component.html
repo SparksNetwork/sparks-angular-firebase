@@ -1,0 +1,37 @@
+<ng-container *ngIf='application'>
+    <snui-header-simple imageUrl='https://placeimg.com/1140/410/animals/grayscale'>
+        Almost There,<br/> Ready to Apply?
+    </snui-header-simple>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="segment">
+                <p class="card-text">
+                    Double-check your details before you send the application to the organizer.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            Your information!
+            <!-- reuse from another branch -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+           <p> {{application.oppQuestion}} </p>
+           <p> {{application.oppAnswer}}</p>
+        </div>
+    </div>
+    <opp-teams-selected [allTeams]='allTeams | async'></opp-teams-selected>
+    <snui-action-bar [type]="actionBarType.Organizer">
+        <div class="col-xs-8 bottom-nav">
+            <div class="btn-group" role="group">
+                <a [routerLink]="['..','teams']" class="btn btn-block btn-default">Previous</a>
+            </div>
+            <div class="btn-group" role="group">
+                <button class="btn btn-block btn-default" (click)='apply()'>Next</button >
+        </div>
+      </div>
+    </snui-action-bar>
+</ng-container>

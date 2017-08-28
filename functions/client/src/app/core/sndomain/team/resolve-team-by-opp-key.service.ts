@@ -7,21 +7,22 @@ import 'rxjs/add/operator/first'
 import { Team, teamsTransform } from "../../../../../../universal/domain/team";
 import { OppAllowedTeamQueryService } from "../oppAllowedTeam/oppAllowedTeam-query.service";
 
-// import { OppAllowedTeamQueryService }
 import { list } from '../../../../../../lib/firebase-angular-observables'
+import { SorryService } from "../../sorry/index";
 
 @Injectable()
 export class ResolveTeamByOppKey implements Resolve<any> {
 
   constructor(
+    public sorry: SorryService,
     public query: OppAllowedTeamQueryService,
   ) { }
 
-  public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<Team[]>> {
+  public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<Team[] | void>> {
     const oppKey = route.paramMap.get('oppKey')
     const teams = list(this.query.by('oppKey', oppKey))
       .map(oppAllowedTeams => oppAllowedTeams.map(oAT => ({$key: oAT.teamKey, ...oAT.team})))
-      .mergeMap(teamsTransform)
+      .mergeMap(this.sorry.intercept(teamsTransform))
 
     return teams
       .map(() => teams)

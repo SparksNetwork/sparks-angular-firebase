@@ -2,6 +2,7 @@ import 'jasmine'
 import { browser, ExpectedConditions } from 'protractor/built';
 import { ProjectMultiOppPage } from '../../po/project.multi-opp.po';
 import { setData, setUsers } from '../../firebase';
+import { getLocationForDirections } from "./project-location-functions";
 
 const waitTimeout = 5000;
 
@@ -176,24 +177,23 @@ describe('Get-Involved: project with multiple opportunities', () => {
 
             const hrefAttribute = locationLink.getAttribute('href');
 
-            // check to see if the latitude and longitude are taken from firebase
-            hrefAttribute.then(function (str)
-            { expect(str).toContain(project['location']['longitude'], 'The longitude was not correct') }); ;
-            hrefAttribute.then(function (str)
-            { expect(str).toContain(project['location']['latitude'], 'The latitude was not correct') }); ;
+            hrefAttribute.then(function (str) {
+                expect(str).toContain('My', 'The user location was not present')
+                expect(str).toContain('Location', 'The user location was not present')
+                if (!project['location']) {
+                    expect(str).toContain(getLocationForDirections(project['location']['latitude'],
+                        project['location']['longitude'], project['location']['name'],
+                        project['location']['address'], project['location']['city'], project['location']['state']))
 
-            // check to see if one point is the user location
-            hrefAttribute.then(function (str)
-            { expect(str).toContain('My', 'The user location was not present') }); ;
-            hrefAttribute.then(function (str)
-            { expect(str).toContain('Location', 'The user location was not present') }); ;
+                }
+            });
 
             locationLink.click().then(function () {
                 browser.getAllWindowHandles().then(function (handles) {
                     const newWindowHandle = handles[1]; // this is the new window
 
                     browser.switchTo().window(newWindowHandle).then(function () {
-                        expect(browser.getCurrentUrl()).toEqual(hrefAttribute, 'The link did not open');
+                        expect(browser.getCurrentUrl()).toContain('www.google.com/maps', 'The link did not open');
                     });
                     browser.close();
                     browser.switchTo().window(handles[0]);
@@ -224,5 +224,4 @@ describe('Get-Involved: project with multiple opportunities', () => {
             });
         });
     })
-
 });

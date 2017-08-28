@@ -7,7 +7,7 @@ export class ProjectSingleOppPage {
     }
 
     getProjectTitleElement() {
-        return element(by.css('h1.event-title'));
+        return element(by.css('h1.project-title'));
     }
 
     getLastCarouselIndicator() {
@@ -15,35 +15,35 @@ export class ProjectSingleOppPage {
     }
 
     getDescriptionElement() {
-        return element(by.className('event-description segment')).$('p');
+        return element(by.className('project-description segment')).$('p');
     }
 
     getCarouselActiveImageDiv() {
         return element(by.className('item carousel-item active'))
             .element(by.css('div.item.active'))
-            .element(by.css('div.item'));
+            .element(by.css('div.image'));
     }
 
     getLocationLink() {
-        return element(by.className('event-date-location segment'))
-            .element(by.css('project-project-location')).$$('a').first();
+        return element(by.className('project-location'))
+            .$('a');
     }
 
     getLocationElement() {
-        return element(by.className('event-date-location segment'))
-            .element(by.css('project-project-location')).$$('a').first().$('div.text');
+        return element(by.className('project-location'))
+            .$('a').$('div.text');
     }
     getLocationName() {
-        return element(by.className('event-date-location segment'))
-            .element(by.css('project-project-location')).$$('a').first().$('div.text').getText();
+        return element(by.className('project-location'))
+            .$('a').$('div.text').getText();
     }
 
     getMaximumKarmaPointsElement() {
-        return element(by.css('div.event-karma > div.event-karma-count'));
+        return element(by.css('div.project-karma > div.project-karma-count'));
     }
 
     getMaximumKarmaPoints() {
-        return element(by.css('div.event-karma > div.event-karma-count')).getText();
+        return element(by.css('div.project-karma > div.project-karma-count')).getText();
     }
 
     getShareKarmaPointsElement() {
@@ -55,55 +55,55 @@ export class ProjectSingleOppPage {
     }
 
     getLinkToEventPage() {
-        return element(by.css('div.page-social.row')).$$('a').first();
+        return element(by.css('div.project-social.row')).$$('a').first();
     }
 
     getOrganizerDetailsElement() {
-        return element(by.className("event-organizer segment"))
-            .$('div.row').$('div.col-xs-9');
+        return element(by.className("project-organizer segment"))
+            .$('div.row').$('div.col-xs-9 .organizedby');
     }
 
     getOrganizerDetails() {
-        return element(by.className("event-organizer segment"))
-            .$('div.row').$('div.col-xs-9').getText();
+        return element(by.className("project-organizer segment"))
+            .$('div.row').$('div.col-xs-9 .organizedby').getText();
     }
 
     getOrganizerImage() {
-        return element(by.className("event-organizer segment"))
+        return element(by.className("project-organizer segment"))
             .$('div.row').$('div.col-xs-3').$('img.img-circle');
     }
 
     getFirstBenefitElement() {
-        return element.all(by.className('you-will-give-got segment')).first()
+        return element.all(by.className('you-get-give-join segment')).first()
             .$('ul').all(by.css('li')).first().element(by.css('snui-card-item'));
     }
 
     getCommunityBenefit() {
-        return element.all(by.className('you-will-give-got segment')).first()
+        return element.all(by.className('you-get-give-join segment')).first()
             .$('ul').all(by.css('li')).first()
             .element(by.css('snui-card-item'))
             .$$('div.text').first().getText();
     }
 
     getReceivedKarmaPointsElement() {
-        return element.all(by.className('you-will-give-got segment')).first()
+        return element.all(by.className('you-get-give-join segment')).first()
             .$('ul').all(by.css('li')).get(1).element(by.css('snui-card-item'));
     }
 
     getReceivedKarmaPoints() {
-        return element.all(by.className('you-will-give-got segment')).first()
+        return element.all(by.className('you-get-give-join segment')).first()
             .$('ul').all(by.css('li')).get(1)
             .element(by.css('snui-card-item'))
             .$$('h4').first().getText();
     }
 
     getBenefitElement() {
-        return element.all(by.className('you-will-give-got segment')).first()
+        return element.all(by.className('you-get-give-join segment')).first()
             .$('ul').all(by.css('li')).get(2).element(by.css('snui-card-item'));
     }
 
     getBenefitTitle() {
-        return element.all(by.className('you-will-give-got segment')).first()
+        return element.all(by.className('you-get-give-join segment')).first()
             .$('ul').all(by.css('li')).get(2)
             .element(by.css('snui-card-item'))
             .$$('h4').first().getText();
@@ -111,7 +111,7 @@ export class ProjectSingleOppPage {
     }
 
     getBenefitDescription() {
-        return element.all(by.className('you-will-give-got segment')).first()
+        return element.all(by.className('you-get-give-join segment')).first()
             .$('ul').all(by.css('li')).get(2)
             .element(by.css('snui-card-item'))
             .$$('div.text').first().getText();
@@ -119,7 +119,7 @@ export class ProjectSingleOppPage {
     }
 
     getContribElement() {
-        return element.all(by.className('you-will-give-got segment')).get(1)
+        return element.all(by.className('you-get-give-join segment')).get(1)
             .$('ul').all(by.css('li')).get(0).element(by.css('snui-card-item'));
     }
 
