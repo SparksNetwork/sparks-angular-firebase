@@ -18,9 +18,10 @@ export class ResolveProfile implements Resolve<any> {
     ) { }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<Profile | void>> {
-        const profile = this.query.current;
+        const profile = this.query.current
+            .mergeMap(this.sorry.intercept(profileTransform));
 
-        return profile
+        return profile        
             .map(() => profile)
             .first()
     }
