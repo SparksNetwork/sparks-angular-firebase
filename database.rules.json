@@ -13,6 +13,12 @@
     },
     "oppAllowedTeam": {
       ".indexOn": ["oppKey"]
+    },
+    "application": {
+      ".indexOn": ["profileKey"]
+    },
+    "applicationTeam": {
+      ".indexOn": ["appKey"]
     }
   }
 }

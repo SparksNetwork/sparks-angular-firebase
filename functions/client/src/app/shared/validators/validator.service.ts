@@ -15,8 +15,6 @@ export class ValidatorService {
     public static dateValidator(control: FormControl) {
         if (ValidatorService.isPresent(Validators.required(control))) return null;
 
-        console.log(control.value);
-
         const dateFormat = 'YYYY-MM-DD';
         return moment(control.value, dateFormat, true).isValid() ? null : { 'date': { valid: false } };
     }
