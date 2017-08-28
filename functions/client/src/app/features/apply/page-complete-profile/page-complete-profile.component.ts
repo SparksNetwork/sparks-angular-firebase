@@ -25,7 +25,7 @@ export class PageCompleteProfileComponent {
     public auth: AuthService,
     public action: ProfileActionService,
     public query: ProfileQueryService,
-  ) { 
+  ) {
     this.oppKey = this.route.parent.snapshot.paramMap.get('oppKey');
     this.applicationKey = this.route.parent.snapshot.paramMap.get('applicationKey');
 
@@ -40,30 +40,37 @@ export class PageCompleteProfileComponent {
   public next() {
     console.log('completed profile?', this.profForm.profileForm.value)
     this.auth.current.first().subscribe(user => {
-      console.log('uid', user.uid)
-      this.action.replace(user.uid, this.profForm.profileForm.value)
-        .subscribe(res => {
-          if (res.ok) {
-            console.log('success!')
-            this.query.current.subscribe(profile => {
-              if (profile &&
-                  profile.birthday &&
-                  profile.legalName &&
-                  profile.phoneNumber &&
-                  profile.preferredName) {
+      if (this.profForm.profileForm.dirty) {
+        this.action.replace(user.uid, this.profForm.profileForm.value)
+          .subscribe(res => {
+            if (res.ok) {
+              console.log('success!')
+              this.checkProfileAndNavigate();
+            } else {
+              console.log('failed')
+            }
+          });
+      } else {
+        this.checkProfileAndNavigate();
+      }
+    })
+  }
 
-                if (this.applicationKey) {
-                  // edit all fields mode - return to review application details page
-                  this.router.navigate(['/apply', this.oppKey, 'application', this.applicationKey, 'review-detail'])
-                } else {
-                  this.router.navigate(['/apply', this.oppKey, 'answer-question'])
-                }   
-              }
-            })
-          } else {
-            console.log('failed')
-          }
-        })
+  private checkProfileAndNavigate() {
+    this.query.current.subscribe(profile => {
+      if (profile &&
+        profile.birthday &&
+        profile.legalName &&
+        profile.phoneNumber &&
+        profile.preferredName) {
+
+        if (this.applicationKey) {
+          // edit all fields mode - return to review application details page
+          this.router.navigate(['/apply', this.oppKey, 'application', this.applicationKey, 'review-detail'])
+        } else {
+          this.router.navigate(['/apply', this.oppKey, 'answer-question'])
+        }
+      }
     })
   }
 }
