@@ -37,7 +37,7 @@ export class PageReviewDetailComponent implements OnInit {
             )
         });
 
-        this.profile = this.route.snapshot.data['profile'];
+        this.profile = this.route.parent.snapshot.data['profile'];
     }
 
     apply() {

@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="edit-profile-detalils segment">
-        <div [hidden]="profileForm.get('legalName').value && profileForm.get('legalName').pristine">
+        <div [hidden]="!editAllMode && profileForm.get('legalName').value && profileForm.get('legalName').pristine">
           <div class="form-input" [class.has-error]="!profileForm.get('legalName').valid && profileForm.get('legalName').touched">
             <div class="icon">
               <span class="ic ic-user"></span>
@@ -15,7 +15,7 @@
             </div>
           </div>
         </div>
-        <div [hidden]="profileForm.get('preferredName').value && profileForm.get('preferredName').pristine">
+        <div [hidden]="!editAllMode && profileForm.get('preferredName').value && profileForm.get('preferredName').pristine">
           <div class="form-input" [class.has-error]="!profileForm.get('preferredName').valid && profileForm.get('preferredName').touched">
             <div class="icon">
               <span class="ic ic-user"></span>
@@ -29,7 +29,7 @@
           </div>
         </div>
 
-        <div [hidden]="profileForm.get('phoneNumber').value && profileForm.get('phoneNumber').pristine">
+        <div [hidden]="!editAllMode && profileForm.get('phoneNumber').value && profileForm.get('phoneNumber').pristine">
           <div class="form-input" [class.has-error]="!profileForm.get('phoneNumber').valid && profileForm.get('phoneNumber').touched">
             <div class="icon">
               <span class="ic ic-phone"></span>
@@ -45,7 +45,7 @@
             </div>
           </div>
         </div>
-        <div [hidden]="profileForm.get('birthday').value && profileForm.get('birthday').pristine">
+        <div [hidden]="!editAllMode && profileForm.get('birthday').value && profileForm.get('birthday').pristine">
           <div class="form-input" [class.has-error]="!profileForm.get('birthday').valid && profileForm.get('birthday').touched">
             <div class="icon">
               <span class="ic ic-calendar"></span>

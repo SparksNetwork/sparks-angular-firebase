@@ -17,6 +17,7 @@ export class PageCompleteProfileComponent {
   @ViewChild(FormCompleteProfileComponent) public profForm: FormCompleteProfileComponent
 
   public oppKey: string
+  public applicationKey: string
 
   constructor(
     public router: Router,
@@ -25,9 +26,10 @@ export class PageCompleteProfileComponent {
     public action: ProfileActionService,
     public query: ProfileQueryService,
   ) { 
-    this.oppKey = this.route.snapshot.params["oppKey"];
+    this.oppKey = this.route.parent.snapshot.paramMap.get('oppKey');
+    this.applicationKey = this.route.parent.snapshot.paramMap.get('applicationKey');
 
-    this.route.snapshot.data['profile'].subscribe(profile => {
+    this.route.parent.snapshot.data['profile'].subscribe(profile => {
       this.profForm.profileForm.get('legalName').setValue(profile.legalName);
       this.profForm.profileForm.get('preferredName').setValue(profile.preferredName);
       this.profForm.profileForm.get('phoneNumber').setValue(profile.phoneNumber);
