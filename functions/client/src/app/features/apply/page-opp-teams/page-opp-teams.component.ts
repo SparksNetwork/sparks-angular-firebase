@@ -37,6 +37,6 @@ export class PageOppTeamsComponent implements OnInit {
     }
 
     previous() {
-        this.router.navigate(['../../../answer-question'], { relativeTo: this.route.parent })
+        this.router.navigate(['../answer-question'], { relativeTo: this.route.parent })
     }
 }

@@ -88,6 +88,11 @@ const routes: Routes = [
                         resolve: {
                             project: ResolveProjectByOpp
                         }
+                    },
+                    {
+                        path: 'answer-question',
+                        component: PageAnswerQuestionComponent
+
                     }
                 ]
             }

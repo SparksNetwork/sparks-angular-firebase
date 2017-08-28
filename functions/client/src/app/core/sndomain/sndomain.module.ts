@@ -49,7 +49,10 @@ import {
   ApplicationQueryService,
   ApplicationActionService,
   ResolveApplicationByKey,
-  ResolveApplicationByProfileKey,
+  ResolveApplicationByProfileKey
+} from './application'
+
+import {
   ResolveApplicationTeamByAppKey,
   ApplicationTeamQueryService,
   ApplicationTeamActionService
