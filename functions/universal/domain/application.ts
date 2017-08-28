@@ -8,23 +8,26 @@ import {
 } from '../../lib/firebase-universal/shared'
 
 import { logErrors } from '../logger/logger'
-import { IsDefined } from "class-validator";
+import { IsDefined, IsEnum } from "class-validator";
 
 // any methods here will be available on both client and server
-export class ApplicationTeamCollection extends BaseCollection {
+export class ApplicationCollection extends BaseCollection {
     constructor(public db: Database) {
         super(db, {
-            api: '/applicationTeam',
-            firebase: '/applicationTeam'
+            api: '/application',
+            firebase: '/application'
         })
-    }
-
-    public byAppKey(key: string) {
-        return this.by('appKey', key)
     }
 }
 
-export class ApplicationTeam {
+export enum ApplicationStatus {
+    Incomplete = "Incomplete",
+    Pending = "Pending",
+    Applied = "Applied",
+    Accepted = "Accepted"
+}
+
+export class Application {
     @IsNotEmpty()
     @Expose()
     @IsDefined()
@@ -32,23 +35,27 @@ export class ApplicationTeam {
 
     @IsNotEmpty()
     @IsDefined()
-    teamKey: string;
+    oppKey: string;
 
     @IsNotEmpty()
     @IsDefined()
-    appKey: string;
-   
-    question: string;
-    answer: string;
+    profileKey: string;
+
+    oppQuestion: string;
+    oppAnswer: string;
+
+    @IsEnum(ApplicationStatus)
+    status: ApplicationStatus
+
 }
 
 const validateOpt = { validator: { skipMissingProperties: true } };
 
 // we have two transform functions for type safety, not sure why overloading isnt working see below
-export const applicationTeamTransform = (input: object) =>
-    transformAndValidate<ApplicationTeam>(ApplicationTeam, input, validateOpt)
+export const applicationTransform = (input: object) =>
+    transformAndValidate<Application>(Application, input, validateOpt)
         .catch(logErrors)
 
-export const applicationTeamsTransform = (input: object[]) =>
-    transformAndValidate<ApplicationTeam>(ApplicationTeam, input, validateOpt)
+export const applicationsTransform = (input: object[]) =>
+    transformAndValidate<Application>(Application, input, validateOpt)
         .catch(logErrors)

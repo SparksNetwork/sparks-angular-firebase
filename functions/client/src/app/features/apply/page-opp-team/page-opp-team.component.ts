@@ -5,6 +5,7 @@ import { Observable } from "rxjs/Rx";
 import { ActionBarType } from "../../../shared/snui/action-bar/action-bar.component";
 import { ApplicationTeamActionService } from "../../../core/sndomain/applicationTeam/application-team-action.service";
 import { ApplicationTeam } from "../../../../../../universal/domain/applicationTeam";
+import { Application } from "../../../../../../universal/domain/application";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
@@ -13,6 +14,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 export class PageOppTeamComponent implements OnInit {
     public team: Observable<Team>;
+    private application: Application;
     public actionBarType = ActionBarType;
     public answer: string;
     public answerForm: FormGroup;
@@ -32,14 +34,20 @@ export class PageOppTeamComponent implements OnInit {
         this.route.data.subscribe(data => {
             this.team = data['team'];
         })
+        this.route.parent.parent.data.subscribe(data => {
+            data['application'].subscribe(a => {
+                this.application = a;
+            })
+        })
     }
 
-    join(key: string) {
-        console.log(this.answerForm.get("answer").value);
+    join(key: string, question: string) {
         let appTeam = new ApplicationTeam();
-        appTeam.appKey = "AP1";
+        appTeam.appKey = this.application.$key;
         appTeam.teamKey = key;
-        this.applicationTeamAction.create(appTeam)
-            .subscribe((s) => { this.router.navigate(['../'], { relativeTo: this.route }) });
+        appTeam.answer = this.answer;
+        appTeam.question = question;
+            this.applicationTeamAction.create(appTeam)
+                .subscribe((s) => { this.router.navigate(['../'], { relativeTo: this.route }) });
     }
 }
