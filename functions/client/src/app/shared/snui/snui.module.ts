@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common'
 import { HeaderSimpleComponent } from './header-simple/header-simple.component'
 
 import { LocationPipe } from "../pipes/location.pipe";
+import { ApplicationStatusPipe } from "../pipes/application-status.pipe";
 import { HeaderCarouselComponent } from "./header-carousel/header-carousel.component";
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CollapseModule } from 'ngx-bootstrap/collapse'
@@ -12,6 +13,7 @@ import { BtnDirective } from './btn/btn.directive'
 import { ProjectCardItemComponent } from "./project-card-item/project-card-item.component";
 import { UserHeaderComponent } from "./user-header/user-header.component";
 import { TeamCardItemComponent } from "./team-card-item/team-card-item.component";
+import { ProjectLinksComponent } from "./project-links/project-links.component";
 
 const COMPONENTS = [
   HeaderSimpleComponent,
@@ -20,9 +22,11 @@ const COMPONENTS = [
   HeaderCarouselComponent,
   CardItemComponent,
   LocationPipe,
+  ApplicationStatusPipe,
   ProjectCardItemComponent,
   UserHeaderComponent,
-  TeamCardItemComponent
+  TeamCardItemComponent,
+  ProjectLinksComponent
 ]
 
 @NgModule({

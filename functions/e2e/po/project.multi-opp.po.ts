@@ -7,7 +7,7 @@ export class ProjectMultiOppPage {
   }
 
   getProjectTitleElement() {
-    return element(by.css('h1.event-title'));
+    return element(by.css('h1.project-title'));
   }
 
   getLastCarouselIndicator() {
@@ -17,7 +17,7 @@ export class ProjectMultiOppPage {
   getCarouselActiveImageDiv() {
     return element(by.className('item carousel-item active'))
       .element(by.css('div.item.active'))
-      .element(by.css('div.item'));
+      .element(by.css('div.image'));
   }
 
   getNumberOfOportunityLinks() {
@@ -76,34 +76,34 @@ export class ProjectMultiOppPage {
   }
 
   getDescriptionElement() {
-    return element(by.className('event-description segment')).$('p');
+    return element(by.className('project-description segment')).$('p');
   }
 
   getLocationLink() {
-    return element(by.className('event-date-location segment'))
-      .element(by.css('project-project-location')).$$('a').first();
+    return element(by.className('project-location'))
+      .$('a');
   }
 
   getLocationElement() {
-    return element(by.className('event-date-location segment'))
-      .element(by.css('project-project-location')).$$('a').first().$('div.text');
+    return element(by.className('project-location'))
+      .$('a').$('div.text');
   }
   getLocationName() {
-    return element(by.className('event-date-location segment'))
-      .element(by.css('project-project-location')).$$('a').first().$('div.text').getText();
+    return element(by.className('project-location'))
+      .$('a').$('div.text').getText();
   }
 
   getDate() {
-    return element(by.className('event-date-location segment'))
+    return element(by.className('project-date-location segment'))
       .element(by.css('project-project-date')).$$('a').first().$('div.text').getText();
   }
 
   getMaximumKarmaPointsElement() {
-    return element(by.css('div.event-karma > div.event-karma-count'));
+    return element(by.css('div.project-karma > div.project-karma-count'));
   }
 
   getMaximumKarmaPoints() {
-    return element(by.css('div.event-karma > div.event-karma-count')).getText();
+    return element(by.css('div.project-karma > div.project-karma-count')).getText();
   }
 
   getShareKarmaPointsElement() {
@@ -115,21 +115,21 @@ export class ProjectMultiOppPage {
   }
 
   getLinkToEventPage() {
-    return element(by.css('div.page-social.row')).$$('a').first();
+    return element(by.css('div.project-social.row')).$$('a').first();
   }
 
   getOrganizerDetailsElement() {
-    return element(by.className('event-organizer segment'))
+    return element(by.className('project-organizer segment'))
       .$('div.row').$('div.col-xs-9');
   }
 
   getOrganizerDetails() {
-    return element(by.className('event-organizer segment'))
+    return element(by.className('project-organizer segment'))
       .$('div.row').$('div.col-xs-9').getText();
   }
 
   getOrganizerImage() {
-    return element(by.className('event-organizer segment'))
+    return element(by.className('project-organizer segment'))
       .$('div.row').$('div.col-xs-3').$('img.img-circle');
   }
 

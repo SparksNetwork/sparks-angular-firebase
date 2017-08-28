@@ -6,12 +6,14 @@ import {
   ProjectActionService,
   ResolveProjectAll,
   ResolveProjectByProjectKey,
+  ResolveProjectByOpp
 } from './project'
 
 import {
   ProfileQueryService,
   ProfileActionService,
   RequireProfileCompleteService,
+  ResolveProfile,
 } from './profile'
 
 import {
@@ -44,16 +46,18 @@ import {
 } from './benefit'
 
 import {
+  ApplicationQueryService,
+  ApplicationActionService,
+  ResolveApplicationByKey,
+  ResolveApplicationByProfileKey
+} from './application'
+
+import {
   ResolveApplicationTeamByAppKey,
   ApplicationTeamQueryService,
   ApplicationTeamActionService
 } from './applicationTeam'
 
-import {
-  ApplicationQueryService,
-  ApplicationActionService,
-  ResolveApplicationByKey
-} from "./application/index";
 
 @NgModule({
   imports: [
@@ -66,10 +70,12 @@ import {
     ProjectActionService,
     ResolveProjectAll,
     ResolveProjectByProjectKey,
+    ResolveProjectByOpp,
 
     ProfileQueryService,
     ProfileActionService,
     RequireProfileCompleteService,
+    ResolveProfile,
 
     OppQueryService,
     OppActionService,
@@ -90,13 +96,13 @@ import {
     BenefitActionService,
     ResolveBenefitByOppKey,
 
+    ApplicationQueryService,
+    ApplicationActionService,
+    ResolveApplicationByKey,
+    ResolveApplicationByProfileKey,
     ApplicationTeamQueryService,
     ApplicationTeamActionService,
     ResolveApplicationTeamByAppKey,
-
-    ApplicationQueryService,
-    ApplicationActionService,
-    ResolveApplicationByKey
   ],
 })
 export class SNDomainModule { }

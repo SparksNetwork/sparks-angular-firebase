@@ -58,7 +58,6 @@ export class Application {
 
     @IsEnum(ApplicationStatus)
     status: ApplicationStatus
-
 }
 
 const validateOpt = { validator: { skipMissingProperties: true } };

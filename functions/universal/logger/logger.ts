@@ -7,6 +7,7 @@ export const logErrors = function (errs: ValidationError[]) {
   } else {
     errs.forEach(err => {
         console.log('property', err.property)
+        console.log(err.constraints);
         Object.keys(err.constraints).forEach(cKey => console.log(err.constraints[cKey]))
       })
   }

@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs'
 import { transformAndValidate } from "class-transformer-validator"
 import { Expose } from 'class-transformer'
+import { IsNotEmpty, IsDefined } from 'class-validator'
 
 import {
     BaseCollection,
@@ -15,12 +16,22 @@ export class TeamCollection extends BaseCollection {
 
 export class Team {
     @Expose()
+    @IsDefined()
+    @IsNotEmpty()
     public $key: string
 
     public oppKey: string;
+
+    @IsDefined()
+    @IsNotEmpty()
     public title: string
+
+    @IsDefined()
+    @IsNotEmpty()
     public description: string
+
     public icon: string
+    
     public question: string
 }
 

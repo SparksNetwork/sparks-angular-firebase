@@ -1,12 +1,18 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600');
 $regular_font_family: 'Source Sans Pro',
 sans-serif;
 // Colors
-$base-color: #a8acb0;
+$base-color: #92979C ; /*#a8acb0; */
 $off-white: #FEFFFF;
 $base-dark: #253039;
-$pink: #bf1e59; /* #AE3572; */
+$base-dark2: #444547; /* card-text, organizedby */
+$color-separator: #e9eaeb;
+
+
+$pink: #bf1e59; /* #BF1E58 -same #AE3572; */
+$violetblue: #975394;
 $blue: #24aee0;
+// $summersky: #24ADE0; buttons
 $purple: #806bad;
 
 
@@ -47,12 +53,10 @@ $linkedin-color: #1E87BE;
 
 .ic-calendar:before {
     content: "\e900";
-    color: #93989c;
 }
 
 .ic-envelope:before {
     content: "\e901";
-    color: #fff;
 }
 
 .ic-facebook:before {
@@ -63,6 +67,13 @@ $linkedin-color: #1E87BE;
 .ic-google:before {
     content: "\e903";
     color: #af3673;
+}
+
+.ic-karma-points{
+    background: url('../img/karma_points.svg') top center no-repeat;
+    width: 25px;
+    height: 18px;
+    display: block;
 }
 
 .ic-karma-points-color .path1:before {
@@ -120,67 +131,9 @@ $linkedin-color: #1E87BE;
     opacity: 0.5;
 }
 
-.ic-karma-points-color-01{
-    background: url('../img/karma points color-01.svg') top center no-repeat;
-    width: 25px;
-    height: 18px;
-    display: block;
-}
 
-.ic-karma-points-color-01 .path1:before {
-    content: "\e90c";
-    color: #897fba;
-    opacity: 0.9;
-}
 
-.ic-karma-points-color-01 .path2:before {
-    content: "\e90d";
-    margin-left: -1em;
-    color: #897fba;
-    opacity: 0.9;
-}
 
-.ic-karma-points-color-01 .path3:before {
-    content: "\e90e";
-    margin-left: -1em;
-    color:  #b9bddc;
-    opacity: 0.5;
-}
-
-.ic-karma-points-color-01 .path4:before {
-    content: "\e90f";
-    margin-left: -1em;
-   color:  #b9bddc;
-    opacity: 0.5;
-}
-
-.ic-karma-points-color-01 .path5:before {
-    content: "\e910";
-    margin-left: -1em;
-    color:  #b9bddc;
-    opacity: 0.5;
-}
-
-.ic-karma-points-color-01 .path6:before {
-    content: "\e911";
-    margin-left: -1em;
-    color:  #b9bddc;
-    opacity: 0.5;
-}
-
-.ic-karma-points-color-01 .path7:before {
-    content: "\e912";
-    margin-left: -1em;
-    color: $pink;
-    opacity: 0.5;
-}
-
-.ic-karma-points-color-01 .path8:before {
-    content: "\e913";
-    margin-left: -1em;
-    color: $pink;
-    opacity: 0.5;
-}
 
 .ic-karma-points-white:before {
     content: "\e914";
@@ -188,7 +141,6 @@ $linkedin-color: #1E87BE;
 
 .ic-key:before {
     content: "\e915";
-    color: #fff;
 }
 
 .ic-link:before {
@@ -265,24 +217,20 @@ $linkedin-color: #1E87BE;
     opacity: 0.4;
 }
 
-.ic-opp1:before {
-    content: "\e923";
-    color: #93989c;
+.ic-opp1{
+    background: url('../img/opp1.svg') top center no-repeat;
 }
 
-.ic-opp2:before {
-    content: "\e924";
-    color: #93989c;
+.ic-opp2{
+    background: url('../img/opp2.svg') top center no-repeat;
 }
 
-.ic-opp3:before {
-    content: "\e925";
-    color: #93989c;
+.ic-opp3{
+    background: url('../img/opp3.svg') top center no-repeat;
 }
 
-.ic-opp4:before {
-    content: "\e926";
-    color: #93989c;
+.ic-opp4{
+    background: url('../img/opp4.svg') top center no-repeat;
 }
 
 .ic-profile:before {

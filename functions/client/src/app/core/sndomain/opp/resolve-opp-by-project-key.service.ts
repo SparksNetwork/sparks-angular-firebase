@@ -9,11 +9,13 @@ import { OppQueryService } from './opp-query.service'
 import { Opp, oppsTransform } from '../../../../../../universal/domain/opp'
 
 import { list } from '../../../../../../lib/firebase-angular-observables'
+import { SorryService } from "../../sorry/index";
 
 @Injectable()
 export class ResolveOppByProjectKey implements Resolve<any> {
 
   constructor(
+    public sorry: SorryService,
     public query: OppQueryService,
   ) { }
 
@@ -24,7 +26,7 @@ export class ResolveOppByProjectKey implements Resolve<any> {
     // see https://github.com/angular/angularfire2/issues/1094
     // this works
     const opps = list(this.query.byProjectKey(projectKey))
-      .mergeMap(oppsTransform)
+      .mergeMap(this.sorry.intercept(oppsTransform))
 
     return opps
       .map(() => opps)

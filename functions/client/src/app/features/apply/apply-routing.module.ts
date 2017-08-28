@@ -16,19 +16,20 @@ import { PageAnswerQuestionComponent } from './page-answer-question/page-answer-
 import { ResolveTeamByTeamKey } from "./resolve-team-by-team-key/resolve-team-by-team-key.service";
 import { OppTeamsSelectedComponent } from "./opp-teams-selected/opp-teams-selected.component";
 import { OppTeamsNotSelectedComponent } from "./opp-teams-not-selected/opp-teams-not-selected.component";
-import { RequireProfileCompleteService } from '../../core/sndomain/profile'
+import { RequireProfileCompleteService, ResolveProfile } from '../../core/sndomain/profile'
 import { ResolveApplicationTeamByAppKey } from "../../core/sndomain/applicationTeam/resolve-application-team-by-app-key.service";
 import { ResolveApplicationByKey } from "../../core/sndomain/application/resolve-application-by-key.service";
 import { PageReviewDetailComponent } from "./page-review-detail/page-review-detail.component";
 import { PageApplyConfirmationComponent } from "./page-apply-confirmation/page-apply-confirmation.component";
 import { PageApplicationComponent } from "./page-application/page-application.component";
+import { ResolveProjectByOpp } from "../../core/sndomain/project/resolve-project-by-opp.service";
 
 const routes: Routes = [
     {
         path: ':oppKey',
         canActivate: [
-           RequireAuth,
-           RequireEmailVerification,
+            RequireAuth,
+            RequireEmailVerification,
         ],
         resolve: {
             opp: ResolveOppByOppKey
@@ -36,7 +37,10 @@ const routes: Routes = [
         children: [
             {
                 path: 'complete-profile',
-                component: PageCompleteProfileComponent
+                component: PageCompleteProfileComponent,
+                resolve: {
+                    profile : ResolveProfile
+                }
             },
             {
                 path: 'answer-question',
@@ -53,18 +57,18 @@ const routes: Routes = [
                     appTeams: ResolveApplicationTeamByAppKey,
                     application: ResolveApplicationByKey
                 },
-                children:[
+                children: [
                     {
                         path: 'teams',
                         component: PageOppHomeTeamsComponent,
                         canActivate: [
                             RequireProfileCompleteService,
-                        ], 
+                        ],
                         children: [
                             {
                                 path: '',
                                 component: PageOppTeamsComponent
-                            },                   
+                            },
                             {
                                 path: ':teamKey',
                                 component: PageOppTeamComponent,
@@ -80,14 +84,18 @@ const routes: Routes = [
                     },
                     {
                         path: 'apply-cofirmation',
-                        component: PageApplyConfirmationComponent
+                        component: PageApplyConfirmationComponent,
+                        resolve: {
+                            project: ResolveProjectByOpp
+                        }
                     },
                     {
                         path: 'answer-question',
                         component: PageAnswerQuestionComponent
+
                     }
                 ]
-            }      
+            }
         ]
     }
 ];
@@ -99,10 +107,10 @@ const routes: Routes = [
 export class ApplyRoutingModule { }
 
 export const routedComponents = [
-    PageCompleteProfileComponent, 
+    PageCompleteProfileComponent,
     PageAnswerQuestionComponent,
-    PageOppHomeTeamsComponent, 
-    PageOppTeamsComponent, 
+    PageOppHomeTeamsComponent,
+    PageOppTeamsComponent,
     PageOppTeamComponent,
     OppTeamsSelectedComponent,
     OppTeamsNotSelectedComponent,
