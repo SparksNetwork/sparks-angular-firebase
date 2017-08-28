@@ -16,13 +16,19 @@ import { FormCompleteProfileComponent } from '../form-complete-profile/form-comp
 export class PageCompleteProfileComponent {
   @ViewChild(FormCompleteProfileComponent) public profForm: FormCompleteProfileComponent
 
+  public oppKey: string
+
   constructor(
     public router: Router,
+    public route: ActivatedRoute,
     public auth: AuthService,
     public action: ProfileActionService,
     public query: ProfileQueryService,
-    public route: ActivatedRoute,
-  ) { 
+  ) {
+    this.route.snapshot.data['opp'].subscribe(opp => {
+      this.oppKey = opp.$key;
+    });
+
     this.route.snapshot.data['profile'].subscribe(profile => {
       this.profForm.profileForm.get('legalName').setValue(profile.legalName);
       this.profForm.profileForm.get('preferredName').setValue(profile.preferredName);
@@ -45,7 +51,7 @@ export class PageCompleteProfileComponent {
                   profile.legalName &&
                   profile.phoneNumber &&
                   profile.preferredName) {
-                this.router.navigate(['/apply', 'KPC1', 'answer-question'])
+                this.router.navigate(['/apply', this.oppKey, 'answer-question'])
               }
             })
           } else {
