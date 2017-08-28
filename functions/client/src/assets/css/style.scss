@@ -320,7 +320,7 @@ label {
 .bottom-links {
     .btn {
         width: auto;
-        min-width: 75px;
+        min-width: 80px;
     }
 }
 
@@ -495,6 +495,22 @@ label {
 
 /* Forms */
 
+.pg-auth{
+    .form-control::-webkit-input-placeholder { color: #FFF }  /* WebKit, Blink, Edge */
+    .form-control:-moz-placeholder { color: #FFF; }  /* Mozilla Firefox 4 to 18 */
+    .form-control::-moz-placeholder { color: #FFF; }  /* Mozilla Firefox 19+ */
+    .form-control:-ms-input-placeholder { color: #FFF; }  /* Internet Explorer 10-11 */
+    .form-control::-ms-input-placeholder { color: #FFF; }  /* Microsoft Edge */
+}
+
+.pg-default{
+    .form-control::-webkit-input-placeholder { color: $base-dark; }
+    .form-control:-moz-placeholder{ color: $base-dark; }
+    .form-control::-moz-placeholder{ color: $base-dark; }
+    .form-control:-ms-input-placeholder{ color: $base-dark; }
+    .form-control::-ms-input-placeholder { color: $base-dark; }
+}
+
 .login-with-username {
     padding-top: 0;
 }
@@ -526,14 +542,6 @@ label {
             border-color: #FFF;
         }
     }
-}
-
-.pg-auth{
-.form-control::-webkit-input-placeholder { color: #FFF }  /* WebKit, Blink, Edge */
-.form-control:-moz-placeholder { color: #FFF; }  /* Mozilla Firefox 4 to 18 */
-.form-control::-moz-placeholder { color: #FFF; }  /* Mozilla Firefox 19+ */
-.form-control:-ms-input-placeholder { color: #FFF; }  /* Internet Explorer 10-11 */
-.form-control::-ms-input-placeholder { color: #FFF; }  /* Microsoft Edge */
 }
 
 .form-input {
@@ -568,6 +576,37 @@ label {
 
 
 /* Nav */
+.nav-container{
+    position: relative;
+    .collapsing{
+        top: 0;
+        width: 0;
+        transition-property: width, visibility;
+        position: absolute;
+    }
+    .collapse{
+        position: absolute;
+        top: 0;
+        background: #FFF;
+        height: 85px;
+    }
+    .input-group{
+        @extend .separator;
+        .form-control{
+            border: none;
+            box-shadow: none;
+            font-size: 18px;
+            color: $base-dark;
+            padding: 14px 0 14px 35px;
+        }
+        .input-group-btn{
+            .btn{
+               color: $base-dark;
+                margin: 0 35px 0 10px;
+            }
+        }
+    }
+}
 
 .navbar {
     .ic {
@@ -590,6 +629,7 @@ label {
         min-height: 85px;
         padding: 23px 15px;
         margin: 0 -15px;
+        @include border-radius(0);
         .pg-default & {
             @include box-shadow(0px, 1px, 9.2px, 0.8px, rgba(0, 0, 0, 0.15));
         }
