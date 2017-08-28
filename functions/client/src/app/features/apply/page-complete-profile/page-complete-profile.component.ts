@@ -51,7 +51,13 @@ export class PageCompleteProfileComponent {
                   profile.legalName &&
                   profile.phoneNumber &&
                   profile.preferredName) {
-                this.router.navigate(['/apply', this.oppKey, 'answer-question'])
+
+                if (this.applicationKey) {
+                  // edit all fields mode - return to review application details page
+                  this.router.navigate(['/apply', this.oppKey, 'application', this.applicationKey, 'review-detail'])
+                } else {
+                  this.router.navigate(['/apply', this.oppKey, 'answer-question'])
+                }   
               }
             })
           } else {
