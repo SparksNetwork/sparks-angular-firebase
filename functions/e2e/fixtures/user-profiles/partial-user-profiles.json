@@ -1,0 +1,20 @@
+{
+    "USER_VERIFIED_LNAME": {
+        "legalName": "Only legal name"
+    },
+    "USER_VERIFIED_LNAME_BDAY": {
+        "legalName": "Legal name + bday",
+        "birthday": "2015-05-04"
+    },
+    "USER_VERIFIED_LNAME_BDAY_PNAME": {
+        "legalName": "Legal&preferred name + bday ",
+        "preferredName": "Testie",
+        "birthday": "2015-05-04"
+    },
+    "USER_VERIFIED_COMPLETE_PROFILE": {
+        "legalName": "Complete profile",
+        "preferredName": "Testie",
+        "phoneNumber": "8053129100",
+        "birthday": "2015-05-04"
+    }
+}
