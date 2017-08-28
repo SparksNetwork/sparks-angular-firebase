@@ -46,6 +46,7 @@ import { ProjectLinksComponent } from "./project-links/project-links.component";
 import { ProjectOrganizerComponent } from "./project-organizer/project-organizer.component";
 import { ActionbarOppJoinComponent } from './actionbar-opp-join/actionbar-opp-join.component'
 import { ResolveApplicationByProjectProfileKey } from "../../core/sndomain/application/resolve-applications-by-project-profile-key.service";
+import { ProjectOppCardComponent } from "./project-opp-card/project-opp-card.component";
 
 const routes: Routes = [
   {
@@ -122,6 +123,7 @@ export const routedComponents = [
   PageProjectOppComponent,
   ProjectOppDetailComponent,
   ProjectOppTeamsComponent,
+  ProjectOppCardComponent,
 
   AddToCalendarComponent,
   ProjectTitleComponent,
