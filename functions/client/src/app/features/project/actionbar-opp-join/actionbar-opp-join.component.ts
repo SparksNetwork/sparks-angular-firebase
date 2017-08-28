@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { ActionBarType } from "../../../shared/snui/action-bar/action-bar.component";
-import { Application } from "../../../../../../universal/domain/application";
+import { Application, ApplicationStatus } from "../../../../../../universal/domain/application";
 
 @Component({
   selector: 'project-actionbar-opp-join',
@@ -10,13 +10,16 @@ import { Application } from "../../../../../../universal/domain/application";
 export class ActionbarOppJoinComponent implements OnChanges {
   @Input() opp
   @Input() private applications: Application[];
+  public application: Application;
   actionBarType = ActionBarType
 
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.applications) {
-      console.log(this.applications)
+      let applications = this.applications.filter(s => s.status !== ApplicationStatus.Canceled);
+      if(applications)
+        this.application = applications[0];
     }
   }
 

@@ -37,7 +37,8 @@ export enum ApplicationStatus {
     Incomplete = "Incomplete",
     Pending = "Pending",
     Applied = "Applied",
-    Accepted = "Accepted"
+    Accepted = "Accepted",
+    Canceled = "Canceled"
 }
 
 export class Application {
