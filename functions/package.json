@@ -18,6 +18,7 @@
     "build:server": "tsc -p tsconfig.json",
     "preload": "ts-node ./bin/load-test-data.ts",
     "preload:dev-sd": "cross-env ANGULAR_ENV=dev-sd npm run preload",
+    "preload:dev-cp": "cross-env ANGULAR_ENV=dev-cp npm run preload",
     "deploy": "firebase deploy --only hosting,functions",
     "deploy:staging": "firebase use staging && npm run build:client:staging && firebase deploy --only hosting,functions",
     "test": "ng test",
