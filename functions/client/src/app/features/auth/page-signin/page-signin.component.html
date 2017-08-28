@@ -15,29 +15,28 @@
 <div class="col-xs-12 col-sm-8 col-md-6">
   <div class="row">
     <auth-social-block label="Sign in"></auth-social-block>
-  </div>
-</div>
 
-<div class='segment'>
-  <auth-alert-error></auth-alert-error>
-  <auth-form-email-password></auth-form-email-password>
+    <div class="segment login-with-username">
+      <auth-alert-error></auth-alert-error>
+      <auth-form-email-password></auth-form-email-password>
 
-  <div class="reset-link">
-    <p>Forgot Your Password? <a [routerLink]="['/auth', 'reset-password']">Reset it</a></p>
-  </div>
-
-</div>
-
-<div class="segment no-brd">
-  <div class="row">
-    <div class="col-xs-6">
-      <button class="btn btn-block btn-primary" routerLink='["/"]'>Cancel</button>
+      <div class="reset-link">
+        <p>Forgot Your Password? <a [routerLink]="['/auth', 'reset-password']">Reset it</a></p>
+      </div>
     </div>
-    <div class="col-xs-6">
-      <button class="btn btn-block btn-secondary" id='signin' (click)='signInWithEmailAndPassword()' [disabled]="!epForm.credentialsForm.valid">Sign In</button>
+
+    <div class="segment no-brd bottom-links">
+      <div class="row">
+        <div class="col-xs-6">
+          <button class="btn btn-block btn-primary" routerLink='["/"]'>Cancel</button>
+        </div>
+        <div class="col-xs-6">
+          <button class="btn btn-block btn-secondary pull-right" id='signin' (click)='signInWithEmailAndPassword()' [disabled]="!epForm.credentialsForm.valid">Sign In</button>
+        </div>
+      </div>
     </div>
+
   </div>
 </div>
-
 
 <snui-action-bar></snui-action-bar>
