@@ -1,6 +1,6 @@
 import { transformAndValidate } from 'class-transformer-validator'
 import { Expose } from 'class-transformer'
-import { IsISO8601, IsMobilePhone } from "class-validator";
+import { IsISO8601, Matches } from "class-validator";
 
 import {
   BaseCollection,
@@ -27,7 +27,7 @@ export class Profile {
   legalName: string
   preferredName: string
 
-  @IsMobilePhone('en-US')
+  @Matches(/^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/)
   phoneNumber: string
 
   @IsISO8601()
