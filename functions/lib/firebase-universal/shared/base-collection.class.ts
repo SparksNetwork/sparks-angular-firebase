@@ -1,6 +1,5 @@
 import { AngularFireDatabase } from 'angularfire2/database'
 import * as firebase from 'firebase'
-import 'reflect-metadata';
 
 export interface CollectionPaths {
   api: string
