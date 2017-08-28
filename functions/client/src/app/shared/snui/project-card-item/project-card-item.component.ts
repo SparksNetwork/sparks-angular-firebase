@@ -13,6 +13,7 @@ export class ProjectCardItemComponent implements OnInit {
     @Input() title: string;
     @Input() location: Location;
     @Input() maxKarmaPoints: number;
+    @Input() status: string;
 
     constructor() { }
 

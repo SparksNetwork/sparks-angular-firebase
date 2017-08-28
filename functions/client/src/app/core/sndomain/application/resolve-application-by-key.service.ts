@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core'
 import { Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router'
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/first'
-
 import { Observable } from "rxjs/Observable";
-
 
 import { obj } from '../../../../../../lib/firebase-angular-observables'
 import { ApplicationQueryService } from "./application-query.service";

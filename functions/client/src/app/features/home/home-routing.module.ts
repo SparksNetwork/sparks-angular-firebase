@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { ResolveProjectAll } from "../../core/sndomain/project/resolve-project-all.service";
 import { HomeAllProjectsComponent } from "./home-all-projects/home-all-projects.component";
+import { ResolveApplicationByProfileKey } from "../../core/sndomain/application/resolve-applications-by-profile-key.service";
 
 
 
@@ -12,7 +13,8 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
     resolve: {
-      projects: ResolveProjectAll
+      projects: ResolveProjectAll,
+      applications: ResolveApplicationByProfileKey
     }
   }
 ];

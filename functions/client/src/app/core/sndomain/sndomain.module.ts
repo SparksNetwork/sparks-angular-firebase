@@ -46,16 +46,15 @@ import {
 } from './benefit'
 
 import {
+  ApplicationQueryService,
+  ApplicationActionService,
+  ResolveApplicationByKey,
+  ResolveApplicationByProfileKey,
   ResolveApplicationTeamByAppKey,
   ApplicationTeamQueryService,
   ApplicationTeamActionService
 } from './applicationTeam'
 
-import {
-  ApplicationQueryService,
-  ApplicationActionService,
-  ResolveApplicationByKey
-} from "./application/index";
 
 @NgModule({
   imports: [
@@ -94,13 +93,13 @@ import {
     BenefitActionService,
     ResolveBenefitByOppKey,
 
+    ApplicationQueryService,
+    ApplicationActionService,
+    ResolveApplicationByKey,
+    ResolveApplicationByProfileKey,
     ApplicationTeamQueryService,
     ApplicationTeamActionService,
     ResolveApplicationTeamByAppKey,
-
-    ApplicationQueryService,
-    ApplicationActionService,
-    ResolveApplicationByKey
   ],
 })
 export class SNDomainModule { }

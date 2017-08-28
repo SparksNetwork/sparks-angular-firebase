@@ -41,12 +41,15 @@ export class Application {
     @IsDefined()
     profileKey: string;
 
+    @IsNotEmpty()
+    @IsDefined()
+    projectKey: string;
+
     oppQuestion: string;
     oppAnswer: string;
 
     @IsEnum(ApplicationStatus)
     status: ApplicationStatus
-
 }
 
 const validateOpt = { validator: { skipMissingProperties: true } };
