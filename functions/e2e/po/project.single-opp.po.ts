@@ -123,6 +123,8 @@ export class ProjectSingleOppPage {
             .$('ul').all(by.css('li')).get(0).element(by.css('snui-card-item'));
     }
 
-
+    getJoinButton(){
+        return element(by.className('btn btn-default btn-block'));
+    }
 
 }
