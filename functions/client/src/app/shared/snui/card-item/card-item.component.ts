@@ -11,6 +11,8 @@ export class CardItemComponent implements OnInit {
   @Input() description: string;
   @Input() summary: string;
   @Input() icon: string;
+  @Input() status: string;
+  @Input() disabled: boolean;
 
   constructor() { }
 
