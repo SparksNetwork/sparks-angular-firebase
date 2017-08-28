@@ -1,3 +1,5 @@
-<snui-action-bar [type]="actionBarType.Organizer" *ngIf="opp">
-  <a [routerLink]="['/apply', opp.$key, 'answer-question']" class="btn btn-primary btn-block" title="Join Now">Join Now</a>
-</snui-action-bar>
+<!-- DESIGN WAS CHANGED, REMOVED snui-action bar <snui-action-bar [type]="actionBarType.Organizer" *ngIf="opp"> -->
+<div class="user-action-container">
+  <a [routerLink]="['/apply', opp.$key, 'answer-question']" class="btn btn-bordered btn-block" title="Join Now">Join Now</a>
+</div>
+<!-- </snui-action-bar> -->

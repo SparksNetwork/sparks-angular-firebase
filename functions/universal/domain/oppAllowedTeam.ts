@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs'
 import { transformAndValidate } from "class-transformer-validator"
-import { Expose } from 'class-transformer'
+import { Expose, Type } from 'class-transformer'
+import { IsNotEmpty, IsDefined, ValidateNested } from 'class-validator'
 
 import {
   BaseCollection,
@@ -23,19 +24,28 @@ export class OppAllowedTeamCollection extends BaseCollection {
 
 export class OppAllowedTeam {
   @Expose()
+  @IsDefined()
+  @IsNotEmpty()
   public $key: string
 
+  @IsDefined()
+  @IsNotEmpty()
   public oppKey: string
+
+  @IsDefined()
+  @IsNotEmpty()
   public teamKey: string
-  // public opp: Opp
+  
+  @ValidateNested()
+  @Type(() => Team)
   public team: Team
 }
 
 // we have two transform functions for type safety, not sure why overloading isnt working see below
 export const oppAllowedTeamTransform = (input: object) =>
   transformAndValidate<OppAllowedTeam>(OppAllowedTeam, input)
-    .catch(logErrors)
+    //.catch(logErrors)
 
 export const oppAllowedTeamsTransform = (input: object[]) =>
   transformAndValidate<OppAllowedTeam>(OppAllowedTeam, input)
-    .catch(logErrors)
+    //.catch(logErrors)
