@@ -9,6 +9,7 @@ import {
 
 import { logErrors } from '../logger/logger'
 import { IsDefined, IsEnum } from "class-validator";
+import { list } from "../../lib/firebase-angular-observables";
 
 // any methods here will be available on both client and server
 export class ApplicationCollection extends BaseCollection {
@@ -17,6 +18,14 @@ export class ApplicationCollection extends BaseCollection {
             api: '/application',
             firebase: '/application'
         })
+    }
+
+    public byProfileKey(profileKey: string) {
+        return this.by('profileKey', profileKey)
+    }
+
+    public byProjectProfileKey(projectKey: string, profileKey: string) {
+        return this.by('projectProfileKey', this.generateProjectProfileKey(projectKey, profileKey))
     }
 
     public generateProjectProfileKey(projectKey: string, profileKey: string) {

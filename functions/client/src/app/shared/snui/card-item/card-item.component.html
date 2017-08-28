@@ -2,15 +2,7 @@
 <div>
   <div class="icon">
     <span class="ic {{icon}}"></span>
-    <div class="status" *ngIf="status"><!-- top pick -->
-      <!-- <div [ngSwitch]="status">
-        <div *ngSwitchCase="cardItemStatus.Active">
-          active
-        </div>
-        <div *ngSwitchCase="cardItemStatus.Pending">
-          pending
-        </div>       
-      </div> -->
+    <div class="status" *ngIf="status">{{status}}
     </div>
   </div>
   <div class="text">

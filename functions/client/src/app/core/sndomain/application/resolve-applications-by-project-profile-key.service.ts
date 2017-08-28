@@ -12,7 +12,7 @@ import { AuthService } from "../../snauth/auth/auth.service";
 import { SorryService } from "../../sorry/sorry.service";
 
 @Injectable()
-export class ResolveApplicationByProfileKey implements Resolve<any> {
+export class ResolveApplicationByProjectProfileKey implements Resolve<any> {
 
     constructor(
         public query: ApplicationQueryService,
@@ -25,10 +25,10 @@ export class ResolveApplicationByProfileKey implements Resolve<any> {
         var applications = this.auth.current.map(user => {
             if (!user) return Observable.of({});
 
-            return list(this.query.byProfileKey(user.uid))
+            return list(this.query.byProjectProfileKey(route.paramMap.get('projectKey'), user.uid))
                 .switchMap(this.sorry.intercept(applicationsTransform));
         })
 
         return applications.first();
-    }
+    }   
 }
