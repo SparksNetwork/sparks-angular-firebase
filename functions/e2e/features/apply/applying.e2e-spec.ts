@@ -22,8 +22,8 @@ describe('Apply: user must auth before starting application', () => {
     it('requires you to login before you can complete your profile', () => {
       browser.get('/apply/KPC1/answer-question')
       browser.wait(ExpectedConditions.urlContains('/auth/%2Fapply%2FKPC1%2Fanswer-question/signin'))
-      element(by.css('#signin-with-email')).click()
-      browser.wait(ExpectedConditions.urlContains('/auth/%2Fapply%2FKPC1%2Fanswer-question/signin/email'))
+      // element(by.css('#signin-with-email')).click()
+      // browser.wait(ExpectedConditions.urlContains('/auth/%2Fapply%2FKPC1%2Fanswer-question/signin/email'))
       element(by.css('#email')).sendKeys(USER_VERIFIED_NO_PROFILE.email)
       element(by.css('#password')).sendKeys(USER_VERIFIED_NO_PROFILE.password)
       element(by.css('#signin')).click()
