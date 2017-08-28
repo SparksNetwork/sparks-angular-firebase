@@ -26,7 +26,8 @@
     "e2e": "ng e2e",
     "e2e:dev-cp": "cross-env ANGULAR_ENV=dev-cp ng e2e --env=dev-cp",
     "e2e:dev-sd": "cross-env ANGULAR_ENV=dev-sd ng e2e --env=dev-sd",
-    "e2e:dev-id": "cross-env ANGULAR_ENV=dev-id ng e2e --env=dev-id"
+    "e2e:dev-id": "cross-env ANGULAR_ENV=dev-id ng e2e --env=dev-id",
+    "e2e:dev-ev": "cross-env ANGULAR_ENV=dev-ev ng e2e --env=dev-ev"
   },
   "private": true,
   "dependencies": {

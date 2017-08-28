@@ -12,6 +12,7 @@ import {
   ProfileQueryService,
   ProfileActionService,
   RequireProfileCompleteService,
+  ResolveProfile,
 } from './profile'
 
 import {
@@ -64,6 +65,7 @@ import{
     ProfileQueryService,
     ProfileActionService,
     RequireProfileCompleteService,
+    ResolveProfile,
 
     OppQueryService,
     OppActionService,

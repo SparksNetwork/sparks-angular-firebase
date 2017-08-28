@@ -16,7 +16,7 @@ import { PageAnswerQuestionComponent } from './page-answer-question/page-answer-
 import { ResolveTeamByTeamKey } from "./resolve-team-by-team-key/resolve-team-by-team-key.service";
 import { OppTeamsSelectedComponent } from "./opp-teams-selected/opp-teams-selected.component";
 import { OppTeamsNotSelectedComponent } from "./opp-teams-not-selected/opp-teams-not-selected.component";
-import { RequireProfileCompleteService } from '../../core/sndomain/profile'
+import { RequireProfileCompleteService, ResolveProfile } from '../../core/sndomain/profile'
 import { ResolveApplicationTeamByAppKey } from "../../core/sndomain/applicationTeam/resolve-application-team-by-app-key.service";
 
 const routes: Routes = [
@@ -32,7 +32,10 @@ const routes: Routes = [
         children: [
             {
                 path: 'complete-profile',
-                component: PageCompleteProfileComponent
+                component: PageCompleteProfileComponent,
+                resolve: {
+                    profile : ResolveProfile
+                }
             },
             {
                 path: 'answer-question',
