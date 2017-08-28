@@ -5,30 +5,48 @@
 
 /* demo */
 
-.container-fluid {
+.fake-mobile {
     width: 370px;
     padding: 0;
     @include box-shadow(5px, 5px, 20px, 3px, #858585, false);
-    .container.no-gutter {
-        width: 370px !important;
-        padding: 0 15px !important;
-        .col-md-6 {
-            width: 100%;
-            .col-md-offset-6 {
-                margin-left: 0;
-            }
-        }
+    margin: 0 auto;
+    .sn-container {
+        width: 100% !important;
+        .col-md-6,
         .col-md-8 {
-            width: 100%;
-            &.col-md-offset-2 {
-                margin-left: 0;
-            }
+            width: 100% !important;
+        }
+        .question-bar {
+            width: 100% !important;
         }
     }
 }
 
 
 /* Design */
+
+html,
+body {
+    height: 100%;
+}
+
+.sn-container {
+    padding: 0 15px;
+    width: 100%;
+    margin: 0 auto;
+    min-height: 100%;
+    @include MQ(S) {
+        width: 66.66666667%;
+    }
+    &:before,
+    &:after {
+        display: table;
+        content: " ";
+    }
+    &:after {
+        clear: both;
+    }
+}
 
 .pg-auth {
     background: rgba(191, 30, 89, 1);
@@ -39,6 +57,14 @@
     background: -ms-linear-gradient(45deg, rgba(191, 30, 89, 1) 0%, rgba(128, 107, 173, 1) 59%, rgba(36, 174, 224, 1) 100%);
     background: linear-gradient(45deg, rgba(191, 30, 89, 1) 0%, rgba(128, 107, 173, 1) 59%, rgba(36, 174, 224, 1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf1e59', endColorstr='#24aee0', GradientType=1);
+    color: #FFF;
+}
+
+.pg-default {
+    color: $base-color;
+    a {
+        color: $base-color;
+    }
 }
 
 .clr {
@@ -79,6 +105,9 @@ h1 {
             margin: 0;
         }
     }
+    &.event-title {
+        color: $base-dark;
+    }
 }
 
 h2 {
@@ -95,6 +124,9 @@ h3 {
     }
     .dashboard-text & {
         margin: 0;
+    }
+    &.sub-title{
+        color: $base-dark;
     }
 }
 
@@ -116,6 +148,13 @@ h3 {
 
 label {
     color: #A5A7A9;
+}
+
+.title-bordered {
+    text-align: center;
+    font-size: 16px;
+    letter-spacing: 0.64px;
+    line-height: 20px;
 }
 
 
@@ -298,6 +337,10 @@ label {
             background-color: transparent;
         }
     }
+    &.btn-secondary {
+        background: #FFF;
+        color: $pink;
+    }
     &.btn-default {
         color: $base-color;
         background-color: transparent;
@@ -354,8 +397,13 @@ label {
 .form-input {
     display: block;
     overflow: hidden;
-    margin-bottom: 15px;
+    margin-bottom: 15px; // .ic{
+    //     color: $pink;
+    // }
 }
+
+
+/* Nav */
 
 
 /* Nav */
@@ -368,6 +416,12 @@ label {
         font-size: 16px;
         line-height: 16px;
         font-weight: 600;
+    }
+    .appbar-left {
+        float: left;
+    }
+    .appbar-right {
+        float: right;
     }
     &.navbar-default {
         border: none;
@@ -388,29 +442,16 @@ label {
                 height: 100%;
             }
         }
-        .navbar-toggle {
-            border: none;
-            padding: 0;
-            @include border-radius(0);
-            &:focus,
-            &:hover {
-                background-color: transparent;
-            }
-        }
-        .navbar-menu {
-            display: block;
-            position: relative;
-            float: right;
+        .appbar-menu {
             margin: 7px 15px;
             height: 30px;
+            display: block;
+            float: left;
             .ic {
                 line-height: 30px;
             }
             &.btn {
                 width: 80px;
-            }
-            @include MQ(S) {
-                display: none;
             }
             .pg-auth & {
                 color: #FFF;
@@ -419,20 +460,37 @@ label {
                 }
             }
         }
-        .navbar-collapse {
-            border: none;
-            box-shadow: unset;
-            .navbar-menu {
-                display: none;
-                @include MQ(S) {
-                    display: block;
-                }
+    }
+}
+
+.navbar-form {
+    padding: 10px 15px;
+    margin-top: 8px;
+    margin-right: -15px;
+    margin-bottom: 8px;
+    margin-left: -15px;
+    .input-group {
+        width: 100%;
+        @include MQ(S) {
+            display: table;
+            margin: 0 auto;
+            >.form-control{
+                width: 100%;
+                display: table-cell;
+                float: left;
             }
-            .navbar-form {
-                box-shadow: unset;
-                margin: 7px 0;
+            .input-group-btn{
+                width: 1%;
             }
         }
+    }
+    .ic {
+        font-size: 25px;
+    }
+    .btn {
+        font-size: 16px;
+        line-height: 16px;
+        font-weight: 600;
     }
 }
 
@@ -667,6 +725,10 @@ label {
 .page-social {
     padding-top: 15px;
     padding-bottom: 15px;
+    .ic{
+        font-size: 20px;
+        color: $base-dark;
+    }
     .requirements-link {
         .ic {
             float: right;
@@ -865,6 +927,9 @@ label {
     font-size: 14px;
     letter-spacing: 0.56px;
     line-height: 20px;
+    .pg-default & {
+        color: $base-color;
+    }
 }
 
 .question-bar {
@@ -872,6 +937,15 @@ label {
     @extend .footertext;
     a {
         @extend .footertext;
+        &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+}
+
+.reset-link {
+    a {
         &:hover {
             text-decoration: underline;
         }

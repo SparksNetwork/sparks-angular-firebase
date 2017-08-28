@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { PageSigninComponent } from './page-signin/page-signin.component'
-import { PageSigninEmailComponent } from './page-signin-email/page-signin-email.component'
-import { PageSigninSocialComponent } from './page-signin-social/page-signin-social.component'
 import { PageSignoutComponent } from './page-signout/page-signout.component'
 import { PageEmailActionHandlerComponent } from "./page-email-action-handler/page-email-action-handler.component"
 import { PageEmailNotVerifiedComponent } from "./page-email-not-verified/page-email-not-verified.component";
@@ -14,11 +12,13 @@ import { RequireAuth } from '../../core/snauth/require-auth/require-auth.service
 import { RequireNoEmailVerification } from '../../core/snauth/require-no-email-verification/require-no-email-verification.service'
 import { FirstAuth } from '../../core/snauth/first-auth/first-auth.service'
 import { PageResetPasswordComponent } from "./page-reset-password/page-reset-password.component";
+import { PageEmailSignupComponent } from "./page-email-signup/page-email-signup.component";
+import { PageSignupComponent } from "./page-signup/page-signup.component";
 
 export const routedComponents = [
   PageSigninComponent,
-  PageSigninEmailComponent,
-  PageSigninSocialComponent,
+  PageSignupComponent,
+  PageEmailSignupComponent,
   PageSignoutComponent,
   PageEmailActionHandlerComponent,
   PageEmailNotVerifiedComponent,
@@ -56,16 +56,20 @@ const routes: Routes = [
         component: PageSigninComponent,
         canActivate: [
           RedirectIfAuthed,
-        ],
-        children: [
-          {
-            path: '',
-            component: PageSigninSocialComponent,
-          },
-          {
-            path: 'email',
-            component: PageSigninEmailComponent,
-          },
+        ]
+      },
+      {
+        path: 'signup',
+        component: PageSignupComponent,
+        canActivate: [
+          RedirectIfAuthed,
+        ]
+      },
+      {
+        path: 'email-signup',
+        component: PageEmailSignupComponent,
+        canActivate: [
+          RedirectIfAuthed,
         ]
       },
       {
