@@ -4,7 +4,7 @@
     <a [routerLink]="['/apply', opp.$key, 'answer-question']" class="btn btn-bordered btn-block" title="Join Now">Join Now</a>
   </ng-container>
   <ng-container *ngIf='application'>
-    <a class="btn btn-bordered btn-block" title="Cancel">Cancel</a>
+    <a class="btn btn-bordered btn-block" (click)="cancel(application)" title="Cancel">Cancel</a>
   </ng-container>
 </div>
 <!-- </snui-action-bar> -->
