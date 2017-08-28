@@ -1,6 +1,7 @@
 import { browser } from 'protractor'
 import * as firebaseAdmin from 'firebase-admin'
 import { USERS } from './fixtures/users'
+import { USERS_WITH_PARTIAL_PROFILE} from './fixtures/users-partial-profile'
 
 function getEnvironment() {
   const envName = process.env['ANGULAR_ENV'] || 'qa'
@@ -34,6 +35,16 @@ export function setUsers(users = USERS) {
     users.map(user =>
       auth.deleteUser(user.uid)
       .catch(err => { console.log('user did not exist, thats ok')})
+      .then(() => auth.createUser(user))
+    )
+  )
+}
+
+export function setUsersWithPartialProfile(users = USERS_WITH_PARTIAL_PROFILE) {
+  return Promise.all(
+    users.map(user =>
+      auth.deleteUser(user.uid)
+      .catch(err => { console.log('partial user did not exist, thats ok')})
       .then(() => auth.createUser(user))
     )
   )
