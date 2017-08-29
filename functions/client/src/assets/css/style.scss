@@ -132,7 +132,10 @@ h1 {
 h2 {
     font-size: 26px;
     .dashboard-text & {
-        margin: 0;
+        margin: 0 0 12px 0;
+        font-size: 30px;
+        letter-spacing: 1.22px;
+        color: #FFF;
     }
 }
 
@@ -169,7 +172,11 @@ h3 {
         margin-top: 0;
     }
     .dashboard-text & {
-        margin: 0;
+        font-size: 16px;
+        letter-spacing: 0.64px;
+        line-height: 20px;
+        color: #FFF;
+        margin: 0 0 20px 0;
     }
 }
 
@@ -400,6 +407,7 @@ label {
 .btn {
     @include border-radius(4px);
     text-transform: uppercase;
+    padding: 4px 12px;
     &.disabled,
     &[disabled],
     fieldset[disabled] & {
@@ -407,6 +415,11 @@ label {
     }
     &:hover {
         @include Opacity(0.8);
+    }
+    &.btn-lg{
+        font-size: 16px;
+        font-weight: 600;
+        padding: 4px 18px;
     }
     &.btn-primary {
         color: $off-white;
@@ -641,6 +654,9 @@ label {
             height: 40px;
             padding: 0;
             margin: 0;
+            &:hover{
+                @include Opacity(1);
+            }
             img {
                 width: 100%;
                 height: 100%;
@@ -706,9 +722,8 @@ label {
 }
 
 .carousel-indicators {
-    @include MQ(M) {
-        bottom: 10px;
-    }
+    margin-bottom: 0;
+    bottom: 10px;
     li {
         width: 8px;
         height: 8px;
@@ -1105,15 +1120,15 @@ label {
 
 .profile-hero {
     margin-bottom: 25px;
+    @extend .sn-gradient;
     .item {
-        height: 410px;
+        min-height: 252px;
         width: 100%;
         background-repeat: no-repeat !important;
         background-position: center center !important;
         @include background-size(cover !important);
-        padding-top: 100px;
-        background: #DDD;
-        position: relative;
+        padding-top: 50px;
+        // position: relative;
         .profile-hero-content {
             @include block-nooverflow;
         }
@@ -1122,14 +1137,26 @@ label {
             width: 100px;
             height: 100px;
             display: inline-block;
-            img {
-                border: 2px solid #FFF;
+            @include Opacity(9.5);
+            margin-bottom: 35px;
+            .img-circle {
+                height: 100%;
+                width: 100%;
+                background-color: #FFF;
+                background-size: cover !important;
+                background-repeat: no-repeat !important;
                 margin: 0 auto;
+                @include box-shadow-multiple(inset 12px 12px 2px -8px rgba(38, 172, 223, 0.26),inset 0px 0px 2px 0px rgba(0, 0, 0, 0.5),inset 3px 3px 2px 0px rgba(172, 55, 117, 0.26) );
             }
             .profile-score {
+                color: $base-dark;
+                font-size: 10px;
+                line-height: 20px;
+                @include box-shadow(0.914px,0.407px,6.44px,0.56px,rgba(0, 0, 0, 0.5), false);
                 background: #FFF;
                 @include border-radius(50%);
-                width: 20px;
+                width: 22px;
+                height: 22px;
                 position: absolute;
                 bottom: 5px;
                 right: 0;
@@ -1140,10 +1167,36 @@ label {
         }
         .profile-progress {
             width: 100%;
-            position: absolute;
-            bottom: 0;
+            @include block-nooverflow;
+            // position: absolute;
+            // bottom: 0;
             font-size: 14px;
             font-weight: normal;
+            .next-level-container{
+                color: #FFF;
+                font-size: 12px;
+                letter-spacing: 0.72px;
+                line-height: 15px;
+                .level-left,
+                .level-right{
+                    display: inline-block;
+                }
+                .current-level{
+                    font-size: 14px;
+                    letter-spacing: 0.56px;
+                    @include Opacity(0.4);
+                    display: inline-block;
+                }
+                .next-level{
+                    font-size: 18px;
+                    letter-spacing: 0.72px;
+                    display: inline-block;
+                }
+                
+            }
+            .progress{
+                margin: 10px 0 25px 0;
+            }
         }
     }
 }
@@ -1172,8 +1225,15 @@ label {
     h3 {
         color: $base-dark;
     }
+    .project-item{
+        .col-xs-6{
+            margin-bottom: 35px;
+        }
+    }
     .event-img {
-        height: 230px;
+        height: 226px;
+        width: 165px;
+        @include border-radius(7.5px);
         position: relative;
         .dashboard-event-status {
             position: absolute;
