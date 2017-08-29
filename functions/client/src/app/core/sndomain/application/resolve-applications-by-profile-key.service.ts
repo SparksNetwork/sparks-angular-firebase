@@ -23,7 +23,7 @@ export class ResolveApplicationByProfileKey implements Resolve<any> {
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<{}> | Observable<Application[] | void>> {
 
         var applications = this.auth.current.map(user => {
-            if (!user) return Observable.of({});
+            if (!user) return Observable.of(null);
 
             return list(this.query.byProfileKey(user.uid))
                 .switchMap(this.sorry.intercept(applicationsTransform));
