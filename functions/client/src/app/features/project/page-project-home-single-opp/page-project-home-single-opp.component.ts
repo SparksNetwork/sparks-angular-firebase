@@ -8,6 +8,7 @@ import { Opp } from "../../../../../../universal/domain/opp";
 import { Benefit } from "../../../../../../universal/domain/benefit";
 import { Contrib } from "../../../../../../universal/domain/contrib";
 import { Team } from "../../../../../../universal/domain/team";
+import { Application } from "../../../../../../universal/domain/application";
 
 @Component({
   selector: 'project-page-project-home-single-opp',
@@ -20,6 +21,7 @@ export class PageProjectHomeSingleOppComponent {
   public contribs: Observable<Contrib[]>
   public benefits: Observable<Benefit[]>
   public teams: Observable<Team[]>
+  public applications: FirebaseListObservable<Application[]>;
 
   constructor(
     public route: ActivatedRoute,
@@ -30,6 +32,7 @@ export class PageProjectHomeSingleOppComponent {
       this.contribs = data['contribs']
       this.benefits = data['benefits']
       this.teams = data['teams']
+      this.applications = data['application']
     })
   }
 
