@@ -35,30 +35,7 @@ describe('Home page: user can browse projects from home page', () => {
                 })
                 .then(done)
         })
-
-        it('It should see all projects', () => {
-            testSeeAllProjects()
-        })
-
-        it('Each project should display the title', () => {
-            testAllProjectsTitle()
-        })
-
-        it('Each project should display the maximum Karma Points', () => {
-            testAllProjectsMaxKarmaPoints()
-        })
-
-        it('Each project should display the location', () => {
-            testAllProjectsLocation()
-        })
-
-        it('Each project should display the date', () => {
-            testAllProjectsDate()
-        })
-
-        it('Each project card should open the project page and see the title', () => {
-            testAllProjectsLinks()
-        })
+        TestsCommonToAllTypeOfUsers()
     })
 
     describe('a logged-in user with a profile', () => {
@@ -75,29 +52,7 @@ describe('Home page: user can browse projects from home page', () => {
                 .then(done)
         })
 
-        it('It should see all projects', () => {
-            testSeeAllProjects()
-        })
-
-        it('Each project should display the title', () => {
-            testAllProjectsTitle()
-        })
-
-        it('Each project should display the maximum Karma Points', () => {
-            testAllProjectsMaxKarmaPoints()
-        })
-
-        it('Each project should display the location', () => {
-            testAllProjectsLocation()
-        })
-
-        it('Each project should display the date', () => {
-            testAllProjectsDate()
-        })
-
-        it('Each project card should open the project page and see the title', () => {
-            testAllProjectsLinks()
-        })
+        TestsCommonToAllTypeOfUsers()
     })
 
     describe('a logged-in with mail not verified', () => {
@@ -114,29 +69,7 @@ describe('Home page: user can browse projects from home page', () => {
                 .then(done)
         })
 
-        it('It should see all projects', () => {
-            testSeeAllProjects()
-        })
-
-        it('Each project should display the title', () => {
-            testAllProjectsTitle()
-        })
-
-        it('Each project should display the maximum Karma Points', () => {
-            testAllProjectsMaxKarmaPoints()
-        })
-
-        it('Each project should display the location', () => {
-            testAllProjectsLocation()
-        })
-
-        it('Each project should display the date', () => {
-            testAllProjectsDate()
-        })
-
-        it('Each project card should open the project page and see the title', () => {
-            testAllProjectsLinks()
-        })
+        TestsCommonToAllTypeOfUsers()
 
     })
 
@@ -163,29 +96,8 @@ describe('Home page: user can browse projects from home page', () => {
             })
         })
 
-        it('It should see all projects', () => {
-            testSeeAllProjects()
-        })
+        TestsCommonToAllTypeOfUsers()
 
-        it('Each project should display the title', () => {
-            testAllProjectsTitle()
-        })
-
-        it('Each project should display the maximum Karma Points', () => {
-            testAllProjectsMaxKarmaPoints()
-        })
-
-        it('Each project should display the location', () => {
-            testAllProjectsLocation()
-        })
-
-        it('Each project should display the date', () => {
-            testAllProjectsDate()
-        })
-
-        it('Each project card should open the project page and see the title', () => {
-            testAllProjectsLinks()
-        })
     })
 
     //helper functions
@@ -196,156 +108,6 @@ describe('Home page: user can browse projects from home page', () => {
             }
         }
         return false;
-    }
-
-    function testSeeAllProjects() {
-        let projectLinks = page.getListOfProjectLinks();
-        browser.wait(ExpectedConditions.presenceOf(projectLinks.first()),
-            waitTimeout, 'First link was not present')
-        //looping through all the keys and see if all projects are displayed 
-        let isPresent: boolean = false;
-        for (let key in projects) {
-            isPresent = false;
-            for (let displayedKey of allKeys) {
-                if (key === displayedKey) {
-                    isPresent = true;
-                }
-            }
-            expect(isPresent).toBeTruthy()
-        }
-
-    }
-    function testAllProjectsTitle() {
-
-        let projectTitles = page.getAllProjectTitles();
-        browser.wait(ExpectedConditions.presenceOf(projectTitles.first()),
-            waitTimeout, 'First title was not present')
-
-        projectTitles.each(function (item) {
-            item.getText().then(function (str)
-            { expect(validatePropertyAgainstDatabase('title', str)).toEqual(true) })
-        })
-    }
-    function testAllProjectsMaxKarmaPoints() {
-        let projectKarmaPoints = page.getAllProjectMaxKarmaPoints()
-        browser.wait(ExpectedConditions.presenceOf(projectKarmaPoints.first()),
-            waitTimeout, 'First maximum karma points div was not present')
-
-        projectKarmaPoints.each(function (item) {
-            item.getText().then(function (str)
-            { expect(validatePropertyAgainstDatabase('maxKarmaPoints', str)).toEqual(true) })
-        })
-    }
-
-    function testAllProjectsLocation() {
-        let projectLinks = page.getListOfProjectLinks();
-        browser.wait(ExpectedConditions.presenceOf(projectLinks.first()),
-            waitTimeout, 'First link was not present')
-
-        projectLinks.count().then(function (projectsNo) {
-            for (let i = 0; i < projectsNo; i++) {
-                let projectKey: string;
-                let currentProjectLink = page.getProjectLink(i)
-                browser.wait(ExpectedConditions.presenceOf(currentProjectLink),
-                    waitTimeout, 'Link ' + i + ' was not present').then(function () {
-                        page.getProjectLocationUsingLink(currentProjectLink).getText().then((locationString) => {
-                            page.getProjectTitle(currentProjectLink).click().then(function () {
-                                browser.wait(ExpectedConditions.urlContains('/project'),
-                                    waitTimeout, 'Link to project did not open')
-                                browser.getCurrentUrl().then(function (url) {
-                                    let projectKey = GetDisplayedProjectKey(url)
-                                    expect(locationString).toContain(projects[projectKey]['location']['name'], 'Location name was not displayed')
-                                    expect(locationString).toContain(projects[projectKey]['location']['city'], 'City was not displayed')
-
-                                    page.navigateTo()
-                                })
-                            })
-                        })
-
-                    })
-
-            }
-        })
-
-
-    }
-    function testAllProjectsDate() {
-        let projectLinks = page.getListOfProjectLinks();
-        browser.wait(ExpectedConditions.presenceOf(projectLinks.first()),
-            waitTimeout, 'First link was not present')
-        let datePipe: DatePipe = new DatePipe('longDate');
-
-        projectLinks.count().then(function (projectsNo) {
-            for (let i = 0; i < projectsNo; i++) {
-                let projectKey: string;
-                let currentProjectLink = page.getProjectLink(i)
-                browser.wait(ExpectedConditions.presenceOf(currentProjectLink),
-                    waitTimeout, 'Link ' + i + ' was not present').then(function () {
-                        page.getProjectDateUsingLink(currentProjectLink).getText().then((dateString) => {
-                            page.getProjectTitle(currentProjectLink).click().then(function () {
-                                browser.wait(ExpectedConditions.urlContains('/project'),
-                                    waitTimeout, 'Link to project did not open')
-                                browser.getCurrentUrl().then(function (url) {
-                                    let projectKey = GetDisplayedProjectKey(url)
-                                    expect(dateString).toContain(datePipe.transform(projects[projectKey]['startDateTime'], 'longDate'),
-                                        'Start date was not correct displayed')
-                                    if (projects[projectKey]['endDateTime']) {
-                                        expect(dateString).toContain(datePipe.transform(projects[projectKey]['endDateTime'], 'longDate'),
-                                            'End date was not correct displayed')
-                                    }
-                                    page.navigateTo()
-                                })
-                            })
-                        })
-
-                    })
-
-            }
-        })
-
-    }
-
-    function testAllProjectsLinks() {
-        let projectLinks = page.getListOfProjectLinks();
-        browser.wait(ExpectedConditions.presenceOf(projectLinks.first()),
-            waitTimeout, 'First link was not present')
-
-        projectLinks.count().then(function (projectsNo) {
-            for (let i = 0; i < projectsNo; i++) {
-                let projectKey: string;
-                let currentProjectLink = page.getProjectLink(i)
-                browser.wait(ExpectedConditions.presenceOf(currentProjectLink),
-                    waitTimeout, 'Link ' + i + ' was not present').then(function () {
-                        currentProjectLink.getAttribute('href').then(function (str) {
-                            page.getProjectTitle(currentProjectLink).click().then(function () {
-                                browser.wait(ExpectedConditions.urlContains('/project'),
-                                    waitTimeout, 'Link to project did not open')
-                                    .then(function () {
-                                        browser.getCurrentUrl().then(function (url) {
-                                            projectKey = GetDisplayedProjectKey(url)
-                                            let projectPage = new ProjectSingleOppPage()
-                                            let projectTitle = projectPage.getProjectTitleElement();
-                                            browser.wait(ExpectedConditions.presenceOf(projectTitle),
-                                                waitTimeout, 'Title of project ' + projectKey + ' was not present')
-                                                .then(function () {
-                                                    projectTitle.getText().then(function (title) {
-                                                        expect(title).toEqual(projects[projectKey]['title'], 'Title of project ' + projectKey + ' was not correct')
-                                                        page.navigateTo()
-                                                    })
-
-                                                })
-
-                                        })
-
-                                    })
-
-                            })
-
-                        })
-                    })
-
-            }
-        })
     }
 
     function GetDisplayedProjectKey(url: string): string {
@@ -385,6 +147,156 @@ describe('Home page: user can browse projects from home page', () => {
                         })
                     })
             }
+        })
+    }
+
+    function TestsCommonToAllTypeOfUsers() {
+        it('It should see all projects', () => {
+            let projectLinks = page.getListOfProjectLinks();
+            browser.wait(ExpectedConditions.presenceOf(projectLinks.first()),
+                waitTimeout, 'First link was not present')
+            //looping through all the keys and see if all projects are displayed 
+            let isPresent: boolean = false;
+            for (let key in projects) {
+                isPresent = false;
+                for (let displayedKey of allKeys) {
+                    if (key === displayedKey) {
+                        isPresent = true;
+                    }
+                }
+                expect(isPresent).toBeTruthy()
+            }
+        })
+
+        it('Each project should display the title', () => {
+            let projectTitles = page.getAllProjectTitles();
+            browser.wait(ExpectedConditions.presenceOf(projectTitles.first()),
+                waitTimeout, 'First title was not present')
+
+            projectTitles.each(function (item) {
+                item.getText().then(function (str)
+                { expect(validatePropertyAgainstDatabase('title', str)).toEqual(true) })
+            })
+        })
+
+        it('Each project should display the maximum Karma Points', () => {
+            let projectKarmaPoints = page.getAllProjectMaxKarmaPoints()
+            browser.wait(ExpectedConditions.presenceOf(projectKarmaPoints.first()),
+                waitTimeout, 'First maximum karma points div was not present')
+
+            projectKarmaPoints.each(function (item) {
+                item.getText().then(function (str)
+                { expect(validatePropertyAgainstDatabase('maxKarmaPoints', str)).toEqual(true) })
+            })
+        })
+
+        it('Each project should display the location', () => {
+            let projectLinks = page.getListOfProjectLinks();
+            browser.wait(ExpectedConditions.presenceOf(projectLinks.first()),
+                waitTimeout, 'First link was not present')
+
+            projectLinks.count().then(function (projectsNo) {
+                for (let i = 0; i < projectsNo; i++) {
+                    let projectKey: string;
+                    let currentProjectLink = page.getProjectLink(i)
+                    browser.wait(ExpectedConditions.presenceOf(currentProjectLink),
+                        waitTimeout, 'Link ' + i + ' was not present').then(function () {
+                            page.getProjectLocationUsingLink(currentProjectLink).getText().then((locationString) => {
+                                page.getProjectTitle(currentProjectLink).click().then(function () {
+                                    browser.wait(ExpectedConditions.urlContains('/project'),
+                                        waitTimeout, 'Link to project did not open')
+                                    browser.getCurrentUrl().then(function (url) {
+                                        let projectKey = GetDisplayedProjectKey(url)
+                                        expect(locationString).toContain(projects[projectKey]['location']['name'], 'Location name was not displayed')
+                                        expect(locationString).toContain(projects[projectKey]['location']['city'], 'City was not displayed')
+
+                                        page.navigateTo()
+                                    })
+                                })
+                            })
+
+                        })
+
+                }
+            })
+        })
+
+        it('Each project should display the date', () => {
+            let projectLinks = page.getListOfProjectLinks();
+            browser.wait(ExpectedConditions.presenceOf(projectLinks.first()),
+                waitTimeout, 'First link was not present')
+            let datePipe: DatePipe = new DatePipe('longDate');
+
+            projectLinks.count().then(function (projectsNo) {
+                for (let i = 0; i < projectsNo; i++) {
+                    let projectKey: string;
+                    let currentProjectLink = page.getProjectLink(i)
+                    browser.wait(ExpectedConditions.presenceOf(currentProjectLink),
+                        waitTimeout, 'Link ' + i + ' was not present').then(function () {
+                            page.getProjectDateUsingLink(currentProjectLink).getText().then((dateString) => {
+                                page.getProjectTitle(currentProjectLink).click().then(function () {
+                                    browser.wait(ExpectedConditions.urlContains('/project'),
+                                        waitTimeout, 'Link to project did not open')
+                                    browser.getCurrentUrl().then(function (url) {
+                                        let projectKey = GetDisplayedProjectKey(url)
+                                        expect(dateString).toContain(datePipe.transform(projects[projectKey]['startDateTime'], 'longDate'),
+                                            'Start date was not correct displayed')
+                                        if (projects[projectKey]['endDateTime']) {
+                                            expect(dateString).toContain(datePipe.transform(projects[projectKey]['endDateTime'], 'longDate'),
+                                                'End date was not correct displayed')
+                                        }
+                                        page.navigateTo()
+                                    })
+                                })
+                            })
+
+                        })
+
+                }
+            })
+        })
+
+        it('Each project card should open the project page and see the title', () => {
+            let projectLinks = page.getListOfProjectLinks();
+            browser.wait(ExpectedConditions.presenceOf(projectLinks.first()),
+                waitTimeout, 'First link was not present')
+
+            projectLinks.count().then(function (projectsNo) {
+                for (let i = 0; i < projectsNo; i++) {
+                    let projectKey: string;
+                    let currentProjectLink = page.getProjectLink(i)
+                    browser.wait(ExpectedConditions.presenceOf(currentProjectLink),
+                        waitTimeout, 'Link ' + i + ' was not present').then(function () {
+                            currentProjectLink.getAttribute('href').then(function (str) {
+                                page.getProjectTitle(currentProjectLink).click().then(function () {
+                                    browser.wait(ExpectedConditions.urlContains('/project'),
+                                        waitTimeout, 'Link to project did not open')
+                                        .then(function () {
+                                            browser.getCurrentUrl().then(function (url) {
+                                                projectKey = GetDisplayedProjectKey(url)
+                                                let projectPage = new ProjectSingleOppPage()
+                                                let projectTitle = projectPage.getProjectTitleElement();
+                                                browser.wait(ExpectedConditions.presenceOf(projectTitle),
+                                                    waitTimeout, 'Title of project ' + projectKey + ' was not present')
+                                                    .then(function () {
+                                                        projectTitle.getText().then(function (title) {
+                                                            expect(title).toEqual(projects[projectKey]['title'], 'Title of project ' + projectKey + ' was not correct')
+                                                            page.navigateTo()
+                                                        })
+
+                                                    })
+
+                                            })
+
+                                        })
+
+                                })
+
+                            })
+                        })
+
+                }
+            })
         })
     }
 
