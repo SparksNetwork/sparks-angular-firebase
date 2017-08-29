@@ -102,6 +102,7 @@ body {
         color: $base-color;
         &:hover {
             text-decoration: none;
+            @include Opacity(0.8);
         }
     }
 }
@@ -208,6 +209,28 @@ label {
     font-size: 16px;
     letter-spacing: 0.64px;
     line-height: 20px;
+    span {
+        color: #FFF;
+        display: inline-block;
+        position: relative;
+        &:before,
+        &:after {
+            content: "";
+            position: absolute;
+            height: 10px;
+            border-bottom: 1px solid white;
+            top: 0;
+            width: 60px;
+        }
+        &:before {
+            right: 100%;
+            margin-right: 15px;
+        }
+        &:after {
+            left: 100%;
+            margin-left: 15px;
+        }
+    }
 }
 
 
@@ -295,23 +318,9 @@ label {
 }
 
 .bottom-links {
-    border-top: 2px solid $light-gray;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    &:before,
-    &:after {
-        display: table;
-        content: " ";
-    }
-    &:after {
-        clear: both;
-    }
-    .col-xs-9 {
-        padding-left: 0;
-    }
-    .col-xs-3 {
-        padding-right: 0;
-        text-align: right;
+    .btn {
+        width: auto;
+        min-width: 80px;
     }
 }
 
@@ -391,12 +400,20 @@ label {
 .btn {
     @include border-radius(4px);
     text-transform: uppercase;
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] & {
+        @include Opacity(0.8);
+    }
+    &:hover {
+        @include Opacity(0.8);
+    }
     &.btn-primary {
         color: $off-white;
         background-color: transparent;
         border: 1px solid #FFF;
         &:hover {
-            color: $base-color;
+            color: #FFF;
             background-color: transparent;
         }
     }
@@ -438,6 +455,13 @@ label {
             z-index: -1;
             @include border-radius(7.5px);
         }
+        &:hover {
+            @include Opacity(1);
+            color: transparentize($violetblue, 0.2);
+            &:after {
+                @include Opacity(0.8);
+            }
+        }
     }
     &.btn-social-login {
         @include border-radius(7.5px);
@@ -454,11 +478,9 @@ label {
             background-color: transparent;
             border: 1px solid #FFF;
         }
-        &:hover {
-            background: #DEDFE0;
-        }
         .ic {
             margin-right: 55px;
+            margin-left: 18px;
         }
     }
 }
@@ -473,27 +495,118 @@ label {
 
 /* Forms */
 
-.form-control {
-    @include border-radius(0);
+.pg-auth{
+    .form-control::-webkit-input-placeholder { color: #FFF }  /* WebKit, Blink, Edge */
+    .form-control:-moz-placeholder { color: #FFF; }  /* Mozilla Firefox 4 to 18 */
+    .form-control::-moz-placeholder { color: #FFF; }  /* Mozilla Firefox 19+ */
+    .form-control:-ms-input-placeholder { color: #FFF; }  /* Internet Explorer 10-11 */
+    .form-control::-ms-input-placeholder { color: #FFF; }  /* Microsoft Edge */
 }
 
-// .input-group {
-//     margin-bottom: 15px;
-// }
+.pg-default{
+    .form-control::-webkit-input-placeholder { color: $base-dark; }
+    .form-control:-moz-placeholder{ color: $base-dark; }
+    .form-control::-moz-placeholder{ color: $base-dark; }
+    .form-control:-ms-input-placeholder{ color: $base-dark; }
+    .form-control::-ms-input-placeholder { color: $base-dark; }
+}
+
+.login-with-username {
+    padding-top: 0;
+}
+
+.login-register {
+    padding-top: 25px;
+}
+
+.form-control {
+    
+    @include border-radius-targeted( 0, 7.5px, 7.5px, 0);
+    background: transparent;
+    padding: 14px 12px;
+    height: 45px;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.64px;
+    .pg-auth &{
+        border-color: #FFF;
+        color: #FFF;
+        border-left: transparent;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+        box-shadow: none;
+        .pg-auth &{
+            border-color: #FFF;
+        }
+    }
+}
 
 .form-input {
     display: block;
     overflow: hidden;
-    margin-bottom: 15px; // .ic{
-    //     color: $pink;
-    // }
+    margin-bottom: 15px;
+    .icon {
+        height: 45px;
+        padding: 7px 0 7px 20px;
+        border: 1px solid #FFF;
+        border-right: transparent;
+        @include border-radius-targeted( 7.5px, 0, 0, 7.5px);
+    }
+    .error {
+        margin-top: 15px; // font-size: 28px;
+        // letter-spacing: 1.12px;
+        // line-height: 36px;
+        // @extend .col-xs-12;
+        float: left;
+        width: 100%;
+    }
+    &.has-error {
+        .form-control {
+            border-color: inherit;
+            box-shadow: none;
+        }
+    }
+    &:hover{
+        @include Opacity(0.8);
+    }
 }
 
 
 /* Nav */
-
-
-/* Nav */
+.nav-container{
+    position: relative;
+    .collapsing{
+        top: 0;
+        width: 0;
+        transition-property: width, visibility;
+        position: absolute;
+    }
+    .collapse{
+        position: absolute;
+        top: 0;
+        background: #FFF;
+        height: 85px;
+    }
+    .input-group{
+        @extend .separator;
+        .form-control{
+            border: none;
+            box-shadow: none;
+            font-size: 18px;
+            color: $base-dark;
+            padding: 14px 0 14px 35px;
+        }
+        .input-group-btn{
+            .btn{
+               color: $base-dark;
+                margin: 0 35px 0 10px;
+            }
+        }
+    }
+}
 
 .navbar {
     .ic {
@@ -516,6 +629,7 @@ label {
         min-height: 85px;
         padding: 23px 15px;
         margin: 0 -15px;
+        @include border-radius(0);
         .pg-default & {
             @include box-shadow(0px, 1px, 9.2px, 0.8px, rgba(0, 0, 0, 0.15));
         }
@@ -705,13 +819,20 @@ label {
         width: 100%;
     }
     .opp-item {
-        width: calc( 50% - 14px);
-        margin-left: 7px;
-        margin-right: 7px;
-        padding: 20px 15px;
+        // width: calc( 50% - 14px);
+        width: 100%;
+        height: 100%; // margin-left: 7px;
+        // margin-right: 7px;
         border: 1px solid $color-separator;
         @include border-radius(5px);
         @include block-nooverflow;
+        position: relative;
+        a {
+            @include block-nooverflow;
+            height: 100%;
+            width: 100%;
+            padding: 20px 15px;
+        }
         .status {
             &:empty,
             &:-moz-only-whitespace {
@@ -721,18 +842,33 @@ label {
             top: 21px;
             left: 0px;
             border: 1px solid $color-separator;
+            border-left: 0;
             font-size: 12px;
             letter-spacing: 0.48px;
             padding: 5px 7px;
             @include border-radius-targeted(0, 5px, 5px, 0);
         }
+        &.active {
+            border-color: transparent;
+            z-index: 1;
+            @include gradient-horizontal-three-colors($pink, $purple, $blue);
+            a {
+                width: calc(100% - 4px);
+                height: calc(100% - 4px);
+                background: #FFF;
+                @include border-radius(2px);
+                margin: 2px auto;
+            }
+            .status {
+                @include gradient-horizontal-three-colors($pink, $violetblue, $purple);
+                color: #FFF;
+                border-color: transparent;
+            }
+        }
         .pending {
             .status {
                 opacity: 0.6;
             }
-        }
-        .active {
-            opacity: 0.6;
         }
         .disabled {
             opacity: 0.6;
@@ -959,6 +1095,9 @@ label {
 }
 
 .opportunity-head {
+    &.segment {
+        overflow: visible;
+    }
     .opportunity-selector {
         margin-top: 7px;
     }
@@ -980,8 +1119,8 @@ label {
         }
         .profile-img {
             position: relative;
-            min-width: 65px;
-            min-height: 65px;
+            width: 100px;
+            height: 100px;
             display: inline-block;
             img {
                 border: 2px solid #FFF;
@@ -1106,16 +1245,7 @@ label {
     a {
         @extend .footertext;
         &:hover {
-            text-decoration: underline;
             cursor: pointer;
-        }
-    }
-}
-
-.reset-link {
-    a {
-        &:hover {
-            text-decoration: underline;
         }
     }
 }
@@ -1135,6 +1265,9 @@ label {
     @extend .footertext;
     a {
         @extend .footertext;
+    }
+    p {
+        margin-bottom: 0;
     }
 }
 

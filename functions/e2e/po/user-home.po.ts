@@ -6,14 +6,18 @@ export class UserHomePage {
     return browser.get('/')
   }
 
-  getWelcomeMessage(){
+  getCurrentElementFinder(oldProjectElementFinder: ElementFinder) {
+    return element(oldProjectElementFinder);
+  }
+
+  getWelcomeMessage() {
     return element(by.css('user-header div.profile-hero div.profile-hero-content h2'))
   }
   getListOfProjectLinks() {
     return element.all(by.css('home-all-projects a'));
   }
 
-  getProjectLink(projectIndex:number){
+  getProjectLink(projectIndex: number) {
     return element.all(by.css('home-all-projects a')).get(projectIndex);
   }
 
@@ -21,19 +25,20 @@ export class UserHomePage {
     return element.all(by.css('home-all-projects a h3'));
   }
 
-  getProjectTitle(el:ElementFinder) {
-    return el.element(by.css('h3'))
+  getProjectTitle(link: ElementFinder) {
+    return link.element(by.css('h3'))
+  }
+
+  getProjectDateUsingLink(link: ElementFinder) {
+    return link.element(by.css('div.event-date'));
+  }
+
+  getProjectLocationUsingLink(link: ElementFinder) {
+    return link.element(by.css('div.event-location'));
   }
 
   getAllProjectMaxKarmaPoints() {
-    return element.all(by.css('home-all-projects a div.event-karma div.event-karma-count'));
+    return element.all(by.css('home-all-projects a div.project-karma div.project-karma-count'));
   }
 
-  getProjectLocation(projectIndex: number) {
-    return element.all(by.css('home-all-projects a ')).get(projectIndex).element(by.css('div.event-location'));
-  }
-
-  getProjectDate(projectIndex: number) {
-    return element.all(by.css('home-all-projects a ')).get(projectIndex).element(by.css('div.event-date'));
-  }
 }
