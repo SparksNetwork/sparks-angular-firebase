@@ -78,9 +78,15 @@ $linkedin-color: #1E87BE;
 }
 .ic-karma-points-white{
     background: url('../img/karma_points_white.svg') top center no-repeat;
-    width: 25px;
-    height: 18px;
+    width: 35px;
+    height: 25px;
     display: block;
+}
+
+.ic-progress{
+    background: url('../img/progress_button.svg') top center no-repeat;
+    width: 26px;
+    height: 26px;
 }
 
 .ic-karma-points-color .path1:before {

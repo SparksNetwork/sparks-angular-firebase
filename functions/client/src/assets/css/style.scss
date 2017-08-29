@@ -10,6 +10,7 @@
     padding: 0;
     @include box-shadow(5px, 5px, 20px, 3px, #858585, false);
     margin: 0 auto;
+    height: 100%;
     .sn-container {
         width: 100% !important;
         .col-md-6,
@@ -34,6 +35,15 @@ body {
     height: 100%;
 }
 
+.footer-segment{
+    position: absolute; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    padding: 0 15px;
+}
+
 .sn-gradient {
     background: rgba(191, 30, 89, 1);
     background: -moz-linear-gradient(45deg, rgba(191, 30, 89, 1) 0%, rgba(128, 107, 173, 1) 59%, rgba(36, 174, 224, 1) 100%);
@@ -46,10 +56,12 @@ body {
 }
 
 .sn-container {
-    padding: 0 15px;
+    padding: 0 15px 120px 15px;
     width: 100%;
     margin: 0 auto;
     min-height: 100%;
+    position:relative; 
+    
     @include MQ(S) {
         width: 66.66666667%;
     }
@@ -413,8 +425,15 @@ label {
     fieldset[disabled] & {
         @include Opacity(0.8);
     }
-    &:hover {
+    &:hover,
+    &:active,
+    &:active:hover,
+    &:active:focus,
+    &:focus{
         @include Opacity(0.8);
+        color: inherit;
+        background-color: inherit;
+        border-color: inherit;
     }
     &.btn-lg{
         font-size: 16px;
@@ -425,10 +444,11 @@ label {
         color: $off-white;
         background-color: transparent;
         border: 1px solid #FFF;
-        &:hover {
-            color: #FFF;
-            background-color: transparent;
-        }
+        // &:hover {
+        //     color: inherit;
+        //     background-color: inherit;
+        //     border-color: inherit;
+        // }
     }
     &.btn-secondary {
         background: #FFF;
@@ -672,6 +692,7 @@ label {
             }
             &.btn {
                 width: 80px;
+                padding: 6px 12px;
             }
             .pg-auth & {
                 color: #FFF;
@@ -1176,7 +1197,7 @@ label {
                 color: #FFF;
                 font-size: 12px;
                 letter-spacing: 0.72px;
-                line-height: 15px;
+                line-height: 12px;
                 .level-left,
                 .level-right{
                     display: inline-block;
@@ -1196,6 +1217,20 @@ label {
             }
             .progress{
                 margin: 10px 0 25px 0;
+                background-color: transparentize(#FFF, 0.7);
+                height: 10px;
+                overflow: visible;
+                @include border-radius(5px);
+                .progress-bar{
+                    @include border-radius(5px);
+                    background-color: #FFF;
+                    position: relative;
+                    .ic{
+                        position: absolute;
+                        bottom: -7px;
+                        right: -7px;
+                    }        
+                }
             }
         }
     }
