@@ -15,7 +15,7 @@
       ".indexOn": ["oppKey"]
     },
     "application": {
-      ".indexOn": ["profileKey"]
+      ".indexOn": ["profileKey","projectProfileKey","profileKey"]
     },
     "applicationTeam":{
       ".indexOn": ["appKey"]
