@@ -1,10 +1,10 @@
 {
   "profile": {
     "USER_VERIFIED_PROFILE": {
-      "fullName": "Test User With Profile",
+      "legalName": "Test User With Profile",
       "preferredName": "Testie",
       "phoneNumber": "8053129100",
-      "birthday": "10251974"
+      "birthday": "1995-01-09"
     }
   },
   "project": {
