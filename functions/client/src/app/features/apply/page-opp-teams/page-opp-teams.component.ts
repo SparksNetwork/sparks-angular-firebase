@@ -15,6 +15,7 @@ export class PageOppTeamsComponent implements OnInit {
     private applicationTeams: Observable<ApplicationTeam[]>;
     public actionBarType = ActionBarType;
     public allTeams: any;
+    public selectedCount:number;
 
     constructor(
         public route: ActivatedRoute,
@@ -38,5 +39,9 @@ export class PageOppTeamsComponent implements OnInit {
 
     previous() {
         this.router.navigate(['../answer-question'], { relativeTo: this.route.parent })
+    }
+
+    onSelectedCount(count: number) {
+        this.selectedCount = count;
     }
 }
