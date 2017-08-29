@@ -41,10 +41,8 @@ export class PageReviewDetailComponent implements OnInit {
     }
 
     apply() {
-        this.application.status = ApplicationStatus.Pending;
         let key = this.application.$key;
-        let value = this.applicationAction.formatToDb(this.application);
-        this.applicationAction.replace(key, value).subscribe(s =>
+        this.applicationAction.changeStatus(key, ApplicationStatus.Pending).subscribe(s =>
             //send email
             this.router.navigate(['../apply-cofirmation'], { relativeTo: this.route })
         )

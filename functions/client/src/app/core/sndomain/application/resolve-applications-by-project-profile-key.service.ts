@@ -22,11 +22,11 @@ export class ResolveApplicationByProjectProfileKey implements Resolve<any> {
 
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<{}> | Observable<Application[] | void>> {
 
-        var applications = this.auth.current.map(user => {
+        const applications = this.auth.current.map(user => {
             if (!user) return Observable.of({});
-
-            return list(this.query.byProjectProfileKey(route.paramMap.get('projectKey'), user.uid))
-                .switchMap(this.sorry.intercept(applicationsTransform));
+            const projectKey = route.parent.paramMap.get('projectKey') || route.paramMap.get('projectKey');
+            return list(this.query.byProjectProfileKey(projectKey, user.uid))
+                  .switchMap(this.sorry.intercept(applicationsTransform));
         })
 
         return applications.first();
