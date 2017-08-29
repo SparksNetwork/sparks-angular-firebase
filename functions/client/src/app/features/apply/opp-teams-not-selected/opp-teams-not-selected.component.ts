@@ -3,7 +3,7 @@ import { Team } from "../../../../../../universal/domain/team";
 import { ApplicationTeam } from "../../../../../../universal/domain/applicationTeam";
 
 @Component({
-    selector: 'opp-teams-not-selected',
+    selector: 'apply-opp-teams-not-selected',
     templateUrl: 'opp-teams-not-selected.component.html'
 })
 

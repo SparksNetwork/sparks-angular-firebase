@@ -1,7 +1,7 @@
 <div class="row" *ngIf='teams && teams.length > 0'>
   <div class="col-xs-12">
     <div class="segment">
-      <div class="row">
+      <div class="row" *ngIf='editable'>
         <div class="col-xs-8">
           <h3 class="segment-title">Selected Teams</h3>
         </div>
@@ -15,7 +15,7 @@
             <div class="col-xs-8">
               <h4 class="segment-title selected-team-title">{{team.title}}</h4>
             </div>
-            <div class="col-xs-4 segment-title-link-container">
+            <div class="col-xs-4 segment-title-link-container" *ngIf='editable'>
               <a (click)="delete(team.appTeamKey)">delete <span class="ic ic-delete" aria-hidden="true"></span></a>
             </div>
           </div>

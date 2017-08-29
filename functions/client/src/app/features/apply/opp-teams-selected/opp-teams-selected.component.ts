@@ -1,17 +1,19 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, EventEmitter, Output } from '@angular/core';
 import { Team } from "../../../../../../universal/domain/team";
 import { ApplicationTeam } from "../../../../../../universal/domain/applicationTeam";
 import { ApplicationTeamActionService } from "../../../core/sndomain/applicationTeam/application-team-action.service";
 import { SelectedTeam } from "./selected-team";
 
 @Component({
-    selector: 'opp-teams-selected',
+    selector: 'apply-opp-teams-selected',
     templateUrl: 'opp-teams-selected.component.html'
 })
 
 export class OppTeamsSelectedComponent implements OnChanges {
     @Input() private allTeams: any;
+    @Input() editable: boolean = true;
     teams: SelectedTeam[] = new Array<SelectedTeam>();
+    @Output() selectedCount: EventEmitter<number> = new EventEmitter<number>();
 
     constructor(
         public applicationTeamAction: ApplicationTeamActionService
@@ -33,6 +35,7 @@ export class OppTeamsSelectedComponent implements OnChanges {
                     }
                 }
             }
+            this.selectedCount.emit(this.teams.length);
         }
     }
 

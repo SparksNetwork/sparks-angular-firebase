@@ -17,6 +17,7 @@ export class PageCompleteProfileComponent {
   @ViewChild(FormCompleteProfileComponent) public profForm: FormCompleteProfileComponent
 
   public oppKey: string
+  public applicationKey: string
 
   constructor(
     public router: Router,
@@ -25,11 +26,10 @@ export class PageCompleteProfileComponent {
     public action: ProfileActionService,
     public query: ProfileQueryService,
   ) {
-    this.route.snapshot.data['opp'].subscribe(opp => {
-      this.oppKey = opp.$key;
-    });
+    this.oppKey = this.route.parent.snapshot.paramMap.get('oppKey');
+    this.applicationKey = this.route.parent.snapshot.paramMap.get('applicationKey');
 
-    this.route.snapshot.data['profile'].subscribe(profile => {
+    this.route.parent.snapshot.data['profile'].subscribe(profile => {
       this.profForm.profileForm.get('legalName').setValue(profile.legalName);
       this.profForm.profileForm.get('preferredName').setValue(profile.preferredName);
       this.profForm.profileForm.get('phoneNumber').setValue(profile.phoneNumber);
@@ -40,24 +40,37 @@ export class PageCompleteProfileComponent {
   public next() {
     console.log('completed profile?', this.profForm.profileForm.value)
     this.auth.current.first().subscribe(user => {
-      console.log('uid', user.uid)
-      this.action.replace(user.uid, this.profForm.profileForm.value)
-        .subscribe(res => {
-          if (res.ok) {
-            console.log('success!')
-            this.query.current.subscribe(profile => {
-              if (profile &&
-                  profile.birthday &&
-                  profile.legalName &&
-                  profile.phoneNumber &&
-                  profile.preferredName) {
-                this.router.navigate(['/apply', this.oppKey, 'answer-question'])
-              }
-            })
-          } else {
-            console.log('failed')
-          }
-        })
+      if (this.profForm.profileForm.dirty) {
+        this.action.replace(user.uid, this.profForm.profileForm.value)
+          .subscribe(res => {
+            if (res.ok) {
+              console.log('success!')
+              this.checkProfileAndNavigate();
+            } else {
+              console.log('failed')
+            }
+          });
+      } else {
+        this.checkProfileAndNavigate();
+      }
+    })
+  }
+
+  private checkProfileAndNavigate() {
+    this.query.current.subscribe(profile => {
+      if (profile &&
+        profile.birthday &&
+        profile.legalName &&
+        profile.phoneNumber &&
+        profile.preferredName) {
+
+        if (this.applicationKey) {
+          // edit all fields mode - return to review application details page
+          this.router.navigate(['/apply', this.oppKey, 'application', this.applicationKey, 'review-detail'])
+        } else {
+          this.router.navigate(['/apply', this.oppKey, 'answer-question'])
+        }
+      }
     })
   }
 }

@@ -3,7 +3,7 @@
     <a class="navbar-brand" [routerLink]="['/']"><img src="assets/img/logo_sparksnetwork_white.svg" alt="sparks.network"/></a>
   </div>
   <div class="appbar-right">
-    <a [routerLink]="['../signup']" class="navbar-menu btn btn-primary" title="Sign up to Sparks.Network">Sign up</a>
+    <a [routerLink]="['../signup']" class="appbar-menu btn btn-primary" title="Sign up to Sparks.Network">Sign up</a>
   </div>
 </nav>
 
@@ -16,7 +16,7 @@
 
     <div class="segment">
       <auth-alert-error></auth-alert-error>
-      <auth-form-email-password></auth-form-email-password>
+      <auth-form-email-password (onSubmit)="createWithEmailAndPassword($event)"></auth-form-email-password>
     </div>
 
     <div class="segment no-brd bottom-links">
@@ -25,7 +25,7 @@
           <button class="btn btn-block btn-primary" [routerLink]='["../signup"]'>Cancel</button>
         </div>
         <div class="col-xs-6">
-          <button class="btn btn-block btn-secondary pull-right" id='signin' (click)='createWithEmailAndPassword()' [disabled]="!epForm.credentialsForm.valid">Join</button>
+          <button type="submit" form="emailPasswordForm" class="btn btn-block btn-secondary pull-right" id='signin'>Join</button>
         </div>
       </div>
     </div>

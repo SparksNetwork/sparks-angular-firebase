@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ValidatorService } from "../../../shared/validators/validator.service";
 
@@ -9,6 +9,8 @@ import { ValidatorService } from "../../../shared/validators/validator.service";
 export class FormCompleteProfileComponent implements OnInit {
 
   public profileForm: FormGroup;
+
+  @Input() editAllMode: boolean;
 
   constructor(private builder: FormBuilder,) { 
     this.profileForm = this.builder.group({

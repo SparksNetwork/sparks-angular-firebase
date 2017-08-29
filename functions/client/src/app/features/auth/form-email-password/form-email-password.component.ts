@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { Observable } from 'rxjs'
@@ -10,6 +10,8 @@ import 'rxjs/add/operator/map'
 })
 
 export class FormEmailPasswordComponent implements OnInit {
+  @Output() onSubmit: EventEmitter<any> = new EventEmitter();
+
   public credentialsForm: FormGroup
 
   constructor(
@@ -22,5 +24,11 @@ export class FormEmailPasswordComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  public submit() {    
+    if (!this.credentialsForm.valid) return;
+
+    this.onSubmit.emit({ email: this.credentialsForm.value.email, password: this.credentialsForm.value.password })
   }
 }

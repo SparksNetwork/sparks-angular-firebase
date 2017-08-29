@@ -6,6 +6,7 @@ import { Observable } from "rxjs/Rx";
 import { Team } from "../../../../../../universal/domain/team";
 import { ActionBarType } from "../../../shared/snui/action-bar/action-bar.component";
 import { ApplicationActionService } from "../../../core/sndomain/application";
+import { Profile } from "../../../../../../universal/domain/profile";
 
 @Component({
     templateUrl: 'page-review-detail.component.html'
@@ -15,6 +16,7 @@ export class PageReviewDetailComponent implements OnInit {
     public application: Application;
     private teams: Observable<Team[]>;
     private applicationTeams: Observable<ApplicationTeam[]>;
+    private profile: Observable<Profile>;
     public allTeams: any;
     public actionBarType = ActionBarType;
 
@@ -34,13 +36,13 @@ export class PageReviewDetailComponent implements OnInit {
                 this.applicationTeams
             )
         });
+
+        this.profile = this.route.parent.snapshot.data['profile'];
     }
 
     apply() {
-        this.application.status = ApplicationStatus.Pending;
         let key = this.application.$key;
-        let value = this.applicationAction.formatToDb(this.application);
-        this.applicationAction.replace(key, value).subscribe(s =>
+        this.applicationAction.changeStatus(key, ApplicationStatus.Pending).subscribe(s =>
             //send email
             this.router.navigate(['../apply-cofirmation'], { relativeTo: this.route })
         )

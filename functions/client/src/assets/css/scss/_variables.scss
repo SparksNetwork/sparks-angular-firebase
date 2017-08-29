@@ -14,6 +14,7 @@ $violetblue: #975394;
 $blue: #24aee0;
 // $summersky: #24ADE0; buttons
 $purple: #806bad;
+$prim: #EACCD8;
 
 
 
@@ -75,6 +76,18 @@ $linkedin-color: #1E87BE;
     height: 18px;
     display: block;
 }
+.ic-karma-points-white{
+    background: url('../img/karma_points_white.svg') top center no-repeat;
+    width: 35px;
+    height: 25px;
+    display: block;
+}
+
+.ic-progress{
+    background: url('../img/progress_button.svg') top center no-repeat;
+    width: 26px;
+    height: 26px;
+}
 
 .ic-karma-points-color .path1:before {
     content: "\e904";
@@ -129,14 +142,6 @@ $linkedin-color: #1E87BE;
     margin-left: -1em;
     color: rgb(0, 0, 0);
     opacity: 0.5;
-}
-
-
-
-
-
-.ic-karma-points-white:before {
-    content: "\e914";
 }
 
 .ic-key:before {

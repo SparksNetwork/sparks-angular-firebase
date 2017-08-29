@@ -37,7 +37,7 @@
                     <a [routerLink]="['..']" class="btn btn-block btn-default">Previous</a>
                 </div>
                 <div class="btn-group" role="group">
-                    <button class="btn btn-block btn-default" [disabled]='!answerForm.valid' (click)='join(team.$key)'>Join</button >
+                    <button class="btn btn-block btn-default" [disabled]='!answerForm.valid' (click)='join(team.$key, team.question)'>Join</button >
         </div>
       </div>
     </snui-action-bar>

@@ -10,8 +10,9 @@ import { Opp } from "../../../../../../universal/domain/opp";
   templateUrl: './page-answer-question.component.html',
 })
 export class PageAnswerQuestionComponent implements OnInit {
+  private applicationKey: string;
+  private profileKey: string;
   public opp: Opp;
-  public applicationKey: string;
   public answerForm: FormGroup;
   private edit: boolean = false;
 
@@ -20,7 +21,11 @@ export class PageAnswerQuestionComponent implements OnInit {
     public route: ActivatedRoute,
     public router: Router,
     public builder: FormBuilder
-  ) {
+  ) { 
+    this.route.parent.snapshot.data["profile"].subscribe(profile => {
+      this.profileKey = profile.$key;
+    });
+
     this.answerForm = builder.group({
       answer: ['', [Validators.required]]
     })
@@ -50,20 +55,24 @@ export class PageAnswerQuestionComponent implements OnInit {
         )
       }
     })
+
   }
 
   private onLoadedOpp(opp: Opp) {
     this.opp = opp;
-    let application = new Application();
-    application.profileKey = "PnDuT5wx8wThD3L1lgOTjubs0C03"; //I will use a new service from develop
-    application.oppKey = this.opp.$key;
-    application.status = ApplicationStatus.Incomplete;
-    application.projectKey = this.opp.projectKey;
-    application.projectProfileKey =  this.applicationAction.query.generateProjectProfileKey(application.projectKey, application.profileKey)
-    this.applicationAction.create(application)
-      .subscribe(s => {
-        this.applicationKey = s.json();
-      })
+
+    if (!this.applicationKey) {
+      let application = new Application();
+      application.profileKey = this.profileKey
+      application.oppKey = this.opp.$key;
+      application.status = ApplicationStatus.Incomplete;
+      application.projectKey = this.opp.projectKey;
+      application.projectProfileKey =  this.applicationAction.query.generateProjectProfileKey(application.projectKey, application.profileKey)
+      this.applicationAction.create(application)
+        .subscribe(s => {
+          this.applicationKey = s.json();
+        })
+    }
   }
 
   submit() {

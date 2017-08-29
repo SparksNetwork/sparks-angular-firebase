@@ -16,7 +16,6 @@ export class PageOppTeamComponent implements OnInit {
     public team: Observable<Team>;
     private application: Application;
     public actionBarType = ActionBarType;
-    public answer: string;
     public answerForm: FormGroup;
 
     constructor(
@@ -45,7 +44,7 @@ export class PageOppTeamComponent implements OnInit {
         let appTeam = new ApplicationTeam();
         appTeam.appKey = this.application.$key;
         appTeam.teamKey = key;
-        appTeam.answer = this.answer;
+        appTeam.answer = this.answerForm.get('answer').value;
         appTeam.question = question;
             this.applicationTeamAction.create(appTeam)
                 .subscribe((s) => { this.router.navigate(['../'], { relativeTo: this.route }) });

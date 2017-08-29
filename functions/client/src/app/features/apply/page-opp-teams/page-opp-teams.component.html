@@ -8,15 +8,15 @@
     </div>
   </div>
 </div>
-<opp-teams-selected [allTeams]='allTeams | async'></opp-teams-selected>
-<opp-teams-not-selected [allTeams]='allTeams | async'></opp-teams-not-selected>
+<apply-opp-teams-selected (selectedCount) = "onSelectedCount($event)" [allTeams]='allTeams | async'></apply-opp-teams-selected>
+<apply-opp-teams-not-selected [allTeams]='allTeams | async'></apply-opp-teams-not-selected>
 <snui-action-bar [type]="actionBarType.Organizer">
   <div class="col-xs-8 bottom-nav">
     <div class="btn-group" role="group">
       <a (click)="previous()" class="btn btn-block btn-default">Previous</a>
     </div>
     <div class="btn-group" role="group">
-      <a class="btn btn-block btn-default" (click)="next()">Next</a>
+      <button class="btn btn-block btn-default" [disabled]="!selectedCount" (click)="next()">Next</button>
         </div>
       </div>
 </snui-action-bar>
