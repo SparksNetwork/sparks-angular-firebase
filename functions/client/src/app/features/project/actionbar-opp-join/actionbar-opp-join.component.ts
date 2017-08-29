@@ -2,6 +2,7 @@ import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/cor
 import { ActionBarType } from "../../../shared/snui/action-bar/action-bar.component";
 import { Application, ApplicationStatus } from "../../../../../../universal/domain/application";
 import { ApplicationActionService } from "../../../core/sndomain/application";
+import { Opp } from "../../../../../../universal/domain/opp";
 
 @Component({
   selector: 'project-actionbar-opp-join',
@@ -9,7 +10,7 @@ import { ApplicationActionService } from "../../../core/sndomain/application";
 })
 
 export class ActionbarOppJoinComponent implements OnChanges {
-  @Input() opp
+  @Input() opp: Opp;
   @Input() private applications: Application[];
   public application: Application;
   actionBarType = ActionBarType
@@ -20,7 +21,7 @@ export class ActionbarOppJoinComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.applications) {
-      let applications = this.applications.filter(s => s.status !== ApplicationStatus.Canceled);
+      let applications = this.applications.filter(s => s.status !== ApplicationStatus.Canceled && s.oppKey === this.opp.$key);
       if (applications)
         this.application = applications[0];
     }
