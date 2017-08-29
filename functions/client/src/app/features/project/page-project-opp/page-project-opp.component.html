@@ -1,13 +1,28 @@
-<snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
-</snui-header-simple>
+<!-- <snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
+  Select Your Opportunity for {{(project | async)?.title}}
+</snui-header-simple> -->
 
-<div class="row">
-  <div class="col-xs-12">
-    <div class="opportunity-head segment">
+<div class="opp-hero">
+  <!-- <div class="item" [ngStyle]="{ 'background': 'url(' + imageUrl + ')'}"> -->
+    <div class="item" [ngStyle]="{ 'background': 'url(' + 'https://placeimg.com/1140/410/people/grayscale' + ')'}">
+  </div>
+    <div class="opp-title-container">
+      <h1 class="page-title">
+      <!-- <ng-content></ng-content> -->
+      Select Your Opportunity for {{(project | async)?.title}}
+    </h1>
+    <!-- <h2 class="sub-title"></h2> -->
+    </div>
+</div>
+
+<!-- <div class="row">
+  <div class="col-xs-12"> -->
+    
+    <div class="opportunity-head segment row row-small-pad">
       <div class="col-xs-6">
-        <div class="row">
-          <h3>{{(opp | async)?.title}}</h3>
-        </div>
+        
+          <h2>{{(opp | async)?.title}}</h2>
+        
       </div>
 
       <div class="col-xs-6">
@@ -23,8 +38,8 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
+  <!-- </div>
+</div> -->
 
 <project-opp-detail
   [project]='project|async'

@@ -35,8 +35,8 @@ body {
     height: 100%;
 }
 
-.footer-segment{
-    position: absolute; 
+.footer-segment {
+    position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
@@ -60,8 +60,7 @@ body {
     width: 100%;
     margin: 0 auto;
     min-height: 100%;
-    position:relative; 
-    
+    position: relative;
     @include MQ(S) {
         width: 66.66666667%;
     }
@@ -129,6 +128,7 @@ h1 {
         letter-spacing: 1.22px;
         margin-bottom: 12px;
         font-weight: normal;
+        line-height: 30px;
         .pg-auth & {
             font-size: 40px;
             letter-spacing: 1.6px;
@@ -143,11 +143,20 @@ h1 {
 
 h2 {
     font-size: 26px;
+    margin: 0;
     .dashboard-text & {
         margin: 0 0 12px 0;
         font-size: 30px;
         letter-spacing: 1.22px;
         color: #FFF;
+    }
+    .opportunity-head &{
+        font-size: 23px;
+        letter-spacing: 0.92px;
+        // line-height: 13.77px;
+        line-height: 23px;
+        color: $base-dark;
+
     }
 }
 
@@ -429,13 +438,13 @@ label {
     &:active,
     &:active:hover,
     &:active:focus,
-    &:focus{
+    &:focus {
         @include Opacity(0.8);
         color: inherit;
         background-color: inherit;
         border-color: inherit;
     }
-    &.btn-lg{
+    &.btn-lg {
         font-size: 16px;
         font-weight: 600;
         padding: 4px 18px;
@@ -443,8 +452,7 @@ label {
     &.btn-primary {
         color: $off-white;
         background-color: transparent;
-        border: 1px solid #FFF;
-        // &:hover {
+        border: 1px solid #FFF; // &:hover {
         //     color: inherit;
         //     background-color: inherit;
         //     border-color: inherit;
@@ -533,20 +541,45 @@ label {
 
 /* Forms */
 
-.pg-auth{
-    .form-control::-webkit-input-placeholder { color: #FFF }  /* WebKit, Blink, Edge */
-    .form-control:-moz-placeholder { color: #FFF; }  /* Mozilla Firefox 4 to 18 */
-    .form-control::-moz-placeholder { color: #FFF; }  /* Mozilla Firefox 19+ */
-    .form-control:-ms-input-placeholder { color: #FFF; }  /* Internet Explorer 10-11 */
-    .form-control::-ms-input-placeholder { color: #FFF; }  /* Microsoft Edge */
+.pg-auth {
+    .form-control::-webkit-input-placeholder {
+        color: #FFF
+    }
+    /* WebKit, Blink, Edge */
+    .form-control:-moz-placeholder {
+        color: #FFF;
+    }
+    /* Mozilla Firefox 4 to 18 */
+    .form-control::-moz-placeholder {
+        color: #FFF;
+    }
+    /* Mozilla Firefox 19+ */
+    .form-control:-ms-input-placeholder {
+        color: #FFF;
+    }
+    /* Internet Explorer 10-11 */
+    .form-control::-ms-input-placeholder {
+        color: #FFF;
+    }
+    /* Microsoft Edge */
 }
 
-.pg-default{
-    .form-control::-webkit-input-placeholder { color: $base-dark; }
-    .form-control:-moz-placeholder{ color: $base-dark; }
-    .form-control::-moz-placeholder{ color: $base-dark; }
-    .form-control:-ms-input-placeholder{ color: $base-dark; }
-    .form-control::-ms-input-placeholder { color: $base-dark; }
+.pg-default {
+    .form-control::-webkit-input-placeholder {
+        color: $base-dark;
+    }
+    .form-control:-moz-placeholder {
+        color: $base-dark;
+    }
+    .form-control::-moz-placeholder {
+        color: $base-dark;
+    }
+    .form-control:-ms-input-placeholder {
+        color: $base-dark;
+    }
+    .form-control::-ms-input-placeholder {
+        color: $base-dark;
+    }
 }
 
 .login-with-username {
@@ -558,7 +591,6 @@ label {
 }
 
 .form-control {
-    
     @include border-radius-targeted( 0, 7.5px, 7.5px, 0);
     background: transparent;
     padding: 14px 12px;
@@ -566,17 +598,16 @@ label {
     font-size: 16px;
     line-height: 20px;
     letter-spacing: 0.64px;
-    .pg-auth &{
+    .pg-auth & {
         border-color: #FFF;
         color: #FFF;
         border-left: transparent;
     }
-
     &:hover,
     &:active,
     &:focus {
         box-shadow: none;
-        .pg-auth &{
+        .pg-auth & {
             border-color: #FFF;
         }
     }
@@ -607,40 +638,41 @@ label {
             box-shadow: none;
         }
     }
-    &:hover{
+    &:hover {
         @include Opacity(0.8);
     }
 }
 
 
 /* Nav */
-.nav-container{
+
+.nav-container {
     position: relative;
-    .collapsing{
+    .collapsing {
         top: 0;
         width: 0;
         transition-property: width, visibility;
         position: absolute;
     }
-    .collapse{
+    .collapse {
         position: absolute;
         top: 0;
         background: #FFF;
         height: 85px;
         width: 100%;
     }
-    .input-group{
+    .input-group {
         @extend .separator;
-        .form-control{
+        .form-control {
             border: none;
             box-shadow: none;
             font-size: 18px;
             color: $base-dark;
             padding: 14px 0 14px 10px;
         }
-        .input-group-btn{
-            .btn{
-               color: $base-dark;
+        .input-group-btn {
+            .btn {
+                color: $base-dark;
                 margin-left: 10px;
                 padding: 6px 15px;
             }
@@ -684,7 +716,7 @@ label {
             height: 40px;
             padding: 0;
             margin: 0;
-            &:hover{
+            &:hover {
                 @include Opacity(1);
             }
             img {
@@ -1108,25 +1140,75 @@ label {
 }
 
 
-/* Opportunity, Page Details */
+/* Opportunity, Auth Page Details */
+
+.opp-hero {
+    margin-left: -15px;
+    margin-right: -15px;
+    position: relative;
+    .opp-title-container {
+        position: absolute;
+        top: 0;
+        padding: 0 15px;
+        display: table;
+        height: 180px;
+        .page-title {
+            display: table-cell;
+            vertical-align: middle;
+        }
+    }
+    .item {
+        height: 180px;
+        width: 100%;
+        background-repeat: no-repeat !important;
+        background-position: center center !important;
+        @include background-size(cover !important);
+        position: relative;
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            @extend .sn-gradient;
+            @include Opacity(0.5);
+        }
+    }
+}
 
 .page-hero {
+    .pg-default & {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
     .item {
         .pg-auth & {
             padding: 45px 0;
         }
         .pg-default & {
-            height: 410px;
+            height: 180px;
             width: 100%;
             background-repeat: no-repeat !important;
             background-position: center center !important;
             @include background-size(cover !important);
             display: table;
             padding: 0 15px;
+            position: relative;
             .page-title {
                 display: table-cell;
                 vertical-align: middle;
                 float: none;
+            }
+            &:after {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                @extend .sn-gradient;
+                @include Opacity(0.5);
             }
         }
     }
@@ -1150,8 +1232,7 @@ label {
         background-repeat: no-repeat !important;
         background-position: center center !important;
         @include background-size(cover !important);
-        padding-top: 50px;
-        // position: relative;
+        padding-top: 50px; // position: relative;
         .profile-hero-content {
             @include block-nooverflow;
         }
@@ -1169,13 +1250,13 @@ label {
                 background-size: cover !important;
                 background-repeat: no-repeat !important;
                 margin: 0 auto;
-                @include box-shadow-multiple(inset 12px 12px 2px -3px rgba(38, 172, 223, 0.26), inset 0px 0px 2px 0px rgba(0, 0, 0, 0.5), inset 3px 3px 2px 2px rgba(172, 55, 117, 0.26) );
+                @include box-shadow-multiple(inset 12px 12px 2px -3px rgba(38, 172, 223, 0.26), inset 0px 0px 2px 0px rgba(0, 0, 0, 0.5), inset 3px 3px 2px 2px rgba(172, 55, 117, 0.26));
             }
             .profile-score {
                 color: $base-dark;
                 font-size: 10px;
                 line-height: 20px;
-                @include box-shadow(0.914px,0.407px,6.44px,0.56px,rgba(0, 0, 0, 0.5), false);
+                @include box-shadow(0.914px, 0.407px, 6.44px, 0.56px, rgba(0, 0, 0, 0.5), false);
                 background: #FFF;
                 @include border-radius(50%);
                 width: 22px;
@@ -1190,48 +1271,46 @@ label {
         }
         .profile-progress {
             width: 100%;
-            @include block-nooverflow;
-            // position: absolute;
+            @include block-nooverflow; // position: absolute;
             // bottom: 0;
             font-size: 14px;
             font-weight: normal;
-            .next-level-container{
+            .next-level-container {
                 color: #FFF;
                 font-size: 12px;
                 letter-spacing: 0.72px;
                 line-height: 12px;
                 .level-left,
-                .level-right{
+                .level-right {
                     display: inline-block;
                 }
-                .current-level{
+                .current-level {
                     font-size: 14px;
                     letter-spacing: 0.56px;
                     @include Opacity(0.4);
                     display: inline-block;
                 }
-                .next-level{
+                .next-level {
                     font-size: 18px;
                     letter-spacing: 0.72px;
                     display: inline-block;
                 }
-                
             }
-            .progress{
+            .progress {
                 margin: 10px 0 25px 0;
                 background-color: transparentize(#FFF, 0.7);
                 height: 10px;
                 overflow: visible;
                 @include border-radius(5px);
-                .progress-bar{
+                .progress-bar {
                     @include border-radius(5px);
                     background-color: #FFF;
                     position: relative;
-                    .ic{
+                    .ic {
                         position: absolute;
                         bottom: -7px;
                         right: -7px;
-                    }        
+                    }
                 }
             }
         }
@@ -1262,8 +1341,8 @@ label {
     h3 {
         color: $base-dark;
     }
-    .project-item{
-        .col-xs-6{
+    .project-item {
+        .col-xs-6 {
             margin-bottom: 35px;
         }
     }
