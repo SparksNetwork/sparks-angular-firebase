@@ -488,9 +488,14 @@ label {
             z-index: -1;
             @include border-radius(7.5px);
         }
-        &:hover {
+        &:hover,
+        &:active,
+        &:active:hover,
+        &:active:focus,
+        &:focus {
             @include Opacity(1);
             color: transparentize($violetblue, 0.2);
+            background-color: #FFF;
             &:after {
                 @include Opacity(0.8);
             }
@@ -622,6 +627,7 @@ label {
         top: 0;
         background: #FFF;
         height: 85px;
+        width: 100%;
     }
     .input-group{
         @extend .separator;
@@ -630,12 +636,13 @@ label {
             box-shadow: none;
             font-size: 18px;
             color: $base-dark;
-            padding: 14px 0 14px 35px;
+            padding: 14px 0 14px 10px;
         }
         .input-group-btn{
             .btn{
                color: $base-dark;
-                margin: 0 35px 0 10px;
+                margin-left: 10px;
+                padding: 6px 15px;
             }
         }
     }
@@ -649,6 +656,9 @@ label {
         font-size: 16px;
         line-height: 16px;
         font-weight: 600;
+        padding: 6px 10px;
+        min-width: 80px;
+        width: auto;
     }
     .appbar-left {
         float: left;
@@ -683,22 +693,14 @@ label {
             }
         }
         .appbar-menu {
-            margin: 7px 15px;
-            height: 30px;
+            margin: 7px 0 0 30px;
             display: block;
             float: left;
             .ic {
                 line-height: 30px;
             }
-            &.btn {
-                width: 80px;
-                padding: 6px 12px;
-            }
             .pg-auth & {
                 color: #FFF;
-                &:hover {
-                    color: $base-color;
-                }
             }
         }
     }
