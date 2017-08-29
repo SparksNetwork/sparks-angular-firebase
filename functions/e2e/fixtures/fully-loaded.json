@@ -134,7 +134,8 @@
       "icon": "glyphicon-glass",
       "karma": 20,
       "title": "Volunteer",
-      "description": "opp description"
+      "description": "opp description",
+      "question": "Do you have any problem with the broom?"
     },
     "LC1": {
       "projectKey": "LC",
@@ -143,7 +144,8 @@
       "contribValue": 209,
       "benefitValue": 374,
       "title": "1-Shift",
-      "description": "opp description"
+      "description": "opp description",
+      "question": "Do you like festivals?"
     },
     "LC2": {
       "projectKey": "LC",
@@ -152,7 +154,8 @@
       "contribValue": 59,
       "benefitValue": 394,
       "title": "Regular",
-      "description": "opp description"
+      "description": "opp description",
+      "question": "Do you like multicultural festivals?"
     },
     "LC3": {
       "projectKey": "LC",
@@ -161,7 +164,8 @@
       "contribValue": 0,
       "benefitValue": 364,
       "title": "Pre-Event Weekends",
-      "description": "opp description"
+      "description": "opp description",
+      "question": "Do you like week-end festivals?"
     },
     "LC4": {
       "projectKey": "LC",
@@ -170,7 +174,8 @@
       "contribValue": 19,
       "benefitValue": 444,
       "title": "Setup",
-      "description": "opp description"
+      "description": "opp description",
+      "question": "What are you planning to do during the festival?"
     },
     "LC5": {
       "projectKey": "LC",
@@ -179,7 +184,8 @@
       "contribValue": 19,
       "benefitValue": 444,
       "title": "Strike",
-      "description": "opp description"
+      "description": "opp description",
+      "question": "Are you ready to have a good time?"
     },
     "SRBC1": {
       "projectKey": "SRBC",
@@ -188,7 +194,8 @@
       "contribValue": 0,
       "benefitValue": 10,
       "title": "Beach Cleanup",
-      "description": "opp description"
+      "description": "opp description",
+      "question": "Do you like festivals?"
     }
   },
   "benefit": {
