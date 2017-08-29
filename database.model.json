@@ -158,6 +158,7 @@
                 "projectKey": { "$ref": "#/constraints/nonEmptyString" },
                 "title": { "$ref": "#/constraints/nonEmptyString" },
                 "description": { "$ref": "#/constraints/nonEmptyString" },
+                "question": { "type": "string" },
                 "icon": { "type": "string" },
                 "karma": { "type": "integer" },
                 "contribValue": { "type": "number" },
@@ -244,7 +245,7 @@
                 "profileKey": { "$ref": "#/constraints/nonEmptyString" },
                 "projectKey": { "$ref": "#/constraints/nonEmptyString" },
                 "projectProfileKey": { "$ref": "#/constraints/nonEmptyString" },
-                "status": { "type": "string", "enum": [ "Incomplete", "Pending", "Applied", "Accepted" ] },
+                "status": { "type": "string", "enum": [ "Incomplete", "Pending", "Accepted", "Canceled" ] },
                 "oppQuestion": { "type": "string"},
                 "oppAnswer": { "type": "string"}
             }
