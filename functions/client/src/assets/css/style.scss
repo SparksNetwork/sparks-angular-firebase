@@ -1265,17 +1265,21 @@ label {
             margin-bottom: 35px;
         }
     }
-    .event-img {
+    .project-img {
         height: 226px;
         width: 165px;
         @include border-radius(7.5px);
         position: relative;
-        .dashboard-event-status {
+        .dashboard-project-status {
             position: absolute;
-            background: transparentize(#FFF, 0.2);
+            background: transparentize(#FFF, 0.5);
             top: 20px;
             font-size: 12px;
-            padding: 0 10px;
+            line-height: 25px;
+            letter-spacing: 0.48px;
+            padding: 0 7px;
+            height: 25px;
+            @include border-radius-targeted(0, 4px, 4px, 0);
         }
     }
     .project-title {
