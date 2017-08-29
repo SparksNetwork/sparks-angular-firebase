@@ -9,6 +9,7 @@
     "dev-id": "sparksnetworkildi",
     "dev-mnq": "sparksnetwork-mnq",
     "dev-cp": "sparksnetworkcp",
-    "dev-ts": "sparksnetwork-6de8b"
+    "dev-ts": "sparksnetwork-6de8b",
+    "ipz-staging": "sparks-ipz-staging"
   }
 }
