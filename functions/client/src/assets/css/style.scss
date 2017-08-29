@@ -1167,7 +1167,7 @@ label {
                 background-size: cover !important;
                 background-repeat: no-repeat !important;
                 margin: 0 auto;
-                @include box-shadow-multiple(inset 12px 12px 2px -8px rgba(38, 172, 223, 0.26),inset 0px 0px 2px 0px rgba(0, 0, 0, 0.5),inset 3px 3px 2px 0px rgba(172, 55, 117, 0.26) );
+                @include box-shadow-multiple(inset 12px 12px 2px -3px rgba(38, 172, 223, 0.26), inset 0px 0px 2px 0px rgba(0, 0, 0, 0.5), inset 3px 3px 2px 2px rgba(172, 55, 117, 0.26) );
             }
             .profile-score {
                 color: $base-dark;
