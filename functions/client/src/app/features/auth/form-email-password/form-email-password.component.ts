@@ -12,6 +12,8 @@ import 'rxjs/add/operator/map'
 export class FormEmailPasswordComponent implements OnInit {
   @Output() onSubmit: EventEmitter<any> = new EventEmitter();
 
+  public showErrors: boolean = false;
+
   public credentialsForm: FormGroup
 
   constructor(
@@ -26,8 +28,15 @@ export class FormEmailPasswordComponent implements OnInit {
   ngOnInit() {
   }
 
-  public submit() {    
-    if (!this.credentialsForm.valid) return;
+  public onKeyUp() {
+    this.showErrors = false;
+  }
+
+  public submit() {
+    if (!this.credentialsForm.valid) {
+      this.showErrors = true;
+      return;
+    }
 
     this.onSubmit.emit({ email: this.credentialsForm.value.email, password: this.credentialsForm.value.password })
   }
