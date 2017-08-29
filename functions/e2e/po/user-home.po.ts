@@ -11,7 +11,7 @@ export class UserHomePage {
   }
 
   getWelcomeMessage() {
-    return element(by.css('user-header div.profile-hero div.profile-hero-content h2'))
+    return element(by.css('snui-user-header div.profile-hero div.profile-hero-content h2'))
   }
   getListOfProjectLinks() {
     return element.all(by.css('home-all-projects a'));

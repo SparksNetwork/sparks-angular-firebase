@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-    selector: 'user-header',
+    selector: 'snui-user-header',
     templateUrl: 'user-header.component.html'
 })
 
