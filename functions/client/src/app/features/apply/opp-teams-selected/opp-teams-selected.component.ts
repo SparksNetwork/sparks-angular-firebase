@@ -5,12 +5,13 @@ import { ApplicationTeamActionService } from "../../../core/sndomain/application
 import { SelectedTeam } from "./selected-team";
 
 @Component({
-    selector: 'opp-teams-selected',
+    selector: 'apply-opp-teams-selected',
     templateUrl: 'opp-teams-selected.component.html'
 })
 
 export class OppTeamsSelectedComponent implements OnChanges {
     @Input() private allTeams: any;
+    @Input() editable: boolean = true;
     teams: SelectedTeam[] = new Array<SelectedTeam>();
 
     constructor(

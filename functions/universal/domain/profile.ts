@@ -1,6 +1,6 @@
 import { transformAndValidate } from 'class-transformer-validator'
 import { Expose } from 'class-transformer'
-import { IsISO8601, Matches } from "class-validator";
+import { IsISO8601, Matches, IsDefined, IsNotEmpty } from "class-validator";
 
 import {
   BaseCollection,
@@ -24,6 +24,11 @@ export class ProfileCollection extends BaseCollection {
 }
 
 export class Profile {
+  @Expose()
+  @IsDefined()
+  @IsNotEmpty()
+  public $key: string
+
   legalName: string
   preferredName: string
 

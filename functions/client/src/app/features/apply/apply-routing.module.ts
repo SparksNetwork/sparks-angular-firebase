@@ -14,8 +14,6 @@ import { PageOppTeamComponent } from "./page-opp-team/page-opp-team.component";
 import { PageOppHomeTeamsComponent } from "./page-opp-home-teams/page-opp-home-teams.component";
 import { PageAnswerQuestionComponent } from './page-answer-question/page-answer-question.component'
 import { ResolveTeamByTeamKey } from "./resolve-team-by-team-key/resolve-team-by-team-key.service";
-import { OppTeamsSelectedComponent } from "./opp-teams-selected/opp-teams-selected.component";
-import { OppTeamsNotSelectedComponent } from "./opp-teams-not-selected/opp-teams-not-selected.component";
 import { RequireProfileCompleteService, ResolveProfile } from '../../core/sndomain/profile'
 import { ResolveApplicationTeamByAppKey } from "../../core/sndomain/applicationTeam/resolve-application-team-by-app-key.service";
 import { ResolveApplicationByKey } from "../../core/sndomain/application/resolve-application-by-key.service";
@@ -32,7 +30,8 @@ const routes: Routes = [
             RequireEmailVerification,
         ],
         resolve: {
-            opp: ResolveOppByOppKey
+            opp: ResolveOppByOppKey,
+            profile : ResolveProfile
         },
         children: [
             {
@@ -57,13 +56,13 @@ const routes: Routes = [
                     appTeams: ResolveApplicationTeamByAppKey,
                     application: ResolveApplicationByKey
                 },
-                children: [
+                canActivate: [
+                    RequireProfileCompleteService,
+                ],
+                children:[
                     {
                         path: 'teams',
                         component: PageOppHomeTeamsComponent,
-                        canActivate: [
-                            RequireProfileCompleteService,
-                        ],
                         children: [
                             {
                                 path: '',
@@ -90,9 +89,12 @@ const routes: Routes = [
                         }
                     },
                     {
+                        path: 'edit-profile',
+                        component: PageCompleteProfileComponent                        
+                    },
+                    {
                         path: 'answer-question',
                         component: PageAnswerQuestionComponent
-
                     }
                 ]
             }
@@ -112,8 +114,6 @@ export const routedComponents = [
     PageOppHomeTeamsComponent,
     PageOppTeamsComponent,
     PageOppTeamComponent,
-    OppTeamsSelectedComponent,
-    OppTeamsNotSelectedComponent,
     PageReviewDetailComponent,
     PageApplyConfirmationComponent,
     PageApplicationComponent
