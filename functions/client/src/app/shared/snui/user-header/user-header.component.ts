@@ -10,6 +10,7 @@ export class UserHeaderComponent implements OnInit {
     @Input() message: string;
     @Input() imageUrl: string;
     @Input() profileScore: number;
+    @Input() isAuthed: boolean;
 
     constructor() { }
 
