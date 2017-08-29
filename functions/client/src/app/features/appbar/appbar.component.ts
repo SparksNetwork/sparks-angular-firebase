@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 
 import { AuthService } from "../../core/snauth/auth/auth.service";
 
@@ -10,9 +11,13 @@ import { AuthService } from "../../core/snauth/auth/auth.service";
 export class AppbarComponent implements OnInit {
   public isAuthed: boolean;
 
-  constructor(private auth: AuthService) {
-    this.auth.isAuthed.subscribe(isAuthed => this.isAuthed = isAuthed)    
+  constructor(private auth: AuthService, private router: Router) {
+    this.auth.isAuthed.subscribe(isAuthed => this.isAuthed = isAuthed)
   }
 
   ngOnInit() { }
+
+  navigateToLogin() {   
+    this.router.navigate(['/auth', this.router.url, 'signin'])
+  }
 }

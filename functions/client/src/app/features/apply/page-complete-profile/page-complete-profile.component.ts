@@ -30,6 +30,7 @@ export class PageCompleteProfileComponent {
     });
 
     this.route.snapshot.data['profile'].subscribe(profile => {
+      console.log(profile)
       this.profForm.profileForm.get('legalName').setValue(profile.legalName);
       this.profForm.profileForm.get('preferredName').setValue(profile.preferredName);
       this.profForm.profileForm.get('phoneNumber').setValue(profile.phoneNumber);
