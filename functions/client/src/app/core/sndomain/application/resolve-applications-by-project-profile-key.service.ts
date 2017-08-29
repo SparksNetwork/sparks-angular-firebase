@@ -23,7 +23,7 @@ export class ResolveApplicationByProjectProfileKey implements Resolve<any> {
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<{}> | Observable<Application[] | void>> {
 
         const applications = this.auth.current.map(user => {
-            if (!user) return Observable.of({});
+            if (!user) return Observable.of(null);
             const projectKey = route.parent.paramMap.get('projectKey') || route.paramMap.get('projectKey');
             return list(this.query.byProjectProfileKey(projectKey, user.uid))
                   .switchMap(this.sorry.intercept(applicationsTransform));

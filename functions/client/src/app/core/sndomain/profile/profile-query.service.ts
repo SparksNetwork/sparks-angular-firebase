@@ -25,7 +25,7 @@ export class ProfileQueryService extends ProfileCollection {
         if (user && user.uid) {
           return obj(this.one(user.uid)).switchMap(this.sorry.intercept(profileTransform))
         } else {
-          return Observable.of({})
+          return Observable.of(null)
         }
       })
   }
