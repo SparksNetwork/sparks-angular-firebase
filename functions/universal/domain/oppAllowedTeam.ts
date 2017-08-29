@@ -1,12 +1,12 @@
 import { Observable } from 'rxjs'
 import { transformAndValidate } from "class-transformer-validator"
-import { Expose } from 'class-transformer'
+import { Expose, Type } from 'class-transformer'
+import { IsNotEmpty, IsDefined, ValidateNested } from 'class-validator'
 
 import {
   BaseCollection,
   Database,
 } from '../../lib/firebase-universal/shared'
-import { logErrors } from "../logger/logger";
 
 // import { Opp } from './opp'
 import { Team } from './team'
@@ -23,19 +23,26 @@ export class OppAllowedTeamCollection extends BaseCollection {
 
 export class OppAllowedTeam {
   @Expose()
+  @IsDefined()
+  @IsNotEmpty()
   public $key: string
 
+  @IsDefined()
+  @IsNotEmpty()
   public oppKey: string
+
+  @IsDefined()
+  @IsNotEmpty()
   public teamKey: string
-  // public opp: Opp
+  
+  @ValidateNested()
+  @Type(() => Team)
   public team: Team
 }
 
 // we have two transform functions for type safety, not sure why overloading isnt working see below
 export const oppAllowedTeamTransform = (input: object) =>
   transformAndValidate<OppAllowedTeam>(OppAllowedTeam, input)
-    .catch(logErrors)
 
 export const oppAllowedTeamsTransform = (input: object[]) =>
   transformAndValidate<OppAllowedTeam>(OppAllowedTeam, input)
-    .catch(logErrors)

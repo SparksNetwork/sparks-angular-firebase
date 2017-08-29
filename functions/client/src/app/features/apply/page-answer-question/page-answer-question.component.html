@@ -1,17 +1,28 @@
-<snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
-  The Organizer wants to know...
-</snui-header-simple>
-
-<div class="row">
-  <div class="col-xs-12">
-    <div class="segment">
-      <p class="card-text">Question here</p>
+<ng-container *ngIf='opp'>
+  <snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
+    The Organizer wants to know...
+  </snui-header-simple>
+  <form novalidate [formGroup]="answerForm">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="segment">
+          <p class="card-text">{{opp.question}}</p>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div class="form-input" [class.has-error]="!answerForm.get('answer').valid && answerForm.get('answer').touched">
+          <textarea formControlName="answer" rows="4" cols="50" placeholder="Type Your Answer"></textarea>
+        </div>
+      </div>
+      <div class="error" *ngIf="answerForm.get('answer').hasError('required') && answerForm.get('answer').touched">
+        Answer is required
+      </div>
     </div>
-  </div>
-</div>
 
-<snui-action-bar>
-  <div class="btn-group" role="group">
-    <a (click)="navigate()" class="btn btn-block btn-default">Next</a>
-  </div>
-</snui-action-bar>
+    <snui-action-bar>
+      <div class="btn-group" role="group">
+        <button (click)="submit()" [disabled]='!answerForm.valid && !applicationKey' class="btn btn-block btn-default">Next</button>
+      </div>
+    </snui-action-bar>
+  </form>
+</ng-container>

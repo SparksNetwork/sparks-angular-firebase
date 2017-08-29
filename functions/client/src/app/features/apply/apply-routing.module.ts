@@ -22,13 +22,14 @@ import { ResolveApplicationByKey } from "../../core/sndomain/application/resolve
 import { PageReviewDetailComponent } from "./page-review-detail/page-review-detail.component";
 import { PageApplyConfirmationComponent } from "./page-apply-confirmation/page-apply-confirmation.component";
 import { PageApplicationComponent } from "./page-application/page-application.component";
+import { ResolveProjectByOpp } from "../../core/sndomain/project/resolve-project-by-opp.service";
 
 const routes: Routes = [
     {
         path: ':oppKey',
         canActivate: [
-           RequireAuth,
-           RequireEmailVerification,
+            RequireAuth,
+            RequireEmailVerification,
         ],
         resolve: {
             opp: ResolveOppByOppKey,
@@ -37,7 +38,10 @@ const routes: Routes = [
         children: [
             {
                 path: 'complete-profile',
-                component: PageCompleteProfileComponent
+                component: PageCompleteProfileComponent,
+                resolve: {
+                    profile : ResolveProfile
+                }
             },
             {
                 path: 'answer-question',
@@ -63,12 +67,12 @@ const routes: Routes = [
                         component: PageOppHomeTeamsComponent,
                         canActivate: [
                             RequireProfileCompleteService,
-                        ], 
+                        ],
                         children: [
                             {
                                 path: '',
                                 component: PageOppTeamsComponent
-                            },                   
+                            },
                             {
                                 path: ':teamKey',
                                 component: PageOppTeamComponent,
@@ -84,18 +88,21 @@ const routes: Routes = [
                     },
                     {
                         path: 'apply-cofirmation',
-                        component: PageApplyConfirmationComponent
+                        component: PageApplyConfirmationComponent,
+                        resolve: {
+                            project: ResolveProjectByOpp
+                        }
                     },
                     {
                         path: 'edit-profile',
-                        component: PageCompleteProfileComponent
+                        component: PageCompleteProfileComponent                        
                     },
                     {
                         path: 'answer-question',
                         component: PageAnswerQuestionComponent
-                    },
+                    }
                 ]
-            }      
+            }
         ]
     }
 ];
@@ -107,10 +114,10 @@ const routes: Routes = [
 export class ApplyRoutingModule { }
 
 export const routedComponents = [
-    PageCompleteProfileComponent, 
+    PageCompleteProfileComponent,
     PageAnswerQuestionComponent,
-    PageOppHomeTeamsComponent, 
-    PageOppTeamsComponent, 
+    PageOppHomeTeamsComponent,
+    PageOppTeamsComponent,
     PageOppTeamComponent,
     OppTeamsSelectedComponent,
     OppTeamsNotSelectedComponent,

@@ -17,7 +17,7 @@
     "application": {
       ".indexOn": ["profileKey"]
     },
-    "applicationTeam": {
+    "applicationTeam":{
       ".indexOn": ["appKey"]
     }
   }

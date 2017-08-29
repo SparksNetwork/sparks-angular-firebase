@@ -1,20 +1,43 @@
-<snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
-  Sign In to the Sparks.Network
+<nav class="navbar navbar-default">
+  <div class="appbar-left">
+    <a class="navbar-brand" [routerLink]="['/']"><img src="assets/img/logo_sparksnetwork_white.svg" alt="sparks.network"/></a>
+  </div>
+  <div class="appbar-right">
+    <a [routerLink]="['../signup']" class="navbar-menu btn btn-primary" title="Sign up to Sparks.Network">Sign up</a>
+  </div>
+</nav>
+
+
+<snui-header-simple imageUrl="">
+  Sign In to<br/>Sparks.Network
 </snui-header-simple>
 
-<div class="row">
-  <div class="col-xs-12">
-    <div class="social-login segment">
-      <div class="btn-group" role="group">
-        <auth-button-signin-facebook></auth-button-signin-facebook>
-      </div>
-      <div class="btn-group" role="group">
-        <auth-button-signin-google></auth-button-signin-google>
-      </div>
+<div class="col-xs-12 col-sm-8 col-md-6">
+  <div class="row">
+    <auth-social-block label="Sign in"></auth-social-block>
+  </div>
+</div>
+
+<div class='segment'>
+  <auth-alert-error></auth-alert-error>
+  <auth-form-email-password></auth-form-email-password>
+
+  <div class="reset-link">
+    <p>Forgot Your Password? <a [routerLink]="['/auth', 'reset-password']">Reset it</a></p>
+  </div>
+
+</div>
+
+<div class="segment no-brd">
+  <div class="row">
+    <div class="col-xs-6">
+      <button class="btn btn-block btn-primary" routerLink='["/"]'>Cancel</button>
+    </div>
+    <div class="col-xs-6">
+      <button class="btn btn-block btn-secondary" id='signin' (click)='signInWithEmailAndPassword()' [disabled]="!epForm.credentialsForm.valid">Sign In</button>
     </div>
   </div>
 </div>
 
-<router-outlet></router-outlet>
 
 <snui-action-bar></snui-action-bar>

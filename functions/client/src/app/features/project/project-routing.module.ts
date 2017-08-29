@@ -42,9 +42,10 @@ import { ProjectOppTeamsComponent } from "./project-opp-teams/project-opp-teams.
 import { ProjectOppVisitRequirementsComponent } from "./project-opp-visit-requirements/project-opp-visit-requirements.component";
 import { ResolveBenefitByOppKey } from "../../core/sndomain/benefit/resolve-benefit-by-opp-key.service";
 import { ResolveContribByOppKey } from "../../core/sndomain/contrib/resolve-contrib-by-opp-key.service";
-import { ProjectLinksComponent } from "./project-links/project-links.component";
 import { ProjectOrganizerComponent } from "./project-organizer/project-organizer.component";
 import { ActionbarOppJoinComponent } from './actionbar-opp-join/actionbar-opp-join.component'
+import { ResolveApplicationByProjectProfileKey } from "../../core/sndomain/application/resolve-applications-by-project-profile-key.service";
+import { ProjectOppCardComponent } from "./project-opp-card/project-opp-card.component";
 
 const routes: Routes = [
   {
@@ -68,6 +69,9 @@ const routes: Routes = [
           {
             path: '',
             component: PageProjectHomeAllOppsComponent,
+            resolve: {
+              application: ResolveApplicationByProjectProfileKey
+            },
             canActivate: [
               PageProjectHomeAllOppsGuard,
             ]
@@ -118,6 +122,7 @@ export const routedComponents = [
   PageProjectOppComponent,
   ProjectOppDetailComponent,
   ProjectOppTeamsComponent,
+  ProjectOppCardComponent,
 
   AddToCalendarComponent,
   ProjectTitleComponent,
@@ -127,6 +132,5 @@ export const routedComponents = [
   ActionbarOppJoinComponent,
 
   ProjectOppVisitRequirementsComponent,
-  ProjectLinksComponent,
   ProjectOrganizerComponent
 ];

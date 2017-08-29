@@ -3,7 +3,7 @@
             <div class="row">
                   <carousel id="eventCarousel">
                         <slide *ngFor="let img of images">
-                              <div class="item" [ngStyle]="{'background': 'url(' + img.imageUrl + ')'}"></div>
+                              <div class="image" [ngStyle]="{'background': 'url(' + img.imageUrl + ')'}"></div>
                         </slide>
                   </carousel>
             </div>

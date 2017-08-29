@@ -1,29 +1,29 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <a href="#" class="navbar-menu" title="Dashboard">
-                <span class="ic ic-user"></span>
-            </a>
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="ic ic-search"></span>
-            </button>
-            <a class="navbar-brand" [routerLink]="['/']"><img src="assets/img/logo_sparksnetwork.svg" alt="sparks.network"/></a>
-            
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <a href="#" class="navbar-menu" title="Dashboard">
-                <span class="glyphicon glyphicon-user"></span>
-            </a>
-            <form class="navbar-form navbar-right">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for">
-                    <span class="input-group-btn">
-                            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-                    </span>
-                </div>
-            </form>
-        </div>
-        <!--/.nav-collapse -->
-    </div>
+<nav class="navbar navbar-default">
+  <div class="appbar-left">
+    <a class="navbar-brand" [routerLink]="['/']"><img src="assets/img/logo_sparksnetwork.svg" alt="sparks.network"/></a>
+  </div>
+  <div class="appbar-right">
+    <a class="collapsed appbar-menu" data-toggle="collapse" data-target="#appbar-collapse" aria-expanded="false" aria-controls="navbar">
+      <span class="ic ic-search"></span></a>
+    <a *ngIf="isAuthed" class="appbar-menu" title="Dashboard"><span class="ic ic-profile"></span></a>
+    <a *ngIf="!isAuthed" (click)="navigateToLogin()" class="appbar-menu btn btn-default" title="Login">Login</a>
+  </div>
 </nav>
+
+<div class="collapse" id="appbar-collapse">
+  <div class="row">
+    <div class="col-xs-12">
+    <form class="navbar-form">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search for">
+        <span class="input-group-btn">
+              <button class="btn btn-default" type="button"><span class="ic ic-search"></span></button>
+        </span>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+
 <router-outlet></router-outlet>
