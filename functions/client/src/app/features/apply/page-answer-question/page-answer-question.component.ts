@@ -84,7 +84,7 @@ export class PageAnswerQuestionComponent implements OnInit {
     this.applicationAction.update(this.applicationKey, value).subscribe(
       s => {
         if (this.edit)
-          this.router.navigate(['/apply', this.opp.$key, 'application', this.applicationKey, 'review-detail',], { relativeTo: this.route });
+          this.router.navigate(['../', 'teams'], { relativeTo: this.route })
         else
           this.router.navigate(['..', 'application', this.applicationKey, 'teams'], { relativeTo: this.route })
       }
