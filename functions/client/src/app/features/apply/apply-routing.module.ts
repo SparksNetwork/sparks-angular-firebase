@@ -65,9 +65,6 @@ const routes: Routes = [
                     {
                         path: 'teams',
                         component: PageOppHomeTeamsComponent,
-                        canActivate: [
-                            RequireProfileCompleteService,
-                        ],
                         children: [
                             {
                                 path: '',
