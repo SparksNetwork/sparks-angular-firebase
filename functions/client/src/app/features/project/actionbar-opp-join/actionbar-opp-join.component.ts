@@ -13,7 +13,7 @@ export class ActionbarOppJoinComponent implements OnChanges {
   @Input() opp: Opp;
   @Input() private applications: Application[];
   public application: Application;
-  actionBarType = ActionBarType
+  showCancelButton: boolean = false;
 
   constructor(
     public applicationAction: ApplicationActionService
@@ -21,9 +21,21 @@ export class ActionbarOppJoinComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.applications) {
-      let applications = this.applications.filter(s => s.status !== ApplicationStatus.Canceled && s.oppKey === this.opp.$key);
-      if (applications)
-        this.application = applications[0];
+      this.application = this.applications
+        .find(s =>
+          s.status !== ApplicationStatus.Canceled &&
+          s.oppKey === this.opp.$key);
+      if (this.application) {
+        switch (this.application.status) {
+          case ApplicationStatus.Accepted:
+          case ApplicationStatus.Pending:
+            this.showCancelButton = true;
+            break;
+          case ApplicationStatus.Incomplete:
+            this.showCancelButton = false;
+            break;
+        }
+      }
     }
   }
 
