@@ -45,6 +45,24 @@
     }
 }
 
+/* @include box-shadow(-1px -1px 2px rgba(0, 0, 0, .05), 0 1px 1px white inset), */
+@mixin box-shadow-multiple($shadow1, $shadow2:false, $shadow3:false, $shadow4:false, $shadow5:false) {
+ $params: $shadow1;
+  @if $shadow2 
+    { $params: $shadow1, $shadow2; }
+    @if $shadow3 != false
+      { $params: $shadow1, $shadow2, $shadow3; }
+      @if $shadow4 != false
+        { $params: $shadow1, $shadow2, $shadow3, $shadow4; }
+        @if $shadow5 != false
+          { $params: $shadow1, $shadow2, $shadow3, $shadow4, $shadow5; }
+
+  -webkit-box-shadow: $params;
+     -moz-box-shadow: $params;
+          box-shadow: $params;
+
+}
+
 @mixin Opacity($value) {
     $IEValue: $value*100;
     opacity: $value;
