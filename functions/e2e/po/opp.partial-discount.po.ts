@@ -25,56 +25,56 @@ export class OpportunityPartialDiscountPage {
     }
 
     getCommunityBenefitElement() {
-        return element.all(by.className('you-will-give-got segment')).first()
+        return element.all(by.className('you-get-give-join segment')).first()
             .$('ul').all(by.css('li')).first()
             .element(by.css('snui-card-item'))
             .$$('div.text').first().$('p');
     }
 
     getReceivedKarmaPointsElement() {
-        return element.all(by.className('you-will-give-got segment')).first()
+        return element.all(by.className('you-get-give-join segment')).first()
             .$('ul').all(by.css('li')).get(1)
             .element(by.css('snui-card-item'))
             .$$('div.text').first().$('h4');
     }
 
     getBenefitElement() {
-        return element.all(by.className('you-will-give-got segment')).first()
+        return element.all(by.className('you-get-give-join segment')).first()
             .$('ul').all(by.css('li')).get(2)
             .element(by.css('snui-card-item'))
             .$$('div.text').first();
     }
 
     getBenefitTitle() {
-        return element.all(by.className('you-will-give-got segment')).first()
+        return element.all(by.className('you-get-give-join segment')).first()
             .$('ul').all(by.css('li')).get(2)
             .element(by.css('snui-card-item'))
             .$$('div.text').first().$('h4').getText();
     }
 
     getBenefitDescription() {
-        return element.all(by.className('you-will-give-got segment')).first()
+        return element.all(by.className('you-get-give-join segment')).first()
             .$('ul').all(by.css('li')).get(2)
             .element(by.css('snui-card-item'))
             .$$('div.text').first().$('p').getText();
     }
 
     getContribElement() {
-        return element.all(by.className('you-will-give-got segment')).get(1)
+        return element.all(by.className('you-get-give-join segment')).get(1)
             .$('ul').all(by.css('li')).first()
             .element(by.css('snui-card-item'))
             .$$('div.text').first();
     }
 
     getContribTitle() {
-        return element.all(by.className('you-will-give-got segment')).get(1)
+        return element.all(by.className('you-get-give-join segment')).get(1)
             .$('ul').all(by.css('li')).first()
             .element(by.css('snui-card-item'))
             .$$('div.text').first().$('h4').getText();
     }
 
     getContribDescription() {
-        return element.all(by.className('you-will-give-got segment')).get(1)
+        return element.all(by.className('you-get-give-join segment')).get(1)
             .$('ul').all(by.css('li')).first()
             .element(by.css('snui-card-item'))
             .$$('div.text').first().$('p').getText();
@@ -85,17 +85,17 @@ export class OpportunityPartialDiscountPage {
     }
 
     getHiddenTeams() {
-        return element.all(by.className('you-will-give-got segment')).get(2)
+        return element.all(by.className('you-get-give-join segment')).get(2)
             .all(by.css('ul')).get(1).all(by.css('li'));
     }
 
     getCollapseLink() {
-        return element.all(by.className('you-will-give-got segment')).get(2)
+        return element.all(by.className('you-get-give-join segment')).get(2)
             .all(by.css('ul')).get(1).all(by.css('li')).last();
     }
 
     getFirstTeam(){
-        return element.all(by.className('you-will-give-got segment')).get(2)
+        return element.all(by.className('you-get-give-join segment')).get(2)
             .all(by.css('ul')).get(0).all(by.css('li')).first();
     }
 
