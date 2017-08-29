@@ -34,7 +34,6 @@ export class ApplicationCollection extends BaseCollection {
 export enum ApplicationStatus {
     Incomplete = "Incomplete",
     Pending = "Pending",
-    Applied = "Applied",
     Accepted = "Accepted",
     Canceled = "Canceled"
 }
