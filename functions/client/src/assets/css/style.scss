@@ -1272,6 +1272,7 @@ label {
     .project-img {
         height: 226px;
         width: 165px;
+        margin-bottom: 15px;
         @include border-radius(7.5px);
         position: relative;
         .dashboard-project-status {
@@ -1313,6 +1314,7 @@ label {
     }
     .event-date {
         margin-top: 12px;
+        margin-bottom: 4px;
     }
     .event-date,
     .event-location {
