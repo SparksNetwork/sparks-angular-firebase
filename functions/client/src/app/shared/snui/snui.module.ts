@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { RouterModule } from '@angular/router';
 import { HeaderSimpleComponent } from './header-simple/header-simple.component'
 
 import { LocationPipe } from "../pipes/location.pipe";
@@ -34,6 +35,7 @@ const COMPONENTS = [
     CommonModule,
     CarouselModule,
     CollapseModule,
+    RouterModule
   ],
   exports: COMPONENTS,
   declarations: COMPONENTS,
