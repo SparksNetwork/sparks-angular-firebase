@@ -1,42 +1,32 @@
 <snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
+  Select Your Opportunity for {{(project | async)?.title}}
 </snui-header-simple>
 
-<div class="row">
-  <div class="col-xs-12">
-    <div class="opportunity-head segment">
-      <div class="col-xs-6">
-        <div class="row">
-          <h3>{{(opp | async)?.title}}</h3>
-        </div>
-      </div>
+<div class="opp-head segment row">
+  <div class="col-xs-6">
+      <h2>{{(opp | async)?.title}}</h2>
+  </div>
 
-      <div class="col-xs-6">
-        <div class="dropdown opportunity-selector">
-          <button class="btn btn-default btn-lg dropdown-toggle" type="button" id="dropdownMenuOpportunity" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="true">
+  <div class="col-xs-6">
+    <div class="dropdown opp-selector">
+      <button class="btn dropdown-toggle" type="button" id="dropdownMenuOpportunity" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="true">
             {{(opp | async)?.discount | percent:'1.0-0'}} discount
             <span class="caret"></span>
           </button>
-           <ul *ngIf='opps | async' class="dropdown-menu" aria-labelledby="dropdownMenuOpportunity">
-            <li *ngFor="let _opp of opps | async"><a [routerLink]="['..', _opp.$key]" >{{_opp.discount | percent:'1.0-0'}} discount</a></li>
-          </ul> 
-        </div>
-      </div>
+      <ul *ngIf='opps | async' class="dropdown-menu" aria-labelledby="dropdownMenuOpportunity">
+        <li *ngFor="let _opp of opps | async"><a [routerLink]="['..', _opp.$key]">{{_opp.discount | percent:'1.0-0'}} discount</a></li>
+      </ul>
     </div>
   </div>
 </div>
 
-<project-opp-detail
-  [project]='project|async'
-  [opp]='opp|async'
-  [teams]='teams|async'
-  [benefits]='benefits|async'
-  [contribs]='contribs|async'
->
+
+<project-opp-detail [project]='project|async' [opp]='opp|async' [teams]='teams|async' [benefits]='benefits|async' [contribs]='contribs|async'>
 </project-opp-detail>
 
 
-<project-actionbar-opp-join [opp]='opp|async' [applications]= 'applications|async'>
+<project-actionbar-opp-join [opp]='opp|async' [applications]='applications|async'>
 </project-actionbar-opp-join>
 
 <snui-action-bar></snui-action-bar>
