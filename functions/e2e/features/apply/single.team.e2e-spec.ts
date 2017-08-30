@@ -5,6 +5,7 @@ import { setUsers, setData, signIn, signOut } from "../../firebase";
 import { USER_VERIFIED_PROFILE } from "../../fixtures/users";
 import { AnswerQuestionPage } from "../../po/apply.answer-question.po";
 import { PickTeamPage } from "../../po/apply.single.team.po";
+import { AnswerTeamQuestion } from "../../po/apply.answer-team-question.po";
 
 const waitTimeout = 5000
 
@@ -12,12 +13,15 @@ describe('Apply: verified user with complete profile information', () => {
     let KPCprojectPage: ProjectSingleOppPage
     let answerQuestionPage: AnswerQuestionPage
     let pickTeamPage: PickTeamPage
+    let answerTeamQuestion: AnswerTeamQuestion
+
     const fullyLoaded = require('../../fixtures/fully-loaded.json')
 
     beforeAll(done => {
         KPCprojectPage = new ProjectSingleOppPage();
         answerQuestionPage = new AnswerQuestionPage();
         pickTeamPage = new PickTeamPage()
+        answerTeamQuestion = new AnswerTeamQuestion()
         browser.waitForAngularEnabled(false)
         setUsers()
             .then(() => setData('/', fullyLoaded))
@@ -59,15 +63,23 @@ describe('Apply: verified user with complete profile information', () => {
 
         });
 
-        it('user can join the available team ', function () {
-            let team = pickTeamPage.getTeamLink(0)
-            browser.wait(ExpectedConditions.presenceOf(team),
-                waitTimeout, 'The available team was not present')
-            pickTeamPage.getTeamTitle(team).click()
+        it('user can click on the single team, on the next page he can press Previous to return' +
+            ' if he do not want to join ', function () {
+                let team = pickTeamPage.getTeamLink(0)
+                browser.wait(ExpectedConditions.presenceOf(team),
+                    waitTimeout, 'The available team was not present')
+                pickTeamPage.getTeamTitle(team).click()
+                browser.wait(ExpectedConditions.urlContains('/teams/KPC1'),
+                    waitTimeout, 'User was not taken to Answer team question page')
+                let previous = answerTeamQuestion.getPreviousButton()
+                browser.wait(ExpectedConditions.presenceOf(previous),
+                    waitTimeout, 'Previous button was missing from Answer team question page')
+                previous.click()
+                browser.wait(ExpectedConditions.urlContains('/teams'),
+                    waitTimeout, 'User was not taken to Answer team question page')
+                expect(true).toBeTruthy()
 
-            expect(true).toBeTruthy()
-
-        });
+            });
 
     })
 

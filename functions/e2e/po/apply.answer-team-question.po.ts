@@ -1,6 +1,6 @@
 import { browser, by, element } from 'protractor';
 
-export class PickTeamPage {
+export class AnswerTeamQuestion {
 
     getJoinTeamButton() {
         return element.all(by.className('btn btn-block btn-default')).first()
@@ -8,6 +8,14 @@ export class PickTeamPage {
 
     getPreviousButton() {
         return element.all(by.className('btn btn-block btn-default')).get(1)
+    }
+
+    getAnswer() {
+        return element(by.css('textarea'))
+    }
+
+    getQuestion() {
+        return element.all(by.className('card-text')).get(1)
     }
 
 
