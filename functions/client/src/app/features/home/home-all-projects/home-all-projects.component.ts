@@ -23,8 +23,4 @@ export class HomeAllProjectsComponent {
         return this.applications.find(application => application.projectKey == projectKey);
     }
 
-    selectProject(event, projectKey: string) {
-        event.preventDefault();
-        return this.router.navigate(['project', projectKey]);
-    }
 }
