@@ -49,6 +49,7 @@ import { ProjectOppCardComponent } from "./project-opp-card/project-opp-card.com
 import { PageOppApplicationCancelComponent } from "./page-opp-application-cancel/page-opp-application-cancel.component";
 import { PageProjectOppHomeComponent } from "./page-project-opp-home/page-project-opp-home.component";
 import { ProjectOppBenefitsComponent } from "./project-opp-benefits/project-opp-benefits.component";
+import { PageOppApplicationCancelConfirmationComponent } from "./page-opp-application-cancel-confirmation/page-opp-application-cancel-confirmation.component";
 
 const routes: Routes = [
   {
@@ -114,6 +115,10 @@ const routes: Routes = [
           {
             path: ':applicationKey/cancel',
             component: PageOppApplicationCancelComponent
+          },
+          {
+            path:'cancel-confirmation',
+            component: PageOppApplicationCancelConfirmationComponent
           }
         ]
       },
@@ -151,5 +156,6 @@ export const routedComponents = [
   ProjectOrganizerComponent,
 
   PageOppApplicationCancelComponent,
-  ProjectOppBenefitsComponent
+  ProjectOppBenefitsComponent,
+  PageOppApplicationCancelConfirmationComponent
 ];

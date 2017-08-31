@@ -35,10 +35,11 @@ export class PageOppApplicationCancelComponent implements OnInit {
     }
 
     save() {
-        if (this.applicationKey)
+        if (this.applicationKey) {
             this.applicationAction.changeStatus(this.applicationKey, ApplicationStatus.Canceled)
                 .subscribe(
-                () => this.router.navigate(["../",'cancel-confirmation'], {relativeTo: this.route})
+                     () => this.router.navigate(["../../", 'cancel-confirmation'], { relativeTo: this.route })
                 );
+        }
     }
 }
