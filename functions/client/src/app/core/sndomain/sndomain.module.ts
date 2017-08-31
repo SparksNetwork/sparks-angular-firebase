@@ -58,7 +58,6 @@ import {
   ApplicationTeamQueryService,
   ApplicationTeamActionService
 } from './applicationTeam'
-import { DateHelperService } from "../date-helper.service";
 
 
 @NgModule({
@@ -105,9 +104,7 @@ import { DateHelperService } from "../date-helper.service";
     ResolveApplicationByProjectProfileKey,
     ApplicationTeamQueryService,
     ApplicationTeamActionService,
-    ResolveApplicationTeamByAppKey,
-
-    DateHelperService
+    ResolveApplicationTeamByAppKey
   ],
 })
 export class SNDomainModule { }

@@ -102,14 +102,8 @@
                 "title": { "$ref": "#/constraints/nonEmptyString" },
                 "description": { "$ref": "#/constraints/nonEmptyString" },
                 "projectType": { "type": "string", "enum" : ["Simple", "MultiDay", "LongTerm", "Donor"] }, 
-                "startDateTime": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "endDateTime": {
-                    "type": "string",
-                    "format": "date-time"
-                },
+                "startDateTime": { "type": "string", "format": "date-time" },
+                "endDateTime": { "type": "string", "format": "date-time" },
                 "location": {
                     "type": "object",
                     "properties": {
@@ -247,7 +241,10 @@
                 "projectProfileKey": { "$ref": "#/constraints/nonEmptyString" },
                 "status": { "type": "string", "enum": [ "Incomplete", "Pending", "Accepted", "Canceled" ] },
                 "oppQuestion": { "type": "string"},
-                "oppAnswer": { "type": "string"}
+                "oppAnswer": { "type": "string"},
+                "submittedOn": { "type": "string", "format": "date-time" },
+                "acceptedOn": { "type": "string", "format": "date-time" },
+                "canceledOn": { "type": "string", "format": "date-time" }
             }
         }
     },
