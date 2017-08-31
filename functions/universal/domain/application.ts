@@ -40,8 +40,7 @@ export enum ApplicationStatus {
 
 export enum ApplicationStepFinished{
     Answer = "Answer",
-    Team = "Team",
-    Review = "Review"
+    Team = "Team"
 }
 
 export class Application {
