@@ -34,7 +34,7 @@ export class PageOppApplicationCancelComponent implements OnInit {
         this.applicationKey = this.route.snapshot.params["applicationKey"];
     }
 
-    save() {
+    confirm() {
         if (this.applicationKey) {
             this.applicationAction.changeStatus(this.applicationKey, ApplicationStatus.Canceled)
                 .subscribe(
