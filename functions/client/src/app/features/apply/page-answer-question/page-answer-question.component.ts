@@ -31,7 +31,7 @@ export class PageAnswerQuestionComponent implements OnInit {
       answer: ['', [Validators.required]]
     });
 
-    this.editFromReviewPage = !!this.route.snapshot.url.find(segment => segment.path.indexOf('edit') > -1);
+    this.editFromReviewPage = !!this.route.snapshot.url.find(segment => segment.path.indexOf('edit-answer') > -1);
   }
 
   ngOnInit() {
@@ -87,7 +87,7 @@ export class PageAnswerQuestionComponent implements OnInit {
     this.applicationAction.update(this.applicationKey, value).subscribe(
       s => {
         if (this.editFromReviewPage) {
-          this.router.navigate(['../..', 'review-detail'], { relativeTo: this.route })
+          this.router.navigate(['../', 'review-detail'], { relativeTo: this.route })
           return;
         }
 
