@@ -22,22 +22,4 @@ export class HomeAllProjectsComponent {
 
         return this.applications.find(application => application.projectKey == projectKey);
     }
-
-    selectProject(event, projectKey: string) {
-        event.preventDefault();
-
-        const application = this.getApplicationByProjectkey(projectKey);
-
-        if (!application) return this.router.navigate(['project', projectKey]);
-
-        switch (application.status) {
-            case ApplicationStatus.Incomplete:
-                this.router.navigate(['/apply', application.oppKey, 'answer-question'])
-                break;
-            case ApplicationStatus.Pending:
-            default:
-                this.router.navigate(['project', projectKey]);
-                break;
-        }
-    }
 }
