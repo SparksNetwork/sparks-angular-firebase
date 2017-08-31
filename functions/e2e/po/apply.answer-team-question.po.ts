@@ -3,11 +3,11 @@ import { browser, by, element } from 'protractor';
 export class AnswerTeamQuestion {
 
     getJoinTeamButton() {
-        return element.all(by.className('btn btn-block btn-default')).first()
+        return element.all(by.className('btn btn-block btn-default')).get(1)
     }
 
     getPreviousButton() {
-        return element.all(by.className('btn btn-block btn-default')).get(1)
+        return element.all(by.className('btn btn-block btn-default')).first()
     }
 
     getAnswer() {

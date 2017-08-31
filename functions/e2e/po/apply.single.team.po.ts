@@ -14,12 +14,36 @@ export class PickTeamPage {
         return element.all(by.css('apply-opp-teams-not-selected a'))
     }
 
-    getTeamLink(teamIndex: number) {
+    getAvailableTeamLink(teamIndex: number) {
         return element.all(by.css('apply-opp-teams-not-selected a')).get(teamIndex)
     }
 
-    getTeamTitle(teamLink:ElementFinder) {
-        return  teamLink.element(by.css('div.team-item.segment div.text h4'))
+    getAvailableTeamTitle(teamLink: ElementFinder) {
+        return teamLink.element(by.css('div.team-item.segment div.text h4'))
+    }
+
+    getAvailableTeamIcon(teamLink: ElementFinder) {
+        return teamLink.element(by.css('div.team-item.segment div.icon span'))
+    }
+
+    getSelectedTeams() {
+        return element.all(by.css('div.selected-team-list div.selected-team-item'))
+    }
+    getSelectedTeam(teamIndex: number) {
+        return element.all(by.css('div.selected-team-list div.selected-team-item'))
+            .get(teamIndex)
+    }
+
+    getSelectedTeamTitle(team: ElementFinder) {
+        return team.element(by.css('h4'))
+    }
+
+    getDeleteButtton(team: ElementFinder){
+       return team.element(by.css('a'))
+    }
+
+    getDeleteAllButton(){
+        return element.all(by.css('div.segment-title-link-container')).first().element(by.css('a'))
     }
 
 }

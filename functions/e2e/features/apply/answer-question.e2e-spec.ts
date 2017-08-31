@@ -101,16 +101,17 @@ describe('Apply: user is asked a question before applying', () => {
 
     function TestsCommonToAllTypeOfVerifiedUsers() {
 
-        it('it should display the question  ', function () {
-            let question = answerQuestionPage.getQuestion()
-            browser.wait(ExpectedConditions.presenceOf(question),
-                waitTimeout, 'Next button name was not present')
-            question.getText().then((str) => {
-                browser.getCurrentUrl().then((url) => {
-                    let oppKey: string = GetOppKey(url)
-                    expect(str).toMatch(fullyLoaded['opp'][oppKey]['question'])
-                })
-            })
+it('it should display the question  ', function () {
+    let question = answerQuestionPage.getQuestion()
+    browser.wait(ExpectedConditions.presenceOf(question),
+        waitTimeout, 'The text of the question was not present')
+    question.getText().then((str) => {
+        browser.getCurrentUrl().then((url) => {
+            let oppKey: string = GetOppKey(url)
+            expect(str).toMatch(fullyLoaded['opp'][oppKey]['question'],
+                'The text of the question was not correct')
+        })
+    })
         });
 
         it('next button is clickable only if the answer field is not empty ', function () {
