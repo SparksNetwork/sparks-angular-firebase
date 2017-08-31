@@ -48,6 +48,7 @@ import { ResolveApplicationByProjectProfileKey } from "../../core/sndomain/appli
 import { ProjectOppCardComponent } from "./project-opp-card/project-opp-card.component";
 import { PageOppApplicationCancelComponent } from "./page-opp-application-cancel/page-opp-application-cancel.component";
 import { PageProjectOppHomeComponent } from "./page-project-opp-home/page-project-opp-home.component";
+import { ProjectOppBenefitsComponent } from "./project-opp-benefits/project-opp-benefits.component";
 
 const routes: Routes = [
   {
@@ -149,5 +150,6 @@ export const routedComponents = [
   ProjectOppVisitRequirementsComponent,
   ProjectOrganizerComponent,
 
-  PageOppApplicationCancelComponent
+  PageOppApplicationCancelComponent,
+  ProjectOppBenefitsComponent
 ];
