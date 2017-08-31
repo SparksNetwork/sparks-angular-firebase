@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from "rxjs/Observable";
 import { Opp } from "../../../../../../universal/domain/opp";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Project } from "../../../../../../universal/domain/project";
 import { Benefit } from "../../../../../../universal/domain/benefit";
 import { ActionBarType } from "../../../shared/snui/action-bar/action-bar.component";
@@ -21,7 +21,8 @@ export class PageOppApplicationCancelComponent implements OnInit {
 
     constructor(
         public route: ActivatedRoute,
-        public applicationAction: ApplicationActionService
+        public applicationAction: ApplicationActionService,
+        public router: Router
     ) { }
 
     ngOnInit() {
@@ -34,11 +35,10 @@ export class PageOppApplicationCancelComponent implements OnInit {
     }
 
     save() {
-        if(this.applicationKey)
-        this.applicationAction
-            .changeStatus(this.applicationKey, ApplicationStatus.Canceled)
-            .subscribe(
-               () => console.log('canceled')
-            );
+        if (this.applicationKey)
+            this.applicationAction.changeStatus(this.applicationKey, ApplicationStatus.Canceled)
+                .subscribe(
+                () => this.router.navigate(["../",'cancel-confirmation'], {relativeTo: this.route})
+                );
     }
 }
