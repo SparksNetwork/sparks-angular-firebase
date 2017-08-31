@@ -4,8 +4,10 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: 'page-opp-application-cancel.component.html'
 })
 
-export class PageOppApplicationComponent implements OnInit {
+export class PageOppApplicationCancelComponent implements OnInit {
     constructor() { }
 
-    ngOnInit() { }
+    ngOnInit() { 
+        console.log('loaded');
+    }
 }
