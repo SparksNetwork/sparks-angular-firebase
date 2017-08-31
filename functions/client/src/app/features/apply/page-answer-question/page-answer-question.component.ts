@@ -15,6 +15,7 @@ export class PageAnswerQuestionComponent implements OnInit {
   public opp: Opp;
   public answerForm: FormGroup;
   private edit: boolean = false;
+  public editFromReviewPage: boolean;
 
   constructor(
     public applicationAction: ApplicationActionService,
@@ -28,7 +29,9 @@ export class PageAnswerQuestionComponent implements OnInit {
 
     this.answerForm = builder.group({
       answer: ['', [Validators.required]]
-    })
+    });
+
+    this.editFromReviewPage = !!this.route.snapshot.url.find(segment => segment.path.indexOf('edit') > -1);
   }
 
   ngOnInit() {
@@ -83,6 +86,11 @@ export class PageAnswerQuestionComponent implements OnInit {
     }
     this.applicationAction.update(this.applicationKey, value).subscribe(
       s => {
+        if (this.editFromReviewPage) {
+          this.router.navigate(['../..', 'review-detail'], { relativeTo: this.route })
+          return;
+        }
+
         if (this.edit)
           this.router.navigate(['../', 'teams'], { relativeTo: this.route })
         else
