@@ -131,5 +131,4 @@ it('it should display the question  ', function () {
         let splittedUrl = url.split('/');
         return splittedUrl[splittedUrl.length - 2];
     }
-
 })
