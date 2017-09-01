@@ -8,7 +8,8 @@ import { AuthRoutingModule, routedComponents } from './auth-routing.module'
 import { FormEmailPasswordComponent } from './form-email-password/form-email-password.component'
 import { AlertErrorComponent } from './alert-error/alert-error.component'
 import { FormResetPasswordComponent } from './form-reset-password/form-reset-password.component'
-import { SocialBlockComponent } from './social-block/social-block.component'
+import { SocialBlockComponent } from './social-block/social-block.component';
+import { HeaderAuthComponent } from './header-auth/header-auth.component'
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { SocialBlockComponent } from './social-block/social-block.component'
     AlertErrorComponent,
     FormResetPasswordComponent,
     SocialBlockComponent,
+    HeaderAuthComponent,
   ],
   imports: [
     CommonModule,
