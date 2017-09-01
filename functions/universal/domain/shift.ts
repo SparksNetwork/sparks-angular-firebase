@@ -15,6 +15,10 @@ export class ShiftCollection extends BaseCollection {
             firebase: '/shift'
         })
     }
+
+    public byTeamKey(key: string){
+        return this.by('teamKey', key)
+    }
 }
 
 export class Shift {
@@ -40,8 +44,12 @@ export class Shift {
     @IsDefined()
     @IsNotEmpty()
     public teamTitle: string
+
+    @IsDefined()
+    @IsNotEmpty()
+    public teamIcon: string
 }
 
 // we have two transform functions for type safety, not sure why overloading isnt working see below
-export const teamShiftTransform = (input: object) => transformAndValidate<Shift>(Shift, input)
-export const teamShiftsTransform = (input: object[]) => transformAndValidate<Shift>(Shift, input)
+export const shiftTransform = (input: object) => transformAndValidate<Shift>(Shift, input)
+export const shiftsTransform = (input: object[]) => transformAndValidate<Shift>(Shift, input)
