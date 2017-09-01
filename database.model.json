@@ -221,17 +221,20 @@
         },
         "applicationTeamDef": {
             "required": [
-                "appKey", "teamKey"
+                "appKey", "teamKey", "joinedOn"
             ],
             "additionalProperties": false,
             "properties": {
                 "appKey": { "$ref": "#/constraints/nonEmptyString" },
-                "teamKey": { "$ref": "#/constraints/nonEmptyString" }
+                "teamKey": { "$ref": "#/constraints/nonEmptyString" },
+                "question": { "$ref": "#/constraints/nonEmptyString" },
+                "answer": { "$ref": "#/constraints/nonEmptyString" },
+                "joinedOn": { "type": "string", "format": "date-time" }
             }
         },
         "applicationDef": {
             "required": [
-                "oppKey", "profileKey","status"
+                "oppKey", "profileKey", "status", "createdOn"
             ],
             "additionalProperties": false,
             "properties": {
@@ -240,8 +243,9 @@
                 "projectKey": { "$ref": "#/constraints/nonEmptyString" },
                 "projectProfileKey": { "$ref": "#/constraints/nonEmptyString" },
                 "status": { "type": "string", "enum": [ "Incomplete", "Pending", "Accepted", "Canceled" ] },
-                "oppQuestion": { "type": "string"},
-                "oppAnswer": { "type": "string"},
+                "oppQuestion": { "$ref": "#/constraints/nonEmptyString" },
+                "oppAnswer": { "$ref": "#/constraints/nonEmptyString" },
+                "createdOn": { "type": "string", "format": "date-time" },
                 "submittedOn": { "type": "string", "format": "date-time" },
                 "acceptedOn": { "type": "string", "format": "date-time" },
                 "canceledOn": { "type": "string", "format": "date-time" }

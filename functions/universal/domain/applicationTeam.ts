@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsDefined } from 'class-validator'
+import { IsNotEmpty, IsDefined, IsDateString } from 'class-validator'
 import { transformAndValidate } from 'class-transformer-validator'
 import { Expose } from 'class-transformer'
 
@@ -35,8 +35,15 @@ export class ApplicationTeam {
     @IsDefined()
     appKey: string;
    
+    @IsNotEmpty()
     question: string;
+
+    @IsNotEmpty()
     answer: string;
+
+    @IsDateString()
+    @IsDefined()
+    joinedOn: string;
 }
 
 const validateOpt = { validator: { skipMissingProperties: true } };

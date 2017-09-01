@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsDefined, IsEnum } from 'class-validator'
+import { IsNotEmpty, IsDefined, IsEnum, IsDateString } from 'class-validator'
 import { transformAndValidate } from 'class-transformer-validator'
 import { Expose } from 'class-transformer'
 
@@ -60,11 +60,27 @@ export class Application {
     @IsDefined()
     projectProfileKey: string;
 
+    @IsNotEmpty()
     oppQuestion: string;
+
+    @IsNotEmpty()
     oppAnswer: string;
 
     @IsEnum(ApplicationStatus)
-    status: ApplicationStatus
+    status: ApplicationStatus;
+
+    @IsDateString()
+    @IsDefined()
+    createdOn: string;
+
+    @IsDateString()
+    submittedOn?: string;
+
+    @IsDateString()
+    acceptedOn?: string;
+
+    @IsDateString()
+    canceledOn?: string;
 }
 
 const validateOpt = { validator: { skipMissingProperties: true } };
