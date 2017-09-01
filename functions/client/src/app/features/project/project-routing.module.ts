@@ -46,6 +46,10 @@ import { ProjectOrganizerComponent } from "./project-organizer/project-organizer
 import { ActionbarOppJoinComponent } from './actionbar-opp-join/actionbar-opp-join.component'
 import { ResolveApplicationByProjectProfileKey } from "../../core/sndomain/application/resolve-applications-by-project-profile-key.service";
 import { ProjectOppCardComponent } from "./project-opp-card/project-opp-card.component";
+import { PageOppApplicationCancelComponent } from "./page-opp-application-cancel/page-opp-application-cancel.component";
+import { PageProjectOppHomeComponent } from "./page-project-opp-home/page-project-opp-home.component";
+import { ProjectOppBenefitsComponent } from "./project-opp-benefits/project-opp-benefits.component";
+import { PageOppApplicationCancelConfirmationComponent } from "./page-opp-application-cancel-confirmation/page-opp-application-cancel-confirmation.component";
 
 const routes: Routes = [
   {
@@ -95,7 +99,7 @@ const routes: Routes = [
       },
       {
         path: 'opp/:oppKey',
-        component: PageProjectOppComponent,
+        component: PageProjectOppHomeComponent,
         resolve: {
           opp: ResolveOppByOppKey,
           teams: ResolveTeamByOppKey,
@@ -103,6 +107,20 @@ const routes: Routes = [
           contribs: ResolveContribByOppKey,
           application: ResolveApplicationByProjectProfileKey
         },
+        children: [
+          {
+            path: '',
+            component: PageProjectOppComponent
+          },
+          {
+            path: ':applicationKey/cancel',
+            component: PageOppApplicationCancelComponent
+          },
+          {
+            path:'cancel-confirmation',
+            component: PageOppApplicationCancelConfirmationComponent
+          }
+        ]
       },
     ]
   }
@@ -122,6 +140,7 @@ export const routedComponents = [
   PageProjectHomeSingleOppComponent,
   PageProjectHomeEditComponent,
   PageProjectOppComponent,
+  PageProjectOppHomeComponent,
   ProjectOppDetailComponent,
   ProjectOppTeamsComponent,
   ProjectOppCardComponent,
@@ -134,5 +153,9 @@ export const routedComponents = [
   ActionbarOppJoinComponent,
 
   ProjectOppVisitRequirementsComponent,
-  ProjectOrganizerComponent
+  ProjectOrganizerComponent,
+
+  PageOppApplicationCancelComponent,
+  ProjectOppBenefitsComponent,
+  PageOppApplicationCancelConfirmationComponent
 ];

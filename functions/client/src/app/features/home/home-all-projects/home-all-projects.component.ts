@@ -22,5 +22,4 @@ export class HomeAllProjectsComponent {
 
         return this.applications.find(application => application.projectKey == projectKey);
     }
-
 }

@@ -95,6 +95,10 @@ const routes: Routes = [
                     {
                         path: 'answer-question',
                         component: PageAnswerQuestionComponent
+                    },
+                    {
+                        path: 'edit-answer',
+                        component: PageAnswerQuestionComponent
                     }
                 ]
             }
