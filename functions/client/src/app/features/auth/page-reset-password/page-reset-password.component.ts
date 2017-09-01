@@ -10,6 +10,7 @@ export class PageResetPasswordComponent implements OnInit {
 
   public passwordResetEmailForm: FormGroup
   public resetEmailSentTo: string;
+  public showErrors: boolean = false;
 
   constructor(
     public builder: FormBuilder,
@@ -21,6 +22,10 @@ export class PageResetPasswordComponent implements OnInit {
   }
 
   public sendPasswordResetEmail() {
+    if (!this.passwordResetEmailForm.valid) {
+      this.showErrors = true;
+      return;
+    }
     this.resetEmailSentTo = null;
 
     this.auth.sendPasswordResetEmail(this.passwordResetEmailForm.value.email).then((email) => {
@@ -29,6 +34,10 @@ export class PageResetPasswordComponent implements OnInit {
       this.resetEmailSentTo = email;
       this.passwordResetEmailForm.reset();
     })
+  }
+
+  public onKeyUp() {
+    this.showErrors = false;
   }
 
   ngOnInit() {
