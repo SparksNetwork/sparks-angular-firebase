@@ -10,7 +10,7 @@ import { Opp } from "../../../../../../universal/domain/opp";
   templateUrl: './page-answer-question.component.html',
 })
 export class PageAnswerQuestionComponent implements OnInit {
-  private applicationKey: string;
+  public applicationKey: string;
   private profileKey: string;
   public opp: Opp;
   public answerForm: FormGroup;
