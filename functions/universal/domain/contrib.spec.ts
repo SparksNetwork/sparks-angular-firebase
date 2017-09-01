@@ -33,7 +33,7 @@ describe('contribTransform', () => {
       shiftMinLength: 4,
       shiftMaxLength: 4,
       description: "",
-      icon: "glyphicon-time",
+      icon: "",
       title: "",
       type: "Shift"
     })
@@ -45,6 +45,7 @@ describe('contribTransform', () => {
         expect(validationFailure(errs, 'oppKey', 'isNotEmpty')).toBeTruthy()
         expect(validationFailure(errs, 'title', 'isNotEmpty')).toBeTruthy()
         expect(validationFailure(errs, 'description', 'isNotEmpty')).toBeTruthy()
+        expect(validationFailure(errs, 'icon', 'isNotEmpty')).toBeTruthy()
       })
       .then(done)
   });

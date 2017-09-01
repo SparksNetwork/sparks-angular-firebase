@@ -49,6 +49,7 @@ export class Contrib {
     @IsNotEmpty()
     description: string;
 
+    @IsNotEmpty()
     icon?: string;
 
     @IsInt()

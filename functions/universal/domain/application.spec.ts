@@ -71,4 +71,18 @@ describe('applicationTransform', () => {
             .then(done)
     });
 
+    it('requires step type to be Enum', done => {
+
+        applicationTransform({
+            step: "Unknown"
+        })
+            .then(() => {
+                expect(false).toBeTruthy()
+            })
+            .catch((errs: ValidationError[]) => {
+                expect(validationFailure(errs, 'step', 'isEnum')).toBeTruthy()
+            })
+            .then(done)
+    });
+
 });
