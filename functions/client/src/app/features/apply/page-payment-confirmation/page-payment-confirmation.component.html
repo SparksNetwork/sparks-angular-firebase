@@ -1,3 +1,13 @@
-<p>
-  page-payment-confirmation works!
-</p>
+<snui-header-simple imageUrl='https://placeimg.com/1140/410/animals/grayscale'>
+  Congratulations!<br/>You're In!
+</snui-header-simple>
+
+<div class="row" *ngIf="project | async; let project">
+  <div class="col-xs-12">
+    <div class="segment">
+      <p class="card-text">
+        Thank you for volunteering for {{project.title}}. Have a great time!
+      </p>
+    </div>
+  </div>
+</div>

@@ -104,7 +104,10 @@ const routes: Routes = [
                     },
                     {
                         path: 'payment-confirmation',
-                        component: PagePaymentConfirmationComponent
+                        component: PagePaymentConfirmationComponent,
+                        resolve: {
+                            project: ResolveProjectByOpp
+                        }
                     }
                 ]
             }
