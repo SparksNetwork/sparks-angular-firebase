@@ -67,3 +67,5 @@ typings/
 .env
 
 /functions/package-lock.json
+sn-key.json
+sparksnetwork-mnq-firebase-adminsdk.json
