@@ -63,6 +63,7 @@ describe('projectTransform', () => {
       },
       projectPageUrl: "",
       shareKarmaPoints: 2,
+      communityBenefit: ""
     })
       .then(() => {
         expect(false).toBeTruthy()
@@ -71,6 +72,7 @@ describe('projectTransform', () => {
         expect(validationFailure(errs, '$key', 'isNotEmpty')).toBeTruthy()
         expect(validationFailure(errs, 'title', 'isNotEmpty')).toBeTruthy()
         expect(validationFailure(errs, 'description', 'isNotEmpty')).toBeTruthy()
+        expect(validationFailure(errs, 'communityBenefit', 'isNotEmpty')).toBeTruthy()
         expect(validationFailure(errs, 'images', 'isNotEmpty', NESTED, 'imageUrl', ARRAY)).toBeTruthy()
         expect(validationFailure(errs, 'organizer', 'isNotEmpty', NESTED, 'organizerKey')).toBeTruthy()
         expect(validationFailure(errs, 'organizer', 'isNotEmpty', NESTED, 'name')).toBeTruthy()

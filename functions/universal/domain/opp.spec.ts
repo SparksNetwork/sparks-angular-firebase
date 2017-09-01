@@ -35,6 +35,7 @@ describe('oppTransform', () => {
       contribValue: 2,
       benefitValue: 4,
       title: "",
+      question: ""
     })
       .then(() => {
         expect(false).toBeTruthy()
@@ -43,6 +44,8 @@ describe('oppTransform', () => {
         expect(validationFailure(errs, '$key', 'isNotEmpty')).toBeTruthy()
         expect(validationFailure(errs, 'projectKey', 'isNotEmpty')).toBeTruthy()
         expect(validationFailure(errs, 'title', 'isNotEmpty')).toBeTruthy()
+        expect(validationFailure(errs, 'question', 'isNotEmpty')).toBeTruthy()
+        expect(validationFailure(errs, 'icon', 'isNotEmpty')).toBeTruthy()
       })
       .then(done)
   });
@@ -56,6 +59,7 @@ describe('oppTransform', () => {
       contribValue: 'letters',
       benefitValue: 't',
       title: "title",
+      karma: "zz"
     })
       .then(() => {
         expect(false).toBeTruthy()
@@ -63,6 +67,7 @@ describe('oppTransform', () => {
       .catch((errs: ValidationError[]) => {
         expect(validationFailure(errs, 'contribValue', 'isNumber')).toBeTruthy()
         expect(validationFailure(errs, 'benefitValue', 'isNumber')).toBeTruthy()
+        expect(validationFailure(errs, 'karma', 'isNumber')).toBeTruthy()
       })
       .then(done)
   });

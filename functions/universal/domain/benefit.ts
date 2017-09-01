@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsEnum, IsDefined } from 'class-validator'
+import { IsNotEmpty, IsEnum, IsDefined, IsNumber } from 'class-validator'
 import { transformAndValidate } from 'class-transformer-validator'
 import { Expose } from 'class-transformer'
 
@@ -51,8 +51,10 @@ export class Benefit {
     @IsNotEmpty()
     description: string;
 
+    @IsNotEmpty()
     icon?: string;
 
+    @IsNumber()
     value: number;
 }
 

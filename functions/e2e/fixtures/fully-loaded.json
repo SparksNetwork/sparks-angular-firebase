@@ -121,11 +121,13 @@
   "applicationTeam": {
     "APT1": {
       "appKey": "AP1",
-      "teamKey": "LC1"
+      "teamKey": "LC1",
+      "joinedOn": "2017-09-01T07:54:37.744Z"
     },
     "APT2": {
       "appKey": "AP1",
-      "teamKey": "LC2"
+      "teamKey": "LC2",
+      "joinedOn": "2017-09-01T07:00:00.000Z"
     }
   },
   "opp": {

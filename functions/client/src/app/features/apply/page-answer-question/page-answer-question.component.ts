@@ -71,6 +71,8 @@ export class PageAnswerQuestionComponent implements OnInit {
       application.status = ApplicationStatus.Incomplete;
       application.projectKey = this.opp.projectKey;
       application.projectProfileKey =  this.applicationAction.query.generateProjectProfileKey(application.projectKey, application.profileKey);
+      application.createdOn = new Date().toISOString();
+
       this.applicationAction.create(application)
         .subscribe(s => {
           this.applicationKey = s.json();
