@@ -8,6 +8,7 @@ import { FormCompleteProfileComponent } from "./form-complete-profile/form-compl
 import { ReviewProfileComponent } from './review-profile/review-profile.component';
 import { OppTeamsSelectedComponent } from "./opp-teams-selected/opp-teams-selected.component";
 import { OppTeamsNotSelectedComponent } from "./opp-teams-not-selected/opp-teams-not-selected.component";
+import { ShiftListComponent } from "./shift-list/shift-list.component";
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { OppTeamsNotSelectedComponent } from "./opp-teams-not-selected/opp-teams
     OppTeamsSelectedComponent,
     OppTeamsNotSelectedComponent,
     FormCompleteProfileComponent,
-    ReviewProfileComponent
+    ReviewProfileComponent,
+    ShiftListComponent,
   ],
   imports: [
     CommonModule,
