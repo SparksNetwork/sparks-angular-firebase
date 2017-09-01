@@ -3,7 +3,7 @@ import { ActionBarType } from "../../../shared/snui/action-bar/action-bar.compon
 import { Application, ApplicationStatus } from "../../../../../../universal/domain/application";
 import { ApplicationActionService } from "../../../core/sndomain/application";
 import { Opp } from "../../../../../../universal/domain/opp";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'project-actionbar-opp-join',
@@ -18,7 +18,8 @@ export class ActionbarOppJoinComponent implements OnChanges {
 
   constructor(
     public applicationAction: ApplicationActionService,
-    public router: Router
+    public router: Router,
+    public route: ActivatedRoute
   ) { }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -39,5 +40,13 @@ export class ActionbarOppJoinComponent implements OnChanges {
         }
       }
     }
+  }
+
+  cancel(application: Application) {
+    let oppKey = this.route.parent.snapshot.params["oppKey"];
+    if (oppKey)
+      this.router.navigate([application.$key, 'cancel'], { relativeTo: this.route })
+    else
+      this.router.navigate(['../','opp', application.oppKey,'join', application.$key, 'cancel'], { relativeTo: this.route })
   }
 }

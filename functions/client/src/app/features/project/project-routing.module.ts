@@ -94,8 +94,8 @@ const routes: Routes = [
               benefits: ResolveBenefitByFirstOpp,
               application: ResolveApplicationByProjectProfileKey
             }
-          },
-        ],
+          }
+        ],     
       },
       {
         path: 'opp/:oppKey',
@@ -117,7 +117,15 @@ const routes: Routes = [
             component: PageOppApplicationCancelComponent
           },
           {
+            path: 'join/:applicationKey/cancel',
+            component: PageOppApplicationCancelComponent
+          },
+          {
             path:'cancel-confirmation',
+            component: PageOppApplicationCancelConfirmationComponent
+          },
+          {
+            path:'join/cancel-confirmation',
             component: PageOppApplicationCancelConfirmationComponent
           }
         ]
