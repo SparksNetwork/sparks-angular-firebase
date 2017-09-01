@@ -33,7 +33,11 @@ export class Opp {
   @IsNotEmpty()
   public projectKey: string;
 
+  @IsNotEmpty()
   public icon: string;
+
+  @IsNumber()
+  public karma?: number;
 
   @IsNumber()
   public contribValue?: number;
@@ -45,6 +49,7 @@ export class Opp {
   @IsNotEmpty()
   public title: string;
 
+  @IsNotEmpty()
   public question: string;
 
   get discount(): number {
