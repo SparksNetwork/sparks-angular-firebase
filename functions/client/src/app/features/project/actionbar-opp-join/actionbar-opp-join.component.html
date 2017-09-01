@@ -5,10 +5,10 @@
   </ng-container>
   <ng-container *ngIf='application'>
     <ng-container *ngIf='showCancelButton'>
-      <a class="btn btn-bordered btn-block" [routerLink]="[application.$key, 'cancel']" title="Cancel">Cancel</a>
+      <a class="btn btn-bordered btn-block" (click)="cancel(application)" title="Cancel">Cancel</a>
     </ng-container>
     <ng-container *ngIf='!showCancelButton'>
-        <a class="btn btn-bordered btn-block" title="Continue">Continue</a>
+        <a class="btn btn-bordered btn-block" (click)="continue(application)" title="Continue">Continue</a>
       </ng-container>
   </ng-container>
 </div>

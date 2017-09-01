@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApplicationActionService } from "../../../core/sndomain/application";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Application, ApplicationStatus } from "../../../../../../universal/domain/application";
+import { Application, ApplicationStatus, ApplicationStepFinished } from "../../../../../../universal/domain/application";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Opp } from "../../../../../../universal/domain/opp";
 
@@ -72,6 +72,7 @@ export class PageAnswerQuestionComponent implements OnInit {
       application.projectKey = this.opp.projectKey;
       application.projectProfileKey =  this.applicationAction.query.generateProjectProfileKey(application.projectKey, application.profileKey);
       application.createdOn = new Date().toISOString();
+
       this.applicationAction.create(application)
         .subscribe(s => {
           this.applicationKey = s.json();
@@ -83,7 +84,8 @@ export class PageAnswerQuestionComponent implements OnInit {
     let answer = this.answerForm.get("answer").value;
     let value = {
       oppQuestion: this.opp.question,
-      oppAnswer: answer
+      oppAnswer: answer,
+      step: ApplicationStepFinished.Answer
     }
     this.applicationAction.update(this.applicationKey, value).subscribe(
       s => {

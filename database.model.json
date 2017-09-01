@@ -245,6 +245,7 @@
                 "status": { "type": "string", "enum": [ "Incomplete", "Pending", "Accepted", "Canceled" ] },
                 "oppQuestion": { "$ref": "#/constraints/nonEmptyString" },
                 "oppAnswer": { "$ref": "#/constraints/nonEmptyString" },
+                "step": { "type": "string", "enum": [ "Answer", "Team"] },
                 "createdOn": { "type": "string", "format": "date-time" },
                 "submittedOn": { "type": "string", "format": "date-time" },
                 "acceptedOn": { "type": "string", "format": "date-time" },
