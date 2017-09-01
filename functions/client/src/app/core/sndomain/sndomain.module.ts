@@ -60,6 +60,10 @@ import {
 } from './applicationTeam'
 import { DateHelperService } from "../date-helper.service";
 
+import {
+  ShiftQueryService
+} from './shift'
+
 
 @NgModule({
   imports: [
@@ -107,6 +111,8 @@ import { DateHelperService } from "../date-helper.service";
     ApplicationTeamActionService,
     ResolveApplicationTeamByAppKey,
 
+    ShiftQueryService,
+    
     DateHelperService
   ],
 })
