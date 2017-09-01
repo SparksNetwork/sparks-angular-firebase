@@ -21,6 +21,8 @@ import { PageReviewDetailComponent } from "./page-review-detail/page-review-deta
 import { PageApplyConfirmationComponent } from "./page-apply-confirmation/page-apply-confirmation.component";
 import { PageApplicationComponent } from "./page-application/page-application.component";
 import { ResolveProjectByOpp } from "../../core/sndomain/project/resolve-project-by-opp.service";
+import { PageShiftComponent } from './page-shift/page-shift.component';
+
 
 const routes: Routes = [
     {
@@ -31,14 +33,14 @@ const routes: Routes = [
         ],
         resolve: {
             opp: ResolveOppByOppKey,
-            profile : ResolveProfile
+            profile: ResolveProfile
         },
         children: [
             {
                 path: 'complete-profile',
                 component: PageCompleteProfileComponent,
                 resolve: {
-                    profile : ResolveProfile
+                    profile: ResolveProfile
                 }
             },
             {
@@ -59,7 +61,7 @@ const routes: Routes = [
                 canActivate: [
                     RequireProfileCompleteService,
                 ],
-                children:[
+                children: [
                     {
                         path: 'teams',
                         component: PageOppHomeTeamsComponent,
@@ -90,11 +92,15 @@ const routes: Routes = [
                     },
                     {
                         path: 'edit-profile',
-                        component: PageCompleteProfileComponent                        
+                        component: PageCompleteProfileComponent
                     },
                     {
                         path: 'answer-question',
                         component: PageAnswerQuestionComponent
+                    },
+                    {
+                        path: 'shift',
+                        component: PageShiftComponent
                     }
                 ]
             }
@@ -116,5 +122,6 @@ export const routedComponents = [
     PageOppTeamComponent,
     PageReviewDetailComponent,
     PageApplyConfirmationComponent,
-    PageApplicationComponent
+    PageApplicationComponent,
+    PageShiftComponent,
 ];
