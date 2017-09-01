@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApplicationActionService } from "../../../core/sndomain/application";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Application, ApplicationStatus } from "../../../../../../universal/domain/application";
+import { Application, ApplicationStatus, ApplicationStepFinished } from "../../../../../../universal/domain/application";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Opp } from "../../../../../../universal/domain/opp";
 
@@ -15,6 +15,7 @@ export class PageAnswerQuestionComponent implements OnInit {
   public opp: Opp;
   public answerForm: FormGroup;
   private edit: boolean = false;
+  public editFromReviewPage: boolean;
 
   constructor(
     public applicationAction: ApplicationActionService,
@@ -28,7 +29,9 @@ export class PageAnswerQuestionComponent implements OnInit {
 
     this.answerForm = builder.group({
       answer: ['', [Validators.required]]
-    })
+    });
+
+    this.editFromReviewPage = !!this.route.snapshot.url.find(segment => segment.path.indexOf('edit-answer') > -1);
   }
 
   ngOnInit() {
@@ -67,7 +70,7 @@ export class PageAnswerQuestionComponent implements OnInit {
       application.oppKey = this.opp.$key;
       application.status = ApplicationStatus.Incomplete;
       application.projectKey = this.opp.projectKey;
-      application.projectProfileKey =  this.applicationAction.query.generateProjectProfileKey(application.projectKey, application.profileKey)
+      application.projectProfileKey =  this.applicationAction.query.generateProjectProfileKey(application.projectKey, application.profileKey);
       this.applicationAction.create(application)
         .subscribe(s => {
           this.applicationKey = s.json();
@@ -79,10 +82,16 @@ export class PageAnswerQuestionComponent implements OnInit {
     let answer = this.answerForm.get("answer").value;
     let value = {
       oppQuestion: this.opp.question,
-      oppAnswer: answer
+      oppAnswer: answer,
+      step: ApplicationStepFinished.Answer
     }
     this.applicationAction.update(this.applicationKey, value).subscribe(
       s => {
+        if (this.editFromReviewPage) {
+          this.router.navigate(['../', 'review-detail'], { relativeTo: this.route })
+          return;
+        }
+
         if (this.edit)
           this.router.navigate(['../', 'teams'], { relativeTo: this.route })
         else

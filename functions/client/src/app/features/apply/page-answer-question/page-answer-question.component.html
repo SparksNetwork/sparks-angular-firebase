@@ -21,7 +21,7 @@
 
     <snui-action-bar>
       <div class="btn-group" role="group">
-        <button (click)="submit()" [disabled]='!answerForm.valid && !applicationKey' class="btn btn-block btn-default">Next</button>
+        <button (click)="submit()" [disabled]='!answerForm.valid && !applicationKey' class="btn btn-block btn-default">{{editFromReviewPage ? 'Save' : 'Next'}}</button>
       </div>
     </snui-action-bar>
   </form>
