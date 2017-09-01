@@ -17,7 +17,7 @@ export class AppbarComponent implements OnInit {
 
   ngOnInit() { }
 
-  navigateToLogin() {   
+  navigateToSignIn() {   
     this.router.navigate(['/auth', this.router.url, 'signin'])
   }
 }
