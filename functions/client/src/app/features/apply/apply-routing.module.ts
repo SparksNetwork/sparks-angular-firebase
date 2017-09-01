@@ -20,6 +20,7 @@ import { PageReviewDetailComponent } from "./page-review-detail/page-review-deta
 import { PageApplyConfirmationComponent } from "./page-apply-confirmation/page-apply-confirmation.component";
 import { ResolveProjectByOpp } from "../../core/sndomain/project/resolve-project-by-opp.service";
 import { PagePaymentDetailsComponent } from './page-payment-details/page-payment-details.component';
+import { PagePaymentConfirmationComponent } from './page-payment-confirmation/page-payment-confirmation.component';
 
 const routes: Routes = [
     {
@@ -100,6 +101,10 @@ const routes: Routes = [
                     {
                         path: 'payment-details',
                         component: PagePaymentDetailsComponent
+                    },
+                    {
+                        path: 'payment-confirmation',
+                        component: PagePaymentConfirmationComponent
                     }
                 ]
             }
@@ -120,5 +125,6 @@ export const routedComponents = [
     PageOppTeamComponent,
     PageReviewDetailComponent,
     PageApplyConfirmationComponent,
-    PagePaymentDetailsComponent
+    PagePaymentDetailsComponent,
+    PagePaymentConfirmationComponent
 ];
