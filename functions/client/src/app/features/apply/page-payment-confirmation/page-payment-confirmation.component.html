@@ -11,3 +11,37 @@
     </div>
   </div>
 </div>
+
+<div class="row" *ngIf="opp | async; let opp">
+  <div class="col-xs-12">
+    <div class="profile-badge segment" *ngIf="opp.contribValue">
+      <div class="icon">
+        <span class="ic ic-credit-card"></span>
+      </div>
+      <div class="text">
+        <h4>Ticket Paid</h4>
+        <p>We have deducted the amount of ${{opp.contribValue}} from your credit card **** **** **** 5212.</p>
+      </div>
+    </div>
+
+    <div class="profile-badge segment" *ngIf="opp.karma">
+      <div class="icon">
+        <span class="ic ic-star"></span>
+      </div>
+      <div class="text">
+        <h4>{{opp.karma}} Karma Points</h4>
+        <p>You recived a new batch of karma points for your desire to volunteer at the event.</p>
+      </div>
+    </div>
+
+    <div class="profile-badge segment">
+      <div class="icon">
+        <span class="ic ic-envelope-o"></span>
+      </div>
+      <div class="text">
+        <h4>In Your Inbox</h4>
+        <p>We just sent your confirmation to you at sdebaun@sparks.network.</p>
+      </div>
+    </div>
+  </div>
+</div>
