@@ -10,6 +10,23 @@ import { validationFailure } from '../validation/validation';
 
 describe('profileTransform', () => {
 
+  it('requires several fields to not be empty', done => {
+    profileTransform({
+      $key: "",
+      legalName: "",
+      preferredName: ""
+    })
+      .then(() => {
+        expect(false).toBeTruthy()
+      })
+      .catch((errs: ValidationError[]) => {
+        expect(validationFailure(errs, '$key', 'isNotEmpty')).toBeTruthy()
+        expect(validationFailure(errs, 'legalName', 'isNotEmpty')).toBeTruthy()
+        expect(validationFailure(errs, 'preferredName', 'isNotEmpty')).toBeTruthy()
+      })
+      .then(done)
+  });
+
   it('requires fields to be in correct format', done => {
     profileTransform({
         phoneNumber: '123',
@@ -19,7 +36,7 @@ describe('profileTransform', () => {
         expect(false).toBeTruthy()
       })
       .catch((errs: ValidationError[]) => {
-        expect(validationFailure(errs, 'phoneNumber', 'isMobilePhone')).toBeTruthy()
+        expect(validationFailure(errs, 'phoneNumber', 'matches')).toBeTruthy()
         expect(validationFailure(errs, 'birthday', 'isIso8601')).toBeTruthy()
       })
       .then(done)
