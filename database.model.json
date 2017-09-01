@@ -247,7 +247,8 @@
                 "projectProfileKey": { "$ref": "#/constraints/nonEmptyString" },
                 "status": { "type": "string", "enum": [ "Incomplete", "Pending", "Accepted", "Canceled" ] },
                 "oppQuestion": { "type": "string"},
-                "oppAnswer": { "type": "string"}
+                "oppAnswer": { "type": "string"},
+                "step": { "type": "string", "enum": [ "Answer", "Team"] }
             }
         }
     },

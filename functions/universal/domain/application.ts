@@ -38,6 +38,11 @@ export enum ApplicationStatus {
     Canceled = "Canceled"
 }
 
+export enum ApplicationStepFinished{
+    Answer = "Answer",
+    Team = "Team"
+}
+
 export class Application {
     @IsNotEmpty()
     @Expose()
@@ -65,6 +70,9 @@ export class Application {
 
     @IsEnum(ApplicationStatus)
     status: ApplicationStatus
+
+    @IsEnum(ApplicationStepFinished)
+    step?: ApplicationStepFinished
 }
 
 const validateOpt = { validator: { skipMissingProperties: true } };

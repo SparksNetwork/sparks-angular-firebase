@@ -41,4 +41,12 @@ export class UserHomePage {
     return element.all(by.css('home-all-projects a div.project-karma div.project-karma-count'));
   }
 
+  getProjectLocation(projectIndex: number) {
+    return element.all(by.css('home-all-projects a ')).get(projectIndex).element(by.css('div.event-location'));
+  }
+
+  getProjectDate(projectIndex: number) {
+    return element.all(by.css('home-all-projects a ')).get(projectIndex).element(by.css('div.event-date'));
+  }
+
 }
