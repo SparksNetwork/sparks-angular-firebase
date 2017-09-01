@@ -37,27 +37,31 @@ describe('Apply-Choosing-Teams: verified user with complete profile information'
             let previousButton = pickTeamPage.getPreviousButton()
             browser.wait(ExpectedConditions.presenceOf(previousButton),
                 waitTimeout, 'Previous button was not present')
-            previousButton.click();
+            previousButton.click()
+                .then(function () {
+                    browser.wait(ExpectedConditions.urlContains('/answer-question'),
+                        waitTimeout, 'User was not taken to Answer-organizer-question')
 
-            browser.wait(ExpectedConditions.urlContains('/answer-question'),
-                waitTimeout, 'User was not taken to Answer-organizer-question')
+                    let question = answerQuestionPage.getQuestion()
+                    browser.wait(ExpectedConditions.presenceOf(question),
+                        waitTimeout, 'The text of the question was not present')
+                    question.getText().then((str) => {
+                        browser.getCurrentUrl().then((url) => {
+                            let oppKey: string = GetOppKey(url)
+                            expect(str).toMatch(fullyLoaded['opp'][oppKey]['question'],
+                                'The text of the question was not correct')
+                        })
+                    })
 
-            let question = answerQuestionPage.getQuestion()
-            browser.wait(ExpectedConditions.presenceOf(question),
-                waitTimeout, 'The text of the question was not present')
-            question.getText().then((str) => {
-                browser.getCurrentUrl().then((url) => {
-                    let oppKey: string = GetOppKey(url)
-                    expect(str).toMatch(fullyLoaded['opp'][oppKey]['question'],
-                        'The text of the question was not correct')
+                    let nextButton = answerQuestionPage.getNextButton().click()
+                        .then(function () {
+                            browser.wait(ExpectedConditions.urlContains('/teams'),
+                                waitTimeout, 'User was not taken back to Pick-a-team page')
+                        })
+
                 })
-            })
 
-            let nextButton = answerQuestionPage.getNextButton().click()
-            browser.wait(ExpectedConditions.urlContains('/teams'),
-                waitTimeout, 'User was not taken back to Pick-a-team page')
-
-        });
+        })
 
         it('Previous button should allow user to edit his answer ' +
             'to Organizer Question', function () {
@@ -65,43 +69,52 @@ describe('Apply-Choosing-Teams: verified user with complete profile information'
                 let previousButton = pickTeamPage.getPreviousButton()
                 browser.wait(ExpectedConditions.presenceOf(previousButton),
                     waitTimeout, 'Previous button was not present')
-                previousButton.click();
+                previousButton.click()
+                    .then(function () {
+                        browser.wait(ExpectedConditions.urlContains('/answer-question'),
+                            waitTimeout, 'User was not taken to Answer-organizer-question')
 
-                browser.wait(ExpectedConditions.urlContains('/answer-question'),
-                    waitTimeout, 'User was not taken to Answer-organizer-question')
+                        //edit the answer
+                        let answer = answerQuestionPage.getAnswer()
+                        browser.wait(ExpectedConditions.presenceOf(answer),
+                            waitTimeout, 'The input for answer was not present')
+                        let newAnswer: string = 'Answer must 42'
+                        answerQuestionPage.getAnswer().sendKeys(newAnswer)
 
-                //edit the answer
-                let answer = answerQuestionPage.getAnswer()
-                browser.wait(ExpectedConditions.presenceOf(answer),
-                    waitTimeout, 'The input for answer was not present')
-                let newAnswer: string = 'Answer must 42'
-                answerQuestionPage.getAnswer().sendKeys(newAnswer)
+                        //press next
+                        let nextButton = answerQuestionPage.getNextButton().click()
+                            .then(function () {
+                                browser.wait(ExpectedConditions.urlContains('/teams'),
+                                    waitTimeout, 'User was not taken back to Pick-a-team page')
 
-                //press next
-                let nextButton = answerQuestionPage.getNextButton().click()
-                browser.wait(ExpectedConditions.urlContains('/teams'),
-                    waitTimeout, 'User was not taken back to Pick-a-team page')
+                                //pres previous again
+                                previousButton = pickTeamPage.getPreviousButton()
+                                browser.wait(ExpectedConditions.presenceOf(previousButton),
+                                    waitTimeout, 'Previous button was not present when returning ' +
+                                    'to Pick-a-team page')
+                                previousButton.click()
+                                    .then(function () {
+                                        //check to see if the answer is the one that was edited
+                                        answer = answerQuestionPage.getAnswer()
+                                        answer.getAttribute('value').then((answer) => {
+                                            expect(answer).toMatch(newAnswer,
+                                                'The new answer was not save correctly')
+                                        })
 
-                //pres previous again
-                previousButton = pickTeamPage.getPreviousButton()
-                browser.wait(ExpectedConditions.presenceOf(previousButton),
-                    waitTimeout, 'Previous button was not present when returning ' +
-                    'to Pick-a-team page')
-                previousButton.click();
+                                        //go back to pick a team page
+                                        nextButton = answerQuestionPage.getNextButton().click()
+                                            .then(function () {
+                                                browser.wait(ExpectedConditions.urlContains('/teams'),
+                                                    waitTimeout, 'Finally, user was not taken back to Pick-a-team page')
 
-                //check to see if the answer is the one that was edited
-                answer = answerQuestionPage.getAnswer()
-                answer.getAttribute('value').then((answer) => {
-                    expect(answer).toMatch(newAnswer,
-                        'The new answer was not save correctly')
-                })
+                                            })
 
-                //go back to pick a team page
-                nextButton = answerQuestionPage.getNextButton().click()
-                browser.wait(ExpectedConditions.urlContains('/teams'),
-                    waitTimeout, 'Finally, user was not taken back to Pick-a-team page')
+                                    })
+                            })
 
-            });
+                    })
+
+            })
 
     })
 
@@ -111,9 +124,7 @@ describe('Apply-Choosing-Teams: verified user with complete profile information'
         })
 
         it('it should display only the available team ', function () {
-            browser.wait(ExpectedConditions.urlContains('/teams'),
-                waitTimeout, 'User was not taken to Pick a team page')
-
+            
             let team = pickTeamPage.getAvailableTeamLink(0)
             browser.wait(ExpectedConditions.presenceOf(team),
                 waitTimeout, 'The available team was not present')
@@ -158,25 +169,28 @@ describe('Apply-Choosing-Teams: verified user with complete profile information'
 
                 //user clicks on the team
                 pickTeamPage.getAvailableTeamTitle(team).click()
-                browser.wait(ExpectedConditions.urlContains('/teams/KPC1'),
-                    waitTimeout, 'User was not taken to Answer team question page')
+                    .then(function () {
+                        browser.wait(ExpectedConditions.urlContains('/teams/KPC1'),
+                            waitTimeout, 'User was not taken to Answer team question page')
 
-                //on the Answer-team-question page user clicks Previuous 
-                let previous = answerTeamQuestion.getPreviousButton()
-                browser.wait(ExpectedConditions.presenceOf(previous),
-                    waitTimeout, 'Previous button was missing from Answer team question page')
-                previous.click()
+                        //on the Answer-team-question page user clicks Previuous 
+                        let previous = answerTeamQuestion.getPreviousButton()
+                        browser.wait(ExpectedConditions.presenceOf(previous),
+                            waitTimeout, 'Previous button was missing from Answer team question page')
+                        previous.click()
+                            .then(function () {
+                                //user is taken back to Apply-team page
+                                browser.wait(ExpectedConditions.urlContains('/teams'),
+                                    waitTimeout, 'User was not taken to Answer team question page')
 
-                //user is taken back to Apply-team page
-                browser.wait(ExpectedConditions.urlContains('/teams'),
-                    waitTimeout, 'User was not taken to Answer team question page')
-
-                //the link to join the available team should be present again
-                team = pickTeamPage.getAvailableTeamLink(0)
-                browser.wait(ExpectedConditions.presenceOf(team),
-                    waitTimeout, 'The available team was not present ' +
-                    'when returning from Answer-team-question page')
-                expect(true).toBeTruthy()
+                                //the link to join the available team should be present again
+                                team = pickTeamPage.getAvailableTeamLink(0)
+                                browser.wait(ExpectedConditions.presenceOf(team),
+                                    waitTimeout, 'The available team was not present ' +
+                                    'when returning from Answer-team-question page')
+                                expect(true).toBeTruthy()
+                            })
+                    })
 
             });
 
@@ -188,32 +202,32 @@ describe('Apply-Choosing-Teams: verified user with complete profile information'
 
             //user clicks on the team
             pickTeamPage.getAvailableTeamTitle(team).click()
-            browser.wait(ExpectedConditions.urlContains('/teams/KPC1'),
-                waitTimeout, 'User was not taken to Answer team question page')
+                .then(function () {
+                    browser.wait(ExpectedConditions.urlContains('/teams/KPC1'),
+                        waitTimeout, 'User was not taken to Answer team question page')
+                    //answer Team-question 
+                    let answer = answerTeamQuestion.getAnswer()
+                    browser.wait(ExpectedConditions.presenceOf(answer),
+                        waitTimeout, 'The input for answer was not present')
+                    answerQuestionPage.getAnswer().sendKeys('Answer is always 42')
+                    //press join
+                    let joinButton = answerTeamQuestion.getJoinTeamButton()
+                    browser.wait(ExpectedConditions.elementToBeClickable(joinButton), waitTimeout,
+                        'Join button was not clickable')
+                    joinButton.click()
+                        .then(function () {
+                            //team should appear as selected
+                            let selectedTeam = pickTeamPage.getSelectedTeam(0)
+                            browser.wait(ExpectedConditions.presenceOf(selectedTeam),
+                                waitTimeout, 'The selected team was not present')
 
-            //answer Team-question 
-            let answer = answerTeamQuestion.getAnswer()
-            browser.wait(ExpectedConditions.presenceOf(answer),
-                waitTimeout, 'The input for answer was not present')
-            answerQuestionPage.getAnswer().sendKeys('Answer is always 42')
+                            //only one team should be selected
+                            pickTeamPage.getSelectedTeams().count().then((teamsNo) => {
+                                expect(teamsNo).toBe(1, 'The number of selected teams was not correct')
+                            })
+                        })
 
-            //press join
-            let joinButton = answerTeamQuestion.getJoinTeamButton()
-            browser.wait(ExpectedConditions.elementToBeClickable(joinButton), waitTimeout,
-                'Join button was not clickable')
-            joinButton.click()
-
-            //team should appear as selected
-            let selectedTeam = pickTeamPage.getSelectedTeam(0)
-            browser.wait(ExpectedConditions.presenceOf(selectedTeam),
-                waitTimeout, 'The selected team was not present')
-
-            //only one team should be selected
-            pickTeamPage.getSelectedTeams().count().then((teamsNo) => {
-                expect(teamsNo).toBe(1, 'The number of selected teams was not correct')
-            })
-
-            expect(true).toBeTruthy()
+                })
 
         });
 
@@ -242,8 +256,11 @@ describe('Apply-Choosing-Teams: verified user with complete profile information'
 
                 let selectedTeam = pickTeamPage.getSelectedTeam(0)
                 pickTeamPage.getDeleteButtton(selectedTeam).click()
+                    .then(function () {
+                        CommonTestsForDeleteAndDeleteAll()
+                    })
 
-                CommonTestsForDeleteAndDeleteAll()
+
 
             });
 
@@ -258,37 +275,40 @@ describe('Apply-Choosing-Teams: verified user with complete profile information'
 
                 //user clicks on the team
                 pickTeamPage.getAvailableTeamTitle(team).click()
-                browser.wait(ExpectedConditions.urlContains('/teams/KPC1'),
-                    waitTimeout, 'User was not taken to Answer team question page')
+                    .then(function () {
+                        browser.wait(ExpectedConditions.urlContains('/teams/KPC1'),
+                            waitTimeout, 'User was not taken to Answer team question page')
 
-                //answer Team-question 
-                let answer = answerTeamQuestion.getAnswer()
-                browser.wait(ExpectedConditions.presenceOf(answer),
-                    waitTimeout, 'The input for answer was not present')
-                answerQuestionPage.getAnswer().sendKeys('Answer is always 42')
+                        //answer Team-question 
+                        let answer = answerTeamQuestion.getAnswer()
+                        browser.wait(ExpectedConditions.presenceOf(answer),
+                            waitTimeout, 'The input for answer was not present')
+                        answerQuestionPage.getAnswer().sendKeys('Answer is always 42')
 
-                //press join
-                let joinButton = answerTeamQuestion.getJoinTeamButton()
-                browser.wait(ExpectedConditions.elementToBeClickable(joinButton), waitTimeout,
-                    'Join button was not clickable')
-                joinButton.click()
+                        //press join
+                        let joinButton = answerTeamQuestion.getJoinTeamButton()
+                        browser.wait(ExpectedConditions.elementToBeClickable(joinButton), waitTimeout,
+                            'Join button was not clickable')
+                        joinButton.click()
+                            .then(function () {
+                                //team should appear as selected
+                                let selectedTeam = pickTeamPage.getSelectedTeam(0)
+                                browser.wait(ExpectedConditions.presenceOf(selectedTeam),
+                                    waitTimeout, 'The selected team was not present')
 
-                //team should appear as selected
-                let selectedTeam = pickTeamPage.getSelectedTeam(0)
-                browser.wait(ExpectedConditions.presenceOf(selectedTeam),
-                    waitTimeout, 'The selected team was not present')
+                                //click Delete all button
+                                let deleteButton = pickTeamPage.getDeleteAllButton()
+                                browser.wait(ExpectedConditions.elementToBeClickable(deleteButton),
+                                    waitTimeout, 'Delete all was not clickable')
+                                deleteButton.click()
+                                    .then(function () {
+                                        CommonTestsForDeleteAndDeleteAll()
+                                    })
 
-                //click Delete all button
-                let deleteButton = pickTeamPage.getDeleteAllButton()
-                browser.wait(ExpectedConditions.elementToBeClickable(deleteButton),
-                    waitTimeout, 'Delete all was not clickable')
-                deleteButton.click()
+                            })
 
-                CommonTestsForDeleteAndDeleteAll()
-
-            });
-
-
+                    })
+            })
     })
 
     //helper functions
@@ -299,27 +319,35 @@ describe('Apply-Choosing-Teams: verified user with complete profile information'
 
     function StepsToReachApplyChooseTeamsPage(done) {
         browser.get('/')
-            .then(() => { setData('/', fullyLoaded) })
-            .then(signOut)
-            .then(() => { signIn(USER_VERIFIED_PROFILE.email, USER_VERIFIED_PROFILE.password) })
-            .then(() => { KPCprojectPage.navigateTo() })
-            .then(() => {
-                browser.wait(ExpectedConditions.elementToBeClickable(KPCprojectPage.getJoinButton()),
-                    waitTimeout, 'Join button was not present')
+            .then(function () { setData('/', fullyLoaded)
+                    .then(function () {
+                        signOut()
+                            .then(function () {
+                                signIn(USER_VERIFIED_PROFILE.email, USER_VERIFIED_PROFILE.password)
+                                    .then(function () {
+                                        KPCprojectPage.navigateTo()
+                                            .then(function () {
+                                                browser.wait(ExpectedConditions.elementToBeClickable(KPCprojectPage.getJoinButton()),
+                                                    waitTimeout, 'Join button was not present')
+                                                KPCprojectPage.getJoinButton().click()
+                                                    .then(function () {
+                                                        browser.wait(ExpectedConditions.presenceOf(answerQuestionPage.getNextButton()),
+                                                            waitTimeout, 'Next button was not present')
+                                                        answerQuestionPage.getAnswer().sendKeys('42')
+                                                        let next = answerQuestionPage.getNextButton()
+                                                        browser.wait(ExpectedConditions.elementToBeClickable(next),
+                                                            waitTimeout, 'Next button was not clickable')
+                                                        next.click()
+                                                            .then(done)
+                                                    })
+                                            })
+                                    })
+                            })
+                    })
             })
-            .then(() => { KPCprojectPage.getJoinButton().click() })
-            .then(() => {
-                browser.wait(ExpectedConditions.presenceOf(answerQuestionPage.getNextButton()),
-                    waitTimeout, 'Next button was not present')
-                answerQuestionPage.getAnswer().sendKeys('42')
-            })
-            .then(() => {
-                let next = answerQuestionPage.getNextButton()
-                browser.wait(ExpectedConditions.elementToBeClickable(next),
-                    waitTimeout, 'Next button was not clickable')
-                next.click()
-            })
-            .then(done)
+
+
+
     }
 
     function CommonTestsForDeleteAndDeleteAll() {
