@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'header-auth',
+  selector: 'auth-header',
   templateUrl: './header-auth.component.html'
 })
 export class HeaderAuthComponent implements OnInit {
