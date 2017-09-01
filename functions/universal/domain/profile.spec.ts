@@ -10,6 +10,19 @@ import { validationFailure } from '../validation/validation';
 
 describe('profileTransform', () => {
 
+  it('requires $key to be defined', done => {
+    profileTransform({
+
+    })
+      .then(() => {
+        expect(false).toBeTruthy()
+      })
+      .catch((errs: ValidationError[]) => {
+        expect(validationFailure(errs, '$key', 'isDefined')).toBeTruthy()
+      })
+      .then(done)
+  });
+
   it('requires several fields to not be empty', done => {
     profileTransform({
       $key: "",
