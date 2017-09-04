@@ -46,4 +46,8 @@ export class PickTeamPage {
         return element.all(by.css('div.segment-title-link-container')).first().element(by.css('a'))
     }
 
+    getTeamLinks(){
+        return element.all(by.css('apply-opp-teams-not-selected a'))
+    }
+
 }

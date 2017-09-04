@@ -27,7 +27,7 @@ describe('Apply-Single-Team: verified user with complete profile information', (
             .then(done)
     });
 
-    describe('Checking Previous button functionality', () => {
+    describe('Checking Previous and Next functionality', () => {
         beforeAll(done => {
             StepsToReachApplyChooseTeamsPage(done)
         })
@@ -123,7 +123,12 @@ describe('Apply-Single-Team: verified user with complete profile information', (
                                                                                             answer.getAttribute('value').then((answer) => {
                                                                                                 expect(answer).toMatch(newAnswer,
                                                                                                     'The new answer was not save correctly')
-                                                                                                answerQuestionPage.getNextButton().click()
+                                                                                                answerQuestionPage.getNextButton().click().then(function () {
+                                                                                                    browser.wait(ExpectedConditions.and(
+                                                                                                        ExpectedConditions.urlContains('/apply/KPC1/application/'),
+                                                                                                        ExpectedConditions.urlContains('/teams')),
+                                                                                                        waitTimeout, 'User was not taken back to Pick-a-team Page')
+                                                                                                })
                                                                                             })
                                                                                         })
 
@@ -138,6 +143,62 @@ describe('Apply-Single-Team: verified user with complete profile information', (
                             })
                     })
             })
+
+        it('Next button is clickable only if the available team is selected ', function () {
+            browser.wait(ExpectedConditions.and(
+                ExpectedConditions.urlContains('/apply/KPC1/application/'),
+                ExpectedConditions.urlContains('/teams')),
+                waitTimeout, 'User was not taken to Pick-a-team Page').then(function () {
+                    let nextButton = pickTeamPage.getNextButton()
+                    browser.wait(ExpectedConditions.presenceOf(nextButton),
+                        waitTimeout, 'Next button was not present')
+                    browser.wait(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(nextButton)),
+                        waitTimeout, 'Next button was clickable when no team was selected')
+
+                    let team = pickTeamPage.getAvailableTeamLink(0)
+                    browser.wait(ExpectedConditions.presenceOf(team),
+                        waitTimeout, 'The available team was not present')
+
+                    //user clicks on the team
+                    pickTeamPage.getAvailableTeamTitle(team).click().then(function () {
+                        browser.wait(ExpectedConditions.and(
+                            ExpectedConditions.urlContains('/apply/KPC1/application/'),
+                            ExpectedConditions.urlContains('/teams/KPC1')),
+                            waitTimeout, 'User was not taken to Answer-team-question Page').then(function () {
+
+                                //answer Team-question 
+                                let answer = answerTeamQuestion.getAnswer()
+                                browser.wait(ExpectedConditions.presenceOf(answer),
+                                    waitTimeout, 'The input for answer was not present')
+                                answerQuestionPage.getAnswer().sendKeys('Answer is always 42')
+
+                                //press join
+                                let joinButton = answerTeamQuestion.getJoinTeamButton()
+                                browser.wait(ExpectedConditions.elementToBeClickable(joinButton), waitTimeout,
+                                    'Join button was not clickable').then(function () {
+                                        joinButton.click().then(function () {
+                                            browser.wait(ExpectedConditions.and(
+                                                ExpectedConditions.urlContains('/apply/KPC1/application/'),
+                                                ExpectedConditions.urlContains('/teams')),
+                                                waitTimeout, 'User was not taken back to Pick-a-team Page ' +
+                                                'after answering the team question').then(function () {
+                                                    //team should appear as selected
+                                                    let selectedTeam = pickTeamPage.getSelectedTeam(0)
+                                                    browser.wait(ExpectedConditions.presenceOf(selectedTeam),
+                                                        waitTimeout, 'The selected team was not present')
+                                                    nextButton = pickTeamPage.getNextButton()
+                                                    browser.wait(ExpectedConditions.elementToBeClickable(nextButton),
+                                                        waitTimeout, 'Next button was not clickable when the team was clicked')
+                                                    expect(true).toBeTruthy()
+                                                })
+                                        })
+                                    })
+                            })
+                    })
+
+                })
+
+        });
 
     })
 
@@ -351,8 +412,8 @@ describe('Apply-Single-Team: verified user with complete profile information', (
                                                 browser.wait(ExpectedConditions.and(
                                                     ExpectedConditions.urlContains('/apply/KPC1/application/'),
                                                     ExpectedConditions.urlContains('/teams')),
-                                                    waitTimeout, 'User was not taken back to Pick-a-team Page '+
-                                                'after answering the team question').then(function () {
+                                                    waitTimeout, 'User was not taken back to Pick-a-team Page ' +
+                                                    'after answering the team question').then(function () {
                                                         //team should appear as selected
                                                         let selectedTeam = pickTeamPage.getSelectedTeam(0)
                                                         browser.wait(ExpectedConditions.presenceOf(selectedTeam),

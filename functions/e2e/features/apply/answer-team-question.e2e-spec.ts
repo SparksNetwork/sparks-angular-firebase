@@ -56,7 +56,7 @@ describe('Apply-Choosing-Teams: verified user with complete profile information'
         })
 
         it('join button is clickable only if the answer field is not empty ', function () {
-            let joinButton= answerTeamQuestion.getJoinTeamButton()
+            let joinButton = answerTeamQuestion.getJoinTeamButton()
             browser.wait(ExpectedConditions.presenceOf(joinButton),
                 waitTimeout, 'Join button was not present')
             browser.wait(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(joinButton)),
@@ -67,60 +67,59 @@ describe('Apply-Choosing-Teams: verified user with complete profile information'
             expect(true).toBeTruthy()
         });
 
-        //helper functions
-        function GetTeamKey(url: string) {
-            let splittedUrl = url.split('/');
-            return splittedUrl[splittedUrl.length - 1];
-        }
-        function GetOppKey(url: string) {
-            let splittedUrl = url.split('/');
-            return splittedUrl[splittedUrl.length - 5];
-        }
+    })
+    //helper functions
+    function GetTeamKey(url: string) {
+        let splittedUrl = url.split('/');
+        return splittedUrl[splittedUrl.length - 1];
+    }
+    function GetOppKey(url: string) {
+        let splittedUrl = url.split('/');
+        return splittedUrl[splittedUrl.length - 5];
+    }
 
-        function StepsToReachAnswerTeamQuestionPage(done) {
-            browser.get('/')
-                .then(function () {
-                    setData('/', fullyLoaded)
-                        .then(function () {
-                            signOut()
-                                .then(function () {
-                                    signIn(USER_VERIFIED_PROFILE.email, USER_VERIFIED_PROFILE.password)
-                                        .then(function () {
-                                            LCprojectPage.navigateTo()
-                                                .then(function () {
-                                                    browser.wait(ExpectedConditions.presenceOf(LCprojectPage.getFirstOportunityTitleElement()),
-                                                        waitTimeout, 'Link to the first opportunity of LC was not present')
-                                                    LCprojectPage.getFirstOportunityTitleElement().click()
-                                                        .then(function () {
-                                                            browser.wait(ExpectedConditions.presenceOf(oppLCPage.getJoinButton()),
-                                                                waitTimeout, 'Join opportunity button was not present')
-                                                            oppLCPage.getJoinButton().click().then(function () {
-                                                                browser.wait(ExpectedConditions.presenceOf(answerQuestionPage.getAnswer()), waitTimeout,
-                                                                    'Answer to organizer question was not present')
-                                                                answerQuestionPage.getAnswer().sendKeys('42')
-                                                                let next = answerQuestionPage.getNextButton()
-                                                                browser.wait(ExpectedConditions.elementToBeClickable(next),
-                                                                    waitTimeout, 'Next button was not clickable').then(function () {
-                                                                        next.click().then(function () {
-                                                                            let team = pickTeamPage.getAvailableTeamLink(0)
-                                                                            browser.wait(ExpectedConditions.presenceOf(team),
-                                                                                waitTimeout, 'The first team was not present').then(function () {
-                                                                                    pickTeamPage.getAvailableTeamTitle(team).click().then(done)
-                                                                                })
-                                                                        })
+    function StepsToReachAnswerTeamQuestionPage(done) {
+        browser.get('/')
+            .then(function () {
+                setData('/', fullyLoaded)
+                    .then(function () {
+                        signOut()
+                            .then(function () {
+                                signIn(USER_VERIFIED_PROFILE.email, USER_VERIFIED_PROFILE.password)
+                                    .then(function () {
+                                        LCprojectPage.navigateTo()
+                                            .then(function () {
+                                                browser.wait(ExpectedConditions.presenceOf(LCprojectPage.getFirstOportunityTitleElement()),
+                                                    waitTimeout, 'Link to the first opportunity of LC was not present')
+                                                LCprojectPage.getFirstOportunityTitleElement().click()
+                                                    .then(function () {
+                                                        browser.wait(ExpectedConditions.presenceOf(oppLCPage.getJoinButton()),
+                                                            waitTimeout, 'Join opportunity button was not present')
+                                                        oppLCPage.getJoinButton().click().then(function () {
+                                                            browser.wait(ExpectedConditions.presenceOf(answerQuestionPage.getAnswer()), waitTimeout,
+                                                                'Answer to organizer question was not present')
+                                                            answerQuestionPage.getAnswer().sendKeys('42')
+                                                            let next = answerQuestionPage.getNextButton()
+                                                            browser.wait(ExpectedConditions.elementToBeClickable(next),
+                                                                waitTimeout, 'Next button was not clickable').then(function () {
+                                                                    next.click().then(function () {
+                                                                        let team = pickTeamPage.getAvailableTeamLink(0)
+                                                                        browser.wait(ExpectedConditions.presenceOf(team),
+                                                                            waitTimeout, 'The first team was not present').then(function () {
+                                                                                pickTeamPage.getAvailableTeamTitle(team).click().then(done)
+                                                                            })
                                                                     })
-
-                                                            })
+                                                                })
 
                                                         })
-                                                })
-                                        })
-                                })
-                        })
-                })
+
+                                                    })
+                                            })
+                                    })
+                            })
+                    })
+            })
 
 
-        }
-
-    })
+    }
 })
