@@ -36,10 +36,7 @@ const routes: Routes = [
         children: [
             {
                 path: 'complete-profile',
-                component: PageCompleteProfileComponent,
-                resolve: {
-                    profile : ResolveProfile
-                }
+                component: PageCompleteProfileComponent
             },
             {
                 path: 'answer-question',
@@ -58,7 +55,7 @@ const routes: Routes = [
                 canActivate: [
                     RequireProfileCompleteService,
                 ],
-                children:[
+                children: [
                     {
                         path: 'teams',
                         children: [
