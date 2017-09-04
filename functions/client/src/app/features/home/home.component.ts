@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
       }
       else {
         this.userPrefferedName = 'Guest';
-        this.userMessage = "You need first register before you can level up";
+        this.userMessage = "You first need to sign up before you can level up";
         this.userImageUrl = 'https://placeimg.com/85/85/people/grayscale';
         this.userProfileScore = 0;
         this.isAuthed = false;
