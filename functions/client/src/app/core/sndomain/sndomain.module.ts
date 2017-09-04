@@ -60,7 +60,8 @@ import {
 } from './applicationTeam'
 
 import {
-  ShiftQueryService
+  ShiftQueryService,
+  ShiftActionService,
 } from './shift'
 
 
@@ -110,6 +111,7 @@ import {
     ApplicationTeamActionService,
     ResolveApplicationTeamByAppKey,
     ShiftQueryService,
+    ShiftActionService,
   ],
 })
 export class SNDomainModule { }
