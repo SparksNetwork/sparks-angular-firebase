@@ -9,9 +9,11 @@ import { Shift } from "../../../../../../universal/domain/shift";
   templateUrl: './shift-list.component.html',
 })
 export class ShiftListComponent implements OnInit {
-  public shifts: Observable<Shift[]>
+  public shifts: Observable<(void| Shift[])[]>
 
-  constructor(route: ActivatedRoute) { }
+  constructor(route: ActivatedRoute) { 
+    this.shifts = route.snapshot.data["shift"]; 
+  }
 
   ngOnInit() {
   }

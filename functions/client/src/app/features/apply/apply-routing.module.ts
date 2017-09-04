@@ -22,6 +22,7 @@ import { PageApplyConfirmationComponent } from "./page-apply-confirmation/page-a
 import { PageApplicationComponent } from "./page-application/page-application.component";
 import { ResolveProjectByOpp } from "../../core/sndomain/project/resolve-project-by-opp.service";
 import { PageShiftComponent } from './page-shift/page-shift.component';
+import { ResolveShiftByApplicationKey } from "./resolve-shift-by-app-key/resolve-shifts-by-application-key.service";
 
 
 const routes: Routes = [
@@ -100,7 +101,10 @@ const routes: Routes = [
                     },
                     {
                         path: 'shift',
-                        component: PageShiftComponent
+                        component: PageShiftComponent,
+                        resolve: {
+                            shift: ResolveShiftByApplicationKey
+                        }
                     }
                 ]
             }

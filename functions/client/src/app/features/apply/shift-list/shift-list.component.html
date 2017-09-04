@@ -1,27 +1,30 @@
 <div class="you-will-give-got shift-list segment no-brd">
   <ul>
-    <li *ngFor="let shift of shifts | async">
-      <div class="icon-desc-container">
-        <div class="icon">
-          <span class="ic {{shift.teamIcon}}"></span>
-        </div>
-        <div class="description">
-          <h4>{{shift.teamTitle}}</h4>
-          <div class="timeline-when">
-            <p>{{shift.startDate}}</p>
+    <ng-container *ngFor="let teamShifts of shifts | async">
+      <li *ngFor="let shift of teamShifts">
+        <div class="icon-desc-container">
+          <div class="icon">
+            <span class="ic {{shift.teamIcon}}"></span>
+          </div>
+          <div class="description">
+            <h4>{{shift.teamTitle}}</h4>
+            <div class="timeline-when">
+              <p>{{shift.startDate | amCalendar : {sameElse:'lll'} }} - {{shift.endDate | amDateFormat:'LT'}}</p>
+            </div>
           </div>
         </div>
-      </div>
-      <!-- <div class="karma-point-container">
-        <div class="team-mates-avatar">
-          <img class="img-responsive img-circle" src="https://placeimg.com/35/35/people/grayscale" />
-          <img class="img-responsive img-circle" src="https://placeimg.com/35/35/people/grayscale" />
-          <img class="img-responsive img-circle" src="https://placeimg.com/35/35/people/grayscale" />
-        </div>
-        <div class="team-mates-count">
-          <p>+4 more</p>
-        </div>
-      </div> -->
-    </li>
+        <!-- <div class="karma-point-container">
+              <div class="team-mates-avatar">
+                <img class="img-responsive img-circle" src="https://placeimg.com/35/35/people/grayscale" />
+                <img class="img-responsive img-circle" src="https://placeimg.com/35/35/people/grayscale" />
+                <img class="img-responsive img-circle" src="https://placeimg.com/35/35/people/grayscale" />
+              </div>
+              <div class="team-mates-count">
+                <p>+4 more</p>
+              </div>
+            </div> -->
+      </li>
+    </ng-container>
+
   </ul>
 </div>
