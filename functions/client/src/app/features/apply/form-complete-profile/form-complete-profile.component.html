@@ -5,7 +5,7 @@
         <div [hidden]="!editAllMode && profileForm.get('legalName').value && profileForm.get('legalName').pristine">
           <div class="form-input" [class.has-error]="!profileForm.get('legalName').valid && profileForm.get('legalName').touched">
             <div class="icon">
-              <span class="ic ic-profile"></span>
+              <span class="ic ic-namelegal"></span>
             </div>
             <div class="text">
               <input type="text" id="legalName" class="form-control" placeholder="What's Your Legal Name?" formControlName="legalName">
@@ -15,7 +15,7 @@
         <div [hidden]="!editAllMode && profileForm.get('preferredName').value && profileForm.get('preferredName').pristine">
           <div class="form-input" [class.has-error]="!profileForm.get('preferredName').valid && profileForm.get('preferredName').touched">
             <div class="icon">
-              <span class="ic ic-profile"></span>
+              <span class="ic ic-namepreffered"></span>
             </div>
             <div class="text">
               <input type="text" id="preferredName" class="form-control" placeholder="What's Your Preferred Name?" formControlName="preferredName">
@@ -38,7 +38,7 @@
         <div [hidden]="!editAllMode && profileForm.get('birthday').value && profileForm.get('birthday').pristine">
           <div class="form-input" [class.has-error]="!profileForm.get('birthday').valid && profileForm.get('birthday').touched">
             <div class="icon">
-              <span class="ic ic-calendar"></span>
+              <span class="ic ic-birthday"></span>
             </div>
             <div class="text">
               <input type="date" id="birthday" class="form-control" placeholder="What's Your Birthday" formControlName="birthday">
