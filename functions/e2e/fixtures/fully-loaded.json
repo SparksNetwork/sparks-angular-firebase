@@ -1,10 +1,10 @@
 {
   "profile": {
     "USER_VERIFIED_PROFILE": {
-      "fullName": "Test User With Profile",
+      "legalName": "Test User With Profile",
       "preferredName": "Testie",
       "phoneNumber": "8053129100",
-      "birthday": "10251974"
+      "birthday": "1995-01-09"
     }
   },
   "project": {
@@ -137,7 +137,7 @@
       "karma": 20,
       "title": "Volunteer",
       "description": "opp description",
-      "question": "opp question?"
+      "question": "Do you have any problem with the broom?"
     },
     "LC1": {
       "projectKey": "LC",
@@ -147,7 +147,7 @@
       "benefitValue": 374,
       "title": "1-Shift",
       "description": "opp description",
-      "question": "opp question?"
+      "question": "Do you like festivals?"
     },
     "LC2": {
       "projectKey": "LC",
@@ -157,7 +157,7 @@
       "benefitValue": 394,
       "title": "Regular",
       "description": "opp description",
-      "question": "opp question?"
+      "question": "Do you like multicultural festivals?"
     },
     "LC3": {
       "projectKey": "LC",
@@ -167,7 +167,7 @@
       "benefitValue": 364,
       "title": "Pre-Event Weekends",
       "description": "opp description",
-      "question": "opp question?"
+      "question": "Do you like week-end festivals?"
     },
     "LC4": {
       "projectKey": "LC",
@@ -177,7 +177,7 @@
       "benefitValue": 444,
       "title": "Setup",
       "description": "opp description",
-      "question": "opp question?"
+      "question": "What are you planning to do during the festival?"
     },
     "LC5": {
       "projectKey": "LC",
@@ -187,7 +187,7 @@
       "benefitValue": 444,
       "title": "Strike",
       "description": "opp description",
-      "question": "opp question?"
+      "question": "Are you ready to have a good time?"
     },
     "SRBC1": {
       "projectKey": "SRBC",
@@ -197,7 +197,7 @@
       "benefitValue": 10,
       "title": "Beach Cleanup",
       "description": "opp description",
-      "question": "opp question?"
+      "question": "Do you like festivals?"
     }
   },
   "benefit": {
