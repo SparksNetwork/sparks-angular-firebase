@@ -39,8 +39,7 @@ describe('shiftTransform', () => {
                 expect(validationFailure(errs, '$key', 'isNotEmpty')).toBeTruthy()
                 expect(validationFailure(errs, 'startDateTime', 'isNotEmpty')).toBeTruthy()
                 expect(validationFailure(errs, 'teamKey', 'isNotEmpty')).toBeTruthy()
-                expect(validationFailure(errs, 'teamTitle', 'isNotEmpty')).toBeTruthy()
-                expect(validationFailure(errs, 'teamIcon', 'isNotEmpty')).toBeTruthy()
+                expect(validationFailure(errs, 'teamTitle', 'isNotEmpty')).toBeTruthy()               
             })
             .then(done)
     });

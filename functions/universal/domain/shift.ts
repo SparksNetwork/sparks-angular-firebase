@@ -41,9 +41,8 @@ export class Shift {
 
     @IsDefined()
     @IsNotEmpty()
-    public teamTitle: string
+    public teamTitle: string    
     
-    @IsNotEmpty()
     public teamIcon: string
 }
 
