@@ -6,6 +6,7 @@ import { AuthService } from '../../../core/snauth/auth/auth.service';
 import { Project } from '../../../../../../universal/domain/project';
 import { Opp } from '../../../../../../universal/domain/opp';
 import { Profile } from '../../../../../../universal/domain/profile';
+import { ActionBarType } from '../../../shared/snui/action-bar/action-bar.component';
 
 
 @Component({
@@ -13,6 +14,7 @@ import { Profile } from '../../../../../../universal/domain/profile';
 })
 export class PagePaymentConfirmationComponent implements OnInit {
 
+  public actionBarType = ActionBarType;
   public project: FirebaseObjectObservable<Project>;
   public opp: FirebaseObjectObservable<Opp>;
   public userEmail: string;
