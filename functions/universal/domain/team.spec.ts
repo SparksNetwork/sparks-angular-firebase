@@ -32,7 +32,7 @@ describe('teamTransform', () => {
       title: "",
       description: "",
       icon: "",
-      question: "?"
+      question: ""
     })
       .then(() => {
         expect(false).toBeTruthy()
@@ -41,6 +41,8 @@ describe('teamTransform', () => {
         expect(validationFailure(errs, '$key', 'isNotEmpty')).toBeTruthy()
         expect(validationFailure(errs, 'title', 'isNotEmpty')).toBeTruthy()
         expect(validationFailure(errs, 'description', 'isNotEmpty')).toBeTruthy()
+        expect(validationFailure(errs, 'icon', 'isNotEmpty')).toBeTruthy()
+        expect(validationFailure(errs, 'question', 'isNotEmpty')).toBeTruthy()
       })
       .then(done)
   });

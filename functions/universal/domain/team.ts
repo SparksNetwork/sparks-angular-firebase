@@ -30,8 +30,10 @@ export class Team {
     @IsNotEmpty()
     public description: string
 
+    @IsNotEmpty()
     public icon: string
     
+    @IsNotEmpty()
     public question: string
 }
 

@@ -1,75 +1,44 @@
-import 'jasmine'
-import { browser, element, by, ExpectedConditions, ElementFinder } from 'protractor'
-import { setData, setUsers, signOut, signIn } from '../../firebase'
-import { USER_VERIFIED_NO_PROFILE, USER_VERIFIED_PROFILE, USER_NOT_VERIFIED } from '../../fixtures/users'
-import { UserHomePage } from "../../po/user-home.po";
-const waitTimeout = 5000
+import 'jasmine' // to clear lint errors
+import { browser, element, by, ExpectedConditions } from 'protractor'
+import { setData, updateData, setUsers, signOut } from '../../firebase'
+import { GuestHomePage } from '../../po/guest-home.po'
 import { DatePipe } from '@angular/common'
-import { ProjectSingleOppPage } from "../../po/project.single-opp.po";
+import { ProjectMultiOppPage } from '../../po/project.multi-opp.po';
 
-describe('Home page: user can browse projects from home page', () => {
+const waitTimeout = 5000;
+
+describe('Guest home page: user is not logged in', () => {
     const fullyLoaded = require('../../fixtures/fully-loaded.json')
     const projects = fullyLoaded['project']
-    let page: UserHomePage
+    let page: GuestHomePage;
+
+    //helper functions
+    function validatePropertyAgainstDatabase(propertyName: string, displayedValue: string): boolean {
+        for (let key in projects) {
+            if (projects[key][propertyName].toString() === displayedValue) {
+                return true;
+            }
+        }
+        return false;
+    }
+    function getDisplayedProjectKey(url: string): string {
+        let splittedUrl = url.split('/');
+        return splittedUrl[splittedUrl.length - 1];
+    }
 
     beforeAll(done => {
         browser.waitForAngularEnabled(false)
         setUsers()
             .then(() => setData('/', fullyLoaded))
+            .then(() => page.navigateTo())
+            //user is not logged in
+            .then(signOut)
             .then(done)
-        page = new UserHomePage();
-
+        page = new GuestHomePage();
     })
 
-    describe('a logged-in user with no profile', () => {
 
-        beforeAll(done => {
-            page.navigateTo()
-                .then(signOut)
-                .then(function () {
-                    signIn(USER_VERIFIED_NO_PROFILE.email, USER_VERIFIED_NO_PROFILE.password)
-                })
-                .then(done)
-        })
-        TestsCommonToAllTypeOfUsers()
-    })
-
-    describe('a logged-in user with a profile', () => {
-
-        beforeAll(done => {
-            page.navigateTo()
-                .then(signOut)
-                .then(function () {
-                    signIn(USER_VERIFIED_PROFILE.email, USER_VERIFIED_PROFILE.password)
-                })
-                .then(done)
-        })
-
-        TestsCommonToAllTypeOfUsers()
-    })
-
-    describe('a logged-in with mail not verified', () => {
-
-        beforeAll(done => {
-            page.navigateTo()
-                .then(signOut)
-                .then(function () {
-                    signIn(USER_NOT_VERIFIED.email, USER_NOT_VERIFIED.password)
-                })
-                .then(done)
-        })
-
-        TestsCommonToAllTypeOfUsers()
-
-    })
-
-    describe('a logged out user ', () => {
-
-        beforeAll(done => {
-            page.navigateTo()
-                .then(signOut)
-                .then(done)
-        })
+    describe('exploring the project page', () => {
 
         it('It should display a welcome message for the guest', () => {
 
@@ -82,32 +51,8 @@ describe('Home page: user can browse projects from home page', () => {
             })
         })
 
-        TestsCommonToAllTypeOfUsers()
+        it('It should display all projects', () => {
 
-    })
-
-    //helper functions
-    function validatePropertyAgainstDatabase(propertyName: string, displayedValue: string): boolean {
-        for (let key in projects) {
-            if (projects[key][propertyName].toString() === displayedValue) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    function GetDisplayedProjectKey(url: string): string {
-        let splittedUrl = url.split('/');
-        let possibleKey = splittedUrl[splittedUrl.length - 1];
-        if (possibleKey === 'join') {
-            return splittedUrl[splittedUrl.length - 2];
-        } else {
-            return splittedUrl[splittedUrl.length - 1];
-        }
-    }
-
-    function TestsCommonToAllTypeOfUsers() {
-        it('It should see all projects', () => {
             let projectLinks = page.getListOfProjectLinks();
             browser.wait(ExpectedConditions.presenceOf(projectLinks.first()),
                 waitTimeout, 'First link was not present')
@@ -118,7 +63,7 @@ describe('Home page: user can browse projects from home page', () => {
                 isPresent = false;
                 projectLinks.each(function (item) {
                     item.getAttribute('href').then(function (str) {
-                        if (GetDisplayedProjectKey(str) === key.toString()) {
+                        if (getDisplayedProjectKey(str) === key.toString()) {
                             isPresent = true;
                         }
                     })
@@ -129,6 +74,7 @@ describe('Home page: user can browse projects from home page', () => {
         })
 
         it('Each project should display the title', () => {
+
             let projectTitles = page.getAllProjectTitles();
             browser.wait(ExpectedConditions.presenceOf(projectTitles.first()),
                 waitTimeout, 'First title was not present')
@@ -140,6 +86,7 @@ describe('Home page: user can browse projects from home page', () => {
         })
 
         it('Each project should display the maximum Karma Points', () => {
+
             let projectKarmaPoints = page.getAllProjectMaxKarmaPoints()
             browser.wait(ExpectedConditions.presenceOf(projectKarmaPoints.first()),
                 waitTimeout, 'First maximum karma points div was not present')
@@ -148,9 +95,11 @@ describe('Home page: user can browse projects from home page', () => {
                 item.getText().then(function (str)
                 { expect(validatePropertyAgainstDatabase('maxKarmaPoints', str)).toEqual(true) })
             })
+
         })
 
         it('Each project should display the location', () => {
+
             let projectLinks = page.getListOfProjectLinks();
             browser.wait(ExpectedConditions.presenceOf(projectLinks.first()),
                 waitTimeout, 'First link was not present')
@@ -159,7 +108,7 @@ describe('Home page: user can browse projects from home page', () => {
             projectLinks.each(function (item) {
                 item.getAttribute('href').then(function (str) {
                     let projectLocation = page.getProjectLocation(projectIndex)
-                    let projectKey = GetDisplayedProjectKey(str)
+                    let projectKey = getDisplayedProjectKey(str)
                     projectLocation.getText().then(function (str) {
                         expect(str).toContain(projects[projectKey]['location']['name'], 'Location name was not displayed')
                         expect(str).toContain(projects[projectKey]['location']['city'], 'City was not displayed')
@@ -171,6 +120,7 @@ describe('Home page: user can browse projects from home page', () => {
         })
 
         it('Each project should display the date', () => {
+
             let projectLinks = page.getListOfProjectLinks();
             browser.wait(ExpectedConditions.presenceOf(projectLinks.first()),
                 waitTimeout, 'First link was not present')
@@ -180,7 +130,7 @@ describe('Home page: user can browse projects from home page', () => {
             projectLinks.each(function (item) {
                 item.getAttribute('href').then(function (str) {
                     let projectDate = page.getProjectDate(projectIndex)
-                    let projectKey = GetDisplayedProjectKey(str)
+                    let projectKey = getDisplayedProjectKey(str)
                     projectDate.getText().then(function (str) {
                         expect(str).toContain(datePipe.transform(projects[projectKey]['startDateTime'], 'longDate'),
                             'Start date was not correct displayed')
@@ -196,6 +146,7 @@ describe('Home page: user can browse projects from home page', () => {
         })
 
         it('Each project card should open the project page and see the title', () => {
+
             let projectLinks = page.getListOfProjectLinks();
             browser.wait(ExpectedConditions.presenceOf(projectLinks.first()),
                 waitTimeout, 'First link was not present')
@@ -208,24 +159,21 @@ describe('Home page: user can browse projects from home page', () => {
                         waitTimeout, 'Link ' + i + ' was not present').then(function () {
                             currentProjectLink.getAttribute('href').then(function (str) {
                                 page.getProjectTitle(currentProjectLink).click().then(function () {
-                                    browser.wait(ExpectedConditions.urlContains('/project'),
-                                        waitTimeout, 'Link to project did not open')
+                                    let projectKey = getDisplayedProjectKey(str)
+                                    browser.wait(ExpectedConditions.urlContains('/project/' + projectKey),
+                                        waitTimeout, 'Link to project ' + projectKey + ' did not open')
                                         .then(function () {
-                                            browser.getCurrentUrl().then(function (url) {
-                                                projectKey = GetDisplayedProjectKey(url)
-                                                let projectPage = new ProjectSingleOppPage()
-                                                let projectTitle = projectPage.getProjectTitleElement();
-                                                browser.wait(ExpectedConditions.presenceOf(projectTitle),
-                                                    waitTimeout, 'Title of project ' + projectKey + ' was not present')
-                                                    .then(function () {
-                                                        projectTitle.getText().then(function (title) {
-                                                            expect(title).toEqual(projects[projectKey]['title'], 'Title of project ' + projectKey + ' was not correct')
-                                                            page.navigateTo()
-                                                        })
-
+                                            let projectPage = new ProjectMultiOppPage()
+                                            let projectTitle = projectPage.getProjectTitleElement();
+                                            browser.wait(ExpectedConditions.presenceOf(projectTitle),
+                                                waitTimeout, 'Title of project ' + projectKey + ' was not present')
+                                                .then(function () {
+                                                    projectTitle.getText().then(function (title) {
+                                                        expect(title).toEqual(projects[projectKey]['title'], 'Title of project ' + projectKey + ' was not correct')
+                                                        page.navigateTo()
                                                     })
 
-                                            })
+                                                })
 
                                         })
 
@@ -237,6 +185,8 @@ describe('Home page: user can browse projects from home page', () => {
                 }
             })
         })
-    }
-
+    })
 })
+
+
+

@@ -44,19 +44,14 @@ describe('benefitTransform', () => {
         expect(validationFailure(errs, 'oppKey', 'isNotEmpty')).toBeTruthy()
         expect(validationFailure(errs, 'title', 'isNotEmpty')).toBeTruthy()
         expect(validationFailure(errs, 'description', 'isNotEmpty')).toBeTruthy()
+        expect(validationFailure(errs, 'icon', 'isNotEmpty')).toBeTruthy()
       })
       .then(done)
   });
 
   it('requires project type to be Enum', done => {
 
-
     benefitTransform({
-      $key: "1",
-      description: "Benefit",
-      icon: "",
-      oppKey: "",
-      title: "",
       type: "NotEnum"
     })
       .then(() => {
@@ -68,5 +63,18 @@ describe('benefitTransform', () => {
       .then(done)
   });
 
+  it('requires value to be a number', done => {
+    
+        benefitTransform({
+          value: "zz"
+        })
+          .then(() => {
+            expect(false).toBeTruthy()
+          })
+          .catch((errs: ValidationError[]) => {
+            expect(validationFailure(errs, 'value', 'isNumber')).toBeTruthy()
+          })
+          .then(done)
+      });
 
 });

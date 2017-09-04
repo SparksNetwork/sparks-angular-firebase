@@ -1,7 +1,7 @@
 import 'jasmine'
 import { browser, ExpectedConditions } from 'protractor/built';
 import { ProjectSingleOppPage } from "../../po/project.single-opp.po";
-import { AnswerQuestionPage } from "../../po/apply.answer-question.po";
+import { AnswerQuestionPage } from "../../po/answer-question.po";
 import { setUsersWithPartialProfile, setData, updateData, setUsers, signOut, signIn } from "../../firebase";
 import { USER_VERIFIED_COMPLETE_PROFILE, USER_VERIFIED_LNAME_BDAY } from "../../fixtures/users-partial-profile";
 import { CompleteProfilePage } from "../../po/complete.profile.po";
@@ -10,7 +10,7 @@ import { USER_NOT_VERIFIED } from "../../fixtures/users";
 const waitTimeout = 5000
 
 describe('Apply: user is asked a question before applying', () => {
-    let answerQuestionPage: AnswerQuestionPage 
+    let answerQuestionPage: AnswerQuestionPage
     let KPCprojectPage: ProjectSingleOppPage
     let completeProfilePage: CompleteProfilePage
     const fullyLoaded = require('../../fixtures/fully-loaded.json')
@@ -101,17 +101,16 @@ describe('Apply: user is asked a question before applying', () => {
 
     function TestsCommonToAllTypeOfVerifiedUsers() {
 
-it('it should display the question  ', function () {
-    let question = answerQuestionPage.getQuestion()
-    browser.wait(ExpectedConditions.presenceOf(question),
-        waitTimeout, 'The text of the question was not present')
-    question.getText().then((str) => {
-        browser.getCurrentUrl().then((url) => {
-            let oppKey: string = GetOppKey(url)
-            expect(str).toMatch(fullyLoaded['opp'][oppKey]['question'],
-                'The text of the question was not correct')
-        })
-    })
+        it('it should display the question  ', function () {
+            let question = answerQuestionPage.getQuestion()
+            browser.wait(ExpectedConditions.presenceOf(question),
+                waitTimeout, 'Next button name was not present')
+            question.getText().then((str) => {
+                browser.getCurrentUrl().then((url) => {
+                    let oppKey: string = GetOppKey(url)
+                    expect(str).toMatch(fullyLoaded['opp'][oppKey]['question'])
+                })
+            })
         });
 
         it('next button is clickable only if the answer field is not empty ', function () {
@@ -131,4 +130,5 @@ it('it should display the question  ', function () {
         let splittedUrl = url.split('/');
         return splittedUrl[splittedUrl.length - 2];
     }
+
 })

@@ -79,6 +79,9 @@ export class Project {
 
   @IsInt()
   shareKarmaPoints?: number;
+
+  @IsNotEmpty()
+  communityBenefit?: string;
 }
 
 const validateOpt = { validator: { skipMissingProperties: true } };
