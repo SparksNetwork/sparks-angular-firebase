@@ -23,7 +23,7 @@ import { PageShiftComponent } from './page-shift/page-shift.component';
 import { ResolveShiftByApplicationKey } from "./resolve-shift-by-app-key/resolve-shifts-by-application-key.service";
 import { RequireApplicationAcceptedService } from "../../core/sndomain/shift/require-application-accepted.service";
 import { PageMessageComponent } from "../../shared/snui/page-message/page-message.component";
-
+import { PagePaymentDetailsComponent } from './page-payment-details/page-payment-details.component';
 
 const routes: Routes = [
     {
@@ -116,6 +116,10 @@ const routes: Routes = [
                     {
                         path: 'edit-answer',
                         component: PageAnswerQuestionComponent
+                    },
+                    {
+                        path: 'payment-details',
+                        component: PagePaymentDetailsComponent
                     }
                 ]
             }
@@ -138,4 +142,5 @@ export const routedComponents = [
     PageApplyConfirmationComponent,
     PageShiftComponent,
     PageApplyConfirmationComponent,
+    PagePaymentDetailsComponent,
 ];
