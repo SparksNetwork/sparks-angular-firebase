@@ -2,7 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 
 import { AuthService, AuthError } from "../../../core/snauth/auth/auth.service";
-import { FormEmailPasswordComponent } from '../form-email-password/form-email-password.component';
 import { FormResetPasswordComponent } from '../form-reset-password/form-reset-password.component';
 
 @Component({
@@ -13,10 +12,9 @@ export class PageEmailActionHandlerComponent {
   public mode: string
   public oobCode: string
   public title: string
-  public verificationEmailExpired: boolean;
+  public verificationEmailExpired: boolean = false;
   public resetPasswordEmail: string;
 
-  @ViewChild(FormEmailPasswordComponent) public epForm: FormEmailPasswordComponent
   @ViewChild(FormResetPasswordComponent) public frpForm: FormResetPasswordComponent
 
   constructor(
@@ -65,11 +63,8 @@ export class PageEmailActionHandlerComponent {
     }
   }
 
-  public signInAndResendVerificationEmail() {
-    this.auth.signInWithEmailAndPasswordWithoutRedirect(
-      this.epForm.credentialsForm.value.email,
-      this.epForm.credentialsForm.value.password
-    )
+  public signInAndResendVerificationEmail(event) {
+    this.auth.signInWithEmailAndPasswordWithoutRedirect(event.email, event.password)
       .then((user) => {
         if (!user) return;
         user.sendEmailVerification().then(() => this.router.navigate(['dash']));

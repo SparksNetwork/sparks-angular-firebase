@@ -4,15 +4,17 @@
 
 <auth-alert-error></auth-alert-error>
 
-<div class='segment' [hidden]='!verificationEmailExpired'>
-  <p class='text-danger'>Sign in below to recive a new verification email.</p>
-  <auth-form-email-password></auth-form-email-password>
-  <div class="row">
-    <div class="col-xs-6">
-      <button btn (click)='signInAndResendVerificationEmail()' [disabled]="!epForm.credentialsForm.valid">Sign In</button>
+<ng-container *ngIf='verificationEmailExpired'>
+  <div class='segment'>
+    <p class='text-danger'>Sign in below to recive a new verification email.</p>
+    <auth-form-email-password (onSubmit)="signInAndResendVerificationEmail($event)"></auth-form-email-password>
+    <div class="row">
+      <div class="col-xs-6">
+        <button type="submit" form="emailPasswordForm" class="btn btn-default">Sign In</button>
+      </div>
     </div>
   </div>
-</div>
+</ng-container>
 
 <div [hidden]="!resetPasswordEmail">
   <div class='segment'>
