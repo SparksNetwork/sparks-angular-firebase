@@ -20,10 +20,12 @@ export class ResolveShiftByApplicationKey implements Resolve<any> {
     public query: ShiftQueryService,
   ) { }
 
-  public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<(void| Shift[])[]>> {
+  public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<(void | Shift[])[]>> {
 
     const combinedShifts = route.parent.data["appTeams"].switchMap((appTeams: ApplicationTeam[]) => {
       let shifts: Array<Observable<void | Shift[]>> = [];
+
+      if (!appTeams) return Observable.of(null);
 
       appTeams.forEach(appTeam => {
         shifts.push(

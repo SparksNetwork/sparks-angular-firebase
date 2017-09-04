@@ -12,6 +12,7 @@ import { OppTeamsSelectedComponent } from "./opp-teams-selected/opp-teams-select
 import { OppTeamsNotSelectedComponent } from "./opp-teams-not-selected/opp-teams-not-selected.component";
 import { ShiftListComponent } from "./shift-list/shift-list.component";
 import { ResolveShiftByApplicationKey } from "./resolve-shift-by-app-key/resolve-shifts-by-application-key.service";
+import { RequireApplicationAcceptedService } from "../../core/sndomain/shift/require-application-accepted.service";
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ResolveShiftByApplicationKey } from "./resolve-shift-by-app-key/resolve
   providers:[
     ResolveTeamByTeamKey,
     ResolveShiftByApplicationKey,
+    RequireApplicationAcceptedService,
   ]
 })
 export class ApplyModule { }

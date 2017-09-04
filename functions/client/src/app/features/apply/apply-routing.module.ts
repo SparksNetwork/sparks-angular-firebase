@@ -21,6 +21,7 @@ import { PageApplyConfirmationComponent } from "./page-apply-confirmation/page-a
 import { ResolveProjectByOpp } from "../../core/sndomain/project/resolve-project-by-opp.service";
 import { PageShiftComponent } from './page-shift/page-shift.component';
 import { ResolveShiftByApplicationKey } from "./resolve-shift-by-app-key/resolve-shifts-by-application-key.service";
+import { RequireApplicationAcceptedService } from "../../core/sndomain/shift/require-application-accepted.service";
 
 
 const routes: Routes = [
@@ -102,6 +103,9 @@ const routes: Routes = [
                         resolve: {
                             shift: ResolveShiftByApplicationKey
                         },
+                        canActivate:[
+                            RequireApplicationAcceptedService
+                        ]
                     },
                     {
                         path: 'edit-answer',
@@ -126,7 +130,6 @@ export const routedComponents = [
     PageOppTeamComponent,
     PageReviewDetailComponent,
     PageApplyConfirmationComponent,
-    PageApplicationComponent,
     PageShiftComponent,
     PageApplyConfirmationComponent,
 ];
