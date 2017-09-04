@@ -4,9 +4,9 @@ import { setData, setUsers, setUsersWithPartialProfile, signOut, signIn, updateD
 import { CompleteProfilePage } from "../../po/complete.profile.po";
 import { USER_VERIFIED_LNAME, USER_VERIFIED_LNAME_BDAY, USER_VERIFIED_LNAME_BDAY_PNAME, USER_VERIFIED_COMPLETE_PROFILE } from "../../fixtures/users-partial-profile";
 import { ProjectSingleOppPage } from "../../po/project.single-opp.po";
+import { USER_NOT_VERIFIED } from "../../fixtures/users";
 
 const waitTimeout = 5000;
-const buttonTimeout = 20000
 
 describe('Apply: user is asked only for the fields that were not previously written to database', () => {
     let page: CompleteProfilePage;
@@ -24,7 +24,7 @@ describe('Apply: user is asked only for the fields that were not previously writ
             .then(done)
     });
 
-    describe('user with only legal name completed', () => {
+    describe('verified user with only legal name completed', () => {
 
         beforeAll(done => {
             browser.get('/')
@@ -69,7 +69,7 @@ describe('Apply: user is asked only for the fields that were not previously writ
 
     })
 
-    describe('user with legal name and birthday completed', () => {
+    describe('verified user with legal name and birthday completed', () => {
 
         beforeAll(done => {
             browser.get('/')
@@ -112,7 +112,7 @@ describe('Apply: user is asked only for the fields that were not previously writ
         })
     })
 
-    describe('user with legal name, birthday and preferred name completed', () => {
+    describe('verified user with legal name, birthday and preferred name completed', () => {
 
         beforeAll(done => {
             browser.get('/')
@@ -155,7 +155,7 @@ describe('Apply: user is asked only for the fields that were not previously writ
 
     })
 
-    describe('user with complete information about the profile', () => {
+    describe('verified user with complete information about the profile', () => {
 
         beforeAll(done => {
             browser.get('/')
@@ -179,4 +179,28 @@ describe('Apply: user is asked only for the fields that were not previously writ
 
     })
 
+    describe('User not verified', () => {
+        beforeAll(done => {
+            browser.get('/')
+                .then(signOut)
+                .then(() => { signIn(USER_NOT_VERIFIED.email, USER_NOT_VERIFIED.password) })
+                .then(() => { KPCprojectPage.navigateTo() })
+                .then(() => {
+                    browser.wait(ExpectedConditions.presenceOf(KPCprojectPage.getJoinButton()),
+                        waitTimeout, "Join button was not present")
+                })
+                .then(() => { KPCprojectPage.getJoinButton().click() })
+                .then(done)
+        })
+
+        it('it should be taken to Email not verified page ', function () {
+            browser.wait(ExpectedConditions.urlContains('/auth/email-not-verified'),
+                waitTimeout, 'User was not taken to Email not verified page')
+            expect(true).toBeTruthy()
+
+        });
+
+    })
 })
+
+
