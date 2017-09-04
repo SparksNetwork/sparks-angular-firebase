@@ -32,14 +32,14 @@
             </div>
         </div>
         <snui-action-bar [type]="actionBarType.Organizer">
-            <div class="col-xs-8 bottom-nav">
-                <div class="btn-group" role="group">
-                    <a [routerLink]="['..']" class="btn btn-block btn-default">Previous</a>
+            <div class="row">
+                <div class="col-xs-6">
+                    <a [routerLink]="['..']" class="btn btn-default">Previous</a>
                 </div>
-                <div class="btn-group" role="group">
-                    <button class="btn btn-block btn-default" [disabled]='!answerForm.valid' (click)='join(team.$key, team.question)'>Join</button >
-        </div>
-      </div>
+                <div class="col-xs-6">
+                    <button class="btn btn-default pull-right" [disabled]='!answerForm.valid' (click)='join(team.$key, team.question)'>Join</button >
+                </div>
+            </div>
     </snui-action-bar>
     </form>
 </ng-container>

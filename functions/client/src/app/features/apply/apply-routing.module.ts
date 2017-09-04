@@ -19,9 +19,17 @@ import { ResolveApplicationByKey } from "../../core/sndomain/application/resolve
 import { PageReviewDetailComponent } from "./page-review-detail/page-review-detail.component";
 import { PageApplyConfirmationComponent } from "./page-apply-confirmation/page-apply-confirmation.component";
 import { ResolveProjectByOpp } from "../../core/sndomain/project/resolve-project-by-opp.service";
+import { PageShiftComponent } from './page-shift/page-shift.component';
+import { ResolveShiftByApplicationKey } from "./resolve-shift-by-app-key/resolve-shifts-by-application-key.service";
+import { RequireApplicationAcceptedService } from "../../core/sndomain/shift/require-application-accepted.service";
+import { PageMessageComponent } from "../../shared/snui/page-message/page-message.component";
 import { PagePaymentDetailsComponent } from './page-payment-details/page-payment-details.component';
 
 const routes: Routes = [
+    {
+        path:"application-pending",
+        component: PageMessageComponent
+    },
     {
         path: ':oppKey',
         canActivate: [
@@ -30,14 +38,14 @@ const routes: Routes = [
         ],
         resolve: {
             opp: ResolveOppByOppKey,
-            profile : ResolveProfile
+            profile: ResolveProfile
         },
         children: [
             {
                 path: 'complete-profile',
                 component: PageCompleteProfileComponent,
                 resolve: {
-                    profile : ResolveProfile
+                    profile: ResolveProfile
                 }
             },
             {
@@ -57,7 +65,7 @@ const routes: Routes = [
                 canActivate: [
                     RequireProfileCompleteService,
                 ],
-                children:[
+                children: [
                     {
                         path: 'teams',
                         children: [
@@ -87,11 +95,23 @@ const routes: Routes = [
                     },
                     {
                         path: 'edit-profile',
-                        component: PageCompleteProfileComponent                        
+                        component: PageCompleteProfileComponent
                     },
                     {
                         path: 'answer-question',
                         component: PageAnswerQuestionComponent
+                    },
+                    {
+
+                        path: 'shift',
+                        component: PageShiftComponent,
+                        resolve: {
+                            shift: ResolveShiftByApplicationKey,
+                            project: ResolveProjectByOpp
+                        },
+                        canActivate:[
+                            RequireApplicationAcceptedService
+                        ]
                     },
                     {
                         path: 'edit-answer',
@@ -120,5 +140,7 @@ export const routedComponents = [
     PageOppTeamComponent,
     PageReviewDetailComponent,
     PageApplyConfirmationComponent,
-    PagePaymentDetailsComponent
+    PageShiftComponent,
+    PageApplyConfirmationComponent,
+    PagePaymentDetailsComponent,
 ];
