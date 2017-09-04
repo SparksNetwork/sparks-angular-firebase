@@ -22,9 +22,14 @@ import { ResolveProjectByOpp } from "../../core/sndomain/project/resolve-project
 import { PageShiftComponent } from './page-shift/page-shift.component';
 import { ResolveShiftByApplicationKey } from "./resolve-shift-by-app-key/resolve-shifts-by-application-key.service";
 import { RequireApplicationAcceptedService } from "../../core/sndomain/shift/require-application-accepted.service";
+import { PageMessageComponent } from "../../shared/snui/page-message/page-message.component";
 
 
 const routes: Routes = [
+    {
+        path:"pending",
+        component: PageMessageComponent
+    },
     {
         path: ':oppKey',
         canActivate: [
