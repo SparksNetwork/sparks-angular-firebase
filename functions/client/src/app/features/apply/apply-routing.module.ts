@@ -106,7 +106,8 @@ const routes: Routes = [
                         path: 'shift',
                         component: PageShiftComponent,
                         resolve: {
-                            shift: ResolveShiftByApplicationKey
+                            shift: ResolveShiftByApplicationKey,
+                            project: ResolveProjectByOpp
                         },
                         canActivate:[
                             RequireApplicationAcceptedService

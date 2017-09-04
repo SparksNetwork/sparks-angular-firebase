@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
+import { Project } from "../../../../../../universal/domain/project";
 
 @Component({
   templateUrl: './page-shift.component.html',
 })
 export class PageShiftComponent implements OnInit {
 
-  constructor() {    
+  public project: Project;
+
+  constructor(private route: ActivatedRoute) {
+    this.route.snapshot.data["project"].subscribe(project => this.project = project)
   }
 
   ngOnInit() {
