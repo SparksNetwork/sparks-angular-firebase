@@ -19,6 +19,7 @@ import { ResolveApplicationByKey } from "../../core/sndomain/application/resolve
 import { PageReviewDetailComponent } from "./page-review-detail/page-review-detail.component";
 import { PageApplyConfirmationComponent } from "./page-apply-confirmation/page-apply-confirmation.component";
 import { ResolveProjectByOpp } from "../../core/sndomain/project/resolve-project-by-opp.service";
+import { PagePaymentDetailsComponent } from './page-payment-details/page-payment-details.component';
 
 const routes: Routes = [
     {
@@ -95,6 +96,10 @@ const routes: Routes = [
                     {
                         path: 'edit-answer',
                         component: PageAnswerQuestionComponent
+                    },
+                    {
+                        path: 'payment-details',
+                        component: PagePaymentDetailsComponent
                     }
                 ]
             }
@@ -114,5 +119,6 @@ export const routedComponents = [
     PageOppTeamsComponent,
     PageOppTeamComponent,
     PageReviewDetailComponent,
-    PageApplyConfirmationComponent
+    PageApplyConfirmationComponent,
+    PagePaymentDetailsComponent
 ];
