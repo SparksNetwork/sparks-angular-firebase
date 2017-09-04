@@ -1,7 +1,7 @@
 import { transformAndValidate } from "class-transformer-validator"
 import { Expose } from 'class-transformer'
 import { IsNotEmpty, IsDefined } from 'class-validator'
-import { IsISO8601 } from "class-validator";
+import { IsDateString } from "class-validator";
 
 import {
     BaseCollection, Database,
@@ -27,15 +27,13 @@ export class Shift {
     @IsNotEmpty()
     public $key: string
 
-    @IsISO8601()
+    @IsDateString()
     @IsDefined()
     @IsNotEmpty()
-    public startDate: string
+    public startDateTime: string
 
-    @IsISO8601()
-    @IsDefined()
-    @IsNotEmpty()
-    public endDate: string
+    @IsDateString()
+    public endDateTime?: string
 
     @IsDefined()
     @IsNotEmpty()
@@ -44,8 +42,7 @@ export class Shift {
     @IsDefined()
     @IsNotEmpty()
     public teamTitle: string
-
-    @IsDefined()
+    
     @IsNotEmpty()
     public teamIcon: string
 }

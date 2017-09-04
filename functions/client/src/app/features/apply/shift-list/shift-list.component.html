@@ -9,7 +9,11 @@
           <div class="description">
             <h4>{{shift.teamTitle}}</h4>
             <div class="timeline-when">
-              <p>{{shift.startDate | amCalendar : {sameElse:'lll'} }} - {{shift.endDate | amDateFormat:'LT'}}</p>
+              <p>{{shift.startDateTime | amCalendar : {sameElse:'lll'} }}
+                <ng-container *ngIf='shift.endDateTime'>
+                  - {{shift.endDateTime | amDateFormat:'LT'}}
+                </ng-container>
+              </p>
             </div>
           </div>
         </div>
