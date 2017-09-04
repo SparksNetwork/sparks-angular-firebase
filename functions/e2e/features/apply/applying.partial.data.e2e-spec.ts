@@ -4,9 +4,13 @@ import { setData, setUsers, setUsersWithPartialProfile, signOut, signIn, updateD
 import { CompleteProfilePage } from "../../po/complete.profile.po";
 import { USER_VERIFIED_LNAME, USER_VERIFIED_LNAME_BDAY, USER_VERIFIED_LNAME_BDAY_PNAME, USER_VERIFIED_COMPLETE_PROFILE } from "../../fixtures/users-partial-profile";
 import { ProjectSingleOppPage } from "../../po/project.single-opp.po";
-import { USER_NOT_VERIFIED } from "../../fixtures/users";
 
+<<<<<<< HEAD:functions/e2e/features/apply/applying-partial-data.e2e-spec.ts
 const waitTimeout = 5000
+=======
+const waitTimeout = 5000;
+const buttonTimeout = 20000
+>>>>>>> parent of 9ad07a0... Merge remote-tracking branch 'origin/devops/application-teams-test' into feat/opportunity-styles:functions/e2e/features/apply/applying.partial.data.e2e-spec.ts
 
 describe('Apply: user is asked only for the fields that were not previously written to database', () => {
     let page: CompleteProfilePage;
@@ -24,7 +28,7 @@ describe('Apply: user is asked only for the fields that were not previously writ
             .then(done)
     });
 
-    describe('verified user with only legal name completed', () => {
+    describe('user with only legal name completed', () => {
 
         beforeAll(done => {
             browser.get('/')
@@ -69,7 +73,7 @@ describe('Apply: user is asked only for the fields that were not previously writ
 
     })
 
-    describe('verified user with legal name and birthday completed', () => {
+    describe('user with legal name and birthday completed', () => {
 
         beforeAll(done => {
             browser.get('/')
@@ -112,7 +116,7 @@ describe('Apply: user is asked only for the fields that were not previously writ
         })
     })
 
-    describe('verified user with legal name, birthday and preferred name completed', () => {
+    describe('user with legal name, birthday and preferred name completed', () => {
 
         beforeAll(done => {
             browser.get('/')
@@ -155,7 +159,7 @@ describe('Apply: user is asked only for the fields that were not previously writ
 
     })
 
-    describe('verified user with complete information about the profile', () => {
+    describe('user with complete information about the profile', () => {
 
         beforeAll(done => {
             browser.get('/')
@@ -177,6 +181,7 @@ describe('Apply: user is asked only for the fields that were not previously writ
         });
 
     })
+<<<<<<< HEAD:functions/e2e/features/apply/applying-partial-data.e2e-spec.ts
  
     describe('User not verified', () => {
         beforeAll(done => {
@@ -202,5 +207,7 @@ describe('Apply: user is asked only for the fields that were not previously writ
     })
 
 
+=======
+>>>>>>> parent of 9ad07a0... Merge remote-tracking branch 'origin/devops/application-teams-test' into feat/opportunity-styles:functions/e2e/features/apply/applying.partial.data.e2e-spec.ts
 
 })

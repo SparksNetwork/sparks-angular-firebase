@@ -1,10 +1,10 @@
 {
   "profile": {
     "USER_VERIFIED_PROFILE": {
-      "legalName": "Test User With Profile",
+      "fullName": "Test User With Profile",
       "preferredName": "Testie",
       "phoneNumber": "8053129100",
-      "birthday": "1995-01-09"
+      "birthday": "10251974"
     }
   },
   "project": {
@@ -137,7 +137,7 @@
       "karma": 20,
       "title": "Volunteer",
       "description": "opp description",
-      "question": "Do you have any problem with the broom?"
+      "question": "opp question?"
     },
     "LC1": {
       "projectKey": "LC",
@@ -147,7 +147,7 @@
       "benefitValue": 374,
       "title": "1-Shift",
       "description": "opp description",
-      "question": "Do you like festivals?"
+      "question": "opp question?"
     },
     "LC2": {
       "projectKey": "LC",
@@ -157,7 +157,7 @@
       "benefitValue": 394,
       "title": "Regular",
       "description": "opp description",
-      "question": "Do you like multicultural festivals?"
+      "question": "opp question?"
     },
     "LC3": {
       "projectKey": "LC",
@@ -167,7 +167,7 @@
       "benefitValue": 364,
       "title": "Pre-Event Weekends",
       "description": "opp description",
-      "question": "Do you like week-end festivals?"
+      "question": "opp question?"
     },
     "LC4": {
       "projectKey": "LC",
@@ -177,7 +177,7 @@
       "benefitValue": 444,
       "title": "Setup",
       "description": "opp description",
-      "question": "What are you planning to do during the festival?"
+      "question": "opp question?"
     },
     "LC5": {
       "projectKey": "LC",
@@ -187,7 +187,7 @@
       "benefitValue": 444,
       "title": "Strike",
       "description": "opp description",
-      "question": "Are you ready to have a good time?"
+      "question": "opp question?"
     },
     "SRBC1": {
       "projectKey": "SRBC",
@@ -197,7 +197,7 @@
       "benefitValue": 10,
       "title": "Beach Cleanup",
       "description": "opp description",
-      "question": "Do you like festivals?"
+      "question": "opp question?"
     }
   },
   "benefit": {
