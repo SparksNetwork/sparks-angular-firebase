@@ -124,7 +124,7 @@ export class ProjectSingleOppPage {
     }
 
     getJoinButton(){
-        return element(by.className('btn btn-bordered btn-block'));
+        return element(by.className('btn btn-bordered'));
     }
 
 }

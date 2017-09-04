@@ -3,7 +3,7 @@ import { browser, by, element } from 'protractor';
 export class AnswerQuestionPage {
 
     getNextButton(){
-        return element(by.className('btn btn-block btn-default'))
+        return element(by.className('btn btn-default'))
     }
 
     getAnswer(){

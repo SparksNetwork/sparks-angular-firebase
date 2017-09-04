@@ -551,11 +551,11 @@ label {
 }
 
 .pg-default{
-    .form-control::-webkit-input-placeholder { color: $base-dark; }
-    .form-control:-moz-placeholder{ color: $base-dark; }
-    .form-control::-moz-placeholder{ color: $base-dark; }
-    .form-control:-ms-input-placeholder{ color: $base-dark; }
-    .form-control::-ms-input-placeholder { color: $base-dark; }
+    .form-control::-webkit-input-placeholder { color: $base-color; }
+    .form-control:-moz-placeholder{ color: $base-color; }
+    .form-control::-moz-placeholder{ color: $base-color; }
+    .form-control:-ms-input-placeholder{ color: $base-color; }
+    .form-control::-ms-input-placeholder { color: $base-color; }
 }
 
 .login-with-username {
@@ -567,24 +567,26 @@ label {
 }
 
 .form-control {
-    
     @include border-radius-targeted( 0, 7.5px, 7.5px, 0);
     background: transparent;
-    padding: 14px 12px;
+    padding: 12px;
     height: 45px;
     font-size: 16px;
     line-height: 20px;
     letter-spacing: 0.64px;
+    border-color: $color-separator !important;
+    border-left: transparent;
+    color: $base-color;
+    box-shadow: none !important;
     .pg-auth &{
-        border-color: #FFF;
+        border-color: #FFF !important;
         color: #FFF;
-        border-left: transparent;
     }
 
     &:hover,
     &:active,
     &:focus {
-        box-shadow: none;
+        border-color: $color-separator;
         .pg-auth &{
             border-color: #FFF;
         }
@@ -598,9 +600,12 @@ label {
     .icon {
         height: 45px;
         padding: 7px 0 7px 20px;
-        border: 1px solid #FFF;
+        border: 1px solid $color-separator;
         border-right: transparent;
         @include border-radius-targeted( 7.5px, 0, 0, 7.5px);
+        .pg-auth &{
+            border: 1px solid #FFF;
+        }
     }
     .error {
         margin-top: 15px; // font-size: 28px;
@@ -609,6 +614,9 @@ label {
         // @extend .col-xs-12;
         float: left;
         width: 100%;
+    }
+    textarea{
+        max-width: 100%;
     }
     &.has-error {
         .form-control {
@@ -1443,6 +1451,12 @@ label {
 }
 
 .bottom-nav {
+    @include block-nooverflow;
+    padding: 25px 0;
+    .btn{
+        width: auto;
+        min-width: 80px;
+    }
     .btn-group {
         width: 48%;
         &:only-child {
