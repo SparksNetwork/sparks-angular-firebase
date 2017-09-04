@@ -4,6 +4,8 @@ import { Observable } from "rxjs/Rx";
 import { Team } from "../../../../../../universal/domain/team";
 import { ActionBarType } from "../../../shared/snui/action-bar/action-bar.component";
 import { ApplicationTeam } from "../../../../../../universal/domain/applicationTeam";
+import { ApplicationActionService } from "../../../core/sndomain/application/application-action.service";
+import { ApplicationStepFinished } from "../../../../../../universal/domain/application";
 
 
 @Component({
@@ -15,11 +17,12 @@ export class PageOppTeamsComponent implements OnInit {
     private applicationTeams: Observable<ApplicationTeam[]>;
     public actionBarType = ActionBarType;
     public allTeams: any;
-    public selectedCount:number;
+    public selectedCount: number;
 
     constructor(
         public route: ActivatedRoute,
-        public router: Router
+        public router: Router,
+        public applicationAction: ApplicationActionService
     ) { }
 
     ngOnInit() {
@@ -34,7 +37,13 @@ export class PageOppTeamsComponent implements OnInit {
     }
 
     next() {
-        this.router.navigate(['../review-detail'], { relativeTo: this.route.parent })
+        let value = {
+            step: ApplicationStepFinished.Team
+        }
+        let applicationKey = this.route.parent.parent.snapshot.params["applicationKey"];
+        this.applicationAction.update(applicationKey, value).subscribe(
+            s => this.router.navigate(['../review-detail'], { relativeTo: this.route.parent })
+        )
     }
 
     previous() {

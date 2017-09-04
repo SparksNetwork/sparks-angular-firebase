@@ -46,7 +46,8 @@ export class PageOppTeamComponent implements OnInit {
         appTeam.teamKey = key;
         appTeam.answer = this.answerForm.get('answer').value;
         appTeam.question = question;
-            this.applicationTeamAction.create(appTeam)
-                .subscribe((s) => { this.router.navigate(['../'], { relativeTo: this.route }) });
+        appTeam.joinedOn = new Date().toISOString();
+        this.applicationTeamAction.create(appTeam)
+            .subscribe((s) => { this.router.navigate(['../'], { relativeTo: this.route }) });
     }
 }

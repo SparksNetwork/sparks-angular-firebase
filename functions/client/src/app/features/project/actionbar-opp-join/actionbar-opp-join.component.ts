@@ -1,8 +1,9 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { ActionBarType } from "../../../shared/snui/action-bar/action-bar.component";
-import { Application, ApplicationStatus } from "../../../../../../universal/domain/application";
+import { Application, ApplicationStatus, ApplicationStepFinished } from "../../../../../../universal/domain/application";
 import { ApplicationActionService } from "../../../core/sndomain/application";
 import { Opp } from "../../../../../../universal/domain/opp";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'project-actionbar-opp-join',
@@ -16,7 +17,9 @@ export class ActionbarOppJoinComponent implements OnChanges {
   showCancelButton: boolean = false;
 
   constructor(
-    public applicationAction: ApplicationActionService
+    public applicationAction: ApplicationActionService,
+    public router: Router,
+    public route: ActivatedRoute
   ) { }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -40,9 +43,20 @@ export class ActionbarOppJoinComponent implements OnChanges {
   }
 
   cancel(application: Application) {
-    this.applicationAction
-      .changeStatus(application.$key, ApplicationStatus.Canceled)
-      .subscribe();
+    let oppKey = this.route.parent.snapshot.params["oppKey"];
+    if (oppKey)
+      this.router.navigate([application.$key, 'cancel'], { relativeTo: this.route })
+    else
+      this.router.navigate(['../','opp', application.oppKey,'join', application.$key, 'cancel'], { relativeTo: this.route })
+  }
+
+  continue(application: Application) {
+    if (!application.step)
+      this.router.navigate(['/apply', application.oppKey, 'application', application.$key, 'answer-question'])
+    if (application.step === ApplicationStepFinished.Answer)
+      this.router.navigate(['/apply', application.oppKey, 'application', application.$key, 'teams'])
+    if (application.step === ApplicationStepFinished.Team)
+      this.router.navigate(['/apply', application.oppKey, 'application', application.$key, 'review-detail'])
   }
 
 }

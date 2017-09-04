@@ -11,7 +11,6 @@ import { PageCompleteProfileComponent } from "./page-complete-profile/page-compl
 import { ResolveTeamByOppKey } from "../../core/sndomain/team/resolve-team-by-opp-key.service";
 import { PageOppTeamsComponent } from "./page-opp-teams/page-opp-teams.component";
 import { PageOppTeamComponent } from "./page-opp-team/page-opp-team.component";
-import { PageOppHomeTeamsComponent } from "./page-opp-home-teams/page-opp-home-teams.component";
 import { PageAnswerQuestionComponent } from './page-answer-question/page-answer-question.component'
 import { ResolveTeamByTeamKey } from "./resolve-team-by-team-key/resolve-team-by-team-key.service";
 import { RequireProfileCompleteService, ResolveProfile } from '../../core/sndomain/profile'
@@ -19,7 +18,6 @@ import { ResolveApplicationTeamByAppKey } from "../../core/sndomain/applicationT
 import { ResolveApplicationByKey } from "../../core/sndomain/application/resolve-application-by-key.service";
 import { PageReviewDetailComponent } from "./page-review-detail/page-review-detail.component";
 import { PageApplyConfirmationComponent } from "./page-apply-confirmation/page-apply-confirmation.component";
-import { PageApplicationComponent } from "./page-application/page-application.component";
 import { ResolveProjectByOpp } from "../../core/sndomain/project/resolve-project-by-opp.service";
 import { PageShiftComponent } from './page-shift/page-shift.component';
 import { ResolveShiftByApplicationKey } from "./resolve-shift-by-app-key/resolve-shifts-by-application-key.service";
@@ -53,7 +51,6 @@ const routes: Routes = [
             },
             {
                 path: 'application/:applicationKey',
-                component: PageApplicationComponent,
                 resolve: {
                     teams: ResolveTeamByOppKey,
                     appTeams: ResolveApplicationTeamByAppKey,
@@ -65,7 +62,6 @@ const routes: Routes = [
                 children: [
                     {
                         path: 'teams',
-                        component: PageOppHomeTeamsComponent,
                         children: [
                             {
                                 path: '',
@@ -100,11 +96,16 @@ const routes: Routes = [
                         component: PageAnswerQuestionComponent
                     },
                     {
+
                         path: 'shift',
                         component: PageShiftComponent,
                         resolve: {
                             shift: ResolveShiftByApplicationKey
-                        }
+                        },
+                    },
+                    {
+                        path: 'edit-answer',
+                        component: PageAnswerQuestionComponent
                     }
                 ]
             }
@@ -121,11 +122,11 @@ export class ApplyRoutingModule { }
 export const routedComponents = [
     PageCompleteProfileComponent,
     PageAnswerQuestionComponent,
-    PageOppHomeTeamsComponent,
     PageOppTeamsComponent,
     PageOppTeamComponent,
     PageReviewDetailComponent,
     PageApplyConfirmationComponent,
     PageApplicationComponent,
     PageShiftComponent,
+    PageApplyConfirmationComponent,
 ];

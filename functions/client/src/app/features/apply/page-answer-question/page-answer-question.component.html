@@ -1,4 +1,4 @@
-<ng-container *ngIf='opp'>
+<ng-container *ngIf='opp && applicationKey'>
   <snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
     The Organizer wants to know...
   </snui-header-simple>
@@ -21,7 +21,7 @@
 
     <snui-action-bar>
       <div class="btn-group" role="group">
-        <button (click)="submit()" [disabled]='!answerForm.valid && !applicationKey' class="btn btn-block btn-default">Next</button>
+        <button (click)="submit()" [disabled]='!answerForm.valid' class="btn btn-block btn-default">{{editFromReviewPage ? 'Save' : 'Next'}}</button>
       </div>
     </snui-action-bar>
   </form>

@@ -58,7 +58,6 @@ import {
   ApplicationTeamQueryService,
   ApplicationTeamActionService
 } from './applicationTeam'
-import { DateHelperService } from "../date-helper.service";
 
 import {
   ShiftQueryService
@@ -110,10 +109,7 @@ import {
     ApplicationTeamQueryService,
     ApplicationTeamActionService,
     ResolveApplicationTeamByAppKey,
-
     ShiftQueryService,
-    
-    DateHelperService
   ],
 })
 export class SNDomainModule { }

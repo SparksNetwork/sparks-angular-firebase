@@ -11,7 +11,6 @@ describe('Home page: user can browse projects from home page', () => {
     const fullyLoaded = require('../../fixtures/fully-loaded.json')
     const projects = fullyLoaded['project']
     let page: UserHomePage
-    let allKeys: Array<string>;
 
     beforeAll(done => {
         browser.waitForAngularEnabled(false)
@@ -29,9 +28,6 @@ describe('Home page: user can browse projects from home page', () => {
                 .then(signOut)
                 .then(function () {
                     signIn(USER_VERIFIED_NO_PROFILE.email, USER_VERIFIED_NO_PROFILE.password)
-                }).then(() => {
-                    allKeys = new Array<string>();
-                    GetAllProjectsKeys()
                 })
                 .then(done)
         })
@@ -45,9 +41,6 @@ describe('Home page: user can browse projects from home page', () => {
                 .then(signOut)
                 .then(function () {
                     signIn(USER_VERIFIED_PROFILE.email, USER_VERIFIED_PROFILE.password)
-                }).then(() => {
-                    allKeys = new Array<string>();
-                    GetAllProjectsKeys()
                 })
                 .then(done)
         })
@@ -62,9 +55,6 @@ describe('Home page: user can browse projects from home page', () => {
                 .then(signOut)
                 .then(function () {
                     signIn(USER_NOT_VERIFIED.email, USER_NOT_VERIFIED.password)
-                }).then(() => {
-                    allKeys = new Array<string>();
-                    GetAllProjectsKeys()
                 })
                 .then(done)
         })
@@ -78,10 +68,6 @@ describe('Home page: user can browse projects from home page', () => {
         beforeAll(done => {
             page.navigateTo()
                 .then(signOut)
-                .then(() => {
-                    allKeys = new Array<string>();
-                    GetAllProjectsKeys()
-                })
                 .then(done)
         })
 
@@ -120,51 +106,25 @@ describe('Home page: user can browse projects from home page', () => {
         }
     }
 
-    function GetAllProjectsKeys() {
-        let projectLinks = page.getListOfProjectLinks();
-        browser.wait(ExpectedConditions.presenceOf(projectLinks.first()),
-            waitTimeout, 'First link was not present')
-
-        projectLinks.count().then(function (projectsNo) {
-            for (let i = 0; i < projectsNo; i++) {
-                let projectKey: string;
-                let currentProjectLink = page.getProjectLink(i)
-                browser.wait(ExpectedConditions.presenceOf(currentProjectLink),
-                    waitTimeout, 'Link ' + i + ' was not present').then(function () {
-                        page.getProjectTitle(currentProjectLink).click().then(function () {
-
-                            browser.wait(ExpectedConditions.urlContains('/project/'),
-                                waitTimeout, 'Link to project ' + projectKey + ' did not open')
-                                .then(function () {
-                                    browser.getCurrentUrl().then(function (str) {
-                                        let key = GetDisplayedProjectKey(str)
-                                        allKeys.push(key)
-                                        page.navigateTo()
-
-                                    })
-                                })
-
-                        })
-                    })
-            }
-        })
-    }
-
     function TestsCommonToAllTypeOfUsers() {
         it('It should see all projects', () => {
             let projectLinks = page.getListOfProjectLinks();
             browser.wait(ExpectedConditions.presenceOf(projectLinks.first()),
                 waitTimeout, 'First link was not present')
+
             //looping through all the keys and see if all projects are displayed 
             let isPresent: boolean = false;
             for (let key in projects) {
                 isPresent = false;
-                for (let displayedKey of allKeys) {
-                    if (key === displayedKey) {
-                        isPresent = true;
-                    }
-                }
-                expect(isPresent).toBeTruthy()
+                projectLinks.each(function (item) {
+                    item.getAttribute('href').then(function (str) {
+                        if (GetDisplayedProjectKey(str) === key.toString()) {
+                            isPresent = true;
+                        }
+                    })
+                }).then(function () {
+                    expect(isPresent).toBe(true, 'Project with key ' + key.toString() + ' was not present');
+                })
             }
         })
 
@@ -195,29 +155,18 @@ describe('Home page: user can browse projects from home page', () => {
             browser.wait(ExpectedConditions.presenceOf(projectLinks.first()),
                 waitTimeout, 'First link was not present')
 
-            projectLinks.count().then(function (projectsNo) {
-                for (let i = 0; i < projectsNo; i++) {
-                    let projectKey: string;
-                    let currentProjectLink = page.getProjectLink(i)
-                    browser.wait(ExpectedConditions.presenceOf(currentProjectLink),
-                        waitTimeout, 'Link ' + i + ' was not present').then(function () {
-                            page.getProjectLocationUsingLink(currentProjectLink).getText().then((locationString) => {
-                                page.getProjectTitle(currentProjectLink).click().then(function () {
-                                    browser.wait(ExpectedConditions.urlContains('/project'),
-                                        waitTimeout, 'Link to project did not open')
-                                    browser.getCurrentUrl().then(function (url) {
-                                        let projectKey = GetDisplayedProjectKey(url)
-                                        expect(locationString).toContain(projects[projectKey]['location']['name'], 'Location name was not displayed')
-                                        expect(locationString).toContain(projects[projectKey]['location']['city'], 'City was not displayed')
-
-                                        page.navigateTo()
-                                    })
-                                })
-                            })
-
-                        })
-
-                }
+            let projectIndex: number = 0;
+            projectLinks.each(function (item) {
+                item.getAttribute('href').then(function (str) {
+                    let projectLocation = page.getProjectLocation(projectIndex)
+                    let projectKey = GetDisplayedProjectKey(str)
+                    projectLocation.getText().then(function (str) {
+                        expect(str).toContain(projects[projectKey]['location']['name'], 'Location name was not displayed')
+                        expect(str).toContain(projects[projectKey]['location']['city'], 'City was not displayed')
+                    })
+                }).then(function () {
+                    projectIndex++;
+                })
             })
         })
 
@@ -225,34 +174,24 @@ describe('Home page: user can browse projects from home page', () => {
             let projectLinks = page.getListOfProjectLinks();
             browser.wait(ExpectedConditions.presenceOf(projectLinks.first()),
                 waitTimeout, 'First link was not present')
+
             let datePipe: DatePipe = new DatePipe('longDate');
-
-            projectLinks.count().then(function (projectsNo) {
-                for (let i = 0; i < projectsNo; i++) {
-                    let projectKey: string;
-                    let currentProjectLink = page.getProjectLink(i)
-                    browser.wait(ExpectedConditions.presenceOf(currentProjectLink),
-                        waitTimeout, 'Link ' + i + ' was not present').then(function () {
-                            page.getProjectDateUsingLink(currentProjectLink).getText().then((dateString) => {
-                                page.getProjectTitle(currentProjectLink).click().then(function () {
-                                    browser.wait(ExpectedConditions.urlContains('/project'),
-                                        waitTimeout, 'Link to project did not open')
-                                    browser.getCurrentUrl().then(function (url) {
-                                        let projectKey = GetDisplayedProjectKey(url)
-                                        expect(dateString).toContain(datePipe.transform(projects[projectKey]['startDateTime'], 'longDate'),
-                                            'Start date was not correct displayed')
-                                        if (projects[projectKey]['endDateTime']) {
-                                            expect(dateString).toContain(datePipe.transform(projects[projectKey]['endDateTime'], 'longDate'),
-                                                'End date was not correct displayed')
-                                        }
-                                        page.navigateTo()
-                                    })
-                                })
-                            })
-
-                        })
-
-                }
+            let projectIndex: number = 0;
+            projectLinks.each(function (item) {
+                item.getAttribute('href').then(function (str) {
+                    let projectDate = page.getProjectDate(projectIndex)
+                    let projectKey = GetDisplayedProjectKey(str)
+                    projectDate.getText().then(function (str) {
+                        expect(str).toContain(datePipe.transform(projects[projectKey]['startDateTime'], 'longDate'),
+                            'Start date was not correct displayed')
+                        if (projects[projectKey]['endDateTime']) {
+                            expect(str).toContain(datePipe.transform(projects[projectKey]['endDateTime'], 'longDate'),
+                                'End date was not correct displayed')
+                        }
+                    })
+                }).then(function () {
+                    projectIndex++;
+                })
             })
         })
 

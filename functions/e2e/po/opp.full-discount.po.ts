@@ -7,7 +7,7 @@ export class OpportunityFullDiscountPage {
     }
 
     getTitleElement() {
-        return element(by.css('div.opportunity-head.segment h3'));
+        return element(by.css('div.opp-head h2'));
     }
 
     getDiscountElement() {
@@ -15,7 +15,7 @@ export class OpportunityFullDiscountPage {
     }
 
     getSecondDiscount(){
-        return element(by.className('dropdown opportunity-selector open')).$$('li').get(1);
+        return element(by.className('dropdown opp-selector open')).$$('li').get(1);
     }
 
     getBenefitContribElement() {
