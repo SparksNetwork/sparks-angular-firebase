@@ -19,11 +19,11 @@
 
     <div class="segment login-with-username">
       <auth-alert-error></auth-alert-error>
-      <h3 class="title-bordered"><span>Login with Your Username</span></h3>
+      <h3 class="title-bordered"><span>Sign in with your username</span></h3>
       <auth-form-email-password (onSubmit)="signInWithEmailAndPassword($event)"></auth-form-email-password>
 
       <div class="reset-link">
-        <p>Forgot Your Password? <a [routerLink]="['/auth', 'reset-password']">Reset it</a></p>
+        <p>Forgot Your Password? <a [routerLink]="['/auth', redirectUrl, 'reset-password']">Reset it</a></p>
       </div>
     </div>
 

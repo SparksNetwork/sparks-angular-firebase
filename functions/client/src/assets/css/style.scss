@@ -389,6 +389,10 @@ label {
     }
     p {
         margin-bottom: 0;
+        span{ /*single opp, project multiple opp*/
+            font-size: 12px;
+            letter-spacing: 0.48px;
+        }
     }
 }
 
@@ -1036,12 +1040,21 @@ label {
                 cursor: pointer;
                 margin-top: -10px;
                 font-size: 12px;
-                .list-other-counter {
-                    font-size: 25px;
+                .icon{
+                    margin-top: 15px;
+                    .list-other-counter {
+                        font-size: 25px;
+                        line-height: 18px;
+                    }
                 }
                 .text {
                     @extend .lineabove;
                     margin-top: 15px;
+                    p{
+                        @extend h4;
+                        font-weight: inherit;
+                    }
+                    
                 }
             }
         }
@@ -1052,6 +1065,9 @@ label {
             width: calc(100% - 45px);
             h4 {
                 margin-bottom: 5px;
+            }
+            p{
+                font-weight: 300;
             }
         }
     }
