@@ -87,6 +87,15 @@
                     "$ref": "#/definitions/applicationDef"
                 }
             }
+        },
+        "shift":{
+            "type": "object",
+            "patternProperties": {
+                "^[a-zA-Z0-9-_]+$": {
+                    "type": "object",
+                    "$ref": "#/definitions/shiftDef"
+                }
+            }
         }
     },
     "definitions": {
@@ -250,6 +259,19 @@
                 "submittedOn": { "type": "string", "format": "date-time" },
                 "acceptedOn": { "type": "string", "format": "date-time" },
                 "canceledOn": { "type": "string", "format": "date-time" }
+            }
+        },
+        "shiftDef": {
+            "required":[
+                "startDateTime", "teamKey","teamTitle"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "startDateTime": { "type": "string", "format": "date-time" },
+                "endDateTime": { "type": "string", "format": "date-time" },
+                "teamKey": { "$ref": "#/constraints/nonEmptyString" },
+                "teamTitle": { "$ref": "#/constraints/nonEmptyString" },
+                "teamIcon": { "type": "string" }
             }
         }
     },
