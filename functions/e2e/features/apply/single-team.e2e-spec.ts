@@ -9,7 +9,7 @@ import { AnswerTeamQuestion } from '../../po/apply.answer-team-question.po';
 
 const waitTimeout = 7000
 
-describe('Apply-Choosing-Teams: verified user with complete profile information', () => {
+describe('Apply-Single-Team: verified user with complete profile information', () => {
     let KPCprojectPage: ProjectSingleOppPage
     let answerQuestionPage: AnswerQuestionPage
     let pickTeamPage: PickTeamPage
