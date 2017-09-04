@@ -20,7 +20,7 @@ export class RequireApplicationAcceptedService implements CanActivate {
         return obj(this.query.one(applicationKey)).map((application: Application) => {
 
             if (!application || application.status != ApplicationStatus.Accepted) {
-                this.router.navigateByUrl('/apply/pending')
+                this.router.navigateByUrl('/apply/application-pending')
                 return false;
             }
             return true

@@ -27,7 +27,7 @@ import { PageMessageComponent } from "../../shared/snui/page-message/page-messag
 
 const routes: Routes = [
     {
-        path:"pending",
+        path:"application-pending",
         component: PageMessageComponent
     },
     {

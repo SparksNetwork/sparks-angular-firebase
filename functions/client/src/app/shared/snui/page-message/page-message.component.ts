@@ -12,8 +12,8 @@ export class PageMessageComponent implements OnInit {
   public message: string
 
   constructor(private route: ActivatedRoute) {
-    if (this.route.snapshot.url.find(segment => segment.path.indexOf('pending') > -1)) {
-      this.title = 'Pending Application';
+    if (this.route.snapshot.url.find(segment => segment.path.indexOf('application-pending') > -1)) {
+      this.title = 'Application Pending';
       this.message = 'Your application must be accepted before you can continue. We will let you know when your application will be confirmed.';
       return;
     }
