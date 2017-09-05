@@ -1,0 +1,64 @@
+<snui-header-simple imageUrl='https://placeimg.com/1140/410/animals/grayscale'>
+  Confirm Your Spot:<br/>Select Payment
+</snui-header-simple>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="segment">
+      <p class="card-text">
+        One final step, the payment, and your volunteering is ready and done.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="col-xs-6">
+      <a href="#">
+        <div>
+          <div class="icon">
+            <span class="ic ic-paypal"></span>
+          </div>
+          <div class="text">
+            <h4>PayPal</h4>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-xs-6">
+      <a href="#">
+        <div>
+          <div class="icon">
+            <span class="ic ic-credit-card"></span>
+          </div>
+          <div class="text">
+            <h4>Credit Card</h4>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="segment">
+      <div class="checkbox">
+        <label><input type="checkbox" value="">Remember payment option</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<snui-action-bar [type]="actionBarType.Organizer">
+  <div class="col-xs-8 bottom-nav">
+    <div class="btn-group" role="group">
+      <a [routerLink]="['../', 'shift']" class="btn btn-block btn-default">Previous</a>
+    </div>
+    <div class="btn-group" role="group">
+        <a [routerLink]="['../', 'payment-confirmation']" class="btn btn-block btn-default">Next</a>
+    </div>
+  </div>
+</snui-action-bar>

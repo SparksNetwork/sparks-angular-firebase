@@ -28,7 +28,7 @@ export class PageEmailActionHandlerComponent {
     this.oobCode = this.route.snapshot.queryParamMap.get('oobCode')
 
     if (!this.mode || !this.oobCode) {
-      // TODO remain on the same page or redirect to dash?
+      // TODO remain on the same page or redirect to home?
       console.log("invalid link");
       this.router.navigate(['']);
     }
@@ -55,7 +55,7 @@ export class PageEmailActionHandlerComponent {
         this.title = 'Verifying your email...'
         this.auth.applyActionCode(this.oobCode).then(() => {
           // location.reload()
-          // let redirectUrl = 'dash'; // eventually from database, where they left off
+          // let redirectUrl = '/'; // eventually from database, where they left off
           // this.router.navigate([redirectUrl]) // will redirect to auth/signin if they need it
         })
         break;
@@ -72,7 +72,7 @@ export class PageEmailActionHandlerComponent {
     )
       .then((user) => {
         if (!user) return;
-        user.sendEmailVerification().then(() => this.router.navigate(['dash']));
+        user.sendEmailVerification().then(() => this.router.navigate(['/']));
       });
   }
 
@@ -80,6 +80,6 @@ export class PageEmailActionHandlerComponent {
     this.auth.confirmPasswordReset(
       this.oobCode,
       this.frpForm.resetPasswordForm.value.password
-    ).then(() => this.router.navigate(['dash']));
+    ).then(() => this.router.navigate(['/']));
   }
 }

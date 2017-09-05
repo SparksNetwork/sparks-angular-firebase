@@ -6,7 +6,7 @@ import { USER_VERIFIED_LNAME, USER_VERIFIED_LNAME_BDAY, USER_VERIFIED_LNAME_BDAY
 import { ProjectSingleOppPage } from "../../po/project.single-opp.po";
 import { USER_NOT_VERIFIED } from "../../fixtures/users";
 
-const waitTimeout = 5000;
+const waitTimeout = 5000
 
 describe('Apply: user is asked only for the fields that were not previously written to database', () => {
     let page: CompleteProfilePage;
@@ -176,9 +176,8 @@ describe('Apply: user is asked only for the fields that were not previously writ
             expect(true).toBeTruthy()
         });
 
-
     })
-
+ 
     describe('User not verified', () => {
         beforeAll(done => {
             browser.get('/')
@@ -201,6 +200,7 @@ describe('Apply: user is asked only for the fields that were not previously writ
         });
 
     })
+
+
+
 })
-
-

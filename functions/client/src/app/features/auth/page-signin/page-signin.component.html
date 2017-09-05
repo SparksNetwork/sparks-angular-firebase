@@ -8,9 +8,10 @@
 </nav>
 
 
-<snui-header-simple imageUrl="">
+<auth-header>
   Sign In to<br/>Sparks.Network
-</snui-header-simple>
+</auth-header>
+
 
 <div class="col-xs-12 col-sm-8 col-md-6">
   <div class="row">
@@ -18,21 +19,21 @@
 
     <div class="segment login-with-username">
       <auth-alert-error></auth-alert-error>
-      <h3 class="title-bordered"><span>Login with Your Username</span></h3>
+      <h3 class="title-bordered"><span>Sign in with your username</span></h3>
       <auth-form-email-password (onSubmit)="signInWithEmailAndPassword($event)"></auth-form-email-password>
 
       <div class="reset-link">
-        <p>Forgot Your Password? <a [routerLink]="['/auth', 'reset-password']">Reset it</a></p>
+        <p>Forgot Your Password? <a [routerLink]="['/auth', redirectUrl, 'reset-password']">Reset it</a></p>
       </div>
     </div>
 
-    <div class="segment no-brd bottom-links">
+    <div class="bottom-nav">
       <div class="row">
         <div class="col-xs-6">
-          <button class="btn btn-block btn-primary" routerLink='["/"]'>Cancel</button>
+          <button class="btn btn-primary" routerLink='["/"]'>Cancel</button>
         </div>
         <div class="col-xs-6">
-          <button type="submit" form="emailPasswordForm" class="btn btn-block btn-secondary pull-right" id='signin'>Sign In</button>
+          <button type="submit" form="emailPasswordForm" class="btn btn-secondary pull-right" id='signin'>Sign In</button>
         </div>
       </div>
     </div>

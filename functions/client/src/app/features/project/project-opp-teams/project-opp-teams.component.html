@@ -13,7 +13,7 @@
                     </div>
                 </li>
 
-                <li (click)="showCollapsed=true" [collapse]="!collapsedTeams || showCollapsed" class="list-other">
+                <li *ngIf='collapsedTeams.length > 0' (click)="showCollapsed=true" [collapse]="!collapsedTeams || showCollapsed" class="list-other">
                     <div class="icon">
                         <div class="list-other-counter">+{{collapsedTeams.length}}</div>
                         <div>more</div>

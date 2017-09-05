@@ -12,8 +12,7 @@
       "description": "Make Kellog Park great again!  New paint and plants donated by local businesses will make our community park more beautiful.",
       "communityBenefit": "Your friends and neighbors on the west side.",
       "maxKarmaPoints": 20,
-      "images": [
-        {
+      "images": [{
           "imageUrl": "http://placeimg.com/640/480/animals/grayscale"
         },
         {
@@ -48,8 +47,7 @@
       "endDateTime": "2017-04-12T23:59:59.000Z",
       "communityBenefit": "Your Lucidfamily, old and new",
       "maxKarmaPoints": 1519,
-      "images": [
-        {
+      "images": [{
           "imageUrl": "https://placeimg.com/1140/410/people/grayscale"
         },
         {
@@ -85,8 +83,7 @@
       "endDateTime": "2017-04-12T23:59:59.000Z",
       "communityBenefit": "Your fellow humans",
       "maxKarmaPoints": 343,
-      "images": [
-        {
+      "images": [{
           "imageUrl": "https://placeimg.com/1140/410/people/grayscale"
         },
         {
@@ -121,11 +118,13 @@
   "applicationTeam": {
     "APT1": {
       "appKey": "AP1",
-      "teamKey": "LC1"
+      "teamKey": "LC1",
+      "joinedOn": "2017-09-01T07:54:37.744Z"
     },
     "APT2": {
       "appKey": "AP1",
-      "teamKey": "LC2"
+      "teamKey": "LC2",
+      "joinedOn": "2017-09-01T07:00:00.000Z"
     }
   },
   "opp": {
@@ -693,6 +692,15 @@
         "title": "Sorters",
         "question": "Do you have any commercial kitchen experience?"
       }
+    }
+  },
+  "shift": {
+    "KPC1": {
+      "endDateTime": "2017-09-07T14:34:00.700Z",
+      "startDateTime": "2017-09-07T16:34:00.700Z",
+      "teamIcon": "glyphicon-grain",
+      "teamKey": "LC1",
+      "teamTitle": "Mindfull Feeding"
     }
   }
 }

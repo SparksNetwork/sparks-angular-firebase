@@ -87,6 +87,15 @@
                     "$ref": "#/definitions/applicationDef"
                 }
             }
+        },
+        "shift":{
+            "type": "object",
+            "patternProperties": {
+                "^[a-zA-Z0-9-_]+$": {
+                    "type": "object",
+                    "$ref": "#/definitions/shiftDef"
+                }
+            }
         }
     },
     "definitions": {
@@ -102,14 +111,8 @@
                 "title": { "$ref": "#/constraints/nonEmptyString" },
                 "description": { "$ref": "#/constraints/nonEmptyString" },
                 "projectType": { "type": "string", "enum" : ["Simple", "MultiDay", "LongTerm", "Donor"] }, 
-                "startDateTime": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "endDateTime": {
-                    "type": "string",
-                    "format": "date-time"
-                },
+                "startDateTime": { "type": "string", "format": "date-time" },
+                "endDateTime": { "type": "string", "format": "date-time" },
                 "location": {
                     "type": "object",
                     "properties": {
@@ -227,17 +230,20 @@
         },
         "applicationTeamDef": {
             "required": [
-                "appKey", "teamKey"
+                "appKey", "teamKey", "joinedOn"
             ],
             "additionalProperties": false,
             "properties": {
                 "appKey": { "$ref": "#/constraints/nonEmptyString" },
-                "teamKey": { "$ref": "#/constraints/nonEmptyString" }
+                "teamKey": { "$ref": "#/constraints/nonEmptyString" },
+                "question": { "$ref": "#/constraints/nonEmptyString" },
+                "answer": { "$ref": "#/constraints/nonEmptyString" },
+                "joinedOn": { "type": "string", "format": "date-time" }
             }
         },
         "applicationDef": {
             "required": [
-                "oppKey", "profileKey","status"
+                "oppKey", "profileKey", "status", "createdOn"
             ],
             "additionalProperties": false,
             "properties": {
@@ -246,8 +252,26 @@
                 "projectKey": { "$ref": "#/constraints/nonEmptyString" },
                 "projectProfileKey": { "$ref": "#/constraints/nonEmptyString" },
                 "status": { "type": "string", "enum": [ "Incomplete", "Pending", "Accepted", "Canceled" ] },
-                "oppQuestion": { "type": "string"},
-                "oppAnswer": { "type": "string"}
+                "oppQuestion": { "$ref": "#/constraints/nonEmptyString" },
+                "oppAnswer": { "$ref": "#/constraints/nonEmptyString" },
+                "step": { "type": "string", "enum": [ "Answer", "Team"] },
+                "createdOn": { "type": "string", "format": "date-time" },
+                "submittedOn": { "type": "string", "format": "date-time" },
+                "acceptedOn": { "type": "string", "format": "date-time" },
+                "canceledOn": { "type": "string", "format": "date-time" }
+            }
+        },
+        "shiftDef": {
+            "required":[
+                "startDateTime", "teamKey","teamTitle"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "startDateTime": { "type": "string", "format": "date-time" },
+                "endDateTime": { "type": "string", "format": "date-time" },
+                "teamKey": { "$ref": "#/constraints/nonEmptyString" },
+                "teamTitle": { "$ref": "#/constraints/nonEmptyString" },
+                "teamIcon": { "type": "string" }
             }
         }
     },

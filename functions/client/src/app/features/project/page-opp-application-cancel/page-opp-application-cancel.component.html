@@ -1,0 +1,24 @@
+<snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
+    Confirm Your <br> Cancelation
+</snui-header-simple>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="segment">
+            <p class="card-text">Work a few shifts during the event and get a massive ticket discount, special shwag, and meals from our delicious
+                commissary.
+            </p>
+        </div>
+    </div>
+</div>
+<project-opp-benefits title="You Will Loose" [project]="project | async" [opp]="opp | async" [benefits]="benefits | async"></project-opp-benefits>
+<project-opp-visit-requirements></project-opp-visit-requirements>
+<snui-action-bar [type]="actionBarType.Organizer">
+    <div class="row">
+        <div class="col-xs-6">
+            <a class="btn btn-default" (click)="cancel()">Cancel</a>
+        </div>
+        <div class="col-xs-6">
+            <button class="btn btn-default pull-right" (click)='confirm()'>Confirm</button>
+        </div>
+    </div>
+</snui-action-bar>

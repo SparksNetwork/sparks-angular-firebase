@@ -143,11 +143,20 @@ h1 {
 
 h2 {
     font-size: 26px;
+    margin: 0;
     .dashboard-text & {
         margin: 0 0 12px 0;
         font-size: 30px;
         letter-spacing: 1.22px;
         color: #FFF;
+    }
+    .opp-head &{
+        font-size: 23px;
+        letter-spacing: 0.92px;
+        // line-height: 13.77px;
+        line-height: 23px;
+        color: $base-dark;
+
     }
 }
 
@@ -380,6 +389,10 @@ label {
     }
     p {
         margin-bottom: 0;
+        span{ /*single opp, project multiple opp*/
+            font-size: 12px;
+            letter-spacing: 0.48px;
+        }
     }
 }
 
@@ -542,11 +555,11 @@ label {
 }
 
 .pg-default{
-    .form-control::-webkit-input-placeholder { color: $base-dark; }
-    .form-control:-moz-placeholder{ color: $base-dark; }
-    .form-control::-moz-placeholder{ color: $base-dark; }
-    .form-control:-ms-input-placeholder{ color: $base-dark; }
-    .form-control::-ms-input-placeholder { color: $base-dark; }
+    .form-control::-webkit-input-placeholder { color: $base-color; }
+    .form-control:-moz-placeholder{ color: $base-color; }
+    .form-control::-moz-placeholder{ color: $base-color; }
+    .form-control:-ms-input-placeholder{ color: $base-color; }
+    .form-control::-ms-input-placeholder { color: $base-color; }
 }
 
 .login-with-username {
@@ -558,24 +571,26 @@ label {
 }
 
 .form-control {
-    
     @include border-radius-targeted( 0, 7.5px, 7.5px, 0);
     background: transparent;
-    padding: 14px 12px;
+    padding: 12px;
     height: 45px;
     font-size: 16px;
     line-height: 20px;
     letter-spacing: 0.64px;
+    border-color: $color-separator !important;
+    border-left: transparent;
+    color: $base-color;
+    box-shadow: none !important;
     .pg-auth &{
-        border-color: #FFF;
+        border-color: #FFF !important;
         color: #FFF;
-        border-left: transparent;
     }
 
     &:hover,
     &:active,
     &:focus {
-        box-shadow: none;
+        border-color: $color-separator;
         .pg-auth &{
             border-color: #FFF;
         }
@@ -589,9 +604,12 @@ label {
     .icon {
         height: 45px;
         padding: 7px 0 7px 20px;
-        border: 1px solid #FFF;
+        border: 1px solid $color-separator;
         border-right: transparent;
         @include border-radius-targeted( 7.5px, 0, 0, 7.5px);
+        .pg-auth &{
+            border: 1px solid #FFF;
+        }
     }
     .error {
         margin-top: 15px; // font-size: 28px;
@@ -600,6 +618,9 @@ label {
         // @extend .col-xs-12;
         float: left;
         width: 100%;
+    }
+    textarea{
+        max-width: 100%;
     }
     &.has-error {
         .form-control {
@@ -1019,12 +1040,21 @@ label {
                 cursor: pointer;
                 margin-top: -10px;
                 font-size: 12px;
-                .list-other-counter {
-                    font-size: 25px;
+                .icon{
+                    margin-top: 15px;
+                    .list-other-counter {
+                        font-size: 25px;
+                        line-height: 18px;
+                    }
                 }
                 .text {
                     @extend .lineabove;
                     margin-top: 15px;
+                    p{
+                        @extend h4;
+                        font-weight: inherit;
+                    }
+                    
                 }
             }
         }
@@ -1035,6 +1065,9 @@ label {
             width: calc(100% - 45px);
             h4 {
                 margin-bottom: 5px;
+            }
+            p{
+                font-weight: 300;
             }
         }
     }
@@ -1110,9 +1143,73 @@ label {
 }
 
 
-/* Opportunity, Page Details */
+/* Opportunity, Auth Page Details */
+
+.opp-head {
+    &.segment {
+        overflow: visible;
+        .col-xs-6{
+            &:first-child{
+                padding-left: 0;
+            }
+            &:last-child{
+                padding-right: 0;
+            }
+        }
+    }
+    .opp-selector {
+        text-align: right;
+        .btn{
+            padding: 0;
+            font-size: 16px;
+            letter-spacing: 0.64px;
+            line-height: 16px;
+            @include Opacity(0.5);
+            text-transform: lowercase;
+            background: #FFF;
+            &:active{
+                box-shadow: none;
+            }
+        }
+    }
+}
 
 .page-hero {
+    margin-left: -15px;
+    margin-right: -15px;
+    position: relative;
+    .page-title-container {
+        position: absolute;
+        top: 0;
+        padding: 0 15px;
+        display: table;
+        height: 180px;
+        .page-title {
+            display: table-cell;
+            vertical-align: middle;
+        }
+    }
+    .item {
+        height: 180px;
+        width: 100%;
+        background-repeat: no-repeat !important;
+        background-position: center center !important;
+        @include background-size(cover !important);
+        position: relative;
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            @extend .sn-gradient;
+            @include Opacity(0.5);
+        }
+    }
+}
+
+.auth-hero {
     .item {
         .pg-auth & {
             padding: 45px 0;
@@ -1134,14 +1231,7 @@ label {
     }
 }
 
-.opportunity-head {
-    &.segment {
-        overflow: visible;
-    }
-    .opportunity-selector {
-        margin-top: 7px;
-    }
-}
+
 
 .profile-hero {
     margin-bottom: 25px;
@@ -1272,6 +1362,7 @@ label {
     .project-img {
         height: 226px;
         width: 165px;
+        margin-bottom: 15px;
         @include border-radius(7.5px);
         position: relative;
         .dashboard-project-status {
@@ -1313,6 +1404,7 @@ label {
     }
     .event-date {
         margin-top: 12px;
+        margin-bottom: 4px;
     }
     .event-date,
     .event-location {
@@ -1375,6 +1467,12 @@ label {
 }
 
 .bottom-nav {
+    @include block-nooverflow;
+    padding: 25px 0;
+    .btn{
+        width: auto;
+        min-width: 80px;
+    }
     .btn-group {
         width: 48%;
         &:only-child {

@@ -1,11 +1,12 @@
-<!-- @TODO hide question-bar if dashboard page -->
-<div class="footer-segment">
-  <div class="question-bar">
-    Have a Question? <a>Ask Sparks!</a>
-  </div>
+<!-- @TODO separate bottom nav? -->
+<div class="bottom-nav">
+  <ng-content></ng-content>
+</div>
 
-  <div class="bottom-nav">
-    <ng-content></ng-content>
+<div class="footer-segment">
+
+  <div class="question-bar">
+    Have a Question? <a>Ask {{askLabel}}!</a>
   </div>
 
   <div class="footer">

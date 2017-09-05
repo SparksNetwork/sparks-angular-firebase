@@ -1,6 +1,6 @@
 <div *ngIf='projects' class="row row-small-pad dashboard-projects">
   <ng-container *ngFor='let project of projects'>
-    <a class="project-item" href="" (click)="selectProject($event, project.$key)"> 
+    <a class="project-item" [routerLink] = "['project', project.$key]"> 
         <snui-project-card-item 
             [title]='project.title'
             [image]='project.images.length > 0 ? project.images[0] : null'

@@ -4,7 +4,6 @@
     "./client/src/main.ts",
     "./client/src/app/features/auth/auth.module.ts",
     "./client/src/app/features/appbar/appbar.module.ts",
-    "./client/src/app/features/dash/dash.module.ts",
     "./client/src/app/features/home/home.module.ts",
     "./client/src/app/features/project/project.module.ts",
     "./client/src/app/features/apply/apply.module.ts"

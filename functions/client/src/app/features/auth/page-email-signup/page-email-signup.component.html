@@ -7,26 +7,25 @@
   </div>
 </nav>
 
-<snui-header-simple imageUrl="">
-  Create a new account
-</snui-header-simple>
+<auth-header>
+Create a new account
+</auth-header>
 
 <div class="col-xs-12 col-sm-8 col-md-6">
   <div class="row">
 
     <div class="segment">
       <auth-alert-error></auth-alert-error>
-      <h3 class="title-bordered"><span>Sign up with Your Email address</span></h3>
       <auth-form-email-password (onSubmit)="createWithEmailAndPassword($event)"></auth-form-email-password>
     </div>
 
-    <div class="segment no-brd bottom-links">
+    <div class="bottom-nav">
       <div class="row">
         <div class="col-xs-6">
-          <button class="btn btn-block btn-primary" [routerLink]='["../signup"]'>Cancel</button>
+          <button class="btn btn-primary" [routerLink]='["../signup"]'>Cancel</button>
         </div>
         <div class="col-xs-6">
-          <button type="submit" form="emailPasswordForm" class="btn btn-block btn-secondary pull-right" id='signin'>Join</button>
+          <button type="submit" form="emailPasswordForm" class="btn btn-secondary pull-right" id='signin'>Join</button>
         </div>
       </div>
     </div>

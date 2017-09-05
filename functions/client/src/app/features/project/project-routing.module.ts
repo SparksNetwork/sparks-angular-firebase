@@ -13,7 +13,7 @@ import {
 
 import {
   ResolveTeamByOppKey
-} from "../../core/sndomain/team/resolve-team-by-opp-key.service";
+} from '../../core/sndomain/team/resolve-team-by-opp-key.service';
 
 // import {
 //   ResolveContribByOppKey,
@@ -29,23 +29,26 @@ import { PageProjectOppComponent } from './page-project-opp/page-project-opp.com
 import { PageProjectHomeAllOppsGuard } from './page-project-home-all-opps-guard/page-project-home-all-opps-guard.service'
 import { ResolveFirstOpp } from './resolve-first-opp/resolve-first-opp.service'
 import { ResolveContribByFirstOpp } from './resolve-contrib-by-first-opp/resolve-contrib-by-first-opp.service'
-import { ResolveBenefitByFirstOpp } from "./resolve-benefit-by-first-opp/resolve-benefit-by-first-opp.service";
-import { ResolveTeamByFirstOpp } from "./resolve-team-by-first-opp/resolve-team-by-first-opp.service";
+import { ResolveBenefitByFirstOpp } from './resolve-benefit-by-first-opp/resolve-benefit-by-first-opp.service';
+import { ResolveTeamByFirstOpp } from './resolve-team-by-first-opp/resolve-team-by-first-opp.service';
 
 import { AddToCalendarComponent } from './add-to-calendar/add-to-calendar.component'
 import { ProjectTitleComponent } from './project-title/project-title.component';
 import { ProjectDateComponent } from './project-date/project-date.component';
-import { ProjectLocationComponent } from "./project-location/project-location.component";
-import { ProjectDescriptionComponent } from "./project-description/project-description.component";
-import { ProjectOppDetailComponent } from "./project-opp-detail/project-opp-detail.component";
-import { ProjectOppTeamsComponent } from "./project-opp-teams/project-opp-teams.component";
-import { ProjectOppVisitRequirementsComponent } from "./project-opp-visit-requirements/project-opp-visit-requirements.component";
-import { ResolveBenefitByOppKey } from "../../core/sndomain/benefit/resolve-benefit-by-opp-key.service";
-import { ResolveContribByOppKey } from "../../core/sndomain/contrib/resolve-contrib-by-opp-key.service";
-import { ProjectOrganizerComponent } from "./project-organizer/project-organizer.component";
+import { ProjectLocationComponent } from './project-location/project-location.component';
+import { ProjectDescriptionComponent } from './project-description/project-description.component';
+import { ProjectOppDetailComponent } from './project-opp-detail/project-opp-detail.component';
+import { ProjectOppTeamsComponent } from './project-opp-teams/project-opp-teams.component';
+import { ProjectOppVisitRequirementsComponent } from './project-opp-visit-requirements/project-opp-visit-requirements.component';
+import { ResolveBenefitByOppKey } from '../../core/sndomain/benefit/resolve-benefit-by-opp-key.service';
+import { ResolveContribByOppKey } from '../../core/sndomain/contrib/resolve-contrib-by-opp-key.service';
+import { ProjectOrganizerComponent } from './project-organizer/project-organizer.component';
 import { ActionbarOppJoinComponent } from './actionbar-opp-join/actionbar-opp-join.component'
-import { ResolveApplicationByProjectProfileKey } from "../../core/sndomain/application/resolve-applications-by-project-profile-key.service";
-import { ProjectOppCardComponent } from "./project-opp-card/project-opp-card.component";
+import { ResolveApplicationByProjectProfileKey } from '../../core/sndomain/application/resolve-applications-by-project-profile-key.service';
+import { ProjectOppCardComponent } from './project-opp-card/project-opp-card.component';
+import { PageOppApplicationCancelComponent } from './page-opp-application-cancel/page-opp-application-cancel.component';
+import { ProjectOppBenefitsComponent } from './project-opp-benefits/project-opp-benefits.component';
+import { PageOppApplicationCancelConfirmationComponent } from './page-opp-application-cancel-confirmation/page-opp-application-cancel-confirmation.component';
 
 const routes: Routes = [
   {
@@ -77,10 +80,6 @@ const routes: Routes = [
             ]
           },
           {
-            path: 'edit',
-            component: PageProjectHomeEditComponent,
-          },
-          {
             path: 'join',
             component: PageProjectHomeSingleOppComponent,
             resolve: {
@@ -90,12 +89,11 @@ const routes: Routes = [
               benefits: ResolveBenefitByFirstOpp,
               application: ResolveApplicationByProjectProfileKey
             }
-          },
+          }
         ],
       },
       {
         path: 'opp/:oppKey',
-        component: PageProjectOppComponent,
         resolve: {
           opp: ResolveOppByOppKey,
           teams: ResolveTeamByOppKey,
@@ -103,6 +101,28 @@ const routes: Routes = [
           contribs: ResolveContribByOppKey,
           application: ResolveApplicationByProjectProfileKey
         },
+        children: [
+          {
+            path: '',
+            component: PageProjectOppComponent
+          },
+          {
+            path: ':applicationKey/cancel',
+            component: PageOppApplicationCancelComponent
+          },
+          {
+            path: 'join/:applicationKey/cancel',
+            component: PageOppApplicationCancelComponent
+          },
+          {
+            path: 'cancel-confirmation',
+            component: PageOppApplicationCancelConfirmationComponent
+          },
+          {
+            path: 'join/cancel-confirmation',
+            component: PageOppApplicationCancelConfirmationComponent
+          }
+        ]
       },
     ]
   }
@@ -134,5 +154,9 @@ export const routedComponents = [
   ActionbarOppJoinComponent,
 
   ProjectOppVisitRequirementsComponent,
-  ProjectOrganizerComponent
+  ProjectOrganizerComponent,
+
+  PageOppApplicationCancelComponent,
+  ProjectOppBenefitsComponent,
+  PageOppApplicationCancelConfirmationComponent
 ];

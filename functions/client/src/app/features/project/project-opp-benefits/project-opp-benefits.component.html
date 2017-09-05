@@ -1,0 +1,19 @@
+<div class="you-get-give-join segment">
+    <h3>{{title}}</h3>
+    <ul>
+      <li *ngIf="project && project.communityBenefit">
+        <snui-card-item icon="glyphicon-heart" title="To help your community" [subtitle]="project.communityBenefit">
+        </snui-card-item>
+      </li>
+      <li *ngIf="opp && opp.karma">
+        <snui-card-item icon="glyphicon-star" [title]="opp.karma + ' Karma Points'" subtitle="Get Badges, Accolades, and more by volunteering through the Sparks Network">
+        </snui-card-item>
+      </li>
+      <div *ngIf="benefits && benefits.length">
+        <li *ngFor="let commitment of benefits">
+          <snui-card-item [icon]="commitment.icon" [title]="commitment.title" [subtitle]="commitment.description" [benefitValue]="commitment.value">
+          </snui-card-item>
+        </li>
+      </div>
+    </ul>
+  </div>

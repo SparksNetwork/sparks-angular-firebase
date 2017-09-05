@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { RouterModule } from '@angular/router';
 import { HeaderSimpleComponent } from './header-simple/header-simple.component'
 
 import { LocationPipe } from "../pipes/location.pipe";
@@ -14,6 +15,7 @@ import { ProjectCardItemComponent } from "./project-card-item/project-card-item.
 import { UserHeaderComponent } from "./user-header/user-header.component";
 import { TeamCardItemComponent } from "./team-card-item/team-card-item.component";
 import { ProjectLinksComponent } from "./project-links/project-links.component";
+import { PageMessageComponent } from "./page-message/page-message.component";
 
 const COMPONENTS = [
   HeaderSimpleComponent,
@@ -26,7 +28,8 @@ const COMPONENTS = [
   ProjectCardItemComponent,
   UserHeaderComponent,
   TeamCardItemComponent,
-  ProjectLinksComponent
+  ProjectLinksComponent,
+  PageMessageComponent,
 ]
 
 @NgModule({
@@ -34,6 +37,7 @@ const COMPONENTS = [
     CommonModule,
     CarouselModule,
     CollapseModule,
+    RouterModule
   ],
   exports: COMPONENTS,
   declarations: COMPONENTS,
