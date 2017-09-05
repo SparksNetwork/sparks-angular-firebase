@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from "@angular/router";
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 
 import { AuthService } from '../auth/auth.service'
 
@@ -17,7 +17,7 @@ export class RequireNoEmailVerification implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         return this.auth.current.map(user => {
             if ((user && user.emailVerified)) {
-                this.router.navigate(['/dash']); // eventually from database
+                this.router.navigate(['/']); // eventually from database
                 // return false;
             }
             return true;

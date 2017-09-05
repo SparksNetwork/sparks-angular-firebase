@@ -1,14 +1,21 @@
-import { Observable } from 'rxjs'
-import { transformAndValidate } from "class-transformer-validator"
+import { Observable } from 'rxjs/Observable'
+import { transformAndValidate } from 'class-transformer-validator'
 import { Expose } from 'class-transformer'
 import { IsNotEmpty, IsDefined } from 'class-validator'
 
 import {
-    BaseCollection,
+    BaseCollection, Database,
 } from '../../lib/firebase-universal/shared'
 
 // any methods here will be available on both client and server
 export class TeamCollection extends BaseCollection {
+    constructor(public db: Database) {
+        super(db, {
+          api: '/team',
+          firebase: '/team'
+        })
+      }
+
     public byProjectKey(key: string) {
         return this.by('projectKey', key)
     }

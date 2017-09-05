@@ -51,7 +51,7 @@ export class PageEmailActionHandlerComponent {
         this.title = 'Verifying your email...'
         this.auth.applyActionCode(this.oobCode).then(() => {
           // location.reload()
-          // let redirectUrl = 'dash'; // eventually from database, where they left off
+          // let redirectUrl = '/'; // eventually from database, where they left off
           // this.router.navigate([redirectUrl]) // will redirect to auth/signin if they need it
         })
         break;
@@ -65,12 +65,12 @@ export class PageEmailActionHandlerComponent {
     this.auth.signInWithEmailAndPasswordWithoutRedirect(event.email, event.password)
       .then((user) => {
         if (!user) return;
-        user.sendEmailVerification().then(() => this.router.navigate(['dash']));
+        user.sendEmailVerification().then(() => this.router.navigate(['/']));
       });
   }
 
   public confirmPasswordReset(event) {
     this.auth.confirmPasswordReset(this.oobCode, event.password)
-      .then(() => this.router.navigate(['dash']));
+      .then(() => this.router.navigate(['/']));
   }
 }

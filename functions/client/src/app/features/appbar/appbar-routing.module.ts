@@ -14,10 +14,6 @@ const routes: Routes = [
     ],
     children: [
       {
-        path: 'dash',
-        loadChildren: '../dash/dash.module#DashModule',
-      },
-      {
         path: '',
         loadChildren: '../home/home.module#HomeModule',
       },

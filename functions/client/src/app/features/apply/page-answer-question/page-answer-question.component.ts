@@ -22,8 +22,8 @@ export class PageAnswerQuestionComponent implements OnInit {
     public route: ActivatedRoute,
     public router: Router,
     public builder: FormBuilder
-  ) { 
-    this.route.parent.snapshot.data["profile"].subscribe(profile => {
+  ) {
+    this.route.parent.snapshot.data['profile'].subscribe(profile => {
       this.profileKey = profile.$key;
     });
 
@@ -35,6 +35,8 @@ export class PageAnswerQuestionComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.applicationKey = this.route.parent.snapshot.paramMap.get('applicationKey');
+
     this.route.data.subscribe(data => {
       if (data['opp']) {
         data['opp'].subscribe(
@@ -52,7 +54,7 @@ export class PageAnswerQuestionComponent implements OnInit {
         data['application'].subscribe(
           a => {
             this.applicationKey = a.$key;
-            this.answerForm.get("answer").setValue(a.oppAnswer);
+            this.answerForm.get('answer').setValue(a.oppAnswer);
             this.edit = true;
           }
         )
@@ -65,7 +67,7 @@ export class PageAnswerQuestionComponent implements OnInit {
     this.opp = opp;
 
     if (!this.applicationKey) {
-      let application = new Application();
+      const application = new Application();
       application.profileKey = this.profileKey
       application.oppKey = this.opp.$key;
       application.status = ApplicationStatus.Incomplete;
@@ -76,13 +78,14 @@ export class PageAnswerQuestionComponent implements OnInit {
       this.applicationAction.create(application)
         .subscribe(s => {
           this.applicationKey = s.json();
+          this.router.navigate(['apply', this.opp.$key, 'application', this.applicationKey, 'answer-question'])
         })
     }
   }
 
   submit() {
-    let answer = this.answerForm.get("answer").value;
-    let value = {
+    const answer = this.answerForm.get('answer').value;
+    const value = {
       oppQuestion: this.opp.question,
       oppAnswer: answer,
       step: ApplicationStepFinished.Answer
@@ -94,10 +97,11 @@ export class PageAnswerQuestionComponent implements OnInit {
           return;
         }
 
-        if (this.edit)
+        if (this.edit) {
           this.router.navigate(['../', 'teams'], { relativeTo: this.route })
-        else
+        } else {
           this.router.navigate(['..', 'application', this.applicationKey, 'teams'], { relativeTo: this.route })
+        }
       }
     )
   }

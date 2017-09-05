@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core'
 import { Http } from '@angular/http'
 
-import { environment } from '../../../../environments/environment';
+import { environment } from '../../../../environments/environment'
+
 import { BaseActionService } from '../../../../../../lib/firebase-universal/client'
 
-import { TeamQueryService } from './team-query.service'
+import { ShiftQueryService } from "./shift-query.service"
 
 @Injectable()
-export class TeamActionService extends BaseActionService {
+export class ShiftActionService extends BaseActionService {
 
   constructor(
-    public query: TeamQueryService,
+    public query: ShiftQueryService,
     public http: Http,
   ) {
     super(environment.apiRoot, query.paths.api, http)

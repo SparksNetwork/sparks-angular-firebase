@@ -5,19 +5,20 @@
     <div class="col-xs-12">
         <div class="segment">
             <p class="card-text">Work a few shifts during the event and get a massive ticket discount, special shwag, and meals from our delicious
-                commissary.</p>
+                commissary.
+            </p>
         </div>
     </div>
 </div>
-<project-opp-benefits title ="You Will Loose" [project]="project | async" [opp]="opp | async" [benefits]="benefits | async"></project-opp-benefits>
+<project-opp-benefits title="You Will Loose" [project]="project | async" [opp]="opp | async" [benefits]="benefits | async"></project-opp-benefits>
 <project-opp-visit-requirements></project-opp-visit-requirements>
 <snui-action-bar [type]="actionBarType.Organizer">
-    <div class="col-xs-8 bottom-nav">
-        <div class="btn-group" role="group">
-            <a class="btn btn-block btn-default" (click)="cancel()">Cancel</a>
+    <div class="row">
+        <div class="col-xs-4">
+            <a class="btn btn-default" (click)="cancel()">Cancel</a>
         </div>
-        <div class="btn-group" role="group">
-         <button class="btn btn-block btn-default" (click)='confirm()'>Confirm</button>
-</div>
-</div>
+        <div class="col-xs-4 col-xs-offset-4">
+            <button class="btn btn-default" (click)='confirm()'>Confirm</button>
+        </div>
+    </div>
 </snui-action-bar>

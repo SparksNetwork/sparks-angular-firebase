@@ -15,6 +15,7 @@ import { ProjectCardItemComponent } from "./project-card-item/project-card-item.
 import { UserHeaderComponent } from "./user-header/user-header.component";
 import { TeamCardItemComponent } from "./team-card-item/team-card-item.component";
 import { ProjectLinksComponent } from "./project-links/project-links.component";
+import { PageMessageComponent } from "./page-message/page-message.component";
 
 const COMPONENTS = [
   HeaderSimpleComponent,
@@ -27,7 +28,8 @@ const COMPONENTS = [
   ProjectCardItemComponent,
   UserHeaderComponent,
   TeamCardItemComponent,
-  ProjectLinksComponent
+  ProjectLinksComponent,
+  PageMessageComponent,
 ]
 
 @NgModule({
