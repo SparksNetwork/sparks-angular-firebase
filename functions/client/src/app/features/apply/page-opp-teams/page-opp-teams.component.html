@@ -12,11 +12,11 @@
 <apply-opp-teams-not-selected [allTeams]='allTeams | async'></apply-opp-teams-not-selected>
 <snui-action-bar [type]="actionBarType.Organizer">
   <div class="row">
-    <div class="col-xs-6">
+    <div class="col-xs-4">
       <a (click)="previous()" class="btn btn-default">Previous</a>
     </div>
-    <div class="col-xs-6">
-      <button class="btn btn-default pull-right" [disabled]="!selectedCount" (click)="next()">Next</button>
+    <div class="col-xs-4 col-xs-offset-4">
+      <button class="btn btn-default" [disabled]="!selectedCount" (click)="next()">Next</button>
     </div>
   </div>
 </snui-action-bar>

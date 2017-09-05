@@ -149,6 +149,7 @@ h2 {
         font-size: 30px;
         letter-spacing: 1.22px;
         color: #FFF;
+        font-weight: 300;
     }
     .opp-head &{
         font-size: 23px;
@@ -198,6 +199,7 @@ h3 {
         line-height: 20px;
         color: #FFF;
         margin: 0 0 20px 0;
+        font-weight: 300;
     }
 }
 
@@ -237,6 +239,7 @@ label {
     font-size: 16px;
     letter-spacing: 0.64px;
     line-height: 20px;
+    text-transform: capitalize;
     span {
         color: #FFF;
         display: inline-block;
@@ -338,6 +341,10 @@ label {
     &:after {
         clear: both;
     }
+}
+
+[hidden]{
+    display: none;
 }
 
 .nopadding {
@@ -468,7 +475,7 @@ label {
         color: $pink;
     }
     &.btn-default {
-        color: $base-color;
+        color: $grey;
         background-color: transparent;
         border-color: $base-color;
     }
@@ -518,11 +525,13 @@ label {
         @include border-radius(7.5px);
         text-transform: none;
         font-size: 16px;
+        line-height: 20px;
+        letter-spacing: 0.64px;
         text-align: left;
         background: #FFF;
         border: none;
         padding: 12px 12px;
-        color: $pink;
+        color: $rouge;
         margin-bottom: 25px;
         &.btn-trans {
             color: $off-white;
@@ -562,6 +571,11 @@ label {
     .form-control::-ms-input-placeholder { color: $base-color; }
 }
 
+.form-control:focus::-webkit-input-placeholder { color:transparent; }
+.form-control:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
+.form-control:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
+.form-control:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
+
 .login-with-username {
     padding-top: 0;
 }
@@ -585,6 +599,14 @@ label {
     .pg-auth &{
         border-color: #FFF !important;
         color: #FFF;
+        text-indent: -60px;
+        text-align: center;
+    }
+    
+    @include Opacity(0.8);
+    &:active,
+    &:focus {
+        @include Opacity(1);
     }
 
     &:hover,
@@ -607,9 +629,9 @@ label {
         border: 1px solid $color-separator;
         border-right: transparent;
         @include border-radius-targeted( 7.5px, 0, 0, 7.5px);
-        .pg-auth &{
-            border: 1px solid #FFF;
-        }
+        // .pg-auth &{
+        //     border: 1px solid #FFF;
+        // }
     }
     .error {
         margin-top: 15px; // font-size: 28px;
@@ -676,7 +698,6 @@ label {
     .btn {
         font-size: 16px;
         line-height: 16px;
-        font-weight: 600;
         padding: 6px 10px;
         min-width: 80px;
         width: auto;
@@ -1296,6 +1317,10 @@ label {
                 .level-right{
                     display: inline-block;
                 }
+                .level-label{
+                    font-weight: 300;
+                    line-height: 14px;
+                }
                 .current-level{
                     font-size: 14px;
                     letter-spacing: 0.56px;
@@ -1382,7 +1407,7 @@ label {
         float: left;
     }
     .project-karma {
-        width: 50px;
+        width: 32px;
         float: right;
         text-align: center;
         div {
@@ -1403,8 +1428,7 @@ label {
         }
     }
     .event-date {
-        margin-top: 12px;
-        margin-bottom: 4px;
+        padding-top: 6px;
     }
     .event-date,
     .event-location {
@@ -1413,6 +1437,7 @@ label {
         line-height: 20px;
         font-size: 14px;
         letter-spacing: 0.56px;
+        font-weight: 300;
     }
 }
 
@@ -1470,8 +1495,8 @@ label {
     @include block-nooverflow;
     padding: 25px 0;
     .btn{
-        width: auto;
-        min-width: 80px;
+        width: 100%;
+        display: block;
     }
     .btn-group {
         width: 48%;
@@ -1479,6 +1504,10 @@ label {
             float: right;
             width: auto;
         }
+    }
+    &:empty,
+    &:-moz-only-whitespace {
+        display: none;
     }
 }
 

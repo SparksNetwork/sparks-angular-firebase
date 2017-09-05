@@ -54,10 +54,11 @@
     [shareKarmaPoints]="project.shareKarmaPoints">
   </snui-project-project-links>
 </ng-container>
+
 <snui-action-bar [type]="actionBarType.Organizer">
-  <div class="col-xs-8 bottom-nav">
-    <div class="btn-group" role="group">
-      <a [routerLink]="['/dash']" class="btn btn-block btn-default">Return to Dashboard</a>
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-8">
+      <a [routerLink]="['/dash']" class="btn btn-default">Return to Dashboard</a>
     </div>
   </div>
 </snui-action-bar>
