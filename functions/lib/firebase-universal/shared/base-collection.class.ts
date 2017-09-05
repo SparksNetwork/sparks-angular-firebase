@@ -31,6 +31,8 @@ export interface IQuery {
 
 export type RefOrQuery = IReference | IQuery
 
+export const validateOpt = { validator: { skipMissingProperties: true } };
+
 export class BaseCollection {
   public ref: Reference
 
