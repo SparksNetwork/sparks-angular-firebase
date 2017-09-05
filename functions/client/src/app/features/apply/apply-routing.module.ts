@@ -6,24 +6,25 @@ import {
 } from '../../core/sndomain/opp'
 
 import { RequireAuth } from '../../core/snauth/require-auth/require-auth.service'
-import { RequireEmailVerification } from "../../core/snauth/require-email-verification/require-email-verification.service";
-import { PageCompleteProfileComponent } from "./page-complete-profile/page-complete-profile.component";
-import { ResolveTeamByOppKey } from "../../core/sndomain/team/resolve-team-by-opp-key.service";
-import { PageOppTeamsComponent } from "./page-opp-teams/page-opp-teams.component";
-import { PageOppTeamComponent } from "./page-opp-team/page-opp-team.component";
+import { RequireEmailVerification } from '../../core/snauth/require-email-verification/require-email-verification.service';
+import { PageCompleteProfileComponent } from './page-complete-profile/page-complete-profile.component';
+import { ResolveTeamByOppKey } from '../../core/sndomain/team/resolve-team-by-opp-key.service';
+import { PageOppTeamsComponent } from './page-opp-teams/page-opp-teams.component';
+import { PageOppTeamComponent } from './page-opp-team/page-opp-team.component';
 import { PageAnswerQuestionComponent } from './page-answer-question/page-answer-question.component'
-import { ResolveTeamByTeamKey } from "./resolve-team-by-team-key/resolve-team-by-team-key.service";
+import { ResolveTeamByTeamKey } from './resolve-team-by-team-key/resolve-team-by-team-key.service';
 import { RequireProfileCompleteService, ResolveProfile } from '../../core/sndomain/profile'
-import { ResolveApplicationTeamByAppKey } from "../../core/sndomain/applicationTeam/resolve-application-team-by-app-key.service";
-import { ResolveApplicationByKey } from "../../core/sndomain/application/resolve-application-by-key.service";
-import { PageReviewDetailComponent } from "./page-review-detail/page-review-detail.component";
-import { PageApplyConfirmationComponent } from "./page-apply-confirmation/page-apply-confirmation.component";
-import { ResolveProjectByOpp } from "../../core/sndomain/project/resolve-project-by-opp.service";
+import { ResolveApplicationTeamByAppKey } from '../../core/sndomain/applicationTeam/resolve-application-team-by-app-key.service';
+import { ResolveApplicationByKey } from '../../core/sndomain/application/resolve-application-by-key.service';
+import { PageReviewDetailComponent } from './page-review-detail/page-review-detail.component';
+import { PageApplyConfirmationComponent } from './page-apply-confirmation/page-apply-confirmation.component';
+import { ResolveProjectByOpp } from '../../core/sndomain/project/resolve-project-by-opp.service';
 import { PageShiftComponent } from './page-shift/page-shift.component';
-import { ResolveShiftByApplicationKey } from "./resolve-shift-by-app-key/resolve-shifts-by-application-key.service";
-import { RequireApplicationAcceptedService } from "../../core/sndomain/shift/require-application-accepted.service";
-import { PageMessageComponent } from "../../shared/snui/page-message/page-message.component";
+import { ResolveShiftByApplicationKey } from './resolve-shift-by-app-key/resolve-shifts-by-application-key.service';
+import { RequireApplicationAcceptedService } from '../../core/sndomain/shift/require-application-accepted.service';
+import { PageMessageComponent } from '../../shared/snui/page-message/page-message.component';
 import { PagePaymentDetailsComponent } from './page-payment-details/page-payment-details.component';
+import { PagePaymentConfirmationComponent } from './page-payment-confirmation/page-payment-confirmation.component';
 
 const routes: Routes = [
     {
@@ -43,10 +44,7 @@ const routes: Routes = [
         children: [
             {
                 path: 'complete-profile',
-                component: PageCompleteProfileComponent,
-                resolve: {
-                    profile: ResolveProfile
-                }
+                component: PageCompleteProfileComponent
             },
             {
                 path: 'answer-question',
@@ -120,6 +118,13 @@ const routes: Routes = [
                     {
                         path: 'payment-details',
                         component: PagePaymentDetailsComponent
+                    },
+                    {
+                        path: 'payment-confirmation',
+                        component: PagePaymentConfirmationComponent,
+                        resolve: {
+                            project: ResolveProjectByOpp
+                        }
                     }
                 ]
             }
@@ -140,7 +145,7 @@ export const routedComponents = [
     PageOppTeamComponent,
     PageReviewDetailComponent,
     PageApplyConfirmationComponent,
-    PageShiftComponent,
-    PageApplyConfirmationComponent,
     PagePaymentDetailsComponent,
+    PagePaymentConfirmationComponent,
+    PageShiftComponent
 ];
