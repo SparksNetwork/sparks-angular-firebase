@@ -149,6 +149,7 @@ h2 {
         font-size: 30px;
         letter-spacing: 1.22px;
         color: #FFF;
+        font-weight: 300;
     }
     .opp-head &{
         font-size: 23px;
@@ -198,6 +199,7 @@ h3 {
         line-height: 20px;
         color: #FFF;
         margin: 0 0 20px 0;
+        font-weight: 300;
     }
 }
 
@@ -468,7 +470,7 @@ label {
         color: $pink;
     }
     &.btn-default {
-        color: $base-color;
+        color: $grey;
         background-color: transparent;
         border-color: $base-color;
     }
@@ -676,7 +678,6 @@ label {
     .btn {
         font-size: 16px;
         line-height: 16px;
-        font-weight: 600;
         padding: 6px 10px;
         min-width: 80px;
         width: auto;
@@ -1296,6 +1297,10 @@ label {
                 .level-right{
                     display: inline-block;
                 }
+                .level-label{
+                    font-weight: 300;
+                    line-height: 14px;
+                }
                 .current-level{
                     font-size: 14px;
                     letter-spacing: 0.56px;
@@ -1382,7 +1387,7 @@ label {
         float: left;
     }
     .project-karma {
-        width: 50px;
+        width: 32px;
         float: right;
         text-align: center;
         div {
@@ -1403,8 +1408,7 @@ label {
         }
     }
     .event-date {
-        margin-top: 12px;
-        margin-bottom: 4px;
+        padding-top: 6px;
     }
     .event-date,
     .event-location {
@@ -1413,6 +1417,7 @@ label {
         line-height: 20px;
         font-size: 14px;
         letter-spacing: 0.56px;
+        font-weight: 300;
     }
 }
 
@@ -1479,6 +1484,10 @@ label {
             float: right;
             width: auto;
         }
+    }
+    &:empty,
+    &:-moz-only-whitespace {
+        display: none;
     }
 }
 
