@@ -1495,8 +1495,8 @@ label {
     @include block-nooverflow;
     padding: 25px 0;
     .btn{
-        width: auto;
-        min-width: 80px;
+        width: 100%;
+        display: block;
     }
     .btn-group {
         width: 48%;
