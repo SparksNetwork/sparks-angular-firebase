@@ -138,6 +138,7 @@ h1 {
     }
     &.project-title {
         color: $base-dark;
+        margin-bottom: 0;
     }
 }
 
@@ -396,7 +397,7 @@ label {
     }
     p {
         margin-bottom: 0;
-        span{ /*single opp, project multiple opp*/
+        span{ /*single opp, project multiple opp, get dir*/
             font-size: 12px;
             letter-spacing: 0.48px;
         }
@@ -872,17 +873,29 @@ label {
 .project-date-location {
     @extend .separator;
     padding: 15px 0;
-    .event-location,
+    .icon {
+        width: 40px;
+    }
+    .text,
+    .description {
+        width: calc( 100% - 40px);
+    }
+    .project-date{
+        text-transform: lowercase;
+        .text,
+        .description {
+            text-align: left;
+        }
+    }
     .project-location {
         .icon {
             float: right;
             text-align: right;
-            width: 40px;
         }
         .text,
         .description {
             float: left;
-            width: calc( 100% - 40px);
+            text-align: right;
         }
     }
     a {
@@ -979,7 +992,7 @@ label {
                 font-size: 16px;
                 letter-spacing: 0.64px;
                 line-height: 15px;
-                margin-bottom: 5px;
+                margin-bottom: 2px;
                 span {
                     // font-size: 12px;
                     // letter-spacing: 0.48px;
