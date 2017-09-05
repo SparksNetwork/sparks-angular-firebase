@@ -4,7 +4,7 @@ import { browser, ExpectedConditions } from 'protractor/built';
 import { setUsers, setData, signIn, signOut } from '../../firebase';
 import { USER_VERIFIED_PROFILE } from '../../fixtures/users';
 import { AnswerQuestionPage } from '../../po/apply.answer-question.po';
-import { PickTeamPage } from '../../po/apply.single.team.po';
+import { PickTeamPage } from '../../po/apply.choose.team.po';
 import { AnswerTeamQuestion } from '../../po/apply.answer-team-question.po';
 
 const waitTimeout = 7000
@@ -96,8 +96,9 @@ describe('Apply-Single-Team: verified user with complete profile information', (
                                             let answer = answerQuestionPage.getAnswer()
                                             browser.wait(ExpectedConditions.presenceOf(answer),
                                                 waitTimeout, 'The input for answer was not present').then(function () {
-                                                    let newAnswer: string = 'Answer must 42'
-                                                    answerQuestionPage.getAnswer().sendKeys(newAnswer)
+                                                    let newAnswer: string = 'Answer must be 42'
+                                                    answer.clear()
+                                                    answer.sendKeys(newAnswer)
 
                                                     //press next
                                                     let nextButton = answerQuestionPage.getNextButton()
@@ -346,17 +347,24 @@ describe('Apply-Single-Team: verified user with complete profile information', (
                                             .then(function () {
                                                 browser.wait(ExpectedConditions.elementToBeClickable(KPCprojectPage.getJoinButton()),
                                                     waitTimeout, 'Join button was not present')
-                                                KPCprojectPage.getJoinButton().click()
-                                                    .then(function () {
-                                                        browser.wait(ExpectedConditions.presenceOf(answerQuestionPage.getNextButton()),
-                                                            waitTimeout, 'Next button was not present')
-                                                        answerQuestionPage.getAnswer().sendKeys('42')
-                                                        let next = answerQuestionPage.getNextButton()
-                                                        browser.wait(ExpectedConditions.elementToBeClickable(next),
-                                                            waitTimeout, 'Next button was not clickable')
-                                                        next.click()
-                                                            .then(done)
-                                                    })
+                                                KPCprojectPage.getJoinButton().click().then(function () {
+                                                    browser.wait(ExpectedConditions.urlContains('/apply/KPC1/answer-question'),
+                                                        waitTimeout, 'User was not taken to Answer-question page').then(function () {
+                                                            browser.wait(ExpectedConditions.and(
+                                                                ExpectedConditions.urlContains('/apply/KPC1/application'),
+                                                                ExpectedConditions.urlContains('/answer-question')),
+                                                                waitTimeout, 'User was not redirected to Answer-organizer-question from the application flow page').then(function () {
+                                                                    browser.wait(ExpectedConditions.presenceOf(answerQuestionPage.getNextButton()),
+                                                                        waitTimeout, 'Next button was not present')
+                                                                    answerQuestionPage.getAnswer().sendKeys('42')
+                                                                    let next = answerQuestionPage.getNextButton()
+                                                                    browser.wait(ExpectedConditions.elementToBeClickable(next),
+                                                                        waitTimeout, 'Next button was not clickable')
+                                                                    next.click()
+                                                                        .then(done)
+                                                                })
+                                                        })
+                                                })
                                             })
                                     })
                             })
@@ -411,7 +419,7 @@ describe('Apply-Single-Team: verified user with complete profile information', (
                                                 browser.wait(ExpectedConditions.and(
                                                     ExpectedConditions.urlContains('/apply/KPC1/application/'),
                                                     ExpectedConditions.urlContains('/teams')),
-                                                    waitTimeout, 'User was not taken back to Pick-teams Page ' +
+                                                    waitTimeout, 'User was not taken back to Pick-a-team Page ' +
                                                     'after answering the team question')
                                             })
                                         })

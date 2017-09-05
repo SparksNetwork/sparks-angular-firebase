@@ -51,9 +51,14 @@ describe('Apply: user is asked a question before applying', () => {
                 })
         })
 
-        it('it should be taken to Answer question page  ', function () {
+        it('it should be taken to Answer-question page and then redirected in the application flow ', function () {
             browser.wait(ExpectedConditions.urlContains('/apply/KPC1/answer-question'),
-                waitTimeout, 'User was not taken to Answer Question page')
+                waitTimeout, 'User was not taken to Answer-question page').then(function () {
+                    browser.wait(ExpectedConditions.and(
+                        ExpectedConditions.urlContains('/apply/KPC1/application'),
+                        ExpectedConditions.urlContains('/answer-question')),
+                        waitTimeout, 'User was not redirected to Answer-organizer-question from the application flow page')
+                })
             expect(true).toBeTruthy()
 
         });
@@ -116,8 +121,12 @@ describe('Apply: user is asked a question before applying', () => {
     function TestsCommonToAllTypeOfVerifiedUsers() {
 
         it('it should display the question  ', function () {
-            browser.wait(ExpectedConditions.urlContains('/apply/KPC1/answer-question'),
-                waitTimeout, 'User was not taken to Answer-organizer-question page').then(function () {
+
+            browser.wait(ExpectedConditions.and(
+                ExpectedConditions.urlContains('/apply/KPC1/application'),
+                ExpectedConditions.urlContains('/answer-question')),
+                waitTimeout, 'User was not redirected to Answer-organizer-question from the application flow page')
+                .then(function () {
                     let question = answerQuestionPage.getQuestion()
                     browser.wait(ExpectedConditions.presenceOf(question),
                         waitTimeout, 'The text of the question was not present')
@@ -132,7 +141,9 @@ describe('Apply: user is asked a question before applying', () => {
         });
 
         it('next button is clickable only if the answer field is not empty ', function () {
-            browser.wait(ExpectedConditions.urlContains('/apply/KPC1/answer-question'),
+            browser.wait(ExpectedConditions.and(
+                ExpectedConditions.urlContains('/apply/KPC1/application'),
+                ExpectedConditions.urlContains('/answer-question')),
                 waitTimeout, 'User was not taken to Answer-organizer-question page').then(function () {
                     let nextButton = answerQuestionPage.getNextButton()
                     browser.wait(ExpectedConditions.presenceOf(nextButton),
@@ -150,6 +161,6 @@ describe('Apply: user is asked a question before applying', () => {
 
     function GetOppKey(url: string) {
         let splittedUrl = url.split('/');
-        return splittedUrl[splittedUrl.length - 2];
+        return splittedUrl[splittedUrl.length - 4];
     }
 })

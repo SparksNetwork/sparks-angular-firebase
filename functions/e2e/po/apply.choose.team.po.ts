@@ -3,11 +3,11 @@ import { browser, by, element, ElementFinder } from 'protractor';
 export class PickTeamPage {
 
     getNextButton() {
-        return element.all(by.className('btn btn-block btn-default')).get(1)
+        return element(by.css('div.bottom-nav button'))
     }
 
     getPreviousButton() {
-        return element.all(by.className('btn btn-block btn-default')).first()
+        return element(by.css('div.bottom-nav a'))
     }
 
     getAvailableTeams() {
@@ -38,15 +38,15 @@ export class PickTeamPage {
         return team.element(by.css('h4'))
     }
 
-    getDeleteButtton(team: ElementFinder){
-       return team.element(by.css('a'))
+    getDeleteButtton(team: ElementFinder) {
+        return team.element(by.css('a'))
     }
 
-    getDeleteAllButton(){
+    getDeleteAllButton() {
         return element.all(by.css('div.segment-title-link-container')).first().element(by.css('a'))
     }
 
-    getTeamLinks(){
+    getTeamLinks() {
         return element.all(by.css('apply-opp-teams-not-selected a'))
     }
 

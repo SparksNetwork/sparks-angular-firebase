@@ -1,12 +1,12 @@
 import 'jasmine'
 import { ProjectMultiOppPage } from '../../po/project.multi-opp.po';
-import { OpportunityPartialDiscountPage } from "../../po/opp.partial-discount.po";
-import { AnswerQuestionPage } from "../../po/apply.answer-question.po";
-import { PickTeamPage } from "../../po/apply.single.team.po";
-import { AnswerTeamQuestion } from "../../po/apply.answer-team-question.po";
-import { browser, ExpectedConditions } from "protractor/built";
-import { setUsers, setData, signOut, signIn } from "../../firebase";
-import { USER_VERIFIED_PROFILE } from "../../fixtures/users";
+import { OpportunityPartialDiscountPage } from '../../po/opp.partial-discount.po';
+import { AnswerQuestionPage } from '../../po/apply.answer-question.po';
+import { PickTeamPage } from '../../po/apply.choose.team.po';
+import { AnswerTeamQuestion } from '../../po/apply.answer-team-question.po';
+import { browser, ExpectedConditions } from 'protractor/built';
+import { setUsers, setData, signOut, signIn } from '../../firebase';
+import { USER_VERIFIED_PROFILE } from '../../fixtures/users';
 
 
 const waitTimeout = 7000
@@ -96,21 +96,29 @@ describe('Apply-Choosing-Teams: verified user with complete profile information'
                                                         browser.wait(ExpectedConditions.presenceOf(oppLCPage.getJoinButton()),
                                                             waitTimeout, 'Join opportunity button was not present')
                                                         oppLCPage.getJoinButton().click().then(function () {
-                                                            browser.wait(ExpectedConditions.presenceOf(answerQuestionPage.getAnswer()), waitTimeout,
-                                                                'Answer to organizer question was not present')
-                                                            answerQuestionPage.getAnswer().sendKeys('42')
-                                                            let next = answerQuestionPage.getNextButton()
-                                                            browser.wait(ExpectedConditions.elementToBeClickable(next),
-                                                                waitTimeout, 'Next button was not clickable').then(function () {
-                                                                    next.click().then(function () {
-                                                                        let team = pickTeamPage.getAvailableTeamLink(0)
-                                                                        browser.wait(ExpectedConditions.presenceOf(team),
-                                                                            waitTimeout, 'The first team was not present').then(function () {
-                                                                                pickTeamPage.getAvailableTeamTitle(team).click().then(done)
-                                                                            })
-                                                                    })
-                                                                })
 
+                                                            browser.wait(ExpectedConditions.urlContains('/apply/LC1/answer-question'),
+                                                                waitTimeout, 'User was not taken to Answer-question page').then(function () {
+                                                                    browser.wait(ExpectedConditions.and(
+                                                                        ExpectedConditions.urlContains('/apply/LC1/application'),
+                                                                        ExpectedConditions.urlContains('/answer-question')),
+                                                                        waitTimeout, 'User was not redirected to Answer-organizer-question from the application flow page')
+                                                                }).then(function () {
+                                                                    browser.wait(ExpectedConditions.presenceOf(answerQuestionPage.getAnswer()), waitTimeout,
+                                                                        'Answer to organizer question was not present')
+                                                                    answerQuestionPage.getAnswer().sendKeys('42')
+                                                                    let next = answerQuestionPage.getNextButton()
+                                                                    browser.wait(ExpectedConditions.elementToBeClickable(next),
+                                                                        waitTimeout, 'Next button was not clickable').then(function () {
+                                                                            next.click().then(function () {
+                                                                                let team = pickTeamPage.getAvailableTeamLink(0)
+                                                                                browser.wait(ExpectedConditions.presenceOf(team),
+                                                                                    waitTimeout, 'The first team was not present').then(function () {
+                                                                                        pickTeamPage.getAvailableTeamTitle(team).click().then(done)
+                                                                                    })
+                                                                            })
+                                                                        })
+                                                                })
                                                         })
 
                                                     })
