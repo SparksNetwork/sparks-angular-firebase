@@ -239,6 +239,7 @@ label {
     font-size: 16px;
     letter-spacing: 0.64px;
     line-height: 20px;
+    text-transform: capitalize;
     span {
         color: #FFF;
         display: inline-block;
@@ -520,11 +521,13 @@ label {
         @include border-radius(7.5px);
         text-transform: none;
         font-size: 16px;
+        line-height: 20px;
+        letter-spacing: 0.64px;
         text-align: left;
         background: #FFF;
         border: none;
         padding: 12px 12px;
-        color: $pink;
+        color: $rouge;
         margin-bottom: 25px;
         &.btn-trans {
             color: $off-white;
@@ -564,6 +567,11 @@ label {
     .form-control::-ms-input-placeholder { color: $base-color; }
 }
 
+.form-control:focus::-webkit-input-placeholder { color:transparent; }
+.form-control:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
+.form-control:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
+.form-control:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
+
 .login-with-username {
     padding-top: 0;
 }
@@ -587,6 +595,14 @@ label {
     .pg-auth &{
         border-color: #FFF !important;
         color: #FFF;
+        text-indent: -60px;
+        text-align: center;
+    }
+    
+    @include Opacity(0.8);
+    &:active,
+    &:focus {
+        @include Opacity(1);
     }
 
     &:hover,
@@ -609,9 +625,9 @@ label {
         border: 1px solid $color-separator;
         border-right: transparent;
         @include border-radius-targeted( 7.5px, 0, 0, 7.5px);
-        .pg-auth &{
-            border: 1px solid #FFF;
-        }
+        // .pg-auth &{
+        //     border: 1px solid #FFF;
+        // }
     }
     .error {
         margin-top: 15px; // font-size: 28px;
