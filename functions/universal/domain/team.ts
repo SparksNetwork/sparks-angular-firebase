@@ -4,7 +4,7 @@ import { Expose } from 'class-transformer'
 import { IsNotEmpty, IsDefined } from 'class-validator'
 
 import {
-    BaseCollection, Database,
+    BaseCollection, Database, validateOpt,
 } from '../../lib/firebase-universal/shared'
 
 // any methods here will be available on both client and server
@@ -39,13 +39,13 @@ export class Team {
 
     @IsNotEmpty()
     public icon: string
-    
+
     @IsNotEmpty()
     public question: string
 }
 
 // we have two transform functions for type safety, not sure why overloading isnt working see below
-export const teamTransform = (input: object) => transformAndValidate<Team>(Team, input)
-export const teamsTransform = (input: object[]) => transformAndValidate<Team>(Team, input)
+export const teamTransform = (input: object) => transformAndValidate<Team>(Team, input, validateOpt)
+export const teamsTransform = (input: object[]) => transformAndValidate<Team>(Team, input, validateOpt)
 
 
