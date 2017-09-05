@@ -11,6 +11,7 @@ export class PageShiftComponent implements OnInit {
 
   constructor(private route: ActivatedRoute) {
     this.route.snapshot.data["project"].subscribe(project => this.project = project)
+    this.route.snapshot.data['applicationShift'].subscribe(console.log.bind(this, 'app-shifts:'))
   }
 
   ngOnInit() {
