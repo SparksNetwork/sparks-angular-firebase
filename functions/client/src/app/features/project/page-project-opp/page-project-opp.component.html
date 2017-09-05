@@ -15,7 +15,7 @@
             <span class="caret"></span>
           </button>
       <ul *ngIf='opps | async' class="dropdown-menu" aria-labelledby="dropdownMenuOpportunity">
-        <li *ngFor="let _opp of opps | async"><a [routerLink]="['..', _opp.$key]">{{_opp.discount | percent:'1.0-0'}} discount</a></li>
+        <li *ngFor="let _opp of opps | async"><a [routerLink]="['/project', _opp.projectKey, 'opp', _opp.$key]">{{_opp.discount | percent:'1.0-0'}} discount</a></li>
       </ul>
     </div>
   </div>
