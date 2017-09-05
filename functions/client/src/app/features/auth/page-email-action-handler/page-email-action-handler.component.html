@@ -9,7 +9,7 @@
   <auth-form-email-password></auth-form-email-password>
   <div class="row">
     <div class="col-xs-6">
-      <button btn (click)='signInAndResendVerificationEmail()' [disabled]="!epForm.credentialsForm.valid">Sign In</button>
+      <button class="btn btn-default" (click)='signInAndResendVerificationEmail()' [disabled]="!epForm.credentialsForm.valid">Sign In</button>
     </div>
   </div>
 </div>
@@ -21,8 +21,8 @@
   </div>
   <snui-action-bar>
     <div class="row">
-      <div class="col-xs-6 pull-right">
-        <button class="btn btn-default btn-block" [disabled]="!frpForm.resetPasswordForm.valid" (click)="confirmPasswordReset()">Reset</button>
+      <div class="col-xs-6 col-xs-offset-6">
+        <button class="btn btn-default pull-right" [disabled]="!frpForm.resetPasswordForm.valid" (click)="confirmPasswordReset()">Reset</button>
       </div>
     </div>
   </snui-action-bar>
