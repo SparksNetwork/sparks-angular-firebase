@@ -51,18 +51,18 @@ describe('Apply: user is asked a question before applying', () => {
                 })
         })
 
-    //     it('it should be taken to Answer question page  ', function () {
-    //         browser.wait(ExpectedConditions.urlContains('/apply/KPC1/answer-question'),
-    //             waitTimeout, 'User was not taken to Answer Question page')
-    //         expect(true).toBeTruthy()
+        it('it should be taken to Answer question page  ', function () {
+            browser.wait(ExpectedConditions.urlContains('/apply/KPC1/answer-question'),
+                waitTimeout, 'User was not taken to Answer Question page')
+            expect(true).toBeTruthy()
 
-    //     });
+        });
 
-    //     describe('Tests common for all type of users', () => {
-    //         TestsCommonToAllTypeOfVerifiedUsers()
-    //     })
+        describe('Tests common for all type of users', () => {
+            TestsCommonToAllTypeOfVerifiedUsers()
+        })
 
-    // })
+    })
 
     describe('User verified that has not all profile information completed', () => {
         beforeAll(done => {
