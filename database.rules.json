@@ -19,6 +19,9 @@
     },
     "applicationTeam":{
       ".indexOn": ["appKey"]
+    },
+    "shift":{
+      ".indexOn": ["teamKey"]
     }
   }
 }
