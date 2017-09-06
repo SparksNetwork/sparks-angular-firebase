@@ -2,15 +2,15 @@
   Confirm Your Spot:<br>Select Shifts
 </snui-header-simple>
 
-<div class="row">
+<div class="row" *ngIf="project | async; let project">
   <div class="col-xs-12">
     <div class="segment">
-      <p class="card-text">Now that you've been approved for {{project?.title}}, let's set up your schedule.</p>
+      <p class="card-text">Now that you've been approved for {{project.title}}, let's set up your schedule.</p>
     </div>
   </div>
 </div>
 
-<apply-shift-filter></apply-shift-filter>
-<apply-shift-list></apply-shift-list>
+<apply-shift-filter [shifts]="shifts | async"></apply-shift-filter>
+<apply-shift-list [shifts]="shifts | async"></apply-shift-list>
 
 <snui-action-bar [type]="actionBarType.Organizer"></snui-action-bar>

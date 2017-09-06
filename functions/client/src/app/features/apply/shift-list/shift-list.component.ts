@@ -1,18 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
-import { Observable } from "rxjs/Observable";
-
-import { Shift } from "../../../../../../universal/domain/shift";
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Shift } from '../../../../../../universal/domain/shift';
 
 @Component({
   selector: 'apply-shift-list',
   templateUrl: './shift-list.component.html',
 })
 export class ShiftListComponent implements OnInit {
-  public shifts: Observable<(void| Shift[])[]>
+  @Input() shifts: Shift[]
 
-  constructor(route: ActivatedRoute) { 
-    this.shifts = route.snapshot.data["shift"]; 
+  constructor(route: ActivatedRoute) {
+    this.shifts = route.snapshot.data['shift'];
   }
 
   ngOnInit() {
