@@ -22,6 +22,10 @@ export class ShiftFilterComponent implements OnChanges {
       team: [''],
       friend: ['']
     });
+
+    this.shiftFilterForm.valueChanges.subscribe(data => {
+      console.log('form changes', data)
+    })
   }
 
   ngOnChanges(changes: SimpleChanges): void {
