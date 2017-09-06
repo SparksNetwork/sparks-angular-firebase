@@ -99,5 +99,9 @@ export class OpportunityPartialDiscountPage {
             .all(by.css('ul')).get(0).all(by.css('li')).first();
     }
 
+    getJoinButton(){
+        return element(by.className('btn btn-bordered btn-block'))
+    }
+
 
 }
