@@ -25,6 +25,7 @@ import { ShiftsSelectedComponent } from './shifts-selected/shifts-selected.compo
     ReviewProfileComponent,
     ShiftListComponent,
     ShiftsSelectedComponent,
+    ShiftFilterComponent,
   ],
   imports: [
     CommonModule,
