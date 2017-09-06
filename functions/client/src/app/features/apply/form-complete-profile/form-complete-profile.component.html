@@ -64,7 +64,7 @@
           Birthday is required.
         </span>
           <span class="error" *ngIf="profileForm.get('birthday').hasError('date') && profileForm.get('birthday').touched ">
-          Birthday is invalid.
+          Birthday is invalid. <span>Correct format: YYYY-MM-DD</span>
         </span>
         </div>
       </div>
