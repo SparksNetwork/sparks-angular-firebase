@@ -14,7 +14,7 @@ export class OpportunityPartialDiscountPage {
         return element(by.id('dropdownMenuOpportunity'));
     }
 
-    getSecondDiscount(){
+    getSecondDiscount() {
         return element(by.className('dropdown opp-selector open')).$$('li').get(1);
     }
 
@@ -94,10 +94,13 @@ export class OpportunityPartialDiscountPage {
             .all(by.css('ul')).get(1).all(by.css('li')).last();
     }
 
-    getFirstTeam(){
+    getFirstTeam() {
         return element.all(by.className('you-get-give-join segment')).get(2)
             .all(by.css('ul')).get(0).all(by.css('li')).first();
     }
 
+    getJoinButton() {
+        return element(by.className('btn btn-bordered btn-block'))
+    }
 
 }
