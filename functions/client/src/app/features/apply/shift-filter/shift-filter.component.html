@@ -27,7 +27,7 @@
                 <div class="form-group">
                   <select class="form-control" name="teamfilter">
                     <option value="">Any Team</option>
-                    <option *ngFor="let shift of shifts" value="shift.teamKey">{{shift.teamTitle}}</option>
+                    <option *ngFor="let team of teamFilter" value="team.teamKey">{{team.teamTitle}}</option>
                   </select>
                 </div>
               </div>
