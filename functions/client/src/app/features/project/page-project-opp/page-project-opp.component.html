@@ -1,4 +1,4 @@
-<snui-header-simple imageUrl='{{(project | async)?.images[0].imageUrl}}'>
+<snui-header-simple [imageUrl]='(project | async)?.images[0].imageUrl'>
   Select Your Opportunity for {{(project | async)?.title}}
 </snui-header-simple>
 
