@@ -1,73 +1,66 @@
 <form novalidate [formGroup]="profileForm">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="edit-profile-detalils segment">
-        <div [hidden]="!editAllMode && profileForm.get('legalName').value && profileForm.get('legalName').pristine">
-          <div class="form-input" [class.has-error]="!profileForm.get('legalName').valid && profileForm.get('legalName').touched">
-            <div class="icon">
-              <span class="ic ic-namelegal"></span>
-            </div>
-            <div class="text">
-              <input type="text" id="legalName" class="form-control" placeholder="What's Your Legal Name?" formControlName="legalName">
-            </div>
-          </div>
+  <div class="edit-profile-detalils segment no-brd">
+    <div [hidden]="!editAllMode && profileForm.get('legalName').value && profileForm.get('legalName').pristine">
+      <div class="form-input" [class.has-error]="!profileForm.get('legalName').valid && profileForm.get('legalName').touched">
+        <div class="icon">
+          <span class="ic ic-namelegal"></span>
         </div>
-        <div [hidden]="!editAllMode && profileForm.get('preferredName').value && profileForm.get('preferredName').pristine">
-          <div class="form-input" [class.has-error]="!profileForm.get('preferredName').valid && profileForm.get('preferredName').touched">
-            <div class="icon">
-              <span class="ic ic-namepreffered"></span>
-            </div>
-            <div class="text">
-              <input type="text" id="preferredName" class="form-control" placeholder="What's Your Preferred Name?" formControlName="preferredName">
-
-            </div>
-          </div>
-        </div>
-
-        <div [hidden]="!editAllMode && profileForm.get('phoneNumber').value && profileForm.get('phoneNumber').pristine">
-          <div class="form-input" [class.has-error]="!profileForm.get('phoneNumber').valid && profileForm.get('phoneNumber').touched">
-            <div class="icon">
-              <span class="ic ic-phone"></span>
-            </div>
-            <div class="text">
-              <input type="tel" id="phoneNumber" class="form-control" placeholder="What's Your Phone Number?" formControlName="phoneNumber">
-
-            </div>
-          </div>
-        </div>
-        <div [hidden]="!editAllMode && profileForm.get('birthday').value && profileForm.get('birthday').pristine">
-          <div class="form-input" [class.has-error]="!profileForm.get('birthday').valid && profileForm.get('birthday').touched">
-            <div class="icon">
-              <span class="ic ic-birthday"></span>
-            </div>
-            <div class="text">
-              <input type="date" id="birthday" class="form-control" placeholder="What's Your Birthday" formControlName="birthday">
-
-            </div>
-          </div>
-        </div>
-
-        <div class="error">
-          <span *ngIf="profileForm.get('legalName').hasError('required') && profileForm.get('legalName').touched ">
-          Legal Name is required.
-        </span>
-          <span class="error" *ngIf="profileForm.get('preferredName').hasError('required') && profileForm.get('preferredName').touched ">
-          Preferred Name is required.
-        </span>
-          <span class="error" *ngIf="profileForm.get('phoneNumber').hasError('required') && profileForm.get('phoneNumber').touched ">
-          Phone Number is required.
-        </span>
-          <span class="error" *ngIf="profileForm.get('phoneNumber').hasError('phone') && profileForm.get('phoneNumber').touched ">
-          Phone Number is invalid.
-        </span>
-          <span class="error" *ngIf="profileForm.get('birthday').hasError('required') && profileForm.get('birthday').touched ">
-          Birthday is required.
-        </span>
-          <span class="error" *ngIf="profileForm.get('birthday').hasError('date') && profileForm.get('birthday').touched ">
-          Birthday is invalid. <span>Correct format: YYYY-MM-DD</span>
-        </span>
+        <div class="text">
+          <input type="text" id="legalName" class="form-control" placeholder="What's Your Legal Name?" formControlName="legalName">
         </div>
       </div>
+    </div>
+    <div [hidden]="!editAllMode && profileForm.get('preferredName').value && profileForm.get('preferredName').pristine">
+      <div class="form-input" [class.has-error]="!profileForm.get('preferredName').valid && profileForm.get('preferredName').touched">
+        <div class="icon">
+          <span class="ic ic-namepreffered"></span>
+        </div>
+        <div class="text">
+          <input type="text" id="preferredName" class="form-control" placeholder="What's Your Preferred Name?" formControlName="preferredName">
+        </div>
+      </div>
+    </div>
+
+    <div [hidden]="!editAllMode && profileForm.get('phoneNumber').value && profileForm.get('phoneNumber').pristine">
+      <div class="form-input" [class.has-error]="!profileForm.get('phoneNumber').valid && profileForm.get('phoneNumber').touched">
+        <div class="icon">
+          <span class="ic ic-phone"></span>
+        </div>
+        <div class="text">
+          <input type="tel" id="phoneNumber" class="form-control" placeholder="What's Your Phone Number?" formControlName="phoneNumber">
+        </div>
+      </div>
+    </div>
+    <div [hidden]="!editAllMode && profileForm.get('birthday').value && profileForm.get('birthday').pristine">
+      <div class="form-input" [class.has-error]="!profileForm.get('birthday').valid && profileForm.get('birthday').touched">
+        <div class="icon">
+          <span class="ic ic-birthday"></span>
+        </div>
+        <div class="text">
+          <input type="date" id="birthday" class="form-control" placeholder="What's Your Birthday" formControlName="birthday">
+        </div>
+      </div>
+    </div>
+
+    <div class="error">
+      <span *ngIf="profileForm.get('legalName').hasError('required') && profileForm.get('legalName').touched ">
+          Legal Name is required.
+        </span>
+      <span *ngIf="profileForm.get('preferredName').hasError('required') && profileForm.get('preferredName').touched ">
+          Preferred Name is required.
+        </span>
+      <span *ngIf="profileForm.get('phoneNumber').hasError('required') && profileForm.get('phoneNumber').touched ">
+          Phone Number is required.
+        </span>
+      <span *ngIf="profileForm.get('phoneNumber').hasError('phone') && profileForm.get('phoneNumber').touched ">
+          Phone Number is invalid.
+        </span>
+      <span *ngIf="profileForm.get('birthday').hasError('required') && profileForm.get('birthday').touched ">
+          Birthday is required.
+        </span>
+      <span *ngIf="profileForm.get('birthday').hasError('date') && profileForm.get('birthday').touched ">
+          Birthday is invalid. <span>Correct format: YYYY-MM-DD</span>
+      </span>
     </div>
   </div>
 </form>

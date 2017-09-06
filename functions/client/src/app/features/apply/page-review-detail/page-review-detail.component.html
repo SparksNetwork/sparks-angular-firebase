@@ -1,52 +1,44 @@
 <ng-container *ngIf='application'>
-  <snui-header-simple imageUrl='https://placeimg.com/1140/410/animals/grayscale'>
+    <snui-header-simple imageUrl='{{(project | async)?.images[0].imageUrl}}'>
     Almost There,<br/> Ready to Apply?
   </snui-header-simple>
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="segment">
-        <p class="card-text">
-          Double-check your details before you send the application to the organizer.
-        </p>
-      </div>
-    </div>
+
+  <div class="segment">
+    <p class="card-text">
+      Double-check your details before you send the application to the organizer.
+    </p>
   </div>
 
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="profile-details segment">
-        <apply-review-profile [profile]="profile | async"></apply-review-profile>
-      </div>
-    </div>
+
+  <div class="profile-details segment">
+    <apply-review-profile [profile]="profile | async"></apply-review-profile>
   </div>
 
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="segment">
-        <div class="row">
-          <div class="col-xs-12">
-            <h3 class="segment-title" data-toggle="collapse" data-target="#organizer-question">The Organizer Question</h3>
-          </div>
-          <div class="col-xs-12 collapse" id="organizer-question">
-            <div class="text-right"><a [routerLink]="['..','edit-answer']">edit <span class="ic ic-pencil" aria-hidden="true"></span></a></div>
-            <div class="segment">
-              <p class="card-text">{{application.oppQuestion}}</p>
-              <div class="edit-profile-detalils">
-                <div class="form-input">
-                  <div class="icon">
-                    <span class="ic ic-textbox"></span>
-                  </div>
-                  <div class="text">
-                    <p>{{application.oppAnswer}}</p>
-                  </div>
-                </div>
+
+  <div class="segment">
+    <div class="row">
+      <div class="col-xs-12">
+        <h3 class="segment-title" data-toggle="collapse" data-target="#organizer-question">The Organizer Question</h3>
+      </div>
+      <div class="col-xs-12 collapse" id="organizer-question">
+        <div class="text-right"><a [routerLink]="['..','edit-answer']">edit <span class="ic ic-pencil" aria-hidden="true"></span></a></div>
+        <div class="segment no-brd">
+          <p class="card-text">{{application.oppQuestion}}</p>
+          <div class="edit-profile-detalils">
+            <div class="form-input question-input">
+              <div class="icon">
+                <span class="ic ic-textbox"></span>
               </div>
+              <div class="text">
+                  <textarea class="form-control" readonly="">{{application.oppAnswer}}</textarea>
+                </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
 
   <div class="row">
     <div class="col-xs-12">
