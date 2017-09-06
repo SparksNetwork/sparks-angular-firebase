@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { Component, OnInit, Input } from '@angular/core';;
 import { Shift } from '../../../../../../universal/domain/shift';
 
 @Component({
@@ -9,15 +7,10 @@ import { Shift } from '../../../../../../universal/domain/shift';
 })
 export class ShiftFilterComponent implements OnInit {
 
-  public shifts: Observable<(void| Shift[])>
+  @Input() shifts: Shift[]
 
   constructor(
-    private route: ActivatedRoute
-  ) {
-    this.shifts = route.snapshot.data['shift'];
-
-    route.snapshot.data['shift'].subscribe(sh => console.log(sh))
-  }
+  ) { }
 
   ngOnInit() {
   }
