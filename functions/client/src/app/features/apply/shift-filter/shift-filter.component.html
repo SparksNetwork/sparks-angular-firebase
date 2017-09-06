@@ -1,4 +1,4 @@
-<form action="">
+<form action="" *ngIf="shifts | async; let shifts">
   <div class="row">
     <div class="col-xs-12">
       <div class="segment no-brd">
@@ -22,16 +22,16 @@
               </select>
                 </div>
               </div>
+
               <div class="col-xs-4">
                 <div class="form-group">
                   <select class="form-control" name="teamfilter">
-                <option value="team1">Any Team</option>
-                <option value="team2">Any Team</option>
-                <option value="team3">Any Team3</option>
-                <option value="team4">Any Team4</option>
-              </select>
+                    <option value="">Any Team</option>
+                    <option *ngFor="let shift of shifts" value="shift.teamKey">{{shift.teamTitle}}</option>
+                  </select>
                 </div>
               </div>
+
               <div class="col-xs-4">
                 <div class="form-group">
                   <select class="form-control" name="typefilter">

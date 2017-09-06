@@ -11,7 +11,7 @@ import { ReviewProfileComponent } from './review-profile/review-profile.componen
 import { OppTeamsSelectedComponent } from './opp-teams-selected/opp-teams-selected.component';
 import { OppTeamsNotSelectedComponent } from './opp-teams-not-selected/opp-teams-not-selected.component';
 import { ShiftListComponent } from './shift-list/shift-list.component';
-import { ResolveShiftByApplicationKey } from './resolve-shift-by-app-key/resolve-shifts-by-application-key.service';
+import { ResolveShiftByApplicationTeams } from './resolve-shift-by-application-teams/resolve-shifts-by-application-teams.service';
 import { RequireApplicationAcceptedService } from '../../core/sndomain/shift/require-application-accepted.service';
 import { ShiftFilterComponent } from './shift-filter/shift-filter.component';
 
@@ -36,7 +36,7 @@ import { ShiftFilterComponent } from './shift-filter/shift-filter.component';
   ],
   providers:[
     ResolveTeamByTeamKey,
-    ResolveShiftByApplicationKey,
+    ResolveShiftByApplicationTeams,
     RequireApplicationAcceptedService,
   ]
 })

@@ -20,7 +20,7 @@ import { PageReviewDetailComponent } from './page-review-detail/page-review-deta
 import { PageApplyConfirmationComponent } from './page-apply-confirmation/page-apply-confirmation.component';
 import { ResolveProjectByOpp } from '../../core/sndomain/project/resolve-project-by-opp.service';
 import { PageShiftComponent } from './page-shift/page-shift.component';
-import { ResolveShiftByApplicationKey } from './resolve-shift-by-app-key/resolve-shifts-by-application-key.service';
+import { ResolveShiftByApplicationTeams } from './resolve-shift-by-application-teams/resolve-shifts-by-application-teams.service';
 import { RequireApplicationAcceptedService } from '../../core/sndomain/shift/require-application-accepted.service';
 import { PageMessageComponent } from '../../shared/snui/page-message/page-message.component';
 import { PagePaymentDetailsComponent } from './page-payment-details/page-payment-details.component';
@@ -28,7 +28,7 @@ import { PagePaymentConfirmationComponent } from './page-payment-confirmation/pa
 
 const routes: Routes = [
     {
-        path:"application-pending",
+        path: 'application-pending',
         component: PageMessageComponent
     },
     {
@@ -104,10 +104,10 @@ const routes: Routes = [
                         path: 'shift',
                         component: PageShiftComponent,
                         resolve: {
-                            shift: ResolveShiftByApplicationKey,
+                            shift: ResolveShiftByApplicationTeams,
                             project: ResolveProjectByOpp
                         },
-                        canActivate:[
+                        canActivate: [
                             RequireApplicationAcceptedService
                         ]
                     },
