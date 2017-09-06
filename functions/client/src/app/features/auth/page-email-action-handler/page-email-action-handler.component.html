@@ -4,26 +4,24 @@
 
 <auth-alert-error></auth-alert-error>
 
-<div class='segment' [hidden]='!verificationEmailExpired'>
+<div class='segment' *ngIf='verificationEmailExpired'>
   <p class='text-danger'>Sign in below to recive a new verification email.</p>
-  <auth-form-email-password></auth-form-email-password>
+  <auth-form-email-password (onSubmit)="signInAndResendVerificationEmail($event)"></auth-form-email-password>
   <div class="row">
     <div class="col-xs-6">
-      <button class="btn btn-default" (click)='signInAndResendVerificationEmail()' [disabled]="!epForm.credentialsForm.valid">Sign In</button>
+      <button type="submit" form="emailPasswordForm" class="btn btn-default">Sign In</button>
     </div>
   </div>
 </div>
 
-<div [hidden]="!resetPasswordEmail">
-  <div class='segment'>
-    <p>Resetting password for: {{resetPasswordEmail}}.</p>
-    <auth-form-reset-password></auth-form-reset-password>
-  </div>
-  <snui-action-bar>
-    <div class="row">
-      <div class="col-xs-4 col-xs-offset-8">
-        <button class="btn btn-default" [disabled]="!frpForm.resetPasswordForm.valid" (click)="confirmPasswordReset()">Reset</button>
-      </div>
-    </div>
-  </snui-action-bar>
+<div class='segment' *ngIf="resetPasswordEmail">
+  <p>Resetting password for: {{resetPasswordEmail}}.</p>
+  <auth-form-reset-password (onSubmit)="confirmPasswordReset($event)"></auth-form-reset-password>
 </div>
+<snui-action-bar>
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-8">
+      <button type="submit" form="resetPasswordForm" class="btn btn-default">Reset</button>
+    </div>
+  </div>
+</snui-action-bar>
