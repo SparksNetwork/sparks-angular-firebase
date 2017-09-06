@@ -13,11 +13,16 @@ import { Shift } from '../../../../../../universal/domain/shift';
 })
 export class ShiftsSelectedComponent implements OnInit {
   public selectedShifts: Observable<Shift[]>;
-  public selectedNo = 0;
-  public availableNo = 0;
+  public availableShiftsNo = 0;
 
   constructor(private route: ActivatedRoute) {
+    this.selectedShifts = Observable.combineLatest(this.route.snapshot.data['applicationShift'], this.route.snapshot.data['shift'])
+      .map(([applicationShifts, shifts]: [ApplicationShift[], Shift[]]) => {
+        const selectedShifts = shifts.filter(shift => applicationShifts.some(appShift => appShift.shiftKey === shift.$key));
+        this.availableShiftsNo = shifts.length;
 
+        return selectedShifts
+      })
   }
 
   ngOnInit() {
