@@ -6,7 +6,7 @@
 export const environment = {
     production: false,
     firebaseAdminCredentialFilename: 'firebaseAdminCredentials.dev-ev.json',
-    apiRoot: 'http://localhost:5000/sparks-network-emanuel/us-central1/api',
+    apiRoot: 'https://us-central1-sparks-network-emanuel.cloudfunctions.net/api',
     firebase: {
         apiKey: "AIzaSyDIjh2LxvT87zW3KGAUOQq9NPEdk1Qb7xU",
         authDomain: "sparks-network-emanuel.firebaseapp.com",
