@@ -1,4 +1,4 @@
-<snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
+<snui-header-simple imageUrl='{{(project | async)?.images[0].imageUrl}}'>
   Select Your Opportunity for {{(project | async)?.title}}
 </snui-header-simple>
 
