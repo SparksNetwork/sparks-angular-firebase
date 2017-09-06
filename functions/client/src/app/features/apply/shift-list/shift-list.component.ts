@@ -17,7 +17,7 @@ export class ShiftListComponent implements OnInit {
     private route: ActivatedRoute,
     public applicationShiftAction: ApplicationShiftActionService
   ) {
-    this.shifts = route.snapshot.data['shift'];
+    //this.shifts = route.snapshot.data['shift'];
   }
 
   ngOnInit() {
