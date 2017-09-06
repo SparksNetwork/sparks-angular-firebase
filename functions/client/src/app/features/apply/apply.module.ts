@@ -13,6 +13,7 @@ import { OppTeamsNotSelectedComponent } from "./opp-teams-not-selected/opp-teams
 import { ShiftListComponent } from "./shift-list/shift-list.component";
 import { ResolveShiftByApplicationKey } from "./resolve-shift-by-app-key/resolve-shifts-by-application-key.service";
 import { RequireApplicationAcceptedService } from "../../core/sndomain/shift/require-application-accepted.service";
+import { ShiftsSelectedComponent } from './shifts-selected/shifts-selected.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { RequireApplicationAcceptedService } from "../../core/sndomain/shift/req
     FormCompleteProfileComponent,
     ReviewProfileComponent,
     ShiftListComponent,
+    ShiftsSelectedComponent,
   ],
   imports: [
     CommonModule,
