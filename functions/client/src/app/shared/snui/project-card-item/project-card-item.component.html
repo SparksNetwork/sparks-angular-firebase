@@ -9,10 +9,8 @@
         </div>
         <div class="project-karma-count">{{maxKarmaPoints}}</div>
     </div>
-    <div class="event-date"> {{startDateTime | date : 'longDate'}}
-        <ng-container *ngIf='endDateTime'>
-            - {{endDateTime | date : 'longDate'}}
-        </ng-container>
+    <div class="event-date"> 
+        {{startDateTime | snDateInterval: endDateTime}}
     </div>
     <div class="event-location">{{location | location}}</div>
 </div>
