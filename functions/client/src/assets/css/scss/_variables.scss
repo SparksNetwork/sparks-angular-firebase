@@ -119,6 +119,9 @@ $linkedin-color: #1E87BE;
     height: 25px;
     display: block;
 }
+.ic-karma-points-grey:before {
+    content: "\e915";
+}
 
 .ic-progress {
     background: url('../img/progress_button.svg') top center no-repeat;
