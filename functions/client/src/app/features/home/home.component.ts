@@ -32,15 +32,16 @@ export class HomeComponent implements OnInit {
       if (user) {
         this.userPrefferedName = user.displayName;
         this.userMessage = "You just got 20 Karma Points and opened 1 quest and 2 badges";
-        this.userImageUrl = user.photoURL || 'https://placeimg.com/85/85/people/grayscale';
+        this.userImageUrl = user.photoURL || 'assets/img/profile'+  Math.floor(Math.random()*(10)+1) +  '.png';
         this.userProfileScore = 20;
         this.isAuthed = true;
       }
       else {
         this.userPrefferedName = 'Guest';
         this.userMessage = "You first need to sign up before you can level up";
-        this.userImageUrl = 'https://placeimg.com/85/85/people/grayscale';
+        this.userImageUrl = 'assets/img/profile'+  Math.floor(Math.random()*(10)+1) +  '.png';
         this.userProfileScore = 0;
+        
         this.isAuthed = false;
       }
     })

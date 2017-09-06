@@ -603,6 +603,9 @@ label {
         text-indent: -60px;
         text-align: center;
     }
+    &[readonly]{
+        background: transparent;
+    }
     
     @include Opacity(0.8);
     &:active,
@@ -620,10 +623,17 @@ label {
     }
 }
 
+
+
 .form-input {
     display: block;
     overflow: hidden;
     margin-bottom: 15px;
+    textarea{
+        width: 100%;
+        resize: vertical;
+        min-height: 70px;
+    }
     .icon {
         height: 45px;
         padding: 7px 0 7px 20px;
@@ -634,6 +644,18 @@ label {
         //     border: 1px solid #FFF;
         // }
     }
+    &.question-input{
+        @include border-radius-targeted( 7.5px, 0, 0, 7.5px);
+        border: 1px solid $color-separator;
+        margin-bottom: 25px;
+        .icon{
+            border: none;
+            padding-top: 12px;
+        }
+        textarea{
+            border: none;
+        }  
+    }
     .error {
         margin-top: 15px; // font-size: 28px;
         // letter-spacing: 1.12px;
@@ -641,9 +663,6 @@ label {
         // @extend .col-xs-12;
         float: left;
         width: 100%;
-    }
-    textarea{
-        max-width: 100%;
     }
     &.has-error {
         .form-control {
@@ -953,6 +972,9 @@ label {
                 background: #FFF;
                 @include border-radius(2px);
                 margin: 2px auto;
+                &:hover{
+                    @include Opacity(1);
+                }
             }
             .status {
                 @include gradient-horizontal-three-colors($pink, $violetblue, $purple);
@@ -1458,6 +1480,12 @@ label {
     margin-top: 20px;
 }
 
+.team-list-not-selected{
+    .team-item{
+        border-bottom: none;
+    }
+}
+
 
 /* Footer Nav */
 
@@ -1507,6 +1535,7 @@ label {
 .bottom-nav {
     @include block-nooverflow;
     padding: 25px 0;
+    border-top: 1px solid $color-separator;
     .btn{
         width: 100%;
         display: block;

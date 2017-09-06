@@ -1,17 +1,22 @@
 <ng-container *ngIf='opp && applicationKey'>
-  <snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
+  <snui-header-simple imageUrl='{{(project | async)?.images[0].imageUrl}}'>
     The Organizer wants to know...
   </snui-header-simple>
   <form novalidate [formGroup]="answerForm">
 
 
-    <div class="segment">
+    <div class="segment no-brd">
       <p class="card-text">{{opp.question}}</p>
     </div>
 
 
-    <div class="form-input" [class.has-error]="!answerForm.get('answer').valid && answerForm.get('answer').touched">
-      <textarea formControlName="answer" rows="4" cols="50" placeholder="Type Your Answer"></textarea>
+    <div class="form-input question-input" [class.has-error]="!answerForm.get('answer').valid && answerForm.get('answer').touched">
+      <div class="icon">
+        <span class="ic ic-textbox"></span>
+      </div>
+      <div class="text">
+        <textarea class="form-control" formControlName="answer" rows="4" cols="50" placeholder="Type Your Answer"></textarea>
+      </div>
     </div>
 
     <div class="error" *ngIf="answerForm.get('answer').hasError('required') && answerForm.get('answer').touched">
