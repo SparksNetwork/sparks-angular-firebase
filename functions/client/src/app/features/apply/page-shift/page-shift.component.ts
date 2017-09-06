@@ -17,9 +17,13 @@ export class PageShiftComponent implements OnInit {
   public actionBarType = ActionBarType;
   public project: FirebaseObjectObservable<Project>;
   public selectableShifts: Observable<Shift[]>;
+  public selectedShiftsNo = 0;
 
   constructor(private route: ActivatedRoute) {
     this.project = this.route.snapshot.data['project'];
+
+    this.route.snapshot.data['applicationShift']
+      .subscribe(applicationShifts => this.selectedShiftsNo = (applicationShifts && applicationShifts.length))
 
     this.selectableShifts = Observable.combineLatest(this.route.snapshot.data['applicationShift'], this.route.snapshot.data['shift'])
       .map(([applicationShifts, shifts]: [ApplicationShift[], Shift[]]) =>

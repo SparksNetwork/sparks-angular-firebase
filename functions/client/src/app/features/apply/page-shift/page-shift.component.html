@@ -14,4 +14,10 @@
 <apply-shift-filter [shifts]="selectableShifts | async"></apply-shift-filter>
 <apply-shift-list [shifts]="selectableShifts | async"></apply-shift-list>
 
-<snui-action-bar></snui-action-bar>
+<snui-action-bar [type]="actionBarType.Organizer">
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-8">
+      <button class="btn btn-default" [disabled]="!selectedShiftsNo" [routerLink]="['../payment-details']">Next</button>
+    </div>
+  </div>
+</snui-action-bar>
