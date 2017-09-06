@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { DateFormatPipe } from 'angular2-moment';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Shift } from '../../../../../../universal/domain/shift';
 
 @Component({
@@ -10,15 +11,24 @@ export class ShiftFilterComponent implements OnChanges {
   @Input() private shifts: Shift[]
   private teamFilter: ITeamFilter[]
   private dateFilter: string[]
+  public shiftFilterForm: FormGroup;
 
   constructor(
-    private dateFormatPipe: DateFormatPipe
-  ) { }
+    private dateFormatPipe: DateFormatPipe,
+    private builder: FormBuilder
+  ) {
+    this.shiftFilterForm = this.builder.group({
+      date: [''],
+      team: [''],
+      friend: ['']
+    });
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.shifts) {
       this.teamFilter = this.getUniqueTeams();
       this.dateFilter = this.getUniqueDates();
+      this.shiftFilterForm.patchValue({date: this.dateFilter[0]});
     }
   }
 
