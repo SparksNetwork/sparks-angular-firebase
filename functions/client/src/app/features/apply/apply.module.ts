@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MomentModule } from 'angular2-moment';
+import { MomentModule, DateFormatPipe } from 'angular2-moment';
 
 import { SNUIModule } from '../../shared/snui/snui.module';
 import { ApplyRoutingModule, routedComponents } from './apply-routing.module';
@@ -34,10 +34,11 @@ import { ShiftFilterComponent } from './shift-filter/shift-filter.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers:[
+  providers: [
     ResolveTeamByTeamKey,
     ResolveShiftByApplicationTeams,
     RequireApplicationAcceptedService,
+    DateFormatPipe
   ]
 })
 export class ApplyModule { }
