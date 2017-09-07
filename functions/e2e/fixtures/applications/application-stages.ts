@@ -1,5 +1,5 @@
 import { browser } from 'protractor/built';
-import { setUsers, signOut, signIn, setData, setUsersWithPartialProfile } from '../../firebase';
+import { setUsers, signOut, signIn, setData } from '../../firebase';
 import { USER_VERIFIED_PROFILE } from '../users';
 
 export class ApplicationStages {
@@ -13,7 +13,6 @@ export class ApplicationStages {
         browser.waitForAngularEnabled(false)
 
         return setUsers()
-            .then(() => setUsersWithPartialProfile())
             .then(() => browser.get('/'))
             .then(() => signOut())
             .then(() => signIn(user.email, user.password))
