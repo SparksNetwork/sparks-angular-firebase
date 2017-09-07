@@ -1,0 +1,14 @@
+{
+    "KPC_TO_SINGLE_TEAM": {
+        "answer": "yes",
+        "appKey": "KPC_INCOMPLETE_APP",
+        "question": "Do you have any commercial kitchen experience?",
+        "teamKey": "KPC1"
+    },
+    "LC_TO_MINDFUL_FEEDING": {
+        "answer": "NO",
+        "appKey": "LC_INCOMPLETE_APP",
+        "question": "Do you have any commercial kitchen experience?",
+        "teamKey": "LC1"
+    }
+}
