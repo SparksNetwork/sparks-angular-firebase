@@ -1,6 +1,6 @@
 import { browser, by, element } from 'protractor';
 
-export class AnswerQuestionPage {
+export class AnswerOrganizerQuestionPage {
 
 
     getNextButton(){

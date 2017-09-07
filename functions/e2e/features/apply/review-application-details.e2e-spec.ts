@@ -1,27 +1,24 @@
 import 'jasmine'
-import { AnswerQuestionPage } from '../../po/answer-question.po';
-import { ProjectMultiOppPage } from '../../po/project.multi-opp.po';
-import { OpportunityPartialDiscountPage } from '../../po/opp.partial-discount.po';
 import { PickTeamPage } from '../../po/apply.choose.team.po';
-import { AnswerTeamQuestion } from '../../po/apply.answer-team-question.po';
+import { AnswerTeamQuestionPage } from '../../po/apply.answer-team-question.po';
 import { ReviewApplicationDetailsPage } from '../../po/apply.review-application-details.po';
 import { browser, ExpectedConditions } from "protractor/built";
-import { setUsers, setData, signOut, signIn } from '../../firebase';
 import { USER_VERIFIED_PROFILE } from '../../fixtures/users';
 import { joinATeam, GetNoAvailableTeamsForLCFromTestData } from './helper-functions'
 import { DatePipe } from '@angular/common'
 import { ReviewApplicationDetailsEditProfilePage } from "../../po/apply.review-application-details-edit-profile";
 import { ReviewApplicationDetailsEditAnswerPage } from "../../po/apply.review-application-details-edit-answer.po";
+import { ApplicationStages } from "../../fixtures/applications/application-stages";
+import { LC_TO_MINDFUL_FEEDING } from "../../fixtures/applications/application-team";
+import { LC_INCOMPLETE_APP } from "../../fixtures/applications/application";
 
 
 const waitTimeout = 7000
 
 describe('Apply-Review-Details: verified user with complete profile information', () => {
-    let LCprojectPage: ProjectMultiOppPage
-    let oppLCPage: OpportunityPartialDiscountPage
-    let answerQuestionPage: AnswerQuestionPage
+
     let pickTeamPage: PickTeamPage
-    let answerTeamQuestion: AnswerTeamQuestion
+    let answerTeamQuestionPage: AnswerTeamQuestionPage
     let reviewApplicationDetailsPage: ReviewApplicationDetailsPage
     let reviewApplicationDetailsEditProfilePage: ReviewApplicationDetailsEditProfilePage
     let reviewApplicationDetailsEditAnswerPage: ReviewApplicationDetailsEditAnswerPage
@@ -30,22 +27,20 @@ describe('Apply-Review-Details: verified user with complete profile information'
     const fullyLoaded = require('../../fixtures/fully-loaded.json')
 
     beforeAll(done => {
-        LCprojectPage = new ProjectMultiOppPage()
-        oppLCPage = new OpportunityPartialDiscountPage()
-        answerQuestionPage = new AnswerQuestionPage()
+
         pickTeamPage = new PickTeamPage()
-        answerTeamQuestion = new AnswerTeamQuestion()
+        answerTeamQuestionPage = new AnswerTeamQuestionPage()
         reviewApplicationDetailsPage = new ReviewApplicationDetailsPage()
         reviewApplicationDetailsEditProfilePage = new ReviewApplicationDetailsEditProfilePage()
         reviewApplicationDetailsEditAnswerPage = new ReviewApplicationDetailsEditAnswerPage
-        browser.waitForAngularEnabled(false)
-        setUsers()
-            .then(done)
+        browser.waitForAngularEnabled(false).then(done)
     })
 
     describe('Checking Previous and Next buttons functionality', () => {
         beforeAll(done => {
-            StepsToReachReviewApplicationDetailsPage(done)
+            ApplicationStages.userWithApplicationTeams(LC_INCOMPLETE_APP, LC_TO_MINDFUL_FEEDING)
+                .then(() => browser.get('/apply/LC1/application/LC_INCOMPLETE_APP/review-detail'))
+                .then(done)
         })
         it('Previous button should take user to Pick-teams page and see the selected and available teams', function () {
             browser.wait(ExpectedConditions.and(
@@ -100,7 +95,9 @@ describe('Apply-Review-Details: verified user with complete profile information'
 
     describe('Checking the section that contains data about the volunteer', () => {
         beforeAll(done => {
-            StepsToReachReviewApplicationDetailsPage(done)
+            ApplicationStages.userWithApplicationTeams(LC_INCOMPLETE_APP, LC_TO_MINDFUL_FEEDING)
+                .then(() => browser.get('/apply/LC1/application/LC_INCOMPLETE_APP/review-detail'))
+                .then(done)
         })
         it('It should display the profile information about the user', function () {
             browser.wait(ExpectedConditions.and(
@@ -207,7 +204,9 @@ describe('Apply-Review-Details: verified user with complete profile information'
 
     describe('Checking the section that contains the Organizer Question', () => {
         beforeAll(done => {
-            StepsToReachReviewApplicationDetailsPage(done)
+            ApplicationStages.userWithApplicationTeams(LC_INCOMPLETE_APP, LC_TO_MINDFUL_FEEDING)
+                .then(() => browser.get('/apply/LC1/application/LC_INCOMPLETE_APP/review-detail'))
+                .then(done)
         })
 
         it('It should display the question and the answer previously given by the user', function () {
@@ -259,11 +258,12 @@ describe('Apply-Review-Details: verified user with complete profile information'
         })
     })
 
-    describe('Checking the section that contains the Organizer Question', () => {
+    describe('Checking the section that contains the Selected Teams', () => {
         beforeAll(done => {
-            StepsToReachReviewApplicationDetailsPage(done)
+            ApplicationStages.userWithApplicationTeams(LC_INCOMPLETE_APP, LC_TO_MINDFUL_FEEDING)
+                .then(() => browser.get('/apply/LC1/application/LC_INCOMPLETE_APP/review-detail'))
+                .then(done)
         })
-
         it('It should display the title of the team selected previously', function () {
             TestSelectedTeams()
         })
@@ -282,7 +282,7 @@ describe('Apply-Review-Details: verified user with complete profile information'
                                     ExpectedConditions.urlContains('/apply/LC1/application/'),
                                     ExpectedConditions.urlContains('/teams')),
                                     waitTimeout, 'User was not taken to Pick-teams Page').then(function () {
-                                        joinATeam(pickTeamPage, waitTimeout, 'LC1', answerTeamQuestion).then(() => {
+                                        joinATeam(pickTeamPage, waitTimeout, 'LC1', answerTeamQuestionPage).then(() => {
                                             let next = pickTeamPage.getNextButton()
                                             browser.wait(ExpectedConditions.elementToBeClickable(next),
                                                 waitTimeout, 'Next button from Pick-teams page was not clickable').then(() => {
@@ -361,57 +361,6 @@ describe('Apply-Review-Details: verified user with complete profile information'
                     })
             })
     }
-    function StepsToReachReviewApplicationDetailsPage(done) {
-        browser.get('/').then(() => {
-            setData('/', fullyLoaded).then(() => {
-                signOut().then(() => {
-                    signIn(USER_VERIFIED_PROFILE.email, USER_VERIFIED_PROFILE.password).then(() => {
-                        LCprojectPage.navigateTo().then(() => {
-                            browser.wait(ExpectedConditions.presenceOf(LCprojectPage.getFirstOportunityTitleElement()),
-                                waitTimeout, 'Link to the first opportunity of LC was not present')
-                            LCprojectPage.getFirstOportunityTitleElement().click().then(() => {
-                                browser.wait(ExpectedConditions.presenceOf(oppLCPage.getJoinButton()),
-                                    waitTimeout, 'Join opportunity button was not present')
-                                oppLCPage.getJoinButton().click().then(() => {
-                                    browser.wait(ExpectedConditions.urlContains('/apply/LC1/answer-question'),
-                                        waitTimeout, 'User was not taken to Answer-question page').then(() => {
-                                            browser.wait(ExpectedConditions.and(
-                                                ExpectedConditions.urlContains('/apply/LC1/application'),
-                                                ExpectedConditions.urlContains('/answer-question')),
-                                                waitTimeout, 'User was not redirected to Answer-organizer-question from the application flow page').then(function () {
-                                                    browser.wait(ExpectedConditions.presenceOf(answerQuestionPage.getAnswer()), waitTimeout,
-                                                        'Answer to organizer question was not present')
-                                                    answerQuestionPage.getAnswer().sendKeys(organizerQuestionAnswer)
-                                                    let next = answerQuestionPage.getNextButton()
-                                                    browser.wait(ExpectedConditions.elementToBeClickable(next),
-                                                        waitTimeout, 'Next button from Answer-Organizer-Question was not clickable').then(() => {
-                                                            next.click().then(() => {
-                                                                joinATeam(pickTeamPage, waitTimeout, 'LC1', answerTeamQuestion).then(() => {
-                                                                    next = pickTeamPage.getNextButton()
-                                                                    browser.wait(ExpectedConditions.elementToBeClickable(next),
-                                                                        waitTimeout, 'Next button from Pick-teams page was not clickable').then(() => {
-                                                                            next.click().then(done)
-                                                                        })
-
-                                                                })
-                                                            })
-
-
-                                                        })
-
-                                                })
-
-                                        })
-
-                                })
-
-                            })
-                        })
-                    })
-                })
-            })
-        })
-
-    }
+   
 
 })
