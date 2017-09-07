@@ -13,6 +13,7 @@ export class ShiftFilterComponent implements OnInit {
   private teamFilter: ITeamFilter[]
   private dateFilter: IDateFilter[]
   public shiftFilterForm: FormGroup
+  public filtersChangedByUser: boolean
 
   constructor(
     private dateIntervalPipe: DateIntervalPipe,
@@ -26,6 +27,10 @@ export class ShiftFilterComponent implements OnInit {
 
     this.shiftFilterForm.valueChanges.subscribe(data => {
       this.activeFilters.emit(data);
+
+      this.filtersChangedByUser = this.shiftFilterForm.dirty ||
+        !!this.shiftFilterForm.get('team').value ||
+        !!this.shiftFilterForm.get('friend').value;
     })
   }
 
@@ -34,10 +39,7 @@ export class ShiftFilterComponent implements OnInit {
       setTimeout(() => {
         this.teamFilter = this.getUniqueTeams();
         this.dateFilter = this.getUniqueDates();
-
-        if (this.dateFilter && this.dateFilter.length) {
-          this.shiftFilterForm.patchValue({ date: this.dateFilter[0].date });
-        }
+        this.initializeFilters();
       });
     }
   }
@@ -91,6 +93,14 @@ export class ShiftFilterComponent implements OnInit {
    */
   private formatDateDisplay(dateTime: string): string {
     return this.dateIntervalPipe.transform(dateTime);
+  }
+
+  public initializeFilters() {
+    if (this.dateFilter && this.dateFilter.length) {
+      this.shiftFilterForm.patchValue({ date: this.dateFilter[0].date });
+    }
+    this.shiftFilterForm.patchValue({ team: '', friend: '' });
+    this.filtersChangedByUser = false;
   }
 }
 
