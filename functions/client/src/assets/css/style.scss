@@ -311,6 +311,14 @@ label {
 .segment-title-link-container {
     padding-left: 0;
     text-align: right;
+    a{
+        cursor: pointer;
+    }
+    .ic{
+        &.ic-close{
+            font-size: 12px;
+        }
+    }
 }
 
 .component-segment {
@@ -1475,14 +1483,33 @@ label {
         font-weight: 300;
     }
 }
-
+//div.row:nth-child(8) > div:nth-child(1)
 .selected-team-list {
     margin-top: 20px;
+    .row{
+        .selected-team-item{
+            @include block-nooverflow;
+            margin-bottom: 10px;
+        }
+        &:last-child{
+            .selected-team-item{
+                margin-bottom: 0;
+            }
+        }
+    }
 }
 
 .team-list-not-selected{
     .team-item{
         border-bottom: none;
+        border-top: 1px solid $color-separator;
+    }
+    a{
+        &:first-child{
+            .team-item{
+                border-top: none;
+            }
+        }
     }
 }
 
@@ -1536,6 +1563,9 @@ label {
     @include block-nooverflow;
     padding: 25px 0;
     border-top: 1px solid $color-separator;
+    .return-dashboard &{
+        border-top: none;
+    }
     .btn{
         width: 100%;
         display: block;

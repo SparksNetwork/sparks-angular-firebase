@@ -1,20 +1,15 @@
 <snui-header-simple imageUrl='https://placeimg.com/1140/410/animals/grayscale'>
- {{title}}
+  {{title}}
 </snui-header-simple>
-<div class="row">
-  <div class="col-xs-12">
-    <div class="segment">
-      <p class="card-text">
-        {{message}}
-      </p>
+<div class="segment">
+  <p class="card-text">
+    {{message}}
+  </p>
+</div>
+<snui-action-bar class="return-dashboard" [type]="actionBarType.Sparks">
+  <div class="row">
+    <div class="col-xs-7 col-xs-offset-5">
+      <a [routerLink]="['/']" class="btn btn-default">Return to Dashboard</a>
     </div>
   </div>
-</div>
-<snui-action-bar [type]="actionBarType.Sparks">
-  <div class="row">
-    <div class="col-xs-4 col-xs-offset-8">
-          <a [routerLink]="['/']" class="btn btn-default">Return to Dashboard</a>
-      </div>
-  </div>
 </snui-action-bar>
-
