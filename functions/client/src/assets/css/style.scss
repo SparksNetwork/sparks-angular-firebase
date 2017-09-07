@@ -383,7 +383,7 @@ label {
 }
 
 .icon {
-    width: 60px;
+    width: 45px;
     float: left;
     text-align: left;
     display: block;
@@ -394,7 +394,7 @@ label {
 
 .text,
 .description {
-    width: calc(100% - 60px);
+    width: calc(100% - 45px);
     float: right;
     font-size: 14px;
     line-height: 16px;
@@ -1122,11 +1122,7 @@ label {
                 }
             }
         }
-        .icon {
-            width: 45px;
-        }
         .text {
-            width: calc(100% - 45px);
             h4 {
                 margin-bottom: 5px;
             }
@@ -1513,7 +1509,6 @@ label {
     }
 }
 
-
 /* Footer Nav */
 
 .footertext {
@@ -1563,7 +1558,8 @@ label {
     @include block-nooverflow;
     padding: 25px 0;
     border-top: 1px solid $color-separator;
-    .return-dashboard &{
+    .return-dashboard &,
+    .confirm-cancel &{
         border-top: none;
     }
     .btn{

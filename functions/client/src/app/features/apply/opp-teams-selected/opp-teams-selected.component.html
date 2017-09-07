@@ -1,4 +1,4 @@
-<div class="segment no-brd" *ngIf='teams && teams.length > 0'>
+<div class="segment" [class.no-brd]="teams?.length == allTeams[0].length" *ngIf='teams && teams.length > 0'>
   <div class="row" *ngIf='editable'>
     <div class="col-xs-8">
       <h3 class="segment-title">Selected Teams</h3>
