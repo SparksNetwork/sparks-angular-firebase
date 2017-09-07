@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Shift } from '../../../../../../universal/domain/shift';
 import { DateIntervalPipe } from '../../../shared/pipes/date-interval.pipe';
@@ -7,8 +7,9 @@ import { DateIntervalPipe } from '../../../shared/pipes/date-interval.pipe';
   selector: 'apply-shift-filter',
   templateUrl: './shift-filter.component.html'
 })
-export class ShiftFilterComponent implements OnChanges {
+export class ShiftFilterComponent implements OnInit {
   @Input() private shifts: Shift[]
+  @Output() private activeFilters: EventEmitter<IShiftFilters> = new EventEmitter();
   private teamFilter: ITeamFilter[]
   private dateFilter: IDateFilter[]
   public shiftFilterForm: FormGroup;
@@ -24,18 +25,20 @@ export class ShiftFilterComponent implements OnChanges {
     });
 
     this.shiftFilterForm.valueChanges.subscribe(data => {
-      console.log('form changes', data)
+      this.activeFilters.emit(data);
     })
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnInit() {
     if (this.shifts) {
-      this.teamFilter = this.getUniqueTeams();
-      this.dateFilter = this.getUniqueDates();
+      setTimeout(() => {
+        this.teamFilter = this.getUniqueTeams();
+        this.dateFilter = this.getUniqueDates();
 
-      if (this.dateFilter && this.dateFilter.length) {
-        this.shiftFilterForm.patchValue({ date: this.dateFilter[0].date });
-      }
+        if (this.dateFilter && this.dateFilter.length) {
+          this.shiftFilterForm.patchValue({ date: this.dateFilter[0].date });
+        }
+      });
     }
   }
 
@@ -97,6 +100,12 @@ interface ITeamFilter {
 }
 
 interface IDateFilter {
-  date: string,
-  dateDisplay: string
+  date: string;
+  dateDisplay: string;
+}
+
+export interface IShiftFilters {
+  date: string;
+  team: string;
+  friend: string;
 }

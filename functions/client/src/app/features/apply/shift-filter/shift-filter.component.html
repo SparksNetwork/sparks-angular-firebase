@@ -24,7 +24,7 @@
                 <div class="form-group">
                   <select class="form-control" name="teamfilter" formControlName="team">
                     <option value="">Any Team</option>
-                    <option *ngFor="let team of teamFilter" value="team.teamKey">{{team.teamTitle}}</option>
+                    <option *ngFor="let team of teamFilter" [value]="team.teamKey">{{team.teamTitle}}</option>
                   </select>
                 </div>
               </div>
