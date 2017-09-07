@@ -78,6 +78,9 @@ body {
 .pg-auth {
     @extend .sn-gradient;
     color: #FFF;
+    a{
+        color: #FFF;
+    }
 }
 
 .pg-default {
@@ -1559,7 +1562,8 @@ label {
     padding: 25px 0;
     border-top: 1px solid $color-separator;
     .return-dashboard &,
-    .confirm-cancel &{
+    .confirm-cancel &,
+    .pg-auth &{
         border-top: none;
     }
     .btn{
