@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
     this.router.events.filter(event => event instanceof NavigationStart)
       .subscribe((event: NavigationStart) => {
         window.scrollTo(0, 0);
-        this.isAuth = event.url.indexOf('/signin') > -1 || event.url.indexOf('/signup') > -1 || event.url.indexOf('/email-signup') > -1 || event.url.indexOf('/reset-password') > -1 || event.url.indexOf('/email-action-handler') > -1 || event.url.indexOf('/email-not-verified') > -1;
+        this.isAuth = event.url.indexOf('/signin') > -1 || event.url.indexOf('/signup') > -1 || event.url.indexOf('/email-signup') > -1 || event.url.indexOf('/reset-password') > -1;
       });
 
   }
