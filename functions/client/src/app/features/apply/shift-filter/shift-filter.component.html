@@ -15,7 +15,7 @@
               <div class="col-xs-4">
                 <div class="form-group">
                   <select class="form-control" name="dayfilter" formControlName="date">
-                    <option *ngFor="let date of dateFilter" [value]="date">{{date}}</option>
+                    <option *ngFor="let date of dateFilter" [value]="date.date">{{date.dateDisplay}}</option>
                   </select>
                 </div>
               </div>

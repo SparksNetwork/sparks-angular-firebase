@@ -10,7 +10,7 @@ import { DateIntervalPipe } from '../../../shared/pipes/date-interval.pipe';
 export class ShiftFilterComponent implements OnChanges {
   @Input() private shifts: Shift[]
   private teamFilter: ITeamFilter[]
-  private dateFilter: string[]
+  private dateFilter: IDateFilter[]
   public shiftFilterForm: FormGroup;
 
   constructor(
@@ -32,29 +32,61 @@ export class ShiftFilterComponent implements OnChanges {
     if (this.shifts) {
       this.teamFilter = this.getUniqueTeams();
       this.dateFilter = this.getUniqueDates();
-      this.shiftFilterForm.patchValue({date: this.dateFilter[0]});
+
+      if (this.dateFilter && this.dateFilter.length) {
+        this.shiftFilterForm.patchValue({ date: this.dateFilter[0].date });
+      }
     }
   }
 
+  /**
+   * Gets the unique teamKey - teamTitle pairs from the shifts, ordered by teamTitle.
+   */
   private getUniqueTeams(): ITeamFilter[] {
     const tempTeams = this.shifts
-      .map((data) => <ITeamFilter>({ 'teamKey': data.teamKey, 'teamTitle': data.teamTitle }));
+      .map((data) => <ITeamFilter>(
+        {
+          'teamKey': data.teamKey,
+          'teamTitle': data.teamTitle
+        }));
 
     return tempTeams
       .filter((item, pos) => tempTeams.map(t => t.teamKey).indexOf(item.teamKey) === pos)
       .sort((t1, t2) => t1.teamTitle > t2.teamTitle ? 1 : (t2.teamTitle > t1.teamTitle ? -1 : 0));
   }
 
-  private getUniqueDates(): string[] {
+  /**
+   * Gets the unique date - displayDate pairs from the shifts, ordered by date.
+   */
+  private getUniqueDates(): IDateFilter[] {
     const tempDates = this.shifts
       .sort((d1, d2) => new Date(d1.startDateTime).getTime() - new Date(d2.startDateTime).getTime())
-      .map((data) => this.formatDate(data.startDateTime));
+      .map((data) => <IDateFilter>(
+        {
+          'date': this.formatDate(data.startDateTime),
+          'dateDisplay': this.formatDateDisplay(data.startDateTime)
+        }));
 
     return tempDates
-      .filter((item, pos) => tempDates.indexOf(item) === pos);
+      .filter((item, pos) => tempDates.map(d => d.dateDisplay).indexOf(item.dateDisplay) === pos);
   }
 
+  /**
+   * Gets the date part of the date ISO string, excluding the time
+   * @param dateTime The date ISO string
+   */
   private formatDate(dateTime: string): string {
+    if (!dateTime || dateTime.indexOf('T') < 0) {
+      return null;
+    }
+    return dateTime.substring(0, dateTime.indexOf('T'));
+  }
+
+  /**
+   * Formats the date for display
+   * @param dateTime The date ISO string
+   */
+  private formatDateDisplay(dateTime: string): string {
     return this.dateIntervalPipe.transform(dateTime);
   }
 }
@@ -62,4 +94,9 @@ export class ShiftFilterComponent implements OnChanges {
 interface ITeamFilter {
   teamKey: string;
   teamTitle: string;
+}
+
+interface IDateFilter {
+  date: string,
+  dateDisplay: string
 }
