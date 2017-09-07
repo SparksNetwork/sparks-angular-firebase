@@ -20,12 +20,11 @@ export class PageShiftComponent {
   public selectableShifts: Shift[];
   public filteredShifts: Shift[];
   public selectedShiftsNo = 0;
+  private activeFilters: IShiftFilters;
 
   constructor(private route: ActivatedRoute) {
     this.project = this.route.snapshot.data['project'];
     this.shifts = this.route.snapshot.data['shift'];
-
-    route.snapshot.data['shift'].subscribe(sh => console.log(sh))
 
     this.route.snapshot.data['applicationShift']
       .subscribe(applicationShifts => {
@@ -35,11 +34,18 @@ export class PageShiftComponent {
     Observable.combineLatest(this.route.snapshot.data['applicationShift'], this.route.snapshot.data['shift'])
       .subscribe(([applicationShifts, shifts]: [ApplicationShift[], Shift[]]) => {
         this.selectableShifts = shifts.filter(shift => !applicationShifts.some(appShift => appShift.shiftKey === shift.$key));
-        this.filteredShifts = Object.assign([], this.selectableShifts);
+
+        if (!this.filteredShifts) {
+          this.filteredShifts = Object.assign([], this.selectableShifts);
+        } else {
+          this.filterShifts(this.activeFilters);
+        }
       });
   }
 
-  public onFiltersChanged(filters: IShiftFilters) {
+  public filterShifts(filters: IShiftFilters) {
+    this.activeFilters = filters;
+
     // filter the selectable shifts
     if (this.selectableShifts) {
       this.filteredShifts = this.selectableShifts.filter(data =>

@@ -8,11 +8,11 @@ import { DateIntervalPipe } from '../../../shared/pipes/date-interval.pipe';
   templateUrl: './shift-filter.component.html'
 })
 export class ShiftFilterComponent implements OnInit {
-  @Input() private shifts: Shift[]
-  @Output() private activeFilters: EventEmitter<IShiftFilters> = new EventEmitter();
+  @Input() private allShifts: Shift[]
+  @Output() private activeFilters: EventEmitter<IShiftFilters> = new EventEmitter()
   private teamFilter: ITeamFilter[]
   private dateFilter: IDateFilter[]
-  public shiftFilterForm: FormGroup;
+  public shiftFilterForm: FormGroup
 
   constructor(
     private dateIntervalPipe: DateIntervalPipe,
@@ -30,7 +30,7 @@ export class ShiftFilterComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.shifts) {
+    if (this.allShifts) {
       setTimeout(() => {
         this.teamFilter = this.getUniqueTeams();
         this.dateFilter = this.getUniqueDates();
@@ -46,7 +46,7 @@ export class ShiftFilterComponent implements OnInit {
    * Gets the unique teamKey - teamTitle pairs from the shifts, ordered by teamTitle.
    */
   private getUniqueTeams(): ITeamFilter[] {
-    const tempTeams = this.shifts
+    const tempTeams = this.allShifts
       .map((data) => <ITeamFilter>(
         {
           'teamKey': data.teamKey,
@@ -62,7 +62,7 @@ export class ShiftFilterComponent implements OnInit {
    * Gets the unique date - displayDate pairs from the shifts, ordered by date.
    */
   private getUniqueDates(): IDateFilter[] {
-    const tempDates = this.shifts
+    const tempDates = this.allShifts
       .sort((d1, d2) => new Date(d1.startDateTime).getTime() - new Date(d2.startDateTime).getTime())
       .map((data) => <IDateFilter>(
         {
