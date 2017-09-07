@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { DateFormatPipe } from 'angular2-moment';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Shift } from '../../../../../../universal/domain/shift';
+import { DateIntervalPipe } from '../../../shared/pipes/date-interval.pipe';
 
 @Component({
   selector: 'apply-shift-filter',
@@ -14,7 +14,7 @@ export class ShiftFilterComponent implements OnChanges {
   public shiftFilterForm: FormGroup;
 
   constructor(
-    private dateFormatPipe: DateFormatPipe,
+    private dateIntervalPipe: DateIntervalPipe,
     private builder: FormBuilder
   ) {
     this.shiftFilterForm = this.builder.group({
@@ -55,10 +55,7 @@ export class ShiftFilterComponent implements OnChanges {
   }
 
   private formatDate(dateTime: string): string {
-    const now = new Date();
-    const date = new Date(dateTime);
-    const format = date.getFullYear() === now.getFullYear() ? 'MMM D' : 'MMM D, YYYY'
-    return this.dateFormatPipe.transform(dateTime, format);
+    return this.dateIntervalPipe.transform(dateTime);
   }
 }
 
