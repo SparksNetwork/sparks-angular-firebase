@@ -25,6 +25,7 @@ import { RequireApplicationAcceptedService } from '../../core/sndomain/shift/req
 import { PageMessageComponent } from '../../shared/snui/page-message/page-message.component';
 import { PagePaymentDetailsComponent } from './page-payment-details/page-payment-details.component';
 import { PagePaymentConfirmationComponent } from './page-payment-confirmation/page-payment-confirmation.component';
+import { ResolveApplicationShiftByAppKey } from '../../core/sndomain/applicationShift/resolve-application-shift-by-app-key.service';
 
 const routes: Routes = [
     {
@@ -100,12 +101,12 @@ const routes: Routes = [
                         component: PageAnswerQuestionComponent
                     },
                     {
-
                         path: 'shift',
                         component: PageShiftComponent,
                         resolve: {
                             shift: ResolveShiftByApplicationTeams,
-                            project: ResolveProjectByOpp
+                            project: ResolveProjectByOpp,
+                            applicationShift: ResolveApplicationShiftByAppKey
                         },
                         canActivate: [
                             RequireApplicationAcceptedService

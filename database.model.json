@@ -96,6 +96,15 @@
                     "$ref": "#/definitions/shiftDef"
                 }
             }
+        },
+        "applicationShift":{
+            "type":"object",
+            "patternProperties": {
+                "^[a-zA-Z0-9-_]+$": {
+                    "type": "object",
+                    "$ref": "#/definitions/applicationShiftDef"
+                }
+            }
         }
     },
     "definitions": {
@@ -272,6 +281,16 @@
                 "teamKey": { "$ref": "#/constraints/nonEmptyString" },
                 "teamTitle": { "$ref": "#/constraints/nonEmptyString" },
                 "teamIcon": { "type": "string" }
+            }
+        },
+        "applicationShiftDef":{
+            "required": [
+                "appKey", "shiftKey", "joinedOn"
+            ],
+            "properties":{
+                "appKey": { "$ref": "#/constraints/nonEmptyString" },
+                "shiftKey": { "$ref": "#/constraints/nonEmptyString" },
+                "joinedOn": { "type": "string", "format": "date-time" }
             }
         }
     },

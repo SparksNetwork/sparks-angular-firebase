@@ -14,6 +14,7 @@ import { ShiftListComponent } from './shift-list/shift-list.component';
 import { ResolveShiftByApplicationTeams } from './resolve-shift-by-application-teams/resolve-shifts-by-application-teams.service';
 import { RequireApplicationAcceptedService } from '../../core/sndomain/shift/require-application-accepted.service';
 import { ShiftFilterComponent } from './shift-filter/shift-filter.component';
+import { ShiftsSelectedComponent } from './shifts-selected/shifts-selected.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ShiftFilterComponent } from './shift-filter/shift-filter.component';
     FormCompleteProfileComponent,
     ReviewProfileComponent,
     ShiftListComponent,
+    ShiftsSelectedComponent,
     ShiftFilterComponent,
   ],
   imports: [

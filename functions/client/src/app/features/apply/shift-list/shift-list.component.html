@@ -1,7 +1,7 @@
 <div class="you-will-give-got shift-list segment no-brd">
-  <ul>
+  <ul *ngIf="shifts?.length">
     <li *ngFor="let shift of shifts">
-      <div class="icon-desc-container">
+      <div class="icon-desc-container" (click)="select(shift.$key)" style="cursor: pointer">
         <div class="icon">
           <span class="ic {{shift.teamIcon}}"></span>
         </div>
@@ -28,4 +28,7 @@
             </div> -->
     </li>
   </ul>
+  <p *ngIf="!shifts?.length">
+    There are no shifts available for the specified filters.
+  </p>
 </div>

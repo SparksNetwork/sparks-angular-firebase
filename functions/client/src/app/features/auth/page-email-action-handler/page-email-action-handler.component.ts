@@ -1,8 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, Router } from '@angular/router';
 
-import { AuthService, AuthError } from "../../../core/snauth/auth/auth.service";
-import { FormEmailPasswordComponent } from '../form-email-password/form-email-password.component';
+import { AuthService, AuthError } from '../../../core/snauth/auth/auth.service';
 import { FormResetPasswordComponent } from '../form-reset-password/form-reset-password.component';
 
 @Component({
@@ -13,11 +12,8 @@ export class PageEmailActionHandlerComponent {
   public mode: string
   public oobCode: string
   public title: string
-  public verificationEmailExpired: boolean;
+  public verificationEmailExpired = false;
   public resetPasswordEmail: string;
-
-  @ViewChild(FormEmailPasswordComponent) public epForm: FormEmailPasswordComponent
-  @ViewChild(FormResetPasswordComponent) public frpForm: FormResetPasswordComponent
 
   constructor(
     private auth: AuthService,
@@ -28,13 +24,13 @@ export class PageEmailActionHandlerComponent {
     this.oobCode = this.route.snapshot.queryParamMap.get('oobCode')
 
     if (!this.mode || !this.oobCode) {
-      // TODO remain on the same page or redirect to home?
-      console.log("invalid link");
+      // TODO remain on the same page or redirect to dash?
+      console.log('invalid link');
       this.router.navigate(['']);
     }
 
     this.auth.error.subscribe(error => {
-      if (this.mode == 'verifyEmail' && error.code == "auth/expired-action-code") {
+      if (this.mode == 'verifyEmail' && error.code == 'auth/expired-action-code') {
         this.verificationEmailExpired = true;
       }
     })
@@ -49,7 +45,7 @@ export class PageEmailActionHandlerComponent {
         })
         break;
       case 'recoverEmail':
-        // Display email recovery handler and UI.        
+        // Display email recovery handler and UI.
         break;
       case 'verifyEmail':
         this.title = 'Verifying your email...'
@@ -61,25 +57,20 @@ export class PageEmailActionHandlerComponent {
         break;
       default:
         // TODO Error: invalid mode.
-        console.log("invalid link");
+        console.log('invalid link');
     }
   }
 
-  public signInAndResendVerificationEmail() {
-    this.auth.signInWithEmailAndPasswordWithoutRedirect(
-      this.epForm.credentialsForm.value.email,
-      this.epForm.credentialsForm.value.password
-    )
+  public signInAndResendVerificationEmail(event) {
+    this.auth.signInWithEmailAndPasswordWithoutRedirect(event.email, event.password)
       .then((user) => {
         if (!user) return;
         user.sendEmailVerification().then(() => this.router.navigate(['/']));
       });
   }
 
-  public confirmPasswordReset() {
-    this.auth.confirmPasswordReset(
-      this.oobCode,
-      this.frpForm.resetPasswordForm.value.password
-    ).then(() => this.router.navigate(['/']));
+  public confirmPasswordReset(event) {
+    this.auth.confirmPasswordReset(this.oobCode, event.password)
+      .then(() => this.router.navigate(['/']));
   }
 }

@@ -1,13 +1,11 @@
-<snui-header-simple imageUrl='https://placeimg.com/1140/410/animals/grayscale'>
+<snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
   The Best Part: <br/>Pick your Teams!
 </snui-header-simple>
-<div class="row">
-  <div class="col-xs-12">
-    <div class="segment">
-      <p class="card-text">What kind of things do you want to work on?</p>
-    </div>
-  </div>
+
+<div class="segment">
+  <p class="card-text">What kind of things do you want to work on?</p>
 </div>
+
 <apply-opp-teams-selected (selectedCount)="onSelectedCount($event)" [allTeams]='allTeams | async'></apply-opp-teams-selected>
 <apply-opp-teams-not-selected [allTeams]='allTeams | async'></apply-opp-teams-not-selected>
 <snui-action-bar [type]="actionBarType.Organizer">
