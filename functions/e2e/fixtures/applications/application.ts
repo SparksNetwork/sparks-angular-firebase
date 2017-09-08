@@ -12,15 +12,15 @@ export const KPC_ACCEPTED_APP = {
     }
 }
 
-export const APPLICATION = {
-    'APPLICATION': {
+export const APPLICATION_ACCEPTED = {
+    'APPLICATION_ACCEPTED': {
         createdOn: '2017-09-07T08:54:50.973Z',
         oppAnswer: '42',
-        oppKey: 'OPPORTUNITY',
+        oppKey: 'LC1',
         oppQuestion: 'Do you have any problem with the broom?',
         profileKey: 'USER_VERIFIED_PROFILE',
-        projectKey: 'PROJETC',
-        projectProfileKey: 'PROJETC-USER_VERIFIED_PROFILE',
+        projectKey: 'LC',
+        projectProfileKey: 'LC-USER_VERIFIED_PROFILE',
         status: 'Accepted',
         step: 'Answer'
     }
