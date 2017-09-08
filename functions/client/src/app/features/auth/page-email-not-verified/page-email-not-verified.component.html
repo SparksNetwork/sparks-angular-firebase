@@ -1,16 +1,24 @@
-<snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
+<nav class="navbar navbar-default">
+  <div class="appbar-left">
+    <a class="navbar-brand" [routerLink]="['/']"><img src="assets/img/logo_sparksnetwork_white.svg" alt="sparks.network"/></a>
+  </div>
+  <div class="appbar-right">
+    <a [routerLink]="['../signup']" class="appbar-menu btn btn-primary" title="Sign up to Sparks.Network">Sign up</a>
+  </div>
+</nav>
+
+<auth-header>
   Check Your Inbox!
-</snui-header-simple>
+</auth-header>
+
+
 <p>
-  We sent you an email at {{(auth.current | async)?.email}}.
-  It's got a verification link in it.
-  Go click on it.  We'll wait right here.
+  We sent you an email at {{(auth.current | async)?.email}}. It's got a verification link in it. Go click on it. We'll wait
+  right here.
 </p>
 <p>
-  Not received the validation email? Click <a href="#" (click)="sendValidationEmail($event)" >here</a> to resend.
+  Not received the validation email? Click <a href="#" (click)="sendValidationEmail($event)"><b>here</b></a> to resend.
 </p>
-<p>
-  Not your account?
-  <button btn (click)='signout()'>Sign Out</button>
-<br/>
-{{notificationMessage}}
+<p>Not your account?</p>
+<p><button class="btn btn-primary" (click)='signout()'>Sign Out</button></p>
+<p>{{notificationMessage}}</p>

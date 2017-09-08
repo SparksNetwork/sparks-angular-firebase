@@ -1,5 +1,4 @@
-<div class="row" *ngIf='teams'>
-  <div class="col-xs-12">
+<div class="team-list-not-selected" *ngIf='teams'>
     <ng-container *ngFor='let team of teams'>
           <a [routerLink]="[team.$key]">
             <snui-team-card-item 
@@ -9,5 +8,4 @@
             </snui-team-card-item>
       </a>
     </ng-container>
-  </div>
 </div>

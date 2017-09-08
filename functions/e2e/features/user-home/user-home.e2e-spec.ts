@@ -6,6 +6,7 @@ import { UserHomePage } from "../../po/user-home.po";
 const waitTimeout = 5000
 import { DatePipe } from '@angular/common'
 import { ProjectSingleOppPage } from "../../po/project.single-opp.po";
+import { getFormatedTimeInterval } from './time-interval-functions'
 
 describe('Home page: user can browse projects from home page', () => {
     const fullyLoaded = require('../../fixtures/fully-loaded.json')
@@ -182,12 +183,9 @@ describe('Home page: user can browse projects from home page', () => {
                     let projectDate = page.getProjectDate(projectIndex)
                     let projectKey = GetDisplayedProjectKey(str)
                     projectDate.getText().then(function (str) {
-                        expect(str).toContain(datePipe.transform(projects[projectKey]['startDateTime'], 'longDate'),
-                            'Start date was not correct displayed')
-                        if (projects[projectKey]['endDateTime']) {
-                            expect(str).toContain(datePipe.transform(projects[projectKey]['endDateTime'], 'longDate'),
-                                'End date was not correct displayed')
-                        }
+                        expect(str).toMatch(getFormatedTimeInterval(projects[projectKey]['startDateTime'],
+                            projects[projectKey]['endDateTime']), 'Start date was not correct displayed')
+
                     })
                 }).then(function () {
                     projectIndex++;
