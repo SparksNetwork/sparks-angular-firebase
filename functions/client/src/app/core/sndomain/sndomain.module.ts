@@ -64,6 +64,12 @@ import {
   ShiftActionService,
 } from './shift'
 
+import {
+  ApplicationShiftQueryService,
+  ApplicationShiftActionService,
+  ResolveApplicationShiftByAppKey
+} from './applicationShift'
+
 
 @NgModule({
   imports: [
@@ -110,8 +116,13 @@ import {
     ApplicationTeamQueryService,
     ApplicationTeamActionService,
     ResolveApplicationTeamByAppKey,
+
     ShiftQueryService,
     ShiftActionService,
+
+    ApplicationShiftQueryService,
+    ApplicationShiftActionService,
+    ResolveApplicationShiftByAppKey,
   ],
 })
 export class SNDomainModule { }

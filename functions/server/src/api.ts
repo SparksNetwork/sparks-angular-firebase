@@ -12,6 +12,7 @@ import {
   ProfileHandler,
   ApplicationTeamHandler,
   ApplicationHandler,
+  ApplicationShiftHandler,
 } from './handlers'
 
 console.log('functions config', functions.config().firebase)
@@ -23,6 +24,7 @@ app.use(cors({origin: true}))
 app.use(routeHandler(new ProjectHandler()))
 app.use(routeHandler(new ProfileHandler()))
 app.use(routeHandler(new ApplicationTeamHandler()))
+app.use(routeHandler(new ApplicationShiftHandler()))
 app.use(routeHandler(new ApplicationHandler()))
 
 export const api = functions.https.onRequest((req, res) => {

@@ -1,23 +1,22 @@
 <div class="you-will-give-got shift-list segment no-brd">
-  <ul>
-    <ng-container *ngFor="let teamShifts of shifts | async">
-      <li *ngFor="let shift of teamShifts">
-        <div class="icon-desc-container">
-          <div class="icon">
-            <span class="ic {{shift.teamIcon}}"></span>
-          </div>
-          <div class="description">
-            <h4>{{shift.teamTitle}}</h4>
-            <div class="timeline-when">
-              <p>{{shift.startDateTime | amCalendar : {sameElse:'lll'} }}
-                <ng-container *ngIf='shift.endDateTime'>
-                  - {{shift.endDateTime | amDateFormat:'LT'}}
-                </ng-container>
-              </p>
-            </div>
+  <ul *ngIf="shifts?.length">
+    <li *ngFor="let shift of shifts">
+      <div class="icon-desc-container" (click)="select(shift.$key)" style="cursor: pointer">
+        <div class="icon">
+          <span class="ic {{shift.teamIcon}}"></span>
+        </div>
+        <div class="description">
+          <h4>{{shift.teamTitle}}</h4>
+          <div class="timeline-when">
+            <p>{{shift.startDateTime | amCalendar : {sameElse:'lll'} }}
+              <ng-container *ngIf='shift.endDateTime'>
+                - {{shift.endDateTime | amDateFormat:'LT'}}
+              </ng-container>
+            </p>
           </div>
         </div>
-        <!-- <div class="karma-point-container">
+      </div>
+      <!-- <div class="karma-point-container">
               <div class="team-mates-avatar">
                 <img class="img-responsive img-circle" src="https://placeimg.com/35/35/people/grayscale" />
                 <img class="img-responsive img-circle" src="https://placeimg.com/35/35/people/grayscale" />
@@ -27,8 +26,9 @@
                 <p>+4 more</p>
               </div>
             </div> -->
-      </li>
-    </ng-container>
-
+    </li>
   </ul>
+  <p *ngIf="!shifts?.length">
+    There are no shifts available for the specified filters.
+  </p>
 </div>

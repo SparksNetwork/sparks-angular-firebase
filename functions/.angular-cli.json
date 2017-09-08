@@ -9,7 +9,11 @@
       "outDir": "client/dist/bundled",
       "assets": [
         "assets",
-        "favicon.ico"
+        "apple-touch-icon.png",
+        "favicon-32x32.png",
+        "favicon-16x16.png",
+        "manifest.json",
+        "safari-pinned-tab.svg"
       ],
       "index": "index.html",
       "main": "main.ts",

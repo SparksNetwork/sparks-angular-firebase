@@ -2,35 +2,36 @@
     <snui-header-simple imageUrl='https://placeimg.com/1140/410/animals/grayscale'>
         Join <br/> {{team.title}}
     </snui-header-simple>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="segment">
-                <p class="card-text">
-                    {{team.description}}
-                </p>
-            </div>
-        </div>
+
+    <div class="segment">
+        <p class="card-text">
+            {{team.description}}
+        </p>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="segment">
-                <p class="card-text">
-                    {{team.question}}
-                </p>
-            </div>
-        </div>
+
+    <div class="segment no-brd">
+        <p class="card-text">
+            {{team.question}}
+        </p>
     </div>
+
+
     <form novalidate [formGroup]="answerForm">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="form-input" [class.has-error]="!answerForm.get('answer').valid && answerForm.get('answer').touched">
-                    <textarea formControlName="answer" rows="4" cols="50" placeholder="Type Your Answer"></textarea>
-                </div>
+
+
+        <div class="form-input question-input" [class.has-error]="!answerForm.get('answer').valid && answerForm.get('answer').touched">
+            <div class="icon">
+                <span class="ic ic-textbox"></span>
             </div>
-            <div class="error" *ngIf="answerForm.get('answer').hasError('required') && answerForm.get('answer').touched">
-                Answer is required
+            <div class="text">
+                <textarea class="form-control" formControlName="answer" rows="4" cols="50" placeholder="Type Your Answer"></textarea>
             </div>
         </div>
+
+        <div class="error" *ngIf="answerForm.get('answer').hasError('required') && answerForm.get('answer').touched">
+            Answer is required
+        </div>
+
         <snui-action-bar [type]="actionBarType.Organizer">
             <div class="row">
                 <div class="col-xs-4">

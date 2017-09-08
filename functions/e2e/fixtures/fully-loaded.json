@@ -12,7 +12,8 @@
       "description": "Make Kellog Park great again!  New paint and plants donated by local businesses will make our community park more beautiful.",
       "communityBenefit": "Your friends and neighbors on the west side.",
       "maxKarmaPoints": 20,
-      "images": [{
+      "images": [
+        {
           "imageUrl": "http://placeimg.com/640/480/animals/grayscale"
         },
         {
@@ -47,7 +48,8 @@
       "endDateTime": "2017-04-12T23:59:59.000Z",
       "communityBenefit": "Your Lucidfamily, old and new",
       "maxKarmaPoints": 1519,
-      "images": [{
+      "images": [
+        {
           "imageUrl": "https://placeimg.com/1140/410/people/grayscale"
         },
         {
@@ -83,7 +85,8 @@
       "endDateTime": "2017-04-12T23:59:59.000Z",
       "communityBenefit": "Your fellow humans",
       "maxKarmaPoints": 343,
-      "images": [{
+      "images": [
+        {
           "imageUrl": "https://placeimg.com/1140/410/people/grayscale"
         },
         {
@@ -701,6 +704,13 @@
       "teamIcon": "glyphicon-grain",
       "teamKey": "LC1",
       "teamTitle": "Mindfull Feeding"
+    }
+  },
+  "applicationShift": {
+    "KPC1S": {
+      "shiftKey": "KPC1",
+      "appKey": "AP1",
+      "joinedOn": "2017-09-07T16:34:00.700Z"
     }
   }
 }

@@ -16,6 +16,9 @@ import { UserHeaderComponent } from "./user-header/user-header.component";
 import { TeamCardItemComponent } from "./team-card-item/team-card-item.component";
 import { ProjectLinksComponent } from "./project-links/project-links.component";
 import { PageMessageComponent } from "./page-message/page-message.component";
+import { DateIntervalPipe } from "../pipes/date-interval.pipe";
+import { DateFormatPipe } from "angular2-moment";
+
 
 const COMPONENTS = [
   HeaderSimpleComponent,
@@ -30,6 +33,7 @@ const COMPONENTS = [
   TeamCardItemComponent,
   ProjectLinksComponent,
   PageMessageComponent,
+  DateIntervalPipe,
 ]
 
 @NgModule({
@@ -41,6 +45,8 @@ const COMPONENTS = [
   ],
   exports: COMPONENTS,
   declarations: COMPONENTS,
-  providers: []
+  providers: [
+    DateFormatPipe
+  ]
 })
 export class SNUIModule { }
