@@ -669,6 +669,9 @@ label {
         @include border-radius-targeted( 7.5px, 0, 0, 7.5px);
         border: 1px solid $color-separator;
         margin-bottom: 25px;
+        .segment &{
+            margin-bottom: 0;
+        }
         .icon{
             border: none;
             padding-top: 12px;
@@ -1492,7 +1495,7 @@ label {
         font-weight: 300;
     }
 }
-//div.row:nth-child(8) > div:nth-child(1)
+
 .selected-team-list {
     margin-top: 20px;
     .row{
@@ -1505,6 +1508,12 @@ label {
                 margin-bottom: 0;
             }
         }
+    }
+}
+#selected-teams{
+    .segment{
+        border: none;
+        padding: 0;
     }
 }
 
