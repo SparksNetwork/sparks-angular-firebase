@@ -1,7 +1,7 @@
 import 'jasmine'
 import { browser, ExpectedConditions } from 'protractor/built';
 import { ProjectSingleOppPage } from "../../po/project.single-opp.po";
-import { AnswerQuestionPage } from "../../po/apply.answer-question.po";
+import { AnswerOrganizerQuestionPage } from "../../po/apply.answer-organizer-question.po";
 import { setUsersWithPartialProfile, setData, updateData, setUsers, signOut, signIn } from "../../firebase";
 import { USER_VERIFIED_COMPLETE_PROFILE, USER_VERIFIED_LNAME_BDAY } from "../../fixtures/users-partial-profile";
 import { CompleteProfilePage } from "../../po/complete.profile.po";
@@ -10,7 +10,7 @@ import { USER_NOT_VERIFIED } from "../../fixtures/users";
 const waitTimeout = 5000
 
 describe('Apply: user is asked a question before applying', () => {
-    let answerQuestionPage: AnswerQuestionPage
+    let answerOrganizerQuestionPage: AnswerOrganizerQuestionPage
     let KPCprojectPage: ProjectSingleOppPage
     let completeProfilePage: CompleteProfilePage
     const fullyLoaded = require('../../fixtures/fully-loaded.json')
@@ -18,7 +18,7 @@ describe('Apply: user is asked a question before applying', () => {
 
 
     beforeAll(done => {
-        answerQuestionPage = new AnswerQuestionPage()
+        answerOrganizerQuestionPage = new AnswerOrganizerQuestionPage()
         KPCprojectPage = new ProjectSingleOppPage()
         completeProfilePage = new CompleteProfilePage()
 
@@ -127,7 +127,7 @@ describe('Apply: user is asked a question before applying', () => {
                 ExpectedConditions.urlContains('/answer-question')),
                 waitTimeout, 'User was not redirected to Answer-organizer-question from the application flow page')
                 .then(function () {
-                    let question = answerQuestionPage.getQuestion()
+                    let question = answerOrganizerQuestionPage.getQuestion()
                     browser.wait(ExpectedConditions.presenceOf(question),
                         waitTimeout, 'The text of the question was not present')
                     question.getText().then((str) => {
@@ -145,12 +145,12 @@ describe('Apply: user is asked a question before applying', () => {
                 ExpectedConditions.urlContains('/apply/KPC1/application'),
                 ExpectedConditions.urlContains('/answer-question')),
                 waitTimeout, 'User was not taken to Answer-organizer-question page').then(function () {
-                    let nextButton = answerQuestionPage.getNextButton()
+                    let nextButton = answerOrganizerQuestionPage.getNextButton()
                     browser.wait(ExpectedConditions.presenceOf(nextButton),
                         waitTimeout, 'Next button name was not present').then(function () {
                             browser.wait(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(nextButton)),
                                 waitTimeout, 'Next button was clickable when answer field was empty')
-                            answerQuestionPage.getAnswer().sendKeys('Answer is 42')
+                            answerOrganizerQuestionPage.getAnswer().sendKeys('Answer is 42')
                             browser.wait(ExpectedConditions.elementToBeClickable(nextButton),
                                 waitTimeout, 'Next button was not clickable when answer was written')
                             expect(true).toBeTruthy()
