@@ -815,6 +815,9 @@ label {
     }
     .ic {
         font-size: 25px;
+        &.ic-close{
+            font-size: 18px;
+        }
     }
     .btn {
         font-size: 16px;
