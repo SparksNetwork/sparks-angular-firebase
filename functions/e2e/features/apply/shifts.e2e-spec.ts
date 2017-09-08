@@ -2,7 +2,7 @@ import 'jasmine'
 import { browser, ExpectedConditions } from 'protractor/built';
 import { USER_VERIFIED_PROFILE } from '../../fixtures/users';
 import { ApplicationStages } from '../../fixtures/applications/application-stages';
-import { APPLICATION, APPLICATION_NOT_ACCEPTED } from '../../fixtures/applications/application';
+import { APPLICATION_ACCEPTED } from '../../fixtures/applications/application';
 import { ApplicationShiftPage } from '../../po/apply-shift.po';
 
 const waitTimeout = 5000;
@@ -38,7 +38,7 @@ describe('Apply-Choosing-Shifts: application accepted', () => {
     beforeAll(done => {
         page = new ApplicationShiftPage();
         browser.waitForAngularEnabled(false)
-        ApplicationStages.userWithApplicationTeams(APPLICATION, applicationTeam)
+        ApplicationStages.userWithApplicationTeams(APPLICATION_ACCEPTED, applicationTeam)
             .then(() => browser.get('/apply/LC1/application/APPLICATION_ACCEPTED/shift'))
             .then(done)
     })
