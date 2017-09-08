@@ -33,7 +33,8 @@ export class PageShiftComponent {
 
     Observable.combineLatest(this.route.snapshot.data['applicationShift'], this.route.snapshot.data['shift'])
       .subscribe(([applicationShifts, shifts]: [ApplicationShift[], Shift[]]) => {
-        this.selectableShifts = shifts.filter(shift => !applicationShifts.some(appShift => appShift.shiftKey === shift.$key));
+        this.selectableShifts = !(shifts && shifts.length) ? [] :
+          shifts.filter(shift => !applicationShifts.some(appShift => appShift.shiftKey === shift.$key));
 
         if (!this.filteredShifts) {
           this.filteredShifts = Object.assign([], this.selectableShifts);
