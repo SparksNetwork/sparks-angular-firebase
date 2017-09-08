@@ -23,6 +23,8 @@ export class ShiftsSelectedComponent implements OnInit {
   ) {
     this.selectedShifts = Observable.combineLatest(this.route.snapshot.data['applicationShift'], this.route.snapshot.data['shift'])
       .map(([applicationShifts, shifts]: [ApplicationShift[], Shift[]]) => {
+        if (!(shifts && shifts.length)) { return [] }
+
         const selectedShifts = shifts.filter(shift => applicationShifts.some(appShift => appShift.shiftKey === shift.$key));
         this.applicationShifts = applicationShifts;
         this.availableShiftsNo = shifts.length;

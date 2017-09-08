@@ -25,7 +25,7 @@ export class ResolveShiftByApplicationTeams implements Resolve<any> {
     const combinedShifts = route.parent.data['appTeams'].switchMap((appTeams: ApplicationTeam[]) => {
       const shifts: Array<Observable<void | Shift[]>> = [];
 
-      if (!appTeams) {
+      if (!(appTeams && appTeams.length)) {
         return Observable.of(null);
       }
 

@@ -26,8 +26,10 @@ export class PageShiftComponent implements OnInit {
       .subscribe(applicationShifts => this.selectedShiftsNo = (applicationShifts && applicationShifts.length))
 
     this.selectableShifts = Observable.combineLatest(this.route.snapshot.data['applicationShift'], this.route.snapshot.data['shift'])
-      .map(([applicationShifts, shifts]: [ApplicationShift[], Shift[]]) =>
-        shifts.filter(shift => !applicationShifts.some(appShift => appShift.shiftKey === shift.$key)))
+      .map(([applicationShifts, shifts]: [ApplicationShift[], Shift[]]) => {
+        if (!(shifts && shifts.length)) { return []; }
+        return shifts.filter(shift => !applicationShifts.some(appShift => appShift.shiftKey === shift.$key));
+      })
   }
 
   ngOnInit() {
