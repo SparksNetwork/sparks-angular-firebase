@@ -1,25 +1,19 @@
 <snui-header-simple imageUrl='https://placeimg.com/1140/410/animals/grayscale'>
     All Done!<br/> Your Acceptance Is Coming Soon
 </snui-header-simple>
-<div class="row">
-    <div class="col-xs-12">
-        <div class="segment">
-            <p class="card-text">
-                Your application has been sent to the organizer. Watch your inbox for a notice that you've been accepted, or just sign in
-                to the Sparks.Network to check any time!
-            </p>
-        </div>
-    </div>
+<div class="segment">
+    <p class="card-text">
+        Your application has been sent to the organizer. Watch your inbox for a notice that you've been accepted, or just sign in
+        to the Sparks.Network to check any time!
+    </p>
 </div>
 <ng-container *ngIf="project | async; let project">
     <snui-project-project-links [projectPageUrl]="project.projectPageUrl" [facebookUrl]="project.facebookUrl" [twitterUrl]="project.twitterUrl"
         [shareKarmaPoints]="project.shareKarmaPoints">
     </snui-project-project-links>
 </ng-container>
-<snui-action-bar [type]="actionBarType.Organizer">
-    <div class="row">
-        <div class="col-xs-4 col-xs-offset-8">
-            <a [routerLink]="['/']" class="btn btn-default">Return to Dashboard</a>
-        </div>
+<snui-action-bar class="return-dashboard" [type]="actionBarType.Organizer">
+    <div class="user-action-container">
+        <a [routerLink]="['/']" class="btn btn-bordered btn-block">Return to Dashboard</a>
     </div>
 </snui-action-bar>
