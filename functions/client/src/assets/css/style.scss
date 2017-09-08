@@ -265,6 +265,16 @@ label {
     }
 }
 
+.mb-10{
+    margin-bottom: 10px !important;
+}
+.collapse-link{
+    display: block;
+}
+
+.collapse-title.collapsed ~ .collapse-link {
+    display: none;
+}
 
 /* General */
 
@@ -338,6 +348,9 @@ label {
     &.no-padding-tb {
         padding-top: 15px;
         padding-bottom: 15px;
+    }
+    &.no-padding-bt {
+        padding-bottom: 0;
     }
     &.no-brd {
         border: none;
