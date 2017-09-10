@@ -37,7 +37,7 @@
     "e2e:dev-id": "cross-env ANGULAR_ENV=dev-id ng e2e --env=dev-id",
     "e2e:dev-mnq": "cross-env ANGULAR_ENV=dev-mnq ng e2e --env=dev-mnq",
     "e2e:dev-ev": "cross-env ANGULAR_ENV=dev-ev ng e2e --env=dev-ev",
-    "dev-ev":"ng serve --env=dev-ev"
+    "dev-ev": "ng serve --env=dev-ev"
   },
   "private": true,
   "dependencies": {
@@ -93,7 +93,7 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.1.2",
-    "protractor-jasmine2-screenshot-reporter": "^0.4.0",
+    "protractor-beautiful-reporter": "^0.5.0",
     "ts-node": "~3.1.0",
     "tslint": "~5.3.2",
     "typescript": "~2.4.2"
