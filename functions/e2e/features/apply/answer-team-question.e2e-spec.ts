@@ -5,6 +5,7 @@ import { USER_VERIFIED_PROFILE, USER_VERIFIED_NO_PROFILE, USER_NOT_VERIFIED } fr
 import { LC_INCOMPLETE_APP, LC_INCOMPLETE_APP_USER_VER_NO_PROFILE, LC_INCOMPLETE_APP_USER_VER_ONLY_FNAME, LC_INCOMPLETE_APP_USER_NOT_VER } from "../../fixtures/applications/application";
 import { ApplicationStages } from "../../fixtures/applications/application-stages";
 import { USER_VERIFIED_LNAME } from "../../fixtures/users-partial-profile";
+import { confirmPage } from "../helper-functions/navigation/navigation-functions";
 
 
 const waitTimeout = 7000
@@ -28,10 +29,9 @@ describe('Apply-Choose-Teams: user must have complete and verified profile befor
 
 
             it('it should display the question', function () {
-                browser.wait(ExpectedConditions.and(
-                    ExpectedConditions.urlContains('/apply/LC1/application/'),
-                    ExpectedConditions.urlContains('/teams/LC1')),
-                    waitTimeout, 'User was not taken to Answer-team-question Page').then(function () {
+
+                confirmPage('/apply/LC1/application/', '/teams/LC1', ' Answer-team-question', 'first', waitTimeout)
+                    .then(() => {
                         let question = answerTeamQuestionPage.getQuestion()
                         browser.wait(ExpectedConditions.presenceOf(question),
                             waitTimeout, 'The text of the question was not present')
@@ -62,22 +62,23 @@ describe('Apply-Choose-Teams: user must have complete and verified profile befor
         })
 
 
-        describe('User verified and no profile', () => {
 
-            beforeAll(done => {
-                ApplicationStages.userWithApplication(USER_VERIFIED_NO_PROFILE, LC_INCOMPLETE_APP_USER_VER_NO_PROFILE)
-                    .then(() => browser.get('/apply/LC1/application/LC_INCOMPLETE_APP_USER_VER_NO_PROFILE/teams/LC1'))
-                    .then(done)
-            })
+    })
 
-            it('It should be redirected to Complete-profile page', function () {
-                browser.wait(ExpectedConditions.urlContains('/apply/LC1/complete-profile'),
-                    waitTimeout, 'User was not taken to Complete-profile Page').then(function () {
-                        expect(true).toBeTruthy()
-                    })
-            })
+    describe('User verified and no profile', () => {
+
+        beforeAll(done => {
+            ApplicationStages.userWithApplication(USER_VERIFIED_NO_PROFILE, LC_INCOMPLETE_APP_USER_VER_NO_PROFILE)
+                .then(() => browser.get('/apply/LC1/application/LC_INCOMPLETE_APP_USER_VER_NO_PROFILE/teams/LC1'))
+                .then(done)
+        })
+
+        it('It should be redirected to Complete-profile page', function () {
+            confirmPage('/apply/LC1/complete-profile', '', 'Complete-profile', 'first', waitTimeout)
+            expect(true).toBeTruthy()
 
         })
+
     })
 
     describe('User verified and only legal name completed', () => {
@@ -89,10 +90,9 @@ describe('Apply-Choose-Teams: user must have complete and verified profile befor
         })
 
         it('It should be redirected to Complete-profile page', function () {
-            browser.wait(ExpectedConditions.urlContains('/apply/LC1/complete-profile'),
-                waitTimeout, 'User was not taken to Complete-profile Page').then(function () {
-                    expect(true).toBeTruthy()
-                })
+            confirmPage('/apply/LC1/complete-profile', '', 'Complete-profile', 'first', waitTimeout)
+            expect(true).toBeTruthy()
+
         })
 
     })
@@ -107,14 +107,13 @@ describe('Apply-Choose-Teams: user must have complete and verified profile befor
         })
 
         it('It should be redirected to Email-not-verified page', function () {
-            browser.wait(ExpectedConditions.urlContains('/auth/email-not-verified'),
-                waitTimeout, 'User was not taken to Email-not-verified Page').then(function () {
-                    expect(true).toBeTruthy()
-                })
+            confirmPage('/auth/email-not-verified', '', 'Email-not-verified', 'first', waitTimeout)
+            expect(true).toBeTruthy()
+
         })
 
     })
-   
+
 
     //helper functions
     function GetTeamKey(url: string) {

@@ -1,11 +1,12 @@
 import 'jasmine'
 import { browser, ExpectedConditions } from 'protractor/built';
-import { ProjectSingleOppPage } from "../../po/project.single-opp.po";
-import { AnswerOrganizerQuestionPage } from "../../po/apply.answer-organizer-question.po";
-import { setUsersWithPartialProfile, setData, updateData, setUsers, signOut, signIn } from "../../firebase";
-import { USER_VERIFIED_COMPLETE_PROFILE, USER_VERIFIED_LNAME_BDAY } from "../../fixtures/users-partial-profile";
-import { CompleteProfilePage } from "../../po/complete.profile.po";
-import { USER_NOT_VERIFIED } from "../../fixtures/users";
+import { ProjectSingleOppPage } from '../../po/project.single-opp.po';
+import { AnswerOrganizerQuestionPage } from '../../po/apply.answer-organizer-question.po';
+import { setUsersWithPartialProfile, setData, updateData, setUsers, signOut, signIn } from '../../firebase';
+import { USER_VERIFIED_COMPLETE_PROFILE, USER_VERIFIED_LNAME_BDAY } from '../../fixtures/users-partial-profile';
+import { CompleteProfilePage } from '../../po/complete.profile.po';
+import { USER_NOT_VERIFIED } from '../../fixtures/users';
+import { confirmPage } from '../helper-functions/navigation/navigation-functions';
 
 const waitTimeout = 5000
 
@@ -23,42 +24,30 @@ describe('Apply: user is asked a question before applying', () => {
         completeProfilePage = new CompleteProfilePage()
 
         browser.waitForAngularEnabled(false)
-        setUsersWithPartialProfile().then(() => {
-            setUsers().then(() => {
-                setData('/', fullyLoaded).then(() => {
-                    updateData('/profile', userProfiles)
-                }).then(done)
-            })
-        })
+        setUsersWithPartialProfile()
+            .then(() => setUsers())
+            .then(() => setData('/', fullyLoaded))
+            .then(() => updateData('/profile', userProfiles))
+            .then(done)
 
     });
 
     describe('user verified with all profile information completed', () => {
         beforeAll(done => {
             browser.get('/')
-                .then(function () {
-                    signOut().then(function () {
-                        signIn(USER_VERIFIED_COMPLETE_PROFILE.email, USER_VERIFIED_COMPLETE_PROFILE.password).then(function () {
-                            KPCprojectPage.navigateTo().then(function () {
-                                browser.wait(ExpectedConditions.presenceOf(KPCprojectPage.getJoinButton()),
-                                    waitTimeout, "Join button was not present").then(function () {
-                                        KPCprojectPage.getJoinButton().click().then(done)
-                                    })
-                            })
-                        })
-                    })
-
-                })
+                .then(() => signOut())
+                .then(() => signIn(USER_VERIFIED_COMPLETE_PROFILE.email, USER_VERIFIED_COMPLETE_PROFILE.password))
+                .then(() => KPCprojectPage.navigateTo())
+                .then(() => browser.wait(ExpectedConditions.presenceOf(KPCprojectPage.getJoinButton()),
+                    waitTimeout, 'Join button was not present'))
+                .then(() => KPCprojectPage.getJoinButton().click())
+                .then(done)
         })
 
+
         it('it should be taken to Answer-question page and then redirected in the application flow ', function () {
-            browser.wait(ExpectedConditions.urlContains('/apply/KPC1/answer-question'),
-                waitTimeout, 'User was not taken to Answer-question page').then(function () {
-                    browser.wait(ExpectedConditions.and(
-                        ExpectedConditions.urlContains('/apply/KPC1/application'),
-                        ExpectedConditions.urlContains('/answer-question')),
-                        waitTimeout, 'User was not redirected to Answer-organizer-question from the application flow page')
-                })
+            confirmPage('apply/KPC1/answer-question', '', 'Answer-question', 'first', waitTimeout)
+                .then(() => confirmPage('apply/KPC1/application', '/answer-question', 'Answer-organizer-question', 'first', waitTimeout))
             expect(true).toBeTruthy()
 
         });
@@ -72,30 +61,24 @@ describe('Apply: user is asked a question before applying', () => {
     describe('User verified that has not all profile information completed', () => {
         beforeAll(done => {
             browser.get('/')
-                .then(function () {
-                    signOut().then(function () {
-                        signIn(USER_VERIFIED_LNAME_BDAY.email, USER_VERIFIED_LNAME_BDAY.password).then(function () {
-                            KPCprojectPage.navigateTo().then(function () {
-                                browser.wait(ExpectedConditions.presenceOf(KPCprojectPage.getJoinButton()),
-                                    waitTimeout, "Join button was not present").then(function () {
-                                        KPCprojectPage.getJoinButton().click().then(done)
-                                    })
-                            })
-                        })
-
-                    })
-                })
+                .then(() => signOut())
+                .then(() => signIn(USER_VERIFIED_LNAME_BDAY.email, USER_VERIFIED_LNAME_BDAY.password))
+                .then(() => KPCprojectPage.navigateTo())
+                .then(() => browser.wait(ExpectedConditions.presenceOf(KPCprojectPage.getJoinButton()),
+                    waitTimeout, 'Join button was not present'))
+                .then(() => KPCprojectPage.getJoinButton().click())
+                .then(done)
         })
 
 
-        it('it should be taken to Complete profile page  ', function () {
-            browser.wait(ExpectedConditions.urlContains('/apply/KPC1/complete-profile'),
-                waitTimeout, 'User was not taken to Complete-profile page')
+        it('it should be taken to Complete profile page  ', () => {
+
+            confirmPage('/apply/KPC1/complete-profile', '', 'Complete-profile', 'first', waitTimeout)
             expect(true).toBeTruthy()
 
         });
 
-        it('it should be taken to Answer Question after the rest of the information was completed  ', function () {
+        it('it should be taken to Answer Question after the rest of the information was completed  ', () => {
             let nameInput = completeProfilePage.getPreferredNameInput()
             browser.wait(ExpectedConditions.presenceOf(nameInput),
                 waitTimeout, 'Preferred name input was not present')
@@ -103,11 +86,12 @@ describe('Apply: user is asked a question before applying', () => {
             completeProfilePage.getPhoneNumberInput().sendKeys('8053129100')
             let nextButton = completeProfilePage.getNextButton();
             browser.wait(ExpectedConditions.elementToBeClickable(nextButton),
-                waitTimeout, 'Next button was not clickable when all information was completed').then(function () {
+                waitTimeout, 'Next button was not clickable when all information was completed')
+                .then(() => {
                     nextButton.click()
-                    browser.wait(ExpectedConditions.urlContains('/apply/KPC1/answer-question'),
-                        waitTimeout, 'User was not taken to Answer-organizer-question page')
-                    expect(true).toBeTruthy()
+                    confirmPage('apply/KPC1/application', '/answer-question', 'Answer-organizer-question', 'first', waitTimeout)
+
+
                 })
 
         });
@@ -121,42 +105,39 @@ describe('Apply: user is asked a question before applying', () => {
     function TestsCommonToAllTypeOfVerifiedUsers() {
 
         it('it should display the question  ', function () {
-
-            browser.wait(ExpectedConditions.and(
-                ExpectedConditions.urlContains('/apply/KPC1/application'),
-                ExpectedConditions.urlContains('/answer-question')),
-                waitTimeout, 'User was not redirected to Answer-organizer-question from the application flow page')
-                .then(function () {
+            confirmPage('apply/KPC1/application', '/answer-question', 'Answer-organizer-question', 'first', waitTimeout)
+                .then(() => {
                     let question = answerOrganizerQuestionPage.getQuestion()
                     browser.wait(ExpectedConditions.presenceOf(question),
                         waitTimeout, 'The text of the question was not present')
-                    question.getText().then((str) => {
-                        browser.getCurrentUrl().then((url) => {
-                            let oppKey: string = GetOppKey(url)
-                            expect(str).toMatch(fullyLoaded['opp'][oppKey]['question'],
-                                'The text of the question was not correct')
-                        })
+                    return question.getText()
+                })
+                .then((str) => {
+                    return browser.getCurrentUrl().then((url) => {
+                        let oppKey: string = GetOppKey(url)
+                        expect(str).toMatch(fullyLoaded['opp'][oppKey]['question'],
+                            'The text of the question was not correct')
                     })
                 })
-        });
+
+        })
 
         it('next button is clickable only if the answer field is not empty ', function () {
-            browser.wait(ExpectedConditions.and(
-                ExpectedConditions.urlContains('/apply/KPC1/application'),
-                ExpectedConditions.urlContains('/answer-question')),
-                waitTimeout, 'User was not taken to Answer-organizer-question page').then(function () {
+            confirmPage('apply/KPC1/application', '/answer-question', 'Answer-organizer-question', 'first', waitTimeout)
+                .then(() => {
                     let nextButton = answerOrganizerQuestionPage.getNextButton()
                     browser.wait(ExpectedConditions.presenceOf(nextButton),
-                        waitTimeout, 'Next button name was not present').then(function () {
-                            browser.wait(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(nextButton)),
-                                waitTimeout, 'Next button was clickable when answer field was empty')
-                            answerOrganizerQuestionPage.getAnswer().sendKeys('Answer is 42')
-                            browser.wait(ExpectedConditions.elementToBeClickable(nextButton),
-                                waitTimeout, 'Next button was not clickable when answer was written')
-                            expect(true).toBeTruthy()
-                        })
+                        waitTimeout, 'Next button name was not present')
+
+                    browser.wait(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(nextButton)),
+                        waitTimeout, 'Next button was clickable when answer field was empty')
+                    answerOrganizerQuestionPage.getAnswer().sendKeys('Answer is 42')
+                    browser.wait(ExpectedConditions.elementToBeClickable(nextButton),
+                        waitTimeout, 'Next button was not clickable when answer was written')
+                    expect(true).toBeTruthy()
                 })
         })
+
     }
 
     function GetOppKey(url: string) {

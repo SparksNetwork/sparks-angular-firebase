@@ -1,11 +1,11 @@
 import { browser, ExpectedConditions } from 'protractor/built';
-import { PickTeamPage } from '../../po/apply.choose.team.po';
-import { AnswerTeamQuestionPage } from '../../po/apply.answer-team-question.po';
-import { setData, signOut, signIn } from "../../firebase";
-import { USER_VERIFIED_PROFILE } from "../../fixtures/users";
-import { ProjectMultiOppPage } from "../../po/project.multi-opp.po";
-import { OpportunityPartialDiscountPage } from "../../po/opp.partial-discount.po";
-import { AnswerOrganizerQuestionPage } from "../../po/apply.answer-organizer-question.po";
+import { PickTeamPage } from '../../../po/apply.choose.team.po';
+import { AnswerTeamQuestionPage } from '../../../po/apply.answer-team-question.po';
+import { setData, signOut, signIn } from "../../../firebase";
+import { USER_VERIFIED_PROFILE } from "../../../fixtures/users";
+import { ProjectMultiOppPage } from "../../../po/project.multi-opp.po";
+import { OpportunityPartialDiscountPage } from "../../../po/opp.partial-discount.po";
+import { AnswerOrganizerQuestionPage } from "../../../po/apply.answer-organizer-question.po";
 
 export function joinATeam(pickTeamPage: PickTeamPage, waitTimeout: number, oppKey: string, answerTeamQuestionPage: AnswerTeamQuestionPage) {
     return browser.wait(ExpectedConditions.and(

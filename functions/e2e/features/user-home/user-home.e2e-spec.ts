@@ -2,11 +2,11 @@ import 'jasmine'
 import { browser, element, by, ExpectedConditions, ElementFinder } from 'protractor'
 import { setData, setUsers, signOut, signIn } from '../../firebase'
 import { USER_VERIFIED_NO_PROFILE, USER_VERIFIED_PROFILE, USER_NOT_VERIFIED } from '../../fixtures/users'
-import { UserHomePage } from "../../po/user-home.po";
+import { UserHomePage } from '../../po/user-home.po';
 const waitTimeout = 5000
 import { DatePipe } from '@angular/common'
-import { ProjectSingleOppPage } from "../../po/project.single-opp.po";
-import { getFormatedTimeInterval } from './time-interval-functions'
+import { ProjectSingleOppPage } from '../../po/project.single-opp.po';
+import { getFormatedTimeInterval } from '../helper-functions/project-time-interval/time-interval-functions'
 
 describe('Home page: user can browse projects from home page', () => {
     const fullyLoaded = require('../../fixtures/fully-loaded.json')
