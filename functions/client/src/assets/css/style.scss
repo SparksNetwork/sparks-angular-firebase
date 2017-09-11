@@ -403,6 +403,9 @@ label {
     float: left;
     text-align: left;
     display: block;
+    .pg-auth &{
+        width: 60px;
+    }
     .ic {
         font-size: 30px;
     }
@@ -411,6 +414,9 @@ label {
 .text,
 .description {
     width: calc(100% - 45px);
+    .pg-auth &{
+        width: calc(100% - 60px);
+    }
     float: right;
     font-size: 14px;
     line-height: 16px;
