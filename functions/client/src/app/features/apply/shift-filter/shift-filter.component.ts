@@ -45,6 +45,7 @@ export class ShiftFilterComponent implements OnInit {
 
   /**
    * Gets the unique teamKey - teamTitle pairs from the shifts, ordered by teamTitle.
+   * @param allShifts Array that contains all the shifts
    */
   private getUniqueTeams(allShifts: Shift[]): ITeamFilter[] {
     const tempTeams = allShifts
@@ -61,6 +62,7 @@ export class ShiftFilterComponent implements OnInit {
 
   /**
    * Gets the unique date - displayDate pairs from the shifts, ordered by date.
+   * @param allShifts Array that contains all the shifts
    */
   private getUniqueDates(allShifts: Shift[]): IDateFilter[] {
     const tempDates = allShifts
