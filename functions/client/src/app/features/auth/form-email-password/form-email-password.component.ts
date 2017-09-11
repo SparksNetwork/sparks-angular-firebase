@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { Observable } from 'rxjs'
+import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/operator/map'
 
 @Component({

@@ -2,15 +2,15 @@ import 'jasmine'
 import { PickTeamPage } from '../../po/apply.choose.team.po';
 import { AnswerTeamQuestionPage } from '../../po/apply.answer-team-question.po';
 import { ReviewApplicationDetailsPage } from '../../po/apply.review-application-details.po';
-import { browser, ExpectedConditions } from "protractor/built";
+import { browser, ExpectedConditions } from 'protractor/built';
 import { USER_VERIFIED_PROFILE } from '../../fixtures/users';
 import { joinATeam, GetNoAvailableTeamsForLCFromTestData } from './helper-functions'
 import { DatePipe } from '@angular/common'
-import { ReviewApplicationDetailsEditProfilePage } from "../../po/apply.review-application-details-edit-profile";
-import { ReviewApplicationDetailsEditAnswerPage } from "../../po/apply.review-application-details-edit-answer.po";
-import { ApplicationStages } from "../../fixtures/applications/application-stages";
-import { LC_TO_MINDFUL_FEEDING } from "../../fixtures/applications/application-team";
-import { LC_INCOMPLETE_APP } from "../../fixtures/applications/application";
+import { ReviewApplicationDetailsEditProfilePage } from '../../po/apply.review-application-details-edit-profile';
+import { ReviewApplicationDetailsEditAnswerPage } from '../../po/apply.review-application-details-edit-answer.po';
+import { ApplicationStages } from '../../fixtures/applications/application-stages';
+import { LC_TO_MINDFUL_FEEDING } from '../../fixtures/applications/application-team';
+import { LC_INCOMPLETE_APP } from '../../fixtures/applications/application';
 
 
 const waitTimeout = 7000
@@ -23,7 +23,7 @@ describe('Apply-Review-Details: verified user with complete profile information'
     let reviewApplicationDetailsEditProfilePage: ReviewApplicationDetailsEditProfilePage
     let reviewApplicationDetailsEditAnswerPage: ReviewApplicationDetailsEditAnswerPage
 
-    let organizerQuestionAnswer: string = 'Answer is always 42'
+    const organizerQuestionAnswer: string = 'Answer is always 42'
     const fullyLoaded = require('../../fixtures/fully-loaded.json')
 
     beforeAll(done => {
@@ -47,7 +47,7 @@ describe('Apply-Review-Details: verified user with complete profile information'
                 ExpectedConditions.urlContains('/apply/LC1/application/'),
                 ExpectedConditions.urlContains('/review-detail')),
                 waitTimeout, 'User was not taken to Review-application-details Page').then(function () {
-                    let previousButton = reviewApplicationDetailsPage.getPreviousButton()
+                    const previousButton = reviewApplicationDetailsPage.getPreviousButton()
                     browser.wait(ExpectedConditions.presenceOf(previousButton),
                         waitTimeout, 'Previous button from Review-application-details page was not present').then(function () {
                             previousButton.click().then(function () {
@@ -58,7 +58,7 @@ describe('Apply-Review-Details: verified user with complete profile information'
                                     waitTimeout, 'User was not taken back to Pick-teams Page ' +
                                     'after pressing Previous button on Review-application-details page')
 
-                                let selectedTeams = pickTeamPage.getSelectedTeams()
+                                const selectedTeams = pickTeamPage.getSelectedTeams()
                                 browser.wait(ExpectedConditions.presenceOf(selectedTeams.first()),
                                     waitTimeout, 'There were no teams selected')
                                 selectedTeams.count().then((teamsNo) => {
@@ -104,8 +104,8 @@ describe('Apply-Review-Details: verified user with complete profile information'
                 ExpectedConditions.urlContains('/apply/LC1/application/'),
                 ExpectedConditions.urlContains('/review-detail')),
                 waitTimeout, 'User was not taken to Review-application-details Page').then(function () {
-                    let userProfile = fullyLoaded['profile']['USER_VERIFIED_PROFILE']
-                    let legalName = reviewApplicationDetailsPage.getLegalName()
+                    const userProfile = fullyLoaded['profile']['USER_VERIFIED_PROFILE']
+                    const legalName = reviewApplicationDetailsPage.getLegalName()
                     browser.wait(ExpectedConditions.presenceOf(legalName),
                         waitTimeout, 'Legal name was not present').then(() => {
 
@@ -118,7 +118,7 @@ describe('Apply-Review-Details: verified user with complete profile information'
                             reviewApplicationDetailsPage.getPhoneNumber().getText().then((phoneNumber) => {
                                 expect(phoneNumber).toEqual(userProfile['phoneNumber'], 'Phone number was not displayed correctly')
                             })
-                            let datePipe: DatePipe = new DatePipe('longDate');
+                            const datePipe: DatePipe = new DatePipe('longDate');
                             reviewApplicationDetailsPage.getBirthday().getText().then((birthday) => {
                                 expect(birthday).toContain(datePipe.transform(userProfile['birthday'], 'longDate'), 'Birthday was not displayed correctly')
                             })
@@ -132,11 +132,11 @@ describe('Apply-Review-Details: verified user with complete profile information'
                 ExpectedConditions.urlContains('/apply/LC1/application/'),
                 ExpectedConditions.urlContains('/review-detail')),
                 waitTimeout, 'User was not taken to Review-application-details Page').then(function () {
-                    let newLegalName = 'Test edit'
-                    let newPreferredName = 'Test edity'
-                    let newPhoneNumber = '8053129900'
-                    let newBirthday = '10-25-1973'
-                    let editVolunteerLink = reviewApplicationDetailsPage.getVolunteerDetailsEditLink()
+                    const newLegalName = 'Test edit'
+                    const newPreferredName = 'Test edity'
+                    const newPhoneNumber = '8053129900'
+                    const newBirthday = '10-25-1973'
+                    const editVolunteerLink = reviewApplicationDetailsPage.getVolunteerDetailsEditLink()
                     browser.wait(ExpectedConditions.presenceOf(editVolunteerLink),
                         waitTimeout, 'Edit volunteer details was not present').then(() => {
                             editVolunteerLink.click().then(() => {
@@ -150,19 +150,19 @@ describe('Apply-Review-Details: verified user with complete profile information'
                                         legalName.clear()
                                         legalName.sendKeys(newLegalName)
 
-                                        let preferredName = reviewApplicationDetailsEditProfilePage.getPreferredName()
+                                        const preferredName = reviewApplicationDetailsEditProfilePage.getPreferredName()
                                         browser.wait(ExpectedConditions.presenceOf(preferredName), waitTimeout,
                                             'Preferred name was not present')
                                         preferredName.clear()
                                         preferredName.sendKeys(newPreferredName)
 
-                                        let phoneNumber = reviewApplicationDetailsEditProfilePage.getPhoneNumber()
+                                        const phoneNumber = reviewApplicationDetailsEditProfilePage.getPhoneNumber()
                                         browser.wait(ExpectedConditions.presenceOf(phoneNumber), waitTimeout,
                                             'Phone number name was not present')
                                         phoneNumber.clear()
                                         phoneNumber.sendKeys(newPhoneNumber)
 
-                                        let birthday = reviewApplicationDetailsEditProfilePage.getBirthday()
+                                        const birthday = reviewApplicationDetailsEditProfilePage.getBirthday()
                                         browser.wait(ExpectedConditions.presenceOf(birthday), waitTimeout,
                                             'Birthday name was not present')
                                         birthday.sendKeys(newBirthday)
@@ -184,7 +184,7 @@ describe('Apply-Review-Details: verified user with complete profile information'
                                                             reviewApplicationDetailsPage.getPhoneNumber().getText().then((phoneNumber) => {
                                                                 expect(phoneNumber).toEqual(newPhoneNumber, 'Phone number was not edited correctly')
                                                             })
-                                                            let datePipe: DatePipe = new DatePipe('longDate');
+                                                            const datePipe: DatePipe = new DatePipe('longDate');
                                                             reviewApplicationDetailsPage.getBirthday().getText().then((birthday) => {
                                                                 expect(birthday).toContain(datePipe.transform(newBirthday, 'longDate'), 'Birthday was not edited correctly')
                                                             })
@@ -219,7 +219,7 @@ describe('Apply-Review-Details: verified user with complete profile information'
                 ExpectedConditions.urlContains('/review-detail')),
                 waitTimeout, 'User was not taken to Review-application-details Page').then(function () {
 
-                    let editOrganizerQuestion = reviewApplicationDetailsPage.getOrganizerQuestionEditLink()
+                    const editOrganizerQuestion = reviewApplicationDetailsPage.getOrganizerQuestionEditLink()
                     browser.wait(ExpectedConditions.presenceOf(editOrganizerQuestion),
                         waitTimeout, 'Edit organizer question was not present').then(() => {
                             editOrganizerQuestion.click().then(() => {
@@ -227,22 +227,22 @@ describe('Apply-Review-Details: verified user with complete profile information'
                                     ExpectedConditions.urlContains('/apply/LC1/application/'),
                                     ExpectedConditions.urlContains('/edit-answer')),
                                     waitTimeout, 'User was not taken to Review-application-details-edit-answer Page').then(function () {
-                                        let question = reviewApplicationDetailsEditAnswerPage.getQuestion()
+                                        const question = reviewApplicationDetailsEditAnswerPage.getQuestion()
                                         browser.wait(ExpectedConditions.presenceOf(question), waitTimeout,
                                             'The question was not present').then(() => {
                                                 question.getText().then((question) => {
                                                     browser.getCurrentUrl().then((url) => {
-                                                        let oppKey: string = GetOppKey(url)
+                                                        const oppKey: string = GetOppKey(url)
                                                         expect(question).toMatch(fullyLoaded['opp'][oppKey]['question'],
                                                             'The text of the question was not correct')
                                                     })
                                                 })
 
-                                                let answer = reviewApplicationDetailsEditAnswerPage.getAnswer()
+                                                const answer = reviewApplicationDetailsEditAnswerPage.getAnswer()
                                                 browser.wait(ExpectedConditions.presenceOf(answer), waitTimeout,
                                                     'Answer was not present')
                                                 answer.clear()
-                                                let newAnswer = 'Maybe 7 is the answer'
+                                                const newAnswer = 'Maybe 7 is the answer'
                                                 answer.sendKeys(newAnswer)
 
                                                 reviewApplicationDetailsEditProfilePage.getSaveButton().click().then(() => {
@@ -274,7 +274,7 @@ describe('Apply-Review-Details: verified user with complete profile information'
                 ExpectedConditions.urlContains('/review-detail')),
                 waitTimeout, 'User was not taken to Review-application-details Page').then(function () {
 
-                    let selectedTeams = reviewApplicationDetailsPage.getSelectedTeamsEditLink()
+                    const selectedTeams = reviewApplicationDetailsPage.getSelectedTeamsEditLink()
                     browser.wait(ExpectedConditions.presenceOf(selectedTeams),
                         waitTimeout, 'Edit teams was not present').then(() => {
                             selectedTeams.click().then(() => {
@@ -283,7 +283,7 @@ describe('Apply-Review-Details: verified user with complete profile information'
                                     ExpectedConditions.urlContains('/teams')),
                                     waitTimeout, 'User was not taken to Pick-teams Page').then(function () {
                                         joinATeam(pickTeamPage, waitTimeout, 'LC1', answerTeamQuestionPage).then(() => {
-                                            let next = pickTeamPage.getNextButton()
+                                            const next = pickTeamPage.getNextButton()
                                             browser.wait(ExpectedConditions.elementToBeClickable(next),
                                                 waitTimeout, 'Next button from Pick-teams page was not clickable').then(() => {
                                                     next.click().then(() => {
@@ -304,9 +304,9 @@ describe('Apply-Review-Details: verified user with complete profile information'
 
 
 
-    //helper functions
+    // helper functions
     function GetOppKey(url: string) {
-        let splittedUrl = url.split('/');
+        const splittedUrl = url.split('/');
         return splittedUrl[splittedUrl.length - 4];
     }
     function TestSelectedTeams() {
@@ -314,11 +314,11 @@ describe('Apply-Review-Details: verified user with complete profile information'
             ExpectedConditions.urlContains('/apply/LC1/application/'),
             ExpectedConditions.urlContains('/review-detail')),
             waitTimeout, 'User was not taken to Review-application-details Page').then(function () {
-                let teamsExpandLink = reviewApplicationDetailsPage.getSelectedTeamsExapandLink()
+                const teamsExpandLink = reviewApplicationDetailsPage.getSelectedTeamsExapandLink()
                 browser.wait(ExpectedConditions.presenceOf(teamsExpandLink),
                     waitTimeout, 'The the link to expand the question was not present').then(() => {
                         teamsExpandLink.click().then(() => {
-                            let teams = reviewApplicationDetailsPage.getSelectedTeams()
+                            const teams = reviewApplicationDetailsPage.getSelectedTeams()
                             browser.wait(ExpectedConditions.visibilityOf(teams.first()), waitTimeout,
                                 'The teams did not become visible').then(() => {
                                     let teamIndex: number = 1;
@@ -339,16 +339,16 @@ describe('Apply-Review-Details: verified user with complete profile information'
             ExpectedConditions.urlContains('/apply/LC1/application/'),
             ExpectedConditions.urlContains('/review-detail')),
             waitTimeout, 'User was not taken to Review-application-details Page').then(function () {
-                let questionExpandLink = reviewApplicationDetailsPage.getOrganizerQuestionExapandLink()
+                const questionExpandLink = reviewApplicationDetailsPage.getOrganizerQuestionExapandLink()
                 browser.wait(ExpectedConditions.presenceOf(questionExpandLink),
                     waitTimeout, 'The the link to expand the question was not present').then(() => {
                         questionExpandLink.click().then(() => {
-                            let question = reviewApplicationDetailsPage.getOrganizerQuestion()
+                            const question = reviewApplicationDetailsPage.getOrganizerQuestion()
                             browser.wait(ExpectedConditions.visibilityOf(question), waitTimeout,
                                 'The question did not become visible').then(() => {
                                     question.getText().then((str) => {
                                         browser.getCurrentUrl().then((url) => {
-                                            let oppKey: string = GetOppKey(url)
+                                            const oppKey: string = GetOppKey(url)
                                             expect(str).toMatch(fullyLoaded['opp'][oppKey]['question'],
                                                 'The text of the question was not correct')
                                         })
@@ -361,6 +361,5 @@ describe('Apply-Review-Details: verified user with complete profile information'
                     })
             })
     }
-   
 
 })

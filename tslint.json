@@ -117,13 +117,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      "btn",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      ["auth", "project", "apply", "snui"],
       "kebab-case"
     ],
     "use-input-property-decorator": true,

@@ -1,10 +1,11 @@
 import { transformAndValidate } from 'class-transformer-validator'
 import { Expose } from 'class-transformer'
-import { IsISO8601, Matches, IsDefined, IsNotEmpty } from "class-validator";
+import { IsISO8601, Matches, IsDefined, IsNotEmpty } from 'class-validator';
 
 import {
   BaseCollection,
   Database,
+  validateOpt,
 } from '../../lib/firebase-universal/shared'
 
 // uncomfortable about including these as we haven't started developing any features with them yet
@@ -41,8 +42,6 @@ export class Profile {
   @IsISO8601()
   birthday: string
 }
-
-const validateOpt = { validator: { skipMissingProperties: true } };
 
 // we have two transform functions for type safety, not sure why overloading isnt working see below
 export const profileTransform = (input: object) =>

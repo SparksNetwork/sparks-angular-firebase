@@ -1,13 +1,13 @@
 import 'jasmine'
 import { browser, ExpectedConditions } from 'protractor/built';
 import { USER_VERIFIED_PROFILE, USER_VERIFIED_NO_PROFILE, USER_NOT_VERIFIED } from '../../fixtures/users';
-import { AnswerOrganizerQuestionPage } from "../../po/apply.answer-organizer-question.po";
+import { AnswerOrganizerQuestionPage } from '../../po/apply.answer-organizer-question.po';
 import { PickTeamPage } from '../../po/apply.choose.team.po';
 import { AnswerTeamQuestionPage } from '../../po/apply.answer-team-question.po';
 import { joinATeam, TestsForSelectedAndAvailableTeams } from './helper-functions'
-import { KPC_INCOMPLETE_APP, KPC_INCOMPLETE_APP_USER_VER_NO_PROFILE, KPC_INCOMPLETE_APP_USER_VER_ONLY_FNAME, KPC_INCOMPLETE_APP_USER_NOT_VER } from "../../fixtures/applications/application";
-import { ApplicationStages } from "../../fixtures/applications/application-stages";
-import { USER_VERIFIED_LNAME } from "../../fixtures/users-partial-profile";
+import { KPC_INCOMPLETE_APP, KPC_INCOMPLETE_APP_USER_VER_NO_PROFILE, KPC_INCOMPLETE_APP_USER_VER_ONLY_FNAME, KPC_INCOMPLETE_APP_USER_NOT_VER } from '../../fixtures/applications/application';
+import { ApplicationStages } from '../../fixtures/applications/application-stages';
+import { USER_VERIFIED_LNAME } from '../../fixtures/users-partial-profile';
 
 const waitTimeout = 7000
 
@@ -41,7 +41,7 @@ describe('Apply-Choose-Teams: user must have complete and verified profile befor
                     ExpectedConditions.urlContains('/apply/KPC1/application/'),
                     ExpectedConditions.urlContains('/teams')),
                     waitTimeout, 'User was not taken to Pick-a-team Page').then(function () {
-                        let previousButton = pickTeamPage.getPreviousButton()
+                        const previousButton = pickTeamPage.getPreviousButton()
                         browser.wait(ExpectedConditions.presenceOf(previousButton),
                             waitTimeout, 'Previous button was not present').then(function () {
                                 previousButton.click().then(function () {
@@ -49,15 +49,15 @@ describe('Apply-Choose-Teams: user must have complete and verified profile befor
                                         ExpectedConditions.urlContains('/apply/KPC1/application/'),
                                         ExpectedConditions.urlContains('/answer-question')),
                                         waitTimeout, 'User was not taken to Answer-organizer-question page').then(function () {
-                                            let question = answerOrganizerQuestionPage.getQuestion()
+                                            const question = answerOrganizerQuestionPage.getQuestion()
                                             browser.wait(ExpectedConditions.presenceOf(question),
                                                 waitTimeout, 'The text of the question was not present').then(function () {
                                                     question.getText().then((str) => {
                                                         browser.getCurrentUrl().then((url) => {
-                                                            let oppKey: string = GetOppKey(url)
+                                                            const oppKey: string = GetOppKey(url)
                                                             expect(str).toMatch(fullyLoaded['opp'][oppKey]['question'],
                                                                 'The text of the question was not correct')
-                                                            let nextButton = answerOrganizerQuestionPage.getNextButton().click().then(function () {
+                                                            const nextButton = answerOrganizerQuestionPage.getNextButton().click().then(function () {
                                                                 browser.wait(ExpectedConditions.and(
                                                                     ExpectedConditions.urlContains('/apply/KPC1/application/'),
                                                                     ExpectedConditions.urlContains('/teams')),
@@ -86,7 +86,7 @@ describe('Apply-Choose-Teams: user must have complete and verified profile befor
                         ExpectedConditions.urlContains('/apply/KPC1/application/'),
                         ExpectedConditions.urlContains('/teams')),
                         waitTimeout, 'User was not taken to Pick-a-team Page').then(function () {
-                            //press previous from Pick-a-team-page
+                            // press previous from Pick-a-team-page
                             let previousButton = pickTeamPage.getPreviousButton()
                             browser.wait(ExpectedConditions.elementToBeClickable(previousButton),
                                 waitTimeout, 'Previous button was not present').then(function () {
@@ -96,16 +96,16 @@ describe('Apply-Choose-Teams: user must have complete and verified profile befor
                                             ExpectedConditions.urlContains('/answer-question')),
                                             waitTimeout, 'User was not taken to Answer-organizer-question page').then(function () {
 
-                                                //edit the answer
-                                                let answer = answerOrganizerQuestionPage.getAnswer()
+                                                // edit the answer
+                                                const answer = answerOrganizerQuestionPage.getAnswer()
                                                 browser.wait(ExpectedConditions.presenceOf(answer),
                                                     waitTimeout, 'The input for answer was not present').then(function () {
-                                                        let newAnswer: string = 'Answer must be 42'
+                                                        const newAnswer: string = 'Answer must be 42'
                                                         answer.clear()
                                                         answer.sendKeys(newAnswer)
 
-                                                        //press next
-                                                        let nextButton = answerOrganizerQuestionPage.getNextButton()
+                                                        // press next
+                                                        const nextButton = answerOrganizerQuestionPage.getNextButton()
                                                         browser.wait(ExpectedConditions.elementToBeClickable(nextButton), waitTimeout,
                                                             'Next button from Answer-organizer-question was not clickable').then(function () {
                                                                 nextButton.click().then(function () {
@@ -115,14 +115,14 @@ describe('Apply-Choose-Teams: user must have complete and verified profile befor
                                                                         waitTimeout, 'User was not taken back to Pick-a-team Page ' +
                                                                         'after editing his answer').then(function () {
 
-                                                                            //pres previous again
+                                                                            // pres previous again
                                                                             previousButton = pickTeamPage.getPreviousButton()
                                                                             browser.wait(ExpectedConditions.elementToBeClickable(previousButton),
                                                                                 waitTimeout, 'Previous button was not clickable when returning ' +
                                                                                 'to Pick-a-team page').then(function () {
                                                                                     previousButton.click().then(function () {
-                                                                                        //check to see if the answer is the one that was edited
-                                                                                        let answer = answerOrganizerQuestionPage.getAnswer()
+                                                                                        // check to see if the answer is the one that was edited
+                                                                                        const answer = answerOrganizerQuestionPage.getAnswer()
                                                                                         browser.wait(ExpectedConditions.presenceOf(answer), waitTimeout,
                                                                                             'The new answer to the organizer question was not present').then(function () {
                                                                                                 answer.getAttribute('value').then((answer) => {
@@ -151,11 +151,11 @@ describe('Apply-Choose-Teams: user must have complete and verified profile befor
 
             it('Next button is clickable only if the available team is selected ', function () {
                 joinATeam(pickTeamPage, waitTimeout, 'KPC1', answerTeamQuestionPage).then(function () {
-                    //team should appear as selected
-                    let selectedTeam = pickTeamPage.getSelectedTeam(0)
+                    // team should appear as selected
+                    const selectedTeam = pickTeamPage.getSelectedTeam(0)
                     browser.wait(ExpectedConditions.presenceOf(selectedTeam),
                         waitTimeout, 'The selected team was not present')
-                    let nextButton = pickTeamPage.getNextButton()
+                    const nextButton = pickTeamPage.getNextButton()
                     browser.wait(ExpectedConditions.elementToBeClickable(nextButton),
                         waitTimeout, 'Next button was not clickable when the team was clicked')
                     expect(true).toBeTruthy()
@@ -176,7 +176,7 @@ describe('Apply-Choose-Teams: user must have complete and verified profile befor
                     ExpectedConditions.urlContains('/apply/KPC1/application/'),
                     ExpectedConditions.urlContains('/teams')),
                     waitTimeout, 'User was not taken to Pick-a-team Page').then(function () {
-                        let team = pickTeamPage.getAvailableTeamLink(0)
+                        const team = pickTeamPage.getAvailableTeamLink(0)
                         browser.wait(ExpectedConditions.presenceOf(team),
                             waitTimeout, 'The available team was not present').then(function () {
                                 pickTeamPage.getAvailableTeams().count().then((nrteams) => {
@@ -191,11 +191,11 @@ describe('Apply-Choose-Teams: user must have complete and verified profile befor
                     ExpectedConditions.urlContains('/apply/KPC1/application/'),
                     ExpectedConditions.urlContains('/teams')),
                     waitTimeout, 'User was not taken to Pick-a-team Page').then(function () {
-                        let team = pickTeamPage.getAvailableTeamLink(0)
+                        const team = pickTeamPage.getAvailableTeamLink(0)
                         browser.wait(ExpectedConditions.presenceOf(team),
                             waitTimeout, 'The available team was not present').then(function () {
 
-                                let kpc1_1 = fullyLoaded['oppAllowedTeam']['KPC1-1']['team']
+                                const kpc1_1 = fullyLoaded['oppAllowedTeam']['KPC1-1']['team']
                                 pickTeamPage.getAvailableTeamTitle(team).getText().then((title) => {
                                     expect(title).toMatch(kpc1_1['title'], 'Team title was not correct')
                                 })
@@ -224,29 +224,29 @@ describe('Apply-Choose-Teams: user must have complete and verified profile befor
                         ExpectedConditions.urlContains('/teams')),
                         waitTimeout, 'User was not taken to Pick-a-team Page').then(function () {
 
-                            //the available team is displayed
+                            // the available team is displayed
                             let team = pickTeamPage.getAvailableTeamLink(0)
                             browser.wait(ExpectedConditions.presenceOf(team),
                                 waitTimeout, 'The available team was not present').then(function () {
-                                    //user clicks on the team
+                                    // user clicks on the team
                                     pickTeamPage.getAvailableTeamTitle(team).click().then(function () {
                                         browser.wait(ExpectedConditions.and(
                                             ExpectedConditions.urlContains('/apply/KPC1/application/'),
                                             ExpectedConditions.urlContains('/teams/KPC1')),
                                             waitTimeout, 'User was not taken to Answer-team-question Page').then(function () {
 
-                                                //on the Answer-team-question page user clicks Previuous 
-                                                let previous = answerTeamQuestionPage.getPreviousButton()
+                                                // on the Answer-team-question page user clicks Previuous 
+                                                const previous = answerTeamQuestionPage.getPreviousButton()
                                                 browser.wait(ExpectedConditions.elementToBeClickable(previous), waitTimeout,
                                                     'Previous button from Answer-team-question was not clickable').then(function () {
                                                         previous.click().then(function () {
-                                                            //user is taken back to Apply-team page
+                                                            // user is taken back to Apply-team page
                                                             browser.wait(ExpectedConditions.and(
                                                                 ExpectedConditions.urlContains('/apply/KPC1/application/'),
                                                                 ExpectedConditions.urlContains('/teams')),
                                                                 waitTimeout, 'User was not taken to Pick-a-team Page').then(function () {
 
-                                                                    //the link to join the available team should be present again
+                                                                    // the link to join the available team should be present again
                                                                     team = pickTeamPage.getAvailableTeamLink(0)
                                                                     browser.wait(ExpectedConditions.presenceOf(team),
                                                                         waitTimeout, 'The available team was not present ' +
@@ -263,15 +263,15 @@ describe('Apply-Choose-Teams: user must have complete and verified profile befor
 
             it('user can join the team only if answers the team-question', function () {
                 joinATeam(pickTeamPage, waitTimeout, 'KPC1', answerTeamQuestionPage).then(function () {
-                    //team should appear as selected
-                    let selectedTeam = pickTeamPage.getSelectedTeam(0)
+                    // team should appear as selected
+                    const selectedTeam = pickTeamPage.getSelectedTeam(0)
                     browser.wait(ExpectedConditions.presenceOf(selectedTeam),
                         waitTimeout, 'The selected team was not present').then(function () {
 
                             pickTeamPage.getSelectedTeamTitle(selectedTeam).getText().then((title) => {
                                 expect(title).toMatch(fullyLoaded['oppAllowedTeam']['KPC1-1']['team']['title'], 'Team title was not correct')
                             })
-                            //only one team should be selected
+                            // only one team should be selected
                             pickTeamPage.getSelectedTeams().count().then((teamsNo) => {
                                 expect(teamsNo).toBe(1, 'The number of selected teams was not correct')
                             })
@@ -299,8 +299,8 @@ describe('Apply-Choose-Teams: user must have complete and verified profile befor
                         ExpectedConditions.urlContains('/apply/KPC1/application/'),
                         ExpectedConditions.urlContains('/teams')),
                         waitTimeout, 'User was not taken to Pick-a-team Page').then(function () {
-                            let selectedTeam = pickTeamPage.getSelectedTeam(0)
-                            let deleteButton = pickTeamPage.getDeleteButtton(selectedTeam)
+                            const selectedTeam = pickTeamPage.getSelectedTeam(0)
+                            const deleteButton = pickTeamPage.getDeleteButtton(selectedTeam)
                             deleteButton.click().then(function () {
                                 browser.wait(ExpectedConditions.invisibilityOf(deleteButton), waitTimeout,
                                     'The selected team was not deleted').then(function () {
@@ -314,13 +314,13 @@ describe('Apply-Choose-Teams: user must have complete and verified profile befor
             it('Delete all button should have the same behaviour ' +
                 'as Delete button', function () {
                     joinATeam(pickTeamPage, waitTimeout, 'KPC1', answerTeamQuestionPage).then(function () {
-                        //team should appear as selected
-                        let selectedTeam = pickTeamPage.getSelectedTeam(0)
+                        // team should appear as selected
+                        const selectedTeam = pickTeamPage.getSelectedTeam(0)
                         browser.wait(ExpectedConditions.presenceOf(selectedTeam),
                             waitTimeout, 'The selected team was not present')
 
-                        //click Delete all button
-                        let deleteButton = pickTeamPage.getDeleteAllButton()
+                        // click Delete all button
+                        const deleteButton = pickTeamPage.getDeleteAllButton()
                         browser.wait(ExpectedConditions.elementToBeClickable(deleteButton),
                             waitTimeout, 'Delete all was not clickable').then(function () {
                                 deleteButton.click().then(function () {
@@ -386,9 +386,9 @@ describe('Apply-Choose-Teams: user must have complete and verified profile befor
 
     })
 
-    //helper functions
+    // helper functions
     function GetOppKey(url: string) {
-        let splittedUrl = url.split('/');
+        const splittedUrl = url.split('/');
         return splittedUrl[splittedUrl.length - 4];
     }
 
