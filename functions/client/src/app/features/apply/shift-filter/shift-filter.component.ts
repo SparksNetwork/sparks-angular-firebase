@@ -2,13 +2,14 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Shift } from '../../../../../../universal/domain/shift';
 import { DateIntervalPipe } from '../../../shared/pipes/date-interval.pipe';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'apply-shift-filter',
   templateUrl: './shift-filter.component.html'
 })
 export class ShiftFilterComponent implements OnInit {
-  @Input() private allShifts: Shift[]
+  @Input() private allShifts: Observable<Shift[]>
   @Output() private activeFilters: EventEmitter<IShiftFilters> = new EventEmitter()
   private teamFilter: ITeamFilter[]
   private dateFilter: IDateFilter[]
@@ -35,20 +36,19 @@ export class ShiftFilterComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.allShifts) {
-      setTimeout(() => {
-        this.teamFilter = this.getUniqueTeams();
-        this.dateFilter = this.getUniqueDates();
-        this.resetFilters();
-      });
-    }
+    this.allShifts.subscribe(all => {
+      this.teamFilter = this.getUniqueTeams(all);
+      this.dateFilter = this.getUniqueDates(all);
+      this.resetFilters();
+    })
   }
 
   /**
    * Gets the unique teamKey - teamTitle pairs from the shifts, ordered by teamTitle.
+   * @param allShifts Array that contains all the shifts
    */
-  private getUniqueTeams(): ITeamFilter[] {
-    const tempTeams = this.allShifts
+  private getUniqueTeams(allShifts: Shift[]): ITeamFilter[] {
+    const tempTeams = allShifts
       .map((data) => <ITeamFilter>(
         {
           'teamKey': data.teamKey,
@@ -62,9 +62,10 @@ export class ShiftFilterComponent implements OnInit {
 
   /**
    * Gets the unique date - displayDate pairs from the shifts, ordered by date.
+   * @param allShifts Array that contains all the shifts
    */
-  private getUniqueDates(): IDateFilter[] {
-    const tempDates = this.allShifts
+  private getUniqueDates(allShifts: Shift[]): IDateFilter[] {
+    const tempDates = allShifts
       .sort((d1, d2) => new Date(d1.startDateTime).getTime() - new Date(d2.startDateTime).getTime())
       .map((data) => <IDateFilter>(
         {
