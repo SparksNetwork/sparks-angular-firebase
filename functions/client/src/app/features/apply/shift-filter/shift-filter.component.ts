@@ -39,7 +39,7 @@ export class ShiftFilterComponent implements OnInit {
       setTimeout(() => {
         this.teamFilter = this.getUniqueTeams();
         this.dateFilter = this.getUniqueDates();
-        this.initializeFilters();
+        this.resetFilters();
       });
     }
   }
@@ -95,7 +95,7 @@ export class ShiftFilterComponent implements OnInit {
     return this.dateIntervalPipe.transform(dateTime);
   }
 
-  public initializeFilters() {
+  public resetFilters() {
     if (this.dateFilter && this.dateFilter.length) {
       this.shiftFilterForm.patchValue({ date: this.dateFilter[0].date });
     }
