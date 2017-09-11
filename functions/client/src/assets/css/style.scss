@@ -78,6 +78,9 @@ body {
 .pg-auth {
     @extend .sn-gradient;
     color: #FFF;
+    a{
+        color: #FFF;
+    }
 }
 
 .pg-default {
@@ -265,6 +268,16 @@ label {
     }
 }
 
+.mb-10{
+    margin-bottom: 10px !important;
+}
+.collapse-link{
+    display: block;
+}
+
+.collapse-title.collapsed ~ .collapse-link {
+    display: none;
+}
 
 /* General */
 
@@ -311,6 +324,14 @@ label {
 .segment-title-link-container {
     padding-left: 0;
     text-align: right;
+    a{
+        cursor: pointer;
+    }
+    .ic{
+        &.ic-close{
+            font-size: 12px;
+        }
+    }
 }
 
 .component-segment {
@@ -330,6 +351,9 @@ label {
     &.no-padding-tb {
         padding-top: 15px;
         padding-bottom: 15px;
+    }
+    &.no-padding-bt {
+        padding-bottom: 0;
     }
     &.no-brd {
         border: none;
@@ -375,10 +399,13 @@ label {
 }
 
 .icon {
-    width: 60px;
+    width: 45px;
     float: left;
     text-align: left;
     display: block;
+    .pg-auth &{
+        width: 60px;
+    }
     .ic {
         font-size: 30px;
     }
@@ -386,7 +413,10 @@ label {
 
 .text,
 .description {
-    width: calc(100% - 60px);
+    width: calc(100% - 45px);
+    .pg-auth &{
+        width: calc(100% - 60px);
+    }
     float: right;
     font-size: 14px;
     line-height: 16px;
@@ -648,6 +678,9 @@ label {
         @include border-radius-targeted( 7.5px, 0, 0, 7.5px);
         border: 1px solid $color-separator;
         margin-bottom: 25px;
+        .segment &{
+            margin-bottom: 0;
+        }
         .icon{
             border: none;
             padding-top: 12px;
@@ -791,6 +824,9 @@ label {
     }
     .ic {
         font-size: 25px;
+        &.ic-close{
+            font-size: 18px;
+        }
     }
     .btn {
         font-size: 16px;
@@ -1114,11 +1150,7 @@ label {
                 }
             }
         }
-        .icon {
-            width: 45px;
-        }
         .text {
-            width: calc(100% - 45px);
             h4 {
                 margin-bottom: 5px;
             }
@@ -1425,6 +1457,7 @@ label {
         margin-bottom: 15px;
         @include border-radius(7.5px);
         position: relative;
+        background-position: center center !important;
         .dashboard-project-status {
             position: absolute;
             background: transparentize(#FFF, 0.5);
@@ -1478,14 +1511,38 @@ label {
 
 .selected-team-list {
     margin-top: 20px;
+    .row{
+        .selected-team-item{
+            @include block-nooverflow;
+            margin-bottom: 10px;
+        }
+        &:last-child{
+            .selected-team-item{
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+#selected-teams{
+    .segment{
+        border: none;
+        padding: 0;
+    }
 }
 
 .team-list-not-selected{
     .team-item{
         border-bottom: none;
+        border-top: 1px solid $color-separator;
+    }
+    a{
+        &:first-child{
+            .team-item{
+                border-top: none;
+            }
+        }
     }
 }
-
 
 /* Footer Nav */
 
@@ -1536,6 +1593,14 @@ label {
     @include block-nooverflow;
     padding: 25px 0;
     border-top: 1px solid $color-separator;
+    .return-dashboard &,
+    .confirm-cancel &,
+    .pg-auth &{
+        border-top: none;
+    }
+    .return-dashboard &{
+        padding-top: 5px;
+    }
     .btn{
         width: 100%;
         display: block;

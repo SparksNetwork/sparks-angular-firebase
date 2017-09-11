@@ -1,6 +1,6 @@
 import { browser, by, element } from 'protractor';
 
-export class AnswerTeamQuestion {
+export class AnswerTeamQuestionPage {
 
     getJoinTeamButton() {
         return element(by.css('div.bottom-nav button'))

@@ -5,6 +5,7 @@ import { transformAndValidate } from 'class-transformer-validator'
 import {
   BaseCollection,
   Database,
+  validateOpt,
 } from '../../lib/firebase-universal/shared'
 
 // any methods here will be available on both client and server
@@ -58,8 +59,6 @@ export class Contrib {
     @IsInt()
     shiftMaxLength?: number;
 }
-
-const validateOpt = { validator: { skipMissingProperties: true } };
 
 // we have two transform functions for type safety, not sure why overloading isnt working see below
 export const contribTransform = (input: object) => transformAndValidate<Contrib>(Contrib, input, validateOpt)

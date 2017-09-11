@@ -1,11 +1,12 @@
-import { Observable } from 'rxjs'
-import { transformAndValidate } from "class-transformer-validator"
+import { Observable } from 'rxjs/Observable'
+import { transformAndValidate } from 'class-transformer-validator'
 import { Expose } from 'class-transformer'
 import { IsNotEmpty, IsEnum, ValidationError, IsDateString, ValidateNested, IsNumber, IsInt, IsUrl, IsDefined } from 'class-validator'
 
 import {
   BaseCollection,
   Database,
+  validateOpt,
 } from '../../lib/firebase-universal/shared'
 
 
@@ -56,8 +57,6 @@ export class Opp {
     return 1 - (this.contribValue / this.benefitValue)
   }
 }
-
-const validateOpt = { validator: { skipMissingProperties: true } };
 
 // we have two transform functions for type safety, not sure why overloading isnt working see below
 export const oppTransform = (input: object) => transformAndValidate<Opp>(Opp, input, validateOpt)

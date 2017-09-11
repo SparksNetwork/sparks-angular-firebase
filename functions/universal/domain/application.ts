@@ -5,9 +5,10 @@ import { Expose } from 'class-transformer'
 import {
     BaseCollection,
     Database,
+    validateOpt,
 } from '../../lib/firebase-universal/shared'
 
-import { list } from "../../lib/firebase-angular-observables";
+import { list } from '../../lib/firebase-angular-observables';
 
 // any methods here will be available on both client and server
 export class ApplicationCollection extends BaseCollection {
@@ -73,7 +74,7 @@ export class Application {
 
     @IsEnum(ApplicationStatus)
     status: ApplicationStatus;
-     
+
     @IsEnum(ApplicationStepFinished)
     step?: ApplicationStepFinished
 
@@ -90,8 +91,6 @@ export class Application {
     @IsDateString()
     canceledOn?: string;
 }
-
-const validateOpt = { validator: { skipMissingProperties: true } };
 
 // we have two transform functions for type safety, not sure why overloading isnt working see below
 export const applicationTransform = (input: object) =>

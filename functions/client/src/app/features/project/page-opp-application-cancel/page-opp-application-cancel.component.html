@@ -12,7 +12,7 @@
 </div>
 <project-opp-benefits title="You Will Loose" [project]="project | async" [opp]="opp | async" [benefits]="benefits | async"></project-opp-benefits>
 <project-opp-visit-requirements></project-opp-visit-requirements>
-<snui-action-bar [type]="actionBarType.Organizer">
+<snui-action-bar class="confirm-cancel" [type]="actionBarType.Organizer">
     <div class="row">
         <div class="col-xs-4">
             <a class="btn btn-default" (click)="cancel()">Cancel</a>
