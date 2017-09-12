@@ -3,21 +3,22 @@ import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router';
 import { HeaderSimpleComponent } from './header-simple/header-simple.component'
 
-import { LocationPipe } from "../pipes/location.pipe";
-import { ApplicationStatusPipe } from "../pipes/application-status.pipe";
-import { HeaderCarouselComponent } from "./header-carousel/header-carousel.component";
+import { LocationPipe } from '../pipes/location.pipe';
+import { ApplicationStatusPipe } from '../pipes/application-status.pipe';
+import { HeaderCarouselComponent } from './header-carousel/header-carousel.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CollapseModule } from 'ngx-bootstrap/collapse'
-import { CardItemComponent } from "./card-item/card-item.component";
+import { CardItemComponent } from './card-item/card-item.component';
 import { ActionBarComponent } from './action-bar/action-bar.component'
 import { BtnDirective } from './btn/btn.directive'
-import { ProjectCardItemComponent } from "./project-card-item/project-card-item.component";
-import { UserHeaderComponent } from "./user-header/user-header.component";
-import { TeamCardItemComponent } from "./team-card-item/team-card-item.component";
-import { ProjectLinksComponent } from "./project-links/project-links.component";
-import { PageMessageComponent } from "./page-message/page-message.component";
-import { DateIntervalPipe } from "../pipes/date-interval.pipe";
-import { DateFormatPipe } from "angular2-moment";
+import { ProjectCardItemComponent } from './project-card-item/project-card-item.component';
+import { UserHeaderComponent } from './user-header/user-header.component';
+import { TeamCardItemComponent } from './team-card-item/team-card-item.component';
+import { ProjectLinksComponent } from './project-links/project-links.component';
+import { PageMessageComponent } from './page-message/page-message.component';
+import { DateIntervalPipe } from '../pipes/date-interval.pipe';
+import { DateFormatPipe } from 'angular2-moment';
+import { DateTimeIntervalPipe } from '../pipes/date-time-interval.pipe';
 
 
 const COMPONENTS = [
@@ -34,6 +35,7 @@ const COMPONENTS = [
   ProjectLinksComponent,
   PageMessageComponent,
   DateIntervalPipe,
+  DateTimeIntervalPipe,
 ]
 
 @NgModule({
