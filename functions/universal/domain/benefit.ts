@@ -5,6 +5,7 @@ import { Expose } from 'class-transformer'
 import {
     BaseCollection,
     Database,
+    validateOpt,
 } from '../../lib/firebase-universal/shared'
 
 
@@ -57,8 +58,6 @@ export class Benefit {
     @IsNumber()
     value: number;
 }
-
-const validateOpt = { validator: { skipMissingProperties: true } };
 
 // we have two transform functions for type safety, not sure why overloading isnt working see below
 export const benefitTransform = (input: object) =>

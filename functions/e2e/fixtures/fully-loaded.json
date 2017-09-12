@@ -698,17 +698,43 @@
     }
   },
   "shift": {
-    "KPC1": {
+    "SH-KPC1": {
       "endDateTime": "2017-09-07T14:34:00.700Z",
       "startDateTime": "2017-09-07T16:34:00.700Z",
       "teamIcon": "glyphicon-grain",
       "teamKey": "LC1",
       "teamTitle": "Mindfull Feeding"
+    },
+    "KPC2": {
+      "endDateTime": "2017-09-07T16:34:00.700Z",
+      "startDateTime": "2017-09-07T18:34:00.700Z",
+      "teamIcon": "glyphicon-grain",
+      "teamKey": "LC1",
+      "teamTitle": "Mindfull Feeding"
+    },
+    "KPC3": {
+      "endDateTime": "2017-09-07T14:34:00.700Z",
+      "startDateTime": "2017-09-07T16:34:00.700Z",
+      "teamIcon": "glyphicon-sunglasses",
+      "teamKey": "LC2",
+      "teamTitle": "Gatekeepers"
+    },
+    "KPC4": {
+      "endDateTime": "2017-09-07T16:34:00.700Z",
+      "startDateTime": "2017-09-07T18:34:00.700Z",
+      "teamIcon": "glyphicon-sunglasses",
+      "teamKey": "LC2",
+      "teamTitle": "Gatekeepers"
     }
   },
   "applicationShift": {
     "KPC1S": {
       "shiftKey": "KPC1",
+      "appKey": "AP1",
+      "joinedOn": "2017-09-07T16:34:00.700Z"
+    },
+    "KPC2S": {
+      "shiftKey": "KPC3",
       "appKey": "AP1",
       "joinedOn": "2017-09-07T16:34:00.700Z"
     }

@@ -1,10 +1,9 @@
-import { transformAndValidate } from "class-transformer-validator"
+import { transformAndValidate } from 'class-transformer-validator'
 import { Expose } from 'class-transformer'
-import { IsNotEmpty, IsDefined } from 'class-validator'
-import { IsDateString } from "class-validator";
+import { IsNotEmpty, IsDefined, IsDateString } from 'class-validator'
 
 import {
-    BaseCollection, Database,
+    BaseCollection, Database, validateOpt,
 } from '../../lib/firebase-universal/shared'
 
 // any methods here will be available on both client and server
@@ -16,7 +15,7 @@ export class ShiftCollection extends BaseCollection {
         })
     }
 
-    public byTeamKey(key: string){
+    public byTeamKey(key: string) {
         return this.by('teamKey', key)
     }
 }
@@ -41,11 +40,11 @@ export class Shift {
 
     @IsDefined()
     @IsNotEmpty()
-    public teamTitle: string    
-    
+    public teamTitle: string
+
     public teamIcon: string
 }
 
 // we have two transform functions for type safety, not sure why overloading isnt working see below
-export const shiftTransform = (input: object) => transformAndValidate<Shift>(Shift, input)
-export const shiftsTransform = (input: object[]) => transformAndValidate<Shift>(Shift, input)
+export const shiftTransform = (input: object) => transformAndValidate<Shift>(Shift, input, validateOpt)
+export const shiftsTransform = (input: object[]) => transformAndValidate<Shift>(Shift, input, validateOpt)
