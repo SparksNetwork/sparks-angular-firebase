@@ -11,10 +11,9 @@
 </div>
 
 <apply-shifts-selected></apply-shifts-selected>
-<ng-container *ngIf="shifts | async; let shifts">
-  <apply-shift-filter [allShifts]="shifts" (activeFilters)="filterShifts($event)"></apply-shift-filter>
-  <apply-shift-list [shifts]="filteredShifts"></apply-shift-list>
-</ng-container>
+
+<apply-shift-filter [allShifts]="shifts" (activeFilters)="filterShifts($event)"></apply-shift-filter>
+<apply-shift-list [shifts]="filteredShifts"></apply-shift-list>
 
 <snui-action-bar [type]="actionBarType.Organizer">
   <div class="row">

@@ -7,7 +7,7 @@
             <h3 class="segment-title">Selected Shifts ({{selectedShifts.length}} of {{availableShiftsNo}})</h3>
           </div>
           <div class="col-xs-4 segment-title-link-container">
-            <a href="#">delete all <span class="ic ic-delete" aria-hidden="true"></span></a>
+            <a (click)="deleteAll()" >delete all <span class="ic ic-delete" aria-hidden="true"></span></a>
           </div>
         </div>
         <div class="row">
@@ -30,7 +30,7 @@
                   </div>
                 </div>
                 <div class="karma-point-container">
-                  <a href="#">delete <span class="ic ic-delete" aria-hidden="true"></span></a>
+                  <a (click)="delete(shift.$key)">delete <span class="ic ic-delete" aria-hidden="true"></span></a>
                 </div>
               </li>
             </ul>

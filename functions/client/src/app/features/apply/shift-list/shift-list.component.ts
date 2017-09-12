@@ -22,11 +22,7 @@ export class ShiftListComponent implements OnInit {
   }
 
   public select(key: string) {
-    const applicationShift = new ApplicationShift();
-    applicationShift.appKey = this.route.snapshot.parent.paramMap.get('applicationKey');
-    applicationShift.shiftKey = key;
-    applicationShift.joinedOn = new Date().toISOString();
-
-    this.applicationShiftAction.create(applicationShift).subscribe((a) => { console.log(a) });
+    this.applicationShiftAction.createApplicationShift(this.route.snapshot.parent.paramMap.get('applicationKey'), key)
+      .subscribe((a) => { console.log(a) });
   }
 }
