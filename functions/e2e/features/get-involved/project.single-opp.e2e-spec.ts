@@ -2,7 +2,7 @@ import 'jasmine'
 import { browser, ExpectedConditions } from 'protractor/built';
 import { setData, setUsers } from '../../firebase';
 import { ProjectSingleOppPage } from '../../po/project.single-opp.po';
-import { getLocationForDirections } from "./project-location-functions";
+import { getLocationForDirections } from '../helper-functions/project-location/location-functions';
 
 const waitTimeout = 5000;
 

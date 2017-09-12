@@ -31,7 +31,7 @@ export class ReviewApplicationDetailsPage {
     }
 
     getOrganizerQuestionExapandLink() {
-        return element.all(by.css('h3.segment-title')).get(1)
+        return element.all(by.css('h3.collapse-title')).get(0)
     }
 
     getOrganizerQuestion() {
@@ -39,19 +39,19 @@ export class ReviewApplicationDetailsPage {
     }
 
     getOrganizerQuestionAnswer() {
-        return element(by.css('div.edit-profile-detalils p'))
+        return element(by.css('textarea'))
     }
 
     getOrganizerQuestionEditLink() {
-        return element(by.id('organizer-question')).element(by.css('a'))
+        return element.all(by.css('div.collapse-link')).get(0).element(by.css('a'))
     }
 
     getSelectedTeamsExapandLink() {
-        return element.all(by.css('h3.segment-title')).get(2)
+        return element.all(by.css('h3.collapse-title')).get(1)
     }
 
     getSelectedTeamsEditLink() {
-        return element(by.id('selected-teams')).element(by.css('a'))
+        return element.all(by.css('div.collapse-link')).get(1).element(by.css('a'))
     }
 
     getSelectedTeams() {

@@ -1,11 +1,13 @@
 import { browser } from 'protractor/built';
-import { setUsers, signOut, signIn, setData, setUsersWithPartialProfile } from '../../firebase';
+import { setUsers, signOut, signIn, setData, setUsersWithPartialProfile, updateData } from '../../firebase';
 import { USER_VERIFIED_PROFILE } from '../users';
 
 export class ApplicationStages {
     public static preloadDatabase() {
         const fullyLoaded = require('../../fixtures/fully-loaded.json')
+        const userProfiles = require('../../fixtures/user-profiles/partial-user-profiles.json')
         return setData('/', fullyLoaded)
+            .then(() => { updateData('/profile', userProfiles) })
     }
 
     public static initializedUser(user: any) {

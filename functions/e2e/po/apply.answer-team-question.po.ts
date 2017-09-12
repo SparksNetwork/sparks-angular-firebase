@@ -15,7 +15,7 @@ export class AnswerTeamQuestionPage {
     }
 
     getQuestion() {
-        return element.all(by.className('row')).get(2).element(by.className('card-text'))
+        return element(by.className('segment no-brd')).element(by.className('card-text'))
     }
 
 
