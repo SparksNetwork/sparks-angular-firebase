@@ -6,48 +6,38 @@ import { USER_VERIFIED_PROFILE } from "../../../fixtures/users";
 import { ProjectMultiOppPage } from "../../../po/project.multi-opp.po";
 import { OpportunityPartialDiscountPage } from "../../../po/opp.partial-discount.po";
 import { AnswerOrganizerQuestionPage } from "../../../po/apply.answer-organizer-question.po";
+import { confirmPage } from "../navigation/navigation-functions";
 
 export function joinATeam(pickTeamPage: PickTeamPage, waitTimeout: number, oppKey: string, answerTeamQuestionPage: AnswerTeamQuestionPage) {
-    return browser.wait(ExpectedConditions.and(
-        ExpectedConditions.urlContains('/apply/' + oppKey + '/application/'),
-        ExpectedConditions.urlContains('/teams'),
-        ExpectedConditions.not(ExpectedConditions.urlContains('/teams/'))),
-        waitTimeout, 'User was not taken to Pick-teams Page').then(function () {
+
+    return confirmPage('/apply/' + oppKey + '/application/', '/teams', 'Pick-teams', 'first', waitTimeout, '/teams/')
+        .then(() => {
             //the available team is displayed
             let team = pickTeamPage.getAvailableTeamLink(0)
             browser.wait(ExpectedConditions.presenceOf(team),
-                waitTimeout, 'The first team was not present').then(function () {
+                waitTimeout, 'The first team was not present')
 
-                    //user clicks on the team
-                    pickTeamPage.getAvailableTeamTitle(team).click().then(function () {
-                        browser.wait(ExpectedConditions.and(
-                            ExpectedConditions.urlContains('/apply/' + oppKey + '/application/'),
-                            ExpectedConditions.urlContains('/teams/')),
-                            waitTimeout, 'User was not taken to Answer-team-question Page').then(function () {
-                                //answer Team-question 
-                                let answer = answerTeamQuestionPage.getAnswer()
-                                browser.wait(ExpectedConditions.presenceOf(answer),
-                                    waitTimeout, 'The input for answer team question was not present')
-                                answerTeamQuestionPage.getAnswer().sendKeys('Answer is always 42')
-                                //press join 
-                                let joinButton = answerTeamQuestionPage.getJoinTeamButton()
-                                browser.wait(ExpectedConditions.elementToBeClickable(joinButton), waitTimeout,
-                                    'Join button was not clickable').then(function () {
-
-                                        joinButton.click().then(function () {
-                                            return browser.wait(ExpectedConditions.and(
-                                                ExpectedConditions.urlContains('/apply/' + oppKey + '/application/'),
-                                                ExpectedConditions.urlContains('/teams'),
-                                                ExpectedConditions.not(ExpectedConditions.urlContains('/teams/'))),
-                                                waitTimeout, 'User was not taken back to Pick-teams Page ' +
-                                                'after answering the team question')
-                                        })
-                                    })
-                            })
-                    })
-                })
+            //user clicks on the team
+            return pickTeamPage.getAvailableTeamTitle(team).click()
         })
+        .then(() => confirmPage('/apply/' + oppKey + '/application/', '/teams/', 'Answer-team-question', 'first', waitTimeout))
+        .then(() => {
 
+            //answer Team-question 
+            let answer = answerTeamQuestionPage.getAnswer()
+            browser.wait(ExpectedConditions.presenceOf(answer),
+                waitTimeout, 'The input for answer team question was not present')
+            answerTeamQuestionPage.getAnswer().sendKeys('Answer is always 42')
+            //press join 
+            let joinButton = answerTeamQuestionPage.getJoinTeamButton()
+            browser.wait(ExpectedConditions.elementToBeClickable(joinButton), waitTimeout,
+                'Join button was not clickable')
+            return joinButton.click()
+        })
+        .then(() =>
+            confirmPage('/apply/' + oppKey + '/application/', '/teams', 'Pick-teams', 'first', waitTimeout, '/teams/'))
+        .then(() => browser.wait(ExpectedConditions.presenceOf(pickTeamPage.getSelectedTeams().first()),
+    20000,'Join-team button did not select the team'))
 }
 
 
