@@ -9,11 +9,6 @@
           <h4>{{shift.teamTitle}}</h4>
           <div class="timeline-when">
               <p>{{shift.startDateTime | snDateTimeInterval: shift.endDateTime}}</p>
-            <!--<p>{{shift.startDateTime | amCalendar : {sameElse:'lll'} }}
-              <ng-container *ngIf='shift.endDateTime'>
-                - {{shift.endDateTime | amDateFormat:'LT'}}
-              </ng-container>
-            </p>-->
           </div>
         </div>
       </div>
