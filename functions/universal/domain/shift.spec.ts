@@ -29,6 +29,7 @@ describe('shiftTransform', () => {
         shiftTransform({
             $key: '',
             startDateTime: '',
+            endDateTime: '',
             teamKey: '',
             teamTitle: '',
             teamIcon: '',
@@ -57,6 +58,20 @@ describe('shiftTransform', () => {
             .catch((errs: ValidationError[]) => {
                 expect(validationFailure(errs, 'startDateTime', 'isDateString')).toBeTruthy()
                 expect(validationFailure(errs, 'endDateTime', 'isDateString')).toBeTruthy()
+            })
+            .then(done)
+    });
+
+    it('requires endDateTime to be greather than startDateTime', done => {
+        shiftTransform({
+            startDateTime: '2017-03-01T14:00:00.000Z',
+            endDateTime: '2017-03-01T12:00:00.000Z',
+        })
+            .then(() => {
+                expect(false).toBeTruthy()
+            })
+            .catch((errs: ValidationError[]) => {
+                expect(validationFailure(errs, 'endDateTime', 'isDateGreaterThan')).toBeTruthy()
             })
             .then(done)
     });

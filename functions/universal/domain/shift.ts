@@ -1,6 +1,7 @@
 import { transformAndValidate } from 'class-transformer-validator'
 import { Expose } from 'class-transformer'
 import { IsNotEmpty, IsDefined, IsDateString } from 'class-validator'
+import { IsDateGreaterThan } from '../validation/IsDateGreaterThan'
 
 import {
     BaseCollection, Database, validateOpt,
@@ -34,6 +35,9 @@ export class Shift {
     @IsDateString()
     @IsDefined()
     @IsNotEmpty()
+    @IsDateGreaterThan('startDateTime', {
+        message: 'endDateTime must be greater than startDateTime'
+    })
     public endDateTime: string
 
     @IsDefined()
