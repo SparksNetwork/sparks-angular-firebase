@@ -97,10 +97,7 @@ export class ShiftFilterComponent implements OnInit {
   }
 
   public resetFilters() {
-    if (this.dateFilter && this.dateFilter.length) {
-      this.shiftFilterForm.patchValue({ date: this.dateFilter[0].date });
-    }
-    this.shiftFilterForm.patchValue({ team: '', friend: '' });
+    this.shiftFilterForm.patchValue({ date: '', team: '', friend: '' });
     this.filtersChangedByUser = false;
   }
 }
