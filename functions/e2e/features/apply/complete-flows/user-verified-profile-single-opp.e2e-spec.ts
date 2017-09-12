@@ -1,23 +1,25 @@
 import 'jasmine'
-import { ProjectSingleOppPage } from '../../po/project.single-opp.po';
-import { AnswerOrganizerQuestionPage } from '../../po/apply.answer-organizer-question.po';
-import { PickTeamPage } from '../../po/apply.choose.team.po';
-import { AnswerTeamQuestionPage } from '../../po/apply.answer-team-question.po';
-import { browser, ExpectedConditions } from "protractor/built";
-import { setUsers, setData, signIn, signOut, setUsersWithPartialProfile } from '../../firebase';
-import { USER_VERIFIED_PROFILE } from "../../fixtures/users";
-import { confirmPage } from "../helper-functions/navigation/navigation-functions";
-import { joinATeam } from "../helper-functions/choose-teams/choose-teams-functions";
-import { ReviewApplicationDetailsPage } from "../../po/apply.review-application-details.po";
+import { ProjectSingleOppPage } from '../../../po/project.single-opp.po';
+import { AnswerOrganizerQuestionPage } from '../../../po/apply.answer-organizer-question.po';
+import { PickTeamPage } from '../../../po/apply.choose.team.po';
+import { AnswerTeamQuestionPage } from '../../../po/apply.answer-team-question.po';
+import { browser, ExpectedConditions } from 'protractor/built';
+import { setUsers, setData, signIn, signOut } from '../../../firebase';
+import { USER_VERIFIED_PROFILE } from '../../../fixtures/users';
+import { confirmPage } from '../../helper-functions/navigation/navigation-functions';
+import { joinATeam } from '../../helper-functions/choose-teams/choose-teams-functions';
+import { ReviewApplicationDetailsPage } from '../../../po/apply.review-application-details.po';
+import { UserHomePage } from '../../../po/user-home.po';
 
-describe('Apply-Single-Team-Flow: verified user with complete profile information', () => {
+describe('Apply-Single-Opportunity-Flow: verified user with complete profile information', () => {
     let KPCprojectPage: ProjectSingleOppPage
     let answerOrganizerQuestionPage: AnswerOrganizerQuestionPage
     let pickTeamPage: PickTeamPage
     let answerTeamQuestionPage: AnswerTeamQuestionPage
     let reviewApplicationDetailsPage: ReviewApplicationDetailsPage
+    let homePage: UserHomePage
 
-    const fullyLoaded = require('../../fixtures/fully-loaded.json')
+    const fullyLoaded = require('../../../fixtures/fully-loaded.json')
     const waitTimeout = 5000
 
     beforeAll(done => {
@@ -26,9 +28,9 @@ describe('Apply-Single-Team-Flow: verified user with complete profile informatio
         pickTeamPage = new PickTeamPage()
         answerTeamQuestionPage = new AnswerTeamQuestionPage()
         reviewApplicationDetailsPage = new ReviewApplicationDetailsPage()
+        homePage = new UserHomePage()
         browser.waitForAngularEnabled(false)
         setUsers()
-            .then(() => setUsersWithPartialProfile())
             .then(() => setData('/', fullyLoaded))
             .then(() => browser.get('/'))
             .then(() => signOut())
@@ -39,9 +41,11 @@ describe('Apply-Single-Team-Flow: verified user with complete profile informatio
 
 
     it('It should be able to choose KPC Event, answer organizer question, ' +
-        'select the available team, review the application details and submit ', function () {
-
-            KPCprojectPage.navigateTo()
+        'select a team, review the application details and submit ', function () {
+            let KPCProjectLink = homePage.getProjectLink(0)
+            browser.wait(ExpectedConditions.presenceOf(KPCProjectLink),
+                waitTimeout, 'Link to KPC project was not present')
+            homePage.getProjectTitle(KPCProjectLink).click()
                 .then(() =>
                     browser.wait(ExpectedConditions.elementToBeClickable(KPCprojectPage.getJoinButton()),
                         waitTimeout, 'Join button was not present'))
@@ -76,7 +80,7 @@ describe('Apply-Single-Team-Flow: verified user with complete profile informatio
                     return nextButton.click()
                 })
                 .then(() => confirmPage('/apply/KPC1/application/', '/apply-cofirmation', 'Apply-cofirmation', 'first', waitTimeout))
-
+            expect(true).toBeTruthy()
         })
 
 
