@@ -1,14 +1,14 @@
 import 'jasmine'
 import { browser, ExpectedConditions } from 'protractor/built';
-import { USER_VERIFIED_PROFILE, USER_VERIFIED_NO_PROFILE, USER_NOT_VERIFIED } from '../../fixtures/users';
-import { AnswerOrganizerQuestionPage } from '../../po/apply.answer-organizer-question.po';
-import { PickTeamPage } from '../../po/apply.choose.team.po';
-import { AnswerTeamQuestionPage } from '../../po/apply.answer-team-question.po';
-import { joinATeam, TestsForSelectedAndAvailableTeams } from '../helper-functions/choose-teams/choose-teams-functions'
-import { KPC_INCOMPLETE_APP, KPC_INCOMPLETE_APP_USER_VER_NO_PROFILE, KPC_INCOMPLETE_APP_USER_VER_ONLY_FNAME, KPC_INCOMPLETE_APP_USER_NOT_VER } from '../../fixtures/applications/application';
-import { ApplicationStages } from '../../fixtures/applications/application-stages';
-import { USER_VERIFIED_LNAME } from '../../fixtures/users-partial-profile';
-import { confirmPage } from '../helper-functions/navigation/navigation-functions';
+import { USER_VERIFIED_PROFILE, USER_VERIFIED_NO_PROFILE, USER_NOT_VERIFIED } from '../../../fixtures/users';
+import { AnswerOrganizerQuestionPage } from '../../../po/apply.answer-organizer-question.po';
+import { PickTeamPage } from '../../../po/apply.choose.team.po';
+import { AnswerTeamQuestionPage } from '../../../po/apply.answer-team-question.po';
+import { joinATeam, TestsForSelectedAndAvailableTeams } from '../../helper-functions/choose-teams/choose-teams-functions'
+import { KPC_INCOMPLETE_APP, KPC_INCOMPLETE_APP_USER_VER_NO_PROFILE, KPC_INCOMPLETE_APP_USER_VER_ONLY_FNAME, KPC_INCOMPLETE_APP_USER_NOT_VER } from '../../../fixtures/applications/application';
+import { ApplicationStages } from '../../../fixtures/applications/application-stages';
+import { USER_VERIFIED_LNAME } from '../../../fixtures/users-partial-profile';
+import { confirmPage } from '../../helper-functions/navigation/navigation-functions';
 
 const waitTimeout = 7000
 
@@ -17,7 +17,7 @@ describe('Apply-Choose-Teams: user must have complete and verified profile befor
     let pickTeamPage: PickTeamPage
     let answerTeamQuestionPage: AnswerTeamQuestionPage
 
-    const fullyLoaded = require('../../fixtures/fully-loaded.json')
+    const fullyLoaded = require('../../../fixtures/fully-loaded.json')
 
     beforeAll(done => {
 

@@ -1,17 +1,17 @@
 import 'jasmine'
-import { PickTeamPage } from '../../po/apply.choose.team.po';
-import { AnswerTeamQuestionPage } from '../../po/apply.answer-team-question.po';
-import { ReviewApplicationDetailsPage } from '../../po/apply.review-application-details.po';
+import { PickTeamPage } from '../../../po/apply.choose.team.po';
+import { AnswerTeamQuestionPage } from '../../../po/apply.answer-team-question.po';
+import { ReviewApplicationDetailsPage } from '../../../po/apply.review-application-details.po';
 import { browser, ExpectedConditions } from 'protractor/built';
-import { USER_VERIFIED_PROFILE } from '../../fixtures/users';
-import { joinATeam, GetNoAvailableTeamsForLCFromTestData } from '../helper-functions/choose-teams/choose-teams-functions'
+import { USER_VERIFIED_PROFILE } from '../../../fixtures/users';
+import { joinATeam, GetNoAvailableTeamsForLCFromTestData } from '../../helper-functions/choose-teams/choose-teams-functions'
 import { DatePipe } from '@angular/common'
-import { ReviewApplicationDetailsEditProfilePage } from '../../po/apply.review-application-details-edit-profile';
-import { ReviewApplicationDetailsEditAnswerPage } from '../../po/apply.review-application-details-edit-answer.po';
-import { ApplicationStages } from '../../fixtures/applications/application-stages';
-import { LC_TO_MINDFUL_FEEDING } from '../../fixtures/applications/application-team';
-import { LC_INCOMPLETE_APP } from '../../fixtures/applications/application';
-import { confirmPage } from '../helper-functions/navigation/navigation-functions';
+import { ReviewApplicationDetailsEditProfilePage } from '../../../po/apply.review-application-details-edit-profile';
+import { ReviewApplicationDetailsEditAnswerPage } from '../../../po/apply.review-application-details-edit-answer.po';
+import { ApplicationStages } from '../../../fixtures/applications/application-stages';
+import { LC_TO_MINDFUL_FEEDING } from '../../../fixtures/applications/application-team';
+import { LC_INCOMPLETE_APP } from '../../../fixtures/applications/application';
+import { confirmPage } from '../../helper-functions/navigation/navigation-functions';
 
 
 const waitTimeout = 7000
@@ -25,7 +25,7 @@ describe('Apply-Review-Details: verified user with complete profile information'
     let reviewApplicationDetailsEditAnswerPage: ReviewApplicationDetailsEditAnswerPage
 
     let organizerQuestionAnswer: string = 'Answer is always 42'
-    const fullyLoaded = require('../../fixtures/fully-loaded.json')
+    const fullyLoaded = require('../../../fixtures/fully-loaded.json')
 
     beforeAll(done => {
 

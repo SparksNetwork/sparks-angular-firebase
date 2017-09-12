@@ -1,12 +1,12 @@
 import 'jasmine'
 import { browser, ExpectedConditions } from 'protractor/built';
-import { ProjectSingleOppPage } from '../../po/project.single-opp.po';
-import { AnswerOrganizerQuestionPage } from '../../po/apply.answer-organizer-question.po';
-import { setUsersWithPartialProfile, setData, updateData, setUsers, signOut, signIn } from '../../firebase';
-import { USER_VERIFIED_COMPLETE_PROFILE, USER_VERIFIED_LNAME_BDAY } from '../../fixtures/users-partial-profile';
-import { CompleteProfilePage } from '../../po/complete.profile.po';
-import { USER_NOT_VERIFIED } from '../../fixtures/users';
-import { confirmPage } from '../helper-functions/navigation/navigation-functions';
+import { ProjectSingleOppPage } from '../../../po/project.single-opp.po';
+import { AnswerOrganizerQuestionPage } from '../../../po/apply.answer-organizer-question.po';
+import { setUsersWithPartialProfile, setData, updateData, setUsers, signOut, signIn } from '../../../firebase';
+import { USER_VERIFIED_COMPLETE_PROFILE, USER_VERIFIED_LNAME_BDAY } from '../../../fixtures/users-partial-profile';
+import { CompleteProfilePage } from '../../../po/complete.profile.po';
+import { USER_NOT_VERIFIED } from '../../../fixtures/users';
+import { confirmPage } from '../../helper-functions/navigation/navigation-functions';
 
 const waitTimeout = 5000
 
@@ -14,8 +14,8 @@ describe('Apply: user is asked a question before applying', () => {
     let answerOrganizerQuestionPage: AnswerOrganizerQuestionPage
     let KPCprojectPage: ProjectSingleOppPage
     let completeProfilePage: CompleteProfilePage
-    const fullyLoaded = require('../../fixtures/fully-loaded.json')
-    const userProfiles = require('../../fixtures/user-profiles/partial-user-profiles.json')
+    const fullyLoaded = require('../../../fixtures/fully-loaded.json')
+    const userProfiles = require('../../../fixtures/user-profiles/partial-user-profiles.json')
 
 
     beforeAll(done => {

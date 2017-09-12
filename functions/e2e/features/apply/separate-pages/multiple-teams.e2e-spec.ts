@@ -1,14 +1,14 @@
 import 'jasmine'
-import { AnswerOrganizerQuestionPage } from '../../po/apply.answer-organizer-question.po';
-import { PickTeamPage } from '../../po/apply.choose.team.po';
-import { AnswerTeamQuestionPage } from '../../po/apply.answer-team-question.po';
+import { AnswerOrganizerQuestionPage } from '../../../po/apply.answer-organizer-question.po';
+import { PickTeamPage } from '../../../po/apply.choose.team.po';
+import { AnswerTeamQuestionPage } from '../../../po/apply.answer-team-question.po';
 import { browser, ExpectedConditions } from 'protractor/built';
-import { USER_VERIFIED_PROFILE, USER_VERIFIED_NO_PROFILE, USER_NOT_VERIFIED } from '../../fixtures/users';
-import { joinATeam, GetNoAvailableTeamsForLCFromTestData, TestsForSelectedAndAvailableTeams } from '../helper-functions/choose-teams/choose-teams-functions'
-import { LC_INCOMPLETE_APP, LC_INCOMPLETE_APP_USER_VER_NO_PROFILE, LC_INCOMPLETE_APP_USER_VER_ONLY_FNAME, LC_INCOMPLETE_APP_USER_NOT_VER } from '../../fixtures/applications/application';
-import { ApplicationStages } from '../../fixtures/applications/application-stages';
-import { USER_VERIFIED_LNAME } from '../../fixtures/users-partial-profile';
-import { confirmPage } from '../helper-functions/navigation/navigation-functions';
+import { USER_VERIFIED_PROFILE, USER_VERIFIED_NO_PROFILE, USER_NOT_VERIFIED } from '../../../fixtures/users';
+import { joinATeam, GetNoAvailableTeamsForLCFromTestData, TestsForSelectedAndAvailableTeams } from '../../helper-functions/choose-teams/choose-teams-functions'
+import { LC_INCOMPLETE_APP, LC_INCOMPLETE_APP_USER_VER_NO_PROFILE, LC_INCOMPLETE_APP_USER_VER_ONLY_FNAME, LC_INCOMPLETE_APP_USER_NOT_VER } from '../../../fixtures/applications/application';
+import { ApplicationStages } from '../../../fixtures/applications/application-stages';
+import { USER_VERIFIED_LNAME } from '../../../fixtures/users-partial-profile';
+import { confirmPage } from '../../helper-functions/navigation/navigation-functions';
 
 
 const waitTimeout = 7000
@@ -18,7 +18,7 @@ describe('Apply-Choose-Teams: user must have complete and verified profile befor
     let answerTeamQuestionPage: AnswerTeamQuestionPage
 
     const organizerQuestionAnswer = 'Answer may be 42'
-    const fullyLoaded = require('../../fixtures/fully-loaded.json')
+    const fullyLoaded = require('../../../fixtures/fully-loaded.json')
     const oppAllowedTeams = fullyLoaded['oppAllowedTeam']
 
     beforeAll(done => {
