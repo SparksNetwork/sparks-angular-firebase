@@ -18,6 +18,7 @@ describe('shiftTransform', () => {
             .catch((errs: ValidationError[]) => {
                 expect(validationFailure(errs, '$key', 'isDefined')).toBeTruthy()
                 expect(validationFailure(errs, 'startDateTime', 'isDefined')).toBeTruthy()
+                expect(validationFailure(errs, 'endDateTime', 'isDefined')).toBeTruthy()
                 expect(validationFailure(errs, 'teamKey', 'isDefined')).toBeTruthy()
                 expect(validationFailure(errs, 'teamTitle', 'isDefined')).toBeTruthy()
             })
@@ -26,11 +27,11 @@ describe('shiftTransform', () => {
 
     it('requires several fields to not be empty', done => {
         shiftTransform({
-            $key: "",
-            startDateTime: "",            
-            teamKey: "",
-            teamTitle: "",
-            teamIcon: "",
+            $key: '',
+            startDateTime: '',
+            teamKey: '',
+            teamTitle: '',
+            teamIcon: '',
         })
             .then(() => {
                 expect(false).toBeTruthy()
@@ -38,8 +39,9 @@ describe('shiftTransform', () => {
             .catch((errs: ValidationError[]) => {
                 expect(validationFailure(errs, '$key', 'isNotEmpty')).toBeTruthy()
                 expect(validationFailure(errs, 'startDateTime', 'isNotEmpty')).toBeTruthy()
+                expect(validationFailure(errs, 'endDateTime', 'isNotEmpty')).toBeTruthy()
                 expect(validationFailure(errs, 'teamKey', 'isNotEmpty')).toBeTruthy()
-                expect(validationFailure(errs, 'teamTitle', 'isNotEmpty')).toBeTruthy()               
+                expect(validationFailure(errs, 'teamTitle', 'isNotEmpty')).toBeTruthy()
             })
             .then(done)
     });
@@ -47,7 +49,7 @@ describe('shiftTransform', () => {
     it('requires fields to be in correct format', done => {
         shiftTransform({
             startDateTime: '03-01-1900',
-            endDateTime: '03-01-1900',            
+            endDateTime: '03-01-1900',
         })
             .then(() => {
                 expect(false).toBeTruthy()

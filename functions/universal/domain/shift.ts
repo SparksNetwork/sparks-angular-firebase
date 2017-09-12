@@ -32,7 +32,9 @@ export class Shift {
     public startDateTime: string
 
     @IsDateString()
-    public endDateTime?: string
+    @IsDefined()
+    @IsNotEmpty()
+    public endDateTime: string
 
     @IsDefined()
     @IsNotEmpty()
