@@ -6,13 +6,13 @@
 export const environment = {
   production: false,
   firebaseAdminCredentialFilename: 'firebaseAdminCredentials.dev-id.json',
-  apiRoot: 'http://localhost:5002/sparksnetworkildi/us-central1/api',
+  apiRoot: 'http://localhost:5000/sparksnetworkildi/us-central1/api',
   firebase: {
-    apiKey: "AIzaSyDzZA0hgq1ch38x2QsdpzyeUpOMFkHdg_0",
-    authDomain: "sparksnetworkildi.firebaseapp.com",
-    databaseURL: "https://sparksnetworkildi.firebaseio.com",
-    projectId: "sparksnetworkildi",
-    storageBucket: "",
-    messagingSenderId: "897039920285"
+    apiKey: 'AIzaSyDzZA0hgq1ch38x2QsdpzyeUpOMFkHdg_0',
+    authDomain: 'sparksnetworkildi.firebaseapp.com',
+    databaseURL: 'https://sparksnetworkildi.firebaseio.com',
+    projectId: 'sparksnetworkildi',
+    storageBucket: '',
+    messagingSenderId: '897039920285'
   }
-};
+}

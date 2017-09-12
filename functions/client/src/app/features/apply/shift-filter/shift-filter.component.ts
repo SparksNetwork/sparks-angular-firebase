@@ -11,8 +11,8 @@ import { Observable } from 'rxjs/Observable';
 export class ShiftFilterComponent implements OnInit {
   @Input() private allShifts: Observable<Shift[]>
   @Output() private activeFilters: EventEmitter<IShiftFilters> = new EventEmitter()
-  private teamFilter: ITeamFilter[]
-  private dateFilter: IDateFilter[]
+  public teamFilter: ITeamFilter[]
+  public dateFilter: IDateFilter[]
   public shiftFilterForm: FormGroup
   public filtersChangedByUser: boolean
 
@@ -97,10 +97,7 @@ export class ShiftFilterComponent implements OnInit {
   }
 
   public resetFilters() {
-    if (this.dateFilter && this.dateFilter.length) {
-      this.shiftFilterForm.patchValue({ date: this.dateFilter[0].date });
-    }
-    this.shiftFilterForm.patchValue({ team: '', friend: '' });
+    this.shiftFilterForm.patchValue({ date: '', team: '', friend: '' });
     this.filtersChangedByUser = false;
   }
 }
