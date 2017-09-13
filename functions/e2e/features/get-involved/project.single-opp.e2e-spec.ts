@@ -2,7 +2,7 @@ import 'jasmine'
 import { browser, ExpectedConditions } from 'protractor/built';
 import { setData, setUsers } from '../../firebase';
 import { ProjectSingleOppPage } from '../../po/project.single-opp.po';
-import { getLocationForDirections } from '../helper-functions/project-location/location-functions';
+import { getLocationForDirections } from '../helper-functions/project/location-functions';
 
 const waitTimeout = 5000;
 
@@ -23,10 +23,15 @@ describe('Get-Involved: project with one opportunity', () => {
     describe('exploring the project page', () => {
 
         it('Title should be ' + project['title'], () => {
-            const title = page.getProjectTitleElement();
-            browser.wait(ExpectedConditions.textToBePresentInElement(title, project['title'])
-                , waitTimeout, 'Title was not correct')
-            expect(true).toBeTruthy();
+            const titleEl = page.getProjectTitleElement();
+
+            browser.wait(ExpectedConditions.presenceOf(titleEl),
+                waitTimeout, 'Title was not correct')
+
+            titleEl.getText().then((title) => {
+                expect(title).toMatch(project['title'])
+
+            })
         })
 
         it('Carousel last indicator should display the image ' + project['images'][2]['imageUrl'], function () {

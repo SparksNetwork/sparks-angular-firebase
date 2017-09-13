@@ -1,17 +1,17 @@
 import 'jasmine'
 import { browser, ExpectedConditions } from 'protractor/built';
 import { setData, setUsers } from '../../firebase';
-import { OpportunityPartialDiscountPage } from '../../po/opp.partial-discount.po';
+import { OpportunityPage } from '../../po/opp.partial-discount.po';
 
 const waitTimeout = 5000;
 
 describe('Opportunity: volunteer obtains a partial discount', () => {
-    let page: OpportunityPartialDiscountPage;
+    let page: OpportunityPage;
     const fullyLoaded = require('../../fixtures/fully-loaded.json')
     const opp = fullyLoaded['opp']['LC1']
 
     beforeAll(done => {
-        page = new OpportunityPartialDiscountPage();
+        page = new OpportunityPage();
         browser.waitForAngularEnabled(false)
         setUsers()
             .then(() => setData('/', require('../../fixtures/fully-loaded.json')))

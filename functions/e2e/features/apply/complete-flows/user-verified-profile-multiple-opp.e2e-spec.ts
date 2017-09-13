@@ -11,9 +11,11 @@ import { joinATeam } from '../../helper-functions/choose-teams/choose-teams-func
 import { ReviewApplicationDetailsPage } from '../../../po/apply.review-application-details.po';
 import { UserHomePage } from '../../../po/user-home.po';
 import { CompleteProfilePage } from '../../../po/complete.profile.po';
-import { OpportunityPartialDiscountPage } from '../../../po/opp.partial-discount.po';
+import { OpportunityPage } from '../../../po/opp.partial-discount.po';
+import { testCommonProjectInformation } from "../../helper-functions/project/project-common";
+import { testProjectMultipleOpp } from "../../helper-functions/project/project-multiple-opp";
 
-describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile information', () => {
+fdescribe('Apply-Multiple-Opportunity-Flow: verified user with complete profile information', () => {
     let LCprojectPage: ProjectMultiOppPage
     let answerOrganizerQuestionPage: AnswerOrganizerQuestionPage
     let pickTeamPage: PickTeamPage
@@ -21,7 +23,7 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile i
     let reviewApplicationDetailsPage: ReviewApplicationDetailsPage
     let homePage: UserHomePage
     let completeProfilePage: CompleteProfilePage
-    let oppLCPage: OpportunityPartialDiscountPage
+    let oppLCPage: OpportunityPage
 
     const fullyLoaded = require('../../../fixtures/fully-loaded.json')
     const waitTimeout = 5000
@@ -34,7 +36,7 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile i
         reviewApplicationDetailsPage = new ReviewApplicationDetailsPage()
         homePage = new UserHomePage()
         completeProfilePage = new CompleteProfilePage()
-        oppLCPage = new OpportunityPartialDiscountPage()
+        oppLCPage = new OpportunityPage()
         browser.waitForAngularEnabled(false)
         setUsers()
             .then(() => setData('/', fullyLoaded))
@@ -53,6 +55,8 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile i
             browser.wait(ExpectedConditions.presenceOf(LCProjectLink),
                 waitTimeout, 'Link to LC project was not present')
             homePage.getProjectTitle(LCProjectLink).click()
+                .then(() => testCommonProjectInformation(LCprojectPage, fullyLoaded['project']['LC']))
+                .then(() => testProjectMultipleOpp(LCprojectPage, fullyLoaded))
                 .then(() => {
                     browser.wait(ExpectedConditions.presenceOf(LCprojectPage.getFirstOportunityTitleElement()),
                         waitTimeout, 'Link to the first opportunity of LC was not present')

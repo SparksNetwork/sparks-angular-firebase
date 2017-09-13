@@ -2,7 +2,7 @@ import 'jasmine'
 import { browser, ExpectedConditions } from 'protractor/built';
 import { ProjectMultiOppPage } from '../../po/project.multi-opp.po';
 import { setData, setUsers } from '../../firebase';
-import { getLocationForDirections } from '../helper-functions/project-location/location-functions';
+import { getLocationForDirections } from '../helper-functions/project/location-functions';
 
 const waitTimeout = 5000;
 
@@ -56,24 +56,20 @@ describe('Get-Involved: project with multiple opportunities', () => {
 
         });
 
-        it('It should display a specific icon for each oportunity ', function () {
-            browser.wait(ExpectedConditions.textToBePresentInElement(page.getFirstOportunityTitleElement(), '')
-                , waitTimeout, 'Oportunity links were not present')
+        it('It should display the title for each oportunity ', function () {
+            let oppLinks = page.getLinks()
+            browser.wait(ExpectedConditions.presenceOf(oppLinks.first()),
+                waitTimeout, 'First opportunity link was not present')
 
-            page.getFirstOportunitySpan().getAttribute('class')
-                .then(function (str) { expect(str).toContain(fullyLoaded['opp']['LC1']['icon']) });
+            oppLinks.each(function (item) {
+                item.getAttribute('href').then((link) => {
+                    page.getTitle(item).getText().then((title) => {
+                        expect(title).toMatch(fullyLoaded['opp'][GetOppKey(link)]['title'], 'Opportunity title was not correct')
+                    })
 
-            page.getSecondOportunitySpan().getAttribute('class')
-                .then(function (str) { expect(str).toContain(fullyLoaded['opp']['LC2']['icon']) });
+                })
+            })
 
-            page.getThirdOportunitySpan().getAttribute('class')
-                .then(function (str) { expect(str).toContain(fullyLoaded['opp']['LC3']['icon']) });
-
-            page.getFourthOportunitySpan().getAttribute('class')
-                .then(function (str) { expect(str).toContain(fullyLoaded['opp']['LC4']['icon']) });
-
-            page.getFifthOportunitySpan().getAttribute('class')
-                .then(function (str) { expect(str).toContain(fullyLoaded['opp']['LC5']['icon']) });
         });
 
         it('First oportunity should have the contribution value: ' + fullyLoaded['opp']['LC1']['contribValue'], function () {
@@ -224,4 +220,10 @@ describe('Get-Involved: project with multiple opportunities', () => {
             });
         });
     })
+
+    //helper functions
+    function GetOppKey(url: string) {
+        let splittedUrl = url.split('/');
+        return splittedUrl[splittedUrl.length - 1];
+    }
 });

@@ -10,6 +10,8 @@ import { confirmPage } from '../../helper-functions/navigation/navigation-functi
 import { joinATeam } from '../../helper-functions/choose-teams/choose-teams-functions';
 import { ReviewApplicationDetailsPage } from '../../../po/apply.review-application-details.po';
 import { UserHomePage } from '../../../po/user-home.po';
+import { testCommonProjectInformation } from "../../helper-functions/project/project-common";
+import { testProjectSingleOpp } from "../../helper-functions/project/project-single-opp";
 
 describe('Apply-Single-Opportunity-Flow: verified user with complete profile information', () => {
     let KPCprojectPage: ProjectSingleOppPage
@@ -46,9 +48,12 @@ describe('Apply-Single-Opportunity-Flow: verified user with complete profile inf
             browser.wait(ExpectedConditions.presenceOf(KPCProjectLink),
                 waitTimeout, 'Link to KPC project was not present')
             homePage.getProjectTitle(KPCProjectLink).click()
+                .then(() => testCommonProjectInformation(KPCprojectPage, fullyLoaded['project']['KPC']))
+                .then(() => testProjectSingleOpp(KPCprojectPage, fullyLoaded, 'KPC1-1'))
                 .then(() =>
                     browser.wait(ExpectedConditions.elementToBeClickable(KPCprojectPage.getJoinButton()),
-                        waitTimeout, 'Join button was not present'))
+                        waitTimeout, 'Join button was not present')
+                )
                 .then(() => KPCprojectPage.getJoinButton().click())
                 .then(() =>
                     confirmPage('/apply/KPC1/answer-question', '', 'Answer-question', 'first', waitTimeout))

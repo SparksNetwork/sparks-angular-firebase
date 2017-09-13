@@ -4,7 +4,7 @@ import { AnswerTeamQuestionPage } from '../../../po/apply.answer-team-question.p
 import { setData, signOut, signIn } from "../../../firebase";
 import { USER_VERIFIED_PROFILE } from "../../../fixtures/users";
 import { ProjectMultiOppPage } from "../../../po/project.multi-opp.po";
-import { OpportunityPartialDiscountPage } from "../../../po/opp.partial-discount.po";
+import { OpportunityPage } from "../../../po/opp.partial-discount.po";
 import { AnswerOrganizerQuestionPage } from "../../../po/apply.answer-organizer-question.po";
 import { confirmPage } from "../navigation/navigation-functions";
 
