@@ -16,6 +16,8 @@ import { testCommonProjectInformation } from "../../helper-functions/project/pro
 import { testProjectMultipleOpp } from "../../helper-functions/project/project-multiple-opp";
 import { testsForOpportunityPage } from "../../helper-functions/opportunity/opportunity";
 import { testsForOnAnswerOrganizerQuestionPage } from "../../helper-functions/apply/organizer-question";
+import { testsForChooseTeamsPage } from "../../helper-functions/apply/choose-teams-common";
+import { testsForChooseMultipleTeamsPage } from "../../helper-functions/apply/choose-multiple-teams";
 
 describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile information', () => {
     let LCprojectPage: ProjectMultiOppPage
@@ -88,6 +90,9 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile i
                 })
                 .then(() =>
                     confirmPage('/apply/LC1/application/', '/teams', 'Pick-teams', 'first', waitTimeout, '/teams/'))
+                .then(() => testsForChooseTeamsPage(answerOrganizerQuestionPage, pickTeamPage,
+                    fullyLoaded, 'LC1', answerTeamQuestionPage,'LC1'))
+                .then(() => testsForChooseMultipleTeamsPage(pickTeamPage, fullyLoaded, 'LC1', answerTeamQuestionPage))
                 .then(() => joinATeam(pickTeamPage, waitTimeout, 'LC1', answerTeamQuestionPage))
                 .then(() => {
                     let nextButton = pickTeamPage.getNextButton()

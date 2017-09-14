@@ -13,6 +13,8 @@ import { UserHomePage } from '../../../po/user-home.po';
 import { testCommonProjectInformation } from "../../helper-functions/project/project-common";
 import { testProjectSingleOpp } from "../../helper-functions/project/project-single-opp";
 import { testsForOnAnswerOrganizerQuestionPage } from "../../helper-functions/apply/organizer-question";
+import { testsForChooseTeamsPage } from "../../helper-functions/apply/choose-teams-common";
+import { testsForChooseSingleTeamsPage } from "../../helper-functions/apply/choose-single-team";
 
 describe('Apply-Single-Opportunity-Flow: verified user with complete profile information', () => {
     let KPCprojectPage: ProjectSingleOppPage
@@ -72,6 +74,9 @@ describe('Apply-Single-Opportunity-Flow: verified user with complete profile inf
                 })
                 .then(() =>
                     confirmPage('/apply/KPC1/application/', '/teams', 'Pick-teams', 'first', waitTimeout, '/teams/'))
+                .then(() => testsForChooseTeamsPage(answerOrganizerQuestionPage, pickTeamPage,
+                    fullyLoaded, 'KPC1', answerTeamQuestionPage,'KPC1'))
+                .then(() => testsForChooseSingleTeamsPage(pickTeamPage, fullyLoaded, 'KPC1', answerTeamQuestionPage))
                 .then(() => joinATeam(pickTeamPage, waitTimeout, 'KPC1', answerTeamQuestionPage))
                 .then(() => {
                     let nextButton = pickTeamPage.getNextButton()
