@@ -3,7 +3,7 @@ import { ProjectMultiOppPage } from '../../../po/project.multi-opp.po';
 import { browser, ExpectedConditions } from 'protractor/built';
 import { setUsers, setData, signIn, signOut, setUsersWithPartialProfile, updateData } from '../../../firebase';
 import { USER_NOT_VERIFIED } from '../../../fixtures/users';
-import { confirmPage } from '../../helper-functions/navigation/navigation-functions';
+import { confirmPage } from '../../helper-functions/shared';
 import { joinATeam } from '../../helper-functions/choose-teams/choose-teams-functions';
 import { UserHomePage } from '../../../po/user-home.po';
 import { OpportunityPage } from '../../../po/opp.partial-discount.po';

@@ -6,7 +6,7 @@ import { setUsersWithPartialProfile, setData, updateData, setUsers, signOut, sig
 import { USER_VERIFIED_COMPLETE_PROFILE, USER_VERIFIED_LNAME_BDAY } from '../../../fixtures/users-partial-profile';
 import { CompleteProfilePage } from '../../../po/complete.profile.po';
 import { USER_NOT_VERIFIED } from '../../../fixtures/users';
-import { confirmPage } from '../../helper-functions/navigation/navigation-functions';
+import { confirmPage } from '../../helper-functions/shared';
 
 const waitTimeout = 5000
 

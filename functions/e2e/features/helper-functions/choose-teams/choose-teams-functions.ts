@@ -6,7 +6,7 @@ import { USER_VERIFIED_PROFILE } from "../../../fixtures/users";
 import { ProjectMultiOppPage } from "../../../po/project.multi-opp.po";
 import { OpportunityPage } from "../../../po/opp.partial-discount.po";
 import { AnswerOrganizerQuestionPage } from "../../../po/apply.answer-organizer-question.po";
-import { confirmPage } from "../navigation/navigation-functions";
+import { confirmPage } from "../shared";
 
 export function joinATeam(pickTeamPage: PickTeamPage, waitTimeout: number, oppKey: string, answerTeamQuestionPage: AnswerTeamQuestionPage) {
 

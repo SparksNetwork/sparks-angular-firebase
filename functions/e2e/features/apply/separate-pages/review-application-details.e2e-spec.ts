@@ -11,7 +11,7 @@ import { ReviewApplicationDetailsEditAnswerPage } from '../../../po/apply.review
 import { ApplicationStages } from '../../../fixtures/applications/application-stages';
 import { LC_TO_MINDFUL_FEEDING } from '../../../fixtures/applications/application-team';
 import { LC_INCOMPLETE_APP } from '../../../fixtures/applications/application';
-import { confirmPage } from '../../helper-functions/navigation/navigation-functions';
+import { confirmPage } from '../../helper-functions/shared';
 
 
 const waitTimeout = 7000

@@ -8,7 +8,7 @@ import { joinATeam, GetNoAvailableTeamsForLCFromTestData, TestsForSelectedAndAva
 import { LC_INCOMPLETE_APP, LC_INCOMPLETE_APP_USER_VER_NO_PROFILE, LC_INCOMPLETE_APP_USER_VER_ONLY_FNAME, LC_INCOMPLETE_APP_USER_NOT_VER } from '../../../fixtures/applications/application';
 import { ApplicationStages } from '../../../fixtures/applications/application-stages';
 import { USER_VERIFIED_LNAME } from '../../../fixtures/users-partial-profile';
-import { confirmPage } from '../../helper-functions/navigation/navigation-functions';
+import { confirmPage } from '../../helper-functions/shared';
 
 
 const waitTimeout = 7000
