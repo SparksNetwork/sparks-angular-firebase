@@ -37,7 +37,10 @@ export class BaseActionService {
     console.log('update', value)
     const url = `${this.url}/${key}`
     console.log('url', url)
-    return this.http.patch(url, value)
+    // post instead of patch because firebase-functions http handlers
+    // do not populate req.body when PATCH verb used
+    // return this.http.patch(url, value)
+    return this.http.post(url, value)
     // .subscribe(data => {
     //   console.log('data', data.json())
     // }, err => {
