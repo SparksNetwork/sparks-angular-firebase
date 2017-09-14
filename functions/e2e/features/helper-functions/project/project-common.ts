@@ -1,3 +1,4 @@
+import 'jasmine'
 import { browser, ExpectedConditions } from "protractor/built";
 import { ProjectPage } from "../../../po/project.po";
 import { DatePipe } from '@angular/common'
@@ -10,11 +11,31 @@ function testTitle(page: ProjectPage, project: any) {
     const titleEl = page.getProjectTitleElement();
 
     browser.wait(ExpectedConditions.presenceOf(titleEl),
-        waitTimeout, 'Project title was not present')
+        waitTimeout, 'On Project page title was not present')
 
     return titleEl.getText().then((title) => {
-        expect(title).toMatch(project['title'], 'The project title was not correct')
+        expect(title).toMatch(project['title'], 'On Project page the title was not correct')
 
+    })
+
+}
+
+function testCarousel(page: ProjectPage, project: any) {
+    const lastCarouselIndicator = page.getLastCarouselIndicator();
+    browser.wait(ExpectedConditions.elementToBeClickable(lastCarouselIndicator)
+        , waitTimeout, 'On Project page carousel was not working');
+    lastCarouselIndicator.click();
+    page.getCarouselActiveImageDiv().getAttribute('style')
+        .then(function (str) {
+            expect(str).toContain(project['images'][2]['imageUrl'],
+                'On Project page the carousel image was not correct')
+        });
+}
+
+function testDescription(page: ProjectPage, project: any) {
+    page.getDescriptionElement().getText().then((description) => {
+        expect(description).toMatch(project['description'],
+            'On Project page the description was not correct')
     })
 
 }
@@ -22,62 +43,77 @@ function testTitle(page: ProjectPage, project: any) {
 function testLocation(page: ProjectPage, project: any) {
 
     browser.wait(ExpectedConditions.presenceOf(page.getLocationElement()),
-        waitTimeout, 'Project location element was not present')
+        waitTimeout, 'On Project page location element was not present')
 
     const locationName = page.getLocationName();
     locationName.then(function (str)
-    { expect(str).toContain(project['location']['city'], 'City was not correct') });
+    { expect(str).toContain(project['location']['city'], 'On Project page city was not correct') });
     locationName.then(function (str)
-    { expect(str).toContain(project['location']['name'], 'Location name was not correct') });
+    { expect(str).toContain(project['location']['name'], 'On Project page location name was not correct') });
     return locationName.then(function (str)
-    { expect(str).toContain(project['location']['state'], 'State was not correct') });
+    { expect(str).toContain(project['location']['state'], 'On Project page state was not correct') });
 
 }
 
 function testReceivedKarmaPoints(page: ProjectPage, project: any) {
     browser.wait(ExpectedConditions.presenceOf(page.getMaximumKarmaPointsElement()),
-        waitTimeout, 'project maximum karma points was not present')
+        waitTimeout, 'On Project page maximum karma points were not present')
     return page.getMaximumKarmaPoints().then(function (str) {
-        expect(str).toContain(project['maxKarmaPoints'], 'Project maximum karma points were not displayed')
+        expect(str).toContain(project['maxKarmaPoints'],
+            'On Project page maximum karma points were not correct')
     });
 }
 
 function testDate(page: ProjectPage, project: any) {
     let projectDate = page.getDate();
     browser.wait(ExpectedConditions.presenceOf(projectDate),
-        waitTimeout, 'The project date was not present')
+        waitTimeout, 'On Project page the date was not present')
 
     let datePipe: DatePipe = new DatePipe('longDate');
 
     return projectDate.getText().then(function (str) {
         expect(str).toMatch(getFormatedTimeInterval(project['startDateTime'],
-            project['endDateTime']), 'Project date was not correct displayed')
+            project['endDateTime']), 'On Project page date was not displayed correctly')
 
     })
 }
 
 function testOrganizer(page: ProjectPage, project: any) {
     browser.wait(ExpectedConditions.presenceOf(page.getOrganizerDetailsElement()),
-        waitTimeout, 'Organizer details were not present')
+        waitTimeout, 'On Project page organizer details were not present')
 
     const organizerDetails = page.getOrganizerDetails();
 
-    organizerDetails.then(function (str)
-    { expect(str).toContain(project['organizer']['name'], 'Name was not correctly displayed') });
-    return organizerDetails.then(function (str)
-    { expect(str).toContain(project['organizer']['organization'], 'Organization was not correctly displayed') });
+    organizerDetails.then(function (str) {
+        expect(str).toContain(project['organizer']['name'],
+            'On Project page Organizer name was not correctly displayed')
+    });
+    organizerDetails.then(function (str) {
+        expect(str).toContain(project['organizer']['organization'],
+            'On Project page the organization was not correctly displayed')
+    });
 
+    const organizerImage = page.getOrganizerImage();
+    browser.wait(ExpectedConditions.presenceOf(organizerImage), waitTimeout,
+        'On Project page organizer image was not present')
+
+    return page.getOrganizerImage().getAttribute('src').then(function (str) {
+        expect(str).toMatch(project['organizer']['imageUrl'],
+            'On Project page the organizer image was no correctly displayed')
+    });
 }
 
 function testLinkToEventPage(page: ProjectPage, project: any) {
     const eventPageLink = page.getLinkToEventPage();
     browser.wait(ExpectedConditions.presenceOf(eventPageLink),
-        waitTimeout, 'Link to event page was not present')
+        waitTimeout, 'On Project page link to Event Page was not present')
 
     const hrefAttribute = eventPageLink.getAttribute('href');
 
-    hrefAttribute.then(function (str)
-    { expect(str).toMatch(project['projectPageUrl'], 'The link to Event Page was not correct') });
+    hrefAttribute.then(function (str) {
+        expect(str).toMatch(project['projectPageUrl'],
+            'On Project page the link to Event Page was not correct')
+    });
 
     return eventPageLink.click().then(function () {
         browser.getAllWindowHandles().then(function (handles) {
@@ -85,7 +121,7 @@ function testLinkToEventPage(page: ProjectPage, project: any) {
 
             browser.switchTo().window(newWindowHandle).then(function () {
                 expect(browser.getCurrentUrl()).toEqual(hrefAttribute,
-                    'The link to Event Page did not open');
+                    'On Project page the link to Event Page did not open');
             });
             browser.close();
             browser.switchTo().window(handles[0]);
@@ -96,18 +132,16 @@ function testLinkToEventPage(page: ProjectPage, project: any) {
 function testLocationLink(page: ProjectPage, project: any) {
     const locationLink = page.getLocationLink();
     browser.wait(ExpectedConditions.presenceOf(locationLink),
-        waitTimeout, 'Project location link was not present')
+        waitTimeout, 'On Project page the location link was not present')
 
     const hrefAttribute = locationLink.getAttribute('href');
 
     hrefAttribute.then(function (str) {
-        expect(str).toContain('My', 'The user location was not present in Project location link')
-        expect(str).toContain('Location', 'The user location was not present in Project location link')
         if (!project['location']) {
             expect(str).toContain(getLocationForDirections(project['location']['latitude'],
                 project['location']['longitude'], project['location']['name'],
                 project['location']['address'], project['location']['city'], project['location']['state']),
-                'The project link to google maps was not build correctly ')
+                'On Project page the link to google maps was not build correctly ')
 
         }
     });
@@ -117,11 +151,22 @@ function testLocationLink(page: ProjectPage, project: any) {
             const newWindowHandle = handles[1]; // this is the new window
 
             browser.switchTo().window(newWindowHandle).then(function () {
-                expect(browser.getCurrentUrl()).toContain('www.google.com/maps', 'The project link to google maps did not open');
+                expect(browser.getCurrentUrl()).toContain('www.google.com/maps',
+                    'On Project page the link to google maps did not open');
             });
             browser.close();
             browser.switchTo().window(handles[0]);
         });
+    });
+}
+
+function testShareKarmaPoints(page: ProjectPage, project: any) {
+    browser.wait(ExpectedConditions.presenceOf(page.getShareKarmaPointsElement()),
+        waitTimeout, 'On Project page the share karma points was not present')
+
+    page.getShareKarmaPoints().then(function (str) {
+        expect(str).toContain(project['shareKarmaPoints'],
+            'On Project page the share karma points were not correclty displayed')
     });
 }
 
@@ -133,5 +178,8 @@ export function testCommonProjectInformation(page: ProjectPage, project: any) {
         .then(() => testLinkToEventPage(page, project))
         .then(() => testLocationLink(page, project))
         .then(() => testOrganizer(page, project))
+        .then(() => testDescription(page, project))
+        .then(() => testCarousel(page, project))
+        .then(() => testShareKarmaPoints(page, project))
 
 }

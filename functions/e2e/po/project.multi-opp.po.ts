@@ -14,6 +14,15 @@ export class ProjectMultiOppPage extends ProjectPage {
   getTitle(link: ElementFinder) {
     return link.element(by.css('snui-card-item')).$$('div.text').first().$('h4');
   }
+
+  getBenefitValue(link: ElementFinder) {
+    return link.element(by.css('snui-card-item')).$$('div.text').first().all(by.css('p')).first();
+  }
+
+  getDiscount(link: ElementFinder) {
+    return link.element(by.css('snui-card-item')).$$('div.text').first().all(by.css('p')).get(1);
+  }
+
   getLinks() {
     return element.all(by.css('div.opp-item a'))
   }

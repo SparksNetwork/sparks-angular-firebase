@@ -6,7 +6,7 @@ import { AnswerTeamQuestionPage } from '../../../po/apply.answer-team-question.p
 import { browser, ExpectedConditions } from 'protractor/built';
 import { setUsers, setData, signIn, signOut } from '../../../firebase';
 import { USER_VERIFIED_PROFILE } from '../../../fixtures/users';
-import { confirmPage } from '../../helper-functions/navigation/navigation-functions';
+import { confirmPage } from '../../helper-functions/shared';
 import { joinATeam } from '../../helper-functions/choose-teams/choose-teams-functions';
 import { ReviewApplicationDetailsPage } from '../../../po/apply.review-application-details.po';
 import { UserHomePage } from '../../../po/user-home.po';
@@ -14,8 +14,10 @@ import { CompleteProfilePage } from '../../../po/complete.profile.po';
 import { OpportunityPage } from '../../../po/opp.partial-discount.po';
 import { testCommonProjectInformation } from "../../helper-functions/project/project-common";
 import { testProjectMultipleOpp } from "../../helper-functions/project/project-multiple-opp";
+import { testsForOpportunityPage } from "../../helper-functions/opportunity/opportunity";
+import { testsForOnAnswerOrganizerQuestionPage } from "../../helper-functions/apply/organizer-question";
 
-fdescribe('Apply-Multiple-Opportunity-Flow: verified user with complete profile information', () => {
+describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile information', () => {
     let LCprojectPage: ProjectMultiOppPage
     let answerOrganizerQuestionPage: AnswerOrganizerQuestionPage
     let pickTeamPage: PickTeamPage
@@ -62,6 +64,7 @@ fdescribe('Apply-Multiple-Opportunity-Flow: verified user with complete profile 
                         waitTimeout, 'Link to the first opportunity of LC was not present')
                     return LCprojectPage.getFirstOportunityTitleElement().click()
                 })
+                .then(() => testsForOpportunityPage(oppLCPage, fullyLoaded, fullyLoaded['opp']['LC1']))
                 .then(() => {
                     let join = oppLCPage.getJoinButton()
                     browser.wait(ExpectedConditions.elementToBeClickable(join),
@@ -72,6 +75,8 @@ fdescribe('Apply-Multiple-Opportunity-Flow: verified user with complete profile 
                     confirmPage('/apply/LC1/answer-question', '', 'Answer-question', 'first', waitTimeout))
                 .then(() =>
                     confirmPage('/apply/LC1/application', '/answer-question', 'Answer-organizer-question', 'first', waitTimeout))
+                .then(() => testsForOnAnswerOrganizerQuestionPage(answerOrganizerQuestionPage, fullyLoaded))
+
                 .then(() => {
                     browser.wait(ExpectedConditions.presenceOf(answerOrganizerQuestionPage.getNextButton()),
                         waitTimeout, 'Next button was not present')
