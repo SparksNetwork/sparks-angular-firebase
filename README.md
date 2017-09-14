@@ -32,55 +32,85 @@ Check out the branch and `npm install` to get all the dependencies installed.
 
 ## Creating a development environment
 
-You should create a separate environment for your development work so that you do not accidentally make changes to the data that breaks someone else's work in progress.  To do this you will create a new environment named after yourself.  E.g. for Steve DeBaun you would create `dev-sd`.
+You should create a separate environment for your development work so that you do not accidentally make changes to the data that breaks someone else's work in progress.  To do this:
 
-1. In `/functions/client/environments`, copy the existing `environment.ts` to `environment.dev-$YOUR_INITIALS.ts`.
-2. In `/functions/.angular-cli.json`, update the `environments` setting to include your new file.
-3. Create a new firebase project.
-4. In the firebase console for that project, from the *Overview* page, select "Add Firebase to your web app", and copy the config properties you find there.
-5. Update the new environment file that you just created with the config properties you copied.
+1. Create a new angular environment file and edit the contents to match your project.
+2. Set up a new firebase project, get service credentials for it, and put those in your angular environment file.
+3. Set a local environment variable to tell the npm scripts what to work against.
+4. Set the active firebase project to your new firebase project.
+
+### Create a New Angular Environment File
+
+Create a new environment named after yourself.  Copy one of the existing environments to see what you need.  E.g. for Steve DeBaun you would create `/functions/environments/environment.dev-sd.ts`.
+
+### Set Up a New Firebase Project
+
+1. Create a new firebase project through the firebase console.
+2. In the firebase console for that project, from the *Overview* page, select "Add Firebase to your web app", and get the config properties you find there.  Copy those to `environment.dev-sd.ts`.
+3. In the firebase console, from the *Project Settings* page, *Service Accounts* tab, generate and download a new private key.  Move that file to e.g. `/firebaseAdminCredentials.dev-sd.json` and then set that filename in `environment.dev-sd.ts`.
+4. In the firebase console, use *Authentication* and then *Sign-In Method*, make sure you enable at least Email/Password and Google.  Enabling Facebook requires you to have an actual Facebook app so it's OK to skip it.
+
+*`firebaseAdminCredentials` CONTAINS SECURE CREDENTIALS! DO NOT COMMIT IT! MAKE SURE IT IS `gitignore`d!*
+
+The project's `.gitignore` includes `firebaseAdminCredentials.**.json` so that files named like this will not be accidentally committed to the repo.
 
 See `/functions/client/environments/environment.dev-sd` for an example of stevo's environment.
 
-You can now use this environment with `ng serve` and `ng build`, e.g.:
+### Set a Local Environment Variable
 
+You need to set an `ANGULAR_ENV` variable to the unique part of the name of your environment file.  E.g. for `environment.dev-sd.ts` your `ANGULAR_ENV` should be `dev-sd`.  This is used by many of the `npm` scripts.
+
+For bash shell:
 ```
-stevo:functions sdebaun$ ng serve --env=dev-sd
+% export ANGULAR_ENV=dev-sd
 ```
 
-Note that this does *not* work with `ng e2e`, you have to do one additional step (see below).
+For windows shell:
+```
+C:\> SET ANGULAR_ENV=dev-sd
+```
+
+Note that these commands only set the environment variable for your current shell.  How to make it permanent is dependant on your shell.
+
+### Set the Active Firebase Project
+
+Simple use `npm run use` to set your current firebase project to the `ANGULAR_ENV` variable you just set.  You should only have to do this once, or if you need to work against another development environment.  The `npm run stage` command automatically points everything at the `staging` environment.
+
+## Useful npm scripts
+
+There are many `npm` scripts, and many of them require you to set your ANGULAR_ENV environment variable, as described above.
+
+### Start Development Server
+
+`% npm run start`
+
+Using the current ANGULAR_ENV setting, this will start both the client and the server and reload both on any file changes.
+
+If, for some reason, you only want to run the client or server locally, you can use `npm run start:client` or `npm run start:server`.
 
 ### Loading Test Data
 
-When you're developing locally, you usually want to preload the database with some valid test data so that the app has something to work with.  There is an npm script to do this, that operates by default against the `qa` env:
+`% npm run preload`
 
-```
-% npm run preload
-```
-
-This overwrites whatever is in the specified firebase project with the contents of our main fixtures file, `/functions/e2e/fixtures/fully-loaded.json`.
+When you're developing locally, you usually want to preload the database with some valid test data so that the app has something to work with.  There is an npm script to do this, that overwrites the firebase database specified by your current ANGULAR_ENV files with the contents of the `/e2e/fixtures/fully-loaded.json` file.
 
 Before it does that, it runs json schema validation against that data using the schema found at `/functions/database.model.json`.
 
-You are encouraged to create your own versions of the npm script that pass in your ANGULAR_ENV to control what firebase project is written to.  E.g.
+### Deploy to Staging
 
-```
-"preload:dev-sd": "cross-env ANGULAR_ENV=dev-sd npm run preload"
-```
+`% npm run stage`
 
-### Client Only
+This preloads the database, builds the client and server, and deploys them both.
 
-If you run `npm run start:client`, you will get a JIT version of the client on your local machine.  This is just running `ng serve`.
+It automatically uses `staging` for the `ANGULAR_ENV` variable and firebase project.  After you run this command, your `ANGULAR_ENV` and firebase project will be whatever they were originally.
 
-I am *pretty sure* that this local development server will talk to the *deployed* version of the backend.
+If you only need to deploy a new client or server, you can use `npm run stage:client` and `npm run stage:server` with the same behavior.
 
-### Full Stack
+### Run E2E Tests
 
-Make changes.  Run: `npm run start:server`.
+All end-to-end tests can be run with `npm run e2e`.  They will use the environment specified by your `ANGULAR_ENV` environment variable.
 
-The latest `firebase-functions` will run locally and you can hit `http://localhost:5000` to get a live server.
-
-I am *somewhat sure* that this local development server will talk to the *local* version of the backend.
+You must run `npm run start:server` in a separate window to provide a complete stack.  `npm run e2e` will serve the client automatically, but not the server.
 
 ## Branching
 
@@ -126,91 +156,6 @@ Within a single `feature` module, individual component names are prefixed with t
 * `page` prefix means that the component is a routing destination.  It may be a child route that is included in a `router-outlet`.
 * `button`, `alert`, `form`, etc are all UI components.
 
-# End-to-end testing
-
-All end-to-end tests can be run with `ng e2e` or a custom npm script like `npm run e2e:dev-sd`.  These tests can be run against different environments:
-
-* CI tests can run against a default `qa` environment with `ng e2e`
-* developers can run e2e tests locally against their own environment by creating an `e2e:$$$` script and then running that.
-
-The e2e tests use firebase-admin to reset test data in the environment's database.  This requires a credentials file from firebase console.  See `/functions/client/environments/environment.dev-sd.ts` for example.  To set this up:
-
-### Update the environment file you wish to use for testing by adding a property like this:
-
-For instance, if setting up a `dev-sd` environment, you would use something like this:
-
-```
-  firebaseAdminCredentialFilename: 'firebaseAdminCredentials.dev-sd.json',
-```
-
-The project's `.gitignore` includes `firebaseAdminCredentials.**.json` so that files named like this will not be accidentally committed to the repo.
-
-### Get the credentials file for that database
-
-- open Firebase console for the Sparks Network Test database
-- go to settings 
-- select the tab Service Accounts
-- click the button: GENERATE NEW PRIVATE KEY
-- download the file
-
-### Add credentials file to project
-
-Put the file you downloaded in the root of the project directory and name it whatever you named it in the corresponding environment file.
-
-*This file contains secure credentials!  Make sure it is `gitignore`d!*
-
-### Create a shortcut script to run it
-
-`ng e2e` does not support an `--env` flag, although it uses the `--env` flag in the `ng serve` that you run.  In order for the e2e tests to set up test data in the database, you also have to specify a non-standard `environment.ts` with a command-line environment variable.
-
-In the `package.json` scripts section, add a new script that specifies the environment you want to use.  Make sure you use `cross-env` in order to ensure compatibility between Windows and real operating systems. :)
-
-```
-    "e2e:dev-sd": "cross-env ANGULAR_ENV=dev-sd ng e2e --env=dev-sd"
-```
-
-Now you can run the e2e tests locally against your own database with 
-
-# Deployment
-
-You use the `firebase` command line tool in order to deploy the project to the firebase cloud.  There are a few things to coordinate.
-
-## Switching Firebase Projects
-
-`firebase use` will show you what projects are configured, and the aliases for those projects. We currently have:
-
-* `qa` is intended for use with automated testing during CI.
-* `staging` is used for pre-release deployment to a final "sanity check" server
-* `prod` is the live production environment
-* `dev-$$` environments exist for each individual developer
-
-When you're working locally, you should `firebase use` your personal development environment.  You can switch to `staging` or `prod` when you are ready to deploy to either of those environments.
-
-## First time project setup
-
-You will need to do a couple of things to a firebase project the first time you use it, or subsequent times if the test data changes.
-
-* In the firebase console -> Authentication -> Sign-In Method, make sure you enable at least Email/Password and Google.  Enabling Facebook requires you to have an actual Facebook app so it's OK to skip it.
-
-* In the firebase console -> Database -> ... -> Import JSON to import the latest `test-data.json` from the repo so that the database is loaded with valid data.
-
-## Building client
-
-There are `npm` scripts that automate this for you, see: `npm run build:client:prod`, `npm run build:client:staging`, etc.  Under the covers, these scripts do two things:
-
-* Set the target to `production` so that `ngc` compiles with AOT options for a faster client experience.
-* Selects the specific `environment` so that the correct settings are compiled into the dist.
-
-# Building server
-
-For now, as there is no difference in server environments, just use `npm run build:server` to compile everything from `/functions/server/src` to `/functions/server/dist`.
-
-# Deploying to firebase
-
-*MAKE SURE THAT YOU ARE `use`ING THE CORRECT PROJECT BEFORE YOU DO THIS!!!11!!1!*
-
-`npm run deploy` will deploy the latest client and server files to the currently `use`'d firebase project.  All it does is `firebase deploy --only hosting,functions`.
-
 # Why This Way?
 
 ## Why Everything in /functions?
@@ -226,21 +171,3 @@ A chain of tragic consequences...
 The `appbar` module provides most of the routing for the app.
 All routes in this module will have a consistent appbar at the top that won't rerender.
 Very few routes in the app won't use this: auth, printing, what else?
-
-# How Does This Work?
-
-## How Backend Firebase-Functions Work
-
-When you `firebase deploy`, all of the names exported by `/functions/index.js` start running in the cloud.
-
-#End-to-end testing
-
-Make sure you are `firebase use`ing either your development environment or the qa environment when you run the e2e tests.
-
-The end-to-end tests use Firebase Admin to manipulate directly the data. Firebase Admin needs a configuration
-file named `adminsdk.json` that will be placed in: `/functions/e2e`. In order to obtain the file:
-- open Firebase console for the Sparks Network Test database
-- go to settings 
-- select the tab Service Accounts
-- click the button: GENERATE NEW PRIVATE KEY
-- rename the downloaded file to `adminsdk.json` and place it in `/functions/e2e`
