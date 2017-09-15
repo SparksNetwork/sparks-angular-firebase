@@ -33,15 +33,15 @@ export class ApplicationCollection extends BaseCollection {
 }
 
 export enum ApplicationStatus {
-    Incomplete = "Incomplete",
-    Pending = "Pending",
-    Accepted = "Accepted",
-    Canceled = "Canceled"
+    Incomplete = 'Incomplete',
+    Pending = 'Pending',
+    Accepted = 'Accepted',
+    Canceled = 'Canceled'
 }
 
 export enum ApplicationStepFinished{
-    Answer = "Answer",
-    Team = "Team"
+    Answer = 'Answer',
+    Team = 'Team'
 }
 
 export class Application {
@@ -61,10 +61,6 @@ export class Application {
     @IsNotEmpty()
     @IsDefined()
     projectKey: string;
-
-    @IsNotEmpty()
-    @IsDefined()
-    projectProfileKey: string;
 
     @IsNotEmpty()
     oppQuestion: string;
