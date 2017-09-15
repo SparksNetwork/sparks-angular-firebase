@@ -1,9 +1,9 @@
 import 'jasmine'
-import { joinATeam, GetNoAvailableTeamsForLCFromTestData, TestsForSelectedAndAvailableTeams } from "../choose-teams/choose-teams-functions";
-import { AnswerTeamQuestionPage } from "../../../po/apply.answer-team-question.po";
-import { PickTeamPage } from "../../../po/apply.choose.team.po";
-import { browser, ExpectedConditions } from "protractor/built";
-import { GetKeyFromUrl } from "../shared";
+import { joinATeam, GetNoAvailableTeamsFromTestData, TestsForSelectedAndAvailableTeams } from '../../helper-functions/shared';
+import { AnswerTeamQuestionPage } from '../../../po/apply.answer-team-question.po';
+import { PickTeamPage } from '../../../po/apply.choose.team.po';
+import { browser, ExpectedConditions } from 'protractor/built';
+import { GetKeyFromUrl } from '../shared';
 
 const waitTimeout = 7000
 
@@ -20,7 +20,7 @@ function testDeleteAllFunctionality(pickTeamPage: PickTeamPage, fullyLoaded: any
                 expect(teamsNo).toBe(2, 'On Choose-multiple-teams page the number of selected teams was not correct')
             })
             pickTeamPage.getAvailableTeams().count().then((nrteams) => {
-                expect(nrteams).toBe(GetNoAvailableTeamsForLCFromTestData(fullyLoaded['oppAllowedTeam'], oppKey) - 2,
+                expect(nrteams).toBe(GetNoAvailableTeamsFromTestData(fullyLoaded['oppAllowedTeam'], oppKey) - 2,
                     'On Choose-multiple-teams page the number of available teams was not correct')
             })
 
@@ -34,7 +34,7 @@ function testDeleteAllFunctionality(pickTeamPage: PickTeamPage, fullyLoaded: any
                 'On Choose-multiple-teams page Delete all button did not become invisible')
         })
         .then(() => {
-            TestsForSelectedAndAvailableTeams(pickTeamPage, waitTimeout, 0, GetNoAvailableTeamsForLCFromTestData(fullyLoaded['oppAllowedTeam'], oppKey))
+            TestsForSelectedAndAvailableTeams(pickTeamPage, waitTimeout, 0, GetNoAvailableTeamsFromTestData(fullyLoaded['oppAllowedTeam'], oppKey))
 
         })
 }

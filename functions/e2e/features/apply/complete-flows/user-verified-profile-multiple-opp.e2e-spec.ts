@@ -6,18 +6,17 @@ import { AnswerTeamQuestionPage } from '../../../po/apply.answer-team-question.p
 import { browser, ExpectedConditions } from 'protractor/built';
 import { setUsers, setData, signIn, signOut } from '../../../firebase';
 import { USER_VERIFIED_PROFILE } from '../../../fixtures/users';
-import { confirmPage } from '../../helper-functions/shared';
-import { joinATeam } from '../../helper-functions/choose-teams/choose-teams-functions';
+import { confirmPage,joinATeam } from '../../helper-functions/shared';
 import { ReviewApplicationDetailsPage } from '../../../po/apply.review-application-details.po';
 import { UserHomePage } from '../../../po/user-home.po';
 import { CompleteProfilePage } from '../../../po/complete.profile.po';
 import { OpportunityPage } from '../../../po/opp.partial-discount.po';
-import { testCommonProjectInformation } from "../../helper-functions/project/project-common";
-import { testProjectMultipleOpp } from "../../helper-functions/project/project-multiple-opp";
-import { testsForOpportunityPage } from "../../helper-functions/opportunity/opportunity";
-import { testsForOnAnswerOrganizerQuestionPage } from "../../helper-functions/apply/organizer-question";
-import { testsForChooseTeamsPage } from "../../helper-functions/apply/choose-teams-common";
-import { testsForChooseMultipleTeamsPage } from "../../helper-functions/apply/choose-multiple-teams";
+import { testCommonProjectInformation } from '../../helper-functions/project/project-common';
+import { testProjectMultipleOpp } from '../../helper-functions/project/project-multiple-opp';
+import { testsForOpportunityPage } from '../../helper-functions/opportunity/opportunity';
+import { testsForOnAnswerOrganizerQuestionPage } from '../../helper-functions/apply/organizer-question';
+import { testsForChooseTeamsPage } from '../../helper-functions/apply/choose-teams-common';
+import { testsForChooseMultipleTeamsPage } from '../../helper-functions/apply/choose-multiple-teams';
 
 describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile information', () => {
     let LCprojectPage: ProjectMultiOppPage
@@ -31,6 +30,7 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile i
 
     const fullyLoaded = require('../../../fixtures/fully-loaded.json')
     const waitTimeout = 5000
+    const answerOrganizerQuestion = 'I want to help'
 
     beforeAll(done => {
         LCprojectPage = new ProjectMultiOppPage();
@@ -41,6 +41,8 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile i
         homePage = new UserHomePage()
         completeProfilePage = new CompleteProfilePage()
         oppLCPage = new OpportunityPage()
+        const answerOrganizerQuestion = 'I want to help'
+
         browser.waitForAngularEnabled(false)
         setUsers()
             .then(() => setData('/', fullyLoaded))
@@ -82,7 +84,7 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile i
                 .then(() => {
                     browser.wait(ExpectedConditions.presenceOf(answerOrganizerQuestionPage.getNextButton()),
                         waitTimeout, 'Next button was not present')
-                    answerOrganizerQuestionPage.getAnswer().sendKeys('42')
+                    answerOrganizerQuestionPage.getAnswer().sendKeys(answerOrganizerQuestion)
                     let next = answerOrganizerQuestionPage.getNextButton()
                     browser.wait(ExpectedConditions.elementToBeClickable(next),
                         waitTimeout, 'Next button was not clickable')
@@ -91,7 +93,7 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile i
                 .then(() =>
                     confirmPage('/apply/LC1/application/', '/teams', 'Pick-teams', 'first', waitTimeout, '/teams/'))
                 .then(() => testsForChooseTeamsPage(answerOrganizerQuestionPage, pickTeamPage,
-                    fullyLoaded, 'LC1', answerTeamQuestionPage,'LC1'))
+                    fullyLoaded, 'LC1', answerTeamQuestionPage, 'LC1', 'I want to help'))
                 .then(() => testsForChooseMultipleTeamsPage(pickTeamPage, fullyLoaded, 'LC1', answerTeamQuestionPage))
                 .then(() => joinATeam(pickTeamPage, waitTimeout, 'LC1', answerTeamQuestionPage))
                 .then(() => {

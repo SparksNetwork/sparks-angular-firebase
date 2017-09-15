@@ -1,10 +1,10 @@
 import 'jasmine'
-import { confirmPage, GetKeyFromUrl } from "../shared";
-import { browser, ExpectedConditions } from "protractor/built";
-import { AnswerOrganizerQuestionPage } from "../../../po/apply.answer-organizer-question.po";
-import { PickTeamPage } from "../../../po/apply.choose.team.po";
-import { AnswerTeamQuestionPage } from "../../../po/apply.answer-team-question.po";
-import { joinATeam, GetNoAvailableTeamsForLCFromTestData, TestsForSelectedAndAvailableTeams } from "../choose-teams/choose-teams-functions";
+import { confirmPage, GetKeyFromUrl } from '../shared';
+import { browser, ExpectedConditions } from 'protractor/built';
+import { AnswerOrganizerQuestionPage } from '../../../po/apply.answer-organizer-question.po';
+import { PickTeamPage } from '../../../po/apply.choose.team.po';
+import { AnswerTeamQuestionPage } from '../../../po/apply.answer-team-question.po';
+import { joinATeam, GetNoAvailableTeamsFromTestData, TestsForSelectedAndAvailableTeams } from '../../helper-functions/shared';
 
 const waitTimeout = 7000
 
@@ -38,9 +38,8 @@ function testPreviuousFunctionality(answerOrganizerQuestionPage: AnswerOrganizer
 }
 
 function testUserCanEditAnswerToOrganizerQuestion(answerOrganizerQuestionPage: AnswerOrganizerQuestionPage,
-    pickTeamPage: PickTeamPage, oppKey: string) {
-    let newAnswer: string = 'Answer must be 42'
-
+    pickTeamPage: PickTeamPage, oppKey: string,newAnswerOrganizerQuestion: string ) {
+ 
     //press previous from Pick-a-team-page
     let previousButton = pickTeamPage.getPreviousButton()
     browser.wait(ExpectedConditions.elementToBeClickable(previousButton),
@@ -53,7 +52,7 @@ function testUserCanEditAnswerToOrganizerQuestion(answerOrganizerQuestionPage: A
             browser.wait(ExpectedConditions.presenceOf(answer),
                 waitTimeout, 'On Answer-organizer-question page the input for answer was not present')
             answer.clear()
-            answer.sendKeys(newAnswer)
+            answer.sendKeys(newAnswerOrganizerQuestion)
 
             //press next
             let nextButton = answerOrganizerQuestionPage.getNextButton()
@@ -78,7 +77,7 @@ function testUserCanEditAnswerToOrganizerQuestion(answerOrganizerQuestionPage: A
             return answer.getAttribute('value')
         })
         .then((answer) => {
-            expect(answer).toMatch(newAnswer, 'On Choose-teams page the new answer was not saved correctly')
+            expect(answer).toMatch(newAnswerOrganizerQuestion, 'On Choose-teams page the new answer was not saved correctly')
             return answerOrganizerQuestionPage.getNextButton().click()
         })
         .then(() => confirmPage('/apply/' + oppKey + '/application/', '/teams', 'Pick-teams', 'third', waitTimeout, '/teams/'))
@@ -166,7 +165,7 @@ function testDeleteFunctionality(pickTeamPage: PickTeamPage, fullyLoaded: any,
 
             return pickTeamPage.getAvailableTeams().count()
                 .then((teamsNo) => {
-                    expect(teamsNo).toBe(GetNoAvailableTeamsForLCFromTestData(fullyLoaded['oppAllowedTeam'], oppKey) - 1,
+                    expect(teamsNo).toBe(GetNoAvailableTeamsFromTestData(fullyLoaded['oppAllowedTeam'], oppKey) - 1,
                         'On Choose-teams page the number of available teams was not correct')
                 })
         })
@@ -181,7 +180,7 @@ function testDeleteFunctionality(pickTeamPage: PickTeamPage, fullyLoaded: any,
                         'On Choose-teams page the selected team was not deleted')
                 })
                 .then(() => {
-                    TestsForSelectedAndAvailableTeams(pickTeamPage, waitTimeout, 0, GetNoAvailableTeamsForLCFromTestData(fullyLoaded['oppAllowedTeam'], oppKey))
+                    TestsForSelectedAndAvailableTeams(pickTeamPage, waitTimeout, 0, GetNoAvailableTeamsFromTestData(fullyLoaded['oppAllowedTeam'], oppKey))
 
                 })
 
@@ -191,10 +190,10 @@ function testDeleteFunctionality(pickTeamPage: PickTeamPage, fullyLoaded: any,
 
 export function testsForChooseTeamsPage(answerOrganizerQuestionPage: AnswerOrganizerQuestionPage,
     pickTeamPage: PickTeamPage, fullyLoaded: any, oppKey: string,
-    answerTeamQuestionPage: AnswerTeamQuestionPage, teamKey:string) {
+    answerTeamQuestionPage: AnswerTeamQuestionPage, teamKey:string, newAnswerOrganizerQuestion:string) {
 
     return testPreviuousFunctionality(answerOrganizerQuestionPage, pickTeamPage, oppKey, fullyLoaded)
-        .then(() => testUserCanEditAnswerToOrganizerQuestion(answerOrganizerQuestionPage, pickTeamPage, oppKey))
+        .then(() => testUserCanEditAnswerToOrganizerQuestion(answerOrganizerQuestionPage, pickTeamPage, oppKey,newAnswerOrganizerQuestion))
         .then(() => testTeamsDetails(pickTeamPage, fullyLoaded))
         .then(() => testPreviousButtonFunctionalityFromAnswerTeamQuestionPage(pickTeamPage, oppKey, answerTeamQuestionPage))
         .then(() => testDeleteFunctionality(pickTeamPage, fullyLoaded, oppKey, answerTeamQuestionPage, teamKey))

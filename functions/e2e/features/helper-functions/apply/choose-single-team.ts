@@ -1,8 +1,8 @@
-import { confirmPage } from "../shared";
-import { PickTeamPage } from "../../../po/apply.choose.team.po";
-import { browser, ExpectedConditions } from "protractor/built";
-import { AnswerTeamQuestionPage } from "../../../po/apply.answer-team-question.po";
-import { joinATeam, TestsForSelectedAndAvailableTeams } from "../choose-teams/choose-teams-functions";
+import { confirmPage } from '../shared';
+import { PickTeamPage } from '../../../po/apply.choose.team.po';
+import { browser, ExpectedConditions } from 'protractor/built';
+import { AnswerTeamQuestionPage } from '../../../po/apply.answer-team-question.po';
+import { joinATeam, TestsForSelectedAndAvailableTeams } from '../../helper-functions/shared';
 const waitTimeout = 7000
 
 function testTeamDetails(pickTeamPage: PickTeamPage, fullyLoaded: any, oppKey: string) {

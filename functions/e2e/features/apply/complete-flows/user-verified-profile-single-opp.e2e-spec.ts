@@ -6,15 +6,14 @@ import { AnswerTeamQuestionPage } from '../../../po/apply.answer-team-question.p
 import { browser, ExpectedConditions } from 'protractor/built';
 import { setUsers, setData, signIn, signOut } from '../../../firebase';
 import { USER_VERIFIED_PROFILE } from '../../../fixtures/users';
-import { confirmPage } from '../../helper-functions/shared';
-import { joinATeam } from '../../helper-functions/choose-teams/choose-teams-functions';
+import { confirmPage,joinATeam } from '../../helper-functions/shared';
 import { ReviewApplicationDetailsPage } from '../../../po/apply.review-application-details.po';
 import { UserHomePage } from '../../../po/user-home.po';
-import { testCommonProjectInformation } from "../../helper-functions/project/project-common";
-import { testProjectSingleOpp } from "../../helper-functions/project/project-single-opp";
-import { testsForOnAnswerOrganizerQuestionPage } from "../../helper-functions/apply/organizer-question";
-import { testsForChooseTeamsPage } from "../../helper-functions/apply/choose-teams-common";
-import { testsForChooseSingleTeamsPage } from "../../helper-functions/apply/choose-single-team";
+import { testCommonProjectInformation } from '../../helper-functions/project/project-common';
+import { testProjectSingleOpp } from '../../helper-functions/project/project-single-opp';
+import { testsForOnAnswerOrganizerQuestionPage } from '../../helper-functions/apply/organizer-question';
+import { testsForChooseTeamsPage } from '../../helper-functions/apply/choose-teams-common';
+import { testsForChooseSingleTeamsPage } from '../../helper-functions/apply/choose-single-team';
 
 describe('Apply-Single-Opportunity-Flow: verified user with complete profile information', () => {
     let KPCprojectPage: ProjectSingleOppPage
@@ -26,6 +25,7 @@ describe('Apply-Single-Opportunity-Flow: verified user with complete profile inf
 
     const fullyLoaded = require('../../../fixtures/fully-loaded.json')
     const waitTimeout = 5000
+    const answerOrganizerQuestion = 'I want to help'
 
     beforeAll(done => {
         KPCprojectPage = new ProjectSingleOppPage();
@@ -75,7 +75,8 @@ describe('Apply-Single-Opportunity-Flow: verified user with complete profile inf
                 .then(() =>
                     confirmPage('/apply/KPC1/application/', '/teams', 'Pick-teams', 'first', waitTimeout, '/teams/'))
                 .then(() => testsForChooseTeamsPage(answerOrganizerQuestionPage, pickTeamPage,
-                    fullyLoaded, 'KPC1', answerTeamQuestionPage,'KPC1'))
+                    fullyLoaded, 'KPC1', answerTeamQuestionPage, 'KPC1', answerOrganizerQuestion))
+
                 .then(() => testsForChooseSingleTeamsPage(pickTeamPage, fullyLoaded, 'KPC1', answerTeamQuestionPage))
                 .then(() => joinATeam(pickTeamPage, waitTimeout, 'KPC1', answerTeamQuestionPage))
                 .then(() => {
