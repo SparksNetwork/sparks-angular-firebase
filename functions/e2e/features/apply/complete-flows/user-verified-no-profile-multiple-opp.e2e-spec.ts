@@ -17,7 +17,7 @@ import { ReviewApplicationDetailsEditProfilePage } from '../../../po/apply.revie
 import { testsReviewDetailsMultipleTeams } from '../../helper-functions/apply/review-details-multiple-teams';
 
 
-fdescribe('Apply-Multiple-Opportunity-Flow: verified user with no profile information', () => {
+describe('Apply-Multiple-Opportunity-Flow: verified user with no profile information', () => {
     let LCprojectPage: ProjectMultiOppPage
     let answerOrganizerQuestionPage: AnswerOrganizerQuestionPage
     let pickTeamPage: PickTeamPage
