@@ -58,11 +58,8 @@ export class PageAnswerQuestionComponent implements OnInit {
           return;
         }
 
-        if (this.edit) {
-          this.router.navigate(['../', 'teams'], { relativeTo: this.route })
-        } else {
-          this.router.navigate(['..', 'application', this.applicationKey, 'teams'], { relativeTo: this.route })
-        }
+        this.router.navigate(['apply', this.opp.$key, 'application', this.applicationKey, 'teams'])
+
       }
     )
   }
