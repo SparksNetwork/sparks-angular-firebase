@@ -32,7 +32,6 @@ describe('applicationTransform', () => {
             oppKey: '',
             profileKey: '',
             projectKey: '',
-            projectProfileKey: '',
             oppQuestion: '',
             oppAnswer: ''
         })

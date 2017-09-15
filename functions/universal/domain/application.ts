@@ -39,7 +39,7 @@ export enum ApplicationStatus {
     Canceled = 'Canceled'
 }
 
-export enum ApplicationStepFinished{
+export enum ApplicationStepFinished {
     Answer = 'Answer',
     Team = 'Team'
 }
