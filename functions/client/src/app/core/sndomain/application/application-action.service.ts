@@ -4,7 +4,7 @@ import { ApplicationQueryService } from './application-query.service';
 import { BaseActionService } from '../../../../../../lib/firebase-universal/client';
 import { Http } from '@angular/http';
 import { environment } from '../../../../environments/environment';
-import { ApplicationStatus, Application } from '../../../../../../universal/domain/application';
+import { ApplicationStatus, Application, ApplicationStepFinished } from '../../../../../../universal/domain/application';
 
 @Injectable()
 export class ApplicationActionService extends BaseActionService {
@@ -58,6 +58,15 @@ export class ApplicationActionService extends BaseActionService {
     application.createdOn = new Date().toISOString();
 
     return this.replace(key, application);
+  }
+
+  public saveOppAnswer(key, oppQuestion, oppAnswer) {
+    const value = {
+      oppQuestion: oppQuestion,
+      oppAnswer: oppAnswer,
+      step: ApplicationStepFinished.Answer
+    }
+    return this.update(key, value);
   }
 
 }

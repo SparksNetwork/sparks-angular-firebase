@@ -45,23 +45,15 @@ export class PageAnswerQuestionComponent implements OnInit {
   };
 
   submit() {
-    const answer = this.answerForm.get('answer').value;
-    const value = {
-      oppQuestion: this.opp.question,
-      oppAnswer: answer,
-      step: ApplicationStepFinished.Answer
-    }
-    this.applicationAction.update(this.applicationKey, value).subscribe(
-      s => {
+    this.applicationAction.saveOppAnswer(this.applicationKey, this.opp.question, this.answerForm.get('answer').value)
+      .subscribe(s => {
         if (this.editFromReviewPage) {
-          this.router.navigate(['../', 'review-detail'], { relativeTo: this.route })
+          this.router.navigate(['../', 'review-detail'], { relativeTo: this.route });
           return;
         }
 
-        this.router.navigate(['apply', this.opp.$key, 'application', this.applicationKey, 'teams'])
-
-      }
-    )
+        this.router.navigate(['apply', this.opp.$key, 'application', this.applicationKey, 'teams']);
+      })
   }
 
 }
