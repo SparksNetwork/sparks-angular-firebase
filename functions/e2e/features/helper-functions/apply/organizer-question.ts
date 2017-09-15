@@ -1,7 +1,7 @@
 import 'jasmine'
 import { AnswerOrganizerQuestionPage } from '../../../po/apply.answer-organizer-question.po';
-import { ExpectedConditions, browser } from "protractor/built";
-import { GetKeyFromUrl } from "../shared";
+import { ExpectedConditions, browser } from 'protractor/built';
+import { GetKeyFromUrl } from '../shared';
 
 const waitTimeout = 5000
 
