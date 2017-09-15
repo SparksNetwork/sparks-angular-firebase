@@ -6,12 +6,14 @@ import { AnswerTeamQuestionPage } from '../../../po/apply.answer-team-question.p
 import { browser, ExpectedConditions } from 'protractor/built';
 import { setUsers, setData, signIn, signOut } from '../../../firebase';
 import { USER_VERIFIED_NO_PROFILE } from '../../../fixtures/users';
-import { confirmPage } from '../../helper-functions/shared';
-import { joinATeam } from '../../helper-functions/choose-teams/choose-teams-functions';
+import { confirmPage,joinATeam } from '../../helper-functions/shared';
 import { ReviewApplicationDetailsPage } from '../../../po/apply.review-application-details.po';
 import { UserHomePage } from '../../../po/user-home.po';
 import { CompleteProfilePage } from '../../../po/complete.profile.po';
- 
+import { testsForReviewApplicationDetails } from '../../helper-functions/apply/review-details-common';
+import { ReviewApplicationDetailsEditProfilePage } from '../../../po/apply.review-application-details-edit-profile';
+import { ReviewApplicationDetailsEditAnswerPage } from '../../../po/apply.review-application-details-edit-answer.po';
+
 describe('Apply-Single-Opportunity-Flow: verified user with no profile information', () => {
     let KPCprojectPage: ProjectSingleOppPage
     let answerOrganizerQuestionPage: AnswerOrganizerQuestionPage
@@ -23,6 +25,7 @@ describe('Apply-Single-Opportunity-Flow: verified user with no profile informati
 
     const fullyLoaded = require('../../../fixtures/fully-loaded.json')
     const waitTimeout = 5000
+    const answerOrganizerQuestion = 'I want to help'
 
     beforeAll(done => {
         KPCprojectPage = new ProjectSingleOppPage();
@@ -56,13 +59,14 @@ describe('Apply-Single-Opportunity-Flow: verified user with no profile informati
                 .then(() => KPCprojectPage.getJoinButton().click())
                 .then(() => confirmPage('/apply/KPC1/complete-profile', '', 'Complete-profile', 'first', waitTimeout))
                 .then(() => {
+                    let userProfile = fullyLoaded['profile']['USER_VERIFIED_PROFILE']
                     let preferedName = completeProfilePage.getPreferredNameInput()
                     browser.wait(ExpectedConditions.presenceOf(preferedName),
                         waitTimeout, 'Preferred name was not present')
-                    completeProfilePage.getPreferredNameInput().sendKeys('Crinela')
-                    completeProfilePage.getPhoneNumberInput().sendKeys('8053129100')
-                    completeProfilePage.getBirthdayInput().sendKeys('10251974')
-                    completeProfilePage.getLegalNameInput().sendKeys('Crinela-Ioana')
+                    completeProfilePage.getPreferredNameInput().sendKeys(userProfile['preferredName'])
+                    completeProfilePage.getPhoneNumberInput().sendKeys(userProfile['phoneNumber'])
+                    completeProfilePage.getBirthdayInput().sendKeys('01091995')
+                    completeProfilePage.getLegalNameInput().sendKeys(userProfile['legalName'])
                     let next = completeProfilePage.getNextButton()
                     browser.wait(ExpectedConditions.elementToBeClickable(next),
                         waitTimeout, 'Next button was not clickable')
@@ -75,7 +79,7 @@ describe('Apply-Single-Opportunity-Flow: verified user with no profile informati
                 .then(() => {
                     browser.wait(ExpectedConditions.presenceOf(answerOrganizerQuestionPage.getNextButton()),
                         waitTimeout, 'Next button was not present')
-                    answerOrganizerQuestionPage.getAnswer().sendKeys('42')
+                    answerOrganizerQuestionPage.getAnswer().sendKeys(answerOrganizerQuestion)
                     let next = answerOrganizerQuestionPage.getNextButton()
                     browser.wait(ExpectedConditions.elementToBeClickable(next),
                         waitTimeout, 'Next button was not clickable')
@@ -91,7 +95,11 @@ describe('Apply-Single-Opportunity-Flow: verified user with no profile informati
                     return nextButton.click()
                 })
                 .then(() => confirmPage('/apply/KPC1/application/', '/review-detail', 'Review-application-details', 'first', waitTimeout))
-                .then(() => {
+                .then(() => testsForReviewApplicationDetails(reviewApplicationDetailsPage,
+                    new ReviewApplicationDetailsEditProfilePage(), 'KPC1', pickTeamPage,
+                    fullyLoaded, answerOrganizerQuestion, answerTeamQuestionPage, 'KPC',
+                    new ReviewApplicationDetailsEditAnswerPage()))
+                 .then(() => {
                     let nextButton = reviewApplicationDetailsPage.getNextButton()
                     browser.wait(ExpectedConditions.elementToBeClickable(nextButton),
                         waitTimeout, 'Next button was not clickable on Review-application-details page')

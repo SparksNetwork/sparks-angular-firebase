@@ -4,16 +4,20 @@ import { AnswerOrganizerQuestionPage } from '../../../po/apply.answer-organizer-
 import { PickTeamPage } from '../../../po/apply.choose.team.po';
 import { AnswerTeamQuestionPage } from '../../../po/apply.answer-team-question.po';
 import { browser, ExpectedConditions } from 'protractor/built';
-import { setUsers, setData, signIn, signOut} from '../../../firebase';
+import { setUsers, setData, signIn, signOut } from '../../../firebase';
 import { USER_VERIFIED_NO_PROFILE } from '../../../fixtures/users';
-import { confirmPage } from '../../helper-functions/shared';
-import { joinATeam } from '../../helper-functions/choose-teams/choose-teams-functions';
+import { joinATeam,confirmPage } from '../../helper-functions/shared';
 import { ReviewApplicationDetailsPage } from '../../../po/apply.review-application-details.po';
 import { UserHomePage } from '../../../po/user-home.po';
 import { CompleteProfilePage } from '../../../po/complete.profile.po';
 import { OpportunityPage } from '../../../po/opp.partial-discount.po';
+import { testsForReviewApplicationDetails } from '../../helper-functions/apply/review-details-common';
+import { ReviewApplicationDetailsEditAnswerPage } from '../../../po/apply.review-application-details-edit-answer.po';
+import { ReviewApplicationDetailsEditProfilePage } from '../../../po/apply.review-application-details-edit-profile';
+import { testsReviewDetailsMultipleTeams } from '../../helper-functions/apply/review-details-multiple-teams';
 
-describe('Apply-Multiple-Opportunity-Flow: verified user with no profile information', () => {
+
+fdescribe('Apply-Multiple-Opportunity-Flow: verified user with no profile information', () => {
     let LCprojectPage: ProjectMultiOppPage
     let answerOrganizerQuestionPage: AnswerOrganizerQuestionPage
     let pickTeamPage: PickTeamPage
@@ -25,6 +29,7 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with no profile informa
 
     const fullyLoaded = require('../../../fixtures/fully-loaded.json')
     const waitTimeout = 5000
+    const answerOrganizerQuestion = 'I want to help'
 
     beforeAll(done => {
         LCprojectPage = new ProjectMultiOppPage();
@@ -66,13 +71,14 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with no profile informa
                 })
                 .then(() => confirmPage('/apply/LC1/complete-profile', '', 'Complete-profile', 'first', waitTimeout))
                 .then(() => {
+                    let userProfile = fullyLoaded['profile']['USER_VERIFIED_PROFILE']
                     let preferedName = completeProfilePage.getPreferredNameInput()
                     browser.wait(ExpectedConditions.presenceOf(preferedName),
                         waitTimeout, 'Preferred name was not present')
-                    completeProfilePage.getPreferredNameInput().sendKeys('Crinela')
-                    completeProfilePage.getPhoneNumberInput().sendKeys('8053129100')
-                    completeProfilePage.getBirthdayInput().sendKeys('10251974')
-                    completeProfilePage.getLegalNameInput().sendKeys('Crinela-Ioana')
+                    completeProfilePage.getPreferredNameInput().sendKeys(userProfile['preferredName'])
+                    completeProfilePage.getPhoneNumberInput().sendKeys(userProfile['phoneNumber'])
+                    completeProfilePage.getBirthdayInput().sendKeys('01091995')
+                    completeProfilePage.getLegalNameInput().sendKeys(userProfile['legalName'])
                     let next = completeProfilePage.getNextButton()
                     browser.wait(ExpectedConditions.elementToBeClickable(next),
                         waitTimeout, 'Next button was not clickable')
@@ -85,7 +91,7 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with no profile informa
                 .then(() => {
                     browser.wait(ExpectedConditions.presenceOf(answerOrganizerQuestionPage.getNextButton()),
                         waitTimeout, 'Next button was not present')
-                    answerOrganizerQuestionPage.getAnswer().sendKeys('42')
+                    answerOrganizerQuestionPage.getAnswer().sendKeys(answerOrganizerQuestion)
                     let next = answerOrganizerQuestionPage.getNextButton()
                     browser.wait(ExpectedConditions.elementToBeClickable(next),
                         waitTimeout, 'Next button was not clickable')
@@ -93,6 +99,7 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with no profile informa
                 })
                 .then(() =>
                     confirmPage('/apply/LC1/application/', '/teams', 'Pick-teams', 'first', waitTimeout, '/teams/'))
+
                 .then(() => joinATeam(pickTeamPage, waitTimeout, 'LC1', answerTeamQuestionPage))
                 .then(() => {
                     let nextButton = pickTeamPage.getNextButton()
@@ -101,6 +108,13 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with no profile informa
                     return nextButton.click()
                 })
                 .then(() => confirmPage('/apply/LC1/application/', '/review-detail', 'Review-application-details', 'first', waitTimeout))
+                .then(() => testsForReviewApplicationDetails(reviewApplicationDetailsPage,
+                    new ReviewApplicationDetailsEditProfilePage(), 'LC1', pickTeamPage,
+                    fullyLoaded, answerOrganizerQuestion, answerTeamQuestionPage, 'LC',
+                    new ReviewApplicationDetailsEditAnswerPage()))
+                .then(() => testsReviewDetailsMultipleTeams(pickTeamPage,
+                    reviewApplicationDetailsPage, answerTeamQuestionPage, 'LC1', fullyLoaded, 'LC'))
+
                 .then(() => {
                     let nextButton = reviewApplicationDetailsPage.getNextButton()
                     browser.wait(ExpectedConditions.elementToBeClickable(nextButton),
