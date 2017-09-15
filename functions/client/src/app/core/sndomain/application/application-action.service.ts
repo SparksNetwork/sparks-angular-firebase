@@ -1,10 +1,10 @@
 
-import { Injectable } from "@angular/core";
-import { ApplicationQueryService } from "./application-query.service";
-import { BaseActionService } from "../../../../../../lib/firebase-universal/client";
-import { Http } from "@angular/http";
-import { environment } from "../../../../environments/environment";
-import { ApplicationStatus } from "../../../../../../universal/domain/application";
+import { Injectable } from '@angular/core';
+import { ApplicationQueryService } from './application-query.service';
+import { BaseActionService } from '../../../../../../lib/firebase-universal/client';
+import { Http } from '@angular/http';
+import { environment } from '../../../../environments/environment';
+import { ApplicationStatus, Application } from '../../../../../../universal/domain/application';
 
 @Injectable()
 export class ApplicationActionService extends BaseActionService {
@@ -18,7 +18,7 @@ export class ApplicationActionService extends BaseActionService {
   public changeStatus(key: string, status: ApplicationStatus) {
     let _status = {};
     const timestamp = new Date().toISOString();
-    
+
     switch (status) {
       case ApplicationStatus.Pending:
         _status = {
@@ -45,6 +45,19 @@ export class ApplicationActionService extends BaseActionService {
     }
 
     return this.update(key, _status);
+  }
+
+  public createApplication(projectKey: string, profileKey: string, oppKey: string) {
+    const key = this.query.generateProjectProfileKey(projectKey, profileKey);
+
+    const application = new Application();
+    application.profileKey = profileKey
+    application.oppKey = oppKey;
+    application.status = ApplicationStatus.Incomplete;
+    application.projectKey = projectKey;
+    application.createdOn = new Date().toISOString();
+
+    return this.replace(key, application);
   }
 
 }

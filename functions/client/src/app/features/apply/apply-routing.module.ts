@@ -15,7 +15,6 @@ import { PageAnswerQuestionComponent } from './page-answer-question/page-answer-
 import { ResolveTeamByTeamKey } from './resolve-team-by-team-key/resolve-team-by-team-key.service';
 import { RequireProfileCompleteService, ResolveProfile } from '../../core/sndomain/profile'
 import { ResolveApplicationTeamByAppKey } from '../../core/sndomain/applicationTeam/resolve-application-team-by-app-key.service';
-import { ResolveApplicationByKey } from '../../core/sndomain/application/resolve-application-by-key.service';
 import { PageReviewDetailComponent } from './page-review-detail/page-review-detail.component';
 import { PageApplyConfirmationComponent } from './page-apply-confirmation/page-apply-confirmation.component';
 import { ResolveProjectByOpp } from '../../core/sndomain/project/resolve-project-by-opp.service';
@@ -26,6 +25,7 @@ import { PageMessageComponent } from '../../shared/snui/page-message/page-messag
 import { PagePaymentDetailsComponent } from './page-payment-details/page-payment-details.component';
 import { PagePaymentConfirmationComponent } from './page-payment-confirmation/page-payment-confirmation.component';
 import { ResolveApplicationShiftByAppKey } from '../../core/sndomain/applicationShift/resolve-application-shift-by-app-key.service';
+import { ResolveApplicationByKey, ResolveApplication } from '../../core/sndomain/application/index';
 
 const routes: Routes = [
     {
@@ -52,7 +52,10 @@ const routes: Routes = [
                 component: PageAnswerQuestionComponent,
                 canActivate: [
                     RequireProfileCompleteService,
-                ]
+                ],
+                resolve: {
+                    application: ResolveApplication
+                }
             },
             {
                 path: 'application/:applicationKey',

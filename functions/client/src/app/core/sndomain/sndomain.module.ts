@@ -51,6 +51,7 @@ import {
   ResolveApplicationByKey,
   ResolveApplicationByProfileKey,
   ResolveApplicationByProjectProfileKey,
+  ResolveApplication
 } from './application'
 
 import {
@@ -116,6 +117,7 @@ import {
     ApplicationTeamQueryService,
     ApplicationTeamActionService,
     ResolveApplicationTeamByAppKey,
+    ResolveApplication,
 
     ShiftQueryService,
     ShiftActionService,
