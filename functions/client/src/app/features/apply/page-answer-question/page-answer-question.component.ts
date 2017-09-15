@@ -13,7 +13,6 @@ export class PageAnswerQuestionComponent implements OnInit {
   public applicationKey: string;
   public opp: Opp;
   public answerForm: FormGroup;
-  private edit: boolean = false;
   public editFromReviewPage: boolean;
 
   constructor(
@@ -33,10 +32,8 @@ export class PageAnswerQuestionComponent implements OnInit {
     this.applicationKey = this.route.parent.snapshot.paramMap.get('applicationKey');
 
     this.route.snapshot.data['application'].subscribe(app => {
-      console.log(app)
       this.applicationKey = app.$key;
       this.answerForm.get('answer').setValue(app.oppAnswer);
-      this.edit = true;
     });
 
     this.route.parent.snapshot.data['opp'].subscribe(opp => {
