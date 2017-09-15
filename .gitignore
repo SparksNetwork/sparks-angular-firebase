@@ -1,3 +1,7 @@
+# environment files except for sample
+/env/*
+!/env/sample.*
+
 # e2e output
 e2e-report/
 

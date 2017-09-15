@@ -12,20 +12,17 @@ export class BaseHandler {
   ) {}
 
   public async post(req: Request, res: Response, next: NextFunction): Promise<Response> {
-    console.log('Create/Post Project', JSON.stringify(req.body, null, 2))
     const returned = await this.collection.ref.push(req.body).then(ref => ref.key)
     return res.status(200).send(JSON.stringify(returned))
   }
 
   public async put(req: Request, res: Response, next: NextFunction): Promise<Response> {
-    console.log('Replace/Put Project', JSON.stringify(req.body, null, 2))
     console.log('key', req.params['key'])
     const returned = await this.collection.ref.child(req.params['key']).set(req.body).then(() => ({}))
     return res.status(200).send(JSON.stringify(returned))
   }
 
   public async patch(req: Request, res: Response, next: NextFunction): Promise<Response> {
-    console.log('Update/Patch Project', JSON.stringify(req.body, null, 2))
     console.log('key', req.params['key'])
     const obj = req.body
     Object.keys(obj).forEach(k => (!obj[k] && obj[k] !== undefined) && delete obj[k])
@@ -51,7 +48,10 @@ export function routeHandler(handler: BaseHandler) {
 
   router.route(`**${handler.path}/:key`)
     .put(handler.put.bind(handler))
-    .patch(handler.patch.bind(handler))
+    // because firebase-functions http handler in server environment
+    // does not populate req.body with PATCH method
+    // .patch(handler.patch.bind(handler))
+    .post(handler.patch.bind(handler))
     .delete(handler.del.bind(handler))
 
   return router
