@@ -1,7 +1,7 @@
 import 'jasmine'
-import { ProjectMultiOppPage } from "../../../po/project.multi-opp.po";
-import { browser, ExpectedConditions } from "protractor/built";
-import { GetKeyFromUrl } from "../shared";
+import { ProjectMultiOppPage } from '../../../po/project.multi-opp.po';
+import { browser, ExpectedConditions } from 'protractor/built';
+import { GetKeyFromUrl } from '../shared';
 const waitTimeout = 5000
 
 function testOpportunities(page: ProjectMultiOppPage, fullyLoaded: any) {

@@ -1,6 +1,6 @@
 import 'jasmine'
-import { ProjectSingleOppPage } from "../../../po/project.single-opp.po";
-import { browser, ExpectedConditions } from "protractor/built";
+import { ProjectSingleOppPage } from '../../../po/project.single-opp.po';
+import { browser, ExpectedConditions } from 'protractor/built';
 const waitTimeout = 5000
 
 function testBenefit(page: ProjectSingleOppPage, fullyLoaded: any, benefitKey: string) {

@@ -2,7 +2,7 @@ import 'jasmine' // to clear lint errors
 import { browser, element, by, ExpectedConditions } from 'protractor'
 import { setData, setUsers, signOut, signIn } from '../../firebase'
 import { USER_VERIFIED_NO_PROFILE, USER_VERIFIED_PROFILE } from '../../fixtures/users'
-import { confirmPage } from "../helper-functions/shared";
+import { confirmPage } from '../helper-functions/shared';
 const waitTimeout = 20000
 
 describe('Apply: user must auth before starting application', () => {

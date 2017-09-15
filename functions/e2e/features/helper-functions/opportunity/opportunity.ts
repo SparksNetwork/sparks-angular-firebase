@@ -1,8 +1,8 @@
 import 'jasmine'
-import { OpportunityPage } from "../../../po/opp.partial-discount.po";
-import { browser, ExpectedConditions } from "protractor/built";
+import { OpportunityPage } from '../../../po/opp.partial-discount.po';
+import { browser, ExpectedConditions } from 'protractor/built';
 const waitTimeout = 5000;
-import { confirmPage } from "../shared";
+import { confirmPage } from '../shared';
 
 function testTitle(page: OpportunityPage, opp: any) {
     let titleElement = page.getTitleElement();

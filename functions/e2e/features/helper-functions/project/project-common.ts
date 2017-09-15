@@ -1,9 +1,9 @@
 import 'jasmine'
-import { browser, ExpectedConditions } from "protractor/built";
-import { ProjectPage } from "../../../po/project.po";
+import { browser, ExpectedConditions } from 'protractor/built';
+import { ProjectPage } from '../../../po/project.po';
 import { DatePipe } from '@angular/common'
-import { getFormatedTimeInterval } from "./time-interval-functions";
-import { getLocationForDirections } from "./location-functions";
+import { getFormatedTimeInterval } from './time-interval-functions';
+import { getLocationForDirections } from './location-functions';
 
 const waitTimeout = 5000
 
