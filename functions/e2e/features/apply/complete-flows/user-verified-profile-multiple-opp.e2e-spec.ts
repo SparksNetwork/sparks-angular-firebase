@@ -22,7 +22,7 @@ import { testsReviewDetailsMultipleTeams } from '../../helper-functions/apply/re
 import { ReviewApplicationDetailsEditAnswerPage } from '../../../po/apply.review-application-details-edit-answer.po';
 import { ReviewApplicationDetailsEditProfilePage } from '../../../po/apply.review-application-details-edit-profile';
 
-describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile information', () => {
+fdescribe('Apply-Multiple-Opportunity-Flow: verified user with complete profile information', () => {
     let LCprojectPage: ProjectMultiOppPage
     let answerOrganizerQuestionPage: AnswerOrganizerQuestionPage
     let pickTeamPage: PickTeamPage
@@ -82,8 +82,6 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile i
                 })
                 .then(() =>
                     confirmPage('/apply/LC1/answer-question', '', 'Answer-question', 'first', waitTimeout))
-                .then(() =>
-                    confirmPage('/apply/LC1/application', '/answer-question', 'Answer-organizer-question', 'first', waitTimeout))
                 .then(() => testsForOnAnswerOrganizerQuestionPage(answerOrganizerQuestionPage, fullyLoaded))
 
                 .then(() => {

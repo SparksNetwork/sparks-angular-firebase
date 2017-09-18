@@ -64,8 +64,6 @@ describe('Apply-Single-Opportunity-Flow: verified user with complete profile inf
                 .then(() => KPCprojectPage.getJoinButton().click())
                 .then(() =>
                     confirmPage('/apply/KPC1/answer-question', '', 'Answer-question', 'first', waitTimeout))
-                .then(() =>
-                    confirmPage('/apply/KPC1/application', '/answer-question', 'Answer-organizer-question', 'first', waitTimeout))
                 .then(() => testsForOnAnswerOrganizerQuestionPage(answerOrganizerQuestionPage, fullyLoaded))
                 .then(() => {
                     browser.wait(ExpectedConditions.presenceOf(answerOrganizerQuestionPage.getNextButton()),
