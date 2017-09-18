@@ -50,7 +50,7 @@ import {
   ApplicationActionService,
   ResolveApplicationByKey,
   ResolveApplicationByProfileKey,
-  ResolveApplicationByProjectProfileKey,
+  ResolveApplicationByProjectKey,
   ResolveApplication
 } from './application'
 
@@ -113,7 +113,7 @@ import {
     ApplicationActionService,
     ResolveApplicationByKey,
     ResolveApplicationByProfileKey,
-    ResolveApplicationByProjectProfileKey,
+    ResolveApplicationByProjectKey,
     ApplicationTeamQueryService,
     ApplicationTeamActionService,
     ResolveApplicationTeamByAppKey,

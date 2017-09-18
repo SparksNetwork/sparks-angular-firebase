@@ -44,7 +44,7 @@ import { ResolveBenefitByOppKey } from '../../core/sndomain/benefit/resolve-bene
 import { ResolveContribByOppKey } from '../../core/sndomain/contrib/resolve-contrib-by-opp-key.service';
 import { ProjectOrganizerComponent } from './project-organizer/project-organizer.component';
 import { ActionbarOppJoinComponent } from './actionbar-opp-join/actionbar-opp-join.component'
-import { ResolveApplicationByProjectProfileKey } from '../../core/sndomain/application/resolve-applications-by-project-profile-key.service';
+import { ResolveApplicationByProjectKey } from '../../core/sndomain/application/resolve-application-by-project-key.service';
 import { ProjectOppCardComponent } from './project-opp-card/project-opp-card.component';
 import { PageOppApplicationCancelComponent } from './page-opp-application-cancel/page-opp-application-cancel.component';
 import { ProjectOppBenefitsComponent } from './project-opp-benefits/project-opp-benefits.component';
@@ -73,7 +73,7 @@ const routes: Routes = [
             path: '',
             component: PageProjectHomeAllOppsComponent,
             resolve: {
-              application: ResolveApplicationByProjectProfileKey
+              application: ResolveApplicationByProjectKey
             },
             canActivate: [
               PageProjectHomeAllOppsGuard,
@@ -87,7 +87,7 @@ const routes: Routes = [
               teams: ResolveTeamByFirstOpp,
               contribs: ResolveContribByFirstOpp,
               benefits: ResolveBenefitByFirstOpp,
-              application: ResolveApplicationByProjectProfileKey
+              application: ResolveApplicationByProjectKey
             }
           }
         ],
@@ -99,7 +99,7 @@ const routes: Routes = [
           teams: ResolveTeamByOppKey,
           benefits: ResolveBenefitByOppKey,
           contribs: ResolveContribByOppKey,
-          application: ResolveApplicationByProjectProfileKey
+          application: ResolveApplicationByProjectKey
         },
         children: [
           {
