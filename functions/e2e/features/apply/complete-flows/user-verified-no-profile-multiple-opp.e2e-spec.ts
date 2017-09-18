@@ -6,15 +6,11 @@ import { AnswerTeamQuestionPage } from '../../../po/apply.answer-team-question.p
 import { browser, ExpectedConditions } from 'protractor/built';
 import { setUsers, setData, signIn, signOut } from '../../../firebase';
 import { USER_VERIFIED_NO_PROFILE } from '../../../fixtures/users';
-import { joinATeam,confirmPage } from '../../helper-functions/shared';
+import { joinATeam, confirmPage } from '../../helper-functions/shared';
 import { ReviewApplicationDetailsPage } from '../../../po/apply.review-application-details.po';
 import { UserHomePage } from '../../../po/user-home.po';
 import { CompleteProfilePage } from '../../../po/complete.profile.po';
 import { OpportunityPage } from '../../../po/opp.partial-discount.po';
-import { testsForReviewApplicationDetails } from '../../helper-functions/apply/review-details-common';
-import { ReviewApplicationDetailsEditAnswerPage } from '../../../po/apply.review-application-details-edit-answer.po';
-import { ReviewApplicationDetailsEditProfilePage } from '../../../po/apply.review-application-details-edit-profile';
-import { testsReviewDetailsMultipleTeams } from '../../helper-functions/apply/review-details-multiple-teams';
 
 
 describe('Apply-Multiple-Opportunity-Flow: verified user with no profile information', () => {
@@ -75,10 +71,10 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with no profile informa
                     let preferedName = completeProfilePage.getPreferredNameInput()
                     browser.wait(ExpectedConditions.presenceOf(preferedName),
                         waitTimeout, 'Preferred name was not present')
-                    completeProfilePage.getPreferredNameInput().sendKeys(userProfile['preferredName'])
-                    completeProfilePage.getPhoneNumberInput().sendKeys(userProfile['phoneNumber'])
+                    completeProfilePage.getPreferredNameInput().sendKeys('Crinela')
+                    completeProfilePage.getPhoneNumberInput().sendKeys('8053129100')
                     completeProfilePage.getBirthdayInput().sendKeys('01091995')
-                    completeProfilePage.getLegalNameInput().sendKeys(userProfile['legalName'])
+                    completeProfilePage.getLegalNameInput().sendKeys('Ioana-Crinela')
                     let next = completeProfilePage.getNextButton()
                     browser.wait(ExpectedConditions.elementToBeClickable(next),
                         waitTimeout, 'Next button was not clickable')
@@ -108,13 +104,6 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with no profile informa
                     return nextButton.click()
                 })
                 .then(() => confirmPage('/apply/LC1/application/', '/review-detail', 'Review-application-details', 'first', waitTimeout))
-                .then(() => testsForReviewApplicationDetails(reviewApplicationDetailsPage,
-                    new ReviewApplicationDetailsEditProfilePage(), 'LC1', pickTeamPage,
-                    fullyLoaded, answerOrganizerQuestion, answerTeamQuestionPage, 'LC',
-                    new ReviewApplicationDetailsEditAnswerPage()))
-                .then(() => testsReviewDetailsMultipleTeams(pickTeamPage,
-                    reviewApplicationDetailsPage, answerTeamQuestionPage, 'LC1', fullyLoaded, 'LC'))
-
                 .then(() => {
                     let nextButton = reviewApplicationDetailsPage.getNextButton()
                     browser.wait(ExpectedConditions.elementToBeClickable(nextButton),
