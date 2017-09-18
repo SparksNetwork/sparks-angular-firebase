@@ -13,14 +13,16 @@ import { Router, ActivatedRoute } from "@angular/router";
 export class ActionbarOppJoinComponent implements OnChanges {
   @Input() opp: Opp;
   @Input() public application: Application;
-  //public application: Application;
-  showCancelButton: boolean = false;
+  public showCancelButton: boolean = false;
+  public oppKey: string;
 
   constructor(
     public applicationAction: ApplicationActionService,
     public router: Router,
     public route: ActivatedRoute
-  ) { }
+  ) {
+    this.oppKey = this.route.parent.snapshot.params['oppKey'];
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
       if (this.application) {
@@ -34,15 +36,13 @@ export class ActionbarOppJoinComponent implements OnChanges {
             break;
         }
       }
-   // }
   }
 
   cancel(application: Application) {
-    const oppKey = this.route.parent.snapshot.params['oppKey'];
-    if (oppKey) {
+    if (this.oppKey) {
       this.router.navigate([application.$key, 'cancel'], { relativeTo: this.route })
     } else {
-      this.router.navigate(['../','opp', application.oppKey,'join', application.$key, 'cancel'], { relativeTo: this.route })
+      this.router.navigate(['../', 'opp', application.oppKey, 'join', application.$key, 'cancel'], { relativeTo: this.route })
     }
   }
 
