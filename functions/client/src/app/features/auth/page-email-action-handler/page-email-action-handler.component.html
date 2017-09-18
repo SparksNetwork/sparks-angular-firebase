@@ -13,8 +13,8 @@
 
 <auth-alert-error></auth-alert-error>
 
-<div class='segment' *ngIf='verificationEmailExpired'>
-  <p class='text-danger'>Sign in below to recive a new verification email.</p>
+<div class="segment" *ngIf="verificationEmailExpired">
+  <p class="text-danger">Sign in below to recive a new verification email.</p>
   <auth-form-email-password (onSubmit)="signInAndResendVerificationEmail($event)"></auth-form-email-password>
   <div class="row">
     <div class="col-xs-6">
@@ -23,8 +23,8 @@
   </div>
 </div>
 
-<div class='segment' *ngIf="resetPasswordEmail">
-  <p>Resetting password for: {{resetPasswordEmail}}.</p>
+<div class="segment no-padding-tp show-flow" *ngIf="resetPasswordEmail">
+  <p class="hero-text">Resetting password for: {{resetPasswordEmail}}.</p>
   <auth-form-reset-password (onSubmit)="confirmPasswordReset($event)"></auth-form-reset-password>
 </div>
 <snui-action-bar>
