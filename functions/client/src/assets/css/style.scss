@@ -92,6 +92,11 @@ body {
         color: $base-color;
     }
 }
+
+.font-light{
+    font-weight: 300;
+}
+
 p{
     &.hero-text{
         margin-bottom: 60px;
