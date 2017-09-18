@@ -24,8 +24,7 @@ function testPreviuousFunctionality(params) {
                 waitTimeout, 'On Answer-organizer-question page the text of the question was not present')
             question.getText().then((str) => {
                 browser.getCurrentUrl().then((url) => {
-                    let opportunityKey: string = GetKeyFromUrl(url, 4)
-                    expect(str).toMatch(params.fullyLoaded['opp'][opportunityKey]['question'],
+                    expect(str).toMatch(params.fullyLoaded['opp'][params.oppKey]['question'],
                         'On Answer-organizer-question page the text of the question was not correct')
                     let nextButton = params.answerOrganizerQuestionPage.getNextButton().click()
                         .then(() => confirmPage('/apply/' + params.oppKey + '/application/', '/teams', 'Pick-teams', 'second', waitTimeout, '/teams/'))
