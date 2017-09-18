@@ -32,8 +32,10 @@ export class PageAnswerQuestionComponent implements OnInit {
     this.applicationKey = this.route.parent.snapshot.paramMap.get('applicationKey');
 
     this.route.snapshot.data['application'].subscribe(app => {
-      this.applicationKey = app.$key;
-      this.answerForm.get('answer').setValue(app.oppAnswer);
+      if (app) {
+        this.applicationKey = app.$key;
+        this.answerForm.get('answer').setValue(app.oppAnswer);
+      }
     });
 
     this.route.parent.snapshot.data['opp'].subscribe(opp => {
