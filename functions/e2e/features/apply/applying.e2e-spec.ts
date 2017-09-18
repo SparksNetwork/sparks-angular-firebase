@@ -37,8 +37,7 @@ describe('Apply: user must auth before starting application', () => {
       element(by.css('#preferredName')).sendKeys('Stevo')
       element(by.css('#phoneNumber')).sendKeys('8053129100')
       element(by.css('#birthday')).sendKeys('10251974')
-      //click somewhere outside the form, so the form will be validated faster
-      element(by.className('question-bar')).click()
+ 
       browser.wait(ExpectedConditions.elementToBeClickable(element(by.css('#next'))),
         waitTimeout, 'Next button was not clickable after completing the profile information')
       element(by.css('#next')).click()
