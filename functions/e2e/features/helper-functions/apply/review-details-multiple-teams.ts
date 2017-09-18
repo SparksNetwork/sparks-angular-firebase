@@ -10,38 +10,31 @@ import { testSelectedTeamsInformation } from './review-details-common';
 
 const waitTimeout = 7000
 
-function testEditSelectedTeamsInformation(pickTeamPage: PickTeamPage,
-    reviewApplicationDetailsPage: ReviewApplicationDetailsPage,
-    answerTeamQuestionPage: AnswerTeamQuestionPage, oppKey: string,
-    fullyloaded: any, projectKey: string) {
+function testEditSelectedTeamsInformation(params) {
 
-    return confirmPage('/apply/' + oppKey + '/application/', '/review-detail', 'Review-application-details', 'first', waitTimeout)
+    return confirmPage('/apply/' + params.oppKey + '/application/', '/review-detail', 'Review-application-details', 'first', waitTimeout)
         .then(() => {
-            let selectedTeams = reviewApplicationDetailsPage.getSelectedTeamsEditLink()
+            let selectedTeams = params.reviewApplicationDetailsPage.getSelectedTeamsEditLink()
             browser.wait(ExpectedConditions.presenceOf(selectedTeams),
                 waitTimeout, 'On Review-application-details page edit teams was not present')
             return selectedTeams.click()
         }).then(() =>
-            confirmPage('/apply/' + oppKey + '/application/', '/teams', 'Pick-teams', 'first', waitTimeout, '/teams/'))
+            confirmPage('/apply/' + params.oppKey + '/application/', '/teams', 'Pick-teams', 'first', waitTimeout, '/teams/'))
         .then(() =>
-            joinATeam(pickTeamPage, waitTimeout, oppKey, answerTeamQuestionPage))
+            joinATeam(params.pickTeamPage, waitTimeout, params.oppKey, params.answerTeamQuestionPage))
         .then(() => {
-            let next = pickTeamPage.getNextButton()
+            let next = params.pickTeamPage.getNextButton()
             browser.wait(ExpectedConditions.elementToBeClickable(next),
                 waitTimeout, 'Next button from Pick-teams page was not clickable')
             return next.click()
         })
         .then(() =>
-            testSelectedTeamsInformation(oppKey, fullyloaded, reviewApplicationDetailsPage, projectKey)
+            testSelectedTeamsInformation(params)
         )
 }
 
-export function testsReviewDetailsMultipleTeams(pickTeamPage: PickTeamPage,
-    reviewApplicationDetailsPage: ReviewApplicationDetailsPage,
-    answerTeamQuestionPage: AnswerTeamQuestionPage, oppKey: string,
-    fullyloaded: any, projectKey: string) {
+export function testsReviewDetailsMultipleTeams(params) {
 
-    return testEditSelectedTeamsInformation(pickTeamPage, reviewApplicationDetailsPage,
-        answerTeamQuestionPage, oppKey, fullyloaded, projectKey)
+    return testEditSelectedTeamsInformation(params)
 }
 

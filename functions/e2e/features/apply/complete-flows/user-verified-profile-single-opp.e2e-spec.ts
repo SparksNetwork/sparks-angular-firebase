@@ -6,7 +6,7 @@ import { AnswerTeamQuestionPage } from '../../../po/apply.answer-team-question.p
 import { browser, ExpectedConditions } from 'protractor/built';
 import { setUsers, setData, signIn, signOut } from '../../../firebase';
 import { USER_VERIFIED_PROFILE } from '../../../fixtures/users';
-import { confirmPage,joinATeam } from '../../helper-functions/shared';
+import { confirmPage, joinATeam } from '../../helper-functions/shared';
 import { ReviewApplicationDetailsPage } from '../../../po/apply.review-application-details.po';
 import { UserHomePage } from '../../../po/user-home.po';
 import { testCommonProjectInformation } from '../../helper-functions/project/project-common';
@@ -14,6 +14,9 @@ import { testProjectSingleOpp } from '../../helper-functions/project/project-sin
 import { testsForOnAnswerOrganizerQuestionPage } from '../../helper-functions/apply/organizer-question';
 import { testsForChooseTeamsPage } from '../../helper-functions/apply/choose-teams-common';
 import { testsForChooseSingleTeamsPage } from '../../helper-functions/apply/choose-single-team';
+import { testsForReviewApplicationDetails } from '../../helper-functions/apply/review-details-common';
+import { ReviewApplicationDetailsEditAnswerPage } from '../../../po/apply.review-application-details-edit-answer.po';
+import { ReviewApplicationDetailsEditProfilePage } from '../../../po/apply.review-application-details-edit-profile';
 
 describe('Apply-Single-Opportunity-Flow: verified user with complete profile information', () => {
     let KPCprojectPage: ProjectSingleOppPage
@@ -28,6 +31,7 @@ describe('Apply-Single-Opportunity-Flow: verified user with complete profile inf
     const answerOrganizerQuestion = 'I want to help'
 
     beforeAll(done => {
+        jasmine.DEFAULT_TIMEOUT_INTERVAL = 50000;
         KPCprojectPage = new ProjectSingleOppPage();
         answerOrganizerQuestionPage = new AnswerOrganizerQuestionPage();
         pickTeamPage = new PickTeamPage()
@@ -74,10 +78,19 @@ describe('Apply-Single-Opportunity-Flow: verified user with complete profile inf
                 })
                 .then(() =>
                     confirmPage('/apply/KPC1/application/', '/teams', 'Pick-teams', 'first', waitTimeout, '/teams/'))
-                .then(() => testsForChooseTeamsPage(answerOrganizerQuestionPage, pickTeamPage,
-                    fullyLoaded, 'KPC1', answerTeamQuestionPage, 'KPC1', answerOrganizerQuestion))
-
-                .then(() => testsForChooseSingleTeamsPage(pickTeamPage, fullyLoaded, 'KPC1', answerTeamQuestionPage))
+                .then(() => {
+                    let params = {
+                        answerOrganizerQuestionPage: answerOrganizerQuestionPage,
+                        pickTeamPage: pickTeamPage,
+                        fullyLoaded: fullyLoaded,
+                        oppKey: 'KPC1',
+                        answerTeamQuestionPage: answerTeamQuestionPage,
+                        teamKey: 'KPC1',
+                        answerOrganizerQuestion: answerOrganizerQuestion
+                    }
+                    testsForChooseTeamsPage(params)
+                    return testsForChooseSingleTeamsPage(params)
+                })
                 .then(() => joinATeam(pickTeamPage, waitTimeout, 'KPC1', answerTeamQuestionPage))
                 .then(() => {
                     let nextButton = pickTeamPage.getNextButton()
@@ -86,6 +99,20 @@ describe('Apply-Single-Opportunity-Flow: verified user with complete profile inf
                     return nextButton.click()
                 })
                 .then(() => confirmPage('/apply/KPC1/application/', '/review-detail', 'Review-application-details', 'first', waitTimeout))
+                .then(() => {
+                    let params = {
+                        reviewApplicationDetailsPage: reviewApplicationDetailsPage,
+                        reviewApplicationDetailsEditProfilePage: new ReviewApplicationDetailsEditProfilePage(),
+                        oppKey: 'KPC1',
+                        pickTeamPage: pickTeamPage,
+                        fullyLoaded: fullyLoaded,
+                        organizerQuestionAnswer: answerOrganizerQuestion,
+                        answerTeamQuestionPage: answerTeamQuestionPage,
+                        projectKey: 'KPC',
+                        reviewApplicationDetailsEditAnswerPage: new ReviewApplicationDetailsEditAnswerPage()
+                    }
+                    return testsForReviewApplicationDetails(params)
+                })
                 .then(() => {
                     let nextButton = reviewApplicationDetailsPage.getNextButton()
                     browser.wait(ExpectedConditions.elementToBeClickable(nextButton),
