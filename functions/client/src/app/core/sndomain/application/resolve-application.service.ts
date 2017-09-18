@@ -37,15 +37,17 @@ export class ResolveApplication implements Resolve<any> {
                             }
 
                             // application doesn't exist, create it now
-                            return this.action.createApplication(opp.projectKey, profile.$key, opp.$key).mergeMap(res => {
-                                if (res.ok) {
-                                    console.log('createApplication success!')
-                                    return obj(this.query.one(projectProfileKey)).take(1);
-                                } else {
-                                    console.log('createApplication failed')
-                                    return Observable.of(null);
-                                }
-                            })
+                            return this.action.createApplication(opp.projectKey, profile.$key, opp.$key)
+                                .delay(500)
+                                .mergeMap(res => {
+                                    if (res.ok) {
+                                        console.log('createApplication success!')
+                                        return obj(this.query.one(projectProfileKey)).take(1);
+                                    } else {
+                                        console.log('createApplication failed')
+                                        return Observable.of(null);
+                                    }
+                                })
                         })
                         .mergeMap(this.sorry.intercept(applicationTransform));
                 });
