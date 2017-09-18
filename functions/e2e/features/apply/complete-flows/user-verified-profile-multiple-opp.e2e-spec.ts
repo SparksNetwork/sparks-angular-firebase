@@ -22,7 +22,7 @@ import { testsReviewDetailsMultipleTeams } from '../../helper-functions/apply/re
 import { ReviewApplicationDetailsEditAnswerPage } from '../../../po/apply.review-application-details-edit-answer.po';
 import { ReviewApplicationDetailsEditProfilePage } from '../../../po/apply.review-application-details-edit-profile';
 
-fdescribe('Apply-Multiple-Opportunity-Flow: verified user with complete profile information', () => {
+describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile information', () => {
     let LCprojectPage: ProjectMultiOppPage
     let answerOrganizerQuestionPage: AnswerOrganizerQuestionPage
     let pickTeamPage: PickTeamPage
