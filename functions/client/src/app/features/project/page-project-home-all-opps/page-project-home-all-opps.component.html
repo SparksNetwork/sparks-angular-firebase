@@ -2,7 +2,7 @@
   <div class="row row-small-pad row-eq-height">
     <ng-container *ngFor="let opp of opps | async; let i=index">
       <div class="col-xs-6">       
-          <project-opp-card [opp]="opp" [applicationStatus]='getOppStatus(opp, (applications | async))'></project-opp-card>
+          <project-opp-card [opp]="opp" [applicationStatus]='getOppStatus(opp, (application | async))'></project-opp-card>
       </div>
       <div class="clearfix" *ngIf="i%2==1"></div> 
     </ng-container>

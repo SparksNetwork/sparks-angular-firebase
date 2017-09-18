@@ -1,14 +1,14 @@
 import { Component, Input } from '@angular/core'
-import { FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database'
+import { FirebaseObjectObservable } from 'angularfire2/database'
 import { ActivatedRoute } from '@angular/router'
-import { Observable } from 'rxjs'
+import { Observable } from 'rxjs/Observable'
 
-import { Project } from "../../../../../../universal/domain/project";
-import { Opp } from "../../../../../../universal/domain/opp";
-import { Benefit } from "../../../../../../universal/domain/benefit";
-import { Contrib } from "../../../../../../universal/domain/contrib";
-import { Team } from "../../../../../../universal/domain/team";
-import { Application } from "../../../../../../universal/domain/application";
+import { Project } from '../../../../../../universal/domain/project';
+import { Opp } from '../../../../../../universal/domain/opp';
+import { Benefit } from '../../../../../../universal/domain/benefit';
+import { Contrib } from '../../../../../../universal/domain/contrib';
+import { Team } from '../../../../../../universal/domain/team';
+import { Application } from '../../../../../../universal/domain/application';
 
 @Component({
   selector: 'project-page-project-home-single-opp',
@@ -21,7 +21,7 @@ export class PageProjectHomeSingleOppComponent {
   public contribs: Observable<Contrib[]>
   public benefits: Observable<Benefit[]>
   public teams: Observable<Team[]>
-  public applications: FirebaseListObservable<Application[]>;
+  public application: FirebaseObjectObservable<Application[]>;
 
   constructor(
     public route: ActivatedRoute,
@@ -32,7 +32,9 @@ export class PageProjectHomeSingleOppComponent {
       this.contribs = data['contribs']
       this.benefits = data['benefits']
       this.teams = data['teams']
-      this.applications = data['application']
+      this.application = data['application']
+
+      this.application.subscribe(console.log)
     })
   }
 
