@@ -81,6 +81,9 @@ body {
     a{
         color: #FFF;
     }
+    p{
+        font-weight: 300;
+    }
 }
 
 .pg-default {
@@ -88,6 +91,15 @@ body {
     a {
         color: $base-color;
     }
+}
+p{
+    &.hero-text{
+        margin-bottom: 60px;
+        margin-top: -30px;
+    }
+}
+.hero-text-container{
+    margin-top: -30px;
 }
 
 .clr {
@@ -244,6 +256,7 @@ label {
     letter-spacing: 0.64px;
     line-height: 20px;
     text-transform: capitalize;
+    margin-bottom: 25px;
     span {
         color: #FFF;
         display: inline-block;
@@ -355,8 +368,14 @@ label {
     &.no-padding-bt {
         padding-bottom: 0;
     }
+    &.no-padding-tp {
+        padding-top: 0;
+    }
     &.no-brd {
         border: none;
+    }
+    &.show-flow {
+        overflow: visible;
     }
     &:before,
     &:after {
@@ -606,14 +625,6 @@ label {
 .form-control:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
 .form-control:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
 .form-control:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
-
-.login-with-username {
-    padding-top: 0;
-}
-
-.login-register {
-    padding-top: 25px;
-}
 
 .form-control {
     @include border-radius-targeted( 0, 7.5px, 7.5px, 0);

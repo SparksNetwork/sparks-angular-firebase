@@ -6,12 +6,21 @@ import { AnswerTeamQuestionPage } from '../../../po/apply.answer-team-question.p
 import { browser, ExpectedConditions } from 'protractor/built';
 import { setUsers, setData, signIn, signOut } from '../../../firebase';
 import { USER_VERIFIED_PROFILE } from '../../../fixtures/users';
-import { confirmPage } from '../../helper-functions/navigation/navigation-functions';
-import { joinATeam } from '../../helper-functions/choose-teams/choose-teams-functions';
+import { confirmPage, joinATeam } from '../../helper-functions/shared';
 import { ReviewApplicationDetailsPage } from '../../../po/apply.review-application-details.po';
 import { UserHomePage } from '../../../po/user-home.po';
 import { CompleteProfilePage } from '../../../po/complete.profile.po';
-import { OpportunityPartialDiscountPage } from '../../../po/opp.partial-discount.po';
+import { OpportunityPage } from '../../../po/opp.partial-discount.po';
+import { testCommonProjectInformation } from '../../helper-functions/project/project-common';
+import { testProjectMultipleOpp } from '../../helper-functions/project/project-multiple-opp';
+import { testsForOpportunityPage } from '../../helper-functions/opportunity/opportunity';
+import { testsForOnAnswerOrganizerQuestionPage } from '../../helper-functions/apply/organizer-question';
+import { testsForChooseTeamsPage } from '../../helper-functions/apply/choose-teams-common';
+import { testsForChooseMultipleTeamsPage } from '../../helper-functions/apply/choose-multiple-teams';
+import { testsForReviewApplicationDetails } from '../../helper-functions/apply/review-details-common';
+import { testsReviewDetailsMultipleTeams } from '../../helper-functions/apply/review-details-multiple-teams';
+import { ReviewApplicationDetailsEditAnswerPage } from '../../../po/apply.review-application-details-edit-answer.po';
+import { ReviewApplicationDetailsEditProfilePage } from '../../../po/apply.review-application-details-edit-profile';
 
 describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile information', () => {
     let LCprojectPage: ProjectMultiOppPage
@@ -21,12 +30,14 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile i
     let reviewApplicationDetailsPage: ReviewApplicationDetailsPage
     let homePage: UserHomePage
     let completeProfilePage: CompleteProfilePage
-    let oppLCPage: OpportunityPartialDiscountPage
+    let oppLCPage: OpportunityPage
 
     const fullyLoaded = require('../../../fixtures/fully-loaded.json')
     const waitTimeout = 5000
+    const answerOrganizerQuestion = 'I want to help'
 
     beforeAll(done => {
+        jasmine.DEFAULT_TIMEOUT_INTERVAL = 50000;
         LCprojectPage = new ProjectMultiOppPage();
         answerOrganizerQuestionPage = new AnswerOrganizerQuestionPage();
         pickTeamPage = new PickTeamPage()
@@ -34,7 +45,9 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile i
         reviewApplicationDetailsPage = new ReviewApplicationDetailsPage()
         homePage = new UserHomePage()
         completeProfilePage = new CompleteProfilePage()
-        oppLCPage = new OpportunityPartialDiscountPage()
+        oppLCPage = new OpportunityPage()
+        const answerOrganizerQuestion = 'I want to help'
+
         browser.waitForAngularEnabled(false)
         setUsers()
             .then(() => setData('/', fullyLoaded))
@@ -53,11 +66,14 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile i
             browser.wait(ExpectedConditions.presenceOf(LCProjectLink),
                 waitTimeout, 'Link to LC project was not present')
             homePage.getProjectTitle(LCProjectLink).click()
+                .then(() => testCommonProjectInformation(LCprojectPage, fullyLoaded['project']['LC']))
+                .then(() => testProjectMultipleOpp(LCprojectPage, fullyLoaded))
                 .then(() => {
                     browser.wait(ExpectedConditions.presenceOf(LCprojectPage.getFirstOportunityTitleElement()),
                         waitTimeout, 'Link to the first opportunity of LC was not present')
                     return LCprojectPage.getFirstOportunityTitleElement().click()
                 })
+                .then(() => testsForOpportunityPage(oppLCPage, fullyLoaded, fullyLoaded['opp']['LC1']))
                 .then(() => {
                     let join = oppLCPage.getJoinButton()
                     browser.wait(ExpectedConditions.elementToBeClickable(join),
@@ -68,10 +84,12 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile i
                     confirmPage('/apply/LC1/answer-question', '', 'Answer-question', 'first', waitTimeout))
                 .then(() =>
                     confirmPage('/apply/LC1/application', '/answer-question', 'Answer-organizer-question', 'first', waitTimeout))
+                .then(() => testsForOnAnswerOrganizerQuestionPage(answerOrganizerQuestionPage, fullyLoaded))
+
                 .then(() => {
                     browser.wait(ExpectedConditions.presenceOf(answerOrganizerQuestionPage.getNextButton()),
                         waitTimeout, 'Next button was not present')
-                    answerOrganizerQuestionPage.getAnswer().sendKeys('42')
+                    answerOrganizerQuestionPage.getAnswer().sendKeys(answerOrganizerQuestion)
                     let next = answerOrganizerQuestionPage.getNextButton()
                     browser.wait(ExpectedConditions.elementToBeClickable(next),
                         waitTimeout, 'Next button was not clickable')
@@ -79,6 +97,19 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile i
                 })
                 .then(() =>
                     confirmPage('/apply/LC1/application/', '/teams', 'Pick-teams', 'first', waitTimeout, '/teams/'))
+                .then(() => {
+                    let params = {
+                        answerOrganizerQuestionPage: answerOrganizerQuestionPage,
+                        pickTeamPage: pickTeamPage,
+                        fullyLoaded: fullyLoaded,
+                        oppKey: 'LC1',
+                        answerTeamQuestionPage: answerTeamQuestionPage,
+                        teamKey: 'LC1',
+                        answerOrganizerQuestion: 'I want to help'
+                    }
+                    testsForChooseTeamsPage(params)
+                    return testsForChooseMultipleTeamsPage(params)
+                })
                 .then(() => joinATeam(pickTeamPage, waitTimeout, 'LC1', answerTeamQuestionPage))
                 .then(() => {
                     let nextButton = pickTeamPage.getNextButton()
@@ -87,6 +118,22 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile i
                     return nextButton.click()
                 })
                 .then(() => confirmPage('/apply/LC1/application/', '/review-detail', 'Review-application-details', 'first', waitTimeout))
+                .then(() => {
+                    let params = {
+                        reviewApplicationDetailsPage: reviewApplicationDetailsPage,
+                        reviewApplicationDetailsEditProfilePage: new ReviewApplicationDetailsEditProfilePage(),
+                        oppKey: 'LC1',
+                        pickTeamPage: pickTeamPage,
+                        fullyLoaded: fullyLoaded,
+                        organizerQuestionAnswer: answerOrganizerQuestion,
+                        answerTeamQuestionPage: answerTeamQuestionPage,
+                        projectKey: 'LC',
+                        reviewApplicationDetailsEditAnswerPage: new ReviewApplicationDetailsEditAnswerPage()
+                    }
+                    testsForReviewApplicationDetails(params)
+                    return testsReviewDetailsMultipleTeams(params)
+                })
+
                 .then(() => {
                     let nextButton = reviewApplicationDetailsPage.getNextButton()
                     browser.wait(ExpectedConditions.elementToBeClickable(nextButton),

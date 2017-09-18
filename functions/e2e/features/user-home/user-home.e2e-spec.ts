@@ -6,7 +6,7 @@ import { UserHomePage } from '../../po/user-home.po';
 const waitTimeout = 5000
 import { DatePipe } from '@angular/common'
 import { ProjectSingleOppPage } from '../../po/project.single-opp.po';
-import { getFormatedTimeInterval } from '../helper-functions/project-time-interval/time-interval-functions'
+import { getFormatedTimeInterval } from '../helper-functions/project/time-interval-functions'
 
 describe('Home page: user can browse projects from home page', () => {
     const fullyLoaded = require('../../fixtures/fully-loaded.json')
@@ -22,47 +22,47 @@ describe('Home page: user can browse projects from home page', () => {
 
     })
 
-    describe('a logged-in user with no profile', () => {
+    // describe('a logged-in user with no profile', () => {
 
-        beforeAll(done => {
-            page.navigateTo()
-                .then(signOut)
-                .then(function () {
-                    signIn(USER_VERIFIED_NO_PROFILE.email, USER_VERIFIED_NO_PROFILE.password)
-                })
-                .then(done)
-        })
-        TestsCommonToAllTypeOfUsers()
-    })
+    //     beforeAll(done => {
+    //         page.navigateTo()
+    //             .then(signOut)
+    //             .then(function () {
+    //                 signIn(USER_VERIFIED_NO_PROFILE.email, USER_VERIFIED_NO_PROFILE.password)
+    //             })
+    //             .then(done)
+    //     })
+    //     TestsCommonToAllTypeOfUsers()
+    // })
 
-    describe('a logged-in user with a profile', () => {
+    // describe('a logged-in user with a profile', () => {
 
-        beforeAll(done => {
-            page.navigateTo()
-                .then(signOut)
-                .then(function () {
-                    signIn(USER_VERIFIED_PROFILE.email, USER_VERIFIED_PROFILE.password)
-                })
-                .then(done)
-        })
+    //     beforeAll(done => {
+    //         page.navigateTo()
+    //             .then(signOut)
+    //             .then(function () {
+    //                 signIn(USER_VERIFIED_PROFILE.email, USER_VERIFIED_PROFILE.password)
+    //             })
+    //             .then(done)
+    //     })
 
-        TestsCommonToAllTypeOfUsers()
-    })
+    //     TestsCommonToAllTypeOfUsers()
+    // })
 
-    describe('a logged-in with mail not verified', () => {
+    // describe('a logged-in with mail not verified', () => {
 
-        beforeAll(done => {
-            page.navigateTo()
-                .then(signOut)
-                .then(function () {
-                    signIn(USER_NOT_VERIFIED.email, USER_NOT_VERIFIED.password)
-                })
-                .then(done)
-        })
+    //     beforeAll(done => {
+    //         page.navigateTo()
+    //             .then(signOut)
+    //             .then(function () {
+    //                 signIn(USER_NOT_VERIFIED.email, USER_NOT_VERIFIED.password)
+    //             })
+    //             .then(done)
+    //     })
 
-        TestsCommonToAllTypeOfUsers()
+    //     TestsCommonToAllTypeOfUsers()
 
-    })
+    // })
 
     describe('a logged out user ', () => {
 

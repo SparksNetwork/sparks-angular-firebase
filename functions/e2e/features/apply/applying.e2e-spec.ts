@@ -2,7 +2,7 @@ import 'jasmine' // to clear lint errors
 import { browser, element, by, ExpectedConditions } from 'protractor'
 import { setData, setUsers, signOut, signIn } from '../../firebase'
 import { USER_VERIFIED_NO_PROFILE, USER_VERIFIED_PROFILE } from '../../fixtures/users'
-import { confirmPage } from "../helper-functions/navigation/navigation-functions";
+import { confirmPage } from '../helper-functions/shared';
 const waitTimeout = 20000
 
 describe('Apply: user must auth before starting application', () => {
@@ -37,8 +37,7 @@ describe('Apply: user must auth before starting application', () => {
       element(by.css('#preferredName')).sendKeys('Stevo')
       element(by.css('#phoneNumber')).sendKeys('8053129100')
       element(by.css('#birthday')).sendKeys('10251974')
-      //click somewhere outside the form, so the form will be validated faster
-      element(by.className('question-bar')).click()
+ 
       browser.wait(ExpectedConditions.elementToBeClickable(element(by.css('#next'))),
         waitTimeout, 'Next button was not clickable after completing the profile information')
       element(by.css('#next')).click()

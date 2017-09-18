@@ -5,12 +5,11 @@ import { PickTeamPage } from '../../../po/apply.choose.team.po';
 import { AnswerTeamQuestionPage } from '../../../po/apply.answer-team-question.po';
 import { browser, ExpectedConditions } from 'protractor/built';
 import { setData, signIn, signOut, setUsersWithPartialProfile, updateData } from '../../../firebase';
-import { confirmPage } from '../../helper-functions/navigation/navigation-functions';
-import { joinATeam } from '../../helper-functions/choose-teams/choose-teams-functions';
+import { confirmPage, joinATeam } from '../../helper-functions/shared';
 import { ReviewApplicationDetailsPage } from '../../../po/apply.review-application-details.po';
 import { UserHomePage } from '../../../po/user-home.po';
 import { CompleteProfilePage } from '../../../po/complete.profile.po';
-import { OpportunityPartialDiscountPage } from '../../../po/opp.partial-discount.po';
+import { OpportunityPage } from '../../../po/opp.partial-discount.po';
 import { USER_VERIFIED_LNAME_BDAY } from '../../../fixtures/users-partial-profile';
 
 describe('Apply-Multiple-Opportunity-Flow: verified user with legal name and birthday completed', () => {
@@ -21,7 +20,7 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with legal name and bir
     let reviewApplicationDetailsPage: ReviewApplicationDetailsPage
     let homePage: UserHomePage
     let completeProfilePage: CompleteProfilePage
-    let oppLCPage: OpportunityPartialDiscountPage
+    let oppLCPage: OpportunityPage
 
     const fullyLoaded = require('../../../fixtures/fully-loaded.json')
     const userProfiles = require('../../../fixtures/user-profiles/partial-user-profiles.json')
@@ -35,7 +34,7 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with legal name and bir
         reviewApplicationDetailsPage = new ReviewApplicationDetailsPage()
         homePage = new UserHomePage()
         completeProfilePage = new CompleteProfilePage()
-        oppLCPage = new OpportunityPartialDiscountPage()
+        oppLCPage = new OpportunityPage()
         browser.waitForAngularEnabled(false)
         setUsersWithPartialProfile()
             .then(() => setData('/', fullyLoaded))
