@@ -82,8 +82,6 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with no profile informa
                 })
                 .then(() =>
                     confirmPage('/apply/LC1/answer-question', '', 'Answer-question', 'first', waitTimeout))
-                .then(() =>
-                    confirmPage('/apply/LC1/application', '/answer-question', 'Answer-organizer-question', 'first', waitTimeout))
                 .then(() => {
                     browser.wait(ExpectedConditions.presenceOf(answerOrganizerQuestionPage.getNextButton()),
                         waitTimeout, 'Next button was not present')

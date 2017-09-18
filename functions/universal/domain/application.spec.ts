@@ -21,7 +21,6 @@ describe('applicationTransform', () => {
                 expect(validationFailure(errs, '$key', 'isDefined')).toBeTruthy()
                 expect(validationFailure(errs, 'oppKey', 'isDefined')).toBeTruthy()
                 expect(validationFailure(errs, 'profileKey', 'isDefined')).toBeTruthy()
-                expect(validationFailure(errs, 'projectProfileKey', 'isDefined')).toBeTruthy()
                 expect(validationFailure(errs, 'createdOn', 'isDefined')).toBeTruthy()
             })
             .then(done)
@@ -29,13 +28,12 @@ describe('applicationTransform', () => {
 
     it('requires several fields to not be empty', done => {
         applicationTransform({
-            $key: "",
-            oppKey: "",
-            profileKey: "",
-            projectKey: "",
-            projectProfileKey: "",
-            oppQuestion: "",
-            oppAnswer: ""
+            $key: '',
+            oppKey: '',
+            profileKey: '',
+            projectKey: '',
+            oppQuestion: '',
+            oppAnswer: ''
         })
             .then(() => {
                 expect(false).toBeTruthy()
@@ -45,7 +43,6 @@ describe('applicationTransform', () => {
                 expect(validationFailure(errs, 'oppKey', 'isNotEmpty')).toBeTruthy()
                 expect(validationFailure(errs, 'profileKey', 'isNotEmpty')).toBeTruthy()
                 expect(validationFailure(errs, 'projectKey', 'isNotEmpty')).toBeTruthy()
-                expect(validationFailure(errs, 'projectProfileKey', 'isNotEmpty')).toBeTruthy()
                 expect(validationFailure(errs, 'oppQuestion', 'isNotEmpty')).toBeTruthy()
                 expect(validationFailure(errs, 'oppAnswer', 'isNotEmpty')).toBeTruthy()
             })
@@ -74,7 +71,7 @@ describe('applicationTransform', () => {
     it('requires step type to be Enum', done => {
 
         applicationTransform({
-            step: "Unknown"
+            step: 'Unknown'
         })
             .then(() => {
                 expect(false).toBeTruthy()

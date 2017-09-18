@@ -252,14 +252,13 @@
         },
         "applicationDef": {
             "required": [
-                "oppKey", "profileKey", "status", "createdOn"
+                "oppKey", "projectKey", "profileKey", "status", "createdOn"
             ],
             "additionalProperties": false,
             "properties": {
                 "oppKey": { "$ref": "#/constraints/nonEmptyString" },
                 "profileKey": { "$ref": "#/constraints/nonEmptyString" },
                 "projectKey": { "$ref": "#/constraints/nonEmptyString" },
-                "projectProfileKey": { "$ref": "#/constraints/nonEmptyString" },
                 "status": { "type": "string", "enum": [ "Incomplete", "Pending", "Accepted", "Canceled" ] },
                 "oppQuestion": { "$ref": "#/constraints/nonEmptyString" },
                 "oppAnswer": { "$ref": "#/constraints/nonEmptyString" },
