@@ -824,6 +824,7 @@ label {
     margin-right: -15px;
     margin-bottom: 8px;
     margin-left: -15px;
+    font-weight: 300;
     .input-group {
         width: 100%;
         @include MQ(S) {
@@ -1375,13 +1376,13 @@ label {
             }
             .profile-score {
                 color: $base-dark;
-                font-size: 10px;
-                line-height: 20px;
+                font-size: 17px;
+                line-height: 24px;
                 @include box-shadow(0.914px,0.407px,6.44px,0.56px,rgba(0, 0, 0, 0.5), false);
                 background: #FFF;
                 @include border-radius(50%);
-                width: 22px;
-                height: 22px;
+                width: 24px;
+                height: 24px;
                 position: absolute;
                 bottom: 5px;
                 right: 0;
@@ -1473,6 +1474,7 @@ label {
             margin-bottom: 35px;
         }
     }
+    
     .project-img {
         height: 226px;
         width: 165px;
@@ -1623,6 +1625,9 @@ label {
     .return-dashboard &{
         padding-top: 5px;
     }
+    .pg-dashboard &{
+        display: none;
+    }
     .btn{
         width: 100%;
         display: block;
@@ -1633,10 +1638,6 @@ label {
             float: right;
             width: auto;
         }
-    }
-    &:empty,
-    &:-moz-only-whitespace {
-        display: none;
     }
 }
 
@@ -1695,4 +1696,16 @@ label {
     width: 100%;
     @include block-nooverflow;
     font-size: 12px;
+}
+
+.pg-dashboard{
+    .footer-segment{
+        height: 85px;
+    }
+    .question-bar{
+        margin-top: 0px;
+    }
+    &.sn-container{
+        padding-bottom: 85px;
+    }
 }
