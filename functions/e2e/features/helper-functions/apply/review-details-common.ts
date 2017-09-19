@@ -8,10 +8,11 @@ import { DatePipe } from '@angular/common';
 import { ReviewApplicationDetailsEditProfilePage } from '../../../po/apply.review-application-details-edit-profile';
 import { ReviewApplicationDetailsEditAnswerPage } from '../../../po/apply.review-application-details-edit-answer.po';
 import { AnswerTeamQuestionPage } from '../../../po/apply.answer-team-question.po';
+import { ParamsObject } from './params-object';
 
 const waitTimeout = 5000
 
-function testPreviousFunctionality(params) {
+function testPreviousFunctionality(params:ParamsObject) {
 
     confirmPage('/apply/' + params.oppKey + '/application/', '/review-detail', 'Review-application-details', 'first', waitTimeout)
 
@@ -38,7 +39,7 @@ function testPreviousFunctionality(params) {
 
 }
 
-function testInformationAboutTheUser(params) {
+function testInformationAboutTheUser(params:ParamsObject) {
     confirmPage('/apply/' + params.oppKey + '/application/', '/review-detail', 'Review-application-details', 'first', waitTimeout)
 
     let userProfile = params.fullyLoaded['profile']['USER_VERIFIED_PROFILE']
@@ -67,7 +68,7 @@ function testInformationAboutTheUser(params) {
 
 }
 
-function testEditInformationAboutTheUser(params) {
+function testEditInformationAboutTheUser(params:ParamsObject) {
     let newLegalName = 'Test edit'
     let newPreferredName = 'Test edity'
     let newPhoneNumber = '8053129900'
@@ -137,7 +138,7 @@ function testEditInformationAboutTheUser(params) {
 
 }
 
-function testOrganizerQuestionSection(params, currentAnswer: string) {
+function testOrganizerQuestionSection(params:ParamsObject, currentAnswer: string) {
  
     return confirmPage('/apply/' + params.oppKey + '/application/', '/review-detail', 'Review-application-details', 'first', waitTimeout)
         .then(function () {
@@ -162,11 +163,11 @@ function testOrganizerQuestionSection(params, currentAnswer: string) {
 }
 
 
-function testEditOrganizerQuestion(params) {
+function testEditOrganizerQuestion(params:ParamsObject) {
 
     let newAnswer = 'Maybe 7 is the answer'
 
-    testOrganizerQuestionSection(params, params.organizerQuestionAnswer)
+    testOrganizerQuestionSection(params, params.answerToOrganizerQuestion)
         .then(() => {
             let editOrganizerQuestion = params.reviewApplicationDetailsPage.getOrganizerQuestionEditLink()
             browser.wait(ExpectedConditions.presenceOf(editOrganizerQuestion),
@@ -198,7 +199,7 @@ function testEditOrganizerQuestion(params) {
 
 }
 
-export function testSelectedTeamsInformation(params) {
+export function testSelectedTeamsInformation(params:ParamsObject) {
 
     return confirmPage('/apply/' + params.oppKey + '/application/', '/review-detail', 'Review-application-details', 'first', waitTimeout)
         .then(() => {
@@ -224,7 +225,7 @@ export function testSelectedTeamsInformation(params) {
 
 }
 
-export function testsForReviewApplicationDetails(params) {
+export function testsForReviewApplicationDetails(params:ParamsObject) {
 
     return testPreviousFunctionality(params)
         .then(() => testInformationAboutTheUser(params))

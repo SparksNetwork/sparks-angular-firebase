@@ -19,6 +19,6 @@ function testQuestion(page: AnswerOrganizerQuestionPage, fullyLoaded: any, oppKe
         })
 }
 
-export function testsForOnAnswerOrganizerQuestionPage(page: AnswerOrganizerQuestionPage, fullyLoaded: any, oppKey: string) {
+export function testsForAnswerOrganizerQuestionPage(page: AnswerOrganizerQuestionPage, fullyLoaded: any, oppKey: string) {
     return testQuestion(page, fullyLoaded, oppKey)
 }

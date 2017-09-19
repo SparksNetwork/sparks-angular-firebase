@@ -7,10 +7,11 @@ import { ReviewApplicationDetailsPage } from '../../../po/apply.review-applicati
 import { PickTeamPage } from '../../../po/apply.choose.team.po';
 import { joinATeam } from '../../helper-functions/shared';
 import { testSelectedTeamsInformation } from './review-details-common';
+import { ParamsObject } from './params-object';
 
 const waitTimeout = 7000
 
-function testEditSelectedTeamsInformation(params) {
+function testEditSelectedTeamsInformation(params:ParamsObject) {
 
     return confirmPage('/apply/' + params.oppKey + '/application/', '/review-detail', 'Review-application-details', 'first', waitTimeout)
         .then(() => {
@@ -33,7 +34,7 @@ function testEditSelectedTeamsInformation(params) {
         )
 }
 
-export function testsReviewDetailsMultipleTeams(params) {
+export function testsReviewDetailsMultipleTeams(params:ParamsObject) {
 
     return testEditSelectedTeamsInformation(params)
 }

@@ -4,10 +4,11 @@ import { AnswerTeamQuestionPage } from '../../../po/apply.answer-team-question.p
 import { PickTeamPage } from '../../../po/apply.choose.team.po';
 import { browser, ExpectedConditions } from 'protractor/built';
 import { GetKeyFromUrl } from '../shared';
+import { ParamsObject } from './params-object';
 
 const waitTimeout = 7000
 
-function testDeleteAllFunctionality(params) {
+function testDeleteAllFunctionality(params:ParamsObject) {
 
     return joinATeam(params.pickTeamPage, waitTimeout, params.oppKey, params.answerTeamQuestionPage)
         .then(() => joinATeam(params.pickTeamPage, waitTimeout, params.oppKey, params.answerTeamQuestionPage))
@@ -39,7 +40,7 @@ function testDeleteAllFunctionality(params) {
         })
 }
 
-function testAllTeamsArePresent(params) {
+function testAllTeamsArePresent(params:ParamsObject) {
     let teamLinks = params.pickTeamPage.getTeamLinks()
     browser.wait(ExpectedConditions.presenceOf(teamLinks.first()),
         waitTimeout, 'On Choose-multiple-teams page first link to team was not present')
@@ -66,7 +67,7 @@ function testAllTeamsArePresent(params) {
 
 }
 
-export function testsForChooseMultipleTeamsPage(params) {
+export function testsForChooseMultipleTeamsPage(params:ParamsObject) {
 
     testAllTeamsArePresent(params)
     return testDeleteAllFunctionality(params)
