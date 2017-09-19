@@ -61,13 +61,23 @@ export class ApplicationActionService extends BaseActionService {
     return this.replace(key, application);
   }
 
-  public saveOppAnswer(application, oppQuestion, oppAnswer) {
+  public saveOppAnswer(application: Application, oppQuestion: string, oppAnswer: string) {
     if (!application) {
       return Observable.of(null);
     }
     application.oppQuestion = oppQuestion;
     application.oppAnswer = oppAnswer;
     application.step = ApplicationStepFinished.Answer;
+
+    const applicationCopy = Object.assign({}, application)
+    return this.replace(application.$key, this.formatToDb(applicationCopy));
+  }
+
+  public updateApplicationStepFinished(application: Application, step: ApplicationStepFinished) {
+    if (!application) {
+      return Observable.of(null);
+    }
+    application.step = step;
 
     const applicationCopy = Object.assign({}, application)
     return this.replace(application.$key, this.formatToDb(applicationCopy));

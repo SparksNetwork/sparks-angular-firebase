@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from "@angular/router";
-import { Observable } from "rxjs/Rx";
-import { Team } from "../../../../../../universal/domain/team";
-import { ActionBarType } from "../../../shared/snui/action-bar/action-bar.component";
-import { ApplicationTeam } from "../../../../../../universal/domain/applicationTeam";
-import { ApplicationActionService } from "../../../core/sndomain/application/application-action.service";
-import { ApplicationStepFinished } from "../../../../../../universal/domain/application";
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { Team } from '../../../../../../universal/domain/team';
+import { ActionBarType } from '../../../shared/snui/action-bar/action-bar.component';
+import { ApplicationTeam } from '../../../../../../universal/domain/applicationTeam';
+import { ApplicationActionService } from '../../../core/sndomain/application/application-action.service';
+import { ApplicationStepFinished, Application } from '../../../../../../universal/domain/application';
 
 
 @Component({
@@ -18,6 +18,7 @@ export class PageOppTeamsComponent implements OnInit {
     public actionBarType = ActionBarType;
     public allTeams: any;
     public selectedCount: number;
+    private application: Application;
 
     constructor(
         public route: ActivatedRoute,
@@ -34,16 +35,17 @@ export class PageOppTeamsComponent implements OnInit {
                 this.applicationTeams
             )
         });
+
+        this.route.parent.snapshot.data['application'].subscribe(data => {
+            this.application = data;
+        });
     }
 
     next() {
-        let value = {
-            step: ApplicationStepFinished.Team
-        }
-        let applicationKey = this.route.parent.parent.snapshot.params["applicationKey"];
-        this.applicationAction.update(applicationKey, value).subscribe(
-            s => this.router.navigate(['../review-detail'], { relativeTo: this.route.parent })
-        )
+        this.applicationAction.updateApplicationStepFinished(this.application, ApplicationStepFinished.Team)
+            .subscribe(
+                s => this.router.navigate(['../review-detail'], { relativeTo: this.route.parent })
+            )
     }
 
     previous() {
