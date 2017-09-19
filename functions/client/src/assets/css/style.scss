@@ -1361,11 +1361,16 @@ label {
             .img-circle {
                 height: 100%;
                 width: 100%;
-                background-color: #FFF;
-                background-size: cover !important;
+                background-color: #FFF !important;
+                background-size: 92% !important;
                 background-repeat: no-repeat !important;
+                background-position: 5px center !important;
                 margin: 0 auto;
                 @include box-shadow-multiple(inset 12px 12px 2px -3px rgba(38, 172, 223, 0.26), inset 0px 0px 2px 0px rgba(0, 0, 0, 0.5), inset 3px 3px 2px 2px rgba(172, 55, 117, 0.26) );
+                &.img-isauthed{
+                    background-size: 100% !important;
+                    background-position: 0 center !important;
+                }
             }
             .profile-score {
                 color: $base-dark;
