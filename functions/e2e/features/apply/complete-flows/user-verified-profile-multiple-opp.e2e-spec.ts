@@ -14,13 +14,12 @@ import { OpportunityPage } from '../../../po/opp.partial-discount.po';
 import { testCommonProjectInformation } from '../../helper-functions/project/project-common';
 import { testProjectMultipleOpp } from '../../helper-functions/project/project-multiple-opp';
 import { testsForOpportunityPage } from '../../helper-functions/opportunity/opportunity';
-import { testsForOnAnswerOrganizerQuestionPage } from '../../helper-functions/apply/organizer-question';
+import { testsForAnswerOrganizerQuestionPage } from '../../helper-functions/apply/organizer-question';
 import { testsForChooseTeamsPage } from '../../helper-functions/apply/choose-teams-common';
 import { testsForChooseMultipleTeamsPage } from '../../helper-functions/apply/choose-multiple-teams';
 import { testsForReviewApplicationDetails } from '../../helper-functions/apply/review-details-common';
 import { testsReviewDetailsMultipleTeams } from '../../helper-functions/apply/review-details-multiple-teams';
-import { ReviewApplicationDetailsEditAnswerPage } from '../../../po/apply.review-application-details-edit-answer.po';
-import { ReviewApplicationDetailsEditProfilePage } from '../../../po/apply.review-application-details-edit-profile';
+import { ParamsObject } from '../../helper-functions/apply/params-object';
 
 describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile information', () => {
     let LCprojectPage: ProjectMultiOppPage
@@ -31,6 +30,8 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile i
     let homePage: UserHomePage
     let completeProfilePage: CompleteProfilePage
     let oppLCPage: OpportunityPage
+    let params: ParamsObject;
+
 
     const fullyLoaded = require('../../../fixtures/fully-loaded.json')
     const waitTimeout = 5000
@@ -47,6 +48,7 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile i
         completeProfilePage = new CompleteProfilePage()
         oppLCPage = new OpportunityPage()
         const answerOrganizerQuestion = 'I want to help'
+        params = new ParamsObject('LC1', fullyLoaded, answerOrganizerQuestion, 'LC', 'LC1')
 
         browser.waitForAngularEnabled(false)
         setUsers()
@@ -82,7 +84,7 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile i
                 })
                 .then(() =>
                     confirmPage('/apply/LC1/answer-question', '', 'Answer-question', 'first', waitTimeout))
-                .then(() => testsForOnAnswerOrganizerQuestionPage(answerOrganizerQuestionPage, fullyLoaded))
+                .then(() => testsForAnswerOrganizerQuestionPage(answerOrganizerQuestionPage, fullyLoaded, 'LC1'))
 
                 .then(() => {
                     browser.wait(ExpectedConditions.presenceOf(answerOrganizerQuestionPage.getNextButton()),
@@ -96,15 +98,6 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile i
                 .then(() =>
                     confirmPage('/apply/LC1/application/', '/teams', 'Pick-teams', 'first', waitTimeout, '/teams/'))
                 .then(() => {
-                    let params = {
-                        answerOrganizerQuestionPage: answerOrganizerQuestionPage,
-                        pickTeamPage: pickTeamPage,
-                        fullyLoaded: fullyLoaded,
-                        oppKey: 'LC1',
-                        answerTeamQuestionPage: answerTeamQuestionPage,
-                        teamKey: 'LC1',
-                        answerOrganizerQuestion: 'I want to help'
-                    }
                     testsForChooseTeamsPage(params)
                     return testsForChooseMultipleTeamsPage(params)
                 })
@@ -117,17 +110,6 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile i
                 })
                 .then(() => confirmPage('/apply/LC1/application/', '/review-detail', 'Review-application-details', 'first', waitTimeout))
                 .then(() => {
-                    let params = {
-                        reviewApplicationDetailsPage: reviewApplicationDetailsPage,
-                        reviewApplicationDetailsEditProfilePage: new ReviewApplicationDetailsEditProfilePage(),
-                        oppKey: 'LC1',
-                        pickTeamPage: pickTeamPage,
-                        fullyLoaded: fullyLoaded,
-                        organizerQuestionAnswer: answerOrganizerQuestion,
-                        answerTeamQuestionPage: answerTeamQuestionPage,
-                        projectKey: 'LC',
-                        reviewApplicationDetailsEditAnswerPage: new ReviewApplicationDetailsEditAnswerPage()
-                    }
                     testsForReviewApplicationDetails(params)
                     return testsReviewDetailsMultipleTeams(params)
                 })

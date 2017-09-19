@@ -3,9 +3,10 @@ import { PickTeamPage } from '../../../po/apply.choose.team.po';
 import { browser, ExpectedConditions } from 'protractor/built';
 import { AnswerTeamQuestionPage } from '../../../po/apply.answer-team-question.po';
 import { joinATeam, TestsForSelectedAndAvailableTeams } from '../../helper-functions/shared';
+import { ParamsObject } from './params-object';
 const waitTimeout = 7000
 
-function testTeamDetails(params) {
+function testTeamDetails(params:ParamsObject) {
     return confirmPage('/apply/' + params.oppKey + '/application/', '/teams', 'Pick-teams', 'first', waitTimeout, '/teams/')
         .then(function () {
 
@@ -40,7 +41,7 @@ function testTeamDetails(params) {
         })
 }
 
-function testDeleteAllFunctionality(params) {
+function testDeleteAllFunctionality(params:ParamsObject) {
     return joinATeam(params.pickTeamPage, waitTimeout, params.oppKey, params.answerTeamQuestionPage)
         .then(() => {
             //team should appear as selected
@@ -60,7 +61,7 @@ function testDeleteAllFunctionality(params) {
 
 }
 
-export function testsForChooseSingleTeamsPage(params) {
+export function testsForChooseSingleTeamsPage(params:ParamsObject) {
 
     testTeamDetails(params)
         .then(() => testDeleteAllFunctionality(params))

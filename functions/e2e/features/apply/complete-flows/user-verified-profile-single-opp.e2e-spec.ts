@@ -11,12 +11,11 @@ import { ReviewApplicationDetailsPage } from '../../../po/apply.review-applicati
 import { UserHomePage } from '../../../po/user-home.po';
 import { testCommonProjectInformation } from '../../helper-functions/project/project-common';
 import { testProjectSingleOpp } from '../../helper-functions/project/project-single-opp';
-import { testsForOnAnswerOrganizerQuestionPage } from '../../helper-functions/apply/organizer-question';
+import { testsForAnswerOrganizerQuestionPage } from '../../helper-functions/apply/organizer-question';
 import { testsForChooseTeamsPage } from '../../helper-functions/apply/choose-teams-common';
 import { testsForChooseSingleTeamsPage } from '../../helper-functions/apply/choose-single-team';
 import { testsForReviewApplicationDetails } from '../../helper-functions/apply/review-details-common';
-import { ReviewApplicationDetailsEditAnswerPage } from '../../../po/apply.review-application-details-edit-answer.po';
-import { ReviewApplicationDetailsEditProfilePage } from '../../../po/apply.review-application-details-edit-profile';
+import { ParamsObject } from '../../helper-functions/apply/params-object';
 
 describe('Apply-Single-Opportunity-Flow: verified user with complete profile information', () => {
     let KPCprojectPage: ProjectSingleOppPage
@@ -25,6 +24,7 @@ describe('Apply-Single-Opportunity-Flow: verified user with complete profile inf
     let answerTeamQuestionPage: AnswerTeamQuestionPage
     let reviewApplicationDetailsPage: ReviewApplicationDetailsPage
     let homePage: UserHomePage
+    let params: ParamsObject
 
     const fullyLoaded = require('../../../fixtures/fully-loaded.json')
     const waitTimeout = 5000
@@ -38,6 +38,8 @@ describe('Apply-Single-Opportunity-Flow: verified user with complete profile inf
         answerTeamQuestionPage = new AnswerTeamQuestionPage()
         reviewApplicationDetailsPage = new ReviewApplicationDetailsPage()
         homePage = new UserHomePage()
+        params = new ParamsObject('KPC1', fullyLoaded, answerOrganizerQuestion, 'KPC', 'KPC1')
+
         browser.waitForAngularEnabled(false)
         setUsers()
             .then(() => setData('/', fullyLoaded))
@@ -64,7 +66,7 @@ describe('Apply-Single-Opportunity-Flow: verified user with complete profile inf
                 .then(() => KPCprojectPage.getJoinButton().click())
                 .then(() =>
                     confirmPage('/apply/KPC1/answer-question', '', 'Answer-question', 'first', waitTimeout))
-                .then(() => testsForOnAnswerOrganizerQuestionPage(answerOrganizerQuestionPage, fullyLoaded))
+                .then(() => testsForAnswerOrganizerQuestionPage(answerOrganizerQuestionPage, fullyLoaded, 'KPC1'))
                 .then(() => {
                     browser.wait(ExpectedConditions.presenceOf(answerOrganizerQuestionPage.getNextButton()),
                         waitTimeout, 'Next button was not present')
@@ -77,15 +79,6 @@ describe('Apply-Single-Opportunity-Flow: verified user with complete profile inf
                 .then(() =>
                     confirmPage('/apply/KPC1/application/', '/teams', 'Pick-teams', 'first', waitTimeout, '/teams/'))
                 .then(() => {
-                    let params = {
-                        answerOrganizerQuestionPage: answerOrganizerQuestionPage,
-                        pickTeamPage: pickTeamPage,
-                        fullyLoaded: fullyLoaded,
-                        oppKey: 'KPC1',
-                        answerTeamQuestionPage: answerTeamQuestionPage,
-                        teamKey: 'KPC1',
-                        answerOrganizerQuestion: answerOrganizerQuestion
-                    }
                     testsForChooseTeamsPage(params)
                     return testsForChooseSingleTeamsPage(params)
                 })
@@ -98,17 +91,6 @@ describe('Apply-Single-Opportunity-Flow: verified user with complete profile inf
                 })
                 .then(() => confirmPage('/apply/KPC1/application/', '/review-detail', 'Review-application-details', 'first', waitTimeout))
                 .then(() => {
-                    let params = {
-                        reviewApplicationDetailsPage: reviewApplicationDetailsPage,
-                        reviewApplicationDetailsEditProfilePage: new ReviewApplicationDetailsEditProfilePage(),
-                        oppKey: 'KPC1',
-                        pickTeamPage: pickTeamPage,
-                        fullyLoaded: fullyLoaded,
-                        organizerQuestionAnswer: answerOrganizerQuestion,
-                        answerTeamQuestionPage: answerTeamQuestionPage,
-                        projectKey: 'KPC',
-                        reviewApplicationDetailsEditAnswerPage: new ReviewApplicationDetailsEditAnswerPage()
-                    }
                     return testsForReviewApplicationDetails(params)
                 })
                 .then(() => {

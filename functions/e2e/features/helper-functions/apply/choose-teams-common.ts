@@ -5,10 +5,11 @@ import { AnswerOrganizerQuestionPage } from '../../../po/apply.answer-organizer-
 import { PickTeamPage } from '../../../po/apply.choose.team.po';
 import { AnswerTeamQuestionPage } from '../../../po/apply.answer-team-question.po';
 import { joinATeam, GetNoAvailableTeamsFromTestData, TestsForSelectedAndAvailableTeams } from '../../helper-functions/shared';
+import { ParamsObject } from './params-object';
 
 const waitTimeout = 7000
 
-function testPreviuousFunctionality(params) {
+function testPreviuousFunctionality(params:ParamsObject) {
     return confirmPage('/apply/' + params.oppKey + '/application/', '/teams', ' Pick-teams', 'first',
         waitTimeout, '/teams/')
         .then(() => {
@@ -35,7 +36,7 @@ function testPreviuousFunctionality(params) {
         })
 }
 
-function testUserCanEditAnswerToOrganizerQuestion(params) {
+function testUserCanEditAnswerToOrganizerQuestion(params:ParamsObject) {
 
     //press previous from Pick-a-team-page
     let previousButton = params.pickTeamPage.getPreviousButton()
@@ -49,7 +50,7 @@ function testUserCanEditAnswerToOrganizerQuestion(params) {
             browser.wait(ExpectedConditions.presenceOf(answer),
                 waitTimeout, 'On Answer-organizer-question page the input for answer was not present')
             answer.clear()
-            answer.sendKeys(params.answerOrganizerQuestion)
+            answer.sendKeys(params.answerToOrganizerQuestion)
 
             //press next
             let nextButton = params.answerOrganizerQuestionPage.getNextButton()
@@ -74,13 +75,13 @@ function testUserCanEditAnswerToOrganizerQuestion(params) {
             return answer.getAttribute('value')
         })
         .then((answer) => {
-            expect(answer).toMatch(params.answerOrganizerQuestion, 'On Choose-teams page the new answer was not saved correctly')
+            expect(answer).toMatch(params.answerToOrganizerQuestion, 'On Choose-teams page the new answer was not saved correctly')
             return params.answerOrganizerQuestionPage.getNextButton().click()
         })
         .then(() => confirmPage('/apply/' + params.oppKey + '/application/', '/teams', 'Pick-teams', 'third', waitTimeout, '/teams/'))
 }
 
-function testTeamsDetails(params) {
+function testTeamsDetails(params:ParamsObject) {
 
     let teamsLinks = params.pickTeamPage.getTeamLinks()
     browser.wait(ExpectedConditions.presenceOf(teamsLinks.first()),
@@ -104,7 +105,7 @@ function testTeamsDetails(params) {
 
 }
 
-function testPreviousButtonFunctionalityFromAnswerTeamQuestionPage(params) {
+function testPreviousButtonFunctionalityFromAnswerTeamQuestionPage(params:ParamsObject) {
 
     return confirmPage('/apply/' + params.oppKey + '/application/', '/teams', 'Pick-teams', 'first', waitTimeout, '/teams/')
         .then(() => {
@@ -138,7 +139,7 @@ function testPreviousButtonFunctionalityFromAnswerTeamQuestionPage(params) {
         })
 }
 
-function testDeleteFunctionality(params) {
+function testDeleteFunctionality(params:ParamsObject) {
     return joinATeam(params.pickTeamPage, waitTimeout, params.oppKey, params.answerTeamQuestionPage)
         .then(() => {
             //team should appear as selected
@@ -183,7 +184,7 @@ function testDeleteFunctionality(params) {
 }
 
 
-export function testsForChooseTeamsPage(params) {
+export function testsForChooseTeamsPage(params:ParamsObject) {
 
     return testPreviuousFunctionality(params)
         .then(() => testUserCanEditAnswerToOrganizerQuestion(params))
