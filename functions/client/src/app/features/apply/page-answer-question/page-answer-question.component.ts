@@ -10,8 +10,8 @@ import { Opp } from '../../../../../../universal/domain/opp';
   templateUrl: './page-answer-question.component.html',
 })
 export class PageAnswerQuestionComponent implements OnInit {
-  public applicationKey: string;
   public opp: Opp;
+  public application: Application;
   public answerForm: FormGroup;
   public editFromReviewPage: boolean;
 
@@ -29,11 +29,9 @@ export class PageAnswerQuestionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.applicationKey = this.route.parent.snapshot.paramMap.get('applicationKey');
-
     this.route.snapshot.data['application'].subscribe(app => {
       if (app) {
-        this.applicationKey = app.$key;
+        this.application = app;
         this.answerForm.get('answer').setValue(app.oppAnswer);
       }
     });
@@ -44,14 +42,14 @@ export class PageAnswerQuestionComponent implements OnInit {
   };
 
   submit() {
-    this.applicationAction.saveOppAnswer(this.applicationKey, this.opp.question, this.answerForm.get('answer').value)
+    this.applicationAction.saveOppAnswer(this.application, this.opp.question, this.answerForm.get('answer').value)
       .subscribe(s => {
         if (this.editFromReviewPage) {
           this.router.navigate(['../', 'review-detail'], { relativeTo: this.route });
           return;
         }
 
-        this.router.navigate(['apply', this.opp.$key, 'application', this.applicationKey, 'teams']);
+        this.router.navigate(['apply', this.opp.$key, 'application', this.application.$key, 'teams']);
       })
   }
 

@@ -5,6 +5,7 @@ import { BaseActionService } from '../../../../../../lib/firebase-universal/clie
 import { Http } from '@angular/http';
 import { environment } from '../../../../environments/environment';
 import { ApplicationStatus, Application, ApplicationStepFinished } from '../../../../../../universal/domain/application';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ApplicationActionService extends BaseActionService {
@@ -60,13 +61,14 @@ export class ApplicationActionService extends BaseActionService {
     return this.replace(key, application);
   }
 
-  public saveOppAnswer(key, oppQuestion, oppAnswer) {
-    const value = {
-      oppQuestion: oppQuestion,
-      oppAnswer: oppAnswer,
-      step: ApplicationStepFinished.Answer
+  public saveOppAnswer(application, oppQuestion, oppAnswer) {
+    if (!application) {
+      return Observable.of(null);
     }
-    return this.update(key, value);
+    application.oppQuestion = oppQuestion;
+    application.oppAnswer = oppAnswer;
+    application.step = ApplicationStepFinished.Answer;
+    return this.replace(application.$key, this.formatToDb(application));
   }
 
 }
