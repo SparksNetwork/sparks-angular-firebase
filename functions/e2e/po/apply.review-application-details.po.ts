@@ -39,7 +39,7 @@ export class ReviewApplicationDetailsPage {
     }
 
     getOrganizerQuestionAnswer() {
-        return element(by.css('textarea'))
+        return element(by.id('organizer-question')).all(by.css('p')).last()
     }
 
     getOrganizerQuestionEditLink() {

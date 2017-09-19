@@ -64,7 +64,7 @@ describe('Apply-Single-Opportunity-Flow: verified user with complete profile inf
                 .then(() => KPCprojectPage.getJoinButton().click())
                 .then(() =>
                     confirmPage('/apply/KPC1/answer-question', '', 'Answer-question', 'first', waitTimeout))
-                .then(() => testsForOnAnswerOrganizerQuestionPage(answerOrganizerQuestionPage, fullyLoaded))
+                .then(() => testsForOnAnswerOrganizerQuestionPage(answerOrganizerQuestionPage, fullyLoaded,'KPC1'))
                 .then(() => {
                     browser.wait(ExpectedConditions.presenceOf(answerOrganizerQuestionPage.getNextButton()),
                         waitTimeout, 'Next button was not present')

@@ -7,7 +7,7 @@ export class ReviewApplicationDetailsEditAnswerPage {
     }
 
     getQuestion() {
-        return element(by.css('p.card-text'))
+        return element(by.css('form div.segment.no-brd p.card-text'))
     }
 
     getAnswer() {

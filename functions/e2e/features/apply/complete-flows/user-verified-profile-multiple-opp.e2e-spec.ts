@@ -82,7 +82,7 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile i
                 })
                 .then(() =>
                     confirmPage('/apply/LC1/answer-question', '', 'Answer-question', 'first', waitTimeout))
-                .then(() => testsForOnAnswerOrganizerQuestionPage(answerOrganizerQuestionPage, fullyLoaded))
+                .then(() => testsForOnAnswerOrganizerQuestionPage(answerOrganizerQuestionPage, fullyLoaded,'LC1'))
 
                 .then(() => {
                     browser.wait(ExpectedConditions.presenceOf(answerOrganizerQuestionPage.getNextButton()),
