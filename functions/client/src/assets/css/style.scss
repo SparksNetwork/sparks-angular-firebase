@@ -363,7 +363,8 @@ label {
     // padding-bottom: 15px;
     @extend .separator;
     padding: 25px 0;
-    &.auth-with-email-container {
+    &.auth-with-email-container,
+    &.no-pdng {
         padding: 0;
     }
     &.no-padding-tb {
