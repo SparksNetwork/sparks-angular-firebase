@@ -68,7 +68,9 @@ export class ApplicationActionService extends BaseActionService {
     application.oppQuestion = oppQuestion;
     application.oppAnswer = oppAnswer;
     application.step = ApplicationStepFinished.Answer;
-    return this.replace(application.$key, this.formatToDb(application));
+
+    const applicationCopy = Object.assign({}, application)
+    return this.replace(application.$key, this.formatToDb(applicationCopy));
   }
 
 }
