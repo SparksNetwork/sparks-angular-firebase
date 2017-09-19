@@ -19,7 +19,7 @@ console.log('functions config', functions.config().firebase)
 admin.initializeApp(functions.config().firebase)
 
 const app = express();
-app.use(cors({origin: true}))
+app.use(cors({origin: '*'}))
 
 app.use(routeHandler(new ProjectHandler()))
 app.use(routeHandler(new ProfileHandler()))

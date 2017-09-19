@@ -41,7 +41,7 @@ export class BaseHandler {
 export function routeHandler(handler: BaseHandler) {
   const router = express.Router()
   router.use(bodyparser.json())
-  router.use(cors({origin: true}))
+  router.use(cors({origin: '*'}))
 
   router.route(`**${handler.path}`)
     .post(handler.post.bind(handler))
