@@ -17,9 +17,21 @@
 <div class="col-xs-12 col-sm-8 col-md-6">
   <div class="row">
     <auth-social-block label="Sign up"></auth-social-block>
+
+    <div class="segment no-pdng">
     <a id='signin-with-email' [routerLink]="['../email-signup']" class="btn btn-block btn-social-login btn-trans">
       <span class="ic ic-envelope" aria-hidden="true"></span> Sign up with Email
     </a>
+    </div>
+
+    <div class="bottom-nav">
+      <div class="row">
+        <div class="col-xs-4">
+          <a class="btn btn-primary" [routerLink]='["/"]'>Cancel</a>
+        </div>
+      </div>
+    </div>
+        
   </div>
 </div>
 
