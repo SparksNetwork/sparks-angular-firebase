@@ -4,7 +4,7 @@
       <h3 class="segment-title">Selected Teams</h3>
     </div>
     <div class="col-xs-4 segment-title-link-container">
-      <a (click)="deleteAll()">delete all <span class="ic ic-close" aria-hidden="true"></span></a>
+      <a (click)="deleteAll()">delete all<span class="ic ic-close" aria-hidden="true"></span></a>
     </div>
   </div>
   <div class="selected-team-list">
@@ -14,7 +14,7 @@
           <h4 class="segment-title selected-team-title">{{team.title}}</h4>
         </div>
         <div class="col-xs-4 segment-title-link-container" *ngIf='editable'>
-          <a (click)="delete(team.appTeamKey)">delete <span class="ic ic-close" aria-hidden="true"></span></a>
+          <a (click)="delete(team.appTeamKey)">delete<span class="ic ic-close" aria-hidden="true"></span></a>
         </div>
       </div>
     </div>

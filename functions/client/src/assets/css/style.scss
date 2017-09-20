@@ -344,10 +344,13 @@ label {
     text-align: right;
     a{
         cursor: pointer;
+        letter-spacing: 0.64px;
     }
     .ic{
-        &.ic-close{
+        &.ic-close,
+        &.ic-edit{
             font-size: 12px;
+            margin-left: 10px;
         }
     }
 }
