@@ -1482,6 +1482,7 @@ label {
         @include border-radius(7.5px);
         position: relative;
         background-position: center center !important;
+        background-size: auto 100% !important;
         .dashboard-project-status {
             position: absolute;
             background: transparentize(#FFF, 0.5);
