@@ -5,7 +5,6 @@ import { BaseActionService } from '../../../../../../lib/firebase-universal/clie
 import { Http } from '@angular/http';
 import { environment } from '../../../../environments/environment';
 import { ApplicationStatus, Application, ApplicationStepFinished } from '../../../../../../universal/domain/application';
-import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ApplicationActionService extends BaseActionService {
@@ -67,18 +66,14 @@ export class ApplicationActionService extends BaseActionService {
       oppAnswer: oppAnswer,
       step: ApplicationStepFinished.Answer
     }
-
     return this.update(key, value);
   }
 
-  public updateApplicationStepFinished(application: Application, step: ApplicationStepFinished) {
-    if (!application) {
-      return Observable.of(null);
+  public updateApplicationStepFinished(key: string, step: ApplicationStepFinished) {
+    const value = {
+      step: step
     }
-    application.step = step;
-
-    const applicationCopy = Object.assign({}, application)
-    return this.replace(application.$key, this.formatToDb(applicationCopy));
+    return this.update(key, value);
   }
 
 }
