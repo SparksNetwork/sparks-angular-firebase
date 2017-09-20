@@ -974,6 +974,7 @@ label {
     a {
         display: block;
         overflow: hidden;
+        cursor: pointer;
     }
 }
 
@@ -1081,9 +1082,13 @@ label {
 .project-organizer {
     .organizer-img {
         text-align: right;
-        img {
+        .img-circle {
             height: 45px;
             width: 45px;
+            @include box-shadow-multiple(inset 12px 12px 2px -3px rgba(38, 172, 223, 0.26), inset 0px 0px 2px 0px rgba(0, 0, 0, 0.5), inset 3px 3px 2px 2px rgba(172, 55, 117, 0.26) );
+            background-size: 100% !important;
+            background-position: 0 center !important;
+            background-repeat: no-repeat !important;
         }
     }
 }
@@ -1625,9 +1630,6 @@ label {
     .return-dashboard &{
         padding-top: 5px;
     }
-    .pg-dashboard &{
-        display: none;
-    }
     .btn{
         width: 100%;
         display: block;
@@ -1707,5 +1709,11 @@ label {
     }
     &.sn-container{
         padding-bottom: 85px;
+    }
+}
+
+.emptyBottomNav{
+    .bottom-nav{
+        display: none;
     }
 }
