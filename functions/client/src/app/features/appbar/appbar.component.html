@@ -16,9 +16,9 @@
     <div class="col-xs-12">
     <form class="navbar-form">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search for">
+        <input type="text" class="form-control" placeholder="Search for" [value]="searchValue">
         <span class="input-group-btn">
-              <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#appbar-collapse"><span class="ic ic-close"></span></button>
+              <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#appbar-collapse" (click)="clearSearch()"><span class="ic ic-close"></span></button>
         </span>
       </div>
       

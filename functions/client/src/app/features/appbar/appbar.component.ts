@@ -10,7 +10,8 @@ import { AuthService } from "../../core/snauth/auth/auth.service";
 
 export class AppbarComponent implements OnInit {
   public isAuthed: boolean;
-
+  searchValue: string = '';
+  
   constructor(private auth: AuthService, private router: Router) {
     this.auth.isAuthed.subscribe(isAuthed => this.isAuthed = isAuthed)
   }
@@ -20,4 +21,9 @@ export class AppbarComponent implements OnInit {
   navigateToSignIn() {   
     this.router.navigate(['/auth', this.router.url, 'signin'])
   }
+
+  clearSearch(){
+    this.searchValue = null;
+  }
+
 }
