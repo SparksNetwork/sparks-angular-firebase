@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 
-import { AuthService } from "../../core/snauth/auth/auth.service";
+import { AuthService } from '../../core/snauth/auth/auth.service';
 
 @Component({
   selector: 'appbar-appbar',
@@ -10,20 +10,15 @@ import { AuthService } from "../../core/snauth/auth/auth.service";
 
 export class AppbarComponent implements OnInit {
   public isAuthed: boolean;
-  searchValue: string = '';
-  
+
   constructor(private auth: AuthService, private router: Router) {
     this.auth.isAuthed.subscribe(isAuthed => this.isAuthed = isAuthed)
   }
 
   ngOnInit() { }
 
-  navigateToSignIn() {   
+  navigateToSignIn() {
     this.router.navigate(['/auth', this.router.url, 'signin'])
-  }
-
-  clearSearch(){
-    this.searchValue = null;
   }
 
 }
