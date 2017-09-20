@@ -48,6 +48,10 @@ describe('Apply-Choose-Shifts: verified user with complete profile', () => {
                 .then(done)
         })
 
+        it('It should be able to see all the available shifts ', function () {
+            testAllShifts();
+        })
+
         it('In the select for Data filter there should be all the start dates of shifts', () => {
             let select = shiftPage.getDateSelect()
             browser.wait(ExpectedConditions.presenceOf(select), waitTimeout,
@@ -100,7 +104,6 @@ describe('Apply-Choose-Shifts: verified user with complete profile', () => {
                             }
                         })
 
-
                     }).then(function () {
                         expect(isPresent).toBe(true, 'Team for shift with key ' + key.toString() + ' was not present');
                     })
@@ -108,13 +111,7 @@ describe('Apply-Choose-Shifts: verified user with complete profile', () => {
             }
         })
 
-
-
-        it('It should be able to see all the available shifts ', function () {
-            testAllShifts();
-        })
-
-        it('It can be able to filter by date', () => {
+        it('It should be able to filter by date', () => {
             let select = shiftPage.getDateSelect()
             browser.wait(ExpectedConditions.presenceOf(select), waitTimeout,
                 'Filter by team was not present')
@@ -148,8 +145,7 @@ describe('Apply-Choose-Shifts: verified user with complete profile', () => {
 
         })
 
-
-        it('It can reset Date filter by selecting  All Dates', () => {
+        it('It should be able to reset Date filter by selecting  All Dates', () => {
             let select = shiftPage.getDateSelect()
             browser.wait(ExpectedConditions.presenceOf(select), waitTimeout,
                 'Filter by date was not present')
@@ -282,7 +278,6 @@ describe('Apply-Choose-Shifts: verified user with complete profile', () => {
                                 shifts[key]['endDateTime'])
 
                             if (timeInterval === time && title === shifts[key]['teamTitle']) {
-
                                 isPresent = true;
                             }
                         })
