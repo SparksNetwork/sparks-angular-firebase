@@ -42,7 +42,7 @@ export class PageOppTeamsComponent implements OnInit {
     }
 
     next() {
-        this.applicationAction.updateApplicationStepFinished(this.application, ApplicationStepFinished.Team)
+        this.applicationAction.updateApplicationStepFinished(this.application.$key, ApplicationStepFinished.Team)
             .subscribe(
                 s => this.router.navigate(['../review-detail'], { relativeTo: this.route.parent })
             )
