@@ -6,8 +6,7 @@ import { AnswerTeamQuestionPage } from '../../../po/apply.answer-team-question.p
 import { browser, ExpectedConditions } from 'protractor/built';
 import { setUsers, setData, signIn, signOut, setUsersWithPartialProfile, updateData } from '../../../firebase';
 import { USER_VERIFIED_PROFILE } from '../../../fixtures/users';
-import { confirmPage } from '../../helper-functions/navigation/navigation-functions';
-import { joinATeam } from '../../helper-functions/choose-teams/choose-teams-functions';
+import { confirmPage,joinATeam } from '../../helper-functions/shared';
 import { ReviewApplicationDetailsPage } from '../../../po/apply.review-application-details.po';
 import { UserHomePage } from '../../../po/user-home.po';
 import { USER_VERIFIED_LNAME_BDAY } from '../../../fixtures/users-partial-profile';
@@ -71,8 +70,6 @@ describe('Apply-Single-Opportunity-Flow: verified user with legal name and birth
                 })
                 .then(() =>
                     confirmPage('/apply/KPC1/answer-question', '', 'Answer-question', 'first', waitTimeout))
-                .then(() =>
-                    confirmPage('/apply/KPC1/application', '/answer-question', 'Answer-organizer-question', 'first', waitTimeout))
                 .then(() => {
                     browser.wait(ExpectedConditions.presenceOf(answerOrganizerQuestionPage.getNextButton()),
                         waitTimeout, 'Next button was not present')

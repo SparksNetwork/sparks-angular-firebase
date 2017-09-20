@@ -12,7 +12,7 @@ export class AnswerOrganizerQuestionPage {
     }
 
     getQuestion(){
-        return element(by.className('card-text'))
+        return element(by.css('form div.segment.no-brd p.card-text'))
     }
     
 }

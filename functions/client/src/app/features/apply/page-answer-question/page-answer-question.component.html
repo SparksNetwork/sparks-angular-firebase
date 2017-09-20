@@ -1,9 +1,12 @@
-<ng-container *ngIf='opp && applicationKey'>
+<ng-container *ngIf='opp && application'>
   <snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>    
-    The Organizer wants to know...
+    Start Your Application With This Question
   </snui-header-simple>
   <form novalidate [formGroup]="answerForm">
-
+    
+    <div class="segment">
+      <p class="card-text"><!-- {{project.title}}-->Project.title wants to know your answer.</p>
+    </div>
 
     <div class="segment no-brd">
       <p class="card-text">{{opp.question}}</p>

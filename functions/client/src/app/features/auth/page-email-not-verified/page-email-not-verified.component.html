@@ -10,15 +10,24 @@
 <auth-header>
   Check Your Inbox!
 </auth-header>
-
-
+<div class="hero-text-container">
 <p>
-  We sent you an email at {{(auth.current | async)?.email}}. It's got a verification link in it. Go click on it. We'll wait
-  right here.
+  We sent you an email at {{(auth.current | async)?.email}}.<br/>It's got a verification link in it.<br/>Go click on it. We'll wait right here.
 </p>
 <p>
-  Not received the validation email? Click <a href="#" (click)="sendValidationEmail($event)"><b>here</b></a> to resend.
+  Not received the validation email?<br/>Click <a href="#" (click)="sendValidationEmail($event)"><b>here</b></a> to resend.
 </p>
 <p>Not your account?</p>
-<p><button class="btn btn-primary" (click)='signout()'>Sign Out</button></p>
 <p>{{notificationMessage}}</p>
+</div>
+
+<div class="bottom-nav">
+  <div class="row">
+    <div class="col-xs-4">
+       <a class="btn btn-primary" [routerLink]='["/"]'>Cancel</a>
+    </div>
+    <div class="col-xs-4 col-xs-offset-4">
+      <button class="btn btn-primary" (click)='signout()'>Sign Out</button>
+    </div>
+  </div>
+</div>

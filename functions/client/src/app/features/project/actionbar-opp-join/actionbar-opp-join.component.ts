@@ -12,22 +12,19 @@ import { Router, ActivatedRoute } from "@angular/router";
 
 export class ActionbarOppJoinComponent implements OnChanges {
   @Input() opp: Opp;
-  @Input() private applications: Application[];
-  public application: Application;
-  showCancelButton: boolean = false;
+  @Input() public application: Application;
+  public showCancelButton: boolean = false;
+  public oppKey: string;
 
   constructor(
     public applicationAction: ApplicationActionService,
     public router: Router,
     public route: ActivatedRoute
-  ) { }
+  ) {
+    this.oppKey = this.route.parent.snapshot.params['oppKey'];
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.applications) {
-      this.application = this.applications
-        .find(s =>
-          s.status !== ApplicationStatus.Canceled &&
-          s.oppKey === this.opp.$key);
       if (this.application) {
         switch (this.application.status) {
           case ApplicationStatus.Accepted:
@@ -39,24 +36,26 @@ export class ActionbarOppJoinComponent implements OnChanges {
             break;
         }
       }
-    }
   }
 
   cancel(application: Application) {
-    let oppKey = this.route.parent.snapshot.params["oppKey"];
-    if (oppKey)
+    if (this.oppKey) {
       this.router.navigate([application.$key, 'cancel'], { relativeTo: this.route })
-    else
-      this.router.navigate(['../','opp', application.oppKey,'join', application.$key, 'cancel'], { relativeTo: this.route })
+    } else {
+      this.router.navigate(['../', 'opp', application.oppKey, 'join', application.$key, 'cancel'], { relativeTo: this.route })
+    }
   }
 
   continue(application: Application) {
-    if (!application.step)
+    if (!application.step) {
       this.router.navigate(['/apply', application.oppKey, 'application', application.$key, 'answer-question'])
-    if (application.step === ApplicationStepFinished.Answer)
+    }
+    if (application.step === ApplicationStepFinished.Answer) {
       this.router.navigate(['/apply', application.oppKey, 'application', application.$key, 'teams'])
-    if (application.step === ApplicationStepFinished.Team)
+    }
+    if (application.step === ApplicationStepFinished.Team) {
       this.router.navigate(['/apply', application.oppKey, 'application', application.$key, 'review-detail'])
+    }
   }
 
 }

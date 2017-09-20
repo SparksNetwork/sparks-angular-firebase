@@ -1,6 +1,6 @@
 import { browser, by, element } from 'protractor';
 
-export class OpportunityPartialDiscountPage {
+export class OpportunityPage {
 
     navigateTo() {
         return browser.get('project/LC/opp/LC1');
