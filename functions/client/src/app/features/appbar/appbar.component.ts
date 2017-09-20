@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 
-import { AuthService } from "../../core/snauth/auth/auth.service";
+import { AuthService } from '../../core/snauth/auth/auth.service';
 
 @Component({
   selector: 'appbar-appbar',
@@ -17,7 +17,8 @@ export class AppbarComponent implements OnInit {
 
   ngOnInit() { }
 
-  navigateToSignIn() {   
+  navigateToSignIn() {
     this.router.navigate(['/auth', this.router.url, 'signin'])
   }
+
 }
