@@ -37,9 +37,8 @@ describe('Apply: user must auth before starting application', () => {
       element(by.css('#preferredName')).sendKeys('Stevo')
       element(by.css('#phoneNumber')).sendKeys('8053129100')
       element(by.css('#birthday')).sendKeys('10251974')
- 
-      browser.wait(ExpectedConditions.elementToBeClickable(element(by.css('#next'))),
-        waitTimeout, 'Next button was not clickable after completing the profile information')
+
+      browser.wait(ExpectedConditions.elementToBeClickable(element(by.css('#next'))))
       element(by.css('#next')).click()
       confirmPage('/apply/KPC1/answer-question', '', 'Answer-question', 'first', waitTimeout)
       expect(true).toBeTruthy()
