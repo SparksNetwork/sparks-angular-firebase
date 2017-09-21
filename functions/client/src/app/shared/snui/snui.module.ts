@@ -19,6 +19,7 @@ import { PageMessageComponent } from './page-message/page-message.component';
 import { DateIntervalPipe } from '../pipes/date-interval.pipe';
 import { DateFormatPipe } from 'angular2-moment';
 import { DateTimeIntervalPipe } from '../pipes/date-time-interval.pipe';
+import { SortShiftsByDatePipe } from '../pipes/sort-shifts.pipe';
 
 
 const COMPONENTS = [
@@ -36,6 +37,8 @@ const COMPONENTS = [
   PageMessageComponent,
   DateIntervalPipe,
   DateTimeIntervalPipe,
+  SortShiftsByDatePipe
+  
 ]
 
 @NgModule({
