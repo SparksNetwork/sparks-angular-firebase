@@ -99,6 +99,14 @@ const routes: Routes = [
                 ]
             },
             {
+                path: 'apply-cofirmation',
+                component: PageApplyConfirmationComponent,
+                resolve: {
+                    project: ResolveProjectByOpp
+                }
+            },
+
+            {
                 path: 'application',
                 resolve: {
                     teams: ResolveTeamByOppKey,
@@ -109,13 +117,6 @@ const routes: Routes = [
                     RequireProfileCompleteService,
                 ],
                 children: [
-                    {
-                        path: 'apply-cofirmation',
-                        component: PageApplyConfirmationComponent,
-                        resolve: {
-                            project: ResolveProjectByOpp
-                        }
-                    },
                     {
                         path: 'edit-profile',
                         component: PageCompleteProfileComponent

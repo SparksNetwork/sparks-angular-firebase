@@ -48,13 +48,13 @@ export class ActionbarOppJoinComponent implements OnChanges {
 
   continue(application: Application) {
     if (!application.step) {
-      this.router.navigate(['/apply', application.oppKey, 'application', application.$key, 'answer-question'])
+      this.router.navigate(['/apply', this.oppKey, 'answer-question'])
     }
     if (application.step === ApplicationStepFinished.Answer) {
-      this.router.navigate(['/apply', application.oppKey, 'application', application.$key, 'teams'])
+      this.router.navigate(['/apply', this.oppKey, 'teams'])
     }
     if (application.step === ApplicationStepFinished.Team) {
-      this.router.navigate(['/apply', application.oppKey, 'application', application.$key, 'review-detail'])
+      this.router.navigate(['/apply', this.oppKey, 'review-detail'])
     }
   }
 
