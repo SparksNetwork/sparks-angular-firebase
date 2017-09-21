@@ -13,7 +13,8 @@ import { Router, ActivatedRoute } from "@angular/router";
 export class ActionbarOppJoinComponent implements OnChanges {
   @Input() opp: Opp;
   @Input() public application: Application;
-  public showCancelButton: boolean = false;
+  public showCancelButton: boolean;
+  public showJoinButton: boolean;
   public oppKey: string;
 
   constructor(
@@ -36,6 +37,10 @@ export class ActionbarOppJoinComponent implements OnChanges {
             break;
         }
       }
+
+      this.showJoinButton = !this.application || !this.application.oppKey ||
+        (this.oppKey && this.application.oppKey !== this.oppKey) ||
+        this.application.status === ApplicationStatus.Canceled;
   }
 
   cancel(application: Application) {

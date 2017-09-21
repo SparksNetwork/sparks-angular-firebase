@@ -49,6 +49,8 @@ import { ProjectOppCardComponent } from './project-opp-card/project-opp-card.com
 import { PageOppApplicationCancelComponent } from './page-opp-application-cancel/page-opp-application-cancel.component';
 import { ProjectOppBenefitsComponent } from './project-opp-benefits/project-opp-benefits.component';
 import { PageOppApplicationCancelConfirmationComponent } from './page-opp-application-cancel-confirmation/page-opp-application-cancel-confirmation.component';
+import { RequireAuth } from '../../core/snauth/require-auth/require-auth.service';
+import { RequireEmailVerification } from '../../core/snauth/require-email-verification/require-email-verification.service';
 
 const routes: Routes = [
   {
@@ -108,19 +110,35 @@ const routes: Routes = [
           },
           {
             path: 'cancel',
-            component: PageOppApplicationCancelComponent
+            component: PageOppApplicationCancelComponent,
+            canActivate: [
+              RequireAuth,
+              RequireEmailVerification,
+            ],
           },
           {
             path: 'join/cancel',
-            component: PageOppApplicationCancelComponent
+            component: PageOppApplicationCancelComponent,
+            canActivate: [
+              RequireAuth,
+              RequireEmailVerification,
+            ],
           },
           {
             path: 'cancel-confirmation',
-            component: PageOppApplicationCancelConfirmationComponent
+            component: PageOppApplicationCancelConfirmationComponent,
+            canActivate: [
+              RequireAuth,
+              RequireEmailVerification,
+            ],
           },
           {
             path: 'join/cancel-confirmation',
-            component: PageOppApplicationCancelConfirmationComponent
+            component: PageOppApplicationCancelConfirmationComponent,
+            canActivate: [
+              RequireAuth,
+              RequireEmailVerification,
+            ],
           }
         ]
       },
