@@ -1,33 +1,32 @@
 <ng-container *ngIf="selectedShifts | async; let selectedShifts">
-  <div class="segment" *ngIf="selectedShifts.length">
-    <div class="row">
-      <div class="col-xs-8">
-        <h3 class="segment-title">Selected Shifts ({{selectedShifts.length}} of {{availableShiftsNo}})</h3>
-      </div>
-      <div class="col-xs-4 segment-title-link-container">
-        <a (click)="deleteAll()">delete all<span class="ic ic-close" aria-hidden="true"></span></a>
-      </div>
-    </div>
-
-    <div class="you-get-give-join timeline">
-      <ul>
-        <li *ngFor="let shift of selectedShifts">
-          <div class="icon-desc-container">
-            <div class="icon">
-              <span class="ic {{shift.teamIcon}}"></span>
+    <div class="segment" *ngIf="selectedShifts.length">
+        <div class="row">
+            <div class="col-xs-8">
+                <h3 class="segment-title">Selected Shifts ({{selectedShifts.length}} of {{availableShiftsNo}})</h3>
             </div>
-            <div class="description">
-              <h4>{{shift.teamTitle}}</h4>
-              <div class="timeline-when">
-                <p>{{ shift.startDateTime | snDateTimeInterval: shift.endDateTime }}</p>
-              </div>
+            <div class="col-xs-4 segment-title-link-container">
+                <a (click)="deleteAll()">delete all<span class="ic ic-close" aria-hidden="true"></span></a>
             </div>
-          </div>
-          <div class="karma-point-container">
-            <a (click)="delete(shift.$key)">delete<span class="ic ic-close" aria-hidden="true"></span></a>
-          </div>
-        </li>
-      </ul>
+        </div>
+        <div class="you-get-give-join timeline">
+            <ul>
+                <li *ngFor="let shift of (selectedShifts|snSortShiftsByDate)">
+                    <div class="icon-desc-container">
+                        <div class="icon">
+                            <span class="ic {{shift.teamIcon}}"></span>
+                        </div>
+                        <div class="description">
+                            <h4>{{shift.teamTitle}}</h4>
+                            <div class="timeline-when">
+                                <p>{{ shift.startDateTime | snDateTimeInterval: shift.endDateTime }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="karma-point-container">
+                        <a (click)="delete(shift.$key)">delete<span class="ic ic-close" aria-hidden="true"></span></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
 </ng-container>

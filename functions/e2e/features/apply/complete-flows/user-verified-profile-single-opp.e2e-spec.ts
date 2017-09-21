@@ -6,7 +6,7 @@ import { AnswerTeamQuestionPage } from '../../../po/apply.answer-team-question.p
 import { browser, ExpectedConditions } from 'protractor/built';
 import { setUsers, setData, signIn, signOut } from '../../../firebase';
 import { USER_VERIFIED_PROFILE } from '../../../fixtures/users';
-import { confirmPage, joinATeam } from '../../helper-functions/shared';
+import { confirmPage, joinATeam, WAIT_TIMEOUT } from '../../helper-functions/shared';
 import { ReviewApplicationDetailsPage } from '../../../po/apply.review-application-details.po';
 import { UserHomePage } from '../../../po/user-home.po';
 import { testCommonProjectInformation } from '../../helper-functions/project/project-common';
@@ -27,7 +27,6 @@ describe('Apply-Single-Opportunity-Flow: verified user with complete profile inf
     let params: ParamsObject
 
     const fullyLoaded = require('../../../fixtures/fully-loaded.json')
-    const waitTimeout = 5000
     const answerOrganizerQuestion = 'I want to help'
 
     beforeAll(done => {
@@ -55,51 +54,51 @@ describe('Apply-Single-Opportunity-Flow: verified user with complete profile inf
         'select a team, review the application details and submit ', function () {
             let KPCProjectLink = homePage.getProjectLink(0)
             browser.wait(ExpectedConditions.presenceOf(KPCProjectLink),
-                waitTimeout, 'Link to KPC project was not present')
+                WAIT_TIMEOUT, 'Link to KPC project was not present')
             homePage.getProjectTitle(KPCProjectLink).click()
                 .then(() => testCommonProjectInformation(KPCprojectPage, fullyLoaded['project']['KPC']))
                 .then(() => testProjectSingleOpp(KPCprojectPage, fullyLoaded, 'KPC1-1'))
                 .then(() =>
                     browser.wait(ExpectedConditions.elementToBeClickable(KPCprojectPage.getJoinButton()),
-                        waitTimeout, 'Join button was not present')
+                        WAIT_TIMEOUT, 'Join button was not present')
                 )
                 .then(() => KPCprojectPage.getJoinButton().click())
                 .then(() =>
-                    confirmPage('/apply/KPC1/answer-question', '', 'Answer-question', 'first', waitTimeout))
+                    confirmPage('/apply/KPC1/answer-question', '', 'Answer-question', 'first' ))
                 .then(() => testsForAnswerOrganizerQuestionPage(answerOrganizerQuestionPage, fullyLoaded, 'KPC1'))
                 .then(() => {
                     browser.wait(ExpectedConditions.presenceOf(answerOrganizerQuestionPage.getNextButton()),
-                        waitTimeout, 'Next button was not present')
+                        WAIT_TIMEOUT, 'Next button was not present')
                     answerOrganizerQuestionPage.getAnswer().sendKeys('42')
                     let next = answerOrganizerQuestionPage.getNextButton()
                     browser.wait(ExpectedConditions.elementToBeClickable(next),
-                        waitTimeout, 'Next button was not clickable')
+                        WAIT_TIMEOUT, 'Next button was not clickable')
                     return next.click()
                 })
                 .then(() =>
-                    confirmPage('/apply/KPC1/application/', '/teams', 'Pick-teams', 'first', waitTimeout, '/teams/'))
+                    confirmPage('/apply/KPC1/application/', '/teams', 'Pick-teams', 'first', '/teams/'))
                 .then(() => {
                     testsForChooseTeamsPage(params)
                     return testsForChooseSingleTeamsPage(params)
                 })
-                .then(() => joinATeam(pickTeamPage, waitTimeout, 'KPC1', answerTeamQuestionPage))
+                .then(() => joinATeam(pickTeamPage, 'KPC1', answerTeamQuestionPage))
                 .then(() => {
                     let nextButton = pickTeamPage.getNextButton()
                     browser.wait(ExpectedConditions.elementToBeClickable(nextButton),
-                        waitTimeout, 'Next button was not clickable when the team was selected')
+                        WAIT_TIMEOUT, 'Next button was not clickable when the team was selected')
                     return nextButton.click()
                 })
-                .then(() => confirmPage('/apply/KPC1/application/', '/review-detail', 'Review-application-details', 'first', waitTimeout))
+                .then(() => confirmPage('/apply/KPC1/application/', '/review-detail', 'Review-application-details', 'first'))
                 .then(() => {
                     return testsForReviewApplicationDetails(params)
                 })
                 .then(() => {
                     let nextButton = reviewApplicationDetailsPage.getNextButton()
                     browser.wait(ExpectedConditions.elementToBeClickable(nextButton),
-                        waitTimeout, 'Next button was not clickable on Review-application-details page')
+                        WAIT_TIMEOUT, 'Next button was not clickable on Review-application-details page')
                     return nextButton.click()
                 })
-                .then(() => confirmPage('/apply/KPC1/application/', '/apply-cofirmation', 'Apply-cofirmation', 'first', waitTimeout))
+                .then(() => confirmPage('/apply/KPC1/application/', '/apply-cofirmation', 'Apply-cofirmation', 'first'))
             expect(true).toBeTruthy()
         })
 

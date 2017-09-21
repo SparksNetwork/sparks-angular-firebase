@@ -68,8 +68,8 @@ export abstract class ProjectPage {
     }
 
     getOrganizerImage() {
-        return element(by.className('project-organizer segment'))
-            .$('div.row').$('div.col-xs-3').$('img.img-circle');
+        return element(by.className('img-circle'))
+    
     }
 
     getDate(){

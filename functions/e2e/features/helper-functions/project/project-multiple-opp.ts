@@ -1,13 +1,12 @@
 import 'jasmine'
 import { ProjectMultiOppPage } from '../../../po/project.multi-opp.po';
 import { browser, ExpectedConditions } from 'protractor/built';
-import { GetKeyFromUrl } from '../shared';
-const waitTimeout = 5000
+import { GetKeyFromUrl, WAIT_TIMEOUT } from '../shared';
 
 function testOpportunities(page: ProjectMultiOppPage, fullyLoaded: any) {
     let oppLinks = page.getLinks()
     browser.wait(ExpectedConditions.presenceOf(oppLinks.first()),
-        waitTimeout, 'On Project-Multiple-opportunity page first opportunity link was not present')
+        WAIT_TIMEOUT, 'On Project-Multiple-opportunity page first opportunity link was not present')
     page.getNumberOfOportunityLinks()
         .then(function (str) {
             expect(str).toBe(5,
@@ -28,7 +27,7 @@ function testOpportunities(page: ProjectMultiOppPage, fullyLoaded: any) {
                 - fullyLoaded['opp'][GetKeyFromUrl(link, 1)]['contribValue']) / (fullyLoaded['opp'][GetKeyFromUrl(link, 1)]['benefitValue'])) * 100;
             discountValue = Math.trunc(discountValue);
             if (discountValue != 100) {
-                browser.wait(ExpectedConditions.presenceOf(page.getDiscount(item)), waitTimeout,
+                browser.wait(ExpectedConditions.presenceOf(page.getDiscount(item)), WAIT_TIMEOUT,
                     'On Project-multiple-opportunity page the discount was not present')
             }
 

@@ -4,14 +4,14 @@ import { ProjectPage } from '../../../po/project.po';
 import { DatePipe } from '@angular/common'
 import { getFormatedTimeInterval } from './time-interval-functions';
 import { getLocationForDirections } from './location-functions';
+import { WAIT_TIMEOUT } from '../shared';
 
-const waitTimeout = 5000
 
 function testTitle(page: ProjectPage, project: any) {
     const titleEl = page.getProjectTitleElement();
 
     browser.wait(ExpectedConditions.presenceOf(titleEl),
-        waitTimeout, 'On Project page title was not present')
+        WAIT_TIMEOUT, 'On Project page title was not present')
 
     return titleEl.getText().then((title) => {
         expect(title).toMatch(project['title'], 'On Project page the title was not correct')
@@ -23,7 +23,7 @@ function testTitle(page: ProjectPage, project: any) {
 function testCarousel(page: ProjectPage, project: any) {
     const lastCarouselIndicator = page.getLastCarouselIndicator();
     browser.wait(ExpectedConditions.elementToBeClickable(lastCarouselIndicator)
-        , waitTimeout, 'On Project page carousel was not working');
+        , WAIT_TIMEOUT, 'On Project page carousel was not working');
     lastCarouselIndicator.click();
     page.getCarouselActiveImageDiv().getAttribute('style')
         .then(function (str) {
@@ -43,7 +43,7 @@ function testDescription(page: ProjectPage, project: any) {
 function testLocation(page: ProjectPage, project: any) {
 
     browser.wait(ExpectedConditions.presenceOf(page.getLocationElement()),
-        waitTimeout, 'On Project page location element was not present')
+        WAIT_TIMEOUT, 'On Project page location element was not present')
 
     const locationName = page.getLocationName();
     locationName.then(function (str)
@@ -57,7 +57,7 @@ function testLocation(page: ProjectPage, project: any) {
 
 function testReceivedKarmaPoints(page: ProjectPage, project: any) {
     browser.wait(ExpectedConditions.presenceOf(page.getMaximumKarmaPointsElement()),
-        waitTimeout, 'On Project page maximum karma points were not present')
+        WAIT_TIMEOUT, 'On Project page maximum karma points were not present')
     return page.getMaximumKarmaPoints().then(function (str) {
         expect(str).toContain(project['maxKarmaPoints'],
             'On Project page maximum karma points were not correct')
@@ -67,7 +67,7 @@ function testReceivedKarmaPoints(page: ProjectPage, project: any) {
 function testDate(page: ProjectPage, project: any) {
     let projectDate = page.getDate();
     browser.wait(ExpectedConditions.presenceOf(projectDate),
-        waitTimeout, 'On Project page the date was not present')
+        WAIT_TIMEOUT, 'On Project page the date was not present')
 
     let datePipe: DatePipe = new DatePipe('longDate');
 
@@ -80,7 +80,7 @@ function testDate(page: ProjectPage, project: any) {
 
 function testOrganizer(page: ProjectPage, project: any) {
     browser.wait(ExpectedConditions.presenceOf(page.getOrganizerDetailsElement()),
-        waitTimeout, 'On Project page organizer details were not present')
+        WAIT_TIMEOUT, 'On Project page organizer details were not present')
 
     const organizerDetails = page.getOrganizerDetails();
 
@@ -94,11 +94,11 @@ function testOrganizer(page: ProjectPage, project: any) {
     });
 
     const organizerImage = page.getOrganizerImage();
-    browser.wait(ExpectedConditions.presenceOf(organizerImage), waitTimeout,
+    browser.wait(ExpectedConditions.presenceOf(organizerImage), WAIT_TIMEOUT,
         'On Project page organizer image was not present')
 
-    return page.getOrganizerImage().getAttribute('src').then(function (str) {
-        expect(str).toMatch(project['organizer']['imageUrl'],
+    return page.getOrganizerImage().getAttribute('style').then(function (str) {
+        expect(str).toContain(project['organizer']['imageUrl'],
             'On Project page the organizer image was no correctly displayed')
     });
 }
@@ -106,7 +106,7 @@ function testOrganizer(page: ProjectPage, project: any) {
 function testLinkToEventPage(page: ProjectPage, project: any) {
     const eventPageLink = page.getLinkToEventPage();
     browser.wait(ExpectedConditions.presenceOf(eventPageLink),
-        waitTimeout, 'On Project page link to Event Page was not present')
+        WAIT_TIMEOUT, 'On Project page link to Event Page was not present')
 
     const hrefAttribute = eventPageLink.getAttribute('href');
 
@@ -132,7 +132,7 @@ function testLinkToEventPage(page: ProjectPage, project: any) {
 function testLocationLink(page: ProjectPage, project: any) {
     const locationLink = page.getLocationLink();
     browser.wait(ExpectedConditions.presenceOf(locationLink),
-        waitTimeout, 'On Project page the location link was not present')
+        WAIT_TIMEOUT, 'On Project page the location link was not present')
 
     const hrefAttribute = locationLink.getAttribute('href');
 
@@ -162,7 +162,7 @@ function testLocationLink(page: ProjectPage, project: any) {
 
 function testShareKarmaPoints(page: ProjectPage, project: any) {
     browser.wait(ExpectedConditions.presenceOf(page.getShareKarmaPointsElement()),
-        waitTimeout, 'On Project page the share karma points was not present')
+        WAIT_TIMEOUT, 'On Project page the share karma points was not present')
 
     page.getShareKarmaPoints().then(function (str) {
         expect(str).toContain(project['shareKarmaPoints'],

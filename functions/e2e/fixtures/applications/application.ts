@@ -112,15 +112,14 @@ export const KPC_INCOMPLETE_APP_USER_NOT_VER = {
     }
 }
 
-export const LC_ACCEPTED_APP = {
-    "LC_ACCEPTED_APP": {
+export const LC_USER_VERIFIED_PROFILE = {
+    "LC-USER_VERIFIED_PROFILE": {
         createdOn: "2017-09-18T10:11:25.843Z",
         oppAnswer: "Yes",
         oppKey: "LC1",
         oppQuestion: "Do you like festivals?",
         profileKey: "USER_VERIFIED_PROFILE",
         projectKey: "LC",
-        projectProfileKey: "LC-USER_VERIFIED_PROFILE",
         status: "Accepted",
         step: "Team",
         submittedOn: "2017-09-18T10:11:43.970Z"
