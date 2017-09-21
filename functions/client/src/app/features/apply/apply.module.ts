@@ -20,6 +20,7 @@ import { ShiftFilterComponent } from './shift-filter/shift-filter.component';
 import { ShiftsSelectedComponent } from './shifts-selected/shifts-selected.component';
 import { ResolveApplicationByOpp } from './resolve-application-by-opp/resolve-application-by-opp.service';
 import { ResolveApplicationTeamsByOpp } from './resolve-application-teams-by-opp/resolve-application-teams-by-opp.service';
+import { ResolveApplicationShiftsByOpp } from './resolve-application-shifts-by-opp/resolve-application-shifts-by-opp.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ResolveApplicationTeamsByOpp } from './resolve-application-teams-by-opp
     ResolveShiftByApplicationTeams,
     RequireApplicationAcceptedService,
     ResolveApplicationByOpp,
-    ResolveApplicationTeamsByOpp
+    ResolveApplicationTeamsByOpp,
+    ResolveApplicationShiftsByOpp
   ]
 })
 export class ApplyModule { }

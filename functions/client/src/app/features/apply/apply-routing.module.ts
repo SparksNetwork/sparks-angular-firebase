@@ -28,6 +28,7 @@ import { ResolveApplicationShiftByAppKey } from '../../core/sndomain/application
 import { ResolveApplicationByKey, ResolveApplication } from '../../core/sndomain/application/index';
 import { ResolveApplicationByOpp } from './resolve-application-by-opp/resolve-application-by-opp.service';
 import { ResolveApplicationTeamsByOpp } from './resolve-application-teams-by-opp/resolve-application-teams-by-opp.service';
+import { ResolveApplicationShiftsByOpp } from './resolve-application-shifts-by-opp/resolve-application-shifts-by-opp.service';
 
 const routes: Routes = [
     {
@@ -124,6 +125,27 @@ const routes: Routes = [
                 resolve: {
                     project: ResolveProjectByOpp
                 }
+            },
+            {
+                path: 'shift',
+                resolve: {
+                    appTeams: ResolveApplicationTeamsByOpp,
+                    project: ResolveProjectByOpp,
+                    applicationShift: ResolveApplicationShiftsByOpp,
+                    application: ResolveApplicationByOpp
+                },
+                canActivate: [
+                    RequireApplicationAcceptedService
+                ],
+                children: [
+                    {
+                        path: '',
+                        component: PageShiftComponent,
+                        resolve: {
+                            shift: ResolveShiftByApplicationTeams
+                        }
+                    }
+                ]
             },
 
             {

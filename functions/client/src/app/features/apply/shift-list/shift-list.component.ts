@@ -5,6 +5,7 @@ import { Shift } from '../../../../../../universal/domain/shift';
 import { ApplicationShift } from '../../../../../../universal/domain/applicationShift';
 
 import { ApplicationShiftActionService } from '../../../core/sndomain/applicationShift/application-shift-action.service';
+import { Application } from '../../../../../../universal/domain/application';
 
 @Component({
   selector: 'apply-shift-list',
@@ -12,6 +13,7 @@ import { ApplicationShiftActionService } from '../../../core/sndomain/applicatio
 })
 export class ShiftListComponent implements OnInit {
   @Input() shifts: Shift[]
+  public application: Application
 
   constructor(
     private route: ActivatedRoute,
@@ -19,10 +21,13 @@ export class ShiftListComponent implements OnInit {
   ) {  }
 
   ngOnInit() {
+    this.route.snapshot.data['application'].subscribe(app => {
+      this.application = app;
+    });
   }
 
   public select(key: string) {
-    this.applicationShiftAction.createApplicationShift(this.route.snapshot.parent.paramMap.get('applicationKey'), key)
+    this.applicationShiftAction.createApplicationShift(this.application.$key, key)
       .subscribe((a) => { console.log(a) });
   }
 }
