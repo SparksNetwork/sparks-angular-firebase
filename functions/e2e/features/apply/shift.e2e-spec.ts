@@ -3,13 +3,12 @@ import { ShiftPage } from '../../po/apply.shift.po';
 import { browser, ExpectedConditions, ElementArrayFinder } from 'protractor/built';
 import { setUsers, setData, signOut, signIn, updateData } from '../../firebase';
 import { USER_VERIFIED_PROFILE } from '../../fixtures/users';
-import { confirmPage } from '../helper-functions/navigation/navigation-functions';
+import { confirmPage } from '../helper-functions/shared';
 import { ApplicationStages } from '../../fixtures/applications/application-stages';
-import { LC_ACCEPTED_APP } from '../../fixtures/applications/application';
+import { LC_USER_VERIFIED_PROFILE } from '../../fixtures/applications/application';
 import { SignInPage } from '../../po/sign-in.po';
-import { getDateIntervalForShift } from '../helper-functions/shared';
+import { getDateIntervalForShift, WAIT_TIMEOUT } from '../helper-functions/shared';
 
-const waitTimeout = 5000
 
 describe('Apply-Choose-Shifts: verified user with complete profile', () => {
     let shiftPage: ShiftPage
@@ -26,25 +25,27 @@ describe('Apply-Choose-Shifts: verified user with complete profile', () => {
         browser.waitForAngularEnabled(false)
         setUsers()
             .then(() => setData('/', fullyLoaded))
+            .then(() => setData('/application', LC_USER_VERIFIED_PROFILE))
+            .then(() => setData('/applicationTeam', require('../../fixtures/applications/application-team.json')))
             .then(done)
     })
 
     describe('Exploring shifts page', () => {
         beforeAll(done => {
             shiftPage.navigateTo()
-                .then(() => confirmPage('/auth/%2Fapply%2FLC1%2Fapplication%2FLC_ACCEPTED_APP%2Fshift/signin', '', 'Sign-In',
-                    'first', waitTimeout))
+                .then(() => confirmPage('/auth/%2Fapply%2FLC1%2Fapplication%2FLC-USER_VERIFIED_PROFILE%2Fshift/signin', '', 'Sign-In',
+                    'first', WAIT_TIMEOUT))
                 .then(() => signInPage.getEmailAddressInput())
                 .then((input) => input.sendKeys(USER_VERIFIED_PROFILE.email))
                 .then(() => signInPage.getPasswordInput())
                 .then((input) => input.sendKeys(USER_VERIFIED_PROFILE.password))
                 .then(() => {
                     let button = signInPage.getSignInButton()
-                    browser.wait(ExpectedConditions.elementToBeClickable(button), waitTimeout,
+                    browser.wait(ExpectedConditions.elementToBeClickable(button), WAIT_TIMEOUT,
                         'Sign-in button it was not clickable')
                     return button.click()
                 })
-                .then(() => confirmPage('/apply/LC1/application/LC_ACCEPTED_APP/shift', '', 'Choose-shift', 'first', waitTimeout))
+                .then(() => confirmPage('/apply/LC1/application/LC-USER_VERIFIED_PROFILE/shift', '', 'Choose-shift', 'first', WAIT_TIMEOUT))
                 .then(done)
         })
 
@@ -54,11 +55,11 @@ describe('Apply-Choose-Shifts: verified user with complete profile', () => {
 
         it('In the select for Data filter there should be all the start dates of shifts', () => {
             let select = shiftPage.getDateSelect()
-            browser.wait(ExpectedConditions.presenceOf(select), waitTimeout,
+            browser.wait(ExpectedConditions.presenceOf(select), WAIT_TIMEOUT,
                 'Filter by date was not present')
 
             let options = shiftPage.getAllOptions(select)
-            browser.wait(ExpectedConditions.presenceOf(options.first()), waitTimeout,
+            browser.wait(ExpectedConditions.presenceOf(options.first()), WAIT_TIMEOUT,
                 'First option was not present')
 
             let isPresent: boolean = false;
@@ -86,11 +87,11 @@ describe('Apply-Choose-Shifts: verified user with complete profile', () => {
 
         it('In the select for Teams filter there should be all the titles of teams', () => {
             let select = shiftPage.getTeamSelect()
-            browser.wait(ExpectedConditions.presenceOf(select), waitTimeout,
+            browser.wait(ExpectedConditions.presenceOf(select), WAIT_TIMEOUT,
                 'Filter by team was not present')
 
             let options = shiftPage.getAllOptions(select)
-            browser.wait(ExpectedConditions.presenceOf(options.first()), waitTimeout,
+            browser.wait(ExpectedConditions.presenceOf(options.first()), WAIT_TIMEOUT,
                 'First option was not present')
 
             let isPresent: boolean = false;
@@ -113,17 +114,17 @@ describe('Apply-Choose-Shifts: verified user with complete profile', () => {
 
         it('It should be able to filter by date', () => {
             let select = shiftPage.getDateSelect()
-            browser.wait(ExpectedConditions.presenceOf(select), waitTimeout,
+            browser.wait(ExpectedConditions.presenceOf(select), WAIT_TIMEOUT,
                 'Filter by team was not present')
             select.click()
 
             let dateOption = shiftPage.getOption(select, 2);
-            browser.wait(ExpectedConditions.presenceOf(dateOption), waitTimeout,
+            browser.wait(ExpectedConditions.presenceOf(dateOption), WAIT_TIMEOUT,
                 'Second option was not present')
             dateOption.click()
 
             let titles = shiftPage.getAllShifts()
-            browser.wait(ExpectedConditions.presenceOf(titles.first()), waitTimeout,
+            browser.wait(ExpectedConditions.presenceOf(titles.first()), WAIT_TIMEOUT,
                 'First shift title was not present')
 
             dateOption.getText().then((selectedDate) => {
@@ -147,12 +148,12 @@ describe('Apply-Choose-Shifts: verified user with complete profile', () => {
 
         it('It should be able to reset Date filter by selecting  All Dates', () => {
             let select = shiftPage.getDateSelect()
-            browser.wait(ExpectedConditions.presenceOf(select), waitTimeout,
+            browser.wait(ExpectedConditions.presenceOf(select), WAIT_TIMEOUT,
                 'Filter by date was not present')
             select.click()
 
             let dateOption = shiftPage.getOption(select, 0);
-            browser.wait(ExpectedConditions.presenceOf(dateOption), waitTimeout,
+            browser.wait(ExpectedConditions.presenceOf(dateOption), WAIT_TIMEOUT,
                 'First option was not present')
             dateOption.click()
 
@@ -161,17 +162,17 @@ describe('Apply-Choose-Shifts: verified user with complete profile', () => {
 
         it('It can be able to filter by team', () => {
             let select = shiftPage.getTeamSelect()
-            browser.wait(ExpectedConditions.presenceOf(select), waitTimeout,
+            browser.wait(ExpectedConditions.presenceOf(select), WAIT_TIMEOUT,
                 'Filter by team was not present')
             select.click()
 
             let teamOption = shiftPage.getOption(select, 2);
-            browser.wait(ExpectedConditions.presenceOf(teamOption), waitTimeout,
+            browser.wait(ExpectedConditions.presenceOf(teamOption), WAIT_TIMEOUT,
                 'Second option was not present')
             teamOption.click()
 
             let titles = shiftPage.getAllShifts()
-            browser.wait(ExpectedConditions.presenceOf(titles.first()), waitTimeout,
+            browser.wait(ExpectedConditions.presenceOf(titles.first()), WAIT_TIMEOUT,
                 'First shift title was not present')
 
             teamOption.getText().then((selectedTeamTitle) => {
@@ -194,12 +195,12 @@ describe('Apply-Choose-Shifts: verified user with complete profile', () => {
 
         it('It can reset Team filter by selecting  All Teams', () => {
             let select = shiftPage.getTeamSelect()
-            browser.wait(ExpectedConditions.presenceOf(select), waitTimeout,
+            browser.wait(ExpectedConditions.presenceOf(select), WAIT_TIMEOUT,
                 'Filter by date was not present')
             select.click()
 
             let dateOption = shiftPage.getOption(select, 0);
-            browser.wait(ExpectedConditions.presenceOf(dateOption), waitTimeout,
+            browser.wait(ExpectedConditions.presenceOf(dateOption), WAIT_TIMEOUT,
                 'First option was not present')
             dateOption.click()
 
@@ -208,27 +209,27 @@ describe('Apply-Choose-Shifts: verified user with complete profile', () => {
 
         it('It can be able to filter by date and team', () => {
             let dateSelect = shiftPage.getDateSelect()
-            browser.wait(ExpectedConditions.presenceOf(dateSelect), waitTimeout,
+            browser.wait(ExpectedConditions.presenceOf(dateSelect), WAIT_TIMEOUT,
                 'Filter by team was not present')
             dateSelect.click()
 
             let dateOption = shiftPage.getOption(dateSelect, 2);
-            browser.wait(ExpectedConditions.presenceOf(dateOption), waitTimeout,
+            browser.wait(ExpectedConditions.presenceOf(dateOption), WAIT_TIMEOUT,
                 'Second option was not present')
             dateOption.click()
 
             let teamSelect = shiftPage.getTeamSelect()
-            browser.wait(ExpectedConditions.presenceOf(teamSelect), waitTimeout,
+            browser.wait(ExpectedConditions.presenceOf(teamSelect), WAIT_TIMEOUT,
                 'Filter by team was not present')
             teamSelect.click()
 
             let teamOption = shiftPage.getOption(teamSelect, 2);
-            browser.wait(ExpectedConditions.presenceOf(teamOption), waitTimeout,
+            browser.wait(ExpectedConditions.presenceOf(teamOption), WAIT_TIMEOUT,
                 'Second option was not present')
             teamOption.click()
 
             let titles = shiftPage.getAllShifts()
-            browser.wait(ExpectedConditions.presenceOf(titles.first()), waitTimeout,
+            browser.wait(ExpectedConditions.presenceOf(titles.first()), WAIT_TIMEOUT,
                 'First shift title was not present')
 
             teamOption.getText().then((selectedTeamTitle) => {
@@ -255,7 +256,7 @@ describe('Apply-Choose-Shifts: verified user with complete profile', () => {
 
         it('Clear All will delete all filters', () => {
             let clearAll = shiftPage.getClearAllButton()
-            browser.wait(ExpectedConditions.presenceOf(clearAll), waitTimeout,
+            browser.wait(ExpectedConditions.presenceOf(clearAll), WAIT_TIMEOUT,
                 'ClearAll button was not present')
             clearAll.click()
 
@@ -289,7 +290,7 @@ describe('Apply-Choose-Shifts: verified user with complete profile', () => {
 
     function testAllShifts() {
         let titles = shiftPage.getAllShifts()
-        browser.wait(ExpectedConditions.presenceOf(titles.first()), waitTimeout,
+        browser.wait(ExpectedConditions.presenceOf(titles.first()), WAIT_TIMEOUT,
             'First shift title was not present')
 
         for (let key in shifts) {
