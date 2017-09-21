@@ -1,6 +1,6 @@
 <div class="project-organizer segment">
   <div class="row">
     <div class="col-xs-9"><h3>Organized by <span class="organizedby">{{organizer.name}} from {{organizer.organization}}</span></h3></div>
-    <div class="col-xs-3 organizer-img" *ngIf="organizer.imageUrl"><img class="img-circle" src="{{organizer.imageUrl}}" /></div>
+    <div class="col-xs-3 organizer-img" *ngIf="organizer.imageUrl"><div class="img-circle" [ngStyle]="{ 'background': 'url(' + organizer.imageUrl + ')'}"></div>
   </div>
 </div>

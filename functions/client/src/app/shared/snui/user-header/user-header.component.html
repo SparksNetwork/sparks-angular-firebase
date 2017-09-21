@@ -10,7 +10,7 @@
         </div>
         <div class="col-xs-4 text-center">
           <div class="profile-img">
-            <div class="img-responsive img-circle" [ngStyle]="{ 'background': 'url(' + imageUrl + ')'}">
+            <div class="img-responsive img-circle" [class.img-isauthed]="isAuthed" [ngStyle]="{ 'background': 'url(' + imageUrl + ')'}">
               <div *ngIf='profileScore' class="profile-score">{{profileScore}}</div>
             </div>
           </div>

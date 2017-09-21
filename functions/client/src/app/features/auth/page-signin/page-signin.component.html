@@ -30,7 +30,7 @@
     <div class="bottom-nav">
       <div class="row">
         <div class="col-xs-4">
-          <button class="btn btn-primary" routerLink='["/"]'>Cancel</button>
+          <a class="btn btn-primary" [routerLink]='["/"]'>Cancel</a>
         </div>
         <div class="col-xs-4 col-xs-offset-4">
           <button type="submit" form="emailPasswordForm" class="btn btn-secondary" id='signin'>Sign In</button>
@@ -40,4 +40,4 @@
   </div>
 </div>
 
-<snui-action-bar></snui-action-bar>
+<snui-action-bar class="emptyBottomNav"></snui-action-bar>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApplicationActionService } from '../../../core/sndomain/application';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Application, ApplicationStatus, ApplicationStepFinished } from '../../../../../../universal/domain/application';
+import { ApplicationStatus, ApplicationStepFinished } from '../../../../../../universal/domain/application';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Opp } from '../../../../../../universal/domain/opp';
 
@@ -11,7 +11,7 @@ import { Opp } from '../../../../../../universal/domain/opp';
 })
 export class PageAnswerQuestionComponent implements OnInit {
   public opp: Opp;
-  public application: Application;
+  public applicationKey: string;  
   public answerForm: FormGroup;
   public editFromReviewPage: boolean;
 
@@ -31,7 +31,7 @@ export class PageAnswerQuestionComponent implements OnInit {
   ngOnInit() {
     this.route.snapshot.data['application'].subscribe(app => {
       if (app) {
-        this.application = app;
+        this.applicationKey = app.$key;
         this.answerForm.get('answer').setValue(app.oppAnswer);
       }
     });
@@ -42,14 +42,14 @@ export class PageAnswerQuestionComponent implements OnInit {
   };
 
   submit() {
-    this.applicationAction.saveOppAnswer(this.application, this.opp.question, this.answerForm.get('answer').value)
+    this.applicationAction.saveOppAnswer(this.applicationKey, this.opp.question, this.answerForm.get('answer').value)
       .subscribe(s => {
         if (this.editFromReviewPage) {
           this.router.navigate(['../', 'review-detail'], { relativeTo: this.route });
           return;
         }
 
-        this.router.navigate(['apply', this.opp.$key, 'application', this.application.$key, 'teams']);
+        this.router.navigate(['apply', this.opp.$key, 'application', this.applicationKey, 'teams']);
       })
   }
 
