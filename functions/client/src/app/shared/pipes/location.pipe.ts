@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Location } from "../../../../../universal/domain/location";
+import { Location } from '../../../../../universal/domain/location';
 
-@Pipe({ name: 'location' })
+@Pipe({ name: 'snLocation' })
 export class LocationPipe implements PipeTransform {
     transform(location: Location, forDirections: boolean = false): string {
         if (!location) {
