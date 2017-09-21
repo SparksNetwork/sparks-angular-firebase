@@ -47,7 +47,10 @@ const routes: Routes = [
         children: [
             {
                 path: 'complete-profile',
-                component: PageCompleteProfileComponent
+                component: PageCompleteProfileComponent,
+                data: {
+                    navigateTo: 'answer-question'
+                }
             },
             {
                 path: 'answer-question',
@@ -99,6 +102,23 @@ const routes: Routes = [
                 ]
             },
             {
+                path: 'edit-profile',
+                component: PageCompleteProfileComponent,
+                data: {
+                    navigateTo: 'review-detail'
+                }
+            },
+            {
+                path: 'edit-answer',
+                component: PageAnswerQuestionComponent,
+                resolve: {
+                    application: ResolveApplicationByOpp
+                },
+                data: {
+                    navigateTo: 'review-detail'
+                }
+            },
+            {
                 path: 'apply-cofirmation',
                 component: PageApplyConfirmationComponent,
                 resolve: {
@@ -118,14 +138,6 @@ const routes: Routes = [
                 ],
                 children: [
                     {
-                        path: 'edit-profile',
-                        component: PageCompleteProfileComponent
-                    },
-                    {
-                        path: 'answer-question',
-                        component: PageAnswerQuestionComponent
-                    },
-                    {
                         path: 'shift',
                         component: PageShiftComponent,
                         resolve: {
@@ -136,10 +148,6 @@ const routes: Routes = [
                         canActivate: [
                             RequireApplicationAcceptedService
                         ]
-                    },
-                    {
-                        path: 'edit-answer',
-                        component: PageAnswerQuestionComponent
                     },
                     {
                         path: 'payment-details',
