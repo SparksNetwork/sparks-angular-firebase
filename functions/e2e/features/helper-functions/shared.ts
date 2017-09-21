@@ -66,7 +66,7 @@ export function confirmPage(firstPartToContain: string, secondPartToContain: str
 export function joinATeam(pickTeamPage: PickTeamPage,
     oppKey: string, answerTeamQuestionPage: AnswerTeamQuestionPage) {
 
-    return confirmPage('/apply/' + oppKey + '/application/', '/teams', 'Pick-teams', 'first', '/teams/')
+    return confirmPage('/apply/' + oppKey, '/teams', 'Pick-teams', 'first', '/teams/')
         .then(() => {
             //the available team is displayed
             let team = pickTeamPage.getAvailableTeamLink(0)
@@ -76,7 +76,7 @@ export function joinATeam(pickTeamPage: PickTeamPage,
             //user clicks on the team
             return pickTeamPage.getAvailableTeamTitle(team).click()
         })
-        .then(() => confirmPage('/apply/' + oppKey + '/application/', '/teams/', 'Answer-team-question', 'first'))
+        .then(() => confirmPage('/apply/' + oppKey, '/teams/', 'Answer-team-question', 'first'))
         .then(() => {
 
             //answer Team-question 
@@ -91,7 +91,7 @@ export function joinATeam(pickTeamPage: PickTeamPage,
             return joinButton.click()
         })
         .then(() =>
-            confirmPage('/apply/' + oppKey + '/application/', '/teams', 'Pick-teams', 'first', '/teams/'))
+            confirmPage('/apply/' + oppKey, '/teams', 'Pick-teams', 'first', '/teams/'))
         .then(() => browser.wait(ExpectedConditions.presenceOf(pickTeamPage.getSelectedTeams().first()),
             20000, 'Join-team button did not select the team'))
 }

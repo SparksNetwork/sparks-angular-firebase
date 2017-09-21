@@ -12,14 +12,14 @@ import { ParamsObject } from './params-object';
 
 function testEditSelectedTeamsInformation(params:ParamsObject) {
 
-    return confirmPage('/apply/' + params.oppKey + '/application/', '/review-detail', 'Review-application-details', 'first')
+    return confirmPage('/apply/' + params.oppKey, '/review-detail', 'Review-application-details', 'first')
         .then(() => {
             let selectedTeams = params.reviewApplicationDetailsPage.getSelectedTeamsEditLink()
             browser.wait(ExpectedConditions.presenceOf(selectedTeams),
                 WAIT_TIMEOUT, 'On Review-application-details page edit teams was not present')
             return selectedTeams.click()
         }).then(() =>
-            confirmPage('/apply/' + params.oppKey + '/application/', '/teams', 'Pick-teams', 'first', '/teams/'))
+            confirmPage('/apply/' + params.oppKey, '/teams', 'Pick-teams', 'first', '/teams/'))
         .then(() =>
             joinATeam(params.pickTeamPage, params.oppKey, params.answerTeamQuestionPage))
         .then(() => {

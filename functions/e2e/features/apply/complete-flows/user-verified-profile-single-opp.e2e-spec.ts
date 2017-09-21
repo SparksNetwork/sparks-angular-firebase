@@ -76,7 +76,7 @@ describe('Apply-Single-Opportunity-Flow: verified user with complete profile inf
                     return next.click()
                 })
                 .then(() =>
-                    confirmPage('/apply/KPC1/application/', '/teams', 'Pick-teams', 'first', '/teams/'))
+                    confirmPage('/apply/KPC1/', '/teams', 'Pick-teams', 'first', '/teams/'))
                 .then(() => {
                     testsForChooseTeamsPage(params)
                     return testsForChooseSingleTeamsPage(params)
@@ -88,7 +88,7 @@ describe('Apply-Single-Opportunity-Flow: verified user with complete profile inf
                         WAIT_TIMEOUT, 'Next button was not clickable when the team was selected')
                     return nextButton.click()
                 })
-                .then(() => confirmPage('/apply/KPC1/application/', '/review-detail', 'Review-application-details', 'first'))
+                .then(() => confirmPage('/apply/KPC1/', '/review-detail', 'Review-application-details', 'first'))
                 .then(() => {
                     return testsForReviewApplicationDetails(params)
                 })
@@ -98,7 +98,7 @@ describe('Apply-Single-Opportunity-Flow: verified user with complete profile inf
                         WAIT_TIMEOUT, 'Next button was not clickable on Review-application-details page')
                     return nextButton.click()
                 })
-                .then(() => confirmPage('/apply/KPC1/application/', '/apply-cofirmation', 'Apply-cofirmation', 'first'))
+                .then(() => confirmPage('/apply/KPC1/', '/apply-cofirmation', 'Apply-cofirmation', 'first'))
             expect(true).toBeTruthy()
         })
 
