@@ -13,4 +13,4 @@ export class SignInPage {
     getSignInButton() {
         return element(by.id('signin'))
     }
-}
+} 

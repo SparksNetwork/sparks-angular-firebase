@@ -3,6 +3,7 @@ import { OpportunityPage } from '../../../po/opp.partial-discount.po';
 import { browser, ExpectedConditions } from 'protractor/built';
 const waitTimeout = 5000;
 import { confirmPage } from '../shared';
+import { BenefitSegment } from '../../../po/apply.benefit.segment';
 
 function testTitle(page: OpportunityPage, opp: any) {
     let titleElement = page.getTitleElement();
@@ -38,7 +39,7 @@ function testBenefitAndContribValue(page: OpportunityPage, opp: any) {
 
 }
 
-function testReceivedKarmaPoints(page: OpportunityPage, opp: any) {
+export function testKarmaPoints(page: BenefitSegment, opp: any) {
     let receivedKarmaPointsElement = page.getReceivedKarmaPointsElement();
     browser.wait(ExpectedConditions.presenceOf(receivedKarmaPointsElement),
         waitTimeout, 'On Opportunity page the received karma points were not present')
@@ -48,7 +49,7 @@ function testReceivedKarmaPoints(page: OpportunityPage, opp: any) {
     });
 }
 
-function testCommunityBenefit(page: OpportunityPage, fullyLoaded: any) {
+export function testCommunityBenefit(page: BenefitSegment, fullyLoaded: any) {
     let communityElement = page.getCommunityBenefitElement();
     browser.wait(ExpectedConditions.presenceOf(communityElement),
         waitTimeout, 'On Opportunity page the community benefit was not present')
@@ -58,7 +59,7 @@ function testCommunityBenefit(page: OpportunityPage, fullyLoaded: any) {
     });
 }
 
-function testBenefit(page: OpportunityPage, fullyLoaded: any) {
+export function testBenefit(page: BenefitSegment, fullyLoaded: any) {
     const benefitElement = page.getBenefitElement();
     browser.wait(ExpectedConditions.presenceOf(benefitElement),
         waitTimeout, 'On Opportunity page the benefit was not present')
@@ -192,7 +193,7 @@ export function testsForOpportunityPage(page: OpportunityPage, fullyLoaded: any,
         .then(() => testContribution(page, fullyLoaded))
         .then(() => testDiscountValue(page, opp))
         .then(() => testHideTeams(page))
-        .then(() => testReceivedKarmaPoints(page, opp))
+        .then(() => testKarmaPoints(page, opp))
 
 }
 

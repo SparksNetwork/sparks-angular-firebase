@@ -42,7 +42,7 @@ describe('Apply-Multiple-Opportunity-Flow: user not verified', () => {
                     return LCprojectPage.getFirstOportunityTitleElement().click()
                 })
                 .then(() => {
-                    let join = oppLCPage.getJoinButton()
+                    let join = oppLCPage.getButton()
                     browser.wait(ExpectedConditions.elementToBeClickable(join),
                         waitTimeout, 'Join opportunity button was not present')
                     return join.click()

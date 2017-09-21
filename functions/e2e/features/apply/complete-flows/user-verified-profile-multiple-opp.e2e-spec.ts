@@ -77,7 +77,7 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile i
                 })
                 .then(() => testsForOpportunityPage(oppLCPage, fullyLoaded, fullyLoaded['opp']['LC1']))
                 .then(() => {
-                    let join = oppLCPage.getJoinButton()
+                    let join = oppLCPage.getButton()
                     browser.wait(ExpectedConditions.elementToBeClickable(join),
                         waitTimeout, 'Join opportunity button was not present')
                     return join.click()
