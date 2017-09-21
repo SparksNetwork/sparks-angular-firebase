@@ -105,6 +105,9 @@ const routes: Routes = [
             {
                 path: 'edit-profile',
                 component: PageCompleteProfileComponent,
+                canActivate: [
+                    RequireProfileCompleteService,
+                ],
                 data: {
                     navigateTo: 'review-detail'
                 }
@@ -115,6 +118,9 @@ const routes: Routes = [
                 resolve: {
                     application: ResolveApplicationByOpp
                 },
+                canActivate: [
+                    RequireProfileCompleteService,
+                ],
                 data: {
                     navigateTo: 'review-detail'
                 }
@@ -124,7 +130,10 @@ const routes: Routes = [
                 component: PageApplyConfirmationComponent,
                 resolve: {
                     project: ResolveProjectByOpp
-                }
+                },
+                canActivate: [
+                    RequireProfileCompleteService,
+                ],
             },
             {
                 path: 'shift',
@@ -135,6 +144,7 @@ const routes: Routes = [
                     application: ResolveApplicationByOpp
                 },
                 canActivate: [
+                    RequireProfileCompleteService,
                     RequireApplicationAcceptedService
                 ],
                 children: [
@@ -147,41 +157,21 @@ const routes: Routes = [
                     }
                 ]
             },
-
             {
-                path: 'application',
+                path: 'payment-details',
+                component: PagePaymentDetailsComponent,
+                canActivate: [
+                    RequireProfileCompleteService,
+                ]
+            },
+            {
+                path: 'payment-confirmation',
+                component: PagePaymentConfirmationComponent,
                 resolve: {
-                    teams: ResolveTeamByOppKey,
-                    appTeams: ResolveApplicationTeamByAppKey,
-                    application: ResolveApplicationByOpp
+                    project: ResolveProjectByOpp
                 },
                 canActivate: [
                     RequireProfileCompleteService,
-                ],
-                children: [
-                    {
-                        path: 'shift',
-                        component: PageShiftComponent,
-                        resolve: {
-                            shift: ResolveShiftByApplicationTeams,
-                            project: ResolveProjectByOpp,
-                            applicationShift: ResolveApplicationShiftByAppKey
-                        },
-                        canActivate: [
-                            RequireApplicationAcceptedService
-                        ]
-                    },
-                    {
-                        path: 'payment-details',
-                        component: PagePaymentDetailsComponent
-                    },
-                    {
-                        path: 'payment-confirmation',
-                        component: PagePaymentConfirmationComponent,
-                        resolve: {
-                            project: ResolveProjectByOpp
-                        }
-                    }
                 ]
             }
         ]
