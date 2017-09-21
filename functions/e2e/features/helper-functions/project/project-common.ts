@@ -97,8 +97,8 @@ function testOrganizer(page: ProjectPage, project: any) {
     browser.wait(ExpectedConditions.presenceOf(organizerImage), WAIT_TIMEOUT,
         'On Project page organizer image was not present')
 
-    return page.getOrganizerImage().getAttribute('src').then(function (str) {
-        expect(str).toMatch(project['organizer']['imageUrl'],
+    return page.getOrganizerImage().getAttribute('style').then(function (str) {
+        expect(str).toContain(project['organizer']['imageUrl'],
             'On Project page the organizer image was no correctly displayed')
     });
 }

@@ -34,7 +34,7 @@ describe('Apply-Choose-Shifts: verified user with complete profile', () => {
         beforeAll(done => {
             shiftPage.navigateTo()
                 .then(() => confirmPage('/auth/%2Fapply%2FLC1%2Fapplication%2FLC-USER_VERIFIED_PROFILE%2Fshift/signin', '', 'Sign-In',
-                    'first', WAIT_TIMEOUT))
+                    'first'))
                 .then(() => signInPage.getEmailAddressInput())
                 .then((input) => input.sendKeys(USER_VERIFIED_PROFILE.email))
                 .then(() => signInPage.getPasswordInput())
@@ -45,7 +45,7 @@ describe('Apply-Choose-Shifts: verified user with complete profile', () => {
                         'Sign-in button it was not clickable')
                     return button.click()
                 })
-                .then(() => confirmPage('/apply/LC1/application/LC-USER_VERIFIED_PROFILE/shift', '', 'Choose-shift', 'first', WAIT_TIMEOUT))
+                .then(() => confirmPage('/apply/LC1/application/LC-USER_VERIFIED_PROFILE/shift', '', 'Choose-shift', 'first'))
                 .then(done)
         })
 

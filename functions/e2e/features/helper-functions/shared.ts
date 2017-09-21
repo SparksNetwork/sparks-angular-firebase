@@ -76,7 +76,7 @@ export function joinATeam(pickTeamPage: PickTeamPage,
             //user clicks on the team
             return pickTeamPage.getAvailableTeamTitle(team).click()
         })
-        .then(() => confirmPage('/apply/' + oppKey + '/application/', '/teams/', 'Answer-team-question', 'first', WAIT_TIMEOUT))
+        .then(() => confirmPage('/apply/' + oppKey + '/application/', '/teams/', 'Answer-team-question', 'first'))
         .then(() => {
 
             //answer Team-question 

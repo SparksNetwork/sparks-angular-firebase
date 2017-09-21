@@ -167,7 +167,7 @@ function testChangeDiscountValue(page: OpportunityPage, fullyLoaded: any) {
 
     discountSecondValue.click();
 
-    confirmPage('project/LC/opp/LC2', '', 'Oportunity-second-discount-value', 'first', WAIT_TIMEOUT)
+    confirmPage('project/LC/opp/LC2', '', 'Oportunity-second-discount-value', 'first')
 
     let titleElement = page.getTitleElement();
     browser.wait(ExpectedConditions.presenceOf(titleElement),
@@ -180,7 +180,7 @@ function testChangeDiscountValue(page: OpportunityPage, fullyLoaded: any) {
     //return to first opportunity
     return page.navigateTo()
         .then(() =>
-            confirmPage('project/LC/opp/LC1', '', 'Oportunity-first-discount-value', 'first', WAIT_TIMEOUT))
+            confirmPage('project/LC/opp/LC1', '', 'Oportunity-first-discount-value', 'first'))
 
 }
 
