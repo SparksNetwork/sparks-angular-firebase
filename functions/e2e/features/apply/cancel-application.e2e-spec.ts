@@ -6,12 +6,13 @@ import { browser, ExpectedConditions } from 'protractor/built';
 import { setUsers, setData, signOut, signIn } from '../../firebase';
 import { SignInPage } from '../../po/sign-in.po';
 import { CancelApplicationPage } from '../../po/apply.cancel.po';
-import { confirmPage } from '../helper-functions/shared';
+import { confirmPage, WAIT_TIMEOUT } from '../helper-functions/shared';
 import { USER_VERIFIED_PROFILE } from '../../fixtures/users';
 import { testKarmaPoints, testCommunityBenefit, testBenefit } from '../helper-functions/opportunity/opportunity';
+import { LC_USER_VERIFIED_PROFILE } from "../../fixtures/applications/application";
 
 
-fdescribe('Cancel-Applicaton-Multiple-Opportunity: verified user with complete profile information', () => {
+describe('Cancel-Applicaton-Multiple-Opportunity: verified user with complete profile information', () => {
     let homePage: UserHomePage
     let LCprojectPage: ProjectMultiOppPage
     let oppLCPage: OpportunityPage
@@ -19,7 +20,6 @@ fdescribe('Cancel-Applicaton-Multiple-Opportunity: verified user with complete p
     let cancelApplicationPage: CancelApplicationPage
 
     const fullyLoaded = require('../../fixtures/fully-loaded.json')
-    const waitTimeout = 5000
     const answerToOrganizerQuestion = 'I want to help'
 
 
@@ -33,6 +33,9 @@ fdescribe('Cancel-Applicaton-Multiple-Opportunity: verified user with complete p
         browser.waitForAngularEnabled(false)
         setUsers()
             .then(() => setData('/', fullyLoaded))
+            .then(() => setData('/application', LC_USER_VERIFIED_PROFILE))
+            .then(() => setData('/applicationTeam', require('../../fixtures/applications/application-team.json')))
+
             //!!!TODO DELETE THE FOLLOWING 3 LINES WHEN VERIFICATION WAS FIXED
             .then(() => browser.get('/'))
             .then(() => signOut())
@@ -47,18 +50,18 @@ fdescribe('Cancel-Applicaton-Multiple-Opportunity: verified user with complete p
             cancelApplicationPage.navigateTo()
                 //TODO UNCOMMENT THIS WHEN VALIDATION IS FIXED  
                 //.then(() => confirmPage('/auth/%2Fproject/%2FLC%2Fopp%2FLC1/%2FLC-USER_VERIFIED_PROFILE/%2Fcancel/signin', '', 'Cancel-application',
-                //   'first', waitTimeout))
+                //   'first', WAIT_TIMEOUT))
                 // .then(() => signInPage.getEmailAddressInput())
                 // .then((input) => input.sendKeys(USER_VERIFIED_PROFILE.email))
                 // .then(() => signInPage.getPasswordInput())
                 // .then((input) => input.sendKeys(USER_VERIFIED_PROFILE.password))
                 // .then(() => {
                 //     let button = signInPage.getSignInButton()
-                //     browser.wait(ExpectedConditions.elementToBeClickable(button), waitTimeout,
+                //     browser.wait(ExpectedConditions.elementToBeClickable(button), WAIT_TIMEOUT,
                 //         'Sign-in button it was not clickable')
                 //     return button.click()
                 // })
-                .then(() => confirmPage('/project/LC/opp/LC1/LC-USER_VERIFIED_PROFILE/cancel', '', 'Cancel-application', 'first', waitTimeout))
+                .then(() => confirmPage('/project/LC/opp/LC1/LC-USER_VERIFIED_PROFILE/cancel', '', 'Cancel-application', 'first'))
                 .then(done)
         })
 
@@ -77,26 +80,26 @@ fdescribe('Cancel-Applicaton-Multiple-Opportunity: verified user with complete p
 
         it('Cancel button should return user to Opportunity page', () => {
             let cancelButton = cancelApplicationPage.getDismissCancelApplicationButton()
-            browser.wait(ExpectedConditions.presenceOf(cancelButton), waitTimeout,
+            browser.wait(ExpectedConditions.presenceOf(cancelButton), WAIT_TIMEOUT,
                 'Cancel button on Application-Cancel page was not present')
             cancelButton.click();
-            confirmPage('/project/LC/opp/LC1', '', 'Opportunity-LC1', 'first', waitTimeout)
+            confirmPage('/project/LC/opp/LC1', '', 'Opportunity-LC1', 'first')
             cancelButton = oppLCPage.getButton()
-            browser.wait(ExpectedConditions.presenceOf(cancelButton), waitTimeout,
+            browser.wait(ExpectedConditions.presenceOf(cancelButton), WAIT_TIMEOUT,
                 'Cancel button from Opportunity-LC1 was not present')
             cancelButton.click()
-                .then(() => confirmPage('/project/LC/opp/LC1/LC-USER_VERIFIED_PROFILE/cancel', '', 'Cancel-application', 'first', waitTimeout)
+                .then(() => confirmPage('/project/LC/opp/LC1/LC-USER_VERIFIED_PROFILE/cancel', '', 'Cancel-application', 'first')
                 )
 
         })
 
         it('Confirm button should take user to Cancel-application-confirmation page', () => {
-            confirmPage('/project/LC/opp/LC1/LC-USER_VERIFIED_PROFILE/cancel', '', 'Cancel-application', 'first', waitTimeout)
+            confirmPage('/project/LC/opp/LC1/LC-USER_VERIFIED_PROFILE/cancel', '', 'Cancel-application', 'first')
             let confirmButton = cancelApplicationPage.getCancelApplicationButton()
-            browser.wait(ExpectedConditions.presenceOf(confirmButton), waitTimeout,
+            browser.wait(ExpectedConditions.presenceOf(confirmButton), WAIT_TIMEOUT,
                 'Confirm cancel application button was no present')
             confirmButton.click().
-                then(() => confirmPage('/project/LC/opp/LC1/cancel-confirmation', '', 'Confirm-Cancel-Application', 'first', waitTimeout)
+                then(() => confirmPage('/project/LC/opp/LC1/cancel-confirmation', '', 'Confirm-Cancel-Application', 'first')
                 )
         })
 

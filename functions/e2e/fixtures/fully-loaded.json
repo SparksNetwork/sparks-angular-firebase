@@ -1,18 +1,4 @@
 {
-  "application": {
-    "LC-USER_VERIFIED_PROFILE": {
-      "createdOn": "2017-09-18T10:11:25.843Z",
-      "oppAnswer": "Yes",
-      "oppKey": "LC1",
-      "oppQuestion": "Do you like festivals?",
-      "profileKey": "USER_VERIFIED_PROFILE",
-      "projectKey": "LC",
-      "projectProfileKey": "LC-USER_VERIFIED_PROFILE",
-      "status": "Accepted",
-      "step": "Team",
-      "submittedOn": "2017-09-18T10:11:43.970Z"
-    }
-  },
   "profile": {
     "USER_VERIFIED_PROFILE": {
       "legalName": "Test User With Profile",
@@ -133,27 +119,6 @@
     }
   },
   "applicationTeam": {
-    "APT_LC1-LC1": {
-      "answer": "No",
-      "appKey": "LC-USER_VERIFIED_PROFILE",
-      "joinedOn": "2017-09-18T10:11:32.217Z",
-      "question": "Do you have any commercial kitchen experience?",
-      "teamKey": "LC1"
-    },
-    "APT_LC1-LC2": {
-      "answer": "Not yet",
-      "appKey": "LC-USER_VERIFIED_PROFILE",
-      "joinedOn": "2017-09-18T10:11:32.217Z",
-      "question": "Do you have any commercial kitchen experience?",
-      "teamKey": "LC2"
-    },
-    "APT_LC1-LC3": {
-      "answer": "No, but I would like to",
-      "appKey": "LC-USER_VERIFIED_PROFILE",
-      "joinedOn": "2017-09-18T10:11:32.217Z",
-      "question": "Do you have any commercial kitchen experience?",
-      "teamKey": "LC3"
-    },
     "APT1": {
       "appKey": "AP1",
       "teamKey": "LC1",
