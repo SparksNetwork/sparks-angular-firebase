@@ -17,6 +17,7 @@ export class PageOppTeamComponent implements OnInit {
     private application: Application;
     public actionBarType = ActionBarType;
     public answerForm: FormGroup;
+    private isDisabled: boolean;
 
     constructor(
         public route: ActivatedRoute,
@@ -27,6 +28,7 @@ export class PageOppTeamComponent implements OnInit {
         this.answerForm = builder.group({
             answer: ['', [Validators.required]]
         })
+        this.isDisabled = false;
     }
 
     ngOnInit() {
@@ -41,6 +43,7 @@ export class PageOppTeamComponent implements OnInit {
     }
 
     join(key: string, question: string) {
+        this.isDisabled = true;
         let appTeam = new ApplicationTeam();
         appTeam.appKey = this.application.$key;
         appTeam.teamKey = key;
