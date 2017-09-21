@@ -107,11 +107,11 @@ const routes: Routes = [
             component: PageProjectOppComponent
           },
           {
-            path: ':applicationKey/cancel',
+            path: 'cancel',
             component: PageOppApplicationCancelComponent
           },
           {
-            path: 'join/:applicationKey/cancel',
+            path: 'join/cancel',
             component: PageOppApplicationCancelComponent
           },
           {

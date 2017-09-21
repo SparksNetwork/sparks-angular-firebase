@@ -40,9 +40,9 @@ export class ActionbarOppJoinComponent implements OnChanges {
 
   cancel(application: Application) {
     if (this.oppKey) {
-      this.router.navigate([application.$key, 'cancel'], { relativeTo: this.route })
+      this.router.navigate(['cancel'], { relativeTo: this.route })
     } else {
-      this.router.navigate(['../', 'opp', application.oppKey, 'join', application.$key, 'cancel'], { relativeTo: this.route })
+      this.router.navigate(['../', 'opp', application.oppKey, 'join', 'cancel'], { relativeTo: this.route })
     }
   }
 
