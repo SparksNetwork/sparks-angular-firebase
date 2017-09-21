@@ -6,7 +6,7 @@ import { AnswerTeamQuestionPage } from '../../../po/apply.answer-team-question.p
 import { browser, ExpectedConditions } from 'protractor/built';
 import { setUsers, setData, signIn, signOut } from '../../../firebase';
 import { USER_VERIFIED_NO_PROFILE } from '../../../fixtures/users';
-import { joinATeam, confirmPage } from '../../helper-functions/shared';
+import { joinATeam, confirmPage, WAIT_TIMEOUT } from '../../helper-functions/shared';
 import { ReviewApplicationDetailsPage } from '../../../po/apply.review-application-details.po';
 import { UserHomePage } from '../../../po/user-home.po';
 import { CompleteProfilePage } from '../../../po/complete.profile.po';
@@ -24,7 +24,6 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with no profile informa
     let oppLCPage: OpportunityPage
 
     const fullyLoaded = require('../../../fixtures/fully-loaded.json')
-    const waitTimeout = 5000
     const answerOrganizerQuestion = 'I want to help'
 
     beforeAll(done => {
@@ -52,63 +51,63 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with no profile informa
         + 'review the application details and submit ', function () {
             let LCProjectLink = homePage.getProjectLink(1)
             browser.wait(ExpectedConditions.presenceOf(LCProjectLink),
-                waitTimeout, 'Link to LC project was not present')
+                WAIT_TIMEOUT, 'Link to LC project was not present')
             homePage.getProjectTitle(LCProjectLink).click()
                 .then(() => {
                     browser.wait(ExpectedConditions.presenceOf(LCprojectPage.getFirstOportunityTitleElement()),
-                        waitTimeout, 'Link to the first opportunity of LC was not present')
+                        WAIT_TIMEOUT, 'Link to the first opportunity of LC was not present')
                     return LCprojectPage.getFirstOportunityTitleElement().click()
                 })
                 .then(() => {
                     let join = oppLCPage.getButton()
                     browser.wait(ExpectedConditions.elementToBeClickable(join),
-                        waitTimeout, 'Join opportunity button was not present')
+                        WAIT_TIMEOUT, 'Join opportunity button was not present')
                     return join.click()
                 })
-                .then(() => confirmPage('/apply/LC1/complete-profile', '', 'Complete-profile', 'first', waitTimeout))
+                .then(() => confirmPage('/apply/LC1/complete-profile', '', 'Complete-profile', 'first'))
                 .then(() => {
                     let userProfile = fullyLoaded['profile']['USER_VERIFIED_PROFILE']
                     let preferedName = completeProfilePage.getPreferredNameInput()
                     browser.wait(ExpectedConditions.presenceOf(preferedName),
-                        waitTimeout, 'Preferred name was not present')
+                        WAIT_TIMEOUT, 'Preferred name was not present')
                     completeProfilePage.getPreferredNameInput().sendKeys('Crinela')
                     completeProfilePage.getPhoneNumberInput().sendKeys('8053129100')
                     completeProfilePage.getBirthdayInput().sendKeys('01091995')
                     completeProfilePage.getLegalNameInput().sendKeys('Ioana-Crinela')
                     let next = completeProfilePage.getNextButton()
                     browser.wait(ExpectedConditions.elementToBeClickable(next),
-                        waitTimeout, 'Next button was not clickable')
+                        WAIT_TIMEOUT, 'Next button was not clickable')
                     return next.click()
                 })
                 .then(() =>
-                    confirmPage('/apply/LC1/answer-question', '', 'Answer-question', 'first', waitTimeout))
+                    confirmPage('/apply/LC1/answer-question', '', 'Answer-question', 'first'))
                 .then(() => {
                     browser.wait(ExpectedConditions.presenceOf(answerOrganizerQuestionPage.getNextButton()),
-                        waitTimeout, 'Next button was not present')
+                        WAIT_TIMEOUT, 'Next button was not present')
                     answerOrganizerQuestionPage.getAnswer().sendKeys(answerOrganizerQuestion)
                     let next = answerOrganizerQuestionPage.getNextButton()
                     browser.wait(ExpectedConditions.elementToBeClickable(next),
-                        waitTimeout, 'Next button was not clickable')
+                        WAIT_TIMEOUT, 'Next button was not clickable')
                     return next.click()
                 })
                 .then(() =>
-                    confirmPage('/apply/LC1/application/', '/teams', 'Pick-teams', 'first', waitTimeout, '/teams/'))
+                    confirmPage('/apply/LC1/application/', '/teams', 'Pick-teams', 'first',  '/teams/'))
 
-                .then(() => joinATeam(pickTeamPage, waitTimeout, 'LC1', answerTeamQuestionPage))
+                .then(() => joinATeam(pickTeamPage,  'LC1', answerTeamQuestionPage))
                 .then(() => {
                     let nextButton = pickTeamPage.getNextButton()
                     browser.wait(ExpectedConditions.elementToBeClickable(nextButton),
-                        waitTimeout, 'Next button was not clickable when the team was selected')
+                        WAIT_TIMEOUT, 'Next button was not clickable when the team was selected')
                     return nextButton.click()
                 })
-                .then(() => confirmPage('/apply/LC1/application/', '/review-detail', 'Review-application-details', 'first', waitTimeout))
+                .then(() => confirmPage('/apply/LC1/application/', '/review-detail', 'Review-application-details', 'first'))
                 .then(() => {
                     let nextButton = reviewApplicationDetailsPage.getNextButton()
                     browser.wait(ExpectedConditions.elementToBeClickable(nextButton),
-                        waitTimeout, 'Next button was not clickable on Review-application-details page')
+                        WAIT_TIMEOUT, 'Next button was not clickable on Review-application-details page')
                     return nextButton.click()
                 })
-                .then(() => confirmPage('/apply/LC1/application/', '/apply-cofirmation', 'Apply-cofirmation', 'first', waitTimeout))
+                .then(() => confirmPage('/apply/LC1/application/', '/apply-cofirmation', 'Apply-cofirmation', 'first'))
             expect(true).toBeTruthy()
         })
 

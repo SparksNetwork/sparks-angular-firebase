@@ -1,0 +1,23 @@
+{
+    "APT_LC1-LC1": {
+        "answer": "No",
+        "appKey": "LC-USER_VERIFIED_PROFILE",
+        "joinedOn": "2017-09-18T10:11:32.217Z",
+        "question": "Do you have any commercial kitchen experience?",
+        "teamKey": "LC1"
+    },
+    "APT_LC1-LC2": {
+        "answer": "Not yet",
+        "appKey": "LC-USER_VERIFIED_PROFILE",
+        "joinedOn": "2017-09-18T10:11:32.217Z",
+        "question": "Do you have any commercial kitchen experience?",
+        "teamKey": "LC2"
+    },
+    "APT_LC1-LC3": {
+        "answer": "No, but I would like to",
+        "appKey": "LC-USER_VERIFIED_PROFILE",
+        "joinedOn": "2017-09-18T10:11:32.217Z",
+        "question": "Do you have any commercial kitchen experience?",
+        "teamKey": "LC3"
+    }
+}

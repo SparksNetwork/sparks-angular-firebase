@@ -3,18 +3,17 @@ import { joinATeam, GetNoAvailableTeamsFromTestData, TestsForSelectedAndAvailabl
 import { AnswerTeamQuestionPage } from '../../../po/apply.answer-team-question.po';
 import { PickTeamPage } from '../../../po/apply.choose.team.po';
 import { browser, ExpectedConditions } from 'protractor/built';
-import { GetKeyFromUrl } from '../shared';
+import { GetKeyFromUrl, WAIT_TIMEOUT } from '../shared';
 import { ParamsObject } from './params-object';
 
-const waitTimeout = 7000
 
 function testDeleteAllFunctionality(params:ParamsObject) {
 
-    return joinATeam(params.pickTeamPage, waitTimeout, params.oppKey, params.answerTeamQuestionPage)
-        .then(() => joinATeam(params.pickTeamPage, waitTimeout, params.oppKey, params.answerTeamQuestionPage))
+    return joinATeam(params.pickTeamPage, params.oppKey, params.answerTeamQuestionPage)
+        .then(() => joinATeam(params.pickTeamPage, params.oppKey, params.answerTeamQuestionPage))
         .then(() => {
             let selectedTeams = params.pickTeamPage.getSelectedTeams()
-            browser.wait(ExpectedConditions.presenceOf(selectedTeams.first()), waitTimeout,
+            browser.wait(ExpectedConditions.presenceOf(selectedTeams.first()), WAIT_TIMEOUT,
                 'On Choose-multiple-teams page there was not any team selected')
             params.pickTeamPage.getSelectedTeams().count().then((teamsNo) => {
                 expect(teamsNo).toBe(2, 'On Choose-multiple-teams page the number of selected teams was not correct')
@@ -27,14 +26,14 @@ function testDeleteAllFunctionality(params:ParamsObject) {
             //click Delete all button
             let deleteButton = params.pickTeamPage.getDeleteAllButton()
             browser.wait(ExpectedConditions.elementToBeClickable(deleteButton),
-                waitTimeout, 'On Choose-multiple-teams page Delete all was not clickable')
+                WAIT_TIMEOUT, 'On Choose-multiple-teams page Delete all was not clickable')
             deleteButton.click()
 
-            return browser.wait(ExpectedConditions.invisibilityOf(deleteButton), waitTimeout,
+            return browser.wait(ExpectedConditions.invisibilityOf(deleteButton), WAIT_TIMEOUT,
                 'On Choose-multiple-teams page Delete all button did not become invisible')
         })
         .then(() => {
-            TestsForSelectedAndAvailableTeams(params.pickTeamPage, waitTimeout, 0,
+            TestsForSelectedAndAvailableTeams(params.pickTeamPage, 0,
                 GetNoAvailableTeamsFromTestData(params.fullyLoaded['oppAllowedTeam'], params.oppKey))
 
         })
@@ -43,7 +42,7 @@ function testDeleteAllFunctionality(params:ParamsObject) {
 function testAllTeamsArePresent(params:ParamsObject) {
     let teamLinks = params.pickTeamPage.getTeamLinks()
     browser.wait(ExpectedConditions.presenceOf(teamLinks.first()),
-        waitTimeout, 'On Choose-multiple-teams page first link to team was not present')
+        WAIT_TIMEOUT, 'On Choose-multiple-teams page first link to team was not present')
 
     //looping through all the keys and see if all projects are displayed 
     let isPresent: boolean = false;
