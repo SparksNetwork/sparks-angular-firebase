@@ -1,6 +1,7 @@
 import { browser, by, element } from 'protractor';
+import { BenefitSegment } from './apply.benefit.segment';
 
-export class OpportunityPage {
+export class OpportunityPage extends BenefitSegment {
 
     navigateTo() {
         return browser.get('project/LC/opp/LC1');
@@ -14,7 +15,7 @@ export class OpportunityPage {
         return element(by.id('dropdownMenuOpportunity'));
     }
 
-    getSecondDiscount(){
+    getSecondDiscount() {
         return element(by.className('dropdown opp-selector open')).$$('li').get(1);
     }
 
@@ -22,41 +23,6 @@ export class OpportunityPage {
         return element(by.css('project-opp-detail'))
             .all(by.css('div.row')).first()
             .element(by.css('div.col-xs-12 h4'));
-    }
-
-    getCommunityBenefitElement() {
-        return element.all(by.className('you-get-give-join segment')).first()
-            .$('ul').all(by.css('li')).first()
-            .element(by.css('snui-card-item'))
-            .$$('div.text').first().$('p');
-    }
-
-    getReceivedKarmaPointsElement() {
-        return element.all(by.className('you-get-give-join segment')).first()
-            .$('ul').all(by.css('li')).get(1)
-            .element(by.css('snui-card-item'))
-            .$$('div.text').first().$('h4');
-    }
-
-    getBenefitElement() {
-        return element.all(by.className('you-get-give-join segment')).first()
-            .$('ul').all(by.css('li')).get(2)
-            .element(by.css('snui-card-item'))
-            .$$('div.text').first();
-    }
-
-    getBenefitTitle() {
-        return element.all(by.className('you-get-give-join segment')).first()
-            .$('ul').all(by.css('li')).get(2)
-            .element(by.css('snui-card-item'))
-            .$$('div.text').first().$('h4').getText();
-    }
-
-    getBenefitDescription() {
-        return element.all(by.className('you-get-give-join segment')).first()
-            .$('ul').all(by.css('li')).get(2)
-            .element(by.css('snui-card-item'))
-            .$$('div.text').first().$('p').getText();
     }
 
     getContribElement() {
@@ -94,12 +60,12 @@ export class OpportunityPage {
             .all(by.css('ul')).get(1).all(by.css('li')).last();
     }
 
-    getFirstTeam(){
+    getFirstTeam() {
         return element.all(by.className('you-get-give-join segment')).get(2)
             .all(by.css('ul')).get(0).all(by.css('li')).first();
     }
 
-    getJoinButton(){
+    getButton() {
         return element(by.className('btn btn-bordered btn-block'))
     }
 

@@ -3,10 +3,10 @@ import { browser, element, by, ExpectedConditions, ElementFinder } from 'protrac
 import { setData, setUsers, signOut, signIn } from '../../firebase'
 import { USER_VERIFIED_NO_PROFILE, USER_VERIFIED_PROFILE, USER_NOT_VERIFIED } from '../../fixtures/users'
 import { UserHomePage } from '../../po/user-home.po';
-const waitTimeout = 5000
 import { DatePipe } from '@angular/common'
 import { ProjectSingleOppPage } from '../../po/project.single-opp.po';
 import { getFormatedTimeInterval } from '../helper-functions/project/time-interval-functions'
+import { WAIT_TIMEOUT } from "../helper-functions/shared";
 
 describe('Home page: user can browse projects from home page', () => {
     const fullyLoaded = require('../../fixtures/fully-loaded.json')
@@ -76,7 +76,7 @@ describe('Home page: user can browse projects from home page', () => {
 
             let welcomeMessage = page.getWelcomeMessage()
             browser.wait(ExpectedConditions.presenceOf(welcomeMessage),
-                waitTimeout, 'Welcome message was not present')
+                WAIT_TIMEOUT, 'Welcome message was not present')
 
             welcomeMessage.getText().then(function (str) {
                 expect(str).toContain('Guest')
@@ -111,7 +111,7 @@ describe('Home page: user can browse projects from home page', () => {
         it('It should see all projects', () => {
             let projectLinks = page.getListOfProjectLinks();
             browser.wait(ExpectedConditions.presenceOf(projectLinks.first()),
-                waitTimeout, 'First link was not present')
+                WAIT_TIMEOUT, 'First link was not present')
 
             //looping through all the keys and see if all projects are displayed 
             let isPresent: boolean = false;
@@ -132,7 +132,7 @@ describe('Home page: user can browse projects from home page', () => {
         it('Each project should display the title', () => {
             let projectTitles = page.getAllProjectTitles();
             browser.wait(ExpectedConditions.presenceOf(projectTitles.first()),
-                waitTimeout, 'First title was not present')
+                WAIT_TIMEOUT, 'First title was not present')
 
             projectTitles.each(function (item) {
                 item.getText().then(function (str)
@@ -143,7 +143,7 @@ describe('Home page: user can browse projects from home page', () => {
         it('Each project should display the maximum Karma Points', () => {
             let projectKarmaPoints = page.getAllProjectMaxKarmaPoints()
             browser.wait(ExpectedConditions.presenceOf(projectKarmaPoints.first()),
-                waitTimeout, 'First maximum karma points div was not present')
+                WAIT_TIMEOUT, 'First maximum karma points div was not present')
 
             projectKarmaPoints.each(function (item) {
                 item.getText().then(function (str)
@@ -154,7 +154,7 @@ describe('Home page: user can browse projects from home page', () => {
         it('Each project should display the location', () => {
             let projectLinks = page.getListOfProjectLinks();
             browser.wait(ExpectedConditions.presenceOf(projectLinks.first()),
-                waitTimeout, 'First link was not present')
+                WAIT_TIMEOUT, 'First link was not present')
 
             let projectIndex: number = 0;
             projectLinks.each(function (item) {
@@ -174,7 +174,7 @@ describe('Home page: user can browse projects from home page', () => {
         it('Each project should display the date', () => {
             let projectLinks = page.getListOfProjectLinks();
             browser.wait(ExpectedConditions.presenceOf(projectLinks.first()),
-                waitTimeout, 'First link was not present')
+                WAIT_TIMEOUT, 'First link was not present')
 
             let datePipe: DatePipe = new DatePipe('longDate');
             let projectIndex: number = 0;
@@ -196,25 +196,25 @@ describe('Home page: user can browse projects from home page', () => {
         it('Each project card should open the project page and see the title', () => {
             let projectLinks = page.getListOfProjectLinks();
             browser.wait(ExpectedConditions.presenceOf(projectLinks.first()),
-                waitTimeout, 'First link was not present')
+                WAIT_TIMEOUT, 'First link was not present')
 
             projectLinks.count().then(function (projectsNo) {
                 for (let i = 0; i < projectsNo; i++) {
                     let projectKey: string;
                     let currentProjectLink = page.getProjectLink(i)
                     browser.wait(ExpectedConditions.presenceOf(currentProjectLink),
-                        waitTimeout, 'Link ' + i + ' was not present').then(function () {
+                        WAIT_TIMEOUT, 'Link ' + i + ' was not present').then(function () {
                             currentProjectLink.getAttribute('href').then(function (str) {
                                 page.getProjectTitle(currentProjectLink).click().then(function () {
                                     browser.wait(ExpectedConditions.urlContains('/project'),
-                                        waitTimeout, 'Link to project did not open')
+                                        WAIT_TIMEOUT, 'Link to project did not open')
                                         .then(function () {
                                             browser.getCurrentUrl().then(function (url) {
                                                 projectKey = GetDisplayedProjectKey(url)
                                                 let projectPage = new ProjectSingleOppPage()
                                                 let projectTitle = projectPage.getProjectTitleElement();
                                                 browser.wait(ExpectedConditions.presenceOf(projectTitle),
-                                                    waitTimeout, 'Title of project ' + projectKey + ' was not present')
+                                                    WAIT_TIMEOUT, 'Title of project ' + projectKey + ' was not present')
                                                     .then(function () {
                                                         projectTitle.getText().then(function (title) {
                                                             expect(title).toEqual(projects[projectKey]['title'], 'Title of project ' + projectKey + ' was not correct')

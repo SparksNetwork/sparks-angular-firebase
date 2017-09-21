@@ -2,12 +2,11 @@ import { confirmPage } from '../shared';
 import { PickTeamPage } from '../../../po/apply.choose.team.po';
 import { browser, ExpectedConditions } from 'protractor/built';
 import { AnswerTeamQuestionPage } from '../../../po/apply.answer-team-question.po';
-import { joinATeam, TestsForSelectedAndAvailableTeams } from '../../helper-functions/shared';
+import { joinATeam, TestsForSelectedAndAvailableTeams, WAIT_TIMEOUT } from '../../helper-functions/shared';
 import { ParamsObject } from './params-object';
-const waitTimeout = 7000
 
 function testTeamDetails(params:ParamsObject) {
-    return confirmPage('/apply/' + params.oppKey + '/application/', '/teams', 'Pick-teams', 'first', waitTimeout, '/teams/')
+    return confirmPage('/apply/' + params.oppKey + '/application/', '/teams', 'Pick-teams', 'first', '/teams/')
         .then(function () {
 
 
@@ -24,7 +23,7 @@ function testTeamDetails(params:ParamsObject) {
 
             let team = params.pickTeamPage.getAvailableTeamLink(0)
             browser.wait(ExpectedConditions.presenceOf(team),
-                waitTimeout, 'On Choose-single-team page the available team was not present')
+                WAIT_TIMEOUT, 'On Choose-single-team page the available team was not present')
 
             let kpc1_1 = params.fullyLoaded['oppAllowedTeam'][oppAllowedTeamKey]['team']
             params.pickTeamPage.getAvailableTeamTitle(team).getText().then((title) => {
@@ -42,21 +41,21 @@ function testTeamDetails(params:ParamsObject) {
 }
 
 function testDeleteAllFunctionality(params:ParamsObject) {
-    return joinATeam(params.pickTeamPage, waitTimeout, params.oppKey, params.answerTeamQuestionPage)
+    return joinATeam(params.pickTeamPage, params.oppKey, params.answerTeamQuestionPage)
         .then(() => {
             //team should appear as selected
             let selectedTeam = params.pickTeamPage.getSelectedTeam(0)
             browser.wait(ExpectedConditions.presenceOf(selectedTeam),
-                waitTimeout, 'The selected team was not present')
+                WAIT_TIMEOUT, 'The selected team was not present')
 
             //click Delete all button
             let deleteButton = params.pickTeamPage.getDeleteAllButton()
             browser.wait(ExpectedConditions.elementToBeClickable(deleteButton),
-                waitTimeout, 'Delete all was not clickable')
+                WAIT_TIMEOUT, 'Delete all was not clickable')
             return deleteButton.click()
         })
         .then(function () {
-            TestsForSelectedAndAvailableTeams(params.pickTeamPage, waitTimeout, 0, 1)
+            TestsForSelectedAndAvailableTeams(params.pickTeamPage, 0, 1)
         })
 
 }

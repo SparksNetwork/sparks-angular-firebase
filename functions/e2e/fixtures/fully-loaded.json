@@ -1,805 +1,770 @@
 {
-  "application": {
-      "LC_ACCEPTED_APP": {
-        "createdOn": "2017-09-18T10:11:25.843Z",
-        "oppAnswer": "Yes",
-        "oppKey": "LC1",
-        "oppQuestion": "Do you like festivals?",
-        "profileKey": "USER_VERIFIED_PROFILE",
-        "projectKey": "LC",
-        "projectProfileKey": "LC-USER_VERIFIED_PROFILE",
-        "status": "Accepted",
-        "step": "Team",
-        "submittedOn": "2017-09-18T10:11:43.970Z"
-      }
-    },
-    "profile": {
-      "USER_VERIFIED_PROFILE": {
-        "legalName": "Test User With Profile",
-        "preferredName": "Testie",
-        "phoneNumber": "8053129100",
-        "birthday": "1995-01-09"
-      }
-    },
-    "project": {
-      "KPC": {
-        "description": "Make Kellog Park great again!  New paint and plants donated by local businesses will make our community park more beautiful.",
-        "communityBenefit": "Your friends and neighbors on the west side.",
-        "maxKarmaPoints": 20,
-        "images": [
-          {
-            "imageUrl": "http://placeimg.com/640/480/animals/grayscale"
-          },
-          {
-            "imageUrl": "http://placeimg.com/640/480/nature/grayscale"
-          },
-          {
-            "imageUrl": "http://placeimg.com/640/480/arch/grayscale"
-          }
-        ],
-        "location": {
-          "name": "Kellogg Park",
-          "address": "1234 Kellogg",
-          "city": "Ventura",
-          "state": "CA"
+  "profile": {
+    "USER_VERIFIED_PROFILE": {
+      "legalName": "Test User With Profile",
+      "preferredName": "Testie",
+      "phoneNumber": "8053129100",
+      "birthday": "1995-01-09"
+    }
+  },
+  "project": {
+    "KPC": {
+      "description": "Make Kellog Park great again! New paint and plants donated by local businesses will make our community park more beautiful.",
+      "communityBenefit": "Your friends and neighbors on the west side.",
+      "maxKarmaPoints": 20,
+      "images": [
+        {
+          "imageUrl": "http://placeimg.com/640/480/animals/grayscale"
         },
-        "organizer": {
-          "imageUrl": "https://placeimg.com/40/40/people/grayscale",
-          "name": "Miguel Rodriguez",
-          "organization": "Colectiva Avenida",
-          "organizerKey": "ORG-1"
+        {
+          "imageUrl": "http://placeimg.com/640/480/nature/grayscale"
         },
-        "projectPageUrl": "https://varvy.com/pagespeed/wicked-fast.html",
-        "projectType": "Simple",
-        "shareKarmaPoints": 100,
-        "startDateTime": "2017-07-15T19:00:00.000Z",
-        "facebookUrl": "commiesgame",
-        "twitterUrl": "TripWestGames",
-        "title": "Park Cleanup"
+        {
+          "imageUrl": "http://placeimg.com/640/480/arch/grayscale"
+        }
+      ],
+      "location": {
+        "name": "Kellogg Park",
+        "address": "1234 Kellogg",
+        "city": "Ventura",
+        "state": "CA"
       },
-      "LC": {
-        "description": "Hello my magical unicorns! Come work and play with us at Lucidity Festival this year by joining the Dream Makers!",
-        "endDateTime": "2017-04-12T23:59:59.000Z",
-        "communityBenefit": "Your Lucidfamily, old and new",
-        "maxKarmaPoints": 1519,
-        "images": [
-          {
-            "imageUrl": "https://placeimg.com/1140/410/people/grayscale"
-          },
-          {
-            "imageUrl": "https://placeimg.com/1140/410/nature/grayscale"
-          },
-          {
-            "imageUrl": "https://placeimg.com/1140/410/animals/grayscale"
-          }
-        ],
-        "location": {
-          "name": "Live Oak Campground",
-          "city": "Santa Barbara",
-          "latitude": 34.545587,
-          "longitude": -119.878357,
-          "state": "CA"
+      "organizer": {
+        "imageUrl": "https://placeimg.com/40/40/people/grayscale",
+        "name": "Miguel Rodriguez",
+        "organization": "Colectiva Avenida",
+        "organizerKey": "ORG-1"
+      },
+      "projectPageUrl": "https://varvy.com/pagespeed/wicked-fast.html",
+      "projectType": "Simple",
+      "shareKarmaPoints": 100,
+      "startDateTime": "2017-07-15T19:00:00.000Z",
+      "facebookUrl": "commiesgame",
+      "twitterUrl": "TripWestGames",
+      "title": "Park Cleanup"
+    },
+    "LC": {
+      "description": "Hello my magical unicorns! Come work and play with us at Lucidity Festival this year by joining the Dream Makers!",
+      "endDateTime": "2017-04-12T23:59:59.000Z",
+      "communityBenefit": "Your Lucidfamily, old and new",
+      "maxKarmaPoints": 1519,
+      "images": [
+        {
+          "imageUrl": "https://placeimg.com/1140/410/people/grayscale"
         },
-        "organizer": {
-          "imageUrl": "https://placeimg.com/40/40/people/grayscale",
-          "name": "Princess",
-          "organization": "Lucidity Festival",
-          "organizerKey": "ORG-2"
+        {
+          "imageUrl": "https://placeimg.com/1140/410/nature/grayscale"
         },
-        "projectPageUrl": "https://varvy.com/pagespeed/wicked-fast.html",
-        "projectType": "MultiDay",
-        "shareKarmaPoints": 100,
-        "startDateTime": "2017-02-02T08:00:00.000Z",
-        "facebookUrl": "commiesgame",
-        "twitterUrl": "TripWestGames",
-        "title": "Lucidity Crossroads"
+        {
+          "imageUrl": "https://placeimg.com/1140/410/animals/grayscale"
+        }
+      ],
+      "location": {
+        "name": "Live Oak Campground",
+        "city": "Santa Barbara",
+        "latitude": 34.545587,
+        "longitude": -119.878357,
+        "state": "CA"
       },
-      "SRBC": {
-        "description": "Keep our local beach beautiful",
-        "endDateTime": "2017-04-12T23:59:59.000Z",
-        "communityBenefit": "Your fellow humans",
-        "maxKarmaPoints": 343,
-        "images": [
-          {
-            "imageUrl": "https://placeimg.com/1140/410/people/grayscale"
-          },
-          {
-            "imageUrl": "https://placeimg.com/1140/410/nature/grayscale"
-          },
-          {
-            "imageUrl": "https://placeimg.com/1140/410/animals/grayscale"
-          }
-        ],
-        "location": {
-          "name": "Surfer's Point",
-          "city": "Ventura",
-          "latitude": 34.545587,
-          "longitude": -119.878357,
-          "state": "CA"
+      "organizer": {
+        "imageUrl": "https://placeimg.com/40/40/people/grayscale",
+        "name": "Princess",
+        "organization": "Lucidity Festival",
+        "organizerKey": "ORG-2"
+      },
+      "projectPageUrl": "https://varvy.com/pagespeed/wicked-fast.html",
+      "projectType": "MultiDay",
+      "shareKarmaPoints": 100,
+      "startDateTime": "2017-02-02T08:00:00.000Z",
+      "facebookUrl": "commiesgame",
+      "twitterUrl": "TripWestGames",
+      "title": "Lucidity Crossroads"
+    },
+    "SRBC": {
+      "description": "Keep our local beach beautiful",
+      "endDateTime": "2017-04-12T23:59:59.000Z",
+      "communityBenefit": "Your fellow humans",
+      "maxKarmaPoints": 343,
+      "images": [
+        {
+          "imageUrl": "https://placeimg.com/1140/410/people/grayscale"
         },
-        "organizer": {
-          "imageUrl": "https://placeimg.com/40/40/people/grayscale",
-          "name": "Paul Jenkin",
-          "organization": "Ventura Surfrider",
-          "organizerKey": "ORG-3"
+        {
+          "imageUrl": "https://placeimg.com/1140/410/nature/grayscale"
         },
-        "projectPageUrl": "https://varvy.com/pagespeed/wicked-fast.html",
-        "projectType": "MultiDay",
-        "shareKarmaPoints": 100,
-        "startDateTime": "2017-02-02T08:00:00.000Z",
-        "facebookUrl": "commiesgame",
-        "twitterUrl": "TripWestGames",
-        "title": "Surfer's Point Beach Cleanup"
-      }
+        {
+          "imageUrl": "https://placeimg.com/1140/410/animals/grayscale"
+        }
+      ],
+      "location": {
+        "name": "Surfer's Point",
+        "city": "Ventura",
+        "latitude": 34.545587,
+        "longitude": -119.878357,
+        "state": "CA"
+      },
+      "organizer": {
+        "imageUrl": "https://placeimg.com/40/40/people/grayscale",
+        "name": "Paul Jenkin",
+        "organization": "Ventura Surfrider",
+        "organizerKey": "ORG-3"
+      },
+      "projectPageUrl": "https://varvy.com/pagespeed/wicked-fast.html",
+      "projectType": "MultiDay",
+      "shareKarmaPoints": 100,
+      "startDateTime": "2017-02-02T08:00:00.000Z",
+      "facebookUrl": "commiesgame",
+      "twitterUrl": "TripWestGames",
+      "title": "Surfer's Point Beach Cleanup"
+    }
+  },
+  "applicationTeam": {
+    "APT1": {
+      "appKey": "AP1",
+      "teamKey": "LC1",
+      "joinedOn": "2017-09-01T07:54:37.744Z"
     },
-    "applicationTeam": {
-      "APT_LC1-LC1": {
-        "answer": "No",
-        "appKey": "LC_ACCEPTED_APP",
-        "joinedOn": "2017-09-18T10:11:32.217Z",
-        "question": "Do you have any commercial kitchen experience?",
-        "teamKey": "LC1"
-      },
-      "APT_LC1-LC2": {
-        "answer": "Not yet",
-        "appKey": "LC_ACCEPTED_APP",
-        "joinedOn": "2017-09-18T10:11:32.217Z",
-        "question": "Do you have any commercial kitchen experience?",
-        "teamKey": "LC2"
-      },
-      "APT_LC1-LC3": {
-        "answer": "No, but I would like to",
-        "appKey": "LC_ACCEPTED_APP",
-        "joinedOn": "2017-09-18T10:11:32.217Z",
-        "question": "Do you have any commercial kitchen experience?",
-        "teamKey": "LC3"
-      },
-      "APT1": {
-        "appKey": "AP1",
-        "teamKey": "LC1",
-        "joinedOn": "2017-09-01T07:54:37.744Z"
-      },
-      "APT2": {
-        "appKey": "AP1",
-        "teamKey": "LC2",
-        "joinedOn": "2017-09-01T07:00:00.000Z"
-      }
+    "APT2": {
+      "appKey": "AP1",
+      "teamKey": "LC2",
+      "joinedOn": "2017-09-01T07:00:00.000Z"
+    }
+  },
+  "opp": {
+    "KPC1": {
+      "projectKey": "KPC",
+      "icon": "glyphicon-glass",
+      "karma": 20,
+      "title": "Volunteer",
+      "description": "opp description",
+      "question": "Do you have any problem with the broom?"
     },
-    "opp": {
-      "KPC1": {
-        "projectKey": "KPC",
-        "icon": "glyphicon-glass",
-        "karma": 20,
-        "title": "Volunteer",
-        "description": "opp description",
-        "question": "Do you have any problem with the broom?"
-      },
-      "LC1": {
-        "projectKey": "LC",
-        "icon": "glyphicon-music",
-        "karma": 1517,
-        "contribValue": 209,
-        "benefitValue": 374,
-        "title": "1-Shift",
-        "description": "opp description",
-        "question": "Do you like festivals?"
-      },
-      "LC2": {
-        "projectKey": "LC",
-        "icon": "glyphicon-glass",
-        "karma": 1329,
-        "contribValue": 59,
-        "benefitValue": 394,
-        "title": "Regular",
-        "description": "opp description",
-        "question": "Do you like multicultural festivals?"
-      },
-      "LC3": {
-        "projectKey": "LC",
-        "icon": "glyphicon-film",
-        "karma": 766,
-        "contribValue": 0,
-        "benefitValue": 364,
-        "title": "Pre-Event Weekends",
-        "description": "opp description",
-        "question": "Do you like week-end festivals?"
-      },
-      "LC4": {
-        "projectKey": "LC",
-        "icon": "glyphicon-camera",
-        "karma": 1124,
-        "contribValue": 19,
-        "benefitValue": 444,
-        "title": "Setup",
-        "description": "opp description",
-        "question": "What are you planning to do during the festival?"
-      },
-      "LC5": {
-        "projectKey": "LC",
-        "icon": "glyphicon-cog",
-        "karma": 1124,
-        "contribValue": 19,
-        "benefitValue": 444,
-        "title": "Strike",
-        "description": "opp description",
-        "question": "Are you ready to have a good time?"
-      },
-      "SRBC1": {
-        "projectKey": "SRBC",
-        "icon": "glyphicon-cog",
-        "karma": 310,
-        "contribValue": 0,
-        "benefitValue": 10,
-        "title": "Beach Cleanup",
-        "description": "opp description",
-        "question": "Do you like festivals?"
-      }
+    "LC1": {
+      "projectKey": "LC",
+      "icon": "glyphicon-music",
+      "karma": 1517,
+      "contribValue": 209,
+      "benefitValue": 374,
+      "title": "1-Shift",
+      "description": "opp description",
+      "question": "Do you like festivals?"
     },
-    "benefit": {
-      "KPC1-1": {
-        "description": "Eat at the Saloon while you work",
-        "icon": "glyphicon-ice-lolly-tasted",
-        "oppKey": "KPC1",
-        "title": "Food & Drink",
-        "type": "FoodDrink"
-      },
-      "LC1-1": {
-        "description": "Snacks and water while you work",
-        "icon": "glyphicon-ice-lolly-tasted",
-        "oppKey": "LC1",
-        "title": "Food & Drink",
-        "type": "FoodDrink"
-      },
-      "LC2-1": {
-        "description": "Snacks and water while you work",
-        "icon": "glyphicon-ice-lolly-tasted",
-        "oppKey": "LC2",
-        "title": "Food & Drink",
-        "type": "FoodDrink"
-      },
-      "LC3-1": {
-        "description": "Snacks and water while you work",
-        "icon": "glyphicon-ice-lolly-tasted",
-        "oppKey": "LC3",
-        "title": "Food & Drink",
-        "type": "FoodDrink"
-      },
-      "LC4-1": {
-        "description": "Snacks and water while you work",
-        "icon": "glyphicon-ice-lolly-tasted",
-        "oppKey": "LC4",
-        "title": "Food & Drink",
-        "type": "FoodDrink"
-      },
-      "LC5-1": {
-        "description": "Snacks and water while you work",
-        "icon": "glyphicon-ice-lolly-tasted",
-        "oppKey": "LC5",
-        "title": "Food & Drink",
-        "type": "FoodDrink"
-      },
-      "SRBC1-1": {
-        "description": "Free Pizza from PizzaManDans",
-        "icon": "glyphicon-ice-lolly-tasted",
-        "oppKey": "LC5",
-        "title": "Food & Drink",
-        "type": "FoodDrink"
-      }
+    "LC2": {
+      "projectKey": "LC",
+      "icon": "glyphicon-glass",
+      "karma": 1329,
+      "contribValue": 59,
+      "benefitValue": 394,
+      "title": "Regular",
+      "description": "opp description",
+      "question": "Do you like multicultural festivals?"
     },
-    "contrib": {
-      "KPC1-1": {
-        "count": 1,
-        "oppKey": "KPC1",
-        "shiftMinLength": 4,
-        "shiftMaxLength": 4,
-        "description": "hours long of volunteering",
-        "icon": "glyphicon-time",
-        "title": "Shift",
-        "type": "Shift"
-      },
-      "LC1-1": {
-        "count": 1,
-        "oppKey": "LC1",
-        "shiftMinLength": 4,
-        "shiftMaxLength": 7,
-        "description": "hours long of volunteering",
-        "icon": "glyphicon-time",
-        "title": "Shift",
-        "type": "Shift"
-      },
-      "LC2-1": {
-        "count": 3,
-        "oppKey": "LC2",
-        "shiftMinLength": 4,
-        "shiftMaxLength": 7,
-        "description": "hours long of volunteering",
-        "icon": "glyphicon-time",
-        "title": "Shift",
-        "type": "Shift"
-      },
-      "LC3-1": {
-        "count": 6,
-        "oppKey": "LC3",
-        "shiftMinLength": 6,
-        "shiftMaxLength": 6,
-        "description": "hours long of volunteering",
-        "icon": "glyphicon-time",
-        "title": "Shift",
-        "type": "Shift"
-      },
-      "LC4-1": {
-        "count": 4,
-        "oppKey": "LC4",
-        "shiftMinLength": 8,
-        "shiftMaxLength": 8,
-        "description": "hours long of volunteering",
-        "icon": "glyphicon-time",
-        "title": "Shift",
-        "type": "Shift"
-      },
-      "LC5-1": {
-        "count": 4,
-        "oppKey": "LC5",
-        "shiftMinLength": 8,
-        "shiftMaxLength": 8,
-        "description": "hours long of volunteering",
-        "icon": "glyphicon-time",
-        "title": "Shift",
-        "type": "Shift"
-      },
-      "SRBC1-1": {
-        "count": 4,
-        "oppKey": "SRBC1",
-        "shiftMinLength": 4,
-        "shiftMaxLength": 4,
-        "description": "hours long of volunteering",
-        "icon": "glyphicon-time",
-        "title": "Shift",
-        "type": "Shift"
-      }
+    "LC3": {
+      "projectKey": "LC",
+      "icon": "glyphicon-film",
+      "karma": 766,
+      "contribValue": 0,
+      "benefitValue": 364,
+      "title": "Pre-Event Weekends",
+      "description": "opp description",
+      "question": "Do you like week-end festivals?"
     },
-    "team": {
-      "KPC1": {
+    "LC4": {
+      "projectKey": "LC",
+      "icon": "glyphicon-camera",
+      "karma": 1124,
+      "contribValue": 19,
+      "benefitValue": 444,
+      "title": "Setup",
+      "description": "opp description",
+      "question": "What are you planning to do during the festival?"
+    },
+    "LC5": {
+      "projectKey": "LC",
+      "icon": "glyphicon-cog",
+      "karma": 1124,
+      "contribValue": 19,
+      "benefitValue": 444,
+      "title": "Strike",
+      "description": "opp description",
+      "question": "Are you ready to have a good time?"
+    },
+    "SRBC1": {
+      "projectKey": "SRBC",
+      "icon": "glyphicon-cog",
+      "karma": 310,
+      "contribValue": 0,
+      "benefitValue": 10,
+      "title": "Beach Cleanup",
+      "description": "opp description",
+      "question": "Do you like festivals?"
+    }
+  },
+  "benefit": {
+    "KPC1-1": {
+      "description": "Eat at the Saloon while you work",
+      "icon": "glyphicon-ice-lolly-tasted",
+      "oppKey": "KPC1",
+      "title": "Food & Drink",
+      "type": "FoodDrink"
+    },
+    "LC1-1": {
+      "description": "Snacks and water while you work",
+      "icon": "glyphicon-ice-lolly-tasted",
+      "oppKey": "LC1",
+      "title": "Food & Drink",
+      "type": "FoodDrink"
+    },
+    "LC2-1": {
+      "description": "Snacks and water while you work",
+      "icon": "glyphicon-ice-lolly-tasted",
+      "oppKey": "LC2",
+      "title": "Food & Drink",
+      "type": "FoodDrink"
+    },
+    "LC3-1": {
+      "description": "Snacks and water while you work",
+      "icon": "glyphicon-ice-lolly-tasted",
+      "oppKey": "LC3",
+      "title": "Food & Drink",
+      "type": "FoodDrink"
+    },
+    "LC4-1": {
+      "description": "Snacks and water while you work",
+      "icon": "glyphicon-ice-lolly-tasted",
+      "oppKey": "LC4",
+      "title": "Food & Drink",
+      "type": "FoodDrink"
+    },
+    "LC5-1": {
+      "description": "Snacks and water while you work",
+      "icon": "glyphicon-ice-lolly-tasted",
+      "oppKey": "LC5",
+      "title": "Food & Drink",
+      "type": "FoodDrink"
+    },
+    "SRBC1-1": {
+      "description": "Free Pizza from PizzaManDans",
+      "icon": "glyphicon-ice-lolly-tasted",
+      "oppKey": "LC5",
+      "title": "Food & Drink",
+      "type": "FoodDrink"
+    }
+  },
+  "contrib": {
+    "KPC1-1": {
+      "count": 1,
+      "oppKey": "KPC1",
+      "shiftMinLength": 4,
+      "shiftMaxLength": 4,
+      "description": "hours long of volunteering",
+      "icon": "glyphicon-time",
+      "title": "Shift",
+      "type": "Shift"
+    },
+    "LC1-1": {
+      "count": 1,
+      "oppKey": "LC1",
+      "shiftMinLength": 4,
+      "shiftMaxLength": 7,
+      "description": "hours long of volunteering",
+      "icon": "glyphicon-time",
+      "title": "Shift",
+      "type": "Shift"
+    },
+    "LC2-1": {
+      "count": 3,
+      "oppKey": "LC2",
+      "shiftMinLength": 4,
+      "shiftMaxLength": 7,
+      "description": "hours long of volunteering",
+      "icon": "glyphicon-time",
+      "title": "Shift",
+      "type": "Shift"
+    },
+    "LC3-1": {
+      "count": 6,
+      "oppKey": "LC3",
+      "shiftMinLength": 6,
+      "shiftMaxLength": 6,
+      "description": "hours long of volunteering",
+      "icon": "glyphicon-time",
+      "title": "Shift",
+      "type": "Shift"
+    },
+    "LC4-1": {
+      "count": 4,
+      "oppKey": "LC4",
+      "shiftMinLength": 8,
+      "shiftMaxLength": 8,
+      "description": "hours long of volunteering",
+      "icon": "glyphicon-time",
+      "title": "Shift",
+      "type": "Shift"
+    },
+    "LC5-1": {
+      "count": 4,
+      "oppKey": "LC5",
+      "shiftMinLength": 8,
+      "shiftMaxLength": 8,
+      "description": "hours long of volunteering",
+      "icon": "glyphicon-time",
+      "title": "Shift",
+      "type": "Shift"
+    },
+    "SRBC1-1": {
+      "count": 4,
+      "oppKey": "SRBC1",
+      "shiftMinLength": 4,
+      "shiftMaxLength": 4,
+      "description": "hours long of volunteering",
+      "icon": "glyphicon-time",
+      "title": "Shift",
+      "type": "Shift"
+    }
+  },
+  "team": {
+    "KPC1": {
+      "description": "Single team description shouldn't show",
+      "icon": "glyphicon-grain",
+      "title": "Single Team Example"
+    },
+    "LC1": {
+      "description": "Feed hundreds of dreamers in the most amazing kitchen ever.",
+      "icon": "glyphicon-grain",
+      "title": "Mindful Feeding"
+    },
+    "LC2": {
+      "description": "Take tickets and give people a big warm welcome!",
+      "icon": "glyphicon-sunglasses",
+      "title": "Gatekeepers"
+    },
+    "LC3": {
+      "description": "Shuttleguides description",
+      "icon": "glyphicon-sunglasses",
+      "title": "Shuttleguides"
+    },
+    "LC4": {
+      "description": "Autotetris description",
+      "icon": "glyphicon-sunglasses",
+      "title": "Autotetris"
+    },
+    "LC5": {
+      "description": "dIRT description",
+      "icon": "glyphicon-sunglasses",
+      "title": "dIRT"
+    },
+    "LC6": {
+      "description": "Artist Hospitality description",
+      "icon": "glyphicon-sunglasses",
+      "title": "Artist Hospitality"
+    },
+    "LC7": {
+      "description": "Technocrats description",
+      "icon": "glyphicon-sunglasses",
+      "title": "Technocrats"
+    },
+    "LC8": {
+      "description": "Boneyard description",
+      "icon": "glyphicon-sunglasses",
+      "title": "Boneyard"
+    },
+    "LC9": {
+      "description": "Help out at the build office in the weeks before the festial.",
+      "icon": "glyphicon-grain",
+      "title": "Nikki's Elves"
+    },
+    "LC10": {
+      "description": "Build Beasts description",
+      "icon": "glyphicon-sunglasses",
+      "title": "Build Beasts"
+    },
+    "LC11": {
+      "description": "Strike Tigers description",
+      "icon": "glyphicon-sunglasses",
+      "title": "Strike Tigers"
+    },
+    "SRBC1": {
+      "description": "Beachcombers description",
+      "icon": "glyphicon-sunglasses",
+      "title": "Beachcombers"
+    },
+    "SRBC2": {
+      "description": "Sorters description",
+      "icon": "glyphicon-sunglasses",
+      "title": "Sorters"
+    }
+  },
+  "oppAllowedTeam": {
+    "KPC1-1": {
+      "oppKey": "KPC1",
+      "teamKey": "KPC1",
+      "team": {
         "description": "Single team description shouldn't show",
         "icon": "glyphicon-grain",
-        "title": "Single Team Example"
-      },
-      "LC1": {
+        "title": "Single Team Example",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "LC1-LC1": {
+      "oppKey": "LC1",
+      "teamKey": "LC1",
+      "team": {
         "description": "Feed hundreds of dreamers in the most amazing kitchen ever.",
         "icon": "glyphicon-grain",
-        "title": "Mindful Feeding"
-      },
-      "LC2": {
+        "title": "Mindful Feeding",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "LC1-LC2": {
+      "oppKey": "LC1",
+      "teamKey": "LC2",
+      "team": {
         "description": "Take tickets and give people a big warm welcome!",
         "icon": "glyphicon-sunglasses",
-        "title": "Gatekeepers"
-      },
-      "LC3": {
+        "title": "Gatekeepers",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "LC1-LC3": {
+      "oppKey": "LC1",
+      "teamKey": "LC3",
+      "team": {
         "description": "Shuttleguides description",
         "icon": "glyphicon-sunglasses",
-        "title": "Shuttleguides"
-      },
-      "LC4": {
+        "title": "Shuttleguides",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "LC1-LC4": {
+      "oppKey": "LC1",
+      "teamKey": "LC4",
+      "team": {
         "description": "Autotetris description",
         "icon": "glyphicon-sunglasses",
-        "title": "Autotetris"
-      },
-      "LC5": {
+        "title": "Autotetris",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "LC1-LC5": {
+      "oppKey": "LC1",
+      "teamKey": "LC5",
+      "team": {
         "description": "dIRT description",
         "icon": "glyphicon-sunglasses",
-        "title": "dIRT"
-      },
-      "LC6": {
+        "title": "dIRT",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "LC1-LC6": {
+      "oppKey": "LC1",
+      "teamKey": "LC6",
+      "team": {
         "description": "Artist Hospitality description",
         "icon": "glyphicon-sunglasses",
-        "title": "Artist Hospitality"
-      },
-      "LC7": {
+        "title": "Artist Hospitality",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "LC1-LC7": {
+      "oppKey": "LC1",
+      "teamKey": "LC7",
+      "team": {
         "description": "Technocrats description",
         "icon": "glyphicon-sunglasses",
-        "title": "Technocrats"
-      },
-      "LC8": {
+        "title": "Technocrats",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "LC1-LC8": {
+      "oppKey": "LC1",
+      "teamKey": "LC8",
+      "team": {
         "description": "Boneyard description",
         "icon": "glyphicon-sunglasses",
-        "title": "Boneyard"
-      },
-      "LC9": {
+        "title": "Boneyard",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "LC2-LC1": {
+      "oppKey": "LC2",
+      "teamKey": "LC1",
+      "team": {
+        "description": "Feed hundreds of dreamers in the most amazing kitchen ever.",
+        "icon": "glyphicon-grain",
+        "title": "Mindful Feeding",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "LC2-LC2": {
+      "oppKey": "LC2",
+      "teamKey": "LC2",
+      "team": {
+        "description": "Take tickets and give people a big warm welcome!",
+        "icon": "glyphicon-sunglasses",
+        "title": "Gatekeepers",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "LC2-LC3": {
+      "oppKey": "LC2",
+      "teamKey": "LC3",
+      "team": {
+        "description": "Shuttleguides description",
+        "icon": "glyphicon-sunglasses",
+        "title": "Shuttleguides",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "LC2-LC4": {
+      "oppKey": "LC2",
+      "teamKey": "LC4",
+      "team": {
+        "description": "Autotetris description",
+        "icon": "glyphicon-sunglasses",
+        "title": "Autotetris",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "LC2-LC5": {
+      "oppKey": "LC2",
+      "teamKey": "LC5",
+      "team": {
+        "description": "dIRT description",
+        "icon": "glyphicon-sunglasses",
+        "title": "dIRT",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "LC2-LC6": {
+      "oppKey": "LC2",
+      "teamKey": "LC6",
+      "team": {
+        "description": "Artist Hospitality description",
+        "icon": "glyphicon-sunglasses",
+        "title": "Artist Hospitality",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "LC2-LC7": {
+      "oppKey": "LC2",
+      "teamKey": "LC7",
+      "team": {
+        "description": "Technocrats description",
+        "icon": "glyphicon-sunglasses",
+        "title": "Technocrats",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "LC2-LC8": {
+      "oppKey": "LC2",
+      "teamKey": "LC8",
+      "team": {
+        "description": "Boneyard description",
+        "icon": "glyphicon-sunglasses",
+        "title": "Boneyard",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "LC3-LC9": {
+      "oppKey": "LC3",
+      "teamKey": "LC9",
+      "team": {
         "description": "Help out at the build office in the weeks before the festial.",
         "icon": "glyphicon-grain",
-        "title": "Nikki's Elves"
-      },
-      "LC10": {
+        "title": "Nikki's Elves",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "LC4-LC1": {
+      "oppKey": "LC4",
+      "teamKey": "LC1",
+      "team": {
+        "description": "Feed hundreds of dreamers in the most amazing kitchen ever.",
+        "icon": "glyphicon-grain",
+        "title": "Mindful Feeding",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "LC4-LC5": {
+      "oppKey": "LC4",
+      "teamKey": "LC5",
+      "team": {
+        "description": "dIRT description",
+        "icon": "glyphicon-sunglasses",
+        "title": "dIRT",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "LC4-LC7": {
+      "oppKey": "LC4",
+      "teamKey": "LC7",
+      "team": {
+        "description": "Technocrats description",
+        "icon": "glyphicon-sunglasses",
+        "title": "Technocrats",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "LC4-LC8": {
+      "oppKey": "LC4",
+      "teamKey": "LC8",
+      "team": {
+        "description": "Boneyard description",
+        "icon": "glyphicon-sunglasses",
+        "title": "Boneyard",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "LC4-LC10": {
+      "oppKey": "LC4",
+      "teamKey": "LC10",
+      "team": {
         "description": "Build Beasts description",
         "icon": "glyphicon-sunglasses",
-        "title": "Build Beasts"
-      },
-      "LC11": {
+        "title": "Build Beasts",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "LC5-LC1": {
+      "oppKey": "LC5",
+      "teamKey": "LC1",
+      "team": {
+        "description": "Feed hundreds of dreamers in the most amazing kitchen ever.",
+        "icon": "glyphicon-grain",
+        "title": "Mindful Feeding",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "LC5-LC5": {
+      "oppKey": "LC5",
+      "teamKey": "LC5",
+      "team": {
+        "description": "dIRT description",
+        "icon": "glyphicon-sunglasses",
+        "title": "dIRT",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "LC5-LC7": {
+      "oppKey": "LC5",
+      "teamKey": "LC7",
+      "team": {
+        "description": "Technocrats description",
+        "icon": "glyphicon-sunglasses",
+        "title": "Technocrats",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "LC5-LC8": {
+      "oppKey": "LC5",
+      "teamKey": "LC8",
+      "team": {
+        "description": "Boneyard description",
+        "icon": "glyphicon-sunglasses",
+        "title": "Boneyard",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "LC5-LC11": {
+      "oppKey": "LC5",
+      "teamKey": "LC11",
+      "team": {
         "description": "Strike Tigers description",
         "icon": "glyphicon-sunglasses",
-        "title": "Strike Tigers"
-      },
-      "SRBC1": {
+        "title": "Strike Tigers",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "SRBC1-SRBC1": {
+      "oppKey": "SRBC1",
+      "teamKey": "SRBC1",
+      "team": {
         "description": "Beachcombers description",
         "icon": "glyphicon-sunglasses",
-        "title": "Beachcombers"
-      },
-      "SRBC2": {
+        "title": "Beachcombers",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "SRBC1-SRBC2": {
+      "oppKey": "SRBC1",
+      "teamKey": "SRBC2",
+      "team": {
         "description": "Sorters description",
         "icon": "glyphicon-sunglasses",
-        "title": "Sorters"
-      }
-    },
-    "oppAllowedTeam": {
-      "KPC1-1": {
-        "oppKey": "KPC1",
-        "teamKey": "KPC1",
-        "team": {
-          "description": "Single team description shouldn't show",
-          "icon": "glyphicon-grain",
-          "title": "Single Team Example",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "LC1-LC1": {
-        "oppKey": "LC1",
-        "teamKey": "LC1",
-        "team": {
-          "description": "Feed hundreds of dreamers in the most amazing kitchen ever.",
-          "icon": "glyphicon-grain",
-          "title": "Mindful Feeding",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "LC1-LC2": {
-        "oppKey": "LC1",
-        "teamKey": "LC2",
-        "team": {
-          "description": "Take tickets and give people a big warm welcome!",
-          "icon": "glyphicon-sunglasses",
-          "title": "Gatekeepers",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "LC1-LC3": {
-        "oppKey": "LC1",
-        "teamKey": "LC3",
-        "team": {
-          "description": "Shuttleguides description",
-          "icon": "glyphicon-sunglasses",
-          "title": "Shuttleguides",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "LC1-LC4": {
-        "oppKey": "LC1",
-        "teamKey": "LC4",
-        "team": {
-          "description": "Autotetris description",
-          "icon": "glyphicon-sunglasses",
-          "title": "Autotetris",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "LC1-LC5": {
-        "oppKey": "LC1",
-        "teamKey": "LC5",
-        "team": {
-          "description": "dIRT description",
-          "icon": "glyphicon-sunglasses",
-          "title": "dIRT",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "LC1-LC6": {
-        "oppKey": "LC1",
-        "teamKey": "LC6",
-        "team": {
-          "description": "Artist Hospitality description",
-          "icon": "glyphicon-sunglasses",
-          "title": "Artist Hospitality",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "LC1-LC7": {
-        "oppKey": "LC1",
-        "teamKey": "LC7",
-        "team": {
-          "description": "Technocrats description",
-          "icon": "glyphicon-sunglasses",
-          "title": "Technocrats",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "LC1-LC8": {
-        "oppKey": "LC1",
-        "teamKey": "LC8",
-        "team": {
-          "description": "Boneyard description",
-          "icon": "glyphicon-sunglasses",
-          "title": "Boneyard",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "LC2-LC1": {
-        "oppKey": "LC2",
-        "teamKey": "LC1",
-        "team": {
-          "description": "Feed hundreds of dreamers in the most amazing kitchen ever.",
-          "icon": "glyphicon-grain",
-          "title": "Mindful Feeding",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "LC2-LC2": {
-        "oppKey": "LC2",
-        "teamKey": "LC2",
-        "team": {
-          "description": "Take tickets and give people a big warm welcome!",
-          "icon": "glyphicon-sunglasses",
-          "title": "Gatekeepers",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "LC2-LC3": {
-        "oppKey": "LC2",
-        "teamKey": "LC3",
-        "team": {
-          "description": "Shuttleguides description",
-          "icon": "glyphicon-sunglasses",
-          "title": "Shuttleguides",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "LC2-LC4": {
-        "oppKey": "LC2",
-        "teamKey": "LC4",
-        "team": {
-          "description": "Autotetris description",
-          "icon": "glyphicon-sunglasses",
-          "title": "Autotetris",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "LC2-LC5": {
-        "oppKey": "LC2",
-        "teamKey": "LC5",
-        "team": {
-          "description": "dIRT description",
-          "icon": "glyphicon-sunglasses",
-          "title": "dIRT",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "LC2-LC6": {
-        "oppKey": "LC2",
-        "teamKey": "LC6",
-        "team": {
-          "description": "Artist Hospitality description",
-          "icon": "glyphicon-sunglasses",
-          "title": "Artist Hospitality",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "LC2-LC7": {
-        "oppKey": "LC2",
-        "teamKey": "LC7",
-        "team": {
-          "description": "Technocrats description",
-          "icon": "glyphicon-sunglasses",
-          "title": "Technocrats",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "LC2-LC8": {
-        "oppKey": "LC2",
-        "teamKey": "LC8",
-        "team": {
-          "description": "Boneyard description",
-          "icon": "glyphicon-sunglasses",
-          "title": "Boneyard",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "LC3-LC9": {
-        "oppKey": "LC3",
-        "teamKey": "LC9",
-        "team": {
-          "description": "Help out at the build office in the weeks before the festial.",
-          "icon": "glyphicon-grain",
-          "title": "Nikki's Elves",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "LC4-LC1": {
-        "oppKey": "LC4",
-        "teamKey": "LC1",
-        "team": {
-          "description": "Feed hundreds of dreamers in the most amazing kitchen ever.",
-          "icon": "glyphicon-grain",
-          "title": "Mindful Feeding",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "LC4-LC5": {
-        "oppKey": "LC4",
-        "teamKey": "LC5",
-        "team": {
-          "description": "dIRT description",
-          "icon": "glyphicon-sunglasses",
-          "title": "dIRT",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "LC4-LC7": {
-        "oppKey": "LC4",
-        "teamKey": "LC7",
-        "team": {
-          "description": "Technocrats description",
-          "icon": "glyphicon-sunglasses",
-          "title": "Technocrats",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "LC4-LC8": {
-        "oppKey": "LC4",
-        "teamKey": "LC8",
-        "team": {
-          "description": "Boneyard description",
-          "icon": "glyphicon-sunglasses",
-          "title": "Boneyard",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "LC4-LC10": {
-        "oppKey": "LC4",
-        "teamKey": "LC10",
-        "team": {
-          "description": "Build Beasts description",
-          "icon": "glyphicon-sunglasses",
-          "title": "Build Beasts",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "LC5-LC1": {
-        "oppKey": "LC5",
-        "teamKey": "LC1",
-        "team": {
-          "description": "Feed hundreds of dreamers in the most amazing kitchen ever.",
-          "icon": "glyphicon-grain",
-          "title": "Mindful Feeding",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "LC5-LC5": {
-        "oppKey": "LC5",
-        "teamKey": "LC5",
-        "team": {
-          "description": "dIRT description",
-          "icon": "glyphicon-sunglasses",
-          "title": "dIRT",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "LC5-LC7": {
-        "oppKey": "LC5",
-        "teamKey": "LC7",
-        "team": {
-          "description": "Technocrats description",
-          "icon": "glyphicon-sunglasses",
-          "title": "Technocrats",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "LC5-LC8": {
-        "oppKey": "LC5",
-        "teamKey": "LC8",
-        "team": {
-          "description": "Boneyard description",
-          "icon": "glyphicon-sunglasses",
-          "title": "Boneyard",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "LC5-LC11": {
-        "oppKey": "LC5",
-        "teamKey": "LC11",
-        "team": {
-          "description": "Strike Tigers description",
-          "icon": "glyphicon-sunglasses",
-          "title": "Strike Tigers",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "SRBC1-SRBC1": {
-        "oppKey": "SRBC1",
-        "teamKey": "SRBC1",
-        "team": {
-          "description": "Beachcombers description",
-          "icon": "glyphicon-sunglasses",
-          "title": "Beachcombers",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      },
-      "SRBC1-SRBC2": {
-        "oppKey": "SRBC1",
-        "teamKey": "SRBC2",
-        "team": {
-          "description": "Sorters description",
-          "icon": "glyphicon-sunglasses",
-          "title": "Sorters",
-          "question": "Do you have any commercial kitchen experience?"
-        }
-      }
-    },
-    "shift": {
-      "KPC1": {
-        "endDateTime": "2017-09-07T16:30:00.700Z",
-        "startDateTime": "2017-08-07T14:30:00.700Z",
-        "teamIcon": "glyphicon-grain",
-        "teamKey": "LC1",
-        "teamTitle": "Mindfull Feeding"
-      },
-      "KPC2": {
-        "endDateTime": "2017-09-07T18:30:00.700Z",
-        "startDateTime": "2017-09-07T16:30:00.700Z",
-        "teamIcon": "glyphicon-grain",
-        "teamKey": "LC1",
-        "teamTitle": "Mindfull Feeding"
-      },
-      "KPC3": {
-        "endDateTime": "2017-09-07T16:30:00.700Z",
-        "startDateTime": "2017-09-07T14:30:00.700Z",
-        "teamIcon": "glyphicon-sunglasses",
-        "teamKey": "LC2",
-        "teamTitle": "Gatekeepers"
-      },
-      "KPC4": {
-        "endDateTime": "2017-09-07T18:30:00.700Z",
-        "startDateTime": "2017-09-07T16:30:00.700Z",
-        "teamIcon": "glyphicon-sunglasses",
-        "teamKey": "LC2",
-        "teamTitle": "Gatekeepers"
-      },
-      "KPC5": {
-        "endDateTime": "2017-09-08T09:30:00.700Z",
-        "startDateTime": "2017-09-08T07:30:00.700Z",
-        "teamIcon": "glyphicon-grain",
-        "teamKey": "LC1",
-        "teamTitle": "Mindfull Feeding"
-      },
-      "KPC6": {
-        "endDateTime": "2017-09-08T10:30:00.700Z",
-        "startDateTime": "2017-09-08T08:30:00.700Z",
-        "teamIcon": "glyphicon-grain",
-        "teamKey": "LC1",
-        "teamTitle": "Mindfull Feeding"
-      },
-      "KPC7": {
-        "endDateTime": "2017-09-08T08:30:00.700Z",
-        "startDateTime": "2017-09-08T07:30:00.700Z",
-        "teamIcon": "glyphicon-sunglasses",
-        "teamKey": "LC2",
-        "teamTitle": "Gatekeepers"
-      },
-      "KPC8": {
-        "endDateTime": "2017-09-08T11:30:00.700Z",
-        "startDateTime": "2017-09-08T09:30:00.700Z",
-        "teamIcon": "glyphicon-sunglasses",
-        "teamKey": "LC2",
-        "teamTitle": "Gatekeepers"
-      }
-    },
-    "applicationShift": {
-      "KPC1S": {
-        "shiftKey": "KPC1",
-        "appKey": "AP1",
-        "joinedOn": "2017-09-07T16:34:00.700Z"
-      },
-      "KPC2S": {
-        "shiftKey": "KPC3",
-        "appKey": "AP1",
-        "joinedOn": "2017-09-07T16:34:00.700Z"
+        "title": "Sorters",
+        "question": "Do you have any commercial kitchen experience?"
       }
     }
+  },
+  "shift": {
+    "KPC1": {
+      "endDateTime": "2017-09-07T16:30:00.700Z",
+      "startDateTime": "2017-08-07T14:30:00.700Z",
+      "teamIcon": "glyphicon-grain",
+      "teamKey": "LC1",
+      "teamTitle": "Mindfull Feeding"
+    },
+    "KPC2": {
+      "endDateTime": "2017-09-07T18:30:00.700Z",
+      "startDateTime": "2017-09-07T16:30:00.700Z",
+      "teamIcon": "glyphicon-grain",
+      "teamKey": "LC1",
+      "teamTitle": "Mindfull Feeding"
+    },
+    "KPC3": {
+      "endDateTime": "2017-09-07T16:30:00.700Z",
+      "startDateTime": "2017-09-07T14:30:00.700Z",
+      "teamIcon": "glyphicon-sunglasses",
+      "teamKey": "LC2",
+      "teamTitle": "Gatekeepers"
+    },
+    "KPC4": {
+      "endDateTime": "2017-09-07T18:30:00.700Z",
+      "startDateTime": "2017-09-07T16:30:00.700Z",
+      "teamIcon": "glyphicon-sunglasses",
+      "teamKey": "LC2",
+      "teamTitle": "Gatekeepers"
+    },
+    "KPC5": {
+      "endDateTime": "2017-09-08T09:30:00.700Z",
+      "startDateTime": "2017-09-08T07:30:00.700Z",
+      "teamIcon": "glyphicon-grain",
+      "teamKey": "LC1",
+      "teamTitle": "Mindfull Feeding"
+    },
+    "KPC6": {
+      "endDateTime": "2017-09-08T10:30:00.700Z",
+      "startDateTime": "2017-09-08T08:30:00.700Z",
+      "teamIcon": "glyphicon-grain",
+      "teamKey": "LC1",
+      "teamTitle": "Mindfull Feeding"
+    },
+    "KPC7": {
+      "endDateTime": "2017-09-08T08:30:00.700Z",
+      "startDateTime": "2017-09-08T07:30:00.700Z",
+      "teamIcon": "glyphicon-sunglasses",
+      "teamKey": "LC2",
+      "teamTitle": "Gatekeepers"
+    },
+    "KPC8": {
+      "endDateTime": "2017-09-08T11:30:00.700Z",
+      "startDateTime": "2017-09-08T09:30:00.700Z",
+      "teamIcon": "glyphicon-sunglasses",
+      "teamKey": "LC2",
+      "teamTitle": "Gatekeepers"
+    }
+  },
+  "applicationShift": {
+    "KPC1S": {
+      "shiftKey": "KPC1",
+      "appKey": "AP1",
+      "joinedOn": "2017-09-07T16:34:00.700Z"
+    },
+    "KPC2S": {
+      "shiftKey": "KPC3",
+      "appKey": "AP1",
+      "joinedOn": "2017-09-07T16:34:00.700Z"
+    }
   }
+}
