@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Application, ApplicationStatus } from "../../../../../../universal/domain/application";
-import { ActivatedRoute, Router } from "@angular/router";
-import { ApplicationTeam } from "../../../../../../universal/domain/applicationTeam";
-import { Observable } from "rxjs/Rx";
-import { Team } from "../../../../../../universal/domain/team";
-import { ActionBarType } from "../../../shared/snui/action-bar/action-bar.component";
-import { ApplicationActionService } from "../../../core/sndomain/application";
-import { Profile } from "../../../../../../universal/domain/profile";
+import { Application, ApplicationStatus } from '../../../../../../universal/domain/application';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ApplicationTeam } from '../../../../../../universal/domain/applicationTeam';
+import { Observable } from 'rxjs/Observable';
+import { Team } from '../../../../../../universal/domain/team';
+import { ActionBarType } from '../../../shared/snui/action-bar/action-bar.component';
+import { ApplicationActionService } from '../../../core/sndomain/application';
+import { Profile } from '../../../../../../universal/domain/profile';
 
 @Component({
     templateUrl: 'page-review-detail.component.html'
@@ -27,7 +27,7 @@ export class PageReviewDetailComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.route.parent.data.subscribe(data => {
+        this.route.data.subscribe(data => {
             data['application'].subscribe(a => this.application = <Application>a);
             this.teams = data['teams'];
             this.applicationTeams = data['appTeams'];
@@ -41,9 +41,8 @@ export class PageReviewDetailComponent implements OnInit {
     }
 
     apply() {
-        let key = this.application.$key;
-        this.applicationAction.changeStatus(key, ApplicationStatus.Pending).subscribe(s =>
-            //send email
+        this.applicationAction.changeStatus(this.application.$key, ApplicationStatus.Pending).subscribe(s =>
+            // TODO send email
             this.router.navigate(['../apply-cofirmation'], { relativeTo: this.route })
         )
     }
