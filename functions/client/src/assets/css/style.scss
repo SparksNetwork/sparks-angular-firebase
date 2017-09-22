@@ -394,6 +394,9 @@ label {
     &.show-flow {
         overflow: visible;
     }
+    &.small-title{
+        padding-bottom: 10px;
+    }
     &:before,
     &:after {
         display: table;
