@@ -13,14 +13,14 @@ import { ParamsObject } from './params-object';
 
 function testPreviousFunctionality(params:ParamsObject) {
 
-    confirmPage('/apply/' + params.oppKey + '/application/', '/review-detail', 'Review-application-details', 'first')
+    confirmPage('/apply/' + params.oppKey, '/review-detail', 'Review-application-details', 'first')
 
     let previousButton = params.reviewApplicationDetailsPage.getPreviousButton()
     browser.wait(ExpectedConditions.presenceOf(previousButton),
         WAIT_TIMEOUT, 'On Review-application-details page Previous button from Review-application-details page was not present')
     previousButton.click()
 
-    confirmPage('/apply/' + params.oppKey + '/application/', '/teams', 'Pick-teams', 'first', '/teams/')
+    confirmPage('/apply/' + params.oppKey, '/teams', 'Pick-teams', 'first', '/teams/')
 
     let selectedTeams = params.pickTeamPage.getSelectedTeams()
     browser.wait(ExpectedConditions.presenceOf(selectedTeams.first()),
@@ -34,12 +34,12 @@ function testPreviousFunctionality(params:ParamsObject) {
             'On Choose-teams page the number of available teams was not correct')
     })
     return params.pickTeamPage.getNextButton().click()
-        .then(() => confirmPage('/apply/' + params.oppKey + '/application/', '/review-detail', 'Review-application-details', 'second'))
+        .then(() => confirmPage('/apply/' + params.oppKey, '/review-detail', 'Review-application-details', 'second'))
 
 }
 
 function testInformationAboutTheUser(params:ParamsObject) {
-    confirmPage('/apply/' + params.oppKey + '/application/', '/review-detail', 'Review-application-details', 'first')
+    confirmPage('/apply/' + params.oppKey, '/review-detail', 'Review-application-details', 'first')
 
     let userProfile = params.fullyLoaded['profile']['USER_VERIFIED_PROFILE']
     let legalName = params.reviewApplicationDetailsPage.getLegalName()
@@ -72,7 +72,7 @@ function testEditInformationAboutTheUser(params:ParamsObject) {
     let newPreferredName = 'Test edity'
     let newPhoneNumber = '8053129900'
     let newBirthday = '10-25-1973'
-    confirmPage('/apply/' + params.oppKey + '/application/', '/review-detail', 'Review-application-details', 'first')
+    confirmPage('/apply/' + params.oppKey, '/review-detail', 'Review-application-details', 'first')
 
     let editVolunteerLink = params.reviewApplicationDetailsPage.getVolunteerDetailsEditLink()
     browser.wait(ExpectedConditions.presenceOf(editVolunteerLink),
@@ -80,7 +80,7 @@ function testEditInformationAboutTheUser(params:ParamsObject) {
     editVolunteerLink.click()
 
 
-    confirmPage('/apply/' + params.oppKey + '/application/', '/edit-profile', 'Review-application-details-edit-profile', 'first')
+    confirmPage('/apply/' + params.oppKey, '/edit-profile', 'Review-application-details-edit-profile', 'first')
 
     let legalName = params.reviewApplicationDetailsEditProfilePage.getLegalName()
     browser.wait(ExpectedConditions.presenceOf(legalName), WAIT_TIMEOUT,
@@ -111,7 +111,7 @@ function testEditInformationAboutTheUser(params:ParamsObject) {
 
     params.reviewApplicationDetailsEditProfilePage.getSaveButton().click()
 
-    confirmPage('/apply/' + params.oppKey + '/application/', '/review-detail', 'Review-application-details', 'second')
+    confirmPage('/apply/' + params.oppKey, '/review-detail', 'Review-application-details', 'second')
 
     legalName = params.reviewApplicationDetailsPage.getLegalName()
     browser.wait(ExpectedConditions.presenceOf(legalName),
@@ -139,7 +139,7 @@ function testEditInformationAboutTheUser(params:ParamsObject) {
 
 function testOrganizerQuestionSection(params:ParamsObject, currentAnswer: string) {
  
-    return confirmPage('/apply/' + params.oppKey + '/application/', '/review-detail', 'Review-application-details', 'first')
+    return confirmPage('/apply/' + params.oppKey, '/review-detail', 'Review-application-details', 'first')
         .then(function () {
             let questionExpandLink = params.reviewApplicationDetailsPage.getOrganizerQuestionExapandLink()
             browser.wait(ExpectedConditions.presenceOf(questionExpandLink),
@@ -174,7 +174,7 @@ function testEditOrganizerQuestion(params:ParamsObject) {
             return editOrganizerQuestion.click()
         })
         .then(() =>
-            confirmPage('/apply/' + params.oppKey + '/application/', '/edit-answer', 'Review-application-details-edit-answer', 'first'))
+            confirmPage('/apply/' + params.oppKey, '/edit-answer', 'Review-application-details-edit-answer', 'first'))
         .then(() => {
             let question = params.reviewApplicationDetailsEditAnswerPage.getQuestion()
             browser.wait(ExpectedConditions.presenceOf(question), WAIT_TIMEOUT,
@@ -200,7 +200,7 @@ function testEditOrganizerQuestion(params:ParamsObject) {
 
 export function testSelectedTeamsInformation(params:ParamsObject) {
 
-    return confirmPage('/apply/' + params.oppKey + '/application/', '/review-detail', 'Review-application-details', 'first')
+    return confirmPage('/apply/' + params.oppKey, '/review-detail', 'Review-application-details', 'first')
         .then(() => {
             let teamsExpandLink = params.reviewApplicationDetailsPage.getSelectedTeamsExapandLink()
             browser.wait(ExpectedConditions.presenceOf(teamsExpandLink),

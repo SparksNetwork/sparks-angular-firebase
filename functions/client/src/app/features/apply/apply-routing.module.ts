@@ -26,6 +26,9 @@ import { PagePaymentDetailsComponent } from './page-payment-details/page-payment
 import { PagePaymentConfirmationComponent } from './page-payment-confirmation/page-payment-confirmation.component';
 import { ResolveApplicationShiftByAppKey } from '../../core/sndomain/applicationShift/resolve-application-shift-by-app-key.service';
 import { ResolveApplicationByKey, ResolveApplication } from '../../core/sndomain/application/index';
+import { ResolveApplicationByOpp } from './resolve-application-by-opp/resolve-application-by-opp.service';
+import { ResolveApplicationTeamsByOpp } from './resolve-application-teams-by-opp/resolve-application-teams-by-opp.service';
+import { ResolveApplicationShiftsByOpp } from './resolve-application-shifts-by-opp/resolve-application-shifts-by-opp.service';
 
 const routes: Routes = [
     {
@@ -45,7 +48,10 @@ const routes: Routes = [
         children: [
             {
                 path: 'complete-profile',
-                component: PageCompleteProfileComponent
+                component: PageCompleteProfileComponent,
+                data: {
+                    navigateTo: 'answer-question'
+                }
             },
             {
                 path: 'answer-question',
@@ -55,81 +61,117 @@ const routes: Routes = [
                 ],
                 resolve: {
                     application: ResolveApplication
+                },
+                data: {
+                    navigateTo: 'teams'
                 }
             },
             {
-                path: 'application/:applicationKey',
+                path: 'teams',
                 resolve: {
                     teams: ResolveTeamByOppKey,
-                    appTeams: ResolveApplicationTeamByAppKey,
-                    application: ResolveApplicationByKey
+                    appTeams: ResolveApplicationTeamsByOpp,
+                    application: ResolveApplicationByOpp
                 },
                 canActivate: [
                     RequireProfileCompleteService,
                 ],
                 children: [
                     {
-                        path: 'teams',
-                        children: [
-                            {
-                                path: '',
-                                component: PageOppTeamsComponent
-                            },
-                            {
-                                path: ':teamKey',
-                                component: PageOppTeamComponent,
-                                resolve: {
-                                    team: ResolveTeamByTeamKey
-                                }
-                            }
-                        ]
+                        path: '',
+                        component: PageOppTeamsComponent
                     },
                     {
-                        path: 'review-detail',
-                        component: PageReviewDetailComponent
-                    },
-                    {
-                        path: 'apply-cofirmation',
-                        component: PageApplyConfirmationComponent,
+                        path: ':teamKey',
+                        component: PageOppTeamComponent,
                         resolve: {
-                            project: ResolveProjectByOpp
-                        }
-                    },
-                    {
-                        path: 'edit-profile',
-                        component: PageCompleteProfileComponent
-                    },
-                    {
-                        path: 'answer-question',
-                        component: PageAnswerQuestionComponent
-                    },
-                    {
-                        path: 'shift',
-                        component: PageShiftComponent,
-                        resolve: {
-                            shift: ResolveShiftByApplicationTeams,
-                            project: ResolveProjectByOpp,
-                            applicationShift: ResolveApplicationShiftByAppKey
-                        },
-                        canActivate: [
-                            RequireApplicationAcceptedService
-                        ]
-                    },
-                    {
-                        path: 'edit-answer',
-                        component: PageAnswerQuestionComponent
-                    },
-                    {
-                        path: 'payment-details',
-                        component: PagePaymentDetailsComponent
-                    },
-                    {
-                        path: 'payment-confirmation',
-                        component: PagePaymentConfirmationComponent,
-                        resolve: {
-                            project: ResolveProjectByOpp
+                            team: ResolveTeamByTeamKey
                         }
                     }
+                ]
+            },
+            {
+                path: 'review-detail',
+                component: PageReviewDetailComponent,
+                resolve: {
+                    teams: ResolveTeamByOppKey,
+                    appTeams: ResolveApplicationTeamsByOpp,
+                    application: ResolveApplicationByOpp
+                },
+                canActivate: [
+                    RequireProfileCompleteService,
+                ]
+            },
+            {
+                path: 'edit-profile',
+                component: PageCompleteProfileComponent,
+                canActivate: [
+                    RequireProfileCompleteService,
+                ],
+                data: {
+                    navigateTo: 'review-detail'
+                }
+            },
+            {
+                path: 'edit-answer',
+                component: PageAnswerQuestionComponent,
+                resolve: {
+                    application: ResolveApplicationByOpp
+                },
+                canActivate: [
+                    RequireProfileCompleteService,
+                ],
+                data: {
+                    navigateTo: 'review-detail'
+                }
+            },
+            {
+                path: 'apply-cofirmation',
+                component: PageApplyConfirmationComponent,
+                resolve: {
+                    project: ResolveProjectByOpp
+                },
+                canActivate: [
+                    RequireProfileCompleteService,
+                ],
+            },
+            {
+                path: 'shift',
+                resolve: {
+                    appTeams: ResolveApplicationTeamsByOpp,
+                    project: ResolveProjectByOpp,
+                    applicationShift: ResolveApplicationShiftsByOpp,
+                    application: ResolveApplicationByOpp
+                },
+                canActivate: [
+                    RequireProfileCompleteService,
+                    RequireApplicationAcceptedService
+                ],
+                children: [
+                    {
+                        path: '',
+                        component: PageShiftComponent,
+                        resolve: {
+                            shift: ResolveShiftByApplicationTeams
+                        }
+                    }
+                ]
+            },
+            {
+                path: 'payment-details',
+                component: PagePaymentDetailsComponent,
+                canActivate: [
+                    RequireProfileCompleteService,
+                ]
+            },
+            {
+                path: 'payment-confirmation',
+                component: PagePaymentConfirmationComponent,
+                resolve: {
+                    project: ResolveProjectByOpp
+                },
+                canActivate: [
+                    RequireProfileCompleteService,
                 ]
             }
         ]

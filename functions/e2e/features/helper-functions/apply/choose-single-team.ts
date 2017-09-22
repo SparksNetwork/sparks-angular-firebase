@@ -6,7 +6,7 @@ import { joinATeam, TestsForSelectedAndAvailableTeams, WAIT_TIMEOUT } from '../.
 import { ParamsObject } from './params-object';
 
 function testTeamDetails(params:ParamsObject) {
-    return confirmPage('/apply/' + params.oppKey + '/application/', '/teams', 'Pick-teams', 'first', '/teams/')
+    return confirmPage('/apply/' + params.oppKey, '/teams', 'Pick-teams', 'first', '/teams/')
         .then(function () {
 
 

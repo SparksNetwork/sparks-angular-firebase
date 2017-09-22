@@ -1,29 +1,42 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from "@angular/router";
-import { ApplicationQueryService } from "../application/application-query.service";
-
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { ApplicationQueryService } from '../application/application-query.service';
 import 'rxjs/add/operator/first'
-import { obj } from "../../../../../../lib/firebase-angular-observables/obj";
-import { Application, ApplicationStatus } from "../../../../../../universal/domain/application";
+import { obj } from '../../../../../../lib/firebase-angular-observables/obj';
+import { Application, ApplicationStatus } from '../../../../../../universal/domain/application';
+import { AuthService, User } from '../../snauth/auth/auth.service';
+import { Observable } from 'rxjs/Observable';
+import { Opp, oppTransform } from '../../../../../../universal/domain/opp';
+import { OppQueryService } from '../opp/opp-query.service';
+import { SorryService } from '../../sorry/sorry.service';
 
 @Injectable()
 export class RequireApplicationAcceptedService implements CanActivate {
 
     constructor(
-        public query: ApplicationQueryService,
         public router: Router,
+        private auth: AuthService,
+        public applicationQuery: ApplicationQueryService,
+        public oppQuery: OppQueryService,
+        public sorry: SorryService
     ) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        const applicationKey = route.parent.paramMap.get("applicationKey");
+        const oppKey = route.paramMap.get('oppKey');
 
-        return obj(this.query.one(applicationKey)).map((application: Application) => {
+        return Observable.combineLatest(
+            this.auth.current,
+            obj(this.oppQuery.one(oppKey)).mergeMap(this.sorry.intercept(oppTransform)))
+            .mergeMap(([user, opp]: [User, Opp]) => {
+                const projectProfileKey = this.applicationQuery.generateProjectProfileKey(opp.projectKey, user.uid);
+                return obj(this.applicationQuery.one(projectProfileKey)).map((application: Application) => {
 
-            if (!application || application.status != ApplicationStatus.Accepted) {
-                this.router.navigateByUrl('/apply/application-pending')
-                return false;
-            }
-            return true
-        }).first()
+                    if (!application || application.status !== ApplicationStatus.Accepted) {
+                        this.router.navigateByUrl('/apply/application-pending')
+                        return false;
+                    }
+                    return true;
+                })
+            }).first();
     }
 }

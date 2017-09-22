@@ -79,7 +79,7 @@ describe('Apply-Single-Opportunity-Flow: verified user with legal name and birth
                     return next.click()
                 })
                 .then(() =>
-                    confirmPage('/apply/KPC1/application/', '/teams', 'Pick-teams', 'first', '/teams/'))
+                    confirmPage('/apply/KPC1/', '/teams', 'Pick-teams', 'first', '/teams/'))
                 .then(() => joinATeam(pickTeamPage, 'KPC1', answerTeamQuestionPage))
                 .then(() => {
                     let nextButton = pickTeamPage.getNextButton()
@@ -87,14 +87,14 @@ describe('Apply-Single-Opportunity-Flow: verified user with legal name and birth
                         WAIT_TIMEOUT, 'Next button was not clickable when the team was selected')
                     return nextButton.click()
                 })
-                .then(() => confirmPage('/apply/KPC1/application/', '/review-detail', 'Review-application-details', 'first'))
+                .then(() => confirmPage('/apply/KPC1/', '/review-detail', 'Review-application-details', 'first'))
                 .then(() => {
                     let nextButton = reviewApplicationDetailsPage.getNextButton()
                     browser.wait(ExpectedConditions.elementToBeClickable(nextButton),
                         WAIT_TIMEOUT, 'Next button was not clickable on Review-application-details page')
                     return nextButton.click()
                 })
-                .then(() => confirmPage('/apply/KPC1/application/', '/apply-cofirmation', 'Apply-cofirmation', 'first'))
+                .then(() => confirmPage('/apply/KPC1/', '/apply-cofirmation', 'Apply-cofirmation', 'first'))
             expect(true).toBeTruthy()
         })
 

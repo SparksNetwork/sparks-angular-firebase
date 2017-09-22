@@ -38,7 +38,7 @@
                     <a [routerLink]="['..']" class="btn btn-default">Previous</a>
                 </div>
                 <div class="col-xs-4 col-xs-offset-4">
-                    <button class="btn btn-default" [disabled]='!answerForm.valid' (click)='join(team.$key, team.question)'>Join</button >
+                    <button class="btn btn-default" [disabled]='(!answerForm.valid) || (isDisabled)' (click)='join(team.$key, team.question)'>Join</button >
                 </div>
             </div>
     </snui-action-bar>

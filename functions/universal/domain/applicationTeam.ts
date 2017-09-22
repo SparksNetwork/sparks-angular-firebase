@@ -20,6 +20,10 @@ export class ApplicationTeamCollection extends BaseCollection {
     public byAppKey(key: string) {
         return this.by('appKey', key)
     }
+
+    public generateProjectProfileKey(projectKey: string, profileKey: string) {
+        return `${projectKey}-${profileKey}`;
+    }
 }
 
 export class ApplicationTeam {

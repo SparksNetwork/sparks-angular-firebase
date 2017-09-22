@@ -424,6 +424,17 @@ label {
     float: left;
     padding-left: 15px;
     @include block-nooverflow;
+    a{
+        cursor: pointer;
+        letter-spacing: 0.64px;
+    }
+    .ic{
+        &.ic-close,
+        &.ic-edit{
+            font-size: 12px;
+            margin-left: 10px;
+        }
+    }
 }
 
 .icon {
@@ -698,7 +709,10 @@ label {
         text-indent: -60px;
         text-align: center;
     }
-    &[readonly] {
+    .shift-filter &{
+        padding-left: 0;
+    }
+    &[readonly]{
         background: transparent;
     }
     @include Opacity(0.8);
@@ -1258,43 +1272,43 @@ label {
 
 
 /* -----------------------------------------------
- * Timeline
+ * Timeline @TODO after design
  * --------------------------------------------- */
 
-.timeline {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    ul {
-        li {
-            position: relative;
-            margin-bottom: 0;
-            padding-bottom: 15px;
-            .icon-desc-container {
-                &:before {
-                    content: '';
-                    border-left: 2px solid #B8BABA;
-                    position: absolute;
-                    top: 2px;
-                    left: 15px;
-                    height: 100%;
-                }
-                .icon {
-                    color: #B8BABA;
-                    .ic {
-                        background: #FFF;
-                    }
-                }
-            }
-            &:last-child {
-                .icon-desc-container {
-                    &:before {
-                        border: none;
-                    }
-                }
-            }
-        }
-    }
-}
+// .timeline {
+//     padding-top: 15px;
+//     padding-bottom: 15px;
+//     ul {
+//         li {
+//             position: relative;
+//             margin-bottom: 0;
+//             padding-bottom: 15px;
+//             .icon-desc-container {
+//                 &:before {
+//                     content: '';
+//                     border-left: 2px solid #B8BABA;
+//                     position: absolute;
+//                     top: 2px;
+//                     left: 15px;
+//                     height: 100%;
+//                 }
+//                 .icon {
+//                     color: #B8BABA;
+//                     .ic {
+//                         background: #FFF;
+//                     }
+//                 }
+//             }
+//             &:last-child {
+//                 .icon-desc-container {
+//                     &:before {
+//                         border: none;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
 
 
 /* Opportunity, Auth Page Details */
@@ -1751,6 +1765,8 @@ label {
         float: right;
         margin-left: -15px;
         border: 2px solid #FFF;
+        width: 35px;
+        height: 35px;
     }
 }
 

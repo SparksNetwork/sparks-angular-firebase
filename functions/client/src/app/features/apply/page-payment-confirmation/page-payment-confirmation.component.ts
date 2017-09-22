@@ -24,7 +24,7 @@ export class PagePaymentConfirmationComponent implements OnInit {
     public auth: AuthService
   ) {
     this.project = this.route.snapshot.data['project'];
-    this.opp = this.route.parent.parent.snapshot.data['opp'];
+    this.opp = this.route.parent.snapshot.data['opp'];
 
     this.auth.current.subscribe(data => {
       this.userEmail = data.email;

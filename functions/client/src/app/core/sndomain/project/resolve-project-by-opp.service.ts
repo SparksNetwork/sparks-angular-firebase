@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core'
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router'
 
-import { Observable } from 'rxjs'
+import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/operator/map'
-import 'rxjs/add/operator/mergeMap'
 import 'rxjs/add/operator/first'
-import 'rxjs/add/operator/catch'
 
 import { SorryService } from '../../sorry'
 import { ProjectQueryService } from './project-query.service'
@@ -23,7 +21,7 @@ export class ResolveProjectByOpp implements Resolve<any> {
 
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<Project | void>> {
         if (route.parent.data) {
-         return route.parent.data["opp"].map(
+         return route.parent.data['opp'].map(
                 opp => {
                     if (opp && opp.projectKey) {
                         const project = obj(this.query.one(opp.projectKey))
@@ -32,9 +30,9 @@ export class ResolveProjectByOpp implements Resolve<any> {
                     }
                 }
             ).first()
-        }
-        else
+        } else {
             return Observable.of(null);
+        }
     }
 
 }

@@ -3,7 +3,7 @@ import { browser, element, by, ElementFinder } from "protractor/built";
 export class ShiftPage {
 
     navigateTo() {
-        return browser.get('/apply/LC1/application/LC-USER_VERIFIED_PROFILE/shift')
+        return browser.get('/apply/LC1/shift')
     }
 
     getShiftsTitle(shift: ElementFinder) {

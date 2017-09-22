@@ -95,7 +95,7 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile i
                     return next.click()
                 })
                 .then(() =>
-                    confirmPage('/apply/LC1/application/', '/teams', 'Pick-teams', 'first', '/teams/'))
+                    confirmPage('/apply/LC1/', '/teams', 'Pick-teams', 'first', '/teams/'))
                 .then(() => {
                     testsForChooseTeamsPage(params)
                     return testsForChooseMultipleTeamsPage(params)
@@ -107,7 +107,7 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile i
                         WAIT_TIMEOUT, 'Next button was not clickable when the team was selected')
                     return nextButton.click()
                 })
-                .then(() => confirmPage('/apply/LC1/application/', '/review-detail', 'Review-application-details', 'first'))
+                .then(() => confirmPage('/apply/LC1/', '/review-detail', 'Review-application-details', 'first'))
                 .then(() => {
                     testsForReviewApplicationDetails(params)
                     return testsReviewDetailsMultipleTeams(params)
@@ -119,7 +119,7 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with complete profile i
                         WAIT_TIMEOUT, 'Next button was not clickable on Review-application-details page')
                     return nextButton.click()
                 })
-                .then(() => confirmPage('/apply/LC1/application/', '/apply-cofirmation', 'Apply-cofirmation', 'first'))
+                .then(() => confirmPage('/apply/LC1/', '/apply-cofirmation', 'Apply-cofirmation', 'first'))
             expect(true).toBeTruthy()
         })
 

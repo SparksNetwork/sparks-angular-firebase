@@ -11,9 +11,9 @@ import { Opp } from '../../../../../../universal/domain/opp';
 })
 export class PageAnswerQuestionComponent implements OnInit {
   public opp: Opp;
-  public applicationKey: string;  
+  public applicationKey: string;
   public answerForm: FormGroup;
-  public editFromReviewPage: boolean;
+  public navigateTo: string;
 
   constructor(
     public applicationAction: ApplicationActionService,
@@ -24,8 +24,6 @@ export class PageAnswerQuestionComponent implements OnInit {
     this.answerForm = builder.group({
       answer: ['', [Validators.required]]
     });
-
-    this.editFromReviewPage = !!this.route.snapshot.url.find(segment => segment.path.indexOf('edit-answer') > -1);
   }
 
   ngOnInit() {
@@ -39,17 +37,16 @@ export class PageAnswerQuestionComponent implements OnInit {
     this.route.parent.snapshot.data['opp'].subscribe(opp => {
       this.opp = opp;
     });
+
+    this.route.data.subscribe(data => {
+      this.navigateTo = data.navigateTo;
+    });
   };
 
   submit() {
     this.applicationAction.saveOppAnswer(this.applicationKey, this.opp.question, this.answerForm.get('answer').value)
       .subscribe(s => {
-        if (this.editFromReviewPage) {
-          this.router.navigate(['../', 'review-detail'], { relativeTo: this.route });
-          return;
-        }
-
-        this.router.navigate(['apply', this.opp.$key, 'application', this.applicationKey, 'teams']);
+        this.router.navigate(['..', this.navigateTo], { relativeTo: this.route });
       })
   }
 

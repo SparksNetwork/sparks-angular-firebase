@@ -27,7 +27,7 @@ export class PageOppTeamsComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.route.parent.parent.data.subscribe(data => {
+        this.route.parent.data.subscribe(data => {
             this.teams = data['teams'];
             this.applicationTeams = data['appTeams'];
             this.allTeams = Observable.combineLatest(
