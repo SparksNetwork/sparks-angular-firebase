@@ -7,6 +7,7 @@ import { ApplicationTeamActionService } from '../../../core/sndomain/application
 import { ApplicationTeam } from '../../../../../../universal/domain/applicationTeam';
 import { Application } from '../../../../../../universal/domain/application';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Project } from '../../../../../../universal/domain/project';
 
 @Component({
     templateUrl: 'page-opp-team.component.html'
@@ -18,6 +19,7 @@ export class PageOppTeamComponent implements OnInit {
     public actionBarType = ActionBarType;
     public answerForm: FormGroup;
     private isDisabled: boolean;
+    public project: Project;
 
     constructor(
         public route: ActivatedRoute,
@@ -40,11 +42,15 @@ export class PageOppTeamComponent implements OnInit {
                 this.application = a;
             })
         })
+
+        this.route.snapshot.data['project'].subscribe(data => {
+            this.project = data;
+        });
     }
 
     join(key: string, question: string) {
         this.isDisabled = true;
-      
+
         const appTeam = new ApplicationTeam();
         appTeam.appKey = this.application.$key;
         appTeam.teamKey = key;

@@ -32,7 +32,7 @@
             Answer is required
         </div>
 
-        <snui-action-bar [type]="actionBarType.Organizer">
+        <snui-action-bar *ngIf="project" [projectTitle]="project.title" [type]="actionBarType.Organizer">
             <div class="row">
                 <div class="col-xs-4">
                     <a [routerLink]="['..']" class="btn btn-default">Previous</a>
