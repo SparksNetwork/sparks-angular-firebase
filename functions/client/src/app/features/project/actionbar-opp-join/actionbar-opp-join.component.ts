@@ -13,7 +13,8 @@ import { Router, ActivatedRoute } from "@angular/router";
 export class ActionbarOppJoinComponent implements OnChanges {
   @Input() opp: Opp;
   @Input() public application: Application;
-  public showCancelButton: boolean = false;
+  public showCancelButton: boolean;
+  public showJoinButton: boolean;
   public oppKey: string;
 
   constructor(
@@ -36,25 +37,29 @@ export class ActionbarOppJoinComponent implements OnChanges {
             break;
         }
       }
+
+      this.showJoinButton = !this.application || !this.application.oppKey ||
+        (this.oppKey && this.application.oppKey !== this.oppKey) ||
+        this.application.status === ApplicationStatus.Canceled;
   }
 
   cancel(application: Application) {
     if (this.oppKey) {
-      this.router.navigate([application.$key, 'cancel'], { relativeTo: this.route })
+      this.router.navigate(['cancel'], { relativeTo: this.route })
     } else {
-      this.router.navigate(['../', 'opp', application.oppKey, 'join', application.$key, 'cancel'], { relativeTo: this.route })
+      this.router.navigate(['../', 'opp', application.oppKey, 'join', 'cancel'], { relativeTo: this.route })
     }
   }
 
   continue(application: Application) {
     if (!application.step) {
-      this.router.navigate(['/apply', application.oppKey, 'application', application.$key, 'answer-question'])
+      this.router.navigate(['/apply', this.oppKey, 'answer-question'])
     }
     if (application.step === ApplicationStepFinished.Answer) {
-      this.router.navigate(['/apply', application.oppKey, 'application', application.$key, 'teams'])
+      this.router.navigate(['/apply', this.oppKey, 'teams'])
     }
     if (application.step === ApplicationStepFinished.Team) {
-      this.router.navigate(['/apply', application.oppKey, 'application', application.$key, 'review-detail'])
+      this.router.navigate(['/apply', this.oppKey, 'review-detail'])
     }
   }
 

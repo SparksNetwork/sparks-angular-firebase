@@ -4,7 +4,7 @@ import { BenefitSegment } from './apply.benefit.segment';
 export class CancelApplicationPage extends BenefitSegment {
 
     navigateTo() {
-        return browser.get('/project/LC/opp/LC1/LC-USER_VERIFIED_PROFILE/cancel');
+        return browser.get('/project/LC/opp/LC1/cancel');
     }
 
     getDismissCancelApplicationButton() {

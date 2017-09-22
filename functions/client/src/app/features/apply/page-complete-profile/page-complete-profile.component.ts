@@ -17,7 +17,8 @@ export class PageCompleteProfileComponent {
   @ViewChild(FormCompleteProfileComponent) public profForm: FormCompleteProfileComponent
 
   public oppKey: string
-  public applicationKey: string
+  public navigateTo: string;
+  public editAllMode: boolean;
 
   constructor(
     public router: Router,
@@ -27,7 +28,11 @@ export class PageCompleteProfileComponent {
     public query: ProfileQueryService,
   ) {
     this.oppKey = this.route.parent.snapshot.paramMap.get('oppKey');
-    this.applicationKey = this.route.parent.snapshot.paramMap.get('applicationKey');
+
+    this.route.data.subscribe(data => {
+      this.navigateTo = data.navigateTo;
+      this.editAllMode = this.navigateTo === 'review-detail'
+    });
 
     this.route.parent.snapshot.data['profile'].subscribe(profile => {
       this.profForm.profileForm.get('legalName').setValue(profile.legalName);
@@ -64,12 +69,7 @@ export class PageCompleteProfileComponent {
         profile.phoneNumber &&
         profile.preferredName) {
 
-        if (this.applicationKey) {
-          // edit all fields mode - return to review application details page
-          this.router.navigate(['/apply', this.oppKey, 'application', this.applicationKey, 'review-detail'])
-        } else {
-          this.router.navigate(['/apply', this.oppKey, 'answer-question'])
-        }
+        this.router.navigate(['..', this.navigateTo], { relativeTo: this.route });
       }
     })
   }

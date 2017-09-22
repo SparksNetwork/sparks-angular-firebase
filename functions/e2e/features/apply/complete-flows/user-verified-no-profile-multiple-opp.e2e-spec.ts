@@ -91,7 +91,7 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with no profile informa
                     return next.click()
                 })
                 .then(() =>
-                    confirmPage('/apply/LC1/application/', '/teams', 'Pick-teams', 'first',  '/teams/'))
+                    confirmPage('/apply/LC1/', '/teams', 'Pick-teams', 'first',  '/teams/'))
 
                 .then(() => joinATeam(pickTeamPage,  'LC1', answerTeamQuestionPage))
                 .then(() => {
@@ -100,14 +100,14 @@ describe('Apply-Multiple-Opportunity-Flow: verified user with no profile informa
                         WAIT_TIMEOUT, 'Next button was not clickable when the team was selected')
                     return nextButton.click()
                 })
-                .then(() => confirmPage('/apply/LC1/application/', '/review-detail', 'Review-application-details', 'first'))
+                .then(() => confirmPage('/apply/LC1/', '/review-detail', 'Review-application-details', 'first'))
                 .then(() => {
                     let nextButton = reviewApplicationDetailsPage.getNextButton()
                     browser.wait(ExpectedConditions.elementToBeClickable(nextButton),
                         WAIT_TIMEOUT, 'Next button was not clickable on Review-application-details page')
                     return nextButton.click()
                 })
-                .then(() => confirmPage('/apply/LC1/application/', '/apply-cofirmation', 'Apply-cofirmation', 'first'))
+                .then(() => confirmPage('/apply/LC1/', '/apply-cofirmation', 'Apply-cofirmation', 'first'))
             expect(true).toBeTruthy()
         })
 

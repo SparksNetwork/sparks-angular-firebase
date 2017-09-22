@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from "rxjs/Observable";
-import { Opp } from "../../../../../../universal/domain/opp";
-import { ActivatedRoute, Router } from "@angular/router";
-import { Project } from "../../../../../../universal/domain/project";
-import { Benefit } from "../../../../../../universal/domain/benefit";
-import { ActionBarType } from "../../../shared/snui/action-bar/action-bar.component";
-import { ApplicationActionService } from "../../../core/sndomain/application/application-action.service";
-import { ApplicationStatus } from "../../../../../../universal/domain/application";
+import { Observable } from 'rxjs/Observable';
+import { Opp } from '../../../../../../universal/domain/opp';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Project } from '../../../../../../universal/domain/project';
+import { Benefit } from '../../../../../../universal/domain/benefit';
+import { ActionBarType } from '../../../shared/snui/action-bar/action-bar.component';
+import { ApplicationActionService } from '../../../core/sndomain/application/application-action.service';
+import { ApplicationStatus } from '../../../../../../universal/domain/application';
 
 @Component({
     templateUrl: 'page-opp-application-cancel.component.html'
@@ -31,23 +31,27 @@ export class PageOppApplicationCancelComponent implements OnInit {
             this.project = data['project'];
             this.benefits = data['benefits'];
         });
-        this.applicationKey = this.route.snapshot.params["applicationKey"];
+
+        this.route.parent.snapshot.data['application'].subscribe(app => {
+            this.applicationKey = app.$key;
+        });
     }
 
     confirm() {
         if (this.applicationKey) {
             this.applicationAction.changeStatus(this.applicationKey, ApplicationStatus.Canceled)
                 .subscribe(
-                () => this.router.navigate(["../../", 'cancel-confirmation'], { relativeTo: this.route })
+                () => this.router.navigate(['../cancel-confirmation'], { relativeTo: this.route })
                 );
         }
     }
 
-    cancel() {
-        let fromJoinPage = !!this.route.snapshot.url.find(segment => segment.path.indexOf('join') > -1);
-        if (fromJoinPage)
-            this.router.navigate(['../../../../../', 'join'], { relativeTo: this.route })
-        else
-            this.router.navigate(['../../'], {relativeTo: this.route });
+    back() {
+        const fromJoinPage = !!this.route.snapshot.url.find(segment => segment.path.indexOf('join') > -1);
+        if (fromJoinPage) {
+            this.router.navigate(['../../../../', 'join'], { relativeTo: this.route })
+        } else {
+            this.router.navigate(['../'], {relativeTo: this.route });
+        }
     }
 }

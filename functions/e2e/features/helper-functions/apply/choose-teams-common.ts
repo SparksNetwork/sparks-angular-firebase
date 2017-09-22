@@ -9,14 +9,14 @@ import { ParamsObject } from './params-object';
 
 
 function testPreviuousFunctionality(params:ParamsObject) {
-    return confirmPage('/apply/' + params.oppKey + '/application/', '/teams', ' Pick-teams', 'first', '/teams/')
+    return confirmPage('/apply/' + params.oppKey, '/teams', ' Pick-teams', 'first', '/teams/')
         .then(() => {
             let previousButton = params.pickTeamPage.getPreviousButton()
             browser.wait(ExpectedConditions.presenceOf(previousButton),
                 WAIT_TIMEOUT, 'On Choose-teams page Previous button was not present')
             return previousButton.click()
         })
-        .then(() => confirmPage('/apply/' + params.oppKey + '/application/', '/answer-question', 'Answer-organizer-question', 'first'))
+        .then(() => confirmPage('/apply/' + params.oppKey, '/answer-question', 'Answer-organizer-question', 'first'))
         .then(() => {
             let question = params.answerOrganizerQuestionPage.getQuestion()
             browser.wait(ExpectedConditions.presenceOf(question),
@@ -26,7 +26,7 @@ function testPreviuousFunctionality(params:ParamsObject) {
                     expect(str).toMatch(params.fullyLoaded['opp'][params.oppKey]['question'],
                         'On Answer-organizer-question page the text of the question was not correct')
                     let nextButton = params.answerOrganizerQuestionPage.getNextButton().click()
-                        .then(() => confirmPage('/apply/' + params.oppKey + '/application/', '/teams', 'Pick-teams', 'second', '/teams/'))
+                        .then(() => confirmPage('/apply/' + params.oppKey, '/teams', 'Pick-teams', 'second', '/teams/'))
 
                 })
             })
@@ -41,7 +41,7 @@ function testUserCanEditAnswerToOrganizerQuestion(params:ParamsObject) {
     browser.wait(ExpectedConditions.elementToBeClickable(previousButton),
         WAIT_TIMEOUT, 'On Choose-teams page Previous button was not present')
     return previousButton.click()
-        .then(() => confirmPage('/apply/' + params.oppKey + '/application/', '/answer-question', 'Answer-organizer-question', 'first'))
+        .then(() => confirmPage('/apply/' + params.oppKey, '/answer-question', 'Answer-organizer-question', 'first'))
         .then(() => {
             //edit the answer
             let answer = params.answerOrganizerQuestionPage.getAnswer()
@@ -56,7 +56,7 @@ function testUserCanEditAnswerToOrganizerQuestion(params:ParamsObject) {
                 'Next button from Answer-organizer-question was not clickable')
             return nextButton.click()
         })
-        .then(() => confirmPage('/apply/' + params.oppKey + '/application/', '/teams', 'Pick-teams', 'second', '/teams/'))
+        .then(() => confirmPage('/apply/' + params.oppKey, '/teams', 'Pick-teams', 'second', '/teams/'))
         .then(() => {
             //pres previous again
             let previousButton = params.pickTeamPage.getPreviousButton()
@@ -76,7 +76,7 @@ function testUserCanEditAnswerToOrganizerQuestion(params:ParamsObject) {
             expect(answer).toMatch(params.answerToOrganizerQuestion, 'On Choose-teams page the new answer was not saved correctly')
             return params.answerOrganizerQuestionPage.getNextButton().click()
         })
-        .then(() => confirmPage('/apply/' + params.oppKey + '/application/', '/teams', 'Pick-teams', 'third','/teams/'))
+        .then(() => confirmPage('/apply/' + params.oppKey, '/teams', 'Pick-teams', 'third','/teams/'))
 }
 
 function testTeamsDetails(params:ParamsObject) {
@@ -105,7 +105,7 @@ function testTeamsDetails(params:ParamsObject) {
 
 function testPreviousButtonFunctionalityFromAnswerTeamQuestionPage(params:ParamsObject) {
 
-    return confirmPage('/apply/' + params.oppKey + '/application/', '/teams', 'Pick-teams', 'first', '/teams/')
+    return confirmPage('/apply/' + params.oppKey, '/teams', 'Pick-teams', 'first', '/teams/')
         .then(() => {
             //the available team is displayed
             let team = params.pickTeamPage.getAvailableTeamLink(0)
@@ -115,7 +115,7 @@ function testPreviousButtonFunctionalityFromAnswerTeamQuestionPage(params:Params
             return params.pickTeamPage.getAvailableTeamTitle(team).click()
         })
         .then(() =>
-            confirmPage('/apply/' + params.oppKey + '/application/', '/teams/' + params.oppKey, 'Answer-team-question', 'first'))
+            confirmPage('/apply/' + params.oppKey, '/teams/' + params.oppKey, 'Answer-team-question', 'first'))
         .then(() => {
             //on the Answer-team-question page user clicks Previuous 
             let previous = params.answerTeamQuestionPage.getPreviousButton()
@@ -125,7 +125,7 @@ function testPreviousButtonFunctionalityFromAnswerTeamQuestionPage(params:Params
         })
         .then(() =>
             //user is taken back to Apply-team page
-            confirmPage('/apply/' + params.oppKey + '/application/', '/teams', 'Pick-teams', 'second', '/teams/'))
+            confirmPage('/apply/' + params.oppKey, '/teams', 'Pick-teams', 'second', '/teams/'))
 
         .then(() => {
             //the link to join the available team should be present again
