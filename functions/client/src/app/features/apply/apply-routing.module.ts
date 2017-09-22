@@ -72,7 +72,8 @@ const routes: Routes = [
                 resolve: {
                     teams: ResolveTeamByOppKey,
                     appTeams: ResolveApplicationTeamsByOpp,
-                    application: ResolveApplicationByOpp
+                    application: ResolveApplicationByOpp,
+                    project: ResolveProjectByOpp
                 },
                 canActivate: [
                     RequireProfileCompleteService,
@@ -86,7 +87,7 @@ const routes: Routes = [
                         path: ':teamKey',
                         component: PageOppTeamComponent,
                         resolve: {
-                            team: ResolveTeamByTeamKey
+                            team: ResolveTeamByTeamKey,
                         }
                     }
                 ]

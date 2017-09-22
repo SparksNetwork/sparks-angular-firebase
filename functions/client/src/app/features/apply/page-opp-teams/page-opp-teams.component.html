@@ -9,7 +9,7 @@
 <apply-opp-teams-selected (selectedCount)="onSelectedCount($event)" [allTeams]='allTeams | async'></apply-opp-teams-selected>
 <apply-opp-teams-not-selected [allTeams]='allTeams | async'></apply-opp-teams-not-selected>
 
-<snui-action-bar [type]="actionBarType.Organizer">
+<snui-action-bar *ngIf="project" [projectTitle]="project.title" [type]="actionBarType.Organizer">
   <div class="row">
     <div class="col-xs-4">
       <a (click)="previous()" class="btn btn-default">Previous</a>
