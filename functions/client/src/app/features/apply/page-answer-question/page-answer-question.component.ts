@@ -4,6 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationStatus, ApplicationStepFinished } from '../../../../../../universal/domain/application';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Opp } from '../../../../../../universal/domain/opp';
+import { Observable } from 'rxjs/Observable';
+import { Project } from '../../../../../../universal/domain/project';
+import { ActionBarType } from '../../../shared/snui/action-bar/action-bar.component';
 
 @Component({
   selector: 'apply-page-answer-question',
@@ -14,6 +17,8 @@ export class PageAnswerQuestionComponent implements OnInit {
   public applicationKey: string;
   public answerForm: FormGroup;
   public navigateTo: string;
+  public project: Project;
+  public actionBarType = ActionBarType;
 
   constructor(
     public applicationAction: ApplicationActionService,
@@ -40,6 +45,10 @@ export class PageAnswerQuestionComponent implements OnInit {
 
     this.route.data.subscribe(data => {
       this.navigateTo = data.navigateTo;
+    });
+
+    this.route.snapshot.data['project'].subscribe(data => {
+      this.project = data;
     });
   };
 

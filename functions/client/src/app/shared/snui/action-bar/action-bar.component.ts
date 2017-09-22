@@ -6,12 +6,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ActionBarComponent implements OnInit {
   @Input() type: ActionBarType;
+  @Input() projectTitle: string;
   askLabel: string;
 
   constructor() { }
 
   ngOnInit() {
-    this.askLabel = this.type === ActionBarType.Organizer ? "The Organizer" : "Sparks";
+    this.askLabel = this.type === ActionBarType.Organizer ? this.projectTitle + " Organizers" : "Sparks";
   }
 
 }

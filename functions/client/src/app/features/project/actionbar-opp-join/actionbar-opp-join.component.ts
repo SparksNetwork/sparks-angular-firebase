@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { ActionBarType } from "../../../shared/snui/action-bar/action-bar.component";
-import { Application, ApplicationStatus, ApplicationStepFinished } from "../../../../../../universal/domain/application";
-import { ApplicationActionService } from "../../../core/sndomain/application";
-import { Opp } from "../../../../../../universal/domain/opp";
+import { ActionBarType } from '../../../shared/snui/action-bar/action-bar.component';
+import { Application, ApplicationStatus, ApplicationStepFinished } from '../../../../../../universal/domain/application';
+import { ApplicationActionService } from '../../../core/sndomain/application';
+import { Opp } from '../../../../../../universal/domain/opp';
 import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({

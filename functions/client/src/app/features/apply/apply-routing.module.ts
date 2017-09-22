@@ -60,7 +60,8 @@ const routes: Routes = [
                     RequireProfileCompleteService,
                 ],
                 resolve: {
-                    application: ResolveApplication
+                    application: ResolveApplication,
+                    project: ResolveProjectByOpp
                 },
                 data: {
                     navigateTo: 'teams'
