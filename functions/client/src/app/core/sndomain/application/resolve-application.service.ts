@@ -5,7 +5,7 @@ import { obj } from '../../../../../../lib/firebase-angular-observables'
 
 import { ApplicationQueryService } from './application-query.service';
 import { SorryService } from '../../sorry/sorry.service';
-import { Application, applicationTransform } from '../../../../../../universal/domain/application';
+import { Application, applicationTransform, ApplicationStatus } from '../../../../../../universal/domain/application';
 import { Opp } from '../../../../../../universal/domain/opp';
 import { Profile } from '../../../../../../universal/domain/profile';
 import { ApplicationActionService } from './application-action.service';
@@ -30,15 +30,16 @@ export class ResolveApplication implements Resolve<any> {
                     const projectProfileKey = this.query.generateProjectProfileKey(opp.projectKey, profile.$key);
 
                     return obj(this.query.one(projectProfileKey))
-                        .take(1)
+                        .take(1) // unsubscribe after getting the data to avoid recreating the application when it's deleted from the DB
                         .mergeMap((app: Application) => {
-                            if (app && app.projectKey) {
+                            // if the application was cancelled, create a new one instead of using outdated data
+                            if (app && app.projectKey && app.status !== ApplicationStatus.Canceled) {
                                 return Observable.of(app);
                             }
 
                             // application doesn't exist, create it now
                             return this.action.createApplication(opp.projectKey, profile.$key, opp.$key)
-                                .delay(500)
+                                .delay(500) // delay needed here to make sure the data gets saved to the DB before trying to read it
                                 .mergeMap(res => {
                                     if (res.ok) {
                                         console.log('createApplication success!')
