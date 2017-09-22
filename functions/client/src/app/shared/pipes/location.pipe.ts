@@ -10,16 +10,18 @@ export class LocationPipe implements PipeTransform {
 
         let formatForDirections = false;
         let useShortFormat = false;
+        let formatAddressOnly = false;
 
         if (param) {
             formatForDirections = (param === 'directions');
-            useShortFormat = (param === 'short')
+            useShortFormat = (param === 'short');
+            formatAddressOnly = (param === 'address');
         }
 
-        return formatForDirections ? this.getLocationForDirections(location) : this.getLocationString(location, useShortFormat);
+        return formatForDirections ? this.getLocationForDirections(location) : this.getLocationString(location, useShortFormat, formatAddressOnly);
     }
 
-    private getLocationString(location: Location, useShortFormat: boolean): string {
+    private getLocationString(location: Location, useShortFormat: boolean = false, formatAddressOnly: boolean = false): string {
         if (!location) {
             return ''
         };
@@ -31,10 +33,10 @@ export class LocationPipe implements PipeTransform {
         if (!useShortFormat && location.address) {
             locStr += locStr ? `, ${location.address}` : location.address;
         };
-        if (location.city) {
+        if (!formatAddressOnly && location.city) {
             locStr += locStr ? `, ${location.city}` : location.city
         };
-        if (location.state) {
+        if (!formatAddressOnly && location.state) {
             locStr += locStr ? `, ${location.state}` : location.state;
         }
         return locStr;
@@ -45,7 +47,7 @@ export class LocationPipe implements PipeTransform {
             return ''
         };
         if (!location.latitude || !location.longitude) {
-            return this.getLocationString(location, false);
+            return this.getLocationString(location);
         }
         return `${location.latitude},${location.longitude}`
     }
