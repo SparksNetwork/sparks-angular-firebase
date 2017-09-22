@@ -30,7 +30,7 @@
 
     <snui-action-bar *ngIf="project" [projectTitle]="project.title" [type]="actionBarType.Organizer">
       <div class="row">
-        <div class="col-xs-4 col-xs-offset-8">
+        <div class="col-xs-4 col-xs-offset-4">
           <button (click)="submit()" [disabled]='!answerForm.valid' class="btn btn-default">{{navigateTo === 'review-detail' ? 'Save' : 'Next'}}</button>
         </div>
       </div>
