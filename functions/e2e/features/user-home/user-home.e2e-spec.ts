@@ -162,7 +162,6 @@ describe('Home page: user can browse projects from home page', () => {
                     let projectLocation = page.getProjectLocation(projectIndex)
                     let projectKey = GetDisplayedProjectKey(str)
                     projectLocation.getText().then(function (str) {
-                        expect(str).toContain(projects[projectKey]['location']['name'], 'Location name was not displayed')
                         expect(str).toContain(projects[projectKey]['location']['city'], 'City was not displayed')
                     })
                 }).then(function () {

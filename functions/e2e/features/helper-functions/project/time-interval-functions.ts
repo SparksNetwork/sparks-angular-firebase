@@ -2,21 +2,29 @@ import * as moment from 'moment';
 import { DateFormatPipe } from 'angular2-moment';
 
 
-export function getFormatedTimeInterval(startDate: string, endDate: string) {
-
-    const startMoment = moment(new Date(startDate));
-    const endMoment = moment(new Date(endDate));
+export function getFormatedTimeInterval(start: string, end: string) {
 
     let dateFormatPipe: DateFormatPipe = new DateFormatPipe()
 
-    let dateString = dateFormatPipe.transform(startMoment, 'MMM Do');
+    const startDate = moment(new Date(start));
+    const endDate = moment(new Date(end));
 
-    if (startMoment.year() !== endMoment.year()) {
-        dateString += (', ' + startMoment.year())
+    let dateString = dateFormatPipe.transform(startDate, 'MMM Do');
+
+    if (startDate.year() !== endDate.year()) {
+        dateString += (', ' + startDate.year())
     }
-    if (endMoment.isValid()) {
+
+    if (endDate.isValid()) {
         dateString += (' - ' + dateFormatPipe.transform(endDate, 'MMM Do, YYYY'))
     }
+
+
+
+
+
+    const yearIndex = dateString.indexOf(',');
+    dateString = yearIndex > -1 ? dateString.substring(0, yearIndex) : dateString;
 
     return dateString.toLowerCase();
 

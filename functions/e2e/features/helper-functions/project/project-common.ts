@@ -69,10 +69,8 @@ function testDate(page: ProjectPage, project: any) {
     browser.wait(ExpectedConditions.presenceOf(projectDate),
         WAIT_TIMEOUT, 'On Project page the date was not present')
 
-    let datePipe: DatePipe = new DatePipe('longDate');
-
     return projectDate.getText().then(function (str) {
-        expect(str).toMatch(getFormatedTimeInterval(project['startDateTime'],
+        expect(str).toContain(getFormatedTimeInterval(project['startDateTime'],
             project['endDateTime']), 'On Project page date was not displayed correctly')
 
     })
