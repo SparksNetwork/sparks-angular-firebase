@@ -749,7 +749,7 @@ label {
     }
     .icon {
         height: 45px;
-        padding: 7px 0 7px 20px;
+        padding: 7px 0 7px 12px;
         border: 1px solid $color-separator;
         border-right: transparent;
         @include border-radius-targeted( 7.5px, 0, 0, 7.5px); // .pg-auth &{
