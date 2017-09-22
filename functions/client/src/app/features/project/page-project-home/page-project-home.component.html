@@ -32,4 +32,4 @@
 
 </div>
 
-<snui-action-bar class="emptyBottomNav"></snui-action-bar>
+<snui-action-bar *ngIf="project | async; let project"  [projectTitle]="project.title" [type]="actionBarType.Organizer" class="emptyBottomNav"></snui-action-bar>
