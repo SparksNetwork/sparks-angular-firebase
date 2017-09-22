@@ -96,6 +96,14 @@ body {
     font-weight: 300;
 }
 
+.text-base{
+    color: $base-color;
+}
+
+.font-small{
+    size: 12px !important;
+}
+
 p {
     &.hero-text {
         margin-bottom: 60px;
@@ -1000,10 +1008,12 @@ label {
     }
 }
 
-.event-date-location,
 .project-date-location {
     @extend .separator;
     padding: 15px 0;
+    h4{
+        font-size: 14px;
+    }
     .icon {
         width: 40px;
     }
