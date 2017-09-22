@@ -119,7 +119,8 @@ const routes: Routes = [
                 path: 'edit-answer',
                 component: PageAnswerQuestionComponent,
                 resolve: {
-                    application: ResolveApplicationByOpp
+                    application: ResolveApplicationByOpp,
+                    project: ResolveProjectByOpp
                 },
                 canActivate: [
                     RequireProfileCompleteService,
