@@ -15,7 +15,7 @@ export class ShiftPage {
     }
 
     getAllShifts() {
-        return element.all(by.css('div.you-will-give-got li div.description'))
+        return element.all(by.css('div.you-get-give-join li div.description'))
     }
 
     getDateSelect() {
