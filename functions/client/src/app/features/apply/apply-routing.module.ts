@@ -52,9 +52,12 @@ const routes: Routes = [
             {
                 path: 'complete-profile',
                 component: PageCompleteProfileComponent,
+                resolve: {
+                    project: ResolveProjectByOpp
+                },
                 data: {
                     navigateTo: 'answer-question'
-                }
+                },
             },
             {
                 path: 'answer-question',
