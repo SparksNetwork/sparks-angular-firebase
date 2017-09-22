@@ -7,6 +7,7 @@ import { Team } from '../../../../../../universal/domain/team';
 import { ActionBarType } from '../../../shared/snui/action-bar/action-bar.component';
 import { ApplicationActionService } from '../../../core/sndomain/application';
 import { Profile } from '../../../../../../universal/domain/profile';
+import { Project } from '../../../../../../universal/domain/project';
 
 @Component({
     templateUrl: 'page-review-detail.component.html'
@@ -19,6 +20,7 @@ export class PageReviewDetailComponent implements OnInit {
     private profile: Observable<Profile>;
     public allTeams: any;
     public actionBarType = ActionBarType;
+    public project: Project;
 
     constructor(
         public route: ActivatedRoute,
@@ -38,6 +40,10 @@ export class PageReviewDetailComponent implements OnInit {
         });
 
         this.profile = this.route.parent.snapshot.data['profile'];
+
+        this.route.snapshot.data['project'].subscribe(data => {
+            this.project = data;
+        });
     }
 
     apply() {
