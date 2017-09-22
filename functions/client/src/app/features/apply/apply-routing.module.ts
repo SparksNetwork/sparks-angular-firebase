@@ -32,10 +32,6 @@ import { ResolveApplicationShiftsByOpp } from './resolve-application-shifts-by-o
 
 const routes: Routes = [
     {
-        path: 'application-pending',
-        component: PageMessageComponent
-    },
-    {
         path: ':oppKey',
         canActivate: [
             RequireAuth,
@@ -46,6 +42,13 @@ const routes: Routes = [
             profile: ResolveProfile
         },
         children: [
+            {
+                path: 'application-pending',
+                component: PageMessageComponent,
+                resolve: {
+                    project: ResolveProjectByOpp
+                }
+            },
             {
                 path: 'complete-profile',
                 component: PageCompleteProfileComponent,

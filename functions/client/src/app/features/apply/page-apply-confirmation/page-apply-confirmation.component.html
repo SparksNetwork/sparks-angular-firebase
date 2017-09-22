@@ -1,4 +1,4 @@
-<snui-header-simple imageUrl='https://placeimg.com/1140/410/animals/grayscale'>
+<snui-header-simple *ngIf="project | async; let project" [imageUrl]="(project.images.length > 0 ? project.images[0].imageUrl : 'https://placeimg.com/1140/410/people/grayscale')">
     All Done!<br/> Your Acceptance Is Coming Soon
 </snui-header-simple>
 <div class="segment">

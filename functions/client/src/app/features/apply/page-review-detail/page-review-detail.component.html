@@ -1,5 +1,5 @@
 <ng-container *ngIf='application'>
-  <snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
+  <snui-header-simple *ngIf="project" [imageUrl]="(project.images.length > 0 ? project.images[0].imageUrl : 'https://placeimg.com/1140/410/people/grayscale')">
     Almost There,<br/> Ready to Apply?
   </snui-header-simple>
 

@@ -1,4 +1,4 @@
-<snui-header-simple [imageUrl]='(project | async)?.images[0].imageUrl'>
+<snui-header-simple *ngIf="project | async; let project" [imageUrl]="(project.images.length > 0 ? project.images[0].imageUrl : 'https://placeimg.com/1140/410/people/grayscale')">
   Confirm Your Spot:<br>Select Shifts
 </snui-header-simple>
 

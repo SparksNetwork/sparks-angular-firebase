@@ -1,4 +1,4 @@
-<snui-header-simple imageUrl='https://placeimg.com/1140/410/animals/grayscale'>
+<snui-header-simple *ngIf="project || askType === actionBarType.Sparks" [imageUrl]="(project?.images.length > 0 ? project?.images[0].imageUrl : 'https://placeimg.com/1140/410/people/grayscale')">
   {{title}}
 </snui-header-simple>
 <div class="segment">
@@ -6,8 +6,9 @@
     {{message}}
   </p>
 </div>
-<snui-action-bar class="return-dashboard" [type]="actionBarType.Sparks">
-    <div class="user-action-container">
-        <a [routerLink]="['/']" class="btn btn-bordered btn-block">Return to Dashboard</a>
-    </div>
+<snui-action-bar *ngIf="project || askType === actionBarType.Sparks" [projectTitle]="project?.title" class="return-dashboard"
+  [type]="askType">
+  <div class="user-action-container">
+    <a [routerLink]="['/']" class="btn btn-bordered btn-block">Return to Dashboard</a>
+  </div>
 </snui-action-bar>

@@ -1,4 +1,4 @@
-<snui-header-simple imageUrl='https://placeimg.com/1140/410/animals/grayscale'>
+<snui-header-simple *ngIf="project | async; let project" [imageUrl]="(project.images.length > 0 ? project.images[0].imageUrl : 'https://placeimg.com/1140/410/people/grayscale')">
     Your Volunteering<br/> has been canceled
 </snui-header-simple>
 

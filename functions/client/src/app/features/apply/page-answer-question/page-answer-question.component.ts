@@ -49,7 +49,7 @@ export class PageAnswerQuestionComponent implements OnInit {
 
     this.route.snapshot.data['project'].subscribe(data => {
       this.project = data;
-    });
+     });
   };
 
   submit() {

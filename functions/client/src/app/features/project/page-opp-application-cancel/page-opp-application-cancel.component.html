@@ -1,4 +1,4 @@
-<snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
+<snui-header-simple *ngIf="project | async; let project" [imageUrl]="(project.images.length > 0 ? project.images[0].imageUrl : 'https://placeimg.com/1140/410/people/grayscale')">
     Confirm Your <br> Cancelation
 </snui-header-simple>
 <div class="row">

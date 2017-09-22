@@ -1,4 +1,4 @@
-<snui-header-simple imageUrl='https://placeimg.com/1140/410/people/grayscale'>
+<snui-header-simple *ngIf="project" [imageUrl]="(project.images.length > 0 ? project.images[0].imageUrl : 'https://placeimg.com/1140/410/people/grayscale')">
   Who Are You? Fill In The Blanks.
 </snui-header-simple>
 
