@@ -96,6 +96,14 @@ body {
     font-weight: 300;
 }
 
+.text-base{
+    color: $base-color;
+}
+
+.font-small{
+    size: 12px !important;
+}
+
 p {
     &.hero-text {
         margin-bottom: 60px;
@@ -741,7 +749,7 @@ label {
     }
     .icon {
         height: 45px;
-        padding: 7px 0 7px 20px;
+        padding: 7px 0 7px 12px;
         border: 1px solid $color-separator;
         border-right: transparent;
         @include border-radius-targeted( 7.5px, 0, 0, 7.5px); // .pg-auth &{
@@ -1000,10 +1008,12 @@ label {
     }
 }
 
-.event-date-location,
 .project-date-location {
     @extend .separator;
     padding: 15px 0;
+    h4{
+        font-size: 14px;
+    }
     .icon {
         width: 40px;
     }
