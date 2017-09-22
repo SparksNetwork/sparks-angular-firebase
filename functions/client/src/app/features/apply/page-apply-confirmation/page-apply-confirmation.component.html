@@ -11,9 +11,10 @@
     <snui-project-project-links [projectPageUrl]="project.projectPageUrl" [facebookUrl]="project.facebookUrl" [twitterUrl]="project.twitterUrl"
         [shareKarmaPoints]="project.shareKarmaPoints">
     </snui-project-project-links>
+
+    <snui-action-bar [projectTitle]="project.title" class="return-dashboard" [type]="actionBarType.Organizer">
+        <div class="user-action-container">
+            <a [routerLink]="['/']" class="btn btn-bordered btn-block">Return to Dashboard</a>
+        </div>
+    </snui-action-bar>
 </ng-container>
-<snui-action-bar class="return-dashboard" [type]="actionBarType.Organizer">
-    <div class="user-action-container">
-        <a [routerLink]="['/']" class="btn btn-bordered btn-block">Return to Dashboard</a>
-    </div>
-</snui-action-bar>

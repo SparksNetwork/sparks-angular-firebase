@@ -98,7 +98,8 @@ const routes: Routes = [
                 resolve: {
                     teams: ResolveTeamByOppKey,
                     appTeams: ResolveApplicationTeamsByOpp,
-                    application: ResolveApplicationByOpp
+                    application: ResolveApplicationByOpp,
+                    project: ResolveProjectByOpp
                 },
                 canActivate: [
                     RequireProfileCompleteService,
