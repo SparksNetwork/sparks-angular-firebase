@@ -11,7 +11,7 @@
     </p>
 </div>
 
-<snui-action-bar class="return-dashboard" [type]="actionBarType.Organizer">
+<snui-action-bar *ngIf="project | async; let project" [projectTitle]="project.title" class="return-dashboard" [type]="actionBarType.Organizer">
     <div class="user-action-container">
         <a [routerLink]="['/']" class="btn btn-bordered btn-block">Return to Dashboard</a>
     </div>
