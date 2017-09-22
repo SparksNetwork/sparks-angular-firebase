@@ -1,4 +1,4 @@
-<div class="segment">
+<div class="segment" [ngClass]="{'small-title':title?.length <= 15}">
   <h1 class="project-title">{{title}}</h1>
   <div class="project-karma">
     <div class="project-karma-count">{{maxKarmaPoints}}
