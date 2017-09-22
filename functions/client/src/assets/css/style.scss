@@ -378,7 +378,7 @@ label {
     &.no-pdng {
         padding: 0;
     }
-    &.no-padding-tb {
+    &.small-pd {
         padding-top: 15px;
         padding-bottom: 15px;
     }
@@ -1802,4 +1802,16 @@ label {
     .bottom-nav {
         display: none;
     }
+}
+
+.requirements-link{
+    font-size: 18px;
+    font-weight: 300;
+    color: $base-dark2;
+    .ic{
+        font-size: 22px;
+    }
+}
+.hide-teams{
+    cursor: pointer;
 }

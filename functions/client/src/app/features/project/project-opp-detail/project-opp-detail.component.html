@@ -1,13 +1,13 @@
 <ng-container *ngIf="project && opp && teams && benefits && contribs">
   <div class="row">
     <div class="col-xs-12">
-      <div *ngIf='opp.contribValue > 0' class="segment">
+      <div *ngIf='opp.contribValue > 0' class="segment small-pd">
         <div class="icon">
           <span class="ic ic-discount"></span>
         </div>
         <div class="text">
           <h4>{{opp.benefitValue | currency:'USD':true }} value for {{opp.contribValue | currency:'USD':true}}</h4>
-          <p><span>The regular ticket price is reduced to the price of {{opp.contribValue | currency:'USD':true}}</span></p>
+          <p><span>The regular ticket price is reduced to {{opp.contribValue | currency:'USD':true}}</span></p>
         </div>
       </div>
     </div>
