@@ -1,4 +1,4 @@
-<snui-header-simple imageUrl='https://placeimg.com/1140/410/animals/grayscale'>
+<snui-header-simple *ngIf="project | async; let project" [imageUrl]="(project.images.length > 0 ? project.images[0].imageUrl : 'https://placeimg.com/1140/410/people/grayscale')">
   Congratulations!<br/>You're In!
 </snui-header-simple>
 
@@ -47,16 +47,13 @@
 </div>
 
 <ng-container *ngIf="project | async; let project">
-  <snui-project-project-links 
-    [projectPageUrl]="project.projectPageUrl" 
-    [facebookUrl]="project.facebookUrl" 
-    [twitterUrl]="project.twitterUrl" 
+  <snui-project-project-links [projectPageUrl]="project.projectPageUrl" [facebookUrl]="project.facebookUrl" [twitterUrl]="project.twitterUrl"
     [shareKarmaPoints]="project.shareKarmaPoints">
   </snui-project-project-links>
 </ng-container>
 
-<snui-action-bar class="return-dashboard" [type]="actionBarType.Organizer">
+<snui-action-bar *ngIf="project | async; let project" [projectTitle]="project.title" class="return-dashboard" [type]="actionBarType.Organizer">
   <div class="user-action-container">
-      <a [routerLink]="['/']" class="btn btn-bordered btn-block">Return to Dashboard</a>
+    <a [routerLink]="['/']" class="btn btn-bordered btn-block">Return to Dashboard</a>
   </div>
 </snui-action-bar>

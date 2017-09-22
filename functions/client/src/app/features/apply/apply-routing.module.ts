@@ -170,6 +170,9 @@ const routes: Routes = [
             {
                 path: 'payment-details',
                 component: PagePaymentDetailsComponent,
+                resolve: {
+                    project: ResolveProjectByOpp
+                },
                 canActivate: [
                     RequireProfileCompleteService,
                 ]
