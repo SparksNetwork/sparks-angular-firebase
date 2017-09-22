@@ -1,44 +1,44 @@
 <form novalidate [formGroup]="shiftFilterForm">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="segment no-brd">
-        <div class="row">
-          <div class="col-xs-8">
-            <h3 class="segment-title">Filter Your Selection</h3>
-          </div>
-          <div *ngIf="filtersChangedByUser" class="col-xs-4 segment-title-link-container">
-            <a (click)="resetFilters()">Clear All <span class="ic ic-delete" aria-hidden="true"></span></a>
-          </div>
+  <div class="segment no-brd shift-filter no-padding-bt">
+    <div class="row">
+      <div class="col-xs-8">
+        <h3 class="segment-title">Filter Your Selection</h3>
+      </div>
+      <div *ngIf="filtersChangedByUser" class="col-xs-4 segment-title-link-container">
+        <a (click)="resetFilters()">clear all<span class="ic ic-close" aria-hidden="true"></span></a>
+      </div>
 
-          <div class="col-xs-12">
-            <div class="row">
-              <div class="col-xs-4">
-                <div class="form-group">
-                  <select class="form-control" name="dayfilter" formControlName="date">
+      <div class="clr"></div>
+
+      <div class="segment no-padding-bt no-brd">
+        <div class="col-xs-12">
+          <div class="row row-small-pad">
+            <div class="col-xs-4">
+              <div class="form-group">
+                <select class="form-control" name="dayfilter" formControlName="date">
                     <option value="">All Dates</option>
                     <option *ngFor="let date of dateFilter" [value]="date.date">{{date.dateDisplay}}</option>
                   </select>
-                </div>
               </div>
+            </div>
 
-              <div class="col-xs-4">
-                <div class="form-group">
-                  <select class="form-control" name="teamfilter" formControlName="team">
+            <div class="col-xs-4">
+              <div class="form-group">
+                <select class="form-control" name="teamfilter" formControlName="team">
                     <option value="">All Teams</option>
                     <option *ngFor="let team of teamFilter" [value]="team.teamKey">{{team.teamTitle}}</option>
                   </select>
-                </div>
               </div>
+            </div>
 
-              <div class="col-xs-4">
-                <div class="form-group">
-                  <select class="form-control" name="typefilter" formControlName="friend">
+            <div class="col-xs-4">
+              <div class="form-group">
+                <select class="form-control" name="typefilter" formControlName="friend">
                     <option value="">All Friends</option>
                     <option value="friends2">Friend1</option>
                     <option value="friends3">Friend2</option>
                     <option value="friends4">Friend3</option>
                   </select>
-                </div>
               </div>
             </div>
           </div>

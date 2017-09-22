@@ -1,13 +1,9 @@
-<snui-header-simple imageUrl='https://placeimg.com/1140/410/animals/grayscale'>
+<snui-header-simple [imageUrl]='(project | async)?.images[0].imageUrl'>
   Confirm Your Spot:<br>Select Shifts
 </snui-header-simple>
 
-<div class="row" *ngIf="project | async; let project">
-  <div class="col-xs-12">
-    <div class="segment">
-      <p class="card-text">Now that you've been approved for {{project.title}}, let's set up your schedule.</p>
-    </div>
-  </div>
+<div class="segment" *ngIf="project | async; let project">
+  <p class="card-text">Now that you've been approved for {{project.title}}, let's set up your schedule.</p>
 </div>
 
 <apply-shifts-selected></apply-shifts-selected>
