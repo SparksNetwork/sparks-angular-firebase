@@ -107,6 +107,9 @@ const routes: Routes = [
             },
             {
                 path: 'edit-profile',
+                resolve: {
+                    project: ResolveProjectByOpp
+                },
                 component: PageCompleteProfileComponent,
                 canActivate: [
                     RequireProfileCompleteService,
