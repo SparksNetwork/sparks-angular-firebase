@@ -10,7 +10,8 @@ import { AuthService, User } from '../../../core/snauth/auth/auth.service';
 })
 export class PageEmailNotVerifiedComponent {
 
-  notificationMessage: string;
+  public notificationMessage: string;
+  public isAuthed: boolean;
 
   constructor(public auth: AuthService) { }
 
@@ -20,9 +21,15 @@ export class PageEmailNotVerifiedComponent {
     this.notificationMessage = null;
 
     this.auth.current.subscribe((user: User) => {
-      user.sendEmailVerification()
-        .then(() => this.notificationMessage = 'An email was sent please check your email.')
-        .catch(() => this.notificationMessage = 'An error has occured please try again.')
+      if (user) {
+        user.sendEmailVerification()
+          .then(() => this.notificationMessage = 'An email was sent please check your email.')
+          .catch(() => this.notificationMessage = 'An error has occured please try again.')
+
+        this.isAuthed = true;
+      } else {
+        this.isAuthed = false;
+      }
     });
   }
 
