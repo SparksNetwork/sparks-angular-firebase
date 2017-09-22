@@ -36,4 +36,6 @@
 <project-actionbar-opp-join [opp]='opp|async' [application]='application|async'>
 </project-actionbar-opp-join>
 
-<snui-action-bar class="emptyBottomNav"></snui-action-bar>
+<snui-action-bar *ngIf="project | async; let project" [projectTitle]="project.title" [type]="actionBarType.Organizer" class="emptyBottomNav">
+  
+</snui-action-bar>

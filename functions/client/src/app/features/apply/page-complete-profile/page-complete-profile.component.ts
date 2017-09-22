@@ -1,5 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router'
+import { Project } from '../../../../../../universal/domain/project';
+import { ActionBarType } from '../../../shared/snui/action-bar/action-bar.component';
 
 import { AuthService } from '../../../core/snauth/auth/auth.service'
 import {
@@ -19,6 +21,8 @@ export class PageCompleteProfileComponent {
   public oppKey: string
   public navigateTo: string;
   public editAllMode: boolean;
+  public project: Project;
+  public actionBarType = ActionBarType;
 
   constructor(
     public router: Router,
@@ -41,6 +45,13 @@ export class PageCompleteProfileComponent {
       this.profForm.profileForm.get('birthday').setValue(profile.birthday);
     });
   }
+
+  ngOnInit() {
+
+    this.route.snapshot.data['project'].subscribe(data => {
+      this.project = data;
+    });
+  };
 
   public next() {
     console.log('completed profile?', this.profForm.profileForm.value)

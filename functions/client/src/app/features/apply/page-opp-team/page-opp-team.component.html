@@ -1,5 +1,5 @@
 <ng-container *ngIf='team | async; let team'>
-    <snui-header-simple imageUrl='https://placeimg.com/1140/410/animals/grayscale'>
+ <snui-header-simple [imageUrl]="(project.images.length > 0 ? project.images[0].imageUrl : 'https://placeimg.com/1140/410/people/grayscale')">
         Please answer the question for team "{{team.title}}"
     </snui-header-simple>
 
@@ -32,7 +32,7 @@
             Answer is required
         </div>
 
-        <snui-action-bar [type]="actionBarType.Organizer">
+        <snui-action-bar *ngIf="project" [projectTitle]="project.title" [type]="actionBarType.Organizer">
             <div class="row">
                 <div class="col-xs-4">
                     <a [routerLink]="['..']" class="btn btn-default">Previous</a>

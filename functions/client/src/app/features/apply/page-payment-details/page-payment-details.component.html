@@ -1,4 +1,4 @@
-<snui-header-simple imageUrl='https://placeimg.com/1140/410/animals/grayscale'>
+<snui-header-simple [imageUrl]="(project.images.length > 0 ? project.images[0].imageUrl : 'https://placeimg.com/1140/410/people/grayscale')">
   Confirm Your Spot:<br/>Select Payment
 </snui-header-simple>
 
@@ -48,13 +48,13 @@
   </div>
 </div>
 
-<snui-action-bar [type]="actionBarType.Organizer">
+<snui-action-bar *ngIf="project" [projectTitle]="project.title" [type]="actionBarType.Organizer">
   <div class="row">
     <div class="col-xs-4">
       <a [routerLink]="['../shift']" class="btn btn-default">Previous</a>
     </div>
     <div class="col-xs-4 col-xs-offset-4">
-        <a [routerLink]="['../payment-confirmation']" class="btn btn-default">Next</a>
+      <a [routerLink]="['../payment-confirmation']" class="btn btn-default">Next</a>
     </div>
   </div>
 </snui-action-bar>

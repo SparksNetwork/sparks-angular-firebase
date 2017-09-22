@@ -32,10 +32,6 @@ import { ResolveApplicationShiftsByOpp } from './resolve-application-shifts-by-o
 
 const routes: Routes = [
     {
-        path: 'application-pending',
-        component: PageMessageComponent
-    },
-    {
         path: ':oppKey',
         canActivate: [
             RequireAuth,
@@ -46,6 +42,13 @@ const routes: Routes = [
             profile: ResolveProfile
         },
         children: [
+            {
+                path: 'application-pending',
+                component: PageMessageComponent,
+                resolve: {
+                    project: ResolveProjectByOpp
+                }
+            },
             {
                 path: 'complete-profile',
                 component: PageCompleteProfileComponent,
@@ -60,7 +63,8 @@ const routes: Routes = [
                     RequireProfileCompleteService,
                 ],
                 resolve: {
-                    application: ResolveApplication
+                    application: ResolveApplication,
+                    project: ResolveProjectByOpp
                 },
                 data: {
                     navigateTo: 'teams'
@@ -71,7 +75,8 @@ const routes: Routes = [
                 resolve: {
                     teams: ResolveTeamByOppKey,
                     appTeams: ResolveApplicationTeamsByOpp,
-                    application: ResolveApplicationByOpp
+                    application: ResolveApplicationByOpp,
+                    project: ResolveProjectByOpp
                 },
                 canActivate: [
                     RequireProfileCompleteService,
@@ -85,7 +90,7 @@ const routes: Routes = [
                         path: ':teamKey',
                         component: PageOppTeamComponent,
                         resolve: {
-                            team: ResolveTeamByTeamKey
+                            team: ResolveTeamByTeamKey,
                         }
                     }
                 ]
@@ -96,7 +101,8 @@ const routes: Routes = [
                 resolve: {
                     teams: ResolveTeamByOppKey,
                     appTeams: ResolveApplicationTeamsByOpp,
-                    application: ResolveApplicationByOpp
+                    application: ResolveApplicationByOpp,
+                    project: ResolveProjectByOpp
                 },
                 canActivate: [
                     RequireProfileCompleteService,
@@ -104,6 +110,9 @@ const routes: Routes = [
             },
             {
                 path: 'edit-profile',
+                resolve: {
+                    project: ResolveProjectByOpp
+                },
                 component: PageCompleteProfileComponent,
                 canActivate: [
                     RequireProfileCompleteService,
@@ -116,7 +125,8 @@ const routes: Routes = [
                 path: 'edit-answer',
                 component: PageAnswerQuestionComponent,
                 resolve: {
-                    application: ResolveApplicationByOpp
+                    application: ResolveApplicationByOpp,
+                    project: ResolveProjectByOpp
                 },
                 canActivate: [
                     RequireProfileCompleteService,
@@ -160,6 +170,9 @@ const routes: Routes = [
             {
                 path: 'payment-details',
                 component: PagePaymentDetailsComponent,
+                resolve: {
+                    project: ResolveProjectByOpp
+                },
                 canActivate: [
                     RequireProfileCompleteService,
                 ]

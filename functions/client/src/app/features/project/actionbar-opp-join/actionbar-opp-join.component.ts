@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { ActionBarType } from "../../../shared/snui/action-bar/action-bar.component";
-import { Application, ApplicationStatus, ApplicationStepFinished } from "../../../../../../universal/domain/application";
-import { ApplicationActionService } from "../../../core/sndomain/application";
-import { Opp } from "../../../../../../universal/domain/opp";
+import { ActionBarType } from '../../../shared/snui/action-bar/action-bar.component';
+import { Application, ApplicationStatus, ApplicationStepFinished } from '../../../../../../universal/domain/application';
+import { ApplicationActionService } from '../../../core/sndomain/application';
+import { Opp } from '../../../../../../universal/domain/opp';
 import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
@@ -52,14 +52,15 @@ export class ActionbarOppJoinComponent implements OnChanges {
   }
 
   continue(application: Application) {
+    const oppKey = this.oppKey || application.oppKey;
     if (!application.step) {
-      this.router.navigate(['/apply', this.oppKey, 'answer-question'])
+      this.router.navigate(['/apply', oppKey, 'answer-question'])
     }
     if (application.step === ApplicationStepFinished.Answer) {
-      this.router.navigate(['/apply', this.oppKey, 'teams'])
+      this.router.navigate(['/apply', oppKey, 'teams'])
     }
     if (application.step === ApplicationStepFinished.Team) {
-      this.router.navigate(['/apply', this.oppKey, 'review-detail'])
+      this.router.navigate(['/apply', oppKey, 'review-detail'])
     }
   }
 
