@@ -38,7 +38,6 @@ const COMPONENTS = [
   DateIntervalPipe,
   DateTimeIntervalPipe,
   SortShiftsByDatePipe
-  
 ]
 
 @NgModule({
@@ -51,7 +50,8 @@ const COMPONENTS = [
   exports: COMPONENTS,
   declarations: COMPONENTS,
   providers: [
-    DateFormatPipe
+    DateFormatPipe,
+    DateIntervalPipe
   ]
 })
 export class SNUIModule { }

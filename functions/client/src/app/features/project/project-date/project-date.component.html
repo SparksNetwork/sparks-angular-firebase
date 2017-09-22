@@ -4,7 +4,10 @@
       <span class="ic ic-calendar"></span>
     </div>
     <div class="text">
-      <h4>{{startDateTime | snDateInterval: endDateTime}}</h4>
+      <h4>
+        <span>{{dateInterval}}</span><br/>
+        <span>{{year}}</span>
+      </h4>
       <span>
         <project-add-to-calendar
           [startDateTime]="startDateTime"
