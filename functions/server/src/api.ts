@@ -1,4 +1,6 @@
-import * as functions from 'firebase-functions'
+// import * as functions from 'firebase-functions'
+import 'reflect-metadata';
+import { functions } from './firebase-functions-env'
 import * as admin from 'firebase-admin'
 import * as express from 'express'
 import * as cors from 'cors'
@@ -19,14 +21,16 @@ try {
   console.log('trying emulator environment')
   const envCode = process.env['ANGULAR_ENV']
   console.log('environment:' + envCode)
-  const serviceAccount = require(`../../../../firebaseAdminCredentials.${envCode}.json`)
-  const env = require(`../../client/src/environments/environment.${envCode}.js`).environment
+  console.log(__dirname)
+  const serviceAccount = require(`../../../firebaseAdminCredentials.${envCode}.json`)
+  const env = require(`../../client/src/environments/environment.${envCode}.ts`).environment
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
     databaseURL: env.firebase.databaseURL
   })
   console.log('emulator environment')
 } catch (err) {
+  console.log('could not use emulator environment:', err)
   admin.initializeApp(functions.config().firebase)
   console.log('cloud environment', functions.config().firebase)
 }

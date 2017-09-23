@@ -69,6 +69,7 @@
     "concurrently": "^3.5.0",
     "cross-env": "^5.0.5",
     "cross-var": "^1.0.3",
+    "firebase-functions-local": "^3.0.3",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
     "jsonschema": "^1.1.1",
