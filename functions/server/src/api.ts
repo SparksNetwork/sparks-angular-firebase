@@ -15,8 +15,18 @@ import {
   ApplicationShiftHandler,
 } from './handlers'
 
-console.log('functions config', functions.config().firebase)
-admin.initializeApp(functions.config().firebase)
+try {
+  console.log('trying emulator environment')
+  const serviceAccount = require('../../../../firebaseAdminCredentials.dev-sd.json')
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: 'https://sparks-development-sd.firebaseio.com'
+  })
+  console.log('emulator environment')
+} catch (err) {
+  admin.initializeApp(functions.config().firebase)
+  console.log('cloud environment', functions.config().firebase)
+}
 
 const app = express();
 app.use(cors({origin: '*'}))
