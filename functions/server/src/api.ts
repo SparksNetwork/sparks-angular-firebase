@@ -15,8 +15,21 @@ import {
   ApplicationShiftHandler,
 } from './handlers'
 
-console.log('functions config', functions.config().firebase)
-admin.initializeApp(functions.config().firebase)
+try {
+  console.log('trying emulator environment')
+  const envCode = process.env['ANGULAR_ENV']
+  console.log('environment:' + envCode)
+  const serviceAccount = require(`../../../../firebaseAdminCredentials.${envCode}.json`)
+  const env = require(`../../client/src/environments/environment.${envCode}.js`).environment
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: env.firebase.databaseURL
+  })
+  console.log('emulator environment')
+} catch (err) {
+  admin.initializeApp(functions.config().firebase)
+  console.log('cloud environment', functions.config().firebase)
+}
 
 const app = express();
 app.use(cors({origin: '*'}))
