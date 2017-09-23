@@ -17,10 +17,13 @@ import {
 
 try {
   console.log('trying emulator environment')
-  const serviceAccount = require('../../../../firebaseAdminCredentials.dev-sd.json')
+  const envCode = process.env['ANGULAR_ENV']
+  console.log('environment:' + envCode)
+  const serviceAccount = require(`../../../../firebaseAdminCredentials.${envCode}.json`)
+  const env = require(`../../client/src/environments/environment.${envCode}.js`).environment
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: 'https://sparks-development-sd.firebaseio.com'
+    databaseURL: env.firebase.databaseURL
   })
   console.log('emulator environment')
 } catch (err) {
