@@ -14,13 +14,13 @@
       "maxKarmaPoints": 20,
       "images": [
         {
-          "imageUrl": "http://placeimg.com/640/480/animals/grayscale"
+          "imageUrl": "http://media.jrn.com/images/V0013048969--418825.JPG"
         },
         {
-          "imageUrl": "http://placeimg.com/640/480/nature/grayscale"
+          "imageUrl": "http://westsideventura.org/wp-content/uploads/2013/01/harry-lyon-park.jpg"
         },
         {
-          "imageUrl": "http://placeimg.com/640/480/arch/grayscale"
+          "imageUrl": "http://www.venturahome.com/uploads/future_kellogg_park_500x333_500.jpg"
         }
       ],
       "location": {
@@ -41,7 +41,42 @@
       "startDateTime": "2017-07-15T19:00:00.000Z",
       "facebookUrl": "commiesgame",
       "twitterUrl": "TripWestGames",
-      "title": "Park Cleanup"
+      "title": "Kellogg Park Cleanup"
+    },
+    "BABP": {
+      "description": "Join the crew that makes the Westside's summer extravaganza happen.",
+      "communityBenefit": "Ventura's Westside",
+      "maxKarmaPoints": 150,
+      "images": [
+        {
+          "imageUrl": "https://media.licdn.com/media/AAEAAQAAAAAAAANQAAAAJDVjYzc1NDdlLTdlMjktNGQ1NC04ODNlLTAwZjhjZDMzYjAzYg.png"
+        },
+        {
+          "imageUrl": "http://media.jrn.com/images/403834_3338550_ver1.0_640_480.jpg"
+        },
+        {
+          "imageUrl": "https://s3-media4.fl.yelpcdn.com/bphoto/ldA3gJIuhbECGOMyYYliCQ/ls.jpg"
+        }
+      ],
+      "location": {
+        "name": "Bell Arts Factory",
+        "address": "444 Ventura Avenue",
+        "city": "Ventura",
+        "state": "CA"
+      },
+      "organizer": {
+        "imageUrl": "https://placeimg.com/40/40/people/grayscale",
+        "name": "Jim Rice",
+        "organization": "Bell Arts Factory",
+        "organizerKey": "ORG-3"
+      },
+      "projectPageUrl": "https://varvy.com/pagespeed/wicked-fast.html",
+      "projectType": "Simple",
+      "shareKarmaPoints": 100,
+      "startDateTime": "2017-07-15T19:00:00.000Z",
+      "facebookUrl": "commiesgame",
+      "twitterUrl": "TripWestGames",
+      "title": "Bell Arts Block Party"
     },
     "LC": {
       "description": "Hello my magical unicorns! Come work and play with us at Lucidity Festival this year by joining the Dream Makers!",
@@ -50,13 +85,13 @@
       "maxKarmaPoints": 1519,
       "images": [
         {
-          "imageUrl": "https://placeimg.com/1140/410/people/grayscale"
+          "imageUrl": "http://media.independent.com/img/croppedphotos/2015/03/30/Lucidity-170_t958.jpg?fef15e12b784e9bbb22bf3f2924819218cda3d1a"
         },
         {
-          "imageUrl": "https://placeimg.com/1140/410/nature/grayscale"
+          "imageUrl": "http://realitysandwich.com/wp-content/uploads/2014/03/27125_784497490594_577805064_n.jpg"
         },
         {
-          "imageUrl": "https://placeimg.com/1140/410/animals/grayscale"
+          "imageUrl": "http://blog.lucidityfestival.com/wp-content/uploads/2017/03/Volunteer1-220x220.jpg"
         }
       ],
       "location": {
@@ -81,19 +116,19 @@
       "title": "Lucidity Crossroads"
     },
     "SRBC": {
-      "description": "Keep our local beach beautiful",
+      "description": "Be part of the International Coastal Cleanup Day by joining the Surfrider Foundation in cleaning up Surfer's Point!",
       "endDateTime": "2017-04-12T23:59:59.000Z",
-      "communityBenefit": "Your fellow humans",
+      "communityBenefit": "Your fellow humans and the coastal ecosystem",
       "maxKarmaPoints": 343,
       "images": [
         {
-          "imageUrl": "https://placeimg.com/1140/410/people/grayscale"
+          "imageUrl": "https://d3583ivmhhw2le.cloudfront.net/images/uploads/blog/IMG_8025.JPG"
         },
         {
-          "imageUrl": "https://placeimg.com/1140/410/nature/grayscale"
+          "imageUrl": "https://ventura.surfrider.org/wp-content/uploads/2016/02/CSUCImandalay.jpg"
         },
         {
-          "imageUrl": "https://placeimg.com/1140/410/animals/grayscale"
+          "imageUrl": "http://d3583ivmhhw2le.cloudfront.net/images/uploads/blog/HI_Beach_Clean-Up.jpg"
         }
       ],
       "location": {
@@ -136,8 +171,32 @@
       "icon": "glyphicon-glass",
       "karma": 20,
       "title": "Volunteer",
-      "description": "opp description",
-      "question": "Do you have any problem with the broom?"
+      "description": "Show up and pitch in!",
+      "question": "What would you like to help with?"
+    },
+    "BABP1": {
+      "projectKey": "BABP",
+      "icon": "glyphicon-glass",
+      "karma": 60,
+      "title": "Event Crew",
+      "description": "Lend a hand on the day of the event.",
+      "question": "What do you love the most about the Westside?"
+    },
+    "BABP2": {
+      "projectKey": "BABP",
+      "icon": "glyphicon-glass",
+      "karma": 50,
+      "title": "Crew Lead",
+      "description": "Be one of the all-day leads to help run a part of the party.",
+      "question": "What event work have you done before?"
+    },
+    "BABP3": {
+      "projectKey": "BABP",
+      "icon": "glyphicon-glass",
+      "karma": 20,
+      "title": "Planning Team",
+      "description": "Work ahead of the event.",
+      "question": "What kind of event planning have you done before?"
     },
     "LC1": {
       "projectKey": "LC",
@@ -146,8 +205,8 @@
       "contribValue": 209,
       "benefitValue": 374,
       "title": "1-Shift",
-      "description": "opp description",
-      "question": "Do you like festivals?"
+      "description": "Pick up a single shift and get a discounted volunteer ticket.",
+      "question": "What is your superpower?"
     },
     "LC2": {
       "projectKey": "LC",
@@ -156,8 +215,8 @@
       "contribValue": 59,
       "benefitValue": 394,
       "title": "Regular",
-      "description": "opp description",
-      "question": "Do you like multicultural festivals?"
+      "description": "Work three shifts and get a massive discount on your volunteer ticket.",
+      "question": "Have you been to Lucidity before?"
     },
     "LC3": {
       "projectKey": "LC",
@@ -166,8 +225,8 @@
       "contribValue": 0,
       "benefitValue": 364,
       "title": "Pre-Event Weekends",
-      "description": "opp description",
-      "question": "Do you like week-end festivals?"
+      "description": "Come to the Lucidity workspace on the weekends leading up to the event.",
+      "question": "How close are you to our workspace at 2345 Main Street in Santa Barbara?"
     },
     "LC4": {
       "projectKey": "LC",
@@ -176,8 +235,8 @@
       "contribValue": 19,
       "benefitValue": 444,
       "title": "Setup",
-      "description": "opp description",
-      "question": "What are you planning to do during the festival?"
+      "description": "Join the crew that works extra hours before the festival starts.",
+      "question": "What experience do you have with event build crews?"
     },
     "LC5": {
       "projectKey": "LC",
@@ -186,8 +245,8 @@
       "contribValue": 19,
       "benefitValue": 444,
       "title": "Strike",
-      "description": "opp description",
-      "question": "Are you ready to have a good time?"
+      "description": "Join the crew that takes it all down after the party is over.",
+      "question": "Have you worked strike before?  Who did you work for?"
     },
     "SRBC1": {
       "projectKey": "SRBC",
@@ -196,15 +255,43 @@
       "contribValue": 0,
       "benefitValue": 10,
       "title": "Beach Cleanup",
-      "description": "opp description",
-      "question": "Do you like festivals?"
+      "description": "Help beautify our beach and heal the marine ecosystem.",
+      "question": "What's your favorite thing about Ventura's beaches?"
     }
   },
   "benefit": {
-    "KPC1-1": {
-      "description": "Eat at the Saloon while you work",
+    "BABP1-1": {
+      "description": "Snacks and water while you work",
       "icon": "glyphicon-ice-lolly-tasted",
-      "oppKey": "KPC1",
+      "oppKey": "BABP1",
+      "title": "Food & Drink",
+      "type": "FoodDrink"
+    },
+    "BABP1-2": {
+      "description": "Lunchtime Taco Bar",
+      "icon": "glyphicon-ice-lolly-tasted",
+      "oppKey": "BABP1",
+      "title": "Food & Drink",
+      "type": "FoodDrink"
+    },
+    "BABP2-1": {
+      "description": "Snacks and water while you work",
+      "icon": "glyphicon-ice-lolly-tasted",
+      "oppKey": "BABP2",
+      "title": "Food & Drink",
+      "type": "FoodDrink"
+    },
+    "BABP2-2": {
+      "description": "Lunchtime Taco Bar",
+      "icon": "glyphicon-ice-lolly-tasted",
+      "oppKey": "BABP2",
+      "title": "Food & Drink",
+      "type": "FoodDrink"
+    },
+    "BABP3-1": {
+      "description": "Monthly dinners at El Tepatitlan",
+      "icon": "glyphicon-ice-lolly-tasted",
+      "oppKey": "BABP3",
       "title": "Food & Drink",
       "type": "FoodDrink"
     },
@@ -258,6 +345,36 @@
       "shiftMinLength": 4,
       "shiftMaxLength": 4,
       "description": "hours long of volunteering",
+      "icon": "glyphicon-time",
+      "title": "Shift",
+      "type": "Shift"
+    },
+    "BABP1-1": {
+      "count": 1,
+      "oppKey": "BABP1",
+      "shiftMinLength": 5,
+      "shiftMaxLength": 5,
+      "description": "hours long of volunteering",
+      "icon": "glyphicon-time",
+      "title": "Shift",
+      "type": "Shift"
+    },
+    "BABP2-1": {
+      "count": 1,
+      "oppKey": "BABP2",
+      "shiftMinLength": 12,
+      "shiftMaxLength": 12,
+      "description": "hours long of volunteering",
+      "icon": "glyphicon-time",
+      "title": "Shift",
+      "type": "Shift"
+    },
+    "BABP3-1": {
+      "count": 1,
+      "oppKey": "BABP3",
+      "shiftMinLength": 12,
+      "shiftMaxLength": 12,
+      "description": "weeks at 3 hours per week",
       "icon": "glyphicon-time",
       "title": "Shift",
       "type": "Shift"
@@ -329,6 +446,21 @@
       "icon": "glyphicon-grain",
       "title": "Single Team Example"
     },
+    "BABP1": {
+      "description": "Putting it up and then taking it back down",
+      "icon": "glyphicon-grain",
+      "title": "Setup and Teardown"
+    },
+    "BABP2": {
+      "description": "Serving and keeping it clean.",
+      "icon": "glyphicon-grain",
+      "title": "Wine Bar"
+    },
+    "BABP3": {
+      "description": "Helping artists do what they do.",
+      "icon": "glyphicon-grain",
+      "title": "Stage Crew"
+    },
     "LC1": {
       "description": "Feed hundreds of dreamers in the most amazing kitchen ever.",
       "icon": "glyphicon-grain",
@@ -340,12 +472,12 @@
       "title": "Gatekeepers"
     },
     "LC3": {
-      "description": "Shuttleguides description",
+      "description": "Help people load on to and off of the shuttles that take them into the event.",
       "icon": "glyphicon-sunglasses",
       "title": "Shuttleguides"
     },
     "LC4": {
-      "description": "Autotetris description",
+      "description": "Be the first face that people see and help them get to where they need to go safely.",
       "icon": "glyphicon-sunglasses",
       "title": "Autotetris"
     },
@@ -403,6 +535,96 @@
         "description": "Single team description shouldn't show",
         "icon": "glyphicon-grain",
         "title": "Single Team Example",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "BABP1-1": {
+      "oppKey": "BABP1",
+      "teamKey": "BABP1",
+      "team": {
+        "description": "Putting it up and then taking it back down",
+        "icon": "glyphicon-grain",
+        "title": "Setup and Teardown",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "BABP1-2": {
+      "oppKey": "BABP1",
+      "teamKey": "BABP2",
+      "team": {
+        "description": "Serving and keeping it clean.",
+        "icon": "glyphicon-grain",
+        "title": "Wine Bar",  
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "BABP1-3": {
+      "oppKey": "BABP1",
+      "teamKey": "BABP3",
+      "team": {
+        "description": "Helping artists do what they do.",
+        "icon": "glyphicon-grain",
+        "title": "Stage Crew",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "BABP2-1": {
+      "oppKey": "BABP2",
+      "teamKey": "BABP1",
+      "team": {
+        "description": "Putting it up and then taking it back down",
+        "icon": "glyphicon-grain",
+        "title": "Setup and Teardown",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "BABP2-2": {
+      "oppKey": "BABP2",
+      "teamKey": "BABP2",
+      "team": {
+        "description": "Serving and keeping it clean.",
+        "icon": "glyphicon-grain",
+        "title": "Wine Bar",  
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "BABP2-3": {
+      "oppKey": "BABP2",
+      "teamKey": "BABP3",
+      "team": {
+        "description": "Helping artists do what they do.",
+        "icon": "glyphicon-grain",
+        "title": "Stage Crew",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "BABP3-1": {
+      "oppKey": "BABP3",
+      "teamKey": "BABP1",
+      "team": {
+        "description": "Putting it up and then taking it back down",
+        "icon": "glyphicon-grain",
+        "title": "Setup and Teardown",
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "BABP3-2": {
+      "oppKey": "BABP3",
+      "teamKey": "BABP2",
+      "team": {
+        "description": "Serving and keeping it clean.",
+        "icon": "glyphicon-grain",
+        "title": "Wine Bar",  
+        "question": "Do you have any commercial kitchen experience?"
+      }
+    },
+    "BABP3-3": {
+      "oppKey": "BABP3",
+      "teamKey": "BABP3",
+      "team": {
+        "description": "Helping artists do what they do.",
+        "icon": "glyphicon-grain",
+        "title": "Stage Crew",
         "question": "Do you have any commercial kitchen experience?"
       }
     },
