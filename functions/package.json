@@ -13,7 +13,7 @@
     "build:ssr": "ngc -p tsconfig.ssr.json",
     "start": "concurrently \"npm run start:client\" \"npm run start:server\"",
     "start:client": "cross-var ng serve --env=%ANGULAR_ENV%",
-    "start:server": "concurrently \"npm run watch:server\" \"firebase serve --only functions\"",
+    "start:server": "ts-node ./server/src/index.ts",
     "watch:server": "watch \"npm run build:server && echo Server compiled.\" ./server/src",
     "preload": "ts-node ./bin/load-test-data.ts",
     "deploy": "npm run use && firebase deploy --only hosting,functions",
