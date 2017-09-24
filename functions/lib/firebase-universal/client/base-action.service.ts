@@ -12,53 +12,33 @@ export class BaseActionService {
   }
 
   public create(value) {
-    console.log('create', value)
+    console.log(this.apiPath, 'create', value)
     return this.http.post(this.url, value)
-    // .subscribe(data => {
-    //   console.log('data', data.json())
-    // }, err => {
-    //   console.log('err', err.json())
-    // })
+      .do(data => console.log('create response', data.json()))
   }
 
   public replace(key: string, value) {
-    console.log('replace', value)
+    console.log(this.apiPath, 'replace', key, value)
     const url = `${this.url}/${key}`
-    console.log('url', url)
     return this.http.put(url, value)
-    // .subscribe(data => {
-    //   console.log('data', data.json())
-    // }, err => {
-    //   console.log('err', err.json())
-    // })
+      .do(data => console.log('replace response', data.json()))
   }
 
   public update(key: string, value) {
-    console.log('update', value)
+    console.log(this.apiPath, 'update', key, value)
     const url = `${this.url}/${key}`
-    console.log('url', url)
     // post instead of patch because firebase-functions http handlers
     // do not populate req.body when PATCH verb used
     // return this.http.patch(url, value)
     return this.http.post(url, value)
-    // .subscribe(data => {
-    //   console.log('data', data.json())
-    // }, err => {
-    //   console.log('err', err.json())
-    // })
+      .do(data => console.log('update response', data.json()))
   }
 
   public delete(key: string) {
-    console.log('delete', key)
+    console.log(this.apiPath, 'delete', key)
     const url = `${this.url}/${key}`
-    console.log('url', url)
     return this.http.delete(url)
-    //   .subscribe(data => {
-    //     console.log('data', data.json())
-    //   }, err => {
-    //     console.log('err', err.json())
-    //   })
-    // return action
+      .do(data => console.log('delete response', data.json()))
   }
 
   public formatToDb(val) {
