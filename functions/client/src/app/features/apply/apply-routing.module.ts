@@ -60,8 +60,7 @@ const routes: Routes = [
                 },
             },
             {
-                path: 'answer-question',
-                component: PageAnswerQuestionComponent,
+                path: '',
                 canActivate: [
                     RequireProfileCompleteService,
                 ],
@@ -69,75 +68,59 @@ const routes: Routes = [
                     application: ResolveApplication,
                     project: ResolveProjectByOpp
                 },
-                data: {
-                    navigateTo: 'teams'
-                }
-            },
-            {
-                path: 'teams',
-                resolve: {
-                    teams: ResolveTeamByOppKey,
-                    appTeams: ResolveApplicationTeamsByOpp,
-                    application: ResolveApplication,
-                    project: ResolveProjectByOpp
-                },
-                canActivate: [
-                    RequireProfileCompleteService,
-                ],
                 children: [
                     {
-                        path: '',
-                        component: PageOppTeamsComponent
+                        path: 'answer-question',
+                        component: PageAnswerQuestionComponent,
+                        data: {
+                            navigateTo: 'teams'
+                        }
                     },
                     {
-                        path: ':teamKey',
-                        component: PageOppTeamComponent,
+                        path: 'teams',
                         resolve: {
-                            team: ResolveTeamByTeamKey,
+                            teams: ResolveTeamByOppKey,
+                            appTeams: ResolveApplicationTeamsByOpp,
+                        },
+                        children: [
+                            {
+                                path: '',
+                                component: PageOppTeamsComponent
+                            },
+                            {
+                                path: ':teamKey',
+                                component: PageOppTeamComponent,
+                                resolve: {
+                                    team: ResolveTeamByTeamKey,
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        path: 'review-detail',
+                        component: PageReviewDetailComponent,
+                        resolve: {
+                            teams: ResolveTeamByOppKey,
+                            appTeams: ResolveApplicationTeamsByOpp,
+                        },
+                    },
+                    {
+                        path: 'edit-profile',
+                        component: PageCompleteProfileComponent,
+                        data: {
+                            navigateTo: 'review-detail'
                         }
-                    }
+                    },
+                    {
+                        path: 'edit-answer',
+                        component: PageAnswerQuestionComponent,
+                        data: {
+                            navigateTo: 'review-detail'
+                        }
+                    },
                 ]
             },
-            {
-                path: 'review-detail',
-                component: PageReviewDetailComponent,
-                resolve: {
-                    teams: ResolveTeamByOppKey,
-                    appTeams: ResolveApplicationTeamsByOpp,
-                    application: ResolveApplication,
-                    project: ResolveProjectByOpp
-                },
-                canActivate: [
-                    RequireProfileCompleteService,
-                ]
-            },
-            {
-                path: 'edit-profile',
-                resolve: {
-                    project: ResolveProjectByOpp
-                },
-                component: PageCompleteProfileComponent,
-                canActivate: [
-                    RequireProfileCompleteService,
-                ],
-                data: {
-                    navigateTo: 'review-detail'
-                }
-            },
-            {
-                path: 'edit-answer',
-                component: PageAnswerQuestionComponent,
-                resolve: {
-                    application: ResolveApplication,
-                    project: ResolveProjectByOpp
-                },
-                canActivate: [
-                    RequireProfileCompleteService,
-                ],
-                data: {
-                    navigateTo: 'review-detail'
-                }
-            },
+
             {
                 path: 'apply-cofirmation',
                 component: PageApplyConfirmationComponent,
