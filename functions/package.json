@@ -53,7 +53,6 @@
     "jquery": "^3.2.1",
     "moment": "^2.18.1",
     "ngx-bootstrap": "^1.8.1",
-    "ramda": "^0.24.1",
     "reflect-metadata": "^0.1.10",
     "rxjs": "^5.4.1",
     "zone.js": "^0.8.14"
