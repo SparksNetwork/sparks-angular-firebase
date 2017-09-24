@@ -28,7 +28,7 @@ export class ApplicationCollection extends BaseCollection {
     }
 
     public generateProjectProfileKey(projectKey: string, profileKey: string) {
-        return `${projectKey}-${profileKey}`;
+        return super.generateProjectProfileKey(projectKey, profileKey)
     }
 }
 

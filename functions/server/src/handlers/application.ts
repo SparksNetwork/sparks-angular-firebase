@@ -19,4 +19,17 @@ export class ApplicationHandler extends BaseHandler {
       coll,
     )
   }
+
+  public async post(req: Request, res: Response, next: NextFunction): Promise<Response> {
+    const generateProjectProfileKey = this.collection.generateProjectProfileKey(req.body['projectKey'], req.body['profileKey'])
+    const data = req.body
+    let returned = await this.collection.ref.child(generateProjectProfileKey).once('value').then(ref => ref.val() && ref.key)
+    console.log('existing', returned)
+    if (!returned) {
+      data.createdOn = new Date().toISOString()
+      returned = await this.collection.ref.child(generateProjectProfileKey).set(data).then(() => generateProjectProfileKey)
+      console.log('new', returned)
+    }
+    return res.status(200).send(JSON.stringify(returned))
+  }
 }

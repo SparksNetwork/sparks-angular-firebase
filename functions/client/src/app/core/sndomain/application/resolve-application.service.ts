@@ -19,44 +19,22 @@ export class ResolveApplication implements Resolve<any> {
         private sorry: SorryService,
     ) { }
 
-    public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<{}> | Observable<Application | void>> {
+    public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<{}>> {
+        const opp$: Observable<any> = route.parent.data['opp']
+        const profile$: Observable<any> = route.parent.data['profile']
 
-        if (route.parent.data) {
-            const oppObs = route.parent.data['opp'];
-            const profileObs = route.parent.data['profile'];
+        const app$ = Observable.combineLatest(opp$, profile$)
+            .switchMap(([opp, profile]) => this.action.create({
+                oppKey: opp.$key,
+                projectKey: opp.projectKey,
+                profileKey: profile.$key,
+            }))
+            .map(response => response.json())
+            .switchMap(applicationKey => obj(this.query.one(applicationKey)))
+            .shareReplay(1)
 
-            const application = Observable.combineLatest(oppObs, profileObs)
-                .mergeMap(([opp, profile]: [Opp, Profile]) => {
-                    const projectProfileKey = this.query.generateProjectProfileKey(opp.projectKey, profile.$key);
-
-                    return obj(this.query.one(projectProfileKey))
-                        .take(1)
-                        .mergeMap((app: Application) => {
-                            if (app && app.projectKey) {
-                                return Observable.of(app);
-                            }
-
-                            // application doesn't exist, create it now
-                            return this.action.createApplication(opp.projectKey, profile.$key, opp.$key)
-                                .delay(500)
-                                .mergeMap(res => {
-                                    if (res.ok) {
-                                        console.log('createApplication success!')
-                                        return obj(this.query.one(projectProfileKey)).take(1);
-                                    } else {
-                                        console.log('createApplication failed')
-                                        return Observable.of(null);
-                                    }
-                                })
-                        })
-                        .mergeMap(this.sorry.intercept(applicationTransform));
-                });
-
-            return application
-                .map(() => application)
-                .first()
-        } else {
-            return Observable.of(null);
-        }
+        return app$
+            .take(1)
+            .map(() => app$)
     }
 }

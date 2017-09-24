@@ -31,7 +31,7 @@ import {
 
 import {
   ResolveTeamByOppKey,
-  // TeamQueryService,
+  TeamQueryService,
   // TeamActionService,
 } from './team'
 
@@ -99,7 +99,7 @@ import {
     ContribActionService,
     ResolveContribByOppKey,
 
-    // TeamQueryService,
+    TeamQueryService,
     // TeamActionService,
     ResolveTeamByOppKey,
 

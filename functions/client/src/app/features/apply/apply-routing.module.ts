@@ -78,7 +78,7 @@ const routes: Routes = [
                 resolve: {
                     teams: ResolveTeamByOppKey,
                     appTeams: ResolveApplicationTeamsByOpp,
-                    application: ResolveApplicationByOpp,
+                    application: ResolveApplication,
                     project: ResolveProjectByOpp
                 },
                 canActivate: [
@@ -104,7 +104,7 @@ const routes: Routes = [
                 resolve: {
                     teams: ResolveTeamByOppKey,
                     appTeams: ResolveApplicationTeamsByOpp,
-                    application: ResolveApplicationByOpp,
+                    application: ResolveApplication,
                     project: ResolveProjectByOpp
                 },
                 canActivate: [
@@ -128,7 +128,7 @@ const routes: Routes = [
                 path: 'edit-answer',
                 component: PageAnswerQuestionComponent,
                 resolve: {
-                    application: ResolveApplicationByOpp,
+                    application: ResolveApplication,
                     project: ResolveProjectByOpp
                 },
                 canActivate: [
@@ -154,7 +154,7 @@ const routes: Routes = [
                     appTeams: ResolveApplicationTeamsByOpp,
                     project: ResolveProjectByOpp,
                     applicationShift: ResolveApplicationShiftsByOpp,
-                    application: ResolveApplicationByOpp
+                    application: ResolveApplication,
                 },
                 canActivate: [
                     RequireProfileCompleteService,
