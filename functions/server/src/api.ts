@@ -1,4 +1,3 @@
-// import * as functions from 'firebase-functions'
 import 'reflect-metadata';
 import { functions } from './firebase-functions-env'
 import * as admin from 'firebase-admin'
@@ -15,6 +14,8 @@ import {
   ApplicationTeamHandler,
   ApplicationHandler,
   ApplicationShiftHandler,
+  TeamHandler,
+  OppAllowedTeamHandler,
 } from './handlers'
 
 try {
@@ -43,6 +44,8 @@ app.use(routeHandler(new ProfileHandler()))
 app.use(routeHandler(new ApplicationTeamHandler()))
 app.use(routeHandler(new ApplicationShiftHandler()))
 app.use(routeHandler(new ApplicationHandler()))
+app.use(routeHandler(new TeamHandler()))
+app.use(routeHandler(new OppAllowedTeamHandler()))
 
 export const api = functions.https.onRequest((req, res) => {
   // NOTE: You need to add a trailing slash to the root URL becasue of this issue: https://github.com/firebase/firebase-functions/issues/27

@@ -444,86 +444,103 @@
     "KPC1": {
       "description": "Single team description shouldn't show",
       "icon": "glyphicon-grain",
+      "question": "This question shouldn't show.",
       "title": "Single Team Example"
     },
     "BABP1": {
       "description": "Putting it up and then taking it back down",
       "icon": "glyphicon-grain",
+      "question": "Q for BABP1",
       "title": "Setup and Teardown"
     },
     "BABP2": {
       "description": "Serving and keeping it clean.",
       "icon": "glyphicon-grain",
+      "question": "Q for BABP2",
       "title": "Wine Bar"
     },
     "BABP3": {
       "description": "Helping artists do what they do.",
       "icon": "glyphicon-grain",
+      "question": "Q for BABP3",
       "title": "Stage Crew"
     },
     "LC1": {
       "description": "Feed hundreds of dreamers in the most amazing kitchen ever.",
       "icon": "glyphicon-grain",
+      "question": "What's the most important thing about working in a commercial kitchen?",
       "title": "Mindful Feeding"
     },
     "LC2": {
       "description": "Take tickets and give people a big warm welcome!",
       "icon": "glyphicon-sunglasses",
+      "question": "Q for LC2",
       "title": "Gatekeepers"
     },
     "LC3": {
       "description": "Help people load on to and off of the shuttles that take them into the event.",
       "icon": "glyphicon-sunglasses",
+      "question": "Q for LC3",
       "title": "Shuttleguides"
     },
     "LC4": {
       "description": "Be the first face that people see and help them get to where they need to go safely.",
       "icon": "glyphicon-sunglasses",
+      "question": "Q for LC4",
       "title": "Autotetris"
     },
     "LC5": {
       "description": "dIRT description",
       "icon": "glyphicon-sunglasses",
+      "question": "Q for LC5",
       "title": "dIRT"
     },
     "LC6": {
       "description": "Artist Hospitality description",
       "icon": "glyphicon-sunglasses",
+      "question": "Q for LC6",
       "title": "Artist Hospitality"
     },
     "LC7": {
       "description": "Technocrats description",
       "icon": "glyphicon-sunglasses",
+      "question": "Q for LC7",
       "title": "Technocrats"
     },
     "LC8": {
       "description": "Boneyard description",
       "icon": "glyphicon-sunglasses",
+      "question": "Q for LC8",
       "title": "Boneyard"
     },
     "LC9": {
       "description": "Help out at the build office in the weeks before the festial.",
       "icon": "glyphicon-grain",
+      "question": "Q for LC9",
       "title": "Nikki's Elves"
     },
     "LC10": {
       "description": "Build Beasts description",
       "icon": "glyphicon-sunglasses",
+      "question": "Q for LC10",
       "title": "Build Beasts"
     },
     "LC11": {
       "description": "Strike Tigers description",
       "icon": "glyphicon-sunglasses",
+      "question": "Q for LC11",
       "title": "Strike Tigers"
     },
     "SRBC1": {
       "description": "Beachcombers description",
       "icon": "glyphicon-sunglasses",
+      "question": "Q for SRBC1",
       "title": "Beachcombers"
     },
     "SRBC2": {
       "description": "Sorters description",
       "icon": "glyphicon-sunglasses",
+      "question": "Q for SRBC2",
       "title": "Sorters"
     }
   },
@@ -630,13 +647,7 @@
     },
     "LC1-LC1": {
       "oppKey": "LC1",
-      "teamKey": "LC1",
-      "team": {
-        "description": "Feed hundreds of dreamers in the most amazing kitchen ever.",
-        "icon": "glyphicon-grain",
-        "title": "Mindful Feeding",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC1"
     },
     "LC1-LC2": {
       "oppKey": "LC1",
