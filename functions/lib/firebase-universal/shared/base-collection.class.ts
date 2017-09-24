@@ -27,6 +27,13 @@ export interface IQuery {
   orderByChild: (key: string) => IQuery
   equalTo: (value: string) => IQuery
   endAt: (value: string | number | boolean, key?: string) => IQuery | firebase.database.Query
+  // on: (value: string) => firebase.Thenable<any>
+  once: (
+    value: string,
+    // successCallback?: (a: Reference, b?: string) => any,
+    successCallback?: (a: any, b?: string) => any,
+    failureCallback?: Object,
+    context?: Object) => firebase.Thenable<any>
 }
 
 export type RefOrQuery = IReference | IQuery

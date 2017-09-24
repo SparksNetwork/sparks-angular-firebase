@@ -444,479 +444,262 @@
     "KPC1": {
       "description": "Single team description shouldn't show",
       "icon": "glyphicon-grain",
+      "question": "This question shouldn't show.",
       "title": "Single Team Example"
     },
     "BABP1": {
       "description": "Putting it up and then taking it back down",
       "icon": "glyphicon-grain",
+      "question": "Can you use power tools and lift heavy things?",
       "title": "Setup and Teardown"
     },
     "BABP2": {
       "description": "Serving and keeping it clean.",
       "icon": "glyphicon-grain",
+      "question": "What bartending experience do you have?",
       "title": "Wine Bar"
     },
     "BABP3": {
       "description": "Helping artists do what they do.",
       "icon": "glyphicon-grain",
+      "question": "What experience do you have with sound gear?",
       "title": "Stage Crew"
     },
     "LC1": {
       "description": "Feed hundreds of dreamers in the most amazing kitchen ever.",
       "icon": "glyphicon-grain",
+      "question": "What's the most important thing about working in a commercial kitchen?",
       "title": "Mindful Feeding"
     },
     "LC2": {
       "description": "Take tickets and give people a big warm welcome!",
       "icon": "glyphicon-sunglasses",
+      "question": "What experience do you have handling cash?",
       "title": "Gatekeepers"
     },
     "LC3": {
       "description": "Help people load on to and off of the shuttles that take them into the event.",
       "icon": "glyphicon-sunglasses",
+      "question": "Can you lift bags and ride in the back of a truck?",
       "title": "Shuttleguides"
     },
     "LC4": {
       "description": "Be the first face that people see and help them get to where they need to go safely.",
       "icon": "glyphicon-sunglasses",
+      "question": "What's the most important thing about parking cars?",
       "title": "Autotetris"
     },
     "LC5": {
-      "description": "dIRT description",
+      "description": "Work with the team that makes sure we leave the festival grounds better than we found them.",
       "icon": "glyphicon-sunglasses",
-      "title": "dIRT"
+      "question": "What does Leave No Trace mean to you?",
+      "title": "da Impact Reduction Team"
     },
     "LC6": {
-      "description": "Artist Hospitality description",
+      "description": "Work the green rooms where the artists prepare before the show.",
       "icon": "glyphicon-sunglasses",
+      "question": "What's the most important thing about making artists feel welcome?",
       "title": "Artist Hospitality"
     },
     "LC7": {
-      "description": "Technocrats description",
+      "description": "Help run power and set up generators.",
       "icon": "glyphicon-sunglasses",
+      "question": "What experience do you have with electrical?",
       "title": "Technocrats"
     },
     "LC8": {
-      "description": "Boneyard description",
+      "description": "Manage the equipment inventory, checking out tools to builders.",
       "icon": "glyphicon-sunglasses",
+      "question": "What experience do you have with inventory management?",
       "title": "Boneyard"
     },
     "LC9": {
       "description": "Help out at the build office in the weeks before the festial.",
       "icon": "glyphicon-grain",
+      "question": "How close are you to our build office at 1234 Main Street in Santa Barbara?",
       "title": "Nikki's Elves"
     },
     "LC10": {
       "description": "Build Beasts description",
       "icon": "glyphicon-sunglasses",
+      "question": "What experience do you have with event build?",
       "title": "Build Beasts"
     },
     "LC11": {
       "description": "Strike Tigers description",
       "icon": "glyphicon-sunglasses",
+      "question": "What experience do you have with event strike?",
       "title": "Strike Tigers"
     },
     "SRBC1": {
-      "description": "Beachcombers description",
+      "description": "Comb the beach for things that don't belong there.",
       "icon": "glyphicon-sunglasses",
+      "question": "Why is it important to keep our beaches clean?",
       "title": "Beachcombers"
     },
     "SRBC2": {
-      "description": "Sorters description",
+      "description": "Sort the things we collect into landfill and recycle bins",
       "icon": "glyphicon-sunglasses",
+      "question": "Do you mind getting dirty?",
       "title": "Sorters"
     }
   },
   "oppAllowedTeam": {
     "KPC1-1": {
       "oppKey": "KPC1",
-      "teamKey": "KPC1",
-      "team": {
-        "description": "Single team description shouldn't show",
-        "icon": "glyphicon-grain",
-        "title": "Single Team Example",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "KPC1"
     },
     "BABP1-1": {
       "oppKey": "BABP1",
-      "teamKey": "BABP1",
-      "team": {
-        "description": "Putting it up and then taking it back down",
-        "icon": "glyphicon-grain",
-        "title": "Setup and Teardown",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "BABP1"
     },
     "BABP1-2": {
       "oppKey": "BABP1",
-      "teamKey": "BABP2",
-      "team": {
-        "description": "Serving and keeping it clean.",
-        "icon": "glyphicon-grain",
-        "title": "Wine Bar",  
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "BABP2"
     },
     "BABP1-3": {
       "oppKey": "BABP1",
-      "teamKey": "BABP3",
-      "team": {
-        "description": "Helping artists do what they do.",
-        "icon": "glyphicon-grain",
-        "title": "Stage Crew",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "BABP3"
     },
     "BABP2-1": {
       "oppKey": "BABP2",
-      "teamKey": "BABP1",
-      "team": {
-        "description": "Putting it up and then taking it back down",
-        "icon": "glyphicon-grain",
-        "title": "Setup and Teardown",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "BABP1"
     },
     "BABP2-2": {
       "oppKey": "BABP2",
-      "teamKey": "BABP2",
-      "team": {
-        "description": "Serving and keeping it clean.",
-        "icon": "glyphicon-grain",
-        "title": "Wine Bar",  
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "BABP2"
     },
     "BABP2-3": {
       "oppKey": "BABP2",
-      "teamKey": "BABP3",
-      "team": {
-        "description": "Helping artists do what they do.",
-        "icon": "glyphicon-grain",
-        "title": "Stage Crew",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "BABP3"
     },
     "BABP3-1": {
       "oppKey": "BABP3",
-      "teamKey": "BABP1",
-      "team": {
-        "description": "Putting it up and then taking it back down",
-        "icon": "glyphicon-grain",
-        "title": "Setup and Teardown",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "BABP1"
     },
     "BABP3-2": {
       "oppKey": "BABP3",
-      "teamKey": "BABP2",
-      "team": {
-        "description": "Serving and keeping it clean.",
-        "icon": "glyphicon-grain",
-        "title": "Wine Bar",  
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "BABP2"
     },
     "BABP3-3": {
       "oppKey": "BABP3",
-      "teamKey": "BABP3",
-      "team": {
-        "description": "Helping artists do what they do.",
-        "icon": "glyphicon-grain",
-        "title": "Stage Crew",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "BABP3"
     },
     "LC1-LC1": {
       "oppKey": "LC1",
-      "teamKey": "LC1",
-      "team": {
-        "description": "Feed hundreds of dreamers in the most amazing kitchen ever.",
-        "icon": "glyphicon-grain",
-        "title": "Mindful Feeding",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC1"
     },
     "LC1-LC2": {
       "oppKey": "LC1",
-      "teamKey": "LC2",
-      "team": {
-        "description": "Take tickets and give people a big warm welcome!",
-        "icon": "glyphicon-sunglasses",
-        "title": "Gatekeepers",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC2"
     },
     "LC1-LC3": {
       "oppKey": "LC1",
-      "teamKey": "LC3",
-      "team": {
-        "description": "Shuttleguides description",
-        "icon": "glyphicon-sunglasses",
-        "title": "Shuttleguides",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC3"
     },
     "LC1-LC4": {
       "oppKey": "LC1",
-      "teamKey": "LC4",
-      "team": {
-        "description": "Autotetris description",
-        "icon": "glyphicon-sunglasses",
-        "title": "Autotetris",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC4"
     },
     "LC1-LC5": {
       "oppKey": "LC1",
-      "teamKey": "LC5",
-      "team": {
-        "description": "dIRT description",
-        "icon": "glyphicon-sunglasses",
-        "title": "dIRT",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC5"
     },
     "LC1-LC6": {
       "oppKey": "LC1",
-      "teamKey": "LC6",
-      "team": {
-        "description": "Artist Hospitality description",
-        "icon": "glyphicon-sunglasses",
-        "title": "Artist Hospitality",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC6"
     },
     "LC1-LC7": {
       "oppKey": "LC1",
-      "teamKey": "LC7",
-      "team": {
-        "description": "Technocrats description",
-        "icon": "glyphicon-sunglasses",
-        "title": "Technocrats",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC7"
     },
     "LC1-LC8": {
       "oppKey": "LC1",
-      "teamKey": "LC8",
-      "team": {
-        "description": "Boneyard description",
-        "icon": "glyphicon-sunglasses",
-        "title": "Boneyard",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC8"
     },
     "LC2-LC1": {
       "oppKey": "LC2",
-      "teamKey": "LC1",
-      "team": {
-        "description": "Feed hundreds of dreamers in the most amazing kitchen ever.",
-        "icon": "glyphicon-grain",
-        "title": "Mindful Feeding",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC1"
     },
     "LC2-LC2": {
       "oppKey": "LC2",
-      "teamKey": "LC2",
-      "team": {
-        "description": "Take tickets and give people a big warm welcome!",
-        "icon": "glyphicon-sunglasses",
-        "title": "Gatekeepers",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC2"
     },
     "LC2-LC3": {
       "oppKey": "LC2",
-      "teamKey": "LC3",
-      "team": {
-        "description": "Shuttleguides description",
-        "icon": "glyphicon-sunglasses",
-        "title": "Shuttleguides",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC3"
     },
     "LC2-LC4": {
       "oppKey": "LC2",
-      "teamKey": "LC4",
-      "team": {
-        "description": "Autotetris description",
-        "icon": "glyphicon-sunglasses",
-        "title": "Autotetris",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC4"
     },
     "LC2-LC5": {
       "oppKey": "LC2",
-      "teamKey": "LC5",
-      "team": {
-        "description": "dIRT description",
-        "icon": "glyphicon-sunglasses",
-        "title": "dIRT",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC5"
     },
     "LC2-LC6": {
       "oppKey": "LC2",
-      "teamKey": "LC6",
-      "team": {
-        "description": "Artist Hospitality description",
-        "icon": "glyphicon-sunglasses",
-        "title": "Artist Hospitality",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC6"
     },
     "LC2-LC7": {
       "oppKey": "LC2",
-      "teamKey": "LC7",
-      "team": {
-        "description": "Technocrats description",
-        "icon": "glyphicon-sunglasses",
-        "title": "Technocrats",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC7"
     },
     "LC2-LC8": {
       "oppKey": "LC2",
-      "teamKey": "LC8",
-      "team": {
-        "description": "Boneyard description",
-        "icon": "glyphicon-sunglasses",
-        "title": "Boneyard",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC8"
     },
     "LC3-LC9": {
       "oppKey": "LC3",
-      "teamKey": "LC9",
-      "team": {
-        "description": "Help out at the build office in the weeks before the festial.",
-        "icon": "glyphicon-grain",
-        "title": "Nikki's Elves",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC9"
     },
     "LC4-LC1": {
       "oppKey": "LC4",
-      "teamKey": "LC1",
-      "team": {
-        "description": "Feed hundreds of dreamers in the most amazing kitchen ever.",
-        "icon": "glyphicon-grain",
-        "title": "Mindful Feeding",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC1"
     },
     "LC4-LC5": {
       "oppKey": "LC4",
-      "teamKey": "LC5",
-      "team": {
-        "description": "dIRT description",
-        "icon": "glyphicon-sunglasses",
-        "title": "dIRT",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC5"
     },
     "LC4-LC7": {
       "oppKey": "LC4",
-      "teamKey": "LC7",
-      "team": {
-        "description": "Technocrats description",
-        "icon": "glyphicon-sunglasses",
-        "title": "Technocrats",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC7"
     },
     "LC4-LC8": {
       "oppKey": "LC4",
-      "teamKey": "LC8",
-      "team": {
-        "description": "Boneyard description",
-        "icon": "glyphicon-sunglasses",
-        "title": "Boneyard",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC8"
     },
     "LC4-LC10": {
       "oppKey": "LC4",
-      "teamKey": "LC10",
-      "team": {
-        "description": "Build Beasts description",
-        "icon": "glyphicon-sunglasses",
-        "title": "Build Beasts",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC10"
     },
     "LC5-LC1": {
       "oppKey": "LC5",
-      "teamKey": "LC1",
-      "team": {
-        "description": "Feed hundreds of dreamers in the most amazing kitchen ever.",
-        "icon": "glyphicon-grain",
-        "title": "Mindful Feeding",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC1"
     },
     "LC5-LC5": {
       "oppKey": "LC5",
-      "teamKey": "LC5",
-      "team": {
-        "description": "dIRT description",
-        "icon": "glyphicon-sunglasses",
-        "title": "dIRT",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC5"
     },
     "LC5-LC7": {
       "oppKey": "LC5",
-      "teamKey": "LC7",
-      "team": {
-        "description": "Technocrats description",
-        "icon": "glyphicon-sunglasses",
-        "title": "Technocrats",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC7"
     },
     "LC5-LC8": {
       "oppKey": "LC5",
-      "teamKey": "LC8",
-      "team": {
-        "description": "Boneyard description",
-        "icon": "glyphicon-sunglasses",
-        "title": "Boneyard",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC8"
     },
     "LC5-LC11": {
       "oppKey": "LC5",
-      "teamKey": "LC11",
-      "team": {
-        "description": "Strike Tigers description",
-        "icon": "glyphicon-sunglasses",
-        "title": "Strike Tigers",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "LC11"
     },
     "SRBC1-SRBC1": {
       "oppKey": "SRBC1",
-      "teamKey": "SRBC1",
-      "team": {
-        "description": "Beachcombers description",
-        "icon": "glyphicon-sunglasses",
-        "title": "Beachcombers",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "SRBC1"
     },
     "SRBC1-SRBC2": {
       "oppKey": "SRBC1",
-      "teamKey": "SRBC2",
-      "team": {
-        "description": "Sorters description",
-        "icon": "glyphicon-sunglasses",
-        "title": "Sorters",
-        "question": "Do you have any commercial kitchen experience?"
-      }
+      "teamKey": "SRBC2"
     }
   },
   "shift": {
