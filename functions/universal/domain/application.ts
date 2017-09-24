@@ -24,11 +24,11 @@ export class ApplicationCollection extends BaseCollection {
     }
 
     public byProjectProfileKey(projectKey: string, profileKey: string) {
-        return this.by('projectProfileKey', this.generateProjectProfileKey(projectKey, profileKey))
+        return this.by('projectProfileKey', this.compoundKey(projectKey, profileKey))
     }
 
-    public generateProjectProfileKey(projectKey: string, profileKey: string) {
-        return super.generateProjectProfileKey(projectKey, profileKey)
+    public compoundKey(projectKey: string, profileKey: string) {
+        return super.compoundKey(projectKey, profileKey)
     }
 }
 

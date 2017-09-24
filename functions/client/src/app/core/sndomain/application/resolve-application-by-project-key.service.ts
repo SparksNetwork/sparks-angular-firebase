@@ -28,7 +28,7 @@ export class ResolveApplicationByProjectKey implements Resolve<any> {
                 return Observable.of(null);
             }
 
-            const projectProfileKey = this.query.generateProjectProfileKey(projectKey, user.uid);
+            const projectProfileKey = this.query.compoundKey(projectKey, user.uid);
             return obj(this.query.one(projectProfileKey))
                 .mergeMap(app => {
                     if (!app || !app.projectKey) {

@@ -21,13 +21,13 @@ export class ApplicationHandler extends BaseHandler {
   }
 
   public async post(req: Request, res: Response, next: NextFunction): Promise<Response> {
-    const generateProjectProfileKey = this.collection.generateProjectProfileKey(req.body['projectKey'], req.body['profileKey'])
+    const compoundKey = this.collection.compoundKey(req.body['projectKey'], req.body['profileKey'])
     const data = req.body
-    let returned = await this.collection.ref.child(generateProjectProfileKey).once('value').then(ref => ref.val() && ref.key)
+    let returned = await this.collection.ref.child(compoundKey).once('value').then(ref => ref.val() && ref.key)
     console.log('existing', returned)
     if (!returned) {
       data.createdOn = new Date().toISOString()
-      returned = await this.collection.ref.child(generateProjectProfileKey).set(data).then(() => generateProjectProfileKey)
+      returned = await this.collection.ref.child(compoundKey).set(data).then(() => compoundKey)
       console.log('new', returned)
     }
     return res.status(200).send(JSON.stringify(returned))

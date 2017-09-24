@@ -28,7 +28,7 @@ export class RequireApplicationAcceptedService implements CanActivate {
             this.auth.current,
             obj(this.oppQuery.one(oppKey)).mergeMap(this.sorry.intercept(oppTransform)))
             .mergeMap(([user, opp]: [User, Opp]) => {
-                const projectProfileKey = this.applicationQuery.generateProjectProfileKey(opp.projectKey, user.uid);
+                const projectProfileKey = this.applicationQuery.compoundKey(opp.projectKey, user.uid);
                 return obj(this.applicationQuery.one(projectProfileKey)).map((application: Application) => {
 
                     if (!application || application.status !== ApplicationStatus.Accepted) {

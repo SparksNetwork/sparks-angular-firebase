@@ -27,7 +27,7 @@ export class ResolveApplicationTeamsByOpp implements Resolve<any> {
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<ApplicationTeam[] | void>> {
         const applicationTeams = Observable.combineLatest(this.auth.current, route.parent.data['opp'])
             .mergeMap(([user, opp]: [User, Opp]) => {
-                const projectProfileKey = this.teamQuery.generateProjectProfileKey(opp.projectKey, user.uid);
+                const projectProfileKey = this.teamQuery.compoundKey(opp.projectKey, user.uid);
                 console.log('appKey', projectProfileKey)
                 return list(this.query.byAppKey(projectProfileKey));
             })

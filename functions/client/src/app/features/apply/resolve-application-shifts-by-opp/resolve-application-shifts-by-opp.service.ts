@@ -25,7 +25,7 @@ export class ResolveApplicationShiftsByOpp implements Resolve<any> {
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<ApplicationShift[] | void>> {
         const applicationShifts = Observable.combineLatest(this.auth.current, route.parent.data['opp'])
             .mergeMap(([user, opp]: [User, Opp]) => {
-                const projectProfileKey = this.query.generateProjectProfileKey(opp.projectKey, user.uid);
+                const projectProfileKey = this.query.compoundKey(opp.projectKey, user.uid);
                 return list(this.query.byAppKey(projectProfileKey));
             })
             .switchMap(this.sorry.intercept(applicationShiftsTransform));

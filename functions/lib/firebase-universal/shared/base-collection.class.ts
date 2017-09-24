@@ -62,7 +62,7 @@ export class BaseCollection {
     return this.ref.orderByChild(orderByChild).equalTo(equalTo)
   }
 
-  public generateProjectProfileKey(firstKey: string, secondKey: string) {
+  public compoundKey(firstKey: string, secondKey: string) {
     return firstKey + secondKey
   }
 }

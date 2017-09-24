@@ -48,7 +48,7 @@ export class ApplicationActionService extends BaseActionService {
   }
 
   public createApplication(projectKey: string, profileKey: string, oppKey: string) {
-    const key = this.query.generateProjectProfileKey(projectKey, profileKey);
+    const key = this.query.compoundKey(projectKey, profileKey);
 
     const application = new Application();
     application.profileKey = profileKey
