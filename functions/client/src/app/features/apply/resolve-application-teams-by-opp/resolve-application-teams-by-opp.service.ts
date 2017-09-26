@@ -12,6 +12,7 @@ import { AuthService, User } from '../../../core/snauth/auth/auth.service';
 import { Opp } from '../../../../../../universal/domain/opp';
 import { ApplicationTeamQueryService } from '../../../core/sndomain/applicationTeam/application-team-query.service';
 import { ApplicationTeam, applicationTeamsTransform } from '../../../../../../universal/domain/applicationTeam';
+import { TeamQueryService } from '../../../core/sndomain/team/team-query.service';
 
 @Injectable()
 export class ResolveApplicationTeamsByOpp implements Resolve<any> {
@@ -19,13 +20,15 @@ export class ResolveApplicationTeamsByOpp implements Resolve<any> {
     constructor(
         public sorry: SorryService,
         public query: ApplicationTeamQueryService,
+        public teamQuery: TeamQueryService,
         private auth: AuthService
     ) { }
 
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<ApplicationTeam[] | void>> {
         const applicationTeams = Observable.combineLatest(this.auth.current, route.parent.data['opp'])
             .mergeMap(([user, opp]: [User, Opp]) => {
-                const projectProfileKey = this.query.generateProjectProfileKey(opp.projectKey, user.uid);
+                const projectProfileKey = this.teamQuery.compoundKey(opp.projectKey, user.uid);
+                console.log('appKey', projectProfileKey)
                 return list(this.query.byAppKey(projectProfileKey));
             })
             .switchMap(this.sorry.intercept(applicationTeamsTransform));

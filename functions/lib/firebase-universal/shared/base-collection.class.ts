@@ -61,4 +61,8 @@ export class BaseCollection {
   public by(orderByChild: string, equalTo: string) {
     return this.ref.orderByChild(orderByChild).equalTo(equalTo)
   }
+
+  public compoundKey(firstKey: string, secondKey: string) {
+    return firstKey + secondKey
+  }
 }

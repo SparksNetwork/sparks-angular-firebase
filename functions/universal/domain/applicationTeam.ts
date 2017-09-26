@@ -21,7 +21,7 @@ export class ApplicationTeamCollection extends BaseCollection {
         return this.by('appKey', key)
     }
 
-    public generateProjectProfileKey(projectKey: string, profileKey: string) {
+    public compoundKey(projectKey: string, profileKey: string) {
         return `${projectKey}-${profileKey}`;
     }
 }

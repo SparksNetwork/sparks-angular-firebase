@@ -31,7 +31,7 @@ import {
 
 import {
   ResolveTeamByOppKey,
-  // TeamQueryService,
+  TeamQueryService,
   // TeamActionService,
 } from './team'
 
@@ -56,6 +56,7 @@ import {
 
 import {
   ResolveApplicationTeamByAppKey,
+  ResolveApplicationTeamByApplication,
   ApplicationTeamQueryService,
   ApplicationTeamActionService
 } from './applicationTeam'
@@ -99,7 +100,7 @@ import {
     ContribActionService,
     ResolveContribByOppKey,
 
-    // TeamQueryService,
+    TeamQueryService,
     // TeamActionService,
     ResolveTeamByOppKey,
 
@@ -114,10 +115,12 @@ import {
     ResolveApplicationByKey,
     ResolveApplicationByProfileKey,
     ResolveApplicationByProjectKey,
+    ResolveApplication,
+
     ApplicationTeamQueryService,
     ApplicationTeamActionService,
     ResolveApplicationTeamByAppKey,
-    ResolveApplication,
+    ResolveApplicationTeamByApplication,
 
     ShiftQueryService,
     ShiftActionService,

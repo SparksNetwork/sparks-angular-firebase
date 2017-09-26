@@ -25,7 +25,7 @@ export class ResolveApplicationByOpp implements Resolve<any> {
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<void | Application>> {
         const application = Observable.combineLatest(this.auth.current, route.parent.data['opp'])
             .mergeMap(([user, opp]: [User, Opp]) => {
-                const projectProfileKey = this.query.generateProjectProfileKey(opp.projectKey, user.uid);
+                const projectProfileKey = this.query.compoundKey(opp.projectKey, user.uid);
                 return obj(this.query.one(projectProfileKey));
             })
             .switchMap(this.sorry.intercept(applicationTransform));
