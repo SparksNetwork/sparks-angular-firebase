@@ -31,10 +31,12 @@ export class ResolveApplication implements Resolve<any> {
             }))
             .map(response => response.json())
             .switchMap(applicationKey => obj(this.query.one(applicationKey)))
-            .shareReplay(1)
+            .publishReplay(1)
+
+        app$.connect()
 
         return app$
-            .take(1)
             .map(() => app$)
-    }
+            .take(1)
+        }
 }
