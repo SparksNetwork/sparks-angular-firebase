@@ -22,29 +22,17 @@ export class ResolveProjectByOpp implements Resolve<any> {
     ) { }
 
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<Project | void>> {
-        // const oppKey = route.paramMap.get('oppKey')
-        // const opp$ = obj(this.opps.one(oppKey))
         const opp$ = route.parent.data['opp']
         const project$ = opp$
             .switchMap(opp => obj(this.query.one(opp.projectKey)))
             .switchMap(this.sorry.intercept(projectTransform))
+            .publishReplay(1)
+
+        project$.connect()
 
         return project$
-            .first()
             .map(() => project$)
-        // if (route.parent.data) {
-        //  return route.parent.data['opp'].map(
-        //         opp => {
-        //             if (opp && opp.projectKey) {
-        //                 const project = obj(this.query.one(opp.projectKey))
-        //                     .switchMap(this.sorry.intercept(projectTransform))
-        //                 return project
-        //             }
-        //         }
-        //     ).first()
-        // } else {
-        //     return Observable.of(null);
-        // }
-    }
+            .take(1)
+        }
 
 }
