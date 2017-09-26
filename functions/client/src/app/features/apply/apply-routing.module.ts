@@ -14,7 +14,6 @@ import { PageOppTeamComponent } from './page-opp-team/page-opp-team.component';
 import { PageAnswerQuestionComponent } from './page-answer-question/page-answer-question.component'
 import { ResolveTeamByTeamKey } from './resolve-team-by-team-key/resolve-team-by-team-key.service';
 import { RequireProfileCompleteService, ResolveProfile } from '../../core/sndomain/profile'
-import { ResolveApplicationTeamByAppKey } from '../../core/sndomain/applicationTeam/resolve-application-team-by-app-key.service';
 import { PageReviewDetailComponent } from './page-review-detail/page-review-detail.component';
 import { PageApplyConfirmationComponent } from './page-apply-confirmation/page-apply-confirmation.component';
 import { ResolveProjectByOpp } from '../../core/sndomain/project/resolve-project-by-opp.service';
@@ -25,8 +24,7 @@ import { PageMessageComponent } from '../../shared/snui/page-message/page-messag
 import { PagePaymentDetailsComponent } from './page-payment-details/page-payment-details.component';
 import { PagePaymentConfirmationComponent } from './page-payment-confirmation/page-payment-confirmation.component';
 import { ResolveApplicationShiftByAppKey } from '../../core/sndomain/applicationShift/resolve-application-shift-by-app-key.service';
-import { ResolveApplicationByKey, ResolveApplication } from '../../core/sndomain/application/index';
-import { ResolveApplicationByOpp } from './resolve-application-by-opp/resolve-application-by-opp.service';
+import { ResolveApplication } from '../../core/sndomain/application/index';
 import { ResolveApplicationTeamsByOpp } from './resolve-application-teams-by-opp/resolve-application-teams-by-opp.service';
 import { ResolveApplicationShiftsByOpp } from './resolve-application-shifts-by-opp/resolve-application-shifts-by-opp.service';
 import { ResolveApplicationTeamByApplication } from '../../core/sndomain/applicationTeam/resolve-application-team-by-application.service'
@@ -140,7 +138,7 @@ const routes: Routes = [
                     appTeams: ResolveApplicationTeamsByOpp,
                     project: ResolveProjectByOpp,
                     applicationShift: ResolveApplicationShiftsByOpp,
-                    // application: ResolveApplication,
+                    application: ResolveApplication,
                 },
                 canActivate: [
                     RequireProfileCompleteService,
