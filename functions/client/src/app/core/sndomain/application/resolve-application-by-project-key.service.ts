@@ -3,6 +3,8 @@ import { Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/r
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/first'
 
+import { connectedResolver } from '../../../../../../lib/angular-connected-resolver'
+
 import { Observable } from 'rxjs/Observable';
 
 import { list, obj } from '../../../../../../lib/firebase-angular-observables'
@@ -38,6 +40,6 @@ export class ResolveApplicationByProjectKey implements Resolve<any> {
                 })
         })
 
-        return applications.first();
+        return connectedResolver(applications)
     }
 }

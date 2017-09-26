@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router'
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/first'
+import { connectedResolver } from '../../../../../../lib/angular-connected-resolver'
 
 import { ContribQueryService } from './contrib-query.service'
 
@@ -21,10 +22,8 @@ export class ResolveContribByOppKey implements Resolve<any> {
   public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<Contrib[] | void>> {
     const oppKey = route.paramMap.get('oppKey')
     const contribs = list(this.query.byOppKey(oppKey))
-      .mergeMap(this.sorry.intercept(contribsTransform))
+      .switchMap(this.sorry.intercept(contribsTransform))
 
-    return contribs
-      .map(() => contribs)
-      .first()
+    return connectedResolver(contribs)
   }
 }

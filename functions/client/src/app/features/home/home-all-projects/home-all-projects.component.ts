@@ -18,8 +18,8 @@ export class HomeAllProjectsComponent {
     }
 
     getApplicationByProjectkey(projectKey: string) {
-        if (!this.applications || !this.applications.length || !projectKey) return;
+        // if (!this.applications || !this.applications.length || !projectKey) return;
 
-        return this.applications.find(application => application.projectKey == projectKey);
+        return this.applications.find(application => application.projectKey === projectKey);
     }
 }

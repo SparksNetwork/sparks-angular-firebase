@@ -3,6 +3,8 @@ import { Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/r
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/first'
 
+import { connectedResolver } from '../../../../../../lib/angular-connected-resolver'
+
 import { Observable } from "rxjs/Observable";
 
 import { list } from '../../../../../../lib/firebase-angular-observables'
@@ -20,15 +22,11 @@ export class ResolveApplicationByProfileKey implements Resolve<any> {
         private sorry: SorryService,
     ) { }
 
-    public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<{}> | Observable<Application[] | void>> {
+    public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<Application[] | void>> {
+        const applications$ = this.auth.current
+            .switchMap(user => user ? list(this.query.byProfileKey(user.uid)) : Observable.of([]))
+            .switchMap(this.sorry.intercept(applicationsTransform))
 
-        var applications = this.auth.current.map(user => {
-            if (!user) return Observable.of(null);
-
-            return list(this.query.byProfileKey(user.uid))
-                .switchMap(this.sorry.intercept(applicationsTransform));
-        })
-
-        return applications.first();
+        return connectedResolver(applications$)
     }
 }

@@ -26,8 +26,8 @@ export class RequireApplicationAcceptedService implements CanActivate {
 
         return Observable.combineLatest(
             this.auth.current,
-            obj(this.oppQuery.one(oppKey)).mergeMap(this.sorry.intercept(oppTransform)))
-            .mergeMap(([user, opp]: [User, Opp]) => {
+            obj(this.oppQuery.one(oppKey)).switchMap(this.sorry.intercept(oppTransform)))
+            .switchMap(([user, opp]: [User, Opp]) => {
                 const projectProfileKey = this.applicationQuery.compoundKey(opp.projectKey, user.uid);
                 return obj(this.applicationQuery.one(projectProfileKey)).map((application: Application) => {
 

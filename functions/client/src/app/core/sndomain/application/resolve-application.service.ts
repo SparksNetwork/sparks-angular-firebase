@@ -3,6 +3,8 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 import { Observable } from 'rxjs/Observable';
 import { obj } from '../../../../../../lib/firebase-angular-observables'
 
+import { connectedResolver } from '../../../../../../lib/angular-connected-resolver'
+
 import { ApplicationQueryService } from './application-query.service';
 import { SorryService } from '../../sorry/sorry.service';
 import { Application, applicationTransform } from '../../../../../../universal/domain/application';
@@ -31,12 +33,7 @@ export class ResolveApplication implements Resolve<any> {
             }))
             .map(response => response.json())
             .switchMap(applicationKey => obj(this.query.one(applicationKey)))
-            .publishReplay(1)
 
-        app$.connect()
-
-        return app$
-            .map(() => app$)
-            .take(1)
+        return connectedResolver(app$)
         }
 }

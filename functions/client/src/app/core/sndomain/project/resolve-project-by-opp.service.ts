@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core'
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router'
 
+import { connectedResolver } from '../../../../../../lib/angular-connected-resolver'
+
 import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/first'
@@ -26,13 +28,8 @@ export class ResolveProjectByOpp implements Resolve<any> {
         const project$ = opp$
             .switchMap(opp => obj(this.query.one(opp.projectKey)))
             .switchMap(this.sorry.intercept(projectTransform))
-            .publishReplay(1)
 
-        project$.connect()
-
-        return project$
-            .map(() => project$)
-            .take(1)
-        }
+        return connectedResolver(project$)
+    }
 
 }

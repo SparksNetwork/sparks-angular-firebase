@@ -6,6 +6,7 @@ import 'rxjs/add/operator/mergeMap'
 import 'rxjs/add/operator/first'
 
 import { obj } from '../../../../../../lib/firebase-angular-observables'
+import { connectedResolver } from '../../../../../../lib/angular-connected-resolver'
 
 import { SorryService } from '../../../core/sorry/sorry.service';
 import { ApplicationQueryService } from '../../../core/sndomain/application/application-query.service';
@@ -24,14 +25,12 @@ export class ResolveApplicationByOpp implements Resolve<any> {
 
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<void | Application>> {
         const application = Observable.combineLatest(this.auth.current, route.parent.data['opp'])
-            .mergeMap(([user, opp]: [User, Opp]) => {
+            .switchMap(([user, opp]: [User, Opp]) => {
                 const projectProfileKey = this.query.compoundKey(opp.projectKey, user.uid);
                 return obj(this.query.one(projectProfileKey));
             })
             .switchMap(this.sorry.intercept(applicationTransform));
 
-        return application
-            .map(() => application)
-            .first();
+        return connectedResolver(application)
     }
 }

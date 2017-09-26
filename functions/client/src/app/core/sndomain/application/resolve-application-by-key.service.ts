@@ -4,6 +4,8 @@ import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/first'
 import { Observable } from "rxjs/Observable";
 
+import { connectedResolver } from '../../../../../../lib/angular-connected-resolver'
+
 import { obj } from '../../../../../../lib/firebase-angular-observables'
 import { ApplicationQueryService } from "./application-query.service";
 import { Application, applicationTransform } from "../../../../../../universal/domain/application";
@@ -22,8 +24,6 @@ export class ResolveApplicationByKey implements Resolve<any> {
     const application = obj(this.query.one(applicationKey))
       .switchMap(this.sorry.intercept(applicationTransform))
 
-    return application
-      .map(() => application)
-      .first()
+    return connectedResolver(application)
   }
 }

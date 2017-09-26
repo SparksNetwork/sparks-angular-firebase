@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/first'
 
 import { Observable } from "rxjs/Observable";
+import { connectedResolver } from '../../../../../../lib/angular-connected-resolver'
 
 
 import { list } from '../../../../../../lib/firebase-angular-observables'
@@ -22,10 +23,8 @@ export class ResolveApplicationTeamByAppKey implements Resolve<any> {
   public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<ApplicationTeam[] | void>> {
     const appKey = route.paramMap.get('applicationKey')
     const appTeams = list(this.query.byAppKey(appKey))
-    .switchMap(this.sorry.intercept(applicationTeamsTransform));
+      .switchMap(this.sorry.intercept(applicationTeamsTransform));
 
-    return appTeams
-      .map(() => appTeams)
-      .first()
+    return connectedResolver(appTeams)
   }
 }

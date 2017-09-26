@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router";
+import { connectedResolver } from '../../../../../../lib/angular-connected-resolver'
 
 import 'rxjs/add/operator/first'
 
@@ -18,11 +19,9 @@ export class ResolveProfile implements Resolve<any> {
     ) { }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<Profile | void>> {
-        const profile = this.query.current
-            .mergeMap(this.sorry.intercept(profileTransform));
+        const profile$ = this.query.current
+            .switchMap(this.sorry.intercept(profileTransform));
 
-        return profile
-            .map(() => profile)
-            .first()
+        return connectedResolver(profile$)
     }
 }

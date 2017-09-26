@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/first'
 
 import { Observable } from "rxjs/Observable";
-
+import { connectedResolver } from '../../../../../../lib/angular-connected-resolver'
 
 import { list } from '../../../../../../lib/firebase-angular-observables'
 import { ApplicationTeamQueryService } from "./application-team-query.service";
@@ -24,12 +24,7 @@ export class ResolveApplicationTeamByApplication implements Resolve<any> {
     const appTeams$ = app$
       .switchMap(app => list(this.query.byAppKey(app.$key)))
       .switchMap(this.sorry.intercept(applicationTeamsTransform))
-      .publishReplay(1)
 
-    appTeams$.connect()
-
-    return appTeams$
-      .map(() => appTeams$)
-      .take(1)
+    return connectedResolver(appTeams$)
   }
 }

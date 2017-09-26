@@ -4,6 +4,7 @@ import { Observable } from 'rxjs'
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/mergeMap'
 import 'rxjs/add/operator/first'
+import { connectedResolver } from '../../../../../../lib/angular-connected-resolver'
 
 import { Team, teamsTransform } from "../../../../../../universal/domain/team";
 // import { TeamQueryService } from '../../../core/sndomain/team/team-query.service'
@@ -22,12 +23,10 @@ export class ResolveTeamByFirstOpp implements Resolve<any> {
     const opps = route.parent.data['opps']
     const firstOpp = opps.map(opps => opps[0])
     const teams = firstOpp
-      .mergeMap(opp => list(this.oppAllowedTeamQuery.by('oppKey', opp.$key)))
+      .switchMap(opp => list(this.oppAllowedTeamQuery.by('oppKey', opp.$key)))
       .map(oppAllowedTeams => oppAllowedTeams.map(oAT => ({$key: oAT.teamKey, ...oAT.team})))
-      .mergeMap(teamsTransform)
+      .switchMap(teamsTransform)
 
-    return teams
-      .map(() => teams)
-      .first()
+    return connectedResolver(teams)
   }
 }
