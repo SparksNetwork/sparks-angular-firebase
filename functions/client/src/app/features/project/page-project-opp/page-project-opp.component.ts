@@ -15,7 +15,7 @@ import { Application } from '../../../../../../universal/domain/application';
   selector: 'project-page-project-opp',
   templateUrl: './page-project-opp.component.html'
 })
-export class PageProjectOppComponent implements OnInit {
+export class PageProjectOppComponent {
   public project: Observable<Project>
   public opps: Observable<Opp[]>
   public opp: Observable<Opp>
@@ -28,17 +28,13 @@ export class PageProjectOppComponent implements OnInit {
   constructor(
     public route: ActivatedRoute
   ) {
-  }
+    this.project = this.route.snapshot.data['project'];
+    this.opp = this.route.snapshot.data['opp'];
+    this.opps = this.route.snapshot.data['opps'];
+    this.teams = this.route.snapshot.data['teams'];
+    this.benefits = this.route.snapshot.data['benefits'];
+    this.contribs = this.route.snapshot.data['contribs'];
+    this.application = this.route.snapshot.data['application'];
+}
 
-  ngOnInit() {
-    this.route.data.subscribe(data => {
-      this.project = this.route.snapshot.data['project'];
-      this.opp = this.route.snapshot.data['opp'];
-      this.opps = this.route.snapshot.data['opps'];
-      this.teams = data['teams'];
-      this.benefits = data['benefits'];
-      this.contribs = data['contribs'];
-      this.application = data['application'];
-    })
-  }
 }

@@ -5,28 +5,28 @@
 
   <div class="project-date-location">
     <div class="row row-small-pad">
-    <project-project-date 
-      [startDateTime]="project.startDateTime" 
-      [endDateTime]="project.endDateTime" 
-      [title]="project.title"
-      [location]="project.location"
-      [description]="project.description">
-    </project-project-date>
+      <project-project-date 
+        [startDateTime]="project.startDateTime" 
+        [endDateTime]="project.endDateTime" 
+        [title]="project.title"
+        [location]="project.location"
+        [description]="project.description">
+      </project-project-date>
 
-    <project-project-location [location]="project.location"></project-project-location>
+      <project-project-location [location]="project.location"></project-project-location>
     </div>
   </div>
  
   <project-project-description [description]="project.description"></project-project-description>
 
-<project-opp-detail *ngIf="(opps | async).length == 1"
-  [project]='project'
-  [opp]='opp|async'
-  [teams]='teams|async'
-  [contribs]='contribs|async'
-  [benefits]='benefits|async'
-></project-opp-detail>
-<div *ngIf="(opps | async).length > 1" class="project-opportunities segment">
+  <project-opp-detail *ngIf="(opps | async).length == 1"
+    [project]='project'
+    [opp]='opp|async'
+    [teams]='teams|async'
+    [contribs]='contribs|async'
+    [benefits]='benefits|async'
+  ></project-opp-detail>
+  <div *ngIf="(opps | async).length > 1" class="project-opportunities segment">
     <div class="row row-small-pad row-eq-height">
       <ng-container *ngFor="let opp of opps | async; let i=index">
         <div class="col-xs-6">       
@@ -46,6 +46,6 @@
     [shareKarmaPoints]="project.shareKarmaPoints">
   </snui-project-project-links>
 
+  <snui-action-bar [projectTitle]="project.title" [type]="actionBarType.Organizer" class="emptyBottomNav"></snui-action-bar>
 </div>
 
-<snui-action-bar *ngIf="project | async; let project"  [projectTitle]="project.title" [type]="actionBarType.Organizer" class="emptyBottomNav"></snui-action-bar>
