@@ -21,12 +21,9 @@ import {
 
 import { PageProjectsComponent } from './page-projects/page-projects.component'
 import { PageProjectHomeComponent } from './page-project-home/page-project-home.component'
-import { PageProjectHomeAllOppsComponent } from './page-project-home-all-opps/page-project-home-all-opps.component'
-import { PageProjectHomeSingleOppComponent } from './page-project-home-single-opp/page-project-home-single-opp.component'
 import { PageProjectHomeEditComponent } from './page-project-home-edit/page-project-home-edit.component'
 import { PageProjectOppComponent } from './page-project-opp/page-project-opp.component'
 
-import { PageProjectHomeAllOppsGuard } from './page-project-home-all-opps-guard/page-project-home-all-opps-guard.service'
 import { ResolveFirstOpp } from './resolve-first-opp/resolve-first-opp.service'
 import { ResolveContribByFirstOpp } from './resolve-contrib-by-first-opp/resolve-contrib-by-first-opp.service'
 import { ResolveBenefitByFirstOpp } from './resolve-benefit-by-first-opp/resolve-benefit-by-first-opp.service';
@@ -70,29 +67,24 @@ const routes: Routes = [
       {
         path: '',
         component: PageProjectHomeComponent,
-        children: [
-          {
-            path: '',
-            component: PageProjectHomeAllOppsComponent,
-            resolve: {
-              application: ResolveApplicationByProjectKey
-            },
-            canActivate: [
-              PageProjectHomeAllOppsGuard,
-            ]
-          },
-          {
-            path: 'join',
-            component: PageProjectHomeSingleOppComponent,
-            resolve: {
-              opp: ResolveFirstOpp,
-              teams: ResolveTeamByFirstOpp,
-              contribs: ResolveContribByFirstOpp,
-              benefits: ResolveBenefitByFirstOpp,
-              application: ResolveApplicationByProjectKey
-            }
-          }
-        ],
+        resolve: {
+          application: ResolveApplicationByProjectKey,
+          teams: ResolveTeamByFirstOpp,
+          contribs: ResolveContribByFirstOpp,
+          benefits: ResolveBenefitByFirstOpp,
+        },
+        // children: [
+        //   {
+        //     path: '',
+        //     component: PageProjectHomeAllOppsComponent,
+        //     resolve: {
+        //       application: ResolveApplicationByProjectKey,
+        //       teams: ResolveTeamByFirstOpp,
+        //       contribs: ResolveContribByFirstOpp,
+        //       benefits: ResolveBenefitByFirstOpp,
+        //     },
+        //   },
+        // ],
       },
       {
         path: 'opp/:oppKey',
@@ -156,8 +148,6 @@ export const routedComponents = [
   PageProjectsComponent,
 
   PageProjectHomeComponent,
-  PageProjectHomeAllOppsComponent,
-  PageProjectHomeSingleOppComponent,
   PageProjectHomeEditComponent,
   PageProjectOppComponent,
   ProjectOppDetailComponent,

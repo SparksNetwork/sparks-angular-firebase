@@ -43,7 +43,7 @@ export class ApplicationActionService extends BaseActionService {
           status: status
         }
     }
-
+    console.log('changing status', _status)
     return this.update(key, _status);
   }
 
