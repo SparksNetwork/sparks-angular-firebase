@@ -37,6 +37,6 @@ export class RequireApplicationAcceptedService implements CanActivate {
                     }
                     return true;
                 })
-            }).first();
+            }).take(1);
     }
 }

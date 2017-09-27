@@ -21,6 +21,6 @@ export class RequireNoEmailVerification implements CanActivate {
                 // return false;
             }
             return true;
-        }).first()
+        }).take(1)
     }
 }

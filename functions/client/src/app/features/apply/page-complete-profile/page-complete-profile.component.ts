@@ -47,7 +47,6 @@ export class PageCompleteProfileComponent {
   }
 
   ngOnInit() {
-
     this.route.snapshot.data['project'].subscribe(data => {
       this.project = data;
     });
@@ -55,7 +54,7 @@ export class PageCompleteProfileComponent {
 
   public next() {
     console.log('completed profile?', this.profForm.profileForm.value)
-    this.auth.current.first().subscribe(user => {
+    this.auth.current.take(1).subscribe(user => {
       if (this.profForm.profileForm.dirty) {
         this.action.replace(user.uid, this.profForm.profileForm.value)
           .subscribe(res => {

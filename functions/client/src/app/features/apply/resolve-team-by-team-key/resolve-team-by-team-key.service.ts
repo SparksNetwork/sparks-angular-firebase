@@ -3,6 +3,7 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/first'
 import { Team } from '../../../../../../universal/domain/team';
+import { connectedResolver } from '../../../../../../lib/angular-connected-resolver'
 
 @Injectable()
 export class ResolveTeamByTeamKey implements Resolve<any> {
@@ -15,8 +16,6 @@ export class ResolveTeamByTeamKey implements Resolve<any> {
     const teamKey = route.paramMap.get('teamKey');
     const team = teams.map(t => t.find(s => s.$key === teamKey));
 
-    return team
-      .map(() => team)
-      .first()
+    return connectedResolver(team)
   }
 }

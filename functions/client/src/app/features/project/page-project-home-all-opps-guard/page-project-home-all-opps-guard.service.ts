@@ -22,6 +22,6 @@ export class PageProjectHomeAllOppsGuard implements CanActivate {
         }
       })
       .map(() => true)
-      .first()
+      .take(1)
   }
 }

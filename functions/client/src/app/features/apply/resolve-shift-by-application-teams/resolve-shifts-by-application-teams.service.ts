@@ -4,6 +4,7 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/operator/mergeMap'
 import 'rxjs/add/operator/first'
+import { connectedResolver } from '../../../../../../lib/angular-connected-resolver'
 
 import { list } from '../../../../../../lib/firebase-angular-observables'
 
@@ -43,8 +44,6 @@ export class ResolveShiftByApplicationTeams implements Resolve<any> {
       });
     })
 
-    return combinedShifts
-      .map(() => combinedShifts)
-      .first();
+    return connectedResolver(combinedShifts)
   }
 }

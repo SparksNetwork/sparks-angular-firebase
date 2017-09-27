@@ -27,13 +27,6 @@ export class RequireProfileCompleteService implements CanActivate {
         }
         return true
       })
-        .first()
-        // return this.auth.current.map(user => {
-        //     if (!user || !user.emailVerified) {
-        //         this.router.navigate(['/auth', 'email-not-verified']);
-        //         return false;
-        //     }
-        //     return true;
-        // }).first()
+        .take(1)
     }
 }
