@@ -5,6 +5,7 @@ import { Observable } from 'rxjs'
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/switchMap'
 import 'rxjs/add/operator/first'
+import { connectedResolver } from '../../../../../../lib/angular-connected-resolver'
 
 import { SorryService } from '../../sorry'
 import { ProjectQueryService } from './project-query.service'
@@ -24,8 +25,6 @@ export class ResolveProjectAll implements Resolve<any> {
     const projects = list(this.projectQuery.all())
       .switchMap(this.sorry.intercept(projectsTransform))
 
-    return projects
-      .map(() => projects)
-      .first()
+    return connectedResolver(projects)
   }
 }

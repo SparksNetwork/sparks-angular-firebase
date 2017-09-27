@@ -20,6 +20,6 @@ export class RedirectIfNotAuthed implements CanActivate {
           this.router.navigate([route.paramMap.get('redirectUrl')])
         }
       })
-      .first()
+      .take(1)
   }
 }

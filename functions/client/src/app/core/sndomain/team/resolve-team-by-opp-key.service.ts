@@ -6,6 +6,7 @@ import 'rxjs/add/operator/mergeMap'
 import 'rxjs/add/operator/first'
 import { Team, teamsTransform } from "../../../../../../universal/domain/team";
 import { OppAllowedTeamQueryService } from "../oppAllowedTeam/oppAllowedTeam-query.service";
+import { connectedResolver } from '../../../../../../lib/angular-connected-resolver'
 
 import { list } from '../../../../../../lib/firebase-angular-observables'
 import { SorryService } from "../../sorry/index";
@@ -22,10 +23,8 @@ export class ResolveTeamByOppKey implements Resolve<any> {
     const oppKey = route.paramMap.get('oppKey')
     const teams = list(this.query.by('oppKey', oppKey))
       .map(oppAllowedTeams => oppAllowedTeams.map(oAT => ({$key: oAT.teamKey, ...oAT.team})))
-      .mergeMap(this.sorry.intercept(teamsTransform))
+      .switchMap(this.sorry.intercept(teamsTransform))
 
-    return teams
-      .map(() => teams)
-      .first()
+    return connectedResolver(teams)
   }
 }

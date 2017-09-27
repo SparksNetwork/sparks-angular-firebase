@@ -10,6 +10,7 @@ export class FirstAuth implements Resolve<boolean> {
   constructor(public auth: AuthService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    return this.auth.isAuthed.first()
+    return this.auth.isAuthed.take(1)
   }
+
 }

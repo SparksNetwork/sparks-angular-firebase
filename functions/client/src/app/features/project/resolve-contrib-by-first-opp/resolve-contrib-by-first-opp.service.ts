@@ -7,6 +7,7 @@ import 'rxjs/add/operator/first'
 import { ContribQueryService } from '../../../core/sndomain/contrib/contrib-query.service'
 import { Contrib, contribsTransform } from "../../../../../../universal/domain/contrib";
 import { Observable } from "rxjs/Observable";
+import { connectedResolver } from '../../../../../../lib/angular-connected-resolver'
 
 import { list } from '../../../../../../lib/firebase-angular-observables'
 
@@ -18,14 +19,12 @@ export class ResolveContribByFirstOpp implements Resolve<any> {
   ) { }
 
   public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<Contrib[]>> {
-    const opps = route.parent.data['opps']
-    const firstOpp = opps.map(opps => opps[0])
-    const contribs = firstOpp
-      .mergeMap(opp => list(this.query.byOppKey(opp.$key)))
-      .mergeMap(contribsTransform)
+    const opps$ = route.parent.data['opps']
+    const contribs$ = opps$
+      .map(opps => opps[0])
+      .switchMap(opp => list(this.query.byOppKey(opp.$key)))
+      .switchMap(contribsTransform)
 
-    return contribs
-      .map(() => contribs)
-      .first()
+    return connectedResolver(contribs$)
   }
 }

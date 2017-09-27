@@ -4,6 +4,7 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/operator/mergeMap'
 import 'rxjs/add/operator/first'
+import { connectedResolver } from '../../../../../../lib/angular-connected-resolver'
 
 import { list } from '../../../../../../lib/firebase-angular-observables'
 
@@ -26,15 +27,12 @@ export class ResolveApplicationTeamsByOpp implements Resolve<any> {
 
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<ApplicationTeam[] | void>> {
         const applicationTeams = Observable.combineLatest(this.auth.current, route.parent.data['opp'])
-            .mergeMap(([user, opp]: [User, Opp]) => {
-                const projectProfileKey = this.teamQuery.compoundKey(opp.projectKey, user.uid);
-                console.log('appKey', projectProfileKey)
-                return list(this.query.byAppKey(projectProfileKey));
+            .switchMap(([user, opp]: [User, Opp]) => {
+                const key = this.teamQuery.compoundKey(opp.projectKey, user.uid);
+                return list(this.query.byAppKey(key));
             })
             .switchMap(this.sorry.intercept(applicationTeamsTransform));
 
-        return applicationTeams
-            .map(() => applicationTeams)
-            .first();
+        return connectedResolver(applicationTeams)
     }
 }

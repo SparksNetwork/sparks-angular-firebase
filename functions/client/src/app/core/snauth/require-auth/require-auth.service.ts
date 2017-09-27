@@ -20,6 +20,6 @@ export class RequireAuth implements CanActivate {
           this.router.navigate(['/auth', state.url, 'signin'])
         }
       })
-      .first()
+      .take(1)
   }
 }

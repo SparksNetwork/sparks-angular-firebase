@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { connectedResolver } from '../../../../../../lib/angular-connected-resolver'
 
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/first'
@@ -24,8 +25,6 @@ export class ResolveApplicationShiftByAppKey implements Resolve<any> {
         const applicationShifts = list(this.query.byAppKey(appKey))
             .switchMap(this.sorry.intercept(applicationShiftsTransform))
 
-        return applicationShifts
-            .map(() => applicationShifts)
-            .first()
+        return connectedResolver(applicationShifts)
     }
 }

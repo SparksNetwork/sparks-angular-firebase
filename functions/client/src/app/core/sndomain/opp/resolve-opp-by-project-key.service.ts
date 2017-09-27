@@ -4,6 +4,7 @@ import { Observable } from 'rxjs'
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/mergeMap'
 import 'rxjs/add/operator/first'
+import { connectedResolver } from '../../../../../../lib/angular-connected-resolver'
 
 import { OppQueryService } from './opp-query.service'
 import { Opp, oppsTransform } from '../../../../../../universal/domain/opp'
@@ -26,10 +27,8 @@ export class ResolveOppByProjectKey implements Resolve<any> {
     // see https://github.com/angular/angularfire2/issues/1094
     // this works
     const opps = list(this.query.byProjectKey(projectKey))
-      .mergeMap(this.sorry.intercept(oppsTransform))
+      .switchMap(this.sorry.intercept(oppsTransform))
 
-    return opps
-      .map(() => opps)
-      .first()
+    return connectedResolver(opps)
   }
 }

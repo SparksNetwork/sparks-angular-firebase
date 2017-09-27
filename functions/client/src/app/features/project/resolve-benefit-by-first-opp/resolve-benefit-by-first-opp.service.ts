@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/mergeMap'
 import 'rxjs/add/operator/first'
 import { Observable } from "rxjs/Observable";
+import { connectedResolver } from '../../../../../../lib/angular-connected-resolver'
 
 import { BenefitQueryService } from '../../../core/sndomain/benefit/benefit-query.service'
 import { Benefit } from "../../../../../../universal/domain/benefit";
@@ -18,13 +19,11 @@ export class ResolveBenefitByFirstOpp implements Resolve<any> {
   ) { }
 
   public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<Benefit[]>> {
-    const opps = route.parent.data['opps']
-    const firstOpp = opps.map(opps => opps[0])
-    const Benefits = firstOpp
-      .mergeMap(opp => list(this.query.byOppKey(opp.$key)))
+    const opps$ = route.parent.data['opps']
+    const benefits$ = opps$
+      .map(opps => opps[0])
+      .switchMap(opp => list(this.query.byOppKey(opp.$key)))
 
-    return Benefits
-      .map(() => Benefits)
-      .first()
+    return connectedResolver(benefits$)
   }
 }

@@ -3,6 +3,8 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/first'
 
+import { connectedResolver } from '../../../../../../lib/angular-connected-resolver'
+
 import { BenefitQueryService } from './benefit-query.service'
 import { Observable } from "rxjs/Observable";
 import { Benefit, benefitsTransform } from "../../../../../../universal/domain/benefit";
@@ -21,10 +23,8 @@ export class ResolveBenefitByOppKey implements Resolve<any> {
   public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<Benefit[] | void>> {
     const oppKey = route.paramMap.get('oppKey')
     const benefits = list(this.query.byOppKey(oppKey))
-      .mergeMap(this.sorry.intercept(benefitsTransform))
+      .switchMap(this.sorry.intercept(benefitsTransform))
 
-    return benefits
-      .map(() => benefits)
-      .first()
+    return connectedResolver(benefits)
   }
 }

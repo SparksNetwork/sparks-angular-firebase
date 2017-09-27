@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/mergeMap'
 import 'rxjs/add/operator/first'
 import 'rxjs/add/operator/catch'
+import { connectedResolver } from '../../../../../../lib/angular-connected-resolver'
 
 import { SorryService } from '../../sorry'
 import { ProjectQueryService } from './project-query.service'
@@ -28,9 +29,7 @@ export class ResolveProjectByProjectKey implements Resolve<any> {
       // .switchMap(projectTransform)
       // .catch(this.sorry.activate.bind(this.sorry))
 
-    return projects
-      .map(() => projects)
-      .first()
+    return connectedResolver(projects)
   }
 
 }

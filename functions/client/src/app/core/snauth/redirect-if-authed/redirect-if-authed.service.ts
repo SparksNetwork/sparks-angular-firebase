@@ -22,6 +22,6 @@ export class RedirectIfAuthed implements CanActivate {
         }
       })
       .map(isAuthed => !isAuthed)
-      .first()
+      .take(1)
   }
 }

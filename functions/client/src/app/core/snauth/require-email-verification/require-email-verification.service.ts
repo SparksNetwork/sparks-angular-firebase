@@ -21,6 +21,6 @@ export class RequireEmailVerification implements CanActivate {
                 return false;
             }
             return true;
-        }).first()
+        }).take(1)
     }
 }

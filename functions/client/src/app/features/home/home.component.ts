@@ -23,10 +23,8 @@ export class HomeComponent implements OnInit {
   constructor(public route: ActivatedRoute, private auth: AuthService) { }
 
   ngOnInit() {
-    this.route.data.subscribe(data => {
-      this.projects = data['projects'];
-      this.applications = data['applications'];
-    })
+    this.projects = this.route.snapshot.data['projects']
+    this.applications = this.route.snapshot.data['applications']
 
     this.auth.current.subscribe(user => {
       if (user) {
