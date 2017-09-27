@@ -7,11 +7,10 @@ import { ProjectRoutingModule, routedComponents } from './project-routing.module
 import { MomentModule } from 'angular2-moment'
 import { CollapseModule } from 'ngx-bootstrap'
 
-import { PageProjectHomeAllOppsGuard } from './page-project-home-all-opps-guard/page-project-home-all-opps-guard.service'
 import { ResolveFirstOpp } from './resolve-first-opp/resolve-first-opp.service'
 import { ResolveContribByFirstOpp } from './resolve-contrib-by-first-opp/resolve-contrib-by-first-opp.service'
-import { ResolveBenefitByFirstOpp } from "./resolve-benefit-by-first-opp/resolve-benefit-by-first-opp.service";
-import { ResolveTeamByFirstOpp } from "./resolve-team-by-first-opp/resolve-team-by-first-opp.service";
+import { ResolveBenefitByFirstOpp } from './resolve-benefit-by-first-opp/resolve-benefit-by-first-opp.service'
+import { ResolveTeamByFirstOpp } from './resolve-team-by-first-opp/resolve-team-by-first-opp.service'
 
 @NgModule({
   declarations: routedComponents,
@@ -26,7 +25,6 @@ import { ResolveTeamByFirstOpp } from "./resolve-team-by-first-opp/resolve-team-
     CollapseModule,
   ],
   providers: [
-    PageProjectHomeAllOppsGuard,
     ResolveFirstOpp,
     ResolveContribByFirstOpp,
     ResolveBenefitByFirstOpp,

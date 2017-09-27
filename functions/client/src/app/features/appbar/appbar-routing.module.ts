@@ -18,7 +18,7 @@ const routes: Routes = [
         loadChildren: '../home/home.module#HomeModule',
       },
       {
-        path: 'project',
+        path: 'get-involved',
         loadChildren: '../project/project.module#ProjectModule',
       },
       {

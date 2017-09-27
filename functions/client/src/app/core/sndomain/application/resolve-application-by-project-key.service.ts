@@ -25,14 +25,14 @@ export class ResolveApplicationByProjectKey implements Resolve<any> {
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Observable<Application | void>> {
         const projectKey = route.paramMap.get('projectKey') || route.parent.paramMap.get('projectKey');
 
-        const applications = this.auth.current.map(user => {
+        const applications = this.auth.current.switchMap(user => {
             if (!user) {
                 return Observable.of(null);
             }
 
             const projectProfileKey = this.query.compoundKey(projectKey, user.uid);
             return obj(this.query.one(projectProfileKey))
-                .mergeMap(app => {
+                .switchMap(app => {
                     if (!app || !app.projectKey) {
                         return Observable.of(null);
                     }
