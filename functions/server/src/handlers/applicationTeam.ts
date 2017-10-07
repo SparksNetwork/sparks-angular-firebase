@@ -1,10 +1,8 @@
-import * as admin from 'firebase-admin'
-import * as firebase from 'firebase'
+import { admin } from '../firebase-functions-env'
 import { Request, Response, NextFunction } from 'express'
 
 import {
   BaseHandler,
-  Database,
 } from '../../../lib/firebase-universal/server'
 
 import {

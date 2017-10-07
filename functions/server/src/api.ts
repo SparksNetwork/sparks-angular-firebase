@@ -1,6 +1,5 @@
 import 'reflect-metadata';
 import { functions, admin } from './firebase-functions-env'
-// import * as admin from 'firebase-admin'
 import * as express from 'express'
 import * as cors from 'cors'
 import { logger } from './logger'
@@ -41,5 +40,3 @@ export const api = functions.https.onRequest((req, res) => {
   return app(req, res)
 });
 
-// morganBody(app)
-// export const foo = 'bar'

@@ -1,13 +1,10 @@
 import { admin } from '../firebase-functions-env'
-// import * as admin from 'firebase-admin'
-// import * as firebase from 'firebase'
+
 import {
   BaseHandler,
-  Database,
 } from '../../../lib/firebase-universal/server'
 
 import {
-  // ProjectPaths,
   ProjectCollection,
 } from '../../../universal/domain/project'
 

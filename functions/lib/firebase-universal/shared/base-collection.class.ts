@@ -1,4 +1,3 @@
-// import { AngularFireDatabase } from 'angularfire2/database'
 import * as firebase from 'firebase'
 import * as admin from 'firebase-admin'
 
