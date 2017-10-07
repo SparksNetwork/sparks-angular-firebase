@@ -12,33 +12,25 @@ export class BaseHandler {
   ) {}
 
   public async post(req: Request, res: Response, next: NextFunction): Promise<Response> {
-    console.log(this.path, 'POST', JSON.stringify(req.body, null, 2))
-    const returned = await this.collection.ref.push(req.body).then(ref => ref.key)
-    console.log('returned', returned)
-    return res.status(200).send(JSON.stringify(returned.key))
+    const newRef = await this.collection.ref.push(req.body)
+    return res.status(200).send(JSON.stringify(newRef.key))
   }
 
   public async put(req: Request, res: Response, next: NextFunction): Promise<Response> {
-    console.log(this.path, 'PUT', req.params['key'], JSON.stringify(req.body, null, 2))
-    const returned = await this.collection.ref.child(req.params['key']).set(req.body).then(() => ({}))
-    console.log('returned', returned)
-    return res.status(200).send(JSON.stringify(returned))
+    await this.collection.ref.child(req.params['key']).set(req.body)
+    return res.status(200).send(JSON.stringify({}))
   }
 
   public async patch(req: Request, res: Response, next: NextFunction): Promise<Response> {
-    console.log(this.path, 'PATCH', req.params['key'], JSON.stringify(req.body, null, 2))
     const obj = req.body
     Object.keys(obj).forEach(k => (!obj[k] && obj[k] !== undefined) && delete obj[k])
-    const returned = await this.collection.ref.child(req.params['key']).update(obj).then(() => ({}))
-    console.log('returned', returned)
-    return res.status(200).send(JSON.stringify(returned))
+    await this.collection.ref.child(req.params['key']).update(obj)
+    return res.status(200).send(JSON.stringify({}))
   }
 
   public async del(req: Request, res: Response, next: NextFunction): Promise<Response> {
-    console.log(this.path, 'DEL', req.params['key'])
-    const returned = await this.collection.ref.child(req.params['key']).remove().then(() => ({}))
-    console.log('returned', returned)
-    return res.status(200).send(JSON.stringify(returned))
+    await this.collection.ref.child(req.params['key']).remove()
+    return res.status(200).send(JSON.stringify({}))
   }
 }
 
