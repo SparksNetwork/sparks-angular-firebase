@@ -1,7 +1,7 @@
 import { DataSnapshot, Reference, Query } from 'firebase/database'
 import { Observable } from 'rxjs'
 
-const log = (src:string) => () => console.log('event:', src)
+// const log = (src: string) => () => console.log('event:', src)
 
 export type RefOrQuery = Reference | Query
 
@@ -33,26 +33,26 @@ export function list(src: RefOrQuery): Observable<any[]> {
 
   const onValue$ =
     Observable.fromPromise<DataSnapshot>(src.once('value'))
-      .do(log('value'))
+      // .do(log('value'))
       .map(snap => arrayFromValueSnap(snap))
       .do(() => firstValueReceived = true)
 
   const onChildChanged$ =
     Observable.fromEvent<DataSnapshot>(src, 'child_changed')
       .filter(() => firstValueReceived)
-      .do(log('child_changed'))
+      // .do(log('child_changed'))
       .map(snap => arrayFromChangedSnap(snap, arr))
 
   const onChildAdded$ =
     Observable.fromEvent<DataSnapshot>(src, 'child_added')
       .filter(() => firstValueReceived)
-      .do(log('child_added'))
+      // .do(log('child_added'))
       .map(snap => arrayFromAddedSnap(snap, arr))
 
   const onChildRemoved$ =
     Observable.fromEvent<DataSnapshot>(src, 'child_removed')
       .filter(() => firstValueReceived)
-      .do(log('child_removed'))
+      // .do(log('child_removed'))
       .map(snap => arrayFromRemovedSnap(snap, arr))
 
   const changes$ =

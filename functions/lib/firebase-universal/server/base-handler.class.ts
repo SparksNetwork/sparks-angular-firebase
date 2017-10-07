@@ -13,14 +13,15 @@ export class BaseHandler {
 
   public async post(req: Request, res: Response, next: NextFunction): Promise<Response> {
     console.log(this.path, 'POST', JSON.stringify(req.body, null, 2))
-    // const returned = await (this.collection.ref.push(req.body) as firebase.database.ThenableReference).then(ref => ref.key)
-    const returned = await this.collection.ref.push(req.body) // .then(ref => ref.key)
+    const returned = await this.collection.ref.push(req.body).then(ref => ref.key)
+    console.log('returned', returned)
     return res.status(200).send(JSON.stringify(returned.key))
   }
 
   public async put(req: Request, res: Response, next: NextFunction): Promise<Response> {
     console.log(this.path, 'PUT', req.params['key'], JSON.stringify(req.body, null, 2))
     const returned = await this.collection.ref.child(req.params['key']).set(req.body).then(() => ({}))
+    console.log('returned', returned)
     return res.status(200).send(JSON.stringify(returned))
   }
 
@@ -29,14 +30,14 @@ export class BaseHandler {
     const obj = req.body
     Object.keys(obj).forEach(k => (!obj[k] && obj[k] !== undefined) && delete obj[k])
     const returned = await this.collection.ref.child(req.params['key']).update(obj).then(() => ({}))
-    // const returned = await (this.collection.ref.child(req.params['key']).update() as Promise<any>)
-      // .then(() => ({}))
+    console.log('returned', returned)
     return res.status(200).send(JSON.stringify(returned))
   }
 
   public async del(req: Request, res: Response, next: NextFunction): Promise<Response> {
     console.log(this.path, 'DEL', req.params['key'])
     const returned = await this.collection.ref.child(req.params['key']).remove().then(() => ({}))
+    console.log('returned', returned)
     return res.status(200).send(JSON.stringify(returned))
   }
 }
@@ -52,7 +53,7 @@ export function routeHandler(handler: BaseHandler) {
   router.route(`**${handler.path}/:key`)
     .put(handler.put.bind(handler))
     // because firebase-functions http handler in server environment
-    // does not populate req.body with PATCH method
+    // does not populate req.body when req uses PATCH verb
     // .patch(handler.patch.bind(handler))
     .post(handler.patch.bind(handler))
     .delete(handler.del.bind(handler))
