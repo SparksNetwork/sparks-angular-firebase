@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { FirebaseObjectObservable } from "angularfire2/database";
+import { Observable } from "rxjs"
 
 import { Project } from "../../../../../universal/domain/project";
 import { AuthService } from "../../core/snauth/auth/auth.service";
@@ -12,8 +12,8 @@ import { Application } from "../../../../../universal/domain/application";
 })
 
 export class HomeComponent implements OnInit {
-  public projects: FirebaseObjectObservable<Project[]>;
-  public applications: FirebaseObjectObservable<Application[]>;
+  public projects: Observable<Project[]>;
+  public applications: Observable<Application[]>;
   public userPrefferedName: string;
   public userMessage: string;
   public userImageUrl: string;

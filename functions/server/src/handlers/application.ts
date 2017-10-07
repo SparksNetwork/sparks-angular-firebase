@@ -4,7 +4,7 @@ import { Request, Response, NextFunction } from 'express'
 
 import {
   BaseHandler,
-  Database,
+  // Database,
 } from '../../../lib/firebase-universal/server'
 
 import {
@@ -23,7 +23,8 @@ export class ApplicationHandler extends BaseHandler {
   public async post(req: Request, res: Response, next: NextFunction): Promise<Response> {
     const compoundKey = this.collection.compoundKey(req.body['projectKey'], req.body['profileKey'])
     const data = req.body
-    let returned = await this.collection.ref.child(compoundKey).once('value').then(ref => ref.val() && ref.key)
+    let returned = await this.collection.ref.child(compoundKey).once('value')
+      .then(ref => ref.val() && ref.key)
     console.log('existing', returned)
     if (!returned) {
       data.createdOn = new Date().toISOString()

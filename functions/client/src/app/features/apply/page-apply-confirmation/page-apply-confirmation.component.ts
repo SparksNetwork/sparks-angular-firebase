@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActionBarType } from '../../../shared/snui/action-bar/action-bar.component';
-import { FirebaseObjectObservable } from 'angularfire2/database';
+import { Observable } from 'rxjs';
 import { Project } from '../../../../../../universal/domain/project';
 import { ActivatedRoute } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 
 export class PageApplyConfirmationComponent implements OnInit {
     public actionBarType = ActionBarType;
-    public project: FirebaseObjectObservable<Project>;
+    public project: Observable<Project>;
 
     constructor(public route: ActivatedRoute) {
 

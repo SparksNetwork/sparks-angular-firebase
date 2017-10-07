@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router'
 import { Project } from '../../../../../../universal/domain/project';
 import { ActionBarType } from '../../../shared/snui/action-bar/action-bar.component';
@@ -15,7 +15,7 @@ import { FormCompleteProfileComponent } from '../form-complete-profile/form-comp
   selector: 'apply-page-complete-profile',
   templateUrl: './page-complete-profile.component.html',
 })
-export class PageCompleteProfileComponent {
+export class PageCompleteProfileComponent implements OnInit {
   @ViewChild(FormCompleteProfileComponent) public profForm: FormCompleteProfileComponent
 
   public oppKey: string
@@ -38,17 +38,18 @@ export class PageCompleteProfileComponent {
       this.editAllMode = this.navigateTo === 'review-detail'
     });
 
-    this.route.parent.snapshot.data['profile'].subscribe(profile => {
-      this.profForm.profileForm.get('legalName').setValue(profile.legalName);
-      this.profForm.profileForm.get('preferredName').setValue(profile.preferredName);
-      this.profForm.profileForm.get('phoneNumber').setValue(profile.phoneNumber);
-      this.profForm.profileForm.get('birthday').setValue(profile.birthday);
-    });
   }
 
   ngOnInit() {
     this.route.snapshot.data['project'].subscribe(data => {
       this.project = data;
+    });
+
+    this.route.parent.snapshot.data['profile'].subscribe(profile => {
+      this.profForm.profileForm.get('legalName').setValue(profile.legalName);
+      this.profForm.profileForm.get('preferredName').setValue(profile.preferredName);
+      this.profForm.profileForm.get('phoneNumber').setValue(profile.phoneNumber);
+      this.profForm.profileForm.get('birthday').setValue(profile.birthday);
     });
   };
 

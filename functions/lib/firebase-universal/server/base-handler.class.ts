@@ -13,8 +13,9 @@ export class BaseHandler {
 
   public async post(req: Request, res: Response, next: NextFunction): Promise<Response> {
     console.log(this.path, 'POST', JSON.stringify(req.body, null, 2))
-    const returned = await this.collection.ref.push(req.body).then(ref => ref.key)
-    return res.status(200).send(JSON.stringify(returned))
+    // const returned = await (this.collection.ref.push(req.body) as firebase.database.ThenableReference).then(ref => ref.key)
+    const returned = await this.collection.ref.push(req.body) // .then(ref => ref.key)
+    return res.status(200).send(JSON.stringify(returned.key))
   }
 
   public async put(req: Request, res: Response, next: NextFunction): Promise<Response> {
@@ -28,6 +29,8 @@ export class BaseHandler {
     const obj = req.body
     Object.keys(obj).forEach(k => (!obj[k] && obj[k] !== undefined) && delete obj[k])
     const returned = await this.collection.ref.child(req.params['key']).update(obj).then(() => ({}))
+    // const returned = await (this.collection.ref.child(req.params['key']).update() as Promise<any>)
+      // .then(() => ({}))
     return res.status(200).send(JSON.stringify(returned))
   }
 

@@ -1,17 +1,19 @@
 import 'reflect-metadata';
-import { functions } from './firebase-functions-env'
-import * as admin from 'firebase-admin'
+import { functions, admin } from './firebase-functions-env'
+import * as firebase from 'firebase'
+// import * as admin from 'firebase-admin'
 
-const getKeys = (snap: admin.database.DataSnapshot) => Object.keys(snap.val())
+const getKeys = (snap: firebase.database.DataSnapshot) => Object.keys(snap.val())
 
 function denormalizerFromParentChange(childCollection, foreignKey, denormalizedField) {
   return function(evt) {
+    console.log('denormalizeFromParentChange', childCollection, foreignKey, denormalizedField)
     const newData = evt.data.val()
     const parentKey = evt.params.key
     const updateDenormalizedField = key =>
       childCollection.one(key).child(denormalizedField).set(newData)
 
-    return (childCollection.by(foreignKey, parentKey) as admin.database.Query)
+    return (childCollection.by(foreignKey, parentKey) as firebase.database.Query)
       .once('value')
       .then(getKeys)
       .then(keys => Promise.all(keys.map(updateDenormalizedField)))
@@ -57,14 +59,15 @@ const teamToOATDenormalizers = denormalizers(
   'team'
 )
 
-const teamToOATTeamOnWrite =
+console.log('TRIGGERS: exporting')
+export const teamToOATTeamOnWrite =
   functions.database.ref('/team/{key}')
     .onWrite(teamToOATDenormalizers.onParentChange)
 
-const teamToOATOATOnUpdate =
+export const teamToOATOATOnUpdate =
   functions.database.ref('/oppAllowedTeam/{key}/teamKey')
     .onUpdate(teamToOATDenormalizers.onChildForeignKeyChange)
 
-const teamToOATOATOnCreate =
+export const teamToOATOATOnCreate =
   functions.database.ref('/oppAllowedTeam/{key}/teamKey')
     .onCreate(teamToOATDenormalizers.onChildForeignKeyChange)

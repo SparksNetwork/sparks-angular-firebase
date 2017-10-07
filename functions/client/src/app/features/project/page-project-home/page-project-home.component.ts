@@ -1,7 +1,6 @@
 import { Component } from '@angular/core'
-import { FirebaseObjectObservable } from 'angularfire2/database'
-import { ActivatedRoute } from '@angular/router'
 import { Observable } from 'rxjs'
+import { ActivatedRoute } from '@angular/router'
 import { Project } from "../../../../../../universal/domain/project";
 import { ActionBarType } from "../../../shared/snui/action-bar/action-bar.component";
 
