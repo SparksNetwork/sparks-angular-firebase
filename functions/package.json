@@ -20,7 +20,8 @@
     "deploy:server": "npm run use && firebase deploy --only functions",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "cross-var ng e2e --env=%ANGULAR_ENV%"
+    "e2e": "cross-var ng e2e --env=%ANGULAR_ENV%",
+    "e2e:focus": "cross-var ng e2e --config protractor.focus.conf.js --env=%ANGULAR_ENV%"
   },
   "private": true,
   "dependencies": {
