@@ -19,20 +19,33 @@ exports.config = {
   },
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
-  framework: 'jasmine',
+  // framework: 'jasmine',
   jasmineNodeOpts: {
     showColors: true,
     defaultTimeoutInterval: 30000,
     print: function () { }
   },
 
+  framework: 'custom',
+  frameworkPath: require.resolve('protractor-cucumber-framework'),
+
+  specs: [
+    'e2e/cucumber/features/*.feature'
+  ],
+
+  cucumberOpts: {
+    require: [
+      'e2e/cucumber/steps/*.ts'
+    ]
+  },
+
   onPrepare() {
     require('ts-node').register({
       project: 'e2e/tsconfig.e2e.json'
     });
-    jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
-    jasmine.getEnv().addReporter(new BeautifulReporter({
-      baseDirectory: '../e2e-report',
-    }).getJasmine2Reporter());
+    // jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
+    // jasmine.getEnv().addReporter(new BeautifulReporter({
+    //   baseDirectory: '../e2e-report',
+    // }).getJasmine2Reporter());
   }
 };
