@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 
 import { ActionBarType } from '../../../shared/snui/action-bar/action-bar.component';
@@ -15,8 +14,8 @@ import { IShiftFilters } from '../shift-filter/shift-filter.component';
 export class PageShiftComponent {
 
   public actionBarType = ActionBarType;
-  public project: FirebaseObjectObservable<Project>;
-  public shifts: FirebaseListObservable<Shift>;
+  public project: Observable<Project>;
+  public shifts: Observable<Shift>;
   public selectableShifts: Shift[];
   public filteredShifts: Shift[];
   public selectedShiftsNo = 0;

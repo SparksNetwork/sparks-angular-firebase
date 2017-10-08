@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { FirebaseListObservable } from 'angularfire2/database'
+import { Observable } from 'rxjs'
 import { FormGroup, FormBuilder } from '@angular/forms'
 
 import {
@@ -16,7 +16,7 @@ import 'rxjs/add/operator/catch'
 })
 
 export class PageProjectsComponent implements OnInit {
-  public projects: FirebaseListObservable<any[]>
+  public projects: Observable<any[]>
   public newProject: FormGroup
 
   constructor(

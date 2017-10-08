@@ -1,7 +1,7 @@
 import { DataSnapshot, Reference, Query } from 'firebase/database'
 import { Observable } from 'rxjs'
 
-// const log = (src:string) => () => console.log('event:', src)
+// const log = (src: string) => () => console.log('event:', src)
 
 export type RefOrQuery = Reference | Query
 

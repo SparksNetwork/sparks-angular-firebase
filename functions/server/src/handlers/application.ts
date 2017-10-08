@@ -1,10 +1,8 @@
-import * as admin from 'firebase-admin'
-import * as firebase from 'firebase'
+import { admin } from '../firebase-functions-env'
 import { Request, Response, NextFunction } from 'express'
 
 import {
   BaseHandler,
-  Database,
 } from '../../../lib/firebase-universal/server'
 
 import {
@@ -23,12 +21,14 @@ export class ApplicationHandler extends BaseHandler {
   public async post(req: Request, res: Response, next: NextFunction): Promise<Response> {
     const compoundKey = this.collection.compoundKey(req.body['projectKey'], req.body['profileKey'])
     const data = req.body
-    let returned = await this.collection.ref.child(compoundKey).once('value').then(ref => ref.val() && ref.key)
-    console.log('existing', returned)
+    let returned = await this.collection.ref.child(compoundKey).once('value')
+      .then(ref => ref.val() && ref.key)
     if (!returned) {
       data.createdOn = new Date().toISOString()
       returned = await this.collection.ref.child(compoundKey).set(data).then(() => compoundKey)
       console.log('new', returned)
+    } else {
+      console.log('existing', returned)
     }
     return res.status(200).send(JSON.stringify(returned))
   }

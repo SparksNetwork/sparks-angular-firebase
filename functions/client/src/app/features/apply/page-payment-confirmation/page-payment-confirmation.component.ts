@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FirebaseObjectObservable } from 'angularfire2/database';
+import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
 import { AuthService } from '../../../core/snauth/auth/auth.service';
@@ -15,8 +15,8 @@ import { ActionBarType } from '../../../shared/snui/action-bar/action-bar.compon
 export class PagePaymentConfirmationComponent implements OnInit {
 
   public actionBarType = ActionBarType;
-  public project: FirebaseObjectObservable<Project>;
-  public opp: FirebaseObjectObservable<Opp>;
+  public project: Observable<Project>;
+  public opp: Observable<Opp>;
   public userEmail: string;
 
   constructor(

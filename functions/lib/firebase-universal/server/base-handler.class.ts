@@ -12,29 +12,25 @@ export class BaseHandler {
   ) {}
 
   public async post(req: Request, res: Response, next: NextFunction): Promise<Response> {
-    console.log(this.path, 'POST', JSON.stringify(req.body, null, 2))
-    const returned = await this.collection.ref.push(req.body).then(ref => ref.key)
-    return res.status(200).send(JSON.stringify(returned))
+    const newRef = await this.collection.ref.push(req.body)
+    return res.status(200).send(JSON.stringify(newRef.key))
   }
 
   public async put(req: Request, res: Response, next: NextFunction): Promise<Response> {
-    console.log(this.path, 'PUT', req.params['key'], JSON.stringify(req.body, null, 2))
-    const returned = await this.collection.ref.child(req.params['key']).set(req.body).then(() => ({}))
-    return res.status(200).send(JSON.stringify(returned))
+    await this.collection.ref.child(req.params['key']).set(req.body)
+    return res.status(200).send(JSON.stringify({}))
   }
 
   public async patch(req: Request, res: Response, next: NextFunction): Promise<Response> {
-    console.log(this.path, 'PATCH', req.params['key'], JSON.stringify(req.body, null, 2))
     const obj = req.body
     Object.keys(obj).forEach(k => (!obj[k] && obj[k] !== undefined) && delete obj[k])
-    const returned = await this.collection.ref.child(req.params['key']).update(obj).then(() => ({}))
-    return res.status(200).send(JSON.stringify(returned))
+    await this.collection.ref.child(req.params['key']).update(obj)
+    return res.status(200).send(JSON.stringify({}))
   }
 
   public async del(req: Request, res: Response, next: NextFunction): Promise<Response> {
-    console.log(this.path, 'DEL', req.params['key'])
-    const returned = await this.collection.ref.child(req.params['key']).remove().then(() => ({}))
-    return res.status(200).send(JSON.stringify(returned))
+    await this.collection.ref.child(req.params['key']).remove()
+    return res.status(200).send(JSON.stringify({}))
   }
 }
 
@@ -49,7 +45,7 @@ export function routeHandler(handler: BaseHandler) {
   router.route(`**${handler.path}/:key`)
     .put(handler.put.bind(handler))
     // because firebase-functions http handler in server environment
-    // does not populate req.body with PATCH method
+    // does not populate req.body when req uses PATCH verb
     // .patch(handler.patch.bind(handler))
     .post(handler.patch.bind(handler))
     .delete(handler.del.bind(handler))
