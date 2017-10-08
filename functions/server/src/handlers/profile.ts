@@ -19,7 +19,28 @@ export class ProfileHandler extends BaseHandler {
   }
 
   public async post(req: Request, res: Response, next: NextFunction): Promise<Response> {
-    return res.sendStatus(403)
+    const token = req.body.token
+    const decoded = await admin.auth().verifyIdToken(token)
+    console.log('decoded', decoded)
+    const existing = await this.collection.ref.child(decoded.uid).once('value')
+      .then(ref => ref.val() && ref.key)
+    if (!existing) {
+      let newProfile = {}
+      switch (decoded.firebase.sign_in_provider) {
+        case 'google.com': newProfile = {
+            legalName: decoded.name,
+            email: decoded.email,
+            photoURL: decoded.picture,
+          }
+          break
+        case 'password': newProfile = {
+            email: decoded.email,
+          }
+          break
+      }
+      await this.collection.ref.child(decoded.uid).set(newProfile)
+    }
+    return res.status(200).send(JSON.stringify({}))
   }
 
   public async del(req: Request, res: Response, next: NextFunction): Promise<Response> {

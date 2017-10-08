@@ -1,12 +1,29 @@
 import { defineSupportCode } from 'cucumber'
 import { browser, element, by, ExpectedConditions as EC } from 'protractor'
-import { setData, updateData } from '../../firebase'
+import { setData, setUsers, updateData, signOut, signIn } from '../../firebase'
 
 defineSupportCode( ({Given, Then, When}) => {
 
   Given(/^I've overwritten "(.*)" with "(.*)" fixtures$/, (firebasePath, fixturePath) => {
     return setData(firebasePath, require('../../fixtures/' + fixturePath))
       .then(() => browser.sleep(3000) as PromiseLike<void>)
+  })
+
+  Given(/^I've updated "(.*)" with "(.*)" fixtures$/, (firebasePath, fixturePath) => {
+    return updateData(firebasePath, require('../../fixtures/' + fixturePath))
+    // .then(() => browser.sleep(3000) as PromiseLike<void>)
+  })
+
+  Given(/^I've preloaded all users$/, () => {
+    return setUsers()
+  })
+
+  Given(/^I'm signed out$/, () => {
+    return browser.get('/').then(signOut)
+  })
+
+  Given(/^I'm signed in as "(.*)" with password "(.*)"$/, (username, password) => {
+    return browser.get('/').then(() => signIn(username, password))
   })
 
   Given(/^I go to "(.*)"$/, (url) => {

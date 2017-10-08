@@ -8,7 +8,7 @@ import { AuthService } from '../../snauth/auth/auth.service'
 import { Profile, ProfileCollection, profileTransform } from '../../../../../../universal/domain/profile'
 
 import { obj } from '../../../../../../lib/firebase-angular-observables'
-import { SorryService } from "../../sorry/index";
+import { SorryService } from '../../sorry/index'
 
 @Injectable()
 export class ProfileQueryService extends ProfileCollection {
