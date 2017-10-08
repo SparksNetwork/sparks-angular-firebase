@@ -1,13 +1,47 @@
+@focus
 Feature: Apply
 
   Background:
     Given I've overwritten "/" with "fully-loaded" fixtures
+    And I've preloaded all users
 
-  Scenario: A new user can apply to a project
+  Scenario: A guest user can apply to a project
     Given I go to "/get-involved/BABP/opp/BABP1"
 
     Then I should see "Event Crew" in ".opp-head"
 
+    When I click on "project-actionbar-opp-join a.btn"
+
+    Then I should be on "/auth/%2Fapply%2FBABP1%2Fanswer-question/signup"
+
+    When I click on "#signin-with-email"
+
+    Then I should be on "/auth/%2Fapply%2FBABP1%2Fanswer-question/email-signup"
+
+    When I fill out the fields
+      | Locator   | input                 |
+      | #email    | new-user@putsbox.com  |
+      | #password | testtest              |
+    And I click on "#signin"
+
+    Then I should be on "/auth/email-not-verified"
+
+    When I should wait for 2 seconds
+    And I go to "http://preview.putsbox.com/p/new-user/last"
+    And I click on the first element of "a"
+
+    Then I should be on "/auth/%2Fapply%2FBABP1%2Fanswer-question/signin"
+
+    When I fill out the fields
+      | Locator   | input                 |
+      | #email    | new-user@putsbox.com  |
+      | #password | testtest              |
+    And I click on "#signin"
+
+    Then I should be on "/apply/BABP1/complete-profile"
+    And I should wait for 30 seconds
+
+    # When I log in with ""
     # When I click on the first element of ""
 
     # And I should see "Lucidity" in "home-all-projects"

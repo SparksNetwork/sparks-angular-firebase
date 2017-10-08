@@ -1,12 +1,13 @@
 import { defineSupportCode } from 'cucumber'
 import { browser, element, by, ExpectedConditions as EC } from 'protractor'
 import { setData, setUsers, updateData, signOut, signIn } from '../../firebase'
+import * as sleep from 'sleep-promise'
 
 defineSupportCode( ({Given, Then, When}) => {
 
-  Given(/^I've overwritten "(.*)" with "(.*)" fixtures$/, (firebasePath, fixturePath) => {
+  Given(/^I've overwritten "(.*)" with "(.*)" fixtures$/, {timeout: 10000}, (firebasePath, fixturePath) => {
     return setData(firebasePath, require('../../fixtures/' + fixturePath))
-      .then(() => browser.sleep(3000) as PromiseLike<void>)
+      .then(sleep(3000))
   })
 
   Given(/^I've updated "(.*)" with "(.*)" fixtures$/, (firebasePath, fixturePath) => {
@@ -50,6 +51,19 @@ defineSupportCode( ({Given, Then, When}) => {
       .then(() => element.all(by.css(locator)).get(index).click())
   })
 
+  When(/^I fill out the fields$/, (table) => {
+    const rows = table.rows() as Array<Array<string>>
+    const elementsClickable = rows.map(([locator, input]) =>
+      EC.elementToBeClickable(element(by.css(locator)))
+    )
+    const inputActions = rows.map(([locator, input]) =>
+      element(by.css(locator)).sendKeys(input) as PromiseLike<void>
+    )
+    return Promise
+      .all(elementsClickable.map(ec => browser.wait(ec)))
+      .then(() => inputActions.reduce((prev, cur) => prev.then(() => cur), Promise.resolve()))
+  })
+
   Then(/^I should see "(.*)" in "(.*)"$/, (text, locator) => {
     return browser
       .wait(EC.textToBePresentInElement(element(by.css(locator)), text)
@@ -60,4 +74,7 @@ defineSupportCode( ({Given, Then, When}) => {
     return browser.wait(EC.urlContains(url))
   })
 
+  Then(/^I should wait for (.*) seconds$/, {timeout: 60 * 1000}, seconds => {
+    return browser.sleep(seconds * 1000)
+  })
 })

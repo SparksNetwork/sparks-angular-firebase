@@ -1,7 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { AuthService, AuthError } from '../../../core/snauth/auth/auth.service';
+import { AuthService, AuthError } from '../../../core/snauth/auth/auth.service'
+import { ProfileQueryService } from '../../../core/sndomain/profile'
 import { FormResetPasswordComponent } from '../form-reset-password/form-reset-password.component';
 
 @Component({
@@ -11,6 +12,7 @@ import { FormResetPasswordComponent } from '../form-reset-password/form-reset-pa
 export class PageEmailActionHandlerComponent {
   public mode: string
   public oobCode: string
+  public continueUrl: string
   public title: string
   public verificationEmailExpired = false;
   public resetPasswordEmail: string;
@@ -19,9 +21,11 @@ export class PageEmailActionHandlerComponent {
     private auth: AuthService,
     private route: ActivatedRoute,
     private router: Router,
+    private profileQuery: ProfileQueryService,
   ) {
     this.mode = this.route.snapshot.queryParamMap.get('mode')
     this.oobCode = this.route.snapshot.queryParamMap.get('oobCode')
+    this.continueUrl = this.route.snapshot.queryParamMap.get('continueUrl')
 
     if (!this.mode || !this.oobCode) {
       // TODO remain on the same page or redirect to dash?
@@ -50,9 +54,9 @@ export class PageEmailActionHandlerComponent {
       case 'verifyEmail':
         this.title = 'Verifying your email...'
         this.auth.applyActionCode(this.oobCode).then(() => {
-          // location.reload()
-          // let redirectUrl = '/'; // eventually from database, where they left off
-          // this.router.navigate([redirectUrl]) // will redirect to auth/signin if they need it
+          // locahost is a dummy value that gets around domain whitelisting
+          const encodedUrl = encodeURIComponent(this.continueUrl.replace('https://localhost', ''))
+          location.assign(`/auth/${encodedUrl}/signin`)
         })
         break;
       default:

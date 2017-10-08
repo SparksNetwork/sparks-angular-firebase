@@ -2,6 +2,7 @@ import { browser } from 'protractor'
 import * as firebaseAdmin from 'firebase-admin'
 import { USERS } from './fixtures/users'
 import { USERS_WITH_PARTIAL_PROFILE} from './fixtures/users-partial-profile'
+import * as sleep from 'sleep-promise'
 
 function getEnvironment() {
   const envName = process.env['ANGULAR_ENV'] || 'qa'
@@ -24,6 +25,7 @@ export const auth = firebaseAdmin.auth()
 
 export function setData(firebasePath, data) {
   return db.ref(firebasePath).remove()
+    .then(sleep(2000))
     .then(() => db.ref(firebasePath).set(data))
 }
 
@@ -31,14 +33,23 @@ export function updateData(firebasePath, data) {
   return db.ref(firebasePath).update(data)
 }
 
-export function setUsers(users = USERS) {
-  return Promise.all(
-    users.map(user =>
-      auth.deleteUser(user.uid)
-      .catch(err => { console.log('user did not exist, thats ok')})
-      .then(() => auth.createUser(user))
-    )
-  )
+export function setUsers(newUsers = USERS) {
+  return auth.listUsers()
+    .then(result => Promise.all(result.users.map(user => {
+      console.log('deleting user', user.uid)
+      return auth.deleteUser(user.uid)
+    })))
+    .then(() => Promise.all(newUsers.map(user =>
+      auth.createUser(user)
+    )))
+
+  // return Promise.all(
+  //   users.map(user =>
+  //     auth.deleteUser(user.uid)
+  //     .catch(err => { console.log('user did not exist, thats ok')})
+  //     .then(() => auth.createUser(user))
+  //   )
+  // )
 }
 
 export function setUsersWithPartialProfile(users = USERS_WITH_PARTIAL_PROFILE) {

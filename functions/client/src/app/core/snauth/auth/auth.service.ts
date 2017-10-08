@@ -89,10 +89,11 @@ export class AuthService {
       .catch((err: AuthError) => this.error.emit(err))
   }
 
-  public createWithEmailAndPassword(email: string, password: string) {
+  public createWithEmailAndPassword(email: string, password: string, continueURL: string = '/') {
     this.error.emit(null)
     this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-      .then((user: User) => user.sendEmailVerification())
+      // "Domain not whitelisted" if anything else goes; replace localhost with actual host in email action handler
+      .then((user: User) => user.sendEmailVerification({url: 'https://localhost' + continueURL}))
       .then(() => this.afAuth.auth.signInWithEmailAndPassword(email, password))
       .then(() => location.reload())
       .catch((err: AuthError) => this.error.emit(err))
@@ -105,7 +106,7 @@ export class AuthService {
 
   public applyActionCode(code: string) {
     return this.afAuth.auth.applyActionCode(code)
-      .then(() => location.reload())
+      // .then(() => location.reload())
       .catch((err: AuthError) => this.error.emit(err))
   }
 

@@ -17,7 +17,7 @@ export class RequireAuth implements CanActivate {
     return this.auth.isAuthed
       .do(isAuthed => {
         if (!isAuthed) {
-          this.router.navigate(['/auth', state.url, 'signin'])
+          this.router.navigate(['/auth', state.url, 'signup'])
         }
       })
       .take(1)
