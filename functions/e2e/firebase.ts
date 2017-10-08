@@ -23,7 +23,8 @@ export const db = firebaseAdmin.database()
 export const auth = firebaseAdmin.auth()
 
 export function setData(firebasePath, data) {
-  return db.ref(firebasePath).set(data)
+  return db.ref(firebasePath).remove()
+    .then(() => db.ref(firebasePath).set(data))
 }
 
 export function updateData(firebasePath, data) {

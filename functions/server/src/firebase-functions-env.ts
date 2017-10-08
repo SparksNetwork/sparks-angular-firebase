@@ -9,24 +9,28 @@ export let functions: {
 
 export const admin = firebaseAdmin
 
-export const initialize = () => {
+export const initialize = (initFunctions = true, initAdmin = true) => {
   try { // this will only work in local environment
     const envCode = process.env['ANGULAR_ENV']
     const env = require(`../../client/src/environments/environment.${envCode}.ts`).environment
     console.log('FIREBASE-ENV: running locally with environment', envCode)
 
-    functions = require('firebase-functions-local')({
-      config: env.firebase,
-      port: 5000,
-    })
-    console.log('FIREBASE-FUNCTIONS: replaced with firebase-functions-local emulator')
+    if (initFunctions) {
+      functions = require('firebase-functions-local')({
+        config: env.firebase,
+        port: 5000,
+      })
+      console.log('FIREBASE-FUNCTIONS: replaced with firebase-functions-local emulator')
+    }
 
-    const serviceAccount = require(`../../../firebaseAdminCredentials.${envCode}.json`)
-    admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount),
-      databaseURL: env.firebase.databaseURL
-    })
-    console.log('FIREBASE-ADMIN: initialized with local credentials for ', env.firebase.databaseURL)
+    if (initAdmin) {
+      const serviceAccount = require(`../../../firebaseAdminCredentials.${envCode}.json`)
+      admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount),
+        databaseURL: env.firebase.databaseURL
+      })
+      console.log('FIREBASE-ADMIN: initialized with local credentials for ', env.firebase.databaseURL)
+    }
 
   } catch (err) { // must be running in cloud
     console.log('FIREBASE-ENV: running in the cloud')

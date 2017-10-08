@@ -67,6 +67,7 @@ exports.config = {
     require('ts-node').register({
       project: 'e2e/tsconfig.e2e.json'
     });
+    browser.waitForAngularEnabled(false);
     // jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
     // jasmine.getEnv().addReporter(new BeautifulReporter({
     //   baseDirectory: '../e2e-report',
