@@ -37,7 +37,7 @@ export class Project {
   public $key: string;
 
   @IsEnum(ProjectType)
-  projectType: ProjectType;
+  projectType?: ProjectType;
 
   @IsDefined()
   @IsNotEmpty()
@@ -45,11 +45,11 @@ export class Project {
 
   @IsDefined()
   @IsNotEmpty()
-  description: string;
+  description?: string;
 
   @IsDefined()
   @IsDateString()
-  startDateTime: string;
+  startDateTime?: string;
 
   @IsDateString()
   endDateTime?: string;
@@ -57,23 +57,23 @@ export class Project {
   @IsDefined()
   @ValidateNested()
   @Type(() => Location)
-  location: Location;
+  location?: Location;
 
   @ValidateNested()
   @Type(() => ImageRef)
-  images: ImageRef[];
+  images?: ImageRef[];
 
   @IsNumber()
   ticketPrice?: number;
 
   @IsDefined()
   @IsInt()
-  maxKarmaPoints: number;
+  maxKarmaPoints?: number;
 
   @IsDefined()
   @ValidateNested()
   @Type(() => Organizer)
-  organizer: Organizer;
+  organizer?: Organizer;
 
   @IsUrl()
   projectPageUrl?: string;

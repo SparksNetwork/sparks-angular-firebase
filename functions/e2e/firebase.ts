@@ -25,7 +25,7 @@ export const auth = firebaseAdmin.auth()
 
 export function setData(firebasePath, data) {
   return db.ref(firebasePath).remove()
-    .then(sleep(2000))
+    // .then(sleep(2000))
     .then(() => db.ref(firebasePath).set(data))
 }
 

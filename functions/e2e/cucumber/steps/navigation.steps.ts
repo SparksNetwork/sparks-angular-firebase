@@ -1,5 +1,5 @@
 import { defineSupportCode } from 'cucumber'
-import { browser, element, by, ExpectedConditions as EC } from 'protractor'
+import { browser, element, by, ExpectedConditions as EC, Key } from 'protractor'
 import { setData, setUsers, updateData, signOut, signIn } from '../../firebase'
 import * as sleep from 'sleep-promise'
 
@@ -7,7 +7,7 @@ defineSupportCode( ({Given, Then, When}) => {
 
   Given(/^I've overwritten "(.*)" with "(.*)" fixtures$/, {timeout: 10000}, (firebasePath, fixturePath) => {
     return setData(firebasePath, require('../../fixtures/' + fixturePath))
-      .then(sleep(3000))
+      // .then(sleep(3000))
   })
 
   Given(/^I've updated "(.*)" with "(.*)" fixtures$/, (firebasePath, fixturePath) => {
@@ -57,11 +57,18 @@ defineSupportCode( ({Given, Then, When}) => {
       EC.elementToBeClickable(element(by.css(locator)))
     )
     const inputActions = rows.map(([locator, input]) =>
-      element(by.css(locator)).sendKeys(input) as PromiseLike<void>
+    // element(by.css(locator)).clear()
+      // .then(() => element(by.css(locator)).sendKeys(input, Key.TAB)) as PromiseLike<void>
+    element(by.css(locator)).click()
+      .then(() => element(by.css(locator)).sendKeys(input, Key.TAB)) as PromiseLike<void>
+    // element(by.css(locator)).sendKeys(input, Key.TAB) as PromiseLike<void>
+        // .then(() => element(by.css(locator)).sendKeys(Key.TAB)) as PromiseLike<void>
     )
+
     return Promise
       .all(elementsClickable.map(ec => browser.wait(ec)))
       .then(() => inputActions.reduce((prev, cur) => prev.then(() => cur), Promise.resolve()))
+      .then(() => browser.waitForAngular())
   })
 
   Then(/^I should see "(.*)" in "(.*)"$/, (text, locator) => {
@@ -70,11 +77,11 @@ defineSupportCode( ({Given, Then, When}) => {
     )
   })
 
-  Then(/^I should be on "(.*)"$/, (url) => {
+  Then(/^I should be on "(.*)"$/, {timeout: 10 * 1000}, (url) => {
     return browser.wait(EC.urlContains(url))
   })
 
-  Then(/^I should wait for (.*) seconds$/, {timeout: 60 * 1000}, seconds => {
+  Then(/^I wait for (.*) seconds$/, {timeout: 60 * 1000}, seconds => {
     return browser.sleep(seconds * 1000)
   })
 })

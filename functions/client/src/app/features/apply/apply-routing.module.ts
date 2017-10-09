@@ -28,8 +28,35 @@ import { ResolveApplication } from '../../core/sndomain/application/index';
 import { ResolveApplicationTeamsByOpp } from './resolve-application-teams-by-opp/resolve-application-teams-by-opp.service';
 import { ResolveApplicationShiftsByOpp } from './resolve-application-shifts-by-opp/resolve-application-shifts-by-opp.service';
 import { ResolveApplicationTeamByApplication } from '../../core/sndomain/applicationTeam/resolve-application-team-by-application.service'
+import { PageTestComponent } from './page-test.component'
 
 const routes: Routes = [
+    // {
+    //     path: ':oppKey/complete-profile',
+    //     canActivate: [
+    //         RequireAuth,
+    //         RequireEmailVerification,
+    //     ],
+    //     resolve: {
+    //         opp: ResolveOppByOppKey,
+    //         profile: ResolveProfile,
+    //         // project: ResolveProjectByOpp,
+    //     },
+    //     children: [
+    //         {
+    //             path: '',
+    //             // component: PageCompleteProfileComponent,
+    //             component: PageTestComponent,
+    //             data: {
+    //                 navigateTo: 'answer-question'
+    //             },
+    //             resolve: {
+    //                 // profile: ResolveProfile,
+    //                 project: ResolveProjectByOpp,
+    //             }
+    //         }
+    //     ]
+    // },
     {
         path: ':oppKey',
         canActivate: [
@@ -53,6 +80,7 @@ const routes: Routes = [
                     },
                     {
                         path: 'complete-profile',
+                        // component: PageTestComponent,
                         component: PageCompleteProfileComponent,
                         data: {
                             navigateTo: 'answer-question'

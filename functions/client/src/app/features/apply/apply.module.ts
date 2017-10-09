@@ -21,6 +21,8 @@ import { ShiftsSelectedComponent } from './shifts-selected/shifts-selected.compo
 import { ResolveApplicationByOpp } from './resolve-application-by-opp/resolve-application-by-opp.service';
 import { ResolveApplicationTeamsByOpp } from './resolve-application-teams-by-opp/resolve-application-teams-by-opp.service';
 import { ResolveApplicationShiftsByOpp } from './resolve-application-shifts-by-opp/resolve-application-shifts-by-opp.service';
+import { FormTestComponent } from './form-test.component'
+import { PageTestComponent } from './page-test.component'
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { ResolveApplicationShiftsByOpp } from './resolve-application-shifts-by-o
     ShiftListComponent,
     ShiftsSelectedComponent,
     ShiftFilterComponent,
+    FormTestComponent,
+    PageTestComponent,
   ],
   imports: [
     CommonModule,

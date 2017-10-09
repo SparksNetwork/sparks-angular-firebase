@@ -26,20 +26,28 @@ Feature: Apply
 
     Then I should be on "/auth/email-not-verified"
 
-    When I should wait for 2 seconds
+    When I wait for 4 seconds
     And I go to "http://preview.putsbox.com/p/new-user/last"
     And I click on the first element of "a"
 
     Then I should be on "/auth/%2Fapply%2FBABP1%2Fanswer-question/signin"
 
     When I fill out the fields
-      | Locator   | input                 |
+      | Locator   | Input                 |
       | #email    | new-user@putsbox.com  |
       | #password | testtest              |
     And I click on "#signin"
 
     Then I should be on "/apply/BABP1/complete-profile"
-    And I should wait for 30 seconds
+
+    When I fill out the fields
+      | Locator         | Input                 |
+      | #legalName      | Stephen DeBaun        |
+      | #preferredName  | Stevo                 |
+      | #phoneNumber    | 8053129100            |
+      | #birthday       | 10/25/1974            |
+    And I click on "#next"
+
 
     # When I log in with ""
     # When I click on the first element of ""
