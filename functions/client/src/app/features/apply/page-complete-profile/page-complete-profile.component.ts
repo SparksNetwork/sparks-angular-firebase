@@ -44,11 +44,6 @@ export class PageCompleteProfileComponent implements OnInit {
     this.profile$.subscribe(profile => this.profForm.profileForm.patchValue(profile))
   };
 
-  public forceValidate() {
-    console.log('force validate')
-    this.profForm.profileForm.updateValueAndValidity({emitEvent: true})
-  }
-
   public next() {
     console.log('completed profile?', this.profForm.profileForm.value)
     this.auth.current.take(1).subscribe(user => {

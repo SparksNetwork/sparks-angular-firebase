@@ -27,6 +27,11 @@ Feature: Apply
     Then I should be on "/auth/email-not-verified"
 
     When I wait for 4 seconds
+    # force signout:
+    # - ng e2e --serve=true loses auth at this point
+    # - ng e2e --serve=false does not
+    # make them consistent
+    And I sign out
     And I go to "http://preview.putsbox.com/p/new-user/last"
     And I click on the first element of "a"
 
@@ -48,9 +53,35 @@ Feature: Apply
       | #birthday       | 10/25/1974            |
     And I click on "#next"
 
+    Then I should be on "/apply/BABP1/answer-question"
 
-    # When I log in with ""
-    # When I click on the first element of ""
+    When I fill out the fields
+      | Locator | Input                                   |
+      | #answer | This is my answer to the opp question.  |
+    And I click on "#next"
+
+    Then I should be on "/apply/BABP1/teams"
+
+    When I click on the first element of "apply-opp-teams-not-selected a"
+
+    Then I should be on "/apply/BABP1/teams/BABP1"
+
+    When I fill out the fields
+      | Locator | Input                                   |
+      | #answer | This is my answer to the team question. |
+    # probably problems with firebase-observables
+    And I wait for 20 seconds
+    And I click on "#next"
+
+    Then I should be on "/apply/BABP1/teams"
+    And I wait for 20 seconds
+    And I should see "Setup and Teardown" in "apply-opp-teams-selected"
+
+    When I click on "#next"
+
+    Then I should be on "/apply/BABP1/review-detail"
+
+    And I wait for 10 seconds
 
     # And I should see "Lucidity" in "home-all-projects"
     # And I should see "Guest" in "snui-user-header"

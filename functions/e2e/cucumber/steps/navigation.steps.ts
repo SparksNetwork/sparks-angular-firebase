@@ -23,12 +23,20 @@ defineSupportCode( ({Given, Then, When}) => {
     return browser.get('/').then(signOut)
   })
 
+  Given(/^I sign out$/, () => {
+    return signOut()
+  })
+
   Given(/^I'm signed in as "(.*)" with password "(.*)"$/, (username, password) => {
     return browser.get('/').then(() => signIn(username, password))
   })
 
   Given(/^I go to "(.*)"$/, (url) => {
     return browser.get(url)
+  })
+
+  When(/^I clear my cookies$/, () => {
+    return browser.manage().deleteAllCookies()
   })
 
   When(/^I click on "(.*)"$/, locator => {

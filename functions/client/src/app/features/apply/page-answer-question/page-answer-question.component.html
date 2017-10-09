@@ -19,7 +19,7 @@
         <span class="ic ic-textbox"></span>
       </div>
       <div class="text">
-        <textarea class="form-control" formControlName="answer" rows="4" cols="50" placeholder="Type Your Answer"></textarea>
+        <textarea class="form-control" id='answer' formControlName="answer" rows="4" cols="50" placeholder="Type Your Answer"></textarea>
       </div>
     </div>
 
@@ -31,7 +31,7 @@
     <snui-action-bar *ngIf="project" [projectTitle]="project.title" [type]="actionBarType.Organizer">
       <div class="row">
         <div class="col-xs-4 col-xs-offset-4">
-          <button (click)="submit()" [disabled]='!answerForm.valid' class="btn btn-default">{{navigateTo === 'review-detail' ? 'Save' : 'Next'}}</button>
+          <button id='next' (click)="submit()" [disabled]='!answerForm.valid' class="btn btn-default">{{navigateTo === 'review-detail' ? 'Save' : 'Next'}}</button>
         </div>
       </div>
     </snui-action-bar>

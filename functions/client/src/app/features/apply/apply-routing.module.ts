@@ -31,32 +31,6 @@ import { ResolveApplicationTeamByApplication } from '../../core/sndomain/applica
 import { PageTestComponent } from './page-test.component'
 
 const routes: Routes = [
-    // {
-    //     path: ':oppKey/complete-profile',
-    //     canActivate: [
-    //         RequireAuth,
-    //         RequireEmailVerification,
-    //     ],
-    //     resolve: {
-    //         opp: ResolveOppByOppKey,
-    //         profile: ResolveProfile,
-    //         // project: ResolveProjectByOpp,
-    //     },
-    //     children: [
-    //         {
-    //             path: '',
-    //             // component: PageCompleteProfileComponent,
-    //             component: PageTestComponent,
-    //             data: {
-    //                 navigateTo: 'answer-question'
-    //             },
-    //             resolve: {
-    //                 // profile: ResolveProfile,
-    //                 project: ResolveProjectByOpp,
-    //             }
-    //         }
-    //     ]
-    // },
     {
         path: ':oppKey',
         canActivate: [
@@ -80,7 +54,6 @@ const routes: Routes = [
                     },
                     {
                         path: 'complete-profile',
-                        // component: PageTestComponent,
                         component: PageCompleteProfileComponent,
                         data: {
                             navigateTo: 'answer-question'

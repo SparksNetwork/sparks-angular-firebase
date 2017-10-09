@@ -24,7 +24,7 @@
                 <span class="ic ic-textbox"></span>
             </div>
             <div class="text">
-                <textarea class="form-control" formControlName="answer" rows="4" cols="50" placeholder="Type Your Answer"></textarea>
+                <textarea class="form-control" id='answer' formControlName="answer" rows="4" cols="50" placeholder="Type Your Answer"></textarea>
             </div>
         </div>
 
@@ -38,7 +38,7 @@
                     <a [routerLink]="['..']" class="btn btn-default">Previous</a>
                 </div>
                 <div class="col-xs-4 col-xs-offset-4">
-                    <button class="btn btn-default" [disabled]='(!answerForm.valid) || (isDisabled)' (click)='join(team.$key, team.question)'>Join</button >
+                    <button id='next' class="btn btn-default" [disabled]='(!answerForm.valid) || (isDisabled)' (click)='join(team.$key, team.question)'>Join</button >
                 </div>
             </div>
     </snui-action-bar>

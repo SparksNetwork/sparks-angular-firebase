@@ -40,5 +40,4 @@ export function obj(src: Reference): Observable<any> {
   changes$.connect()
 
   return changes$
-  // return onValue$
 }

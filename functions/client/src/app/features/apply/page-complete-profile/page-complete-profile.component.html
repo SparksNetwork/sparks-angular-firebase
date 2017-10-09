@@ -14,14 +14,7 @@
       <a class="btn btn-default" [routerLink]='["/"]'>Cancel</a>
     </div>
     <div class="col-xs-4 col-xs-offset-4">
-      <button (click)='forceValidate()'>force</button>
       <button id='next' type='submit' form='profileForm' (click)='next()' [disabled]="!this.profForm.profileForm.valid" class="btn btn-default">{{editAllMode ? 'Save' : 'Next'}}</button>
     </div>
   </div>
 </snui-action-bar>
-<pre>
-  profileForm.valid: {{this.profForm.profileForm.valid}}
-  legalName/valid {{this.profForm.profileForm.get('legalName').valid}}
-  legalName/value {{this.profForm.profileForm.get('legalName').value}}
-  navigateTo {{this.navigateTo}}
-</pre>
