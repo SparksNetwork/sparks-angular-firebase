@@ -100,7 +100,8 @@ const routes: Routes = [
                                 component: PageReviewDetailComponent,
                                 resolve: {
                                     teams: ResolveTeamByOppKey,
-                                    appTeams: ResolveApplicationTeamsByOpp,
+                                    appTeams: ResolveApplicationTeamByApplication,
+                                    // appTeams: ResolveApplicationTeamsByOpp,
                                 },
                             },
                             {
@@ -124,7 +125,7 @@ const routes: Routes = [
 
 
             {
-                path: 'apply-cofirmation',
+                path: 'apply-confirmation',
                 component: PageApplyConfirmationComponent,
                 resolve: {
                     project: ResolveProjectByOpp

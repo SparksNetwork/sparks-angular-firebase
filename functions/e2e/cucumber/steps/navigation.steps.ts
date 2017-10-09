@@ -79,7 +79,7 @@ defineSupportCode( ({Given, Then, When}) => {
       .then(() => browser.waitForAngular())
   })
 
-  Then(/^I should see "(.*)" in "(.*)"$/, (text, locator) => {
+  Then(/^I should see "(.*)" in "(.*)"$/, {timeout: 30 * 1000}, (text, locator) => {
     return browser
       .wait(EC.textToBePresentInElement(element(by.css(locator)), text)
     )

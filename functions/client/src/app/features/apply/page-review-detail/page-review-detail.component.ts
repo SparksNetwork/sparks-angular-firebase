@@ -49,7 +49,7 @@ export class PageReviewDetailComponent implements OnInit {
     apply() {
         this.applicationAction.changeStatus(this.application.$key, ApplicationStatus.Pending).subscribe(s =>
             // TODO send email
-            this.router.navigate(['../apply-cofirmation'], { relativeTo: this.route })
+            this.router.navigate(['../apply-confirmation'], { relativeTo: this.route })
         )
     }
 }

@@ -17,7 +17,7 @@
 
   <div class="segment">
     <div class="row">
-      <h3 class="col-xs-9 collapse-title collapsed" data-toggle="collapse" data-target="#organizer-question">The Organizer Question</h3>
+      <h3 id="question-header" class="col-xs-9 collapse-title collapsed" data-toggle="collapse" data-target="#organizer-question">The Organizer Question</h3>
       <div class="col-xs-3 segment-title-link-container collapse-link"><a [routerLink]="['..','edit-answer']">edit<span class="ic ic-edit" aria-hidden="true"></span></a></div>
     </div>
     <div class="collapse" id="organizer-question">
@@ -30,7 +30,7 @@
 
   <div class="segment no-brd">
     <div class="row">
-      <h3 class="col-xs-9 collapse-title collapsed" data-toggle="collapse" data-target="#selected-teams">Selected Teams</h3>
+      <h3 id="app-teams-header" class="col-xs-9 collapse-title collapsed" data-toggle="collapse" data-target="#selected-teams">Selected Teams</h3>
       <div class="col-xs-3 segment-title-link-container collapse-link"><a [routerLink]="['..','teams']">edit<span class="ic ic-edit" aria-hidden="true"></span></a></div>
       <div class="col-xs-12 collapse" id="selected-teams">
         <apply-opp-teams-selected [allTeams]='allTeams | async' [editable]='false'></apply-opp-teams-selected>
@@ -44,7 +44,7 @@
         <a [routerLink]="['..','teams']" class="btn btn-default">Previous</a>
       </div>
       <div class="col-xs-4 col-xs-offset-4">
-        <button class="btn btn-default" (click)='apply()'>Next</button >
+        <button id="next" class="btn btn-default" (click)='apply()'>Next</button >
       </div>
     </div>
   </snui-action-bar>

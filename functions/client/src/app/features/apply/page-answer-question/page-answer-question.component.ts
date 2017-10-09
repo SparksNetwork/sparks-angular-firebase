@@ -44,6 +44,7 @@ export class PageAnswerQuestionComponent implements OnInit {
     });
 
     this.route.data.subscribe(data => {
+      console.log('navigateTo', data.navigateTo)
       this.navigateTo = data.navigateTo;
     });
 
@@ -55,6 +56,7 @@ export class PageAnswerQuestionComponent implements OnInit {
   submit() {
     this.applicationAction.saveOppAnswer(this.applicationKey, this.opp.question, this.answerForm.get('answer').value)
       .subscribe(s => {
+        console.log('redirecting')
         this.router.navigate(['..', this.navigateTo], { relativeTo: this.route });
       })
   }

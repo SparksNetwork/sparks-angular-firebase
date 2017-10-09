@@ -6,6 +6,7 @@ Feature: Apply
     And I've preloaded all users
 
   Scenario: A guest user can apply to a project
+
     Given I go to "/get-involved/BABP/opp/BABP1"
 
     Then I should see "Event Crew" in ".opp-head"
@@ -19,14 +20,14 @@ Feature: Apply
     Then I should be on "/auth/%2Fapply%2FBABP1%2Fanswer-question/email-signup"
 
     When I fill out the fields
-      | Locator   | input                 |
+      | Locator   | Input                 |
       | #email    | new-user@putsbox.com  |
       | #password | testtest              |
     And I click on "#signin"
 
     Then I should be on "/auth/email-not-verified"
 
-    When I wait for 4 seconds
+    When I wait for 5 seconds
     # force signout:
     # - ng e2e --serve=true loses auth at this point
     # - ng e2e --serve=false does not
@@ -47,8 +48,8 @@ Feature: Apply
 
     When I fill out the fields
       | Locator         | Input                 |
-      | #legalName      | Stephen DeBaun        |
-      | #preferredName  | Stevo                 |
+      | #legalName      | James Howlett         |
+      | #preferredName  | Wolverine             |
       | #phoneNumber    | 8053129100            |
       | #birthday       | 10/25/1974            |
     And I click on "#next"
@@ -69,23 +70,26 @@ Feature: Apply
     When I fill out the fields
       | Locator | Input                                   |
       | #answer | This is my answer to the team question. |
-    # probably problems with firebase-observables
-    And I wait for 20 seconds
     And I click on "#next"
 
     Then I should be on "/apply/BABP1/teams"
-    And I wait for 20 seconds
     And I should see "Setup and Teardown" in "apply-opp-teams-selected"
 
     When I click on "#next"
 
     Then I should be on "/apply/BABP1/review-detail"
+    And I should see "James Howlett" in "apply-review-profile"
+    And I should see "Wolverine" in "apply-review-profile"
 
-    And I wait for 10 seconds
+    When I click on "#question-header"
+    Then I should see "This is my answer to the opp question." in "#organizer-question"
 
-    # And I should see "Lucidity" in "home-all-projects"
-    # And I should see "Guest" in "snui-user-header"
+    When I click on "#app-teams-header"
+    Then I should see "Setup and Teardown" in "#selected-teams"
 
-    # When I click on the first element of ".project-item"
+    When I click on "#next"
 
-    # Then I should be on "/get-involved/BABP"
+    Then I should be on "/apply/BABP1/apply-confirmation"
+    And I should see "All Done" in "snui-header-simple"
+
+    # And I wait for 30 seconds
