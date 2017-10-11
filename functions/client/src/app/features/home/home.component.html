@@ -1,3 +1,13 @@
 <snui-user-header [prefferedName]='userPrefferedName' [message]='userMessage' [imageUrl]='userImageUrl' [profileScore]='userProfileScore' [isAuthed]="isAuthed"></snui-user-header>
-<home-all-projects [projects]='projects | async' [applications]='applications | async'></home-all-projects>
+<ng-container *ngIf="apps$ | async; let apps" class="row row-small-pad dashboard-projects">
+  <!-- <div class="opp-head segment">
+    <div class="col-xs-12">
+      <h2>You're Engaged With</h2>
+    </div>
+  </div> -->
+  <div class="row row-small-pad dashboard-projects">
+    <home-applications [apps]="apps"></home-applications>
+  </div>
+</ng-container>
+<home-all-projects [projects]='projects$ | async' [applications]='apps$ | async'></home-all-projects>
 <snui-action-bar class="emptyBottomNav"></snui-action-bar>

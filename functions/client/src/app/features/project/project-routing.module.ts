@@ -30,7 +30,7 @@ import { ResolveBenefitByFirstOpp } from './resolve-benefit-by-first-opp/resolve
 import { ResolveTeamByFirstOpp } from './resolve-team-by-first-opp/resolve-team-by-first-opp.service';
 
 import { AddToCalendarComponent } from './add-to-calendar/add-to-calendar.component'
-import { ProjectTitleComponent } from './project-title/project-title.component';
+// import { ProjectTitleComponent } from './project-title/project-title.component';
 import { ProjectDateComponent } from './project-date/project-date.component';
 import { ProjectLocationComponent } from './project-location/project-location.component';
 import { ProjectDescriptionComponent } from './project-description/project-description.component';
@@ -155,7 +155,7 @@ export const routedComponents = [
   ProjectOppCardComponent,
 
   AddToCalendarComponent,
-  ProjectTitleComponent,
+  // ProjectTitleComponent,
   ProjectDateComponent,
   ProjectLocationComponent,
   ProjectDescriptionComponent,

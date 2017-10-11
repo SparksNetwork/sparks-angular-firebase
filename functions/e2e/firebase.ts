@@ -72,9 +72,10 @@ export function createUserAndProfile(values: {
     email: values.email,
     password: values.password,
     emailVerified: Boolean(values.emailVerified),
-  }).then(user =>
+  }).then(user => {
     db.ref('profile').child(user.uid).update(profile)
-  )
+    return user.uid
+  })
 }
 
 export function setUsersWithPartialProfile(users = USERS_WITH_PARTIAL_PROFILE) {

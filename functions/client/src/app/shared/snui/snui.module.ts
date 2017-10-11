@@ -20,7 +20,12 @@ import { DateIntervalPipe } from '../pipes/date-interval.pipe';
 import { DateFormatPipe } from 'angular2-moment';
 import { DateTimeIntervalPipe } from '../pipes/date-time-interval.pipe';
 import { SortShiftsByDatePipe } from '../pipes/sort-shifts.pipe';
-
+import {
+  ProjectTitleComponent
+} from './project'
+import {
+  OppTitleComponent
+} from './opp'
 
 const COMPONENTS = [
   HeaderSimpleComponent,
@@ -37,7 +42,9 @@ const COMPONENTS = [
   PageMessageComponent,
   DateIntervalPipe,
   DateTimeIntervalPipe,
-  SortShiftsByDatePipe
+  SortShiftsByDatePipe,
+  ProjectTitleComponent,
+  OppTitleComponent,
 ]
 
 @NgModule({
