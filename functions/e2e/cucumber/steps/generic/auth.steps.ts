@@ -5,7 +5,12 @@ import * as sleep from 'sleep-promise'
 
 import { populateFields, clickElement } from '../micro/actions'
 import { urlContains } from '../micro/expects'
-defineSupportCode( ({Given, Then, When}) => {
+
+// import { World } from './world'
+import { shared } from './shared'
+
+defineSupportCode( ({Given, Then, When, setWorldConstructor}) => {
+  // setWorldConstructor(World)
 
   Given(/^I'm signed out$/, () => {
     return browser.get('/').then(signOut)
@@ -22,6 +27,10 @@ defineSupportCode( ({Given, Then, When}) => {
   Given(/^I'm signed in as a user with the following information:$/, table => {
     const user = table.rowsHash()
     return createUserAndProfile(user)
+      .then(uid => {
+        console.log('set lastUid', uid)
+        shared.lastUid = uid
+      })
       .then(() => browser.get('/'))
       .then(() => signIn(user.email, user.password))
   })

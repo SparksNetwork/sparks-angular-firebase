@@ -1,0 +1,14 @@
+<ng-container>
+  <a *ngFor="let app of apps" class="project-item" [routerLink] = "['your-application', app.$key]"> 
+    <snui-project-card-item 
+        [title]='app.project.title'
+        [image]='app.project.images.length > 0 ? app.project.images[0] : null'
+        [startDateTime]='app.project.startDateTime'
+        [endDateTime]='app.project.endDateTime'
+        [location]='app.project.location'
+        [maxKarmaPoints]='app.project.maxKarmaPoints'
+        [status]='app.status | snApplicationStatus'
+        >
+    </snui-project-card-item>
+  </a>
+</ng-container>

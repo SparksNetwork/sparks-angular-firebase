@@ -12,8 +12,10 @@ import { Application } from "../../../../../universal/domain/application";
 })
 
 export class HomeComponent implements OnInit {
+  public apps$: Observable<Application[]>
+  public projects$: Observable<Project[]>
+
   public projects: Observable<Project[]>;
-  public applications: Observable<Application[]>;
   public profile: Observable<any>
   public userPrefferedName: string;
   public userMessage: string;
@@ -24,8 +26,16 @@ export class HomeComponent implements OnInit {
   constructor(public route: ActivatedRoute, private auth: AuthService) { }
 
   ngOnInit() {
+    this.apps$ = this.route.data.switchMap(data => data['applications'] as Observable<Application[]>)
+
+    const appProjectKeys$ = this.apps$.map(apps => apps.map(app => app.projectKey))
+    this.projects$ = this.route.data.switchMap(data => data['projects'] as Observable<Project[]>)
+      .combineLatest(
+        appProjectKeys$,
+        (projects, projectKeys) => projects.filter(project => projectKeys.indexOf(project.$key) < 0)
+      )
+
     this.projects = this.route.snapshot.data['projects']
-    this.applications = this.route.snapshot.data['applications']
     this.profile = this.route.data.switchMap(data => data['profile'])
 
     this.profile.subscribe(profile => {

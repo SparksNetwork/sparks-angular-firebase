@@ -7,11 +7,11 @@ export class ApplicationStatusPipe implements PipeTransform {
     transform(value: ApplicationStatus) {
         switch (value) {
             case ApplicationStatus.Incomplete:
-                return 'Incomplete';
+                return 'Finish Applying';
             case ApplicationStatus.Pending:
-                return 'Pending';
+                return 'Awaiting Approval';
             case ApplicationStatus.Accepted:
-                return 'Accepted';
+                return 'Join Now!';
             default: return null;
         }
     }

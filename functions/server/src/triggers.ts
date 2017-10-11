@@ -78,7 +78,6 @@ function denormalizers(
 
 import { TeamCollection } from '../../universal/domain/team'
 import { OppAllowedTeamCollection } from '../../universal/domain/oppAllowedTeam'
-
 const teams = new TeamCollection(admin.database())
 const oppAllowedTeams = new OppAllowedTeamCollection(admin.database())
 
@@ -105,3 +104,51 @@ export const teamToOATOATOnUpdate =
 export const teamToOATOATOnCreate =
   functions.database.ref('/oppAllowedTeam/{key}/teamKey')
     .onCreate(teamToOATDenormalizers.onChildForeignKeyChange)
+
+import { ProjectCollection } from '../../universal/domain/project'
+import { ApplicationCollection } from '../../universal/domain/application'
+const projects = new ProjectCollection(admin.database())
+const applications = new ApplicationCollection(admin.database())
+
+const projectToApplicationDenormalizers = denormalizers(
+  projects,
+  applications,
+  'projectKey',
+  'project'
+)
+
+export const projectToApplicationOnCreate =
+  functions.database.ref('/project/{key}')
+    .onCreate(projectToApplicationDenormalizers.onParentChange)
+export const projectToApplicationOnUpdate =
+    functions.database.ref('/project/{key}')
+    .onUpdate(projectToApplicationDenormalizers.onParentChange)
+export const projectToApplicationOnChildCreate =
+  functions.database.ref('/application/{key}/projectKey')
+    .onCreate(projectToApplicationDenormalizers.onChildForeignKeyChange)
+export const projectToApplicationOnChildUpdate =
+  functions.database.ref('/application/{key}/projectKey')
+    .onUpdate(projectToApplicationDenormalizers.onChildForeignKeyChange)
+
+import { OppCollection } from '../../universal/domain/opp'
+const opps = new OppCollection(admin.database())
+
+const oppToApplicationDenormalizers = denormalizers(
+  opps,
+  applications,
+  'oppKey',
+  'opp'
+)
+
+export const oppToApplicationOnCreate =
+  functions.database.ref('/opp/{key}')
+    .onCreate(oppToApplicationDenormalizers.onParentChange)
+export const oppToApplicationOnUpdate =
+  functions.database.ref('/opp/{key}')
+    .onUpdate(oppToApplicationDenormalizers.onParentChange)
+export const oppToApplicationOnChildCreate =
+  functions.database.ref('/application/{key}/oppKey')
+    .onCreate(oppToApplicationDenormalizers.onChildForeignKeyChange)
+export const oppToApplicationOnChildUpdate =
+  functions.database.ref('/application/{key}/oppKey')
+    .onUpdate(oppToApplicationDenormalizers.onChildForeignKeyChange)

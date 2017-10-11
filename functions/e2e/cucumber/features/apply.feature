@@ -4,6 +4,7 @@ Feature: Apply
     Given I've overwritten "/" with "fully-loaded" fixtures
     And I've deleted all users
 
+  @focus
   Scenario: A guest user must sign up and complete their profile to start their application
     Given I go to the get-involved page for project "BABP" and opportunity "BABP1"
     When I click on the get-involved join button  
@@ -106,7 +107,6 @@ Feature: Apply
 
     # And I wait for 30 seconds
 
-  @focus
   Scenario: When applying, a user can add and remove multiple teams
     Given I'm signed in as a user with the following information:
       | uid | USER |

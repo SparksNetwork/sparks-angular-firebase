@@ -1,7 +1,7 @@
 <div *ngIf="project | async; let project">
 
   <snui-header-carousel [images]="project.images"></snui-header-carousel>
-  <project-project-title [title]="project.title" [maxKarmaPoints]="project.maxKarmaPoints"></project-project-title>
+  <snui-project-title [title]="project.title" [maxKarmaPoints]="project.maxKarmaPoints"></snui-project-title>
 
   <div class="project-date-location">
     <div class="row row-small-pad">
