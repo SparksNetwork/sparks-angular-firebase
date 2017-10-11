@@ -4,7 +4,6 @@ Feature: Apply
     Given I've overwritten "/" with "fully-loaded" fixtures
     And I've deleted all users
 
-  @focus
   Scenario: A guest user must sign up and complete their profile to start their application
     Given I go to the get-involved page for project "BABP" and opportunity "BABP1"
     When I click on the get-involved join button  
