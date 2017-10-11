@@ -152,3 +152,28 @@ export const oppToApplicationOnChildCreate =
 export const oppToApplicationOnChildUpdate =
   functions.database.ref('/application/{key}/oppKey')
     .onUpdate(oppToApplicationDenormalizers.onChildForeignKeyChange)
+
+import { ShiftCollection } from '../../universal/domain/shift'
+import { ApplicationShiftCollection } from '../../universal/domain/applicationShift'
+const shifts = new ShiftCollection(admin.database())
+const appShifts = new ApplicationShiftCollection(admin.database())
+
+const shiftToAppShiftDenormalizers = denormalizers(
+  shifts,
+  appShifts,
+  'shiftKey',
+  'shift'
+)
+
+export const shiftToAppShiftOnCreate =
+  functions.database.ref('/shift/{key}')
+    .onCreate(shiftToAppShiftDenormalizers.onParentChange)
+export const shiftToAppShiftOnUpdate =
+  functions.database.ref('/shift/{key}')
+    .onUpdate(shiftToAppShiftDenormalizers.onParentChange)
+export const shiftToAppShiftOnChildCreate =
+  functions.database.ref('/applicationShift/{key}/shiftKey')
+    .onCreate(shiftToAppShiftDenormalizers.onChildForeignKeyChange)
+export const shiftToAppShiftOnChildUpdate =
+  functions.database.ref('/applicationShift/{key}/shiftKey')
+    .onUpdate(shiftToAppShiftDenormalizers.onChildForeignKeyChange)

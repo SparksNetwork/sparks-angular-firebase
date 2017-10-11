@@ -29,6 +29,7 @@ import { ResolveApplicationTeamsByOpp } from './resolve-application-teams-by-opp
 import { ResolveApplicationShiftsByOpp } from './resolve-application-shifts-by-opp/resolve-application-shifts-by-opp.service';
 import { ResolveApplicationTeamByApplication } from '../../core/sndomain/applicationTeam/resolve-application-team-by-application.service'
 import { PageTestComponent } from './page-test.component'
+import { ResolveContribByOppKey } from '../../core/sndomain/contrib/resolve-contrib-by-opp-key.service'
 
 const routes: Routes = [
     {
@@ -141,11 +142,12 @@ const routes: Routes = [
                     project: ResolveProjectByOpp,
                     applicationShift: ResolveApplicationShiftsByOpp,
                     application: ResolveApplication,
+                    contribs: ResolveContribByOppKey,
                 },
-                canActivate: [
-                    RequireProfileCompleteService,
-                    RequireApplicationAcceptedService
-                ],
+                // canActivate: [
+                //     RequireProfileCompleteService,
+                //     RequireApplicationAcceptedService
+                // ],
                 children: [
                     {
                         path: '',
@@ -162,9 +164,9 @@ const routes: Routes = [
                 resolve: {
                     project: ResolveProjectByOpp
                 },
-                canActivate: [
-                    RequireProfileCompleteService,
-                ]
+                // canActivate: [
+                //     RequireProfileCompleteService,
+                // ]
             },
             {
                 path: 'payment-confirmation',
@@ -172,9 +174,9 @@ const routes: Routes = [
                 resolve: {
                     project: ResolveProjectByOpp
                 },
-                canActivate: [
-                    RequireProfileCompleteService,
-                ]
+                // canActivate: [
+                //     RequireProfileCompleteService,
+                // ]
             }
         ]
     }

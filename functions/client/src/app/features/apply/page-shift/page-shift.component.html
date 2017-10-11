@@ -1,20 +1,22 @@
-<snui-header-simple *ngIf="project | async; let project" [imageUrl]="(project.images.length > 0 ? project.images[0].imageUrl : 'https://placeimg.com/1140/410/people/grayscale')">
-  Confirm Your Spot:<br>Select Shifts
-</snui-header-simple>
-
-<div class="segment" *ngIf="project | async; let project">
-  <p class="card-text">Now that you've been approved for {{project.title}}, let's set up your schedule.</p>
-</div>
-
-<apply-shifts-selected></apply-shifts-selected>
-
-<apply-shift-filter [allShifts]="shifts" (activeFilters)="filterShifts($event)"></apply-shift-filter>
-<apply-shift-list [shifts]="filteredShifts"></apply-shift-list>
-
-<snui-action-bar *ngIf="project | async; let project" [projectTitle]="project.title" [type]="actionBarType.Organizer">
-  <div class="row">
-    <div class="col-xs-4 col-xs-offset-8">
-      <button class="btn btn-default" [disabled]="!selectedShiftsNo" [routerLink]="['../payment-details']">Next</button>
+<ng-container *ngIf="project$ | async; let project">
+    <snui-header-simple [imageUrl]="(project.images.length > 0 ? project.images[0].imageUrl : 'https://placeimg.com/1140/410/people/grayscale')">
+      Confirm Your Spot:<br>Select Shifts
+    </snui-header-simple>
+    
+    <div class="segment">
+      <p class="card-text">Now that you've been approved for {{project.title}}, let's set up your schedule.</p>
     </div>
-  </div>
-</snui-action-bar>
+    
+    <apply-shifts-selected [appShifts]="appShifts$ | async" [requiredShiftsCount]="requiredShiftsCount$ | async"></apply-shifts-selected>
+    
+    <apply-shift-filter [allShifts]="shifts$" (activeFilters)="filterShifts($event)"></apply-shift-filter>
+    <apply-shift-list [shifts]="shiftsAvailable$ | async"></apply-shift-list>
+    
+    <snui-action-bar [projectTitle]="project.title" [type]="actionBarType.Organizer">
+      <div class="row">
+        <div class="col-xs-4 col-xs-offset-8">
+          <button class="btn btn-default" [disabled]="(needShiftsCount$ | async) !== 0" [routerLink]="['../../../payment-details']">Next</button>
+        </div>
+      </div>
+    </snui-action-bar>
+</ng-container>

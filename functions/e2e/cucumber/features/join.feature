@@ -23,6 +23,7 @@ Feature: Join
       | submittedOn | 2017-10-11T03:32:06.128Z |
     And an "applicationTeam" exists for the current user and project "BABP" with the following values:
       | createdOn | 2017-10-11T03:31:28.908Z |
+      | joinedOn | 2017-10-11T03:31:28.908Z |
       | answer | This is my team answer |
       | question | Some question |
       | teamKey | BABP1 |
@@ -33,4 +34,13 @@ Feature: Join
     Then I should see "Bell Arts Block Party" in ".project-title"
 
     When I click on "#join"
-    Then I should be on "/join/BABP1"
+    Then I should be on "/apply/BABP1/shift"
+
+    When I click on the "apply-shift-list .icon-desc-container" element containing "11:30 am"
+    Then I should see "11:30 am" in "apply-shifts-selected"
+
+    When I click on the ".shift-selected a" element containing "delete"
+    Then I should not see "11:30 am" in "apply-shifts-selected"
+
+    When I click on the "apply-shift-list .icon-desc-container" element containing "9:30 am"
+    Then I should see "9:30 am" in "apply-shifts-selected"

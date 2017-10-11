@@ -10,4 +10,12 @@
         to the Sparks.Network to check any time!
     </p>
   </div>
+  <div *ngIf="app.status=='Accepted'" class="segment">
+      <p class="card-text">
+          You're accepted!  Join the project to confirm your engagement.
+      </p>
+      <div class="user-action-container">
+        <a id="join" [routerLink]="['/apply', app.oppKey, 'shift']" class="btn btn-bordered btn-block" title="Join Now">Join Now</a>
+      </div>
+  </div>
 </div>

@@ -7,9 +7,9 @@ import { connectedResolver } from '../../../../../../lib/angular-connected-resol
 import { ContribQueryService } from './contrib-query.service'
 
 import { list } from '../../../../../../lib/firebase-angular-observables'
-import { SorryService } from "../../sorry/index";
-import { contribsTransform, Contrib } from "../../../../../../universal/domain/contrib";
-import { Observable } from "rxjs/Observable";
+import { SorryService } from '../../sorry/index'
+import { contribsTransform, Contrib } from '../../../../../../universal/domain/contrib'
+import { Observable } from 'rxjs/Observable'
 
 @Injectable()
 export class ResolveContribByOppKey implements Resolve<any> {

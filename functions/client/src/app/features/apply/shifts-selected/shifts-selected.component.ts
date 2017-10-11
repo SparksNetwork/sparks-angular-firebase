@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
@@ -13,6 +13,9 @@ import { ApplicationShiftActionService } from '../../../core/sndomain/applicatio
   templateUrl: './shifts-selected.component.html',
 })
 export class ShiftsSelectedComponent implements OnInit {
+  @Input() appShifts: ApplicationShift[]
+  @Input() requiredShiftsCount: number
+
   public selectedShifts: Observable<Shift[]>;
   public availableShiftsNo = 0;
   private applicationShifts: ApplicationShift[];
@@ -21,6 +24,7 @@ export class ShiftsSelectedComponent implements OnInit {
     private route: ActivatedRoute,
     public applicationShiftAction: ApplicationShiftActionService
   ) {
+
     this.selectedShifts = Observable.combineLatest(this.route.snapshot.data['applicationShift'], this.route.snapshot.data['shift'])
       .map(([applicationShifts, shifts]: [ApplicationShift[], Shift[]]) => {
         if (!(shifts && shifts.length)) { return [] }
@@ -37,8 +41,8 @@ export class ShiftsSelectedComponent implements OnInit {
   }
 
   delete(key: string) {
-    const appShift = this.applicationShifts.find(as => as.shiftKey === key);
-    this.applicationShiftAction.delete(appShift.$key).subscribe();
+    // const appShift = this.applicationShifts.find(as => as.shiftKey === key);
+    this.applicationShiftAction.delete(key).subscribe();
   }
 
   deleteAll() {

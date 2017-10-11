@@ -1,8 +1,8 @@
-<ng-container *ngIf="selectedShifts | async; let selectedShifts">
-    <div class="segment" *ngIf="selectedShifts.length">
+<!-- <ng-container *ngIf="appShifts | async; let appShifts"> -->
+    <div class="segment" *ngIf="appShifts.length">
         <div class="row">
             <div class="col-xs-8">
-                <h3 class="segment-title">Selected Shifts ({{selectedShifts.length}} of {{availableShiftsNo}})</h3>
+                <h3 class="segment-title">Your Shifts ({{appShifts.length}} of {{requiredShiftsCount}})</h3>
             </div>
             <div class="col-xs-4 segment-title-link-container">
                 <a (click)="deleteAll()">delete all<span class="ic ic-close" aria-hidden="true"></span></a>
@@ -10,8 +10,9 @@
         </div>
         <div class="you-get-give-join timeline">
             <ul>
-                <li *ngFor="let shift of (selectedShifts|snSortShiftsByDate)">
-                    <div class="icon-desc-container">
+                <li *ngFor="let appShift of appShifts" class="shift-selected">
+                            <!-- <li *ngFor="let appShift of (appShifts|snSortShiftsByDate)"> -->
+                    <div *ngIf="appShift.shift; let shift" class="icon-desc-container">
                         <div class="icon">
                             <span class="ic {{shift.teamIcon}}"></span>
                         </div>
@@ -23,10 +24,10 @@
                         </div>
                     </div>
                     <div class="karma-point-container">
-                        <a (click)="delete(shift.$key)">delete<span class="ic ic-close" aria-hidden="true"></span></a>
+                        <a (click)="delete(appShift.$key)">delete<span class="ic ic-close" aria-hidden="true"></span></a>
                     </div>
                 </li>
             </ul>
         </div>
     </div>
-</ng-container>
+<!-- </ng-container> -->

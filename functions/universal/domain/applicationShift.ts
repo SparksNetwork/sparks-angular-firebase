@@ -21,7 +21,7 @@ export class ApplicationShiftCollection extends BaseCollection {
     }
 
     public compoundKey(projectKey: string, profileKey: string) {
-        return `${projectKey}-${profileKey}`;
+        return `${projectKey}${profileKey}`;
     }
 }
 

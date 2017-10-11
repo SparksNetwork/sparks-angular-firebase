@@ -703,6 +703,20 @@
     }
   },
   "shift": {
+    "BABP1": {
+      "endDateTime": "2017-09-07T16:30:00.700Z",
+      "startDateTime": "2017-08-07T14:30:00.700Z",
+      "teamIcon": "glyphicon-grain",
+      "teamKey": "BABP1",
+      "teamTitle": "Mindfull Feeding"
+    },
+    "BABP2": {
+      "endDateTime": "2017-09-07T18:30:00.700Z",
+      "startDateTime": "2017-09-07T16:30:00.700Z",
+      "teamIcon": "glyphicon-grain",
+      "teamKey": "BABP1",
+      "teamTitle": "Mindfull Feeding"
+    },
     "KPC1": {
       "endDateTime": "2017-09-07T16:30:00.700Z",
       "startDateTime": "2017-08-07T14:30:00.700Z",
