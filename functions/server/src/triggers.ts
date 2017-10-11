@@ -18,6 +18,7 @@ function denormalizerFromParentChange(
     const parentKey = evt.params.key
     const updateDenormalizedField = key => {
       console.log(
+        new Date(),
         'denorm/parent:',
         `${parentCollection.ref.key}/${parentKey} =>`,
         `${childCollection.ref.key}/${key}/${denormalizedField}`,
@@ -41,6 +42,7 @@ function denormalizerFromChildForeignKeyChange(
     const parentKey = evt.data.val()
     const childKey = evt.params.key
     console.log(
+      new Date(),
       'denorm/child: ',
       `${childCollection.ref.key}/${childKey}/${denormalizedField} <=`,
       `${parentCollection.ref.key}/${parentKey}`
@@ -48,7 +50,8 @@ function denormalizerFromChildForeignKeyChange(
     return parentCollection.one(parentKey)
       .once('value')
       .then(snap => snap.val())
-      .then(val => childCollection.one(childKey).child(denormalizedField).set(val))
+      .then(val => val && childCollection.one(childKey).child(denormalizedField).set(val))
+      .then(val => console.log('denorm/child complete', val))
   }
 }
 
@@ -87,9 +90,13 @@ const teamToOATDenormalizers = denormalizers(
 )
 
 console.log('TRIGGERS: exporting')
-export const teamToOATTeamOnWrite =
+export const teamToOATTeamOnUpdate =
   functions.database.ref('/team/{key}')
     .onUpdate(teamToOATDenormalizers.onParentChange)
+
+export const teamToOATTeamOnCreate =
+  functions.database.ref('/team/{key}')
+    .onCreate(teamToOATDenormalizers.onParentChange)
 
 export const teamToOATOATOnUpdate =
   functions.database.ref('/oppAllowedTeam/{key}/teamKey')

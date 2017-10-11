@@ -14,6 +14,7 @@ import { Application } from "../../../../../universal/domain/application";
 export class HomeComponent implements OnInit {
   public projects: Observable<Project[]>;
   public applications: Observable<Application[]>;
+  public profile: Observable<any>
   public userPrefferedName: string;
   public userMessage: string;
   public userImageUrl: string;
@@ -25,21 +26,21 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.projects = this.route.snapshot.data['projects']
     this.applications = this.route.snapshot.data['applications']
+    this.profile = this.route.data.switchMap(data => data['profile'])
 
-    this.auth.current.subscribe(user => {
-      if (user) {
-        this.userPrefferedName = user.displayName;
+    this.profile.subscribe(profile => {
+      if (profile) {
+        console.log('profile', profile)
+        this.userPrefferedName = profile.preferredName || profile.legalName
         this.userMessage = "You just got 20 Karma Points and opened 1 quest and 2 badges";
-        this.userImageUrl = user.photoURL || 'assets/img/profile'+  Math.floor(Math.random()*(10)+1) +  '.png';
+        this.userImageUrl = profile.photoURL || 'assets/img/profile'+  Math.floor(Math.random()*(10)+1) +  '.png';
         this.userProfileScore = 20;
         this.isAuthed = true;
-      }
-      else {
+      } else {
         this.userPrefferedName = 'Guest';
         this.userMessage = "You first need to sign up before you can level up";
         this.userImageUrl = 'assets/img/profile'+  Math.floor(Math.random()*(10)+1) +  '.png';
         this.userProfileScore = 0;
-        
         this.isAuthed = false;
       }
     })

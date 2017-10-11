@@ -20,7 +20,8 @@
     "deploy:server": "npm run use && firebase deploy --only functions",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "cross-var ng e2e --env=%ANGULAR_ENV%"
+    "e2e": "cross-var ng e2e --env=%ANGULAR_ENV%",
+    "e2e:focus": "cross-var ng e2e --serve=false --config protractor.focus.conf.js --env=%ANGULAR_ENV%"
   },
   "private": true,
   "dependencies": {
@@ -71,6 +72,7 @@
     "concurrently": "^3.5.0",
     "cross-env": "^5.0.5",
     "cross-var": "^1.0.3",
+    "cucumber": "^3.0.4",
     "firebase-functions-local": "^3.0.3",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -81,8 +83,13 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "multiple-cucumber-html-reporter": "^1.1.0",
     "protractor": "~5.1.2",
     "protractor-beautiful-reporter": "^0.5.0",
+    "protractor-cucumber-framework": "^4.0.8",
+    "protractor-multiple-cucumber-html-reporter-plugin": "^1.2.3",
+    "ramda": "^0.25.0",
+    "sleep-promise": "^2.0.0",
     "ts-node": "~3.3.0",
     "tslint": "~5.7.0",
     "typescript": "~2.5.3",

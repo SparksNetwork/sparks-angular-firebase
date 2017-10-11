@@ -16,7 +16,7 @@
           </button>
       <ul *ngIf='opps | async' class="dropdown-menu" aria-labelledby="dropdownMenuOpportunity">
         <li *ngFor="let _opp of opps | async">
-          <a [routerLink]="['/project', _opp.projectKey, 'opp', _opp.$key]">
+          <a [routerLink]="['/get-involved', _opp.projectKey, 'opp', _opp.$key]">
             <div class="row">
               <div class="col-xs-6">{{_opp.title}}</div>
               <div class="col-xs-6">{{_opp.discount | percent:'1.0-0'}} discount</div>

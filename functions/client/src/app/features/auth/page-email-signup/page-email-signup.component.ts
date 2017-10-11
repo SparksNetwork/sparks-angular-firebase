@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { AuthService } from "../../../core/snauth/auth/auth.service";
 
@@ -8,11 +9,15 @@ import { AuthService } from "../../../core/snauth/auth/auth.service";
 })
 export class PageEmailSignupComponent {
 
-  constructor(private auth: AuthService) { }
+  constructor(
+    private auth: AuthService,
+    private route: ActivatedRoute,
+  ) {
+  }
 
   public createWithEmailAndPassword(event) {
     if(!event) return;
     
-    this.auth.createWithEmailAndPassword(event.email, event.password)
+    this.auth.createWithEmailAndPassword(event.email, event.password, this.route.snapshot.paramMap.get('redirectUrl'))
   }
 }

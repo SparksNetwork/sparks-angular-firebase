@@ -2,6 +2,9 @@ import { browser } from 'protractor'
 import * as firebaseAdmin from 'firebase-admin'
 import { USERS } from './fixtures/users'
 import { USERS_WITH_PARTIAL_PROFILE} from './fixtures/users-partial-profile'
+import * as sleep from 'sleep-promise'
+
+import { compose, pick, pickBy } from 'ramda'
 
 function getEnvironment() {
   const envName = process.env['ANGULAR_ENV'] || 'qa'
@@ -23,20 +26,54 @@ export const db = firebaseAdmin.database()
 export const auth = firebaseAdmin.auth()
 
 export function setData(firebasePath, data) {
-  return db.ref(firebasePath).set(data)
+  return db.ref(firebasePath).remove()
+    .then(() => db.ref(firebasePath).set(data))
 }
 
 export function updateData(firebasePath, data) {
   return db.ref(firebasePath).update(data)
 }
 
-export function setUsers(users = USERS) {
-  return Promise.all(
-    users.map(user =>
-      auth.deleteUser(user.uid)
-      .catch(err => { console.log('user did not exist, thats ok')})
-      .then(() => auth.createUser(user))
-    )
+export function addRecord(collection, data) {
+  return db.ref(collection).push(data)
+}
+
+export function setUsers(newUsers = USERS) {
+  return auth.listUsers()
+    .then(result => Promise.all(result.users.map(user => {
+      console.log('deleting user', user.uid)
+      return auth.deleteUser(user.uid)
+    })))
+    .then(() => Promise.all(newUsers.map(user =>
+      auth.createUser(user)
+    )))
+}
+
+export function deleteUsers() {
+  return auth.listUsers()
+  .then(result => Promise.all(result.users.map(user => auth.deleteUser(user.uid))))
+}
+
+export function createUserAndProfile(values: {
+  email: string,
+  password: string,
+  emailVerified?: boolean,
+  legalName?: string,
+  preferredName?: string,
+  phoneNumber?: string,
+  birthday?: string,
+}) {
+  const profile = compose(
+    pick(['legalName', 'preferredName', 'phoneNumber', 'birthday']),
+    pickBy((v, k) => v)
+  )(values)
+
+  return auth.createUser({
+    email: values.email,
+    password: values.password,
+    emailVerified: Boolean(values.emailVerified),
+  }).then(user =>
+    db.ref('profile').child(user.uid).update(profile)
   )
 }
 

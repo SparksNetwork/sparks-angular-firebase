@@ -2,6 +2,7 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router'
 import { Project } from '../../../../../../universal/domain/project';
 import { ActionBarType } from '../../../shared/snui/action-bar/action-bar.component';
+import { Observable } from 'rxjs'
 
 import { AuthService } from '../../../core/snauth/auth/auth.service'
 import {
@@ -18,11 +19,11 @@ import { FormCompleteProfileComponent } from '../form-complete-profile/form-comp
 export class PageCompleteProfileComponent implements OnInit {
   @ViewChild(FormCompleteProfileComponent) public profForm: FormCompleteProfileComponent
 
-  public oppKey: string
   public navigateTo: string;
   public editAllMode: boolean;
-  public project: Project;
-  public actionBarType = ActionBarType;
+  public project$: Observable<Project>
+  public profile$: Observable<any>
+  public actionBarType = ActionBarType
 
   constructor(
     public router: Router,
@@ -31,26 +32,16 @@ export class PageCompleteProfileComponent implements OnInit {
     public action: ProfileActionService,
     public query: ProfileQueryService,
   ) {
-    this.oppKey = this.route.parent.snapshot.paramMap.get('oppKey');
-
     this.route.data.subscribe(data => {
       this.navigateTo = data.navigateTo;
       this.editAllMode = this.navigateTo === 'review-detail'
     });
-
+    this.project$ = this.route.data.switchMap(data => data['project'])
+    this.profile$ = this.route.data.switchMap(data => data['profile'])
   }
 
   ngOnInit() {
-    this.route.snapshot.data['project'].subscribe(data => {
-      this.project = data;
-    });
-
-    this.route.parent.snapshot.data['profile'].subscribe(profile => {
-      this.profForm.profileForm.get('legalName').setValue(profile.legalName);
-      this.profForm.profileForm.get('preferredName').setValue(profile.preferredName);
-      this.profForm.profileForm.get('phoneNumber').setValue(profile.phoneNumber);
-      this.profForm.profileForm.get('birthday').setValue(profile.birthday);
-    });
+    this.profile$.subscribe(profile => this.profForm.profileForm.patchValue(profile))
   };
 
   public next() {
@@ -83,5 +74,9 @@ export class PageCompleteProfileComponent implements OnInit {
         this.router.navigate(['..', this.navigateTo], { relativeTo: this.route });
       }
     })
+  }
+
+  public imageUrl(project) {
+    return (project.images.length > 0 ? project.images[0].imageUrl : 'https://placeimg.com/1140/410/people/grayscale')
   }
 }

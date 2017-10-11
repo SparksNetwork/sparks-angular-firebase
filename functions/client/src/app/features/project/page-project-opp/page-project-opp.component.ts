@@ -28,7 +28,7 @@ export class PageProjectOppComponent {
     public route: ActivatedRoute
   ) {
     this.project = this.route.snapshot.data['project'];
-    this.opp = this.route.snapshot.data['opp'];
+    this.opp = this.route.data.switchMap(data => data['opp'])
     this.opps = this.route.snapshot.data['opps'];
     this.teams = this.route.snapshot.data['teams'];
     this.benefits = this.route.snapshot.data['benefits'];

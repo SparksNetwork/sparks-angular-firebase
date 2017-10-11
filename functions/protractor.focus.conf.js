@@ -49,6 +49,7 @@ exports.config = {
     ],
     format: 'json:../e2e-report/results.json',
     strict: true,
+    tags: ['@focus'],
   },
 
   plugins: [

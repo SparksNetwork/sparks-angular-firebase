@@ -1,4 +1,4 @@
-<snui-header-simple *ngIf="project" [imageUrl]="(project.images.length > 0 ? project.images[0].imageUrl : 'https://placeimg.com/1140/410/people/grayscale')">
+<snui-header-simple [imageUrl]="imageUrl(project$ | async)">
   Who Are You? Fill In The Blanks.
 </snui-header-simple>
 
@@ -8,13 +8,13 @@
 
 <apply-form-complete-profile [editAllMode]="editAllMode"></apply-form-complete-profile>
 
-<snui-action-bar *ngIf="project" [projectTitle]="project.title" [type]="actionBarType.Organizer">
+<snui-action-bar [projectTitle]="(project$ | async).title" [type]="actionBarType.Organizer">
   <div class="row">
     <div class="col-xs-4">
       <a class="btn btn-default" [routerLink]='["/"]'>Cancel</a>
     </div>
     <div class="col-xs-4 col-xs-offset-4">
-      <button id='next' (click)='next()' [disabled]="!profForm.profileForm.valid" class="btn btn-default">{{editAllMode ? 'Save' : 'Next'}}</button>
+      <button id='next' type='submit' form='profileForm' (click)='next()' [disabled]="!this.profForm.profileForm.valid" class="btn btn-default">{{editAllMode ? 'Save' : 'Next'}}</button>
     </div>
   </div>
 </snui-action-bar>

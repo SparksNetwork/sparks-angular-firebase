@@ -30,7 +30,7 @@ const routes: Routes = [
     path: 'email-action-handler',
     component: PageEmailActionHandlerComponent,
     canActivate: [
-      RequireNoEmailVerification,
+      // RequireNoEmailVerification,
     ]
   },
   {

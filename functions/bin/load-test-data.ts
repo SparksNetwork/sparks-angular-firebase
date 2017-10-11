@@ -1,6 +1,6 @@
 import { validate } from 'jsonschema'
 import { initialize, admin } from '../server/src/firebase-functions-env'
-initialize()
+initialize(false)
 
 const data = require('../e2e/fixtures/fully-loaded.json')
 const schema = require('../../database.model.json')

@@ -1,4 +1,4 @@
-<form novalidate [formGroup]="profileForm">
+<form novalidate [formGroup]="profileForm" id='profileForm'>
   <div class="edit-profile-detalils segment no-brd">
     <div [hidden]="!editAllMode && profileForm.get('legalName').value && profileForm.get('legalName').pristine">
       <div class="form-input" [class.has-error]="!profileForm.get('legalName').valid && profileForm.get('legalName').touched">
@@ -10,6 +10,7 @@
         </div>
       </div>
     </div>
+
     <div [hidden]="!editAllMode && profileForm.get('preferredName').value && profileForm.get('preferredName').pristine">
       <div class="form-input" [class.has-error]="!profileForm.get('preferredName').valid && profileForm.get('preferredName').touched">
         <div class="icon">
@@ -27,10 +28,11 @@
           <span class="ic ic-phone"></span>
         </div>
         <div class="text">
-          <input type="tel" id="phoneNumber" class="form-control" placeholder="What's Your Phone Number?" formControlName="phoneNumber">
+          <input type="text" id="phoneNumber" class="form-control" placeholder="What's Your Phone Number?" formControlName="phoneNumber">
         </div>
       </div>
     </div>
+
     <div [hidden]="!editAllMode && profileForm.get('birthday').value && profileForm.get('birthday').pristine">
       <div class="form-input" [class.has-error]="!profileForm.get('birthday').valid && profileForm.get('birthday').touched">
         <div class="icon">

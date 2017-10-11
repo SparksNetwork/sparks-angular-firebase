@@ -28,6 +28,7 @@ import { ResolveApplication } from '../../core/sndomain/application/index';
 import { ResolveApplicationTeamsByOpp } from './resolve-application-teams-by-opp/resolve-application-teams-by-opp.service';
 import { ResolveApplicationShiftsByOpp } from './resolve-application-shifts-by-opp/resolve-application-shifts-by-opp.service';
 import { ResolveApplicationTeamByApplication } from '../../core/sndomain/applicationTeam/resolve-application-team-by-application.service'
+import { PageTestComponent } from './page-test.component'
 
 const routes: Routes = [
     {
@@ -99,7 +100,8 @@ const routes: Routes = [
                                 component: PageReviewDetailComponent,
                                 resolve: {
                                     teams: ResolveTeamByOppKey,
-                                    appTeams: ResolveApplicationTeamsByOpp,
+                                    appTeams: ResolveApplicationTeamByApplication,
+                                    // appTeams: ResolveApplicationTeamsByOpp,
                                 },
                             },
                             {
@@ -123,7 +125,7 @@ const routes: Routes = [
 
 
             {
-                path: 'apply-cofirmation',
+                path: 'apply-confirmation',
                 component: PageApplyConfirmationComponent,
                 resolve: {
                     project: ResolveProjectByOpp
