@@ -45,7 +45,7 @@ exports.config = {
 
   cucumberOpts: {
     require: [
-      'e2e/cucumber/steps/*.ts'
+      'e2e/cucumber/steps/**/*.ts'
     ],
     format: 'json:../e2e-report/results.json',
     strict: true,

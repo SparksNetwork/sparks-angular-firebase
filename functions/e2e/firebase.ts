@@ -4,6 +4,8 @@ import { USERS } from './fixtures/users'
 import { USERS_WITH_PARTIAL_PROFILE} from './fixtures/users-partial-profile'
 import * as sleep from 'sleep-promise'
 
+import { compose, pick, pickBy } from 'ramda'
+
 function getEnvironment() {
   const envName = process.env['ANGULAR_ENV'] || 'qa'
   console.log('*** running in angular environment', envName)
@@ -25,12 +27,15 @@ export const auth = firebaseAdmin.auth()
 
 export function setData(firebasePath, data) {
   return db.ref(firebasePath).remove()
-    // .then(sleep(2000))
     .then(() => db.ref(firebasePath).set(data))
 }
 
 export function updateData(firebasePath, data) {
   return db.ref(firebasePath).update(data)
+}
+
+export function addRecord(collection, data) {
+  return db.ref(collection).push(data)
 }
 
 export function setUsers(newUsers = USERS) {
@@ -42,14 +47,34 @@ export function setUsers(newUsers = USERS) {
     .then(() => Promise.all(newUsers.map(user =>
       auth.createUser(user)
     )))
+}
 
-  // return Promise.all(
-  //   users.map(user =>
-  //     auth.deleteUser(user.uid)
-  //     .catch(err => { console.log('user did not exist, thats ok')})
-  //     .then(() => auth.createUser(user))
-  //   )
-  // )
+export function deleteUsers() {
+  return auth.listUsers()
+  .then(result => Promise.all(result.users.map(user => auth.deleteUser(user.uid))))
+}
+
+export function createUserAndProfile(values: {
+  email: string,
+  password: string,
+  emailVerified?: boolean,
+  legalName?: string,
+  preferredName?: string,
+  phoneNumber?: string,
+  birthday?: string,
+}) {
+  const profile = compose(
+    pick(['legalName', 'preferredName', 'phoneNumber', 'birthday']),
+    pickBy((v, k) => v)
+  )(values)
+
+  return auth.createUser({
+    email: values.email,
+    password: values.password,
+    emailVerified: Boolean(values.emailVerified),
+  }).then(user =>
+    db.ref('profile').child(user.uid).update(profile)
+  )
 }
 
 export function setUsersWithPartialProfile(users = USERS_WITH_PARTIAL_PROFILE) {
