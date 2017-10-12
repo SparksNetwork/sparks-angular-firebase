@@ -44,3 +44,5 @@ Feature: Join
 
     When I click on the "apply-shift-list .icon-desc-container" element containing "9:30 am"
     Then I should see "9:30 am" in "apply-shifts-selected"
+
+    # CONTINUE: payment
