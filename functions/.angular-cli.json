@@ -28,6 +28,14 @@
         "../../node_modules/font-awesome/css/font-awesome.css",
         "assets/css/style.scss"
       ],
+      "stylePreprocessorOptions": {
+        "includePaths": [
+          "assets/css",
+          "assets/css/scss",
+          "assets/fonts",
+          "assets/img"
+        ]
+      },
       "scripts": [
         "../../node_modules/jquery/dist/jquery.min.js",
         "../../node_modules/bootstrap/dist/js/bootstrap.min.js",

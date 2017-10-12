@@ -19,4 +19,4 @@ Feature: Join
     Then I should see "Wolverine" in ".profile-hero h2"
 
     When I click on ".profile-hero"
-    Then I should see "Wolverine" in ".profile-title"
+    Then I should see "Wolverine" in "h2"

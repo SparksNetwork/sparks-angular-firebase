@@ -30,8 +30,8 @@ $linkedin-color: #1E87BE;
 
 @font-face {
     font-family: 'sparksnetwork';
-    src: url('../fonts/sparksnetwork.eot?7607ua');
-    src: url('../fonts/sparksnetwork.eot?7607ua#iefix') format('embedded-opentype'), url('../fonts/sparksnetwork.ttf?7607ua') format('truetype'), url('../fonts/sparksnetwork.woff?7607ua') format('woff'), url('../fonts/sparksnetwork.svg?7607ua#sparksnetwork') format('svg');
+    src: url('/assets/fonts/sparksnetwork.eot?7607ua');
+    src: url('/assets/fonts/sparksnetwork.eot?7607ua#iefix') format('embedded-opentype'), url('/assets/fonts/sparksnetwork.ttf?7607ua') format('truetype'), url('/assets/fonts/sparksnetwork.woff?7607ua') format('woff'), url('/assets/fonts/sparksnetwork.svg?7607ua#sparksnetwork') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -111,14 +111,14 @@ $linkedin-color: #1E87BE;
 }
 
 .ic-karma-points {
-    background: url('../img/karma_points.svg') top center no-repeat;
+    background: url('/assets/img/karma_points.svg') top center no-repeat;
     width: 25px;
     height: 18px;
     display: block;
 }
 
 .ic-karma-points-white {
-    background: url('../img/karma_points_white.svg') top center no-repeat;
+    background: url('/assets/img/karma_points_white.svg') top center no-repeat;
     width: 35px;
     height: 25px;
     display: block;
@@ -128,7 +128,7 @@ $linkedin-color: #1E87BE;
 }
 
 .ic-progress {
-    background: url('../img/progress_button.svg') top center no-repeat;
+    background: url('/assets/img/progress_button.svg') top center no-repeat;
     width: 26px;
     height: 26px;
 }
@@ -166,19 +166,19 @@ $linkedin-color: #1E87BE;
 }
 
 .ic-opp1 {
-    background: url('../img/opp1.svg') top center no-repeat;
+    background: url('/assets/img/opp1.svg') top center no-repeat;
 }
 
 .ic-opp2 {
-    background: url('../img/opp2.svg') top center no-repeat;
+    background: url('/assets/img/opp2.svg') top center no-repeat;
 }
 
 .ic-opp3 {
-    background: url('../img/opp3.svg') top center no-repeat;
+    background: url('/assets/img/opp3.svg') top center no-repeat;
 }
 
 .ic-opp4 {
-    background: url('../img/opp4.svg') top center no-repeat;
+    background: url('/assets/img/opp4.svg') top center no-repeat;
 }
 
 .ic-password:before {

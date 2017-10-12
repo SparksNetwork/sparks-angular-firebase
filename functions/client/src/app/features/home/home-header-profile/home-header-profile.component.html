@@ -1,0 +1,37 @@
+<!-- <div class="row"> -->
+    <!-- <div class="row home-header-profile"> -->
+      <div class="item">
+        <div class="profile-hero-content">
+  
+          <div class="col-xs-8 text-left dashboard-text">
+            <h2>Hello {{prefferedName}},</h2>
+            <h3>{{message}}</h3>
+            <a *ngIf="!isAuthed" [routerLink]="['/auth','/','signup']" class="btn btn-primary btn-lg" title="Sign Up">Sign Up</a>
+          </div>
+          <div class="col-xs-4 text-center">
+            <div class="profile-img">
+              <div class="img-responsive img-circle" [class.img-isauthed]="isAuthed" [ngStyle]="{ 'background': 'url(' + imageUrl + ')'}">
+                <div *ngIf='profileScore' class="profile-score">{{profileScore}}</div>
+              </div>
+            </div>
+          </div>
+          <!-- TODO parameterize for the authenticated dashboard -->
+          <div class="profile-progress">
+            <div class="col-xs-12 text-right next-level-container">
+              <div class="level-right">
+                <div class="level-label">Next level</div>
+                <div class="current-level">320 /</div>
+                <div class="next-level"> 1300</div>
+              </div>
+              <div class="level-left"><span class="ic ic-karma-points-white"></span></div>
+            </div>
+            <div class="col-xs-12">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:20%"><span class="ic ic-progress"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- </div> -->
+    <!-- </div> -->

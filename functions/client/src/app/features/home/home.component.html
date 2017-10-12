@@ -1,4 +1,5 @@
-<snui-user-header [prefferedName]='userPrefferedName' [message]='userMessage' [imageUrl]='userImageUrl' [profileScore]='userProfileScore' [isAuthed]="isAuthed"></snui-user-header>
+<home-header-profile [prefferedName]='userPrefferedName' [message]='userMessage' [imageUrl]='userImageUrl' [profileScore]='userProfileScore' [isAuthed]="isAuthed"></home-header-profile>
+<!-- <snui-user-header [prefferedName]='userPrefferedName' [message]='userMessage' [imageUrl]='userImageUrl' [profileScore]='userProfileScore' [isAuthed]="isAuthed"></snui-user-header> -->
 <ng-container *ngIf="apps$ | async; let apps" class="row row-small-pad dashboard-projects">
   <!-- <div class="opp-head segment">
     <div class="col-xs-12">

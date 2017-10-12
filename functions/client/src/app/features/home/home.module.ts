@@ -5,11 +5,13 @@ import { HomeRoutingModule, routedComponents } from './home-routing.module'
 
 import { HomeAllProjectsComponent } from './home-all-projects/home-all-projects.component'
 import { HomeApplicationsComponent } from './home-applications/home-applications.component'
+import { HomeHeaderProfileComponent } from './home-header-profile/home-header-profile.component'
 
 @NgModule({
   declarations: [
     HomeAllProjectsComponent,
     HomeApplicationsComponent,
+    HomeHeaderProfileComponent,
     ...routedComponents
   ],
   imports: [
