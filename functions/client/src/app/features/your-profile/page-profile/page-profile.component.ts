@@ -11,7 +11,7 @@ import { ActionBarType } from '../../../shared/snui/action-bar/action-bar.compon
   selector: 'your-profile-page-profile',
   // templateUrl: 'page-profile.component.html'
   template: `
-<snui-header-profile [profile]="profile$ | async"></snui-header-profile>
+<your-profile-header [profile]="profile$ | async"></your-profile-header>
 <h2>{{(profile$ | async).legalName}}</h2>
 `
 })

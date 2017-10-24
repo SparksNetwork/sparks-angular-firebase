@@ -26,9 +26,6 @@ import {
 import {
   OppTitleComponent
 } from './opp'
-import {
-  HeaderProfileComponent
-} from './profile'
 
 const COMPONENTS = [
   HeaderSimpleComponent,
@@ -48,7 +45,6 @@ const COMPONENTS = [
   SortShiftsByDatePipe,
   ProjectTitleComponent,
   OppTitleComponent,
-  HeaderProfileComponent,
 ]
 
 @NgModule({

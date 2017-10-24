@@ -2,11 +2,11 @@ import { Component, Input } from '@angular/core'
 import { Profile } from '../../../../../../universal/domain/profile'
 
 @Component({
-  selector: 'snui-header-profile',
-  templateUrl: 'header-profile.component.html',
-  styleUrls: ['./header-profile.component.scss'],
+  selector: 'your-profile-header',
+  templateUrl: 'header.component.html',
+  styleUrls: ['./header.component.scss'],
 })
-export class HeaderProfileComponent {
+export class HeaderComponent {
 
   @Input() profile: Profile;
 
