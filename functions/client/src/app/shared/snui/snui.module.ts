@@ -26,6 +26,15 @@ import {
 import {
   OppTitleComponent
 } from './opp'
+import {
+  SubheadingComponent
+} from './subheading/subheading.component'
+import {
+  SeparatorComponent
+} from './separator/separator.component'
+import {
+  RowIconComponent
+} from './row-icon/row-icon.component'
 
 const COMPONENTS = [
   HeaderSimpleComponent,
@@ -45,6 +54,9 @@ const COMPONENTS = [
   SortShiftsByDatePipe,
   ProjectTitleComponent,
   OppTitleComponent,
+  SubheadingComponent,
+  SeparatorComponent,
+  RowIconComponent,
 ]
 
 @NgModule({
