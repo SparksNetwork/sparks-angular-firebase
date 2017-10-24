@@ -6,6 +6,25 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import "scss/variables";
 @import "scss/mixins";
 
+// new mixins
+
+.header-block {
+  margin: 0px -15px;
+  padding: 0px 15px;
+  display: block;
+}
+
+.header-text {
+  color: white;
+}
+
+.header-text-label {
+  @extend .header-text;
+  display: block;
+  font-weight: 300;
+  font-size: 14px;
+}
+
 /* demo */
 
 .fake-mobile {

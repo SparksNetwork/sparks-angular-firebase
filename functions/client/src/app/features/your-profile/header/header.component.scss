@@ -1,107 +1,93 @@
-@import "layout";
-@import "variables";
-@import "mixins";
-@import "base";
+@import "style";
 
-.profile-hero {
-  margin-bottom: 25px;
+:host {
   @extend .sn-gradient;
-  .item {
-      min-height: 252px;
-      width: 100%;
-      background-repeat: no-repeat !important;
-      background-position: center center !important;
-      @include background-size(cover !important);
-      padding-top: 50px; // position: relative;
-      .profile-hero-content {
-          @include block-nooverflow;
+  @extend .header-block;
+  @extend .header-text;
+  margin-bottom: 25px;
+  min-height: 280px;
+  padding-top: 50px;
+
+  .summary {
+    @extend .row;
+
+    .badge-count, .trophy-count {
+      @extend .col-xs-3;
+      font-size: 24px;
+      margin-top: 64px;
+  
+      label {
+        @extend .header-text-label;
       }
-      .profile-img {
-          position: relative;
-          width: 135px;
-          height: 135px;
-          display: inline-block;
-          @include Opacity(9.5);
-          margin-bottom: 35px;
-          .img-circle {
-              height: 100%;
-              width: 100%;
-              background-color: #FFF !important;
-              background-size: 92% !important;
-              background-repeat: no-repeat !important;
-              background-position: 5px center !important;
-              margin: 0 auto;
-              @include box-shadow-multiple(inset 12px 12px 2px -3px rgba(38, 172, 223, 0.26), inset 0px 0px 2px 0px rgba(0, 0, 0, 0.5), inset 3px 3px 2px 2px rgba(172, 55, 117, 0.26));
-              &.img-isauthed {
-                  background-size: 100% !important;
-                  background-position: 0 center !important;
-              }
-          }
-          .profile-score {
-              color: $base-dark;
-              font-size: 17px;
-              line-height: 24px;
-              @include box-shadow(0.914px, 0.407px, 6.44px, 0.56px, rgba(0, 0, 0, 0.5), false);
-              background: #FFF;
-              @include border-radius(50%);
-              width: 24px;
-              height: 24px;
-              position: absolute;
-              bottom: 5px;
-              right: 0;
-          }
+    }
+    .trophy-count {
+      @extend .text-right;
+    }
+  
+    .picture {
+      @extend .col-xs-6;
+      @extend .text-center;
+  
+      .image {
+        @extend .img-responsive;
+        @extend .img-circle;
+        @include Opacity(9.5);
+        @include box-shadow-multiple(inset 12px 12px 2px -3px rgba(38, 172, 223, 0.26), inset 0px 0px 2px 0px rgba(0, 0, 0, 0.5), inset 3px 3px 2px 2px rgba(172, 55, 117, 0.26));
+        background-size: 100%;
+        display: inline-block;
+        width: 135px;
+        height: 135px;
       }
-      .badges-trophies-count {
-          font-weight: bold;
+    }
+  }
+
+  .next-level {
+    margin-top: 12px;
+    .karma-needed {
+      @extend .pull-right;
+      @extend .text-right;
+      line-height: 8px;
+      margin-right: 6px;
+      margin-top: 2px;
+      label {
+        @extend .header-text-label;
+        font-size: 12px;
       }
-      .profile-progress {
-          width: 100%;
-          @include block-nooverflow; // position: absolute;
-          // bottom: 0;
-          font-size: 14px;
-          font-weight: normal;
-          .next-level-container {
-              color: #FFF;
-              font-size: 12px;
-              letter-spacing: 0.72px;
-              line-height: 12px;
-              .level-left,
-              .level-right {
-                  display: inline-block;
-              }
-              .level-label {
-                  font-weight: 300;
-                  line-height: 14px;
-              }
-              .current-level {
-                  font-size: 14px;
-                  letter-spacing: 0.56px;
-                  @include Opacity(0.4);
-                  display: inline-block;
-              }
-              .next-level {
-                  font-size: 18px;
-                  letter-spacing: 0.72px;
-                  display: inline-block;
-              }
-          }
-          .progress {
-              margin: 10px 0 25px 0;
-              background-color: transparentize(#FFF, 0.7);
-              height: 10px;
-              overflow: visible;
-              @include border-radius(5px);
-              .progress-bar {
-                  @include border-radius(5px);
-                  background-color: #FFF;
-                  position: relative;
-                  .ic {
-                      position: absolute;
-                      bottom: -7px;
-                      right: -7px;
-                  }
-              }
-          }
+      .current {
+        @include Opacity(0.4);
       }
+      .target {
+        font-size: 18px;
+      }
+    }
+    .karma-icon {
+      @extend .pull-right;
+      @extend .ic;
+      @extend .ic-karma-points-white;
+    }
+  }
+
+  .progress-bar {
+    width: 100%;
+    @include border-radius(5px);
+    height: 10px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    background-color: transparentize(#FFF, 0.7);
+
+    .bar {
+      @include border-radius(5px);
+      background-color: #FFF;
+      position: relative;
+      height: 10px;
+
+      .dot {
+        @extend .ic;
+        @extend .ic-progress;
+        position: absolute;
+        bottom: -7px;
+        right: -7px;
+      }
+    }
   }
 }
