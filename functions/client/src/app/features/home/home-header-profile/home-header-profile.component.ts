@@ -7,11 +7,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 
 export class HomeHeaderProfileComponent implements OnInit {
-    @Input() prefferedName: string;
-    @Input() message: string;
-    @Input() imageUrl: string;
-    @Input() profileScore: number;
-    @Input() isAuthed: boolean;
+  @Input() profile;
+    // @Input() prefferedName: string;
+    // @Input() message: string;
+    // @Input() imageUrl: string;
+    // @Input() profileScore: number;
+    // @Input() isAuthed: boolean;
 
     constructor() { }
 

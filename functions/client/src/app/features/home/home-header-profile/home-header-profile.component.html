@@ -1,17 +1,17 @@
 <!-- <div class="row"> -->
-    <!-- <div class="row home-header-profile"> -->
+    <!-- <div class="profile-hero"> -->
       <div class="item">
         <div class="profile-hero-content">
   
           <div class="col-xs-8 text-left dashboard-text">
-            <h2>Hello {{prefferedName}},</h2>
-            <h3>{{message}}</h3>
+            <h2>Hello {{profile.preferredName || profile.legalName}},</h2>
+            <h3>Message</h3>
             <a *ngIf="!isAuthed" [routerLink]="['/auth','/','signup']" class="btn btn-primary btn-lg" title="Sign Up">Sign Up</a>
           </div>
           <div class="col-xs-4 text-center">
             <div class="profile-img">
-              <div class="img-responsive img-circle" [class.img-isauthed]="isAuthed" [ngStyle]="{ 'background': 'url(' + imageUrl + ')'}">
-                <div *ngIf='profileScore' class="profile-score">{{profileScore}}</div>
+              <div class="img-responsive img-circle" [class.img-isauthed]="profile" [ngStyle]="{ 'background': 'url(' + profile.photoURL + ')'}">
+                <div *ngIf='profileScore' class="profile-score">200</div>
               </div>
             </div>
           </div>

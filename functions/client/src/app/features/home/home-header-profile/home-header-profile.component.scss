@@ -1,24 +1,33 @@
-// @import "layout";
-// @import "variables";
-// @import "mixins";
-// @import "base";
 @import "style";
 
-// :host .home-header-profile {
-// .home-header-profile {
-:host {
+.header-gradient {
   display: block;
-  margin-bottom: 25px;
   @extend .row;
+  margin-bottom: 25px;
   @extend .sn-gradient;
+}
 
+.header-content {
+  min-height: 252px;
+  width: 100%;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  @include background-size(cover !important);
+  padding-top: 50px; // position: relative;
+}
+
+:host {
+  @extend .header-gradient;
+  // margin-bottom: 25px;
+  // @extend .sn-gradient;
   .item {
-      min-height: 252px;
-      width: 100%;
-      background-repeat: no-repeat !important;
-      background-position: center center !important;
-      @include background-size(cover !important);
-      padding-top: 50px; // position: relative;
+    @extend .header-content;
+      // min-height: 252px;
+      // width: 100%;
+      // background-repeat: no-repeat !important;
+      // background-position: center center !important;
+      // @include background-size(cover !important);
+      // padding-top: 50px; // position: relative;
       .profile-hero-content {
           @include block-nooverflow;
       }
