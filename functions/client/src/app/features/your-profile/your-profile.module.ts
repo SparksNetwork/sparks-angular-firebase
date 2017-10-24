@@ -5,6 +5,8 @@ import { YourApplicationRoutingModule, routedComponents } from './your-profile-r
 import { HeaderComponent } from './header/header.component'
 import { RowQuestComponent } from './row-quest/row-quest.component'
 import { SectionQuestsOpenComponent } from './section-quests-open/section-quests-open.component'
+import { SectionBadgesComponent } from './section-badges/section-badges.component'
+import { TileBadgeComponent } from './tile-badge/tile-badge.component'
 
 @NgModule({
   declarations: [
@@ -12,6 +14,8 @@ import { SectionQuestsOpenComponent } from './section-quests-open/section-quests
     HeaderComponent,
     RowQuestComponent,
     SectionQuestsOpenComponent,
+    SectionBadgesComponent,
+    TileBadgeComponent,
   ],
   imports: [
     CommonModule,

@@ -7,18 +7,19 @@ import { ActionBarType } from '../../../shared/snui/action-bar/action-bar.compon
 @Component({
   selector: 'your-profile-page-profile',
   template: `
-<div *ngIf="(profile$ | async); let profile">
-  <your-profile-header [profile]="profile"></your-profile-header>
-  <h2>{{profile.legalName}}</h2>
-  <snui-separator></snui-separator>
-  <your-profile-section-quests-open [quests]='quests$ | async'></your-profile-section-quests-open>
-</div>
+<your-profile-header [profile]="profile$ | async"></your-profile-header>
+<h2>{{(profile$ | async).legalName}}</h2>
+<snui-separator></snui-separator>
+<your-profile-section-quests-open [quests]='quests$ | async'></your-profile-section-quests-open>
+<snui-separator></snui-separator>
+<your-profile-section-badges [badges]='badges$ | async'></your-profile-section-badges>
 `
 })
 
 export class PageProfileComponent {
   public profile$: Observable<Profile>
   public quests$: Observable<{}>
+  public badges$: Observable<{}>
 
   constructor(
     public route: ActivatedRoute,
@@ -28,7 +29,7 @@ export class PageProfileComponent {
       {
         title: 'Apply Yourself',
         description: 'Ask an organizer if you can join their project.',
-        icon: 'glyphicon-grain',
+        icon: 'ic-about',
         karmaReward: 20,
       },
       {
@@ -37,6 +38,36 @@ export class PageProfileComponent {
         icon: 'glyphicon-sunglasses',
         karmaReward: 10,
       }
+    ])
+    this.badges$ = Observable.of([
+      {
+        title: 'I Like Pie',
+        icon: 'ic-gift',
+      },
+      {
+        title: 'People Person',
+        icon: 'glyphicon-sunglasses',
+      },
+      {
+        title: 'Give Me Spreadsheets',
+        icon: 'glyphicon-tower',
+      },
+      {
+        title: 'Test1',
+        icon: 'glyphicon-tree-conifer',
+      },
+      {
+        title: 'Test2',
+        icon: 'ic-envelope',
+      },
+      // {
+      //   title: 'One of Us',
+      //   icon: 'glyphicon-sunglasses',
+      // },
+      // {
+      //   title: 'Precursor',
+      //   icon: 'glyphicon-sunglasses',
+      // }
     ])
   }
 }
