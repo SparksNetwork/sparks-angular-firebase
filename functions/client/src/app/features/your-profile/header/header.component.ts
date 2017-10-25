@@ -11,7 +11,12 @@ export class HeaderComponent {
   @Input() profile: Profile;
   @Input() quests: {}[];
   @Input() badges: {}[];
+  // public defaultPictureUrl: string;
 
-  constructor() { }
+  constructor() {}
+
+  defaultPictureUrl(key: string) {
+    return 'assets/img/profile' + (key.charCodeAt(0) % 10) + '.png'
+  }
 
 }

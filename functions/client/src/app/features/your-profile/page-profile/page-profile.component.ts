@@ -15,6 +15,9 @@ import { ActionBarType } from '../../../shared/snui/action-bar/action-bar.compon
 <your-profile-section-badges [badges]='badges$ | async'></your-profile-section-badges>
 <snui-separator></snui-separator>
 <your-profile-section-member-history [histories]='histories$ | async'></your-profile-section-member-history>
+<div style='position:relative; z-index: 1;'>
+<a class='btn btn-bordered btn-block' routerLink='/auth/%2F/signout'>Sign Out</a>
+</div>
 `
 })
 
@@ -55,14 +58,14 @@ export class PageProfileComponent {
         title: 'Give Me Spreadsheets',
         icon: 'glyphicon-tower',
       },
-      {
-        title: 'Test1',
-        icon: 'glyphicon-tree-conifer',
-      },
-      {
-        title: 'Test2',
-        icon: 'ic-envelope',
-      },
+      // {
+      //   title: 'Test1',
+      //   icon: 'glyphicon-tree-conifer',
+      // },
+      // {
+      //   title: 'Test2',
+      //   icon: 'ic-envelope',
+      // },
       // {
       //   title: 'One of Us',
       //   icon: 'glyphicon-sunglasses',

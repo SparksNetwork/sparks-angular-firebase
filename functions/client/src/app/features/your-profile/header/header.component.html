@@ -1,7 +1,7 @@
 <div class='summary'>
   <div class='badge-count'>{{quests.length || 0}} <label>quests</label></div>
   <div class='picture'>
-    <div class='image' [style.background-image]='"url(" + profile.photoURL + ")"'></div>
+    <div class='image' [style.background-image]='"url(" + (profile.photoURL || defaultPictureUrl(profile.$key)) + ")"'></div>
   </div>
   <div class='trophy-count'>{{badges.length || 0}} <label>badges</label></div>
 </div>

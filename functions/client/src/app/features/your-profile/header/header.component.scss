@@ -33,6 +33,7 @@
         @extend .img-circle;
         @include Opacity(9.5);
         @include box-shadow-multiple(inset 12px 12px 2px -3px rgba(38, 172, 223, 0.26), inset 0px 0px 2px 0px rgba(0, 0, 0, 0.5), inset 3px 3px 2px 2px rgba(172, 55, 117, 0.26));
+        background-color: white;
         background-size: 100%;
         display: inline-block;
         width: 135px;
