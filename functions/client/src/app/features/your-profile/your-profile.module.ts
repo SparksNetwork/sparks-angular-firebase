@@ -7,6 +7,8 @@ import { RowQuestComponent } from './row-quest/row-quest.component'
 import { SectionQuestsOpenComponent } from './section-quests-open/section-quests-open.component'
 import { SectionBadgesComponent } from './section-badges/section-badges.component'
 import { TileBadgeComponent } from './tile-badge/tile-badge.component'
+import { RowMemberHistoryComponent } from './row-member-history/row-member-history.component'
+import { SectionMemberHistoryComponent } from './section-member-history/section-member-history.component'
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { TileBadgeComponent } from './tile-badge/tile-badge.component'
     SectionQuestsOpenComponent,
     SectionBadgesComponent,
     TileBadgeComponent,
+    RowMemberHistoryComponent,
+    SectionMemberHistoryComponent,
   ],
   imports: [
     CommonModule,

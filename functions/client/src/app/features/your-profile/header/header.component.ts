@@ -9,6 +9,8 @@ import { Profile } from '../../../../../../universal/domain/profile'
 export class HeaderComponent {
 
   @Input() profile: Profile;
+  @Input() quests: {}[];
+  @Input() badges: {}[];
 
   constructor() { }
 
