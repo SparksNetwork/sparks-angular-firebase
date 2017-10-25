@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
         console.log('profile', profile)
         this.userPrefferedName = profile.preferredName || profile.legalName
         this.userMessage = "You just got 20 Karma Points and opened 1 quest and 2 badges";
-        this.userImageUrl = profile.photoURL || 'assets/img/profile'+  Math.floor(Math.random()*(10)+1) +  '.png';
+        this.userImageUrl = profile.photoURL || 'assets/img/profile' + (profile.$key.charCodeAt(0) % 10) + '.png'
         this.userProfileScore = 20;
         this.isAuthed = true;
       } else {
