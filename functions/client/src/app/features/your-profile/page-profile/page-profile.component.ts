@@ -16,7 +16,7 @@ import { ActionBarType } from '../../../shared/snui/action-bar/action-bar.compon
 <snui-separator></snui-separator>
 <your-profile-section-member-history [histories]='histories$ | async'></your-profile-section-member-history>
 <div style='position:relative; z-index: 1;'>
-<a class='btn btn-bordered btn-block' [routerLink]='["/auth", "/", "signout"]'>Sign Out</a>
+<a id='signout' class='btn btn-bordered btn-block' [routerLink]='["/auth", "/", "signout"]'>Sign Out</a>
 </div>
 `
 })
