@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: './features/auth/auth.module#AuthModule'
   },
   {
+    path: 'organize',
+    loadChildren: './features/organize/organize.module#OrganizeModule'
+  },
+  {
     path: '',
     loadChildren: './features/appbar/appbar.module#AppbarModule'
   },
