@@ -1,20 +1,11 @@
-import { ProjectsState, projectReducer as projects } from './project'
+import { EntState } from './ngrx-ents'
+import { Project, projectReducer as project } from './project'
 
 export const reducer = {
-  projects,
-}
-
-export interface EntState<T> {
-  loaded: boolean,
-  loading: boolean,
-  values: T,
-}
-
-export interface EntsState<T> {
-  [key: string]: EntState<T>
+  project,
 }
 
 export interface State {
-  projects: ProjectsState
+  project: EntState<Project>
 }
 

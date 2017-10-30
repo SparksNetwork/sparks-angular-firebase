@@ -34,12 +34,13 @@ export class RoutedHomeComponent {
 
     this.project$ = this.projectKey$
       .switchMap(key => this.projects.one(key))
-      .share()
 
     this.values$ = this.project$
       .pluck('values')
 
     this.loading$ = this.project$.pluck('loading')
     this.loaded$ = this.project$.pluck('loaded')
+
+    this.project$.subscribe(p => console.log('organize', p))
   }
 }
