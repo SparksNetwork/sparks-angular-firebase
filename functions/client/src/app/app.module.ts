@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store'
 import { EffectsModule } from '@ngrx/effects'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
-
+import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store'
 import { AngularFireModule } from 'angularfire2'
 import { AngularFireDatabaseModule } from 'angularfire2/database'
 
@@ -31,6 +31,8 @@ export function reducer(state = {}, action) { return state }
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25 }),
     AppRoutingModule,
+    StoreRouterConnectingModule,
+    StoreModule.forFeature('router', routerReducer),
     SNAuthModule,
     SNDomainModule,
     SorryModule,

@@ -2,7 +2,6 @@ import { Component } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { Observable } from 'rxjs/Observable'
 import { ProjectService } from '../../../core/snents/project.service'
-
 // import { Store } from '@ngrx/store'
 
 import { Project } from '../../../core/snents/project.model'
@@ -27,6 +26,7 @@ export class RoutedHomeComponent {
   constructor(
     public route: ActivatedRoute,
     public projects: ProjectService,
+    // public params$: RouteParams,
     // public store: Store<IState>
   ) {
     this.projectKey$ = this.route.params.map(({projectKey}) => projectKey)
