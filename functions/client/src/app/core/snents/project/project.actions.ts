@@ -17,15 +17,3 @@ export namespace ProjectActions {
 
   export type All = Fetch | FetchSuccess
 }
-
-// export class ProjectFetch implements Action {
-//   readonly type = PROJECT_FETCH
-//   constructor(public payload: string) {}
-// }
-
-// export class ProjectFetchSuccess implements Action {
-//   readonly type = PROJECT_FETCH_SUCCESS
-//   constructor(public key: string, public values: Object) {}
-// }
-
-// export type All = ProjectFetch | ProjectFetchSuccess
