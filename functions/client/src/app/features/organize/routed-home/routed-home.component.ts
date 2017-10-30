@@ -1,38 +1,47 @@
 import { Component } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { Observable } from 'rxjs/Observable'
+import { ConnectableObservable } from 'rxjs'
 import { ProjectService } from '../../../core/snents/project.service'
-// import { Store } from '@ngrx/store'
 
+import { EntState } from '../../../core/snents/reducer'
 import { Project } from '../../../core/snents/project.model'
-// import { State } from 
-// import { IState } from '../../../store/interface'
 
 @Component({
   selector: 'organize-routed-home',
   template: `
 <h1>Organize-Home</h1>
-<div *ngIf="(project$ | async); let project">
+<div *ngIf='loading$ | async'>
+  Loading...
+</div>
+<div *ngIf='(values$ | async); let project'>
   <h1>{{project.title}}</h1>
-  <h2>{{(projectKey$ | async)}}</h2>
-  <p>wat</p>
+  <p>{{project.description}}</p>
 </div>
 `
 })
 export class RoutedHomeComponent {
   public projectKey$: Observable<string>
-  public project$: Observable<Project>
+  public project$: Observable<EntState<Project>>
+  public loading$: Observable<boolean>
+  public loaded$: Observable<boolean>
+  public values$: Observable<Project>
 
   constructor(
     public route: ActivatedRoute,
     public projects: ProjectService,
-    // public params$: RouteParams,
-    // public store: Store<IState>
   ) {
-    this.projectKey$ = this.route.params.map(({projectKey}) => projectKey)
-      .do(pk => console.log('component/projectKey', pk))
+    this.projectKey$ = this.route.params
+      .map(({projectKey}) => projectKey)
+
     this.project$ = this.projectKey$
       .switchMap(key => this.projects.one(key))
-      .do(p => console.log('component/project', p))
+      .share()
+
+    this.values$ = this.project$
+      .pluck('values')
+
+    this.loading$ = this.project$.pluck('loading')
+    this.loaded$ = this.project$.pluck('loaded')
   }
 }

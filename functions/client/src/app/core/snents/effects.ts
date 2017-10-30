@@ -18,4 +18,5 @@ export class ProjectEffects {
     this.actions$.ofType<ProjectActions.ProjectFetch>(ProjectActions.PROJECT_FETCH)
       .switchMap(({payload}) => this.af.object(`/project/${payload}`).snapshotChanges())
       .map(snap => new ProjectActions.ProjectFetchSuccess(snap.key, snap.payload.val()))
+      // .delay(3000)
 }

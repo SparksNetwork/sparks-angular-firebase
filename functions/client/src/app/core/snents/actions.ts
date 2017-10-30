@@ -10,7 +10,7 @@ export class ProjectFetch implements Action {
 
 export class ProjectFetchSuccess implements Action {
   readonly type = PROJECT_FETCH_SUCCESS
-  constructor(public key: string, public value: Object) {}
+  constructor(public key: string, public values: Object) {}
 }
 
 export type All = ProjectFetch | ProjectFetchSuccess

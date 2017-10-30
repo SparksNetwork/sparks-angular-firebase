@@ -2,14 +2,13 @@ import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs/Observable'
 import { AngularFireDatabase } from 'angularfire2/database'
 import { Store } from '@ngrx/store'
-// import { Project } from '../../store/project/project.model'
+import { Project } from './project.model'
 
 import { ProjectFetch } from './actions'
 
-// import { IState } from '../../store/interface'
-
 @Injectable()
 export class ProjectService {
+  public items: {[key: string]: Observable<any>} = {}
 
   constructor(
     public af: AngularFireDatabase,
@@ -17,23 +16,19 @@ export class ProjectService {
   ) {}
 
   public one(key: string) {
-    return this.store.select('ents').select('project')
-      .map(projects => projects[key])
-      .do(project => {
-        console.log('service/project', project)
+    if (!this.items[key]) {
+      this.items[key] = this.store
+        .select('ents').select('project').select(key)
+        .map(p => p || {loading: false, loaded: false, values: {}})
+        .shareReplay(1)
+
+      this.items[key].subscribe(project => {
         if (!project || (!project.loaded && !project.loading)) {
-          console.log('service/dispatch fetch')
           this.store.dispatch(new ProjectFetch(key))
         }
       })
+    }
+    return this.items[key]
   }
 
 }
-
-    // return this.store.select('project')
-    //   .map(projects => projects[key])
-    //   .do(project => {
-    //     if (project.loaded) {
-    //       this.store.dispatch(new ProjectFetch(key))
-    //     }
-    //   })
