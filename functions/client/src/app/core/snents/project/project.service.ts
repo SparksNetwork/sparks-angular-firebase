@@ -4,7 +4,7 @@ import { AngularFireDatabase } from 'angularfire2/database'
 import { Store } from '@ngrx/store'
 import { Project } from './project.model'
 
-import { ProjectFetch } from './actions'
+import { ProjectActions } from './project.actions'
 
 @Injectable()
 export class ProjectService {
@@ -18,13 +18,13 @@ export class ProjectService {
   public one(key: string) {
     if (!this.items[key]) {
       this.items[key] = this.store
-        .select('ents').select('project').select(key)
+        .select('ents').select('projects').select(key)
         .map(p => p || {loading: false, loaded: false, values: {}})
         .shareReplay(1)
 
-      this.items[key].subscribe(project => {
-        if (!project || (!project.loaded && !project.loading)) {
-          this.store.dispatch(new ProjectFetch(key))
+      this.items[key].subscribe(item => {
+        if (!item || (!item.loaded && !item.loading)) {
+          this.store.dispatch(new ProjectActions.Fetch(key))
         }
       })
     }

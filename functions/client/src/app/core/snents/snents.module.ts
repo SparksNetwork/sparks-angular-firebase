@@ -2,11 +2,9 @@ import { NgModule } from '@angular/core'
 import { StoreModule } from '@ngrx/store'
 import { EffectsModule } from '@ngrx/effects'
 
-import { ProjectService } from './project.service'
-import { ProjectEffects } from './effects'
+import { ProjectService, ProjectEffects } from './project'
 
-import { reducer } from './reducer'
-// export function reducer(state = {}, action) { return state }
+import { reducer } from './snents.reducer'
 
 @NgModule({
   imports: [

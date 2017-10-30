@@ -1,11 +1,9 @@
 import { Component } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { Observable } from 'rxjs/Observable'
-import { ConnectableObservable } from 'rxjs'
-import { ProjectService } from '../../../core/snents/project.service'
+import { Project, ProjectService } from '../../../core/snents/project'
 
-import { EntState } from '../../../core/snents/reducer'
-import { Project } from '../../../core/snents/project.model'
+import { EntState } from '../../../core/snents/snents.reducer'
 
 @Component({
   selector: 'organize-routed-home',
