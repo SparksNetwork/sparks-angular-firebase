@@ -9,6 +9,8 @@ import { RouterStateSnapshot } from '@angular/router'
 import { AngularFireModule } from 'angularfire2'
 import { AngularFireDatabaseModule } from 'angularfire2/database'
 
+import { SuiModule } from 'ng2-semantic-ui'
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -41,6 +43,7 @@ export class CustomSerializer implements RouterStateSerializer<RouterState> {
     AngularFireDatabaseModule,
     StoreModule.forRoot({router: routerReducer}),
     EffectsModule.forRoot([]),
+    SuiModule,
     AppRoutingModule,
     StoreRouterConnectingModule,
     SNAuthModule,
