@@ -32,8 +32,11 @@ import { EntState, IdxState } from '../../core/snents/ngrx-ents'
   </div>
 </div>
 <div class='ui container'>
+  <h1 class='ui header' style='padding: 1em 0em;'>
+    These projects need your help!
+  </h1>
   <div *ngIf='loading$ | async'>
-  <div class='ui huge text loader active'>Loading...</div>
+    <div class='ui huge text loader active'>Loading...</div>
   </div>
   <div *ngIf='(keys$ | async); let keys' class='ui three stackable cards'>
     <explore-card-project *ngFor='let key of keys' [key]='key' class='card'>
