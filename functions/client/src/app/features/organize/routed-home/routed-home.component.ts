@@ -2,8 +2,9 @@ import { Component } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { Observable } from 'rxjs/Observable'
 import { Project, ProjectService } from '../../../core/snents/project'
+import { Opp, OppService } from '../../../core/snents/opp'
 
-import { EntState } from '../../../core/snents/snents.reducer'
+import { ItemState, IdxState } from '../../../core/snents/ngrx-ents'
 
 @Component({
   selector: 'organize-routed-home',
@@ -15,19 +16,27 @@ import { EntState } from '../../../core/snents/snents.reducer'
 <div *ngIf='(values$ | async); let project'>
   <h1>{{project.title}}</h1>
   <p>{{project.description}}</p>
+  <div *ngIf='(oppKeys$ | async); let oppKeys'>
+    <div *ngFor='let oppKey of oppKeys'>
+      {{oppKey}}
+    </div>
+  </div>
 </div>
 `
 })
 export class RoutedHomeComponent {
   public projectKey$: Observable<string>
-  public project$: Observable<EntState<Project>>
+  public project$: Observable<ItemState<Project>>
   public loading$: Observable<boolean>
   public loaded$: Observable<boolean>
   public values$: Observable<Project>
+  public opps$: Observable<IdxState>
+  public oppKeys$: Observable<string[]>
 
   constructor(
     public route: ActivatedRoute,
     public projects: ProjectService,
+    public opps: OppService,
   ) {
     this.projectKey$ = this.route.params
       .map(({projectKey}) => projectKey)
@@ -37,6 +46,12 @@ export class RoutedHomeComponent {
 
     this.values$ = this.project$
       .pluck('values')
+
+    this.opps$ = this.projectKey$
+      .switchMap(key => this.opps.by('projectKey', key))
+
+    this.oppKeys$ = this.opps$
+      .pluck('keys')
 
     this.loading$ = this.project$.pluck('loading')
     this.loaded$ = this.project$.pluck('loaded')

@@ -4,34 +4,34 @@ import { AngularFireDatabase } from 'angularfire2/database'
 import { Action } from '@ngrx/store'
 import { Actions, Effect } from '@ngrx/effects'
 
-import { ProjectActions } from './project.actions'
+import { OppActions } from './opp.actions'
 
 @Injectable()
-export class ProjectEffects {
+export class OppEffects {
   constructor(
     public actions$: Actions,
     public af: AngularFireDatabase,
   ) {}
 
   @Effect()
-  fetchProject: Observable<Action> =
-    this.actions$.ofType<ProjectActions.Fetch>(ProjectActions.FETCH)
-      .switchMap(({payload}) => this.af.object(`/project/${payload}`).snapshotChanges())
-      .map(snap => new ProjectActions.FetchSuccess({key: snap.key, values: snap.payload.val()}))
+  fetch: Observable<Action> =
+    this.actions$.ofType<OppActions.Fetch>(OppActions.FETCH)
+      .switchMap(({payload}) => this.af.object(`/opp/${payload}`).snapshotChanges())
+      .map(snap => new OppActions.FetchSuccess({key: snap.key, values: snap.payload.val()}))
 
   @Effect()
   fetchBy: Observable<Action> =
-    this.actions$.ofType<ProjectActions.FetchBy>(ProjectActions.FETCH_BY)
+    this.actions$.ofType<OppActions.FetchBy>(OppActions.FETCH_BY)
       .switchMap(action =>
-        this.af.list('/project').snapshotChanges()
+        this.af.list('/opp', ref => ref.orderByChild(action.payload.field).equalTo(action.payload.value)).snapshotChanges()
           .switchMap(snap => {
-            const idxSuccess = new ProjectActions.FetchBySuccess({
+            const idxSuccess = new OppActions.FetchBySuccess({
               field: action.payload.field,
               value: action.payload.value,
               keys: snap.map(s => s.key),
             })
             const itemSuccesses = snap.map(s =>
-              new ProjectActions.FetchSuccess({
+              new OppActions.FetchSuccess({
                 key: s.key,
                 values: s.payload.val()
               })

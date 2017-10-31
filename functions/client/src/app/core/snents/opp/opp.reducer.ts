@@ -1,56 +1,13 @@
-import { ActionReducer, Action, combineReducers } from '@ngrx/store'
+import { ActionReducer, ActionReducerMap, Action, combineReducers } from '@ngrx/store'
 import { OppActions } from './opp.actions'
 import { Opp } from './opp.model'
-import { EntState, EntsState } from '../snents.reducer'
+import { makeItemReducer, makeIdxReducer } from '../ngrx-ents'
 
-export type OppState = EntState<Opp>
-export type OppsState = EntsState<Opp>
+export const entReducer = combineReducers({
+  items: makeItemReducer<Opp, OppActions.All>(OppActions),
+  idx: makeIdxReducer<OppActions.All>(OppActions),
+})
 
-export function projectReducer(state: OppsState = {}, action: OppActions.All) {
-  switch (action.type) {
-    case OppActions.FETCH: {
-      return {
-        ...state,
-        [action.payload]: {
-          loading: true,
-        }
-      }
-    }
-    case OppActions.FETCH_SUCCESS: {
-      return {
-        ...state,
-        [action.key]: {
-          loading: false,
-          loaded: true,
-          values: action.values,
-        }
-      }
-    }
-    case OppActions.FETCH_BY: {
-      return {
-        ...state,
-        idx: {
-          ...state.idx,
-          [action.field]: {
-            ...state.idx[action.field],
-            [action.value]: {
-              loading: true
-            }
-          }
-        }
-      }
-    }
-    case OppActions.FETCH_BY_SUCCESS: {
-      return {
-        ...state,
-        idx: {
-          ...state.idx,
-          
-        }
-      }
-    }
-    default: {
-      return state
-    }
-  }
+export function oppReducer(state, action) {
+  return entReducer(state, action)
 }

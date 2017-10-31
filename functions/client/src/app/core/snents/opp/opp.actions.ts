@@ -14,17 +14,17 @@ export namespace OppActions {
 
   export class FetchSuccess implements Action {
     readonly type = FETCH_SUCCESS
-    constructor(public key: string, public values: Object) {}
+    constructor(public payload: {key: string, values: Object}) {}
   }
 
   export class FetchBy implements Action {
     readonly type = FETCH_BY
-    constructor(public field: string, public value: string) {}
+    constructor(public payload: {field: string, value: string}) {}
   }
 
   export class FetchBySuccess implements Action {
     readonly type = FETCH_BY_SUCCESS
-    constructor(public rows: any[]) {}
+    constructor(public payload: {field: string, value: string, keys: string[]}) {}
   }
 
   export type All = Fetch | FetchSuccess | FetchBy | FetchBySuccess
