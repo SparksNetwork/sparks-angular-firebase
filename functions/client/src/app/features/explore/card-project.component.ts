@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, Input, OnInit, HostBinding } from '@angular/core'
 import { Observable } from 'rxjs/Observable'
 import { Project, ProjectService } from '../../core/snents/project'
 
@@ -6,9 +6,9 @@ import { EntState, ItemState } from '../../core/snents/ngrx-ents'
 
 @Component({
   selector: 'explore-card-project',
+  styleUrls: ['./card-project.component.scss'],
   template: `
-<div class='image'>
-  <img [src]='imageUrl$ | async' style='height: 240px;'/>
+<div class='image' [style.backgroundImage]='"url(" + (imageUrl$ | async) + ")"'>
 </div>
 <div class='content'>
   <div class='header'>{{title$ | async}}</div>
@@ -19,17 +19,14 @@ import { EntState, ItemState } from '../../core/snents/ngrx-ents'
 `
 })
 export class CardProjectComponent implements OnInit {
+  @HostBinding('class') klass = 'card'
+
   @Input() key: string
   public project$: Observable<ItemState<Project>>
   public imageUrl$: Observable<string>
   public title$: Observable<string>
-  // public projectsRecruiting$: Observable<IdxState>
-  // public keys$: Observable<string[]>
-  // public values$: Observable<Project>
-  public loaded$: Observable<boolean>
 
   constructor(
-    // public route: ActivatedRoute,
     public projects: ProjectService,
   ) {
   }
@@ -37,13 +34,10 @@ export class CardProjectComponent implements OnInit {
   ngOnInit() {
     this.project$ = this.projects.one(this.key)
 
-    const values$: Observable<any> = this.project$.pluck('values')
+    const values$: Observable<any> = this.project$
+      .pluck('values')
+      .filter(Boolean)
     this.imageUrl$ = values$.map(v => v.images[0].imageUrl)
     this.title$ = values$.pluck('title')
-    // this.projectsRecruiting$ = this.projects.by('isRecruiting', 'true')
-
-    // this.keys$ = this.projectsRecruiting$.pluck('keys')
-
-    this.loaded$ = this.project$.pluck('loaded')
   }
 }
