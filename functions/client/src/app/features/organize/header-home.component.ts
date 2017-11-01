@@ -17,17 +17,18 @@ import { OrganizeUiStateService } from './organize-ui-state.service'
 <div class='header-image' [style.backgroundImage]='"url(" + imageUrl + ")"'>
   <div class='content' style='display: flex; flex-direction: column; justify-content: space-between;'>
 
-  <div class='ui labeled icon fluid five item secondary borderless inverted menu'>
-    <a *ngFor='let context of uiState.contexts'
-      class='item'
-      [routerLink]='uiState.segmentsForContext$(context.routeSegment) | async'
-      [class.active]='uiState.contextLinkActive(context.routeSegment) | async'
-      >
-      <i [class]='context.iconClasses'></i>
-      {{context.label}}
-    </a>
-
-  </div>
+    <div class='ui labeled icon fluid five item secondary borderless inverted menu'>
+      <ng-container>
+      <a *ngFor='let context of uiState.contexts'
+        class='item'
+        [routerLink]='uiState.segmentsForContext$(context.routeSegment) | async'
+        [class.active]='uiState.contextLinkActive(context.routeSegment) | async'
+        >
+        <i [class]='context.iconClasses'></i>
+        {{context.label}}
+      </a>
+      </ng-container>
+    </div>
 
   <div style='display: flex'>
     <div class='small-hide large-hide'>
@@ -38,7 +39,7 @@ import { OrganizeUiStateService } from './organize-ui-state.service'
         {{title}}
       </div>
       <div class='ui header inverted large-hide small-hide'>
-        {{focus}}
+        {{uiState.focusLabel$ | async}}
       </div>
     </div>
   </div>

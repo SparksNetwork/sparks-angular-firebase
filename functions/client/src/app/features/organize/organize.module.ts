@@ -7,6 +7,8 @@ import { SuiModule } from 'ng2-semantic-ui'
 
 import { OrganizeUiStateService } from './organize-ui-state.service'
 import { HeaderHomeComponent } from './header-home.component'
+import { MenuitemsNavComponent } from './menuitems-nav.component'
+import { MenuContextComponent } from './menu-context.component'
 
 // import { reducer } from '../../store/reducer'
 export function reducer(state = {}) { return state }
@@ -15,6 +17,8 @@ export function reducer(state = {}) { return state }
   declarations: [
     ...routedComponents,
     HeaderHomeComponent,
+    MenuitemsNavComponent,
+    MenuContextComponent,
   ],
   imports: [
     CommonModule,

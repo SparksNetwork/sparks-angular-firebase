@@ -1,19 +1,19 @@
 import { Component } from '@angular/core'
-import { ActivatedRoute } from '@angular/router'
+import { Store } from '@ngrx/store'
 import { Observable } from 'rxjs/Observable'
 
 @Component({
   selector: 'snui-dummy',
   template: `
-<h1>{{title$ | async}}</h1>
+<h1 class='ui header'>{{title$ | async}}</h1>
 `
 })
 export class DummyComponent {
   public title$: Observable<string>
 
   constructor(
-    public route: ActivatedRoute
+    public store: Store<any>
   ) {
-    this.title$ = this.route.data.map(d => d['title'] || 'Not Set')
+    this.title$ = this.store.select('router').select('state').select('url')
   }
 }
