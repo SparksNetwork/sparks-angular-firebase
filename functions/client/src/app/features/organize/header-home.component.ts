@@ -16,35 +16,21 @@ import { OrganizeUiStateService } from './organize-ui-state.service'
   template: `
 <div class='header-image' [style.backgroundImage]='"url(" + imageUrl + ")"'>
   <div class='content' style='display: flex; flex-direction: column; justify-content: space-between;'>
-
-    <div class='ui labeled icon fluid five item secondary borderless inverted menu'>
-      <ng-container>
-      <a *ngFor='let context of uiState.contexts'
-        class='item'
-        [routerLink]='uiState.segmentsForContext$(context.routeSegment) | async'
-        [class.active]='uiState.contextLinkActive(context.routeSegment) | async'
-        >
-        <i [class]='context.iconClasses'></i>
-        {{context.label}}
-      </a>
-      </ng-container>
-    </div>
-
-  <div style='display: flex'>
-    <div class='small-hide large-hide'>
-      <i (click)='sidebarOpen.next()' class='big sidebar icon inverted' style='color: white;'></i>
-    </div>
-    <div>
-      <div class='ui header inverted' style='font-size: 1.5em'>
-        {{title}}
+    <organize-menu-context></organize-menu-context>
+    <div style='display: flex; align-items: center'>
+      <div class='sidebar-button'>
+        <i (click)='sidebarOpen.next()' class='big sidebar icon inverted' style='color: white;'></i>
       </div>
-      <div class='ui header inverted large-hide small-hide'>
-        {{uiState.focusLabel$ | async}}
+      <div>
+        <div class='project'>
+          {{title}}
+        </div>
+        <div class='focus'>
+          {{uiState.focus$ | async}}
+          <span class='label'>{{uiState.focusLabel$ | async}}</span>
+        </div>
       </div>
     </div>
-  </div>
-
-
   </div>
 </div>
 

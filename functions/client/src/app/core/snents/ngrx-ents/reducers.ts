@@ -16,6 +16,7 @@ export function makeItemReducer<TModel, TActionsAll extends BaseActionsAll>(acti
         return {
           ...state,
           [action.payload.key]: {
+            key: action.payload.key,
             loading: false,
             loaded: true,
             values: action.payload.values as TModel,

@@ -13,12 +13,13 @@ export class OrganizeUiStateService {
   public projectSegments$: Observable<string[]>
   public contextSegment$: Observable<string>
   public focusSegments$: Observable<string[]>
+  public focus$: Observable<string>
   public focusLabel$: Observable<string>
 
   public projectKey$: Observable<string>
   public project$: Observable<ItemState<Project>>
 
-  public opps$: Observable<IdxState>
+  public opps$: Observable<ItemState<Opp>[]>
   public oppKeys$: Observable<string[]>
 
   public contexts = [
@@ -71,7 +72,7 @@ export class OrganizeUiStateService {
     this.focusSegments$ = urlSegments$
       .map(s => s.slice(4))
 
-    this.focusLabel$ = this.focusSegments$
+    this.focus$ = this.focusSegments$
       .switchMap(segs => {
         if (segs[0] === 'opp') {
           return this.opps.one(segs[1])
@@ -83,18 +84,31 @@ export class OrganizeUiStateService {
         return Observable.of('Overview')
       })
 
+    this.focusLabel$ = this.focusSegments$
+      .map(segs => {
+        if (segs[0] === 'opp') {
+          return 'opportunity'
+        }
+        return 'project'
+      })
+
     this.projectKey$ = this.projectSegments$
       .map(s => s[1])
 
     this.project$ = this.projectKey$
       .switchMap(key => this.projects.one(key))
 
-    this.opps$ = this.projectKey$
+    const oppsIndex$ = this.projectKey$
       .switchMap(key => this.opps.by('projectKey', key))
 
-    this.oppKeys$ = this.opps$
+    this.oppKeys$ = oppsIndex$
       .pluck('keys')
 
+    this.opps$ =  this.oppKeys$
+      .filter(Boolean)
+      .switchMap(keys => Observable.combineLatest(
+        ...keys.map(key => this.opps.one(key))
+      ))
   }
 
   segmentsForContext$(context: string) {
