@@ -9,12 +9,14 @@ import { EntState, IdxState } from '../../core/snents/ngrx-ents'
   selector: 'explore-header-home',
   styleUrls: ['./header-home.component.scss'],
   template: `
-<h1 class='ui header' style='font-size: 3em'>
+<div class='ui container'>
+<h1 class='ui header inverted' style='font-size: 3em'>
 make it happen.
 </h1>
 <button class='ui primary button massive'>
   start organizing people
 </button>
+</div>
 `
 })
 export class HeaderHomeComponent {

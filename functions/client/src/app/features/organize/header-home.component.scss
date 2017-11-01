@@ -1,0 +1,48 @@
+@import 'style';
+
+:host  {
+  display: block;
+  height: 230px;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  // margin-left: -16px;
+  // margin-right: -16px;
+
+  .header-image {
+    height: 230px;
+    display: block;
+    background-size: cover;
+  }
+  &:before {
+    @extend .sn-gradient;
+    content: '';
+    position: absolute;
+    height: 230px;
+    width: 100%;
+    @include Opacity(0.8);
+  }
+  .content {
+    // padding: 16px;
+    height: 230px;
+    padding: 1rem;
+    position: relative;
+    @include Opacity(1);
+  }
+}
+
+// @media only screen and (min-width: 992px) {
+//   :host {
+//       margin-left: -15px;
+//       margin-right: -15px;
+
+//       .header-image {
+//         // &:before {
+//         //   width: 100%;
+//         // }
+//       }
+//       .content {
+//         padding: 30px 15px;
+//       }
+//   }
+// }
+

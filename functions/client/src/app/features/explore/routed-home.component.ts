@@ -9,8 +9,7 @@ import { EntState, IdxState } from '../../core/snents/ngrx-ents'
   selector: 'explore-routed-home',
   template: `
 <explore-appbar></explore-appbar>
-<div class='ui container' style='margin-top:55px;'>
-  <explore-header-home></explore-header-home>
+  <explore-header-home style='margin-top: 55px;'></explore-header-home>
   <!-- extract
   <div class='masthead' style='padding-top: 5em; padding-bottom: 5em;'>
     <h1 class='ui header' style='font-size: 3em'>
@@ -21,7 +20,6 @@ import { EntState, IdxState } from '../../core/snents/ngrx-ents'
     </button>
   </div>
   -->
-</div>
 
 <div class='ui container'>
   <h1 class='ui header' style='padding: 1em 0em;'>

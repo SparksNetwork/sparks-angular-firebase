@@ -16,6 +16,53 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf1e59', endColorstr='#24aee0', GradientType=1);
 }
 
+div, p, span, h1, h2, h3, h4, h5 {
+    font-family: $regular_font_family !important;
+    font-weight: 400 !important;
+    color: $base-color;
+    font-size: 16px;
+    a {
+        color: $base-color;
+        &:hover {
+            text-decoration: none;
+            @include Opacity(0.8);
+        }
+    }
+}
+
+/* Mobile */
+
+@media only screen and (max-width: 767px) {
+    .mobile-hide{
+        display: none !important;
+    }
+}
+
+/* Tablet */
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .tablet-hide{
+        display: none !important;
+    }
+}
+
+/* Small Monitor */
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .small-hide{
+        display: none !important;
+    }
+}
+
+
+/* Large Monitor */
+
+@media only screen and (min-width: 1200px) {
+    .large-hide{
+        display: none !important;
+    }
+}
+
 // .fake-mobile {
 //     width: 370px;
 //     padding: 0;
@@ -144,19 +191,6 @@
 
 // /* Typography */
 
-// body {
-//     font-family: $regular_font_family;
-//     font-weight: 400;
-//     color: $base-color;
-//     font-size: 16px;
-//     a {
-//         color: $base-color;
-//         &:hover {
-//             text-decoration: none;
-//             @include Opacity(0.8);
-//         }
-//     }
-// }
 
 // h1 {
 //     /* @TODO */

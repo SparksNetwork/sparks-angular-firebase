@@ -13,7 +13,7 @@ import { EntState, IdxState } from '../../core/snents/ngrx-ents'
     <img src="assets/img/logo_sparksnetwork.svg" alt="sparks.network"/>
   </a>
   <a class='ui right floated item'>
-  Y
+    <button [routerLink]='["/auth", "signin"]' class='ui button'>sign in</button>
   </a>
 </div>
 `

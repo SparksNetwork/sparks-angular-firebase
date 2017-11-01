@@ -17,6 +17,7 @@ export class ProjectEffects {
   fetchProject: Observable<Action> =
     this.actions$.ofType<ProjectActions.Fetch>(ProjectActions.FETCH)
       .switchMap(({payload}) => this.af.object(`/project/${payload}`).snapshotChanges())
+      // .delay(30000)
       .map(snap => new ProjectActions.FetchSuccess({key: snap.key, values: snap.payload.val()}))
 
   @Effect()

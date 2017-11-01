@@ -1,6 +1,7 @@
-@import 'styles';
+@import 'style';
 
 :host {
-  padding: 0.5em 0em 0.5em;
+  display: block;
+  padding: 2em 0em 2em;
   @extend .sn-gradient;
 }

@@ -5,12 +5,15 @@ import { OrganizeRoutingModule, routedComponents } from './organize-routing.modu
 import { StoreModule } from '@ngrx/store'
 import { SuiModule } from 'ng2-semantic-ui'
 
+import { HeaderHomeComponent } from './header-home.component'
+
 // import { reducer } from '../../store/reducer'
 export function reducer(state = {}) { return state }
 
 @NgModule({
   declarations: [
-    ...routedComponents
+    ...routedComponents,
+    HeaderHomeComponent
   ],
   imports: [
     CommonModule,
