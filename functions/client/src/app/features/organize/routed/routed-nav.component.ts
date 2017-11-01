@@ -10,8 +10,8 @@ import { ItemState, IdxState } from '../../../core/snents/ngrx-ents'
 import { OrganizeUiStateService } from '../organize-ui-state.service'
 
 @Component({
-  selector: 'organize-routed-home',
-  styleUrls: ['./routed-home.component.scss'],
+  selector: 'organize-routed-nav',
+  styleUrls: ['./routed-nav.component.scss'],
   template: `
 <div class='ui top fixed borderless menu'>
   <div class='ui container'>
@@ -65,7 +65,7 @@ import { OrganizeUiStateService } from '../organize-ui-state.service'
 
 `
 })
-export class RoutedHomeComponent {
+export class RoutedNavComponent {
   public imageUrl$: Observable<string>
   public title$: Observable<string>
   public loading$: Observable<boolean>

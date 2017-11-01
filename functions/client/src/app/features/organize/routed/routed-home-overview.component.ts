@@ -1,6 +1,6 @@
 import { Component, HostBinding } from '@angular/core'
 import { Observable } from 'rxjs/Observable'
-import { OrganizeUiStateService } from './organize-ui-state.service'
+import { OrganizeUiStateService } from '../organize-ui-state.service'
 @Component({
   selector: 'organize-routed-home-overview',
   template: `

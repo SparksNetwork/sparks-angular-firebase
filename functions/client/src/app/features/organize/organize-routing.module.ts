@@ -4,8 +4,13 @@ import { Routes, RouterModule } from '@angular/router'
 import { DummyComponent } from './dummy.component'
 import { DummyOutletComponent } from './dummy-outlet.component'
 
-import { RoutedHomeComponent } from './routed-home'
-import { RoutedHomeOverviewComponent } from './routed-home-overview'
+// import {
+//   RoutedNavComponent,
+//   RoutedHomeOverviewComponent,
+//  } from './routed'
+
+import { RoutedNavComponent } from './routed/routed-nav.component'
+import { RoutedHomeOverviewComponent } from './routed/routed-home-overview.component'
 
 // import { HomeComponent } from './home.component';
 // import { ResolveProjectAll } from '../../core/sndomain/project/resolve-project-all.service'
@@ -13,7 +18,7 @@ import { RoutedHomeOverviewComponent } from './routed-home-overview'
 // import { ResolveApplicationByProfileKey } from '../../core/sndomain/application/resolve-applications-by-profile-key.service'
 // import { ResolveProfile } from '../../core/sndomain/profile/resolve-profile.service'
 
-function focusRoutesFor(OverviewComponent: any, JobComponent: any, OppComponent: any): Routes {
+export function focusRoutesFor(OverviewComponent: any, JobComponent: any, OppComponent: any): Routes {
   return [
     {
       path: '',
@@ -55,10 +60,10 @@ function focusRoutesFor(OverviewComponent: any, JobComponent: any, OppComponent:
 //   }
 // ]
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: ':projectKey',
-    component: RoutedHomeComponent,
+    component: RoutedNavComponent,
     children: [
       {
         path: '',
@@ -101,7 +106,7 @@ const routes: Routes = [
 export class OrganizeRoutingModule { }
 
 export const routedComponents = [
-  RoutedHomeComponent,
+  RoutedNavComponent,
   RoutedHomeOverviewComponent,
   DummyComponent,
   DummyOutletComponent,
