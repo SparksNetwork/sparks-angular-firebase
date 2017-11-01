@@ -6,6 +6,8 @@ import { Store } from '@ngrx/store'
 
 import { EntState, IdxState } from '../../core/snents/ngrx-ents'
 
+import { OrganizeUiStateService } from './organize-ui-state.service'
+
 // <div class='sn-gradient'></div>
 
 @Component({
@@ -16,26 +18,15 @@ import { EntState, IdxState } from '../../core/snents/ngrx-ents'
   <div class='content' style='display: flex; flex-direction: column; justify-content: space-between;'>
 
   <div class='ui labeled icon fluid five item secondary borderless inverted menu'>
-    <a class='active item'>
-      <i class='home icon'></i>
-      home
+    <a *ngFor='let context of uiState.contexts'
+      class='item'
+      [routerLink]='uiState.segmentsForContext$(context.routeSegment) | async'
+      [class.active]='uiState.contextLinkActive(context.routeSegment) | async'
+      >
+      <i [class]='context.iconClasses'></i>
+      {{context.label}}
     </a>
-    <a class='item'>
-      <i class='binoculars icon'></i>
-      recruit
-    </a>
-    <a class='item'>
-      <i class='calendar icon'></i>
-      schedule
-    </a>
-    <a class='item'>
-      <i class='users icon'></i>
-      roster
-    </a>
-    <a class='item'>
-      <i class='flag icon'></i>
-      onsite
-    </a>
+
   </div>
 
   <div style='display: flex'>
@@ -68,7 +59,10 @@ export class HeaderHomeComponent implements OnInit {
   @HostBinding('style') style: string
   @Output() sidebarOpen = new EventEmitter<boolean>()
 
+  public contexts = ['home', 'recruit', 'schedule', 'roster', 'onsite']
+
   constructor(
+    public uiState: OrganizeUiStateService
   ) {}
 
   ngOnInit() {

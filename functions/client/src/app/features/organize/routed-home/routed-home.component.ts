@@ -1,11 +1,13 @@
 import { Component } from '@angular/core'
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
 import { Observable } from 'rxjs/Observable'
 import { Project, ProjectService } from '../../../core/snents/project'
 import { Opp, OppService } from '../../../core/snents/opp'
 import { Store } from '@ngrx/store'
 
 import { ItemState, IdxState } from '../../../core/snents/ngrx-ents'
+
+import { OrganizeUiStateService } from '../organize-ui-state.service'
 
 // <div class='ui container' style='margin-top: 39px'>
 // <div *ngIf='loading$ | async'>
@@ -58,8 +60,19 @@ import { ItemState, IdxState } from '../../../core/snents/ngrx-ents'
         >
       </organize-header-home>
       <div class='ui mobile-hide tablet-hide borderless massive vertical secondary menu fluid pointing vertical'>
-        <a class='item active'>Overview</a>
-        <div>
+        <a class='massive item'
+          [routerLink]='uiState.segmentsForFocus$(["overview"]) | async'
+          [class.active]='uiState.focusLinkActive(["overview"]) | async'
+          >
+          Overview
+        </a>
+        <div *ngIf='(oppKeys$ | async); let oppKeys'>
+          <a *ngFor='let oppKey of oppKeys' class='item'
+            [routerLink]='uiState.segmentsForFocus$(["opp", oppKey]) | async'
+            [class.active]='uiState.focusLinkActive(["opp", oppKey]) | async'
+            >
+            {{oppKey}}
+          </a>
         </div>
       </div>
     </div>
@@ -73,6 +86,7 @@ import { ItemState, IdxState } from '../../../core/snents/ngrx-ents'
     <div class='ui five wide computer eight wide tablet sixteen wide mobile column'>
       <div>
       {{(values$ | async) | json}}
+      <router-outlet></router-outlet>
       </div>
     </div>
   </div>
@@ -101,12 +115,15 @@ export class RoutedHomeComponent {
   public opps$: Observable<IdxState>
   public oppKeys$: Observable<string[]>
   public focus$: Observable<string>
+  public routeSegments$: Observable<string[]>
 
   constructor(
     public route: ActivatedRoute,
     public projects: ProjectService,
     public opps: OppService,
     public store: Store<any>,
+    public router: Router,
+    public uiState: OrganizeUiStateService,
   ) {
     this.projectKey$ = this.route.params
       .map(({projectKey}) => projectKey)
@@ -129,10 +146,12 @@ export class RoutedHomeComponent {
     this.loading$ = this.project$.pluck('loading')
     this.loaded$ = this.project$.pluck('loaded')
 
-    this.focus$ = this.store.select('router')
+    this.routeSegments$ = this.store.select('router')
       .select('state').select('url')
       .filter(Boolean)
       .map(u => u.split('/'))
+
+    this.focus$ = this.routeSegments$
       .do(u => console.log('url', u))
       .map(routeSegments => {
         if (!routeSegments[3]) {
@@ -146,4 +165,13 @@ export class RoutedHomeComponent {
 
     this.project$.subscribe(p => console.log('organize', p))
   }
+
+  // focusSegments$(focusRouteSegments: string[]) {
+  //   return this.routeSegments$
+  //     .map(s => [`/${s[1]}`, s[2], s[3], ...focusRouteSegments])
+  // }
+  // contextSegments$(contextRouteSegment: string[]) {
+  //   return this.routeSegments$
+  //     .map(s => [`/${s[1]}`, s[2], contextRouteSegment, s[4], s[5]])
+  // }
 }
