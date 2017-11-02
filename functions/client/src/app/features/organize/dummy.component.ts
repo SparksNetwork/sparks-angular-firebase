@@ -14,6 +14,6 @@ export class DummyComponent {
   constructor(
     public store: Store<any>
   ) {
-    this.title$ = this.store.select('router').select('state').select('url')
+    this.title$ = this.store.select('routerReducer').select('state').select('url')
   }
 }

@@ -41,7 +41,7 @@ export class CustomSerializer implements RouterStateSerializer<RouterState> {
     BrowserModule.withServerTransition({appId: 'sparks-angular-firebase'}),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    StoreModule.forRoot({router: routerReducer}),
+    StoreModule.forRoot({routerReducer}),
     EffectsModule.forRoot([]),
     SuiModule,
     AppRoutingModule,

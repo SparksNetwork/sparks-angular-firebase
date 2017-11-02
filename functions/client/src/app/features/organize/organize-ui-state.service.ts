@@ -56,7 +56,7 @@ export class OrganizeUiStateService {
     public opps: OppService,
     public projects: ProjectService,
   ) {
-    this.currentUrl$ = this.store.select('router').select('state')
+    this.currentUrl$ = this.store.select('routerReducer').select('state')
       .select('url')
       .filter(Boolean)
 
