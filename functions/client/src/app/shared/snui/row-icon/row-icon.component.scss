@@ -1,0 +1,32 @@
+@import 'style';
+
+:host {
+  // @extend .row;
+  display: flex;
+  margin-top: 16px;
+
+  .icon {
+    // @extend .pull-left;
+    min-width: 45px;
+
+    .ic {
+      font-size: 30px;
+      display: block;
+      margin-top: 4px;
+    }
+  }
+
+  ::ng-deep [primary] {
+    // @extend .pull-left;
+    flex-grow: 1;
+  }
+
+  ::ng-deep .secondary {
+    @extend .text-right;
+    width: 60px;
+    // @extend .pull-right;
+    .ic {
+      display: inline-block;
+    }
+  }
+}

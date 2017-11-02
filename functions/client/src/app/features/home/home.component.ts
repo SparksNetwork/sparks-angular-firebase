@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { Observable } from "rxjs"
 
+import { Profile } from '../../../../../universal/domain/profile'
 import { Project } from "../../../../../universal/domain/project";
 import { AuthService } from "../../core/snauth/auth/auth.service";
 import { Application } from "../../../../../universal/domain/application";
@@ -14,6 +15,7 @@ import { Application } from "../../../../../universal/domain/application";
 export class HomeComponent implements OnInit {
   public apps$: Observable<Application[]>
   public projects$: Observable<Project[]>
+  public profile$: Observable<Profile>
 
   public projects: Observable<Project[]>;
   public profile: Observable<any>
@@ -35,6 +37,8 @@ export class HomeComponent implements OnInit {
         (projects, projectKeys) => projects.filter(project => projectKeys.indexOf(project.$key) < 0)
       )
 
+    this.profile$ = this.route.data.switchMap(data => data['profile'])
+
     this.projects = this.route.snapshot.data['projects']
     this.profile = this.route.data.switchMap(data => data['profile'])
 
@@ -43,7 +47,7 @@ export class HomeComponent implements OnInit {
         console.log('profile', profile)
         this.userPrefferedName = profile.preferredName || profile.legalName
         this.userMessage = "You just got 20 Karma Points and opened 1 quest and 2 badges";
-        this.userImageUrl = profile.photoURL || 'assets/img/profile'+  Math.floor(Math.random()*(10)+1) +  '.png';
+        this.userImageUrl = profile.photoURL || 'assets/img/profile' + (profile.$key.charCodeAt(0) % 10) + '.png'
         this.userProfileScore = 20;
         this.isAuthed = true;
       } else {

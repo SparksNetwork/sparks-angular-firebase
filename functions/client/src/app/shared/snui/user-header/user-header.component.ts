@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'snui-user-header',
     templateUrl: 'user-header.component.html'
 })
 
-export class UserHeaderComponent implements OnInit {
+export class UserHeaderComponent {
     @Input() prefferedName: string;
     @Input() message: string;
     @Input() imageUrl: string;
@@ -14,5 +14,4 @@ export class UserHeaderComponent implements OnInit {
 
     constructor() { }
 
-    ngOnInit() { }
 }

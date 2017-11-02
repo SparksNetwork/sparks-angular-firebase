@@ -1,0 +1,54 @@
+$timeline-width: 48px;
+$half-timeline: $timeline-width / 2;
+$line-width: 6px;
+$half-line: $line-width / 2;
+$line-color: #AAA;
+$icon-size: 48px;
+$row-height: 68px;
+$connector-height: $row-height - $icon-size;
+
+:host {
+  display: flex;
+  &:last-of-type {
+    .timeline .connector {
+      background: none !important;
+    }
+  }
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    height: $row-height;
+    width: $timeline-width;
+    width: 64px;
+
+    .connector {
+      height: $connector-height;
+      background: linear-gradient(
+        to right, 
+        transparent 0%,
+        transparent $half-timeline - $half-line, 
+        $line-color $half-timeline - $half-line, 
+        $line-color $half-timeline + $half-line, 
+        transparent $half-timeline + $half-line, 
+        transparent 100%
+      );
+    }
+
+    .dot {
+      flex-grow: 1;
+
+      .icon {
+        // margin-left: 4px;
+        width: $icon-size;
+        height: $icon-size;
+        border-radius: $icon-size / 2;
+        border: $line-width solid $line-color;
+        background-size: cover;
+      }
+    }
+  }
+
+  .primary {
+    flex-grow: 1;
+  }
+}

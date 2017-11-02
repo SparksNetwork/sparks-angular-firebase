@@ -28,7 +28,6 @@ Feature: Join
       | question | Some question |
       | teamKey | BABP1 |
 
-  @focus
   Scenario: I can join an opportunity where my application has been approved
     When I go to my application page for the project "BABP"
     Then I should see "Bell Arts Block Party" in ".project-title"
