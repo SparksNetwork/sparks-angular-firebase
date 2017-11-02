@@ -1,5 +1,5 @@
-$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
-@import '~bootstrap-sass/assets/stylesheets/bootstrap';
+// $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+// @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
 // -- Helpers -- //
 // @import "scss/layout";
@@ -27,26 +27,26 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 /* demo */
 
-.fake-mobile {
-    width: 370px;
-    padding: 0;
-    @include box-shadow(5px, 5px, 20px, 3px, #858585, false);
-    margin: 0 auto;
-    height: 100%;
-    .sn-container {
-        width: 100% !important;
-        .col-md-6,
-        .col-md-8 {
-            width: 100% !important;
-        }
-    }
-}
+// .fake-mobile {
+//     width: 370px;
+//     padding: 0;
+//     @include box-shadow(5px, 5px, 20px, 3px, #858585, false);
+//     margin: 0 auto;
+//     height: 100%;
+//     .sn-container {
+//         width: 100% !important;
+//         .col-md-6,
+//         .col-md-8 {
+//             width: 100% !important;
+//         }
+//     }
+// }
 
 body {
-    background: #E8E8E8;
-    .pg-default {
+    // background: #E8E8E8;
+    // .pg-default {
         background: #FFF;
-    }
+    // }
 }
 
 
@@ -57,14 +57,14 @@ body {
     height: 100%;
 }
 
-.footer-segment {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 120px;
-    padding: 0 15px;
-}
+// .footer-segment {
+//     position: absolute;
+//     bottom: 0;
+//     left: 0;
+//     right: 0;
+//     height: 120px;
+//     padding: 0 15px;
+// }
 
 .sn-gradient {
   background: rgba(191, 30, 89, 1);

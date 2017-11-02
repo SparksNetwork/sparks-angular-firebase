@@ -22,7 +22,7 @@
   }
 
   ::ng-deep .secondary {
-    @extend .text-right;
+    text-align: right;
     width: 60px;
     // @extend .pull-right;
     .ic {

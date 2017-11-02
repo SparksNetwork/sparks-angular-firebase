@@ -29,10 +29,8 @@
       ],
       "stylePreprocessorOptions": {
         "includePaths": [
-          "assets/css",
-          "assets/css/scss",
-          "assets/fonts",
-          "assets/img"
+          "assets",
+          "assets/css"
         ]
       },
       "scripts": [
