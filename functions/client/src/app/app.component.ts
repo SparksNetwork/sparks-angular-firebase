@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, NavigationStart } from "@angular/router";
+import { Component, OnInit } from '@angular/core'
+import { Router, NavigationStart } from '@angular/router'
 
 import { sharedMoment } from '../../../universal/sharedMoment'
+
+import { Observable } from 'rxjs/Observable'
 
 @Component({
   selector: 'app-root',
@@ -9,7 +11,11 @@ import { sharedMoment } from '../../../universal/sharedMoment'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor(private router: Router) { }
+  public state$: Observable<any>
+
+  constructor(
+    private router: Router,
+  ) {}
 
   title = sharedMoment().toString();
   isAuth: boolean;

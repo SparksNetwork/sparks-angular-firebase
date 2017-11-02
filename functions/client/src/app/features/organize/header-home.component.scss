@@ -1,0 +1,65 @@
+@import 'style';
+
+$header-height: 230px;
+$column-offset: 1rem;
+
+:host  {
+  display: block;
+  height: $header-height;
+  margin-left: $column-offset * -1;
+  margin-right: $column-offset * -1;
+
+  .header-image {
+    height: $header-height;
+    display: block;
+    background-size: cover;
+  }
+
+  &:before {
+    @extend .sn-gradient;
+    content: '';
+    position: absolute;
+    height: $header-height;
+    width: 100%;
+    @include Opacity(0.8);
+  }
+
+  .content {
+    height: $header-height;
+    padding: $column-offset;
+    position: relative;
+    @include Opacity(1);
+
+    .ui.menu .item.active {
+      background: rgba(255,255,255,0.3);
+    }
+
+    .sidebar-button {
+      @extend .large-hide;
+      @extend .small-hide;
+      padding-right: 1rem;
+    }
+
+    .project {
+      color: white;
+      font-size: 1.5rem;
+      line-height: 2.0rem;
+    }
+
+    .focus {
+      color: white;
+      font-weight: 300 !important;
+      font-size: 1.8rem;
+      line-height: 2.0rem;
+      @extend .large-hide;
+      @extend .small-hide;
+
+      .label {
+        color: #CCC;
+        font-size: 1.0rem;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
