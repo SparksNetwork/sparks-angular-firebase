@@ -15,7 +15,11 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: '../home/home.module#HomeModule',
+        loadChildren: '../explore/explore.module#ExploreModule'
+      },
+      {
+        path: 'organize',
+        loadChildren: '../organize/organize.module#OrganizeModule'
       },
       {
         path: 'get-involved',

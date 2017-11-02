@@ -5,11 +5,12 @@ import { Project, ProjectService } from '../../core/snents/project'
 
 import { EntState, IdxState } from '../../core/snents/ngrx-ents'
 
+// <explore-appbar></explore-appbar>
+
 @Component({
   selector: 'explore-routed-home',
   template: `
-<explore-appbar></explore-appbar>
-  <explore-header-home style='margin-top: 55px;'></explore-header-home>
+  <explore-header-home></explore-header-home>
   <!-- extract
   <div class='masthead' style='padding-top: 5em; padding-bottom: 5em;'>
     <h1 class='ui header' style='font-size: 3em'>

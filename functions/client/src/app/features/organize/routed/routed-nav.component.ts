@@ -13,17 +13,7 @@ import { OrganizeUiStateService } from '../organize-ui-state.service'
   selector: 'organize-routed-nav',
   styleUrls: ['./routed-nav.component.scss'],
   template: `
-<div class='ui top fixed borderless menu'>
-  <div class='ui container'>
-    <a [routerLink]='["/"]' class='item'>
-      <img src="assets/img/logo_sparksnetwork.svg" alt="sparks.network"/>
-    </a>
-    <a class='ui right floated item'>
-      <button [routerLink]='["/organize", (uiState.projectKey$ | async)]' class='ui button'>sign in</button>
-    </a>
-  </div>
-</div>
-<sui-sidebar-container style='margin-top:61px;'>
+<sui-sidebar-container>
   <sui-sidebar transition='push' class='inverted vertical' #sidebar (click)='sidebar.close()'>
     <organize-menuitems-nav
       [oppKeys$]='uiState.oppKeys$'
@@ -80,6 +70,7 @@ export class RoutedNavComponent {
 
     this.values$ = this.uiState.project$
       .pluck('values')
+      .filter(Boolean)
 
     this.imageUrl$ = this.values$.map((v: any) => v.images[0].imageUrl)
     this.title$ = this.values$.pluck('title')

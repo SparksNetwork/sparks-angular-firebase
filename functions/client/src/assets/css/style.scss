@@ -5,6 +5,7 @@
 // @import "scss/layout";
 @import "scss/variables";
 @import "scss/mixins";
+@import "scss/overrides";
 
 // new mixins
 
@@ -77,11 +78,11 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf1e59', endColorstr='#24aee0', GradientType=1);
 }
 
-div, p, span, h1, h2, h3, h4, h5 {
+div, p, span, h1, h2, h3, h4, h5, button, a {
     font-family: $regular_font_family !important;
-    font-weight: 400 !important;
+    // font-weight: 400 !important;
     color: $base-color;
-    font-size: 16px;
+    // font-size: 16px;
     a {
         color: $base-color;
         &:hover {

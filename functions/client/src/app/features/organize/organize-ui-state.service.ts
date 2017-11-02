@@ -73,9 +73,8 @@ export class OrganizeUiStateService {
       .map(s => s.slice(4))
 
     this.focus$ = this.focusSegments$
-      .filter(segs => Boolean(segs[0] && segs[1]))
       .switchMap(segs => {
-        if (segs[0] === 'opp') {
+        if ((segs[0] === 'opp') && segs[1]) {
           return this.opps.one(segs[1])
             .do(opp => console.log('opp', opp))
             .pluck('values')

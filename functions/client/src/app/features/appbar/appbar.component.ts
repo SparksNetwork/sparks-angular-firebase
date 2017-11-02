@@ -1,24 +1,31 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-
-import { AuthService } from '../../core/snauth/auth/auth.service';
+import { Component } from '@angular/core'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'appbar-appbar',
-  templateUrl: 'appbar.component.html'
+  template: `
+<div class='ui fixed borderless menu'>
+  <div class='ui container'>
+    <a [routerLink]='["/"]' class='item'>
+      <img src="assets/img/logo_sparksnetwork.svg" alt="sparks.network"/>
+    </a>
+    <a class='ui right floated item'>
+      <button (click)='navigateToSignin()' class='ui minor button'>sign in</button>
+    </a>
+  </div>
+</div>
+<div style='margin-top: 52px;'>
+  <router-outlet></router-outlet>
+</div>
+`
 })
+export class AppbarComponent {
 
-export class AppbarComponent implements OnInit {
-  public isAuthed: boolean;
+  constructor(
+    public router: Router,
+  ) {}
 
-  constructor(private auth: AuthService, private router: Router) {
-    this.auth.isAuthed.subscribe(isAuthed => this.isAuthed = isAuthed)
-  }
-
-  ngOnInit() { }
-
-  navigateToSignIn() {
+  navigateToSignin() {
     this.router.navigate(['/auth', this.router.url, 'signin'])
   }
-
 }

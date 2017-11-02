@@ -6,7 +6,6 @@ import { StoreModule } from '@ngrx/store'
 
 import { CardProjectComponent } from './card-project.component'
 import { HeaderHomeComponent } from './header-home.component'
-import { AppbarComponent } from './appbar.component'
 
 // import { reducer } from '../../store/reducer'
 export function reducer(state = {}) { return state }
@@ -16,7 +15,6 @@ export function reducer(state = {}) { return state }
     ...routedComponents,
     CardProjectComponent,
     HeaderHomeComponent,
-    AppbarComponent,
   ],
   imports: [
     CommonModule,
