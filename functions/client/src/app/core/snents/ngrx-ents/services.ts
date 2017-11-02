@@ -18,6 +18,10 @@ export class BaseEntService<TModel> {
   ) {}
 
   public by(field: string, value: string) {
+    // if (!field || !value) {
+    //   console.log('by called with null field or value', field, value)
+    //   return Observable.of()
+    // }
     if (!this.idx[field]) { this.idx[field] = {} }
     if (!this.idx[field][value]) {
       this.idx[field][value] = this.store
@@ -35,6 +39,10 @@ export class BaseEntService<TModel> {
   }
 
   public one(key: string) {
+    // if (!key) {
+    //   console.log('one called with undefined key')
+    //   return Observable.of()
+    // }
     if (!this.items[key]) {
       this.items[key] = this.store
         .select('ents').select(this.entPath).select('items').select(key)

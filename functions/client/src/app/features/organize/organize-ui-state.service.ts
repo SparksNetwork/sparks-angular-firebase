@@ -73,6 +73,7 @@ export class OrganizeUiStateService {
       .map(s => s.slice(4))
 
     this.focus$ = this.focusSegments$
+      .filter(segs => Boolean(segs[0] && segs[1]))
       .switchMap(segs => {
         if (segs[0] === 'opp') {
           return this.opps.one(segs[1])
@@ -94,6 +95,7 @@ export class OrganizeUiStateService {
 
     this.projectKey$ = this.projectSegments$
       .map(s => s[1])
+      .filter(Boolean)
 
     this.project$ = this.projectKey$
       .switchMap(key => this.projects.one(key))
@@ -103,9 +105,9 @@ export class OrganizeUiStateService {
 
     this.oppKeys$ = oppsIndex$
       .pluck('keys')
+      .filter(Boolean)
 
     this.opps$ =  this.oppKeys$
-      .filter(Boolean)
       .switchMap(keys => Observable.combineLatest(
         ...keys.map(key => this.opps.one(key))
       ))
