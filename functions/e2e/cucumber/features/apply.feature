@@ -19,7 +19,7 @@ Feature: Apply
     # - ng e2e --serve=true loses auth at this point
     # - ng e2e --serve=false does not
     # make them consistent
-    When I wait for 5 seconds
+    When I wait for 10 seconds
     And I sign out
     And I click on the first link in the "new-user" putsbox inbox
     Then I should be on the signin page

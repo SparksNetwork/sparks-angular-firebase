@@ -48,7 +48,7 @@ export class PageCompleteProfileComponent implements OnInit {
     console.log('completed profile?', this.profForm.profileForm.value)
     this.auth.current.take(1).subscribe(user => {
       if (this.profForm.profileForm.dirty) {
-        this.action.replace(user.uid, this.profForm.profileForm.value)
+        this.action.update(user.uid, this.profForm.profileForm.value)
           .subscribe(res => {
             if (res.ok) {
               console.log('success!')

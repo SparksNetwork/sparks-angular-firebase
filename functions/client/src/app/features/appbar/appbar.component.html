@@ -6,7 +6,7 @@
   <div class="appbar-right">
     <a class="collapsed appbar-menu" data-toggle="collapse" data-target="#appbar-collapse" aria-expanded="false" aria-controls="navbar">
       <span class="ic ic-search"></span></a>
-    <a *ngIf="isAuthed" class="appbar-menu" title="Dashboard"><span class="ic ic-profile"></span></a>
+    <a *ngIf="isAuthed" class="appbar-menu" title="Dashboard" [routerLink]="['/your-profile']"><span class="ic ic-profile"></span></a>
     <a *ngIf="!isAuthed" (click)="navigateToSignIn()" class="appbar-menu btn btn-default" title="Sign In">Sign In</a>
   </div>
 </nav>

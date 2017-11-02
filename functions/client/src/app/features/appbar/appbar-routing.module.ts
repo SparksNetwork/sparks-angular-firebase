@@ -28,6 +28,10 @@ const routes: Routes = [
       {
         path: 'your-application',
         loadChildren: '../your-application/your-application.module#YourApplicationModule',
+      },
+      {
+        path: 'your-profile',
+        loadChildren: '../your-profile/your-profile.module#YourProfileModule',
       }
     ]
   }
