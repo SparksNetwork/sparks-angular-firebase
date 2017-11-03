@@ -10,8 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 <auth-appbar-auth>
   <button [routerLink]='["../join"]' class='ui inverse minor button'>join</button>
 </auth-appbar-auth>
-<div style='padding-top: 52px; height: 100%;'>
-  <div class='ui container' style='height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;'>
+<div style='padding-top: 152px; height: 100%;'>
+  <div class='ui container' style='height: 100%; display: flex; flex-direction: column; align-items: center;'>
     <div class='isolated' style='display: flex; flex-direction: column; width: 320px;'>
       <h1 class='cell'>Sign In to the Sparks.Network</h1>
       <auth-button-facebook class='cell'></auth-button-facebook>

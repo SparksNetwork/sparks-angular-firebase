@@ -24,8 +24,8 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 <auth-appbar-auth>
   <button [routerLink]='["../signin"]' class='ui inverse minor button'>sign in</button>
 </auth-appbar-auth>
-<div style='padding-top: 52px; height: 100%;'>
-  <div class='ui container' style='height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;'>
+<div style='padding-top: 152px; height: 100%;'>
+  <div class='ui container' style='height: 100%; display: flex; flex-direction: column; align-items: center;'>
     <div class='isolated' style='display: flex; flex-direction: column; width: 320px;'>
       <h1 class='cell'>Join the Sparks.Network</h1>
       <div [@visibility]='showForm ? "hide" : "show"'>
