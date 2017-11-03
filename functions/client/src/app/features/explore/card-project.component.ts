@@ -12,9 +12,7 @@ import { EntState, ItemState } from '../../core/snents/ngrx-ents'
 </div>
 <div class='content'>
   <div class='header'>{{title$ | async}}</div>
-</div>
-<div class='extra content'>
-  <a [routerLink]="['/organize', key]">organize</a>
+  <div class='secondary'>label</div>
 </div>
 `
 })

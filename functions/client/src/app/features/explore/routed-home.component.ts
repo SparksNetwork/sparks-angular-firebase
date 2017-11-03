@@ -10,18 +10,7 @@ import { EntState, IdxState } from '../../core/snents/ngrx-ents'
 @Component({
   selector: 'explore-routed-home',
   template: `
-  <explore-header-home></explore-header-home>
-  <!-- extract
-  <div class='masthead' style='padding-top: 5em; padding-bottom: 5em;'>
-    <h1 class='ui header' style='font-size: 3em'>
-    make it happen.
-    </h1>
-    <button class='ui primary button massive'>
-      start organizing people
-    </button>
-  </div>
-  -->
-
+<explore-header-home></explore-header-home>
 <div class='ui container'>
   <h1 class='ui header' style='padding: 1em 0em;'>
     These projects need your help!
@@ -30,7 +19,12 @@ import { EntState, IdxState } from '../../core/snents/ngrx-ents'
     <div class='ui huge text loader active'>Loading...</div>
   </div>
   <div *ngIf='(keys$ | async); let keys' class='ui three stackable cards'>
-    <explore-card-project *ngFor='let key of keys' [key]='key'>
+    <explore-card-project
+      *ngFor='let key of keys'
+      [key]='key'
+      [routerLink]='["/organize", key]'
+      style='cursor: pointer;'
+      >
     </explore-card-project>
   </div>
 </div>

@@ -1,7 +1,14 @@
 :host {
+  box-shadow: none !important;
   .image {
     background-position: center center !important;
     height: 300px;
     background-size: cover !important;
+  }
+
+  .secondary {
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: 300;
   }
 }
