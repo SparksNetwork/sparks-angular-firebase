@@ -1,0 +1,32 @@
+@import 'style';
+
+:host {
+  display: block;
+  height: 100%;
+
+  // .ui.fixed.menu {
+  //   background: transparent;
+  //   border: none;
+  //   box-shadow: none;
+  // }
+
+  h1 {
+    color: white !important;
+    font-weight: 400;
+    font-size: 3rem;
+  }
+
+  input {
+    background: transparent !important;
+    color: white !important;
+    border-color: white !important;
+    text-align: center;
+  }
+
+  // .isolated {
+    .cell {
+      margin-bottom: 1rem;
+      // display: block;
+    }
+  // }
+}

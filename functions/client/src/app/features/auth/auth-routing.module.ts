@@ -15,6 +15,12 @@ import { PageResetPasswordComponent } from './page-reset-password/page-reset-pas
 import { PageEmailSignupComponent } from './page-email-signup/page-email-signup.component';
 import { PageSignupComponent } from './page-signup/page-signup.component';
 
+import {
+  RoutedAuthContainerComponent,
+  RoutedSigninComponent,
+  RoutedJoinComponent,
+} from './routed'
+
 export const routedComponents = [
   PageSigninComponent,
   PageSignupComponent,
@@ -23,6 +29,10 @@ export const routedComponents = [
   PageEmailActionHandlerComponent,
   PageEmailNotVerifiedComponent,
   PageResetPasswordComponent,
+
+  RoutedAuthContainerComponent,
+  RoutedSigninComponent,
+  RoutedJoinComponent,
 ];
 
 const routes: Routes = [
@@ -43,20 +53,21 @@ const routes: Routes = [
   },
   {
     path: ':redirectUrl',
+    component: RoutedAuthContainerComponent,
     resolve: [
       FirstAuth,
     ],
     children: [
       {
         path: 'signin',
-        component: PageSigninComponent,
+        component: RoutedSigninComponent,
         canActivate: [
           RedirectIfAuthed,
         ]
       },
       {
-        path: 'signup',
-        component: PageSignupComponent,
+        path: 'join',
+        component: RoutedJoinComponent,
         canActivate: [
           RedirectIfAuthed,
         ]

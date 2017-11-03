@@ -7,22 +7,26 @@
   font-weight: 400;
 }
 
+.ui.menu.inverse {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.ui.button.inverse {
+  color: white;
+  border: 1px solid white;
+  background: transparent;
+}
+
 .ui.primary.button {
-  // font-size: 16px;
-  // line-height: 16px;
-  // letter-spacing: 0.64px;
-  color: $violetblue;
-  // text-transform: none;
+  color: $violetblue !important;
   @include border-radius(7.5px);
   border: 1px solid transparent;
   background: #ffffff;
   background-clip: padding-box;
   position: relative;
   outline: none;
-  // padding-top: 12px;
-  // padding-bottom: 12px;
-  // max-width: 345px;
-
   
   &:after {
     position: absolute;

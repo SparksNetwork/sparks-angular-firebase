@@ -1,4 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { NgModule } from '@angular/core';
 
 import { StoreModule } from '@ngrx/store'
@@ -39,6 +40,7 @@ export class CustomSerializer implements RouterStateSerializer<RouterState> {
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'sparks-angular-firebase'}),
+    BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     StoreModule.forRoot({routerReducer}),
