@@ -16,8 +16,8 @@ import { ActivatedRoute } from '@angular/router';
       <h1 class='cell'>Sign In to the Sparks.Network</h1>
       <auth-button-facebook class='cell'></auth-button-facebook>
       <auth-button-google class='cell'></auth-button-google>
-      <div class='cell'>
-        <span>Sign In With Your Email</span>
+      <div class='cell strikebehind'>
+      <span>or Sign In with your Email</span>
       </div>
       <form>
         <div class='ui fluid big left icon input cell'>

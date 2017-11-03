@@ -92,6 +92,37 @@ div, p, span, h1, h2, h3, h4, h5, button, a {
     }
 }
 
+.strikebehind {
+    text-align: center;
+    font-size: 16px;
+    letter-spacing: 0.64px;
+    line-height: 20px;
+    text-transform: capitalize;
+    // margin-bottom: 25px;
+    span {
+        color: #FFF;
+        display: inline-block;
+        position: relative;
+        &:before,
+        &:after {
+            content: "";
+            position: absolute;
+            height: 10px;
+            border-bottom: 1px solid white;
+            top: 0;
+            width: 60px;
+        }
+        &:before {
+            right: 100%;
+            margin-right: 15px;
+        }
+        &:after {
+            left: 100%;
+            margin-left: 15px;
+        }
+    }
+}
+
 /* Mobile */
 
 @media only screen and (max-width: 767px) {

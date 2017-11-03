@@ -31,22 +31,21 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
       <div [@visibility]='showForm ? "hide" : "show"'>
         <auth-button-facebook class='cell'></auth-button-facebook>
         <auth-button-google class='cell'></auth-button-google>
-        <button (click)='toggleForm()'
-          class='ui labeled big icon fluid inverse button social cell'>
+        <button (click)='toggleForm()' class='ui labeled big icon fluid inverse button social cell'>
           <i class='mail outline icon'></i>
           with your email
         </button>
       </div>
       <form [@visibility]='showForm ? "show" : "hide"'>
-        <div class='cell'>
-          <span>Sign In With Your Email</span>
+        <div class='cell strikebehind'>
+          <span>Join with your Email</span>
         </div>
         <div class='ui fluid big left icon input cell'>
           <input type='text' placeholder='enter your email'>
           <i class='mail outline inverted icon'></i>
         </div>
         <div class='ui fluid big left icon input cell'>
-          <input type='password' placeholder='enter your password'>
+          <input type='password' placeholder='create a new password'>
           <i class='privacy inverted icon'></i>
         </div>
         <div class='cell' style='display: flex; justify-content: space-between;'>
