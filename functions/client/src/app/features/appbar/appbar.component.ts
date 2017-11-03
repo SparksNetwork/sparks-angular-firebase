@@ -1,5 +1,6 @@
 import { Component } from '@angular/core'
 import { Router } from '@angular/router'
+import { AuthService } from '../../core/snauth/auth/auth.service'
 
 @Component({
   selector: 'appbar-appbar',
@@ -10,7 +11,10 @@ import { Router } from '@angular/router'
       <img src="assets/img/logo_sparksnetwork.svg" alt="sparks.network"/>
     </a>
     <a class='ui right floated item'>
-      <button (click)='navigateToSignin()' class='ui minor button'>sign in</button>
+      <button *ngIf='!(auth.isAuthed | async)' (click)='navigateToSignin()' class='ui minor button'>sign in</button>
+      <button *ngIf='auth.isAuthed | async' [routerLink]='["/your-profile"]' class='circular ui icon button'>
+        <i class='large user outline icon'></i>
+      </button>
     </a>
   </div>
 </div>
@@ -22,6 +26,7 @@ import { Router } from '@angular/router'
 export class AppbarComponent {
 
   constructor(
+    public auth: AuthService,
     public router: Router,
   ) {}
 

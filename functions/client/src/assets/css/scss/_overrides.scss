@@ -19,6 +19,10 @@
   background: transparent;
 }
 
+.ui.circular.icon.button {
+  background: transparent !important;
+}
+
 .ui.primary.button {
   color: $violetblue !important;
   @include border-radius(7.5px);

@@ -17,7 +17,7 @@ export class RedirectIfNotAuthed implements CanActivate {
     return this.auth.isAuthed
       .do(isAuthed => {
         if (!isAuthed) {
-          this.router.navigate([route.paramMap.get('redirectUrl')])
+          this.router.navigate([route.parent.paramMap.get('redirectUrl')])
         }
       })
       .take(1)
