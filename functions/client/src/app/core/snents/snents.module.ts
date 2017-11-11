@@ -4,7 +4,7 @@ import { EffectsModule } from '@ngrx/effects'
 
 import { ProjectService, ProjectEffects } from './project'
 import { OppService, OppEffects } from './opp'
-
+import { TeamService, TeamEffects } from './team'
 import { reducer } from './snents.reducer'
 
 @NgModule({
@@ -12,16 +12,19 @@ import { reducer } from './snents.reducer'
     // StoreModule.forFeature('ents', reducer),
     StoreModule.forFeature('ents', reducer, {initialState: {
       project: {items: {}, idx: {}},
-      opp: {items: {}, idx: {}}
+      opp: {items: {}, idx: {}},
+      team: {itms: {}, idx: {}}
     }}),
     EffectsModule.forFeature([
       ProjectEffects,
       OppEffects,
+      TeamEffects,
     ])
   ],
   providers: [
     ProjectService,
     OppService,
+    TeamService,
   ],
 })
 export class SNEntsModule { }

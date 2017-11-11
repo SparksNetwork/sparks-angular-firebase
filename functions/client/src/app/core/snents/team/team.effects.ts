@@ -5,38 +5,39 @@ import { Action } from '@ngrx/store'
 import { Actions, Effect } from '@ngrx/effects'
 import { Router } from '@angular/router'
 
-import { ProjectActions } from './project.actions'
-import { ProjectActionService } from '../../sndomain/project/project-action.service'
+import { TeamActions } from './team.actions'
+import { TeamActionService } from '../../sndomain/team/team-action.service'
 
 @Injectable()
-export class ProjectEffects {
+export class TeamEffects {
   constructor(
     public actions$: Actions,
     public af: AngularFireDatabase,
-    public restClient: ProjectActionService,
+    public restClient: TeamActionService,
     public router: Router,
   ) {}
 
   @Effect()
-  fetchProject: Observable<Action> =
-    this.actions$.ofType<ProjectActions.Fetch>(ProjectActions.FETCH)
-      .switchMap(({payload}) => this.af.object(`/project/${payload}`).snapshotChanges())
+  fetch: Observable<Action> =
+    this.actions$.ofType<TeamActions.Fetch>(TeamActions.FETCH)
+      .switchMap(({payload}) => this.af.object(`/team/${payload}`).snapshotChanges())
       // .delay(30000)
-      .map(snap => new ProjectActions.FetchSuccess({key: snap.key, values: snap.payload.val()}))
+      .map(snap => new TeamActions.FetchSuccess({key: snap.key, values: snap.payload.val()}))
 
   @Effect()
   fetchBy: Observable<Action> =
-    this.actions$.ofType<ProjectActions.FetchBy>(ProjectActions.FETCH_BY)
+    this.actions$.ofType<TeamActions.FetchBy>(TeamActions.FETCH_BY)
       .switchMap(action =>
-        this.af.list('/project').snapshotChanges()
+        this.af.list('/team', ref => ref.orderByChild(action.payload.field).equalTo(action.payload.value)).snapshotChanges()
+          .do(snap => console.log('team fetch by snap changes', snap))
           .switchMap(snap => {
-            const idxSuccess = new ProjectActions.FetchBySuccess({
+            const idxSuccess = new TeamActions.FetchBySuccess({
               field: action.payload.field,
               value: action.payload.value,
               keys: snap.map(s => s.key),
             })
             const itemSuccesses = snap.map(s =>
-              new ProjectActions.FetchSuccess({
+              new TeamActions.FetchSuccess({
                 key: s.key,
                 values: s.payload.val()
               })
@@ -50,18 +51,18 @@ export class ProjectEffects {
 
     @Effect()
     create: Observable<Action> =
-      this.actions$.ofType<ProjectActions.Create>(ProjectActions.CREATE)
+      this.actions$.ofType<TeamActions.Create>(TeamActions.CREATE)
         .do(a => console.log('CREATE effect triggered', a))
         .switchMap(action =>
           this.restClient.create(action.payload)
         )
         .map(response =>
-          new ProjectActions.CreateSuccess(response.json())
+          new TeamActions.CreateSuccess(response.json())
         )
         .do(a => console.log('new CREATE_SUCCESS action', a))
 
     @Effect({dispatch: false})
     createSuccess: Observable<Action> =
-      this.actions$.ofType<ProjectActions.CreateSuccess>(ProjectActions.CREATE_SUCCESS)
+      this.actions$.ofType<TeamActions.CreateSuccess>(TeamActions.CREATE_SUCCESS)
         .do(action => this.router.navigate(['/organize', action.payload]))
 }

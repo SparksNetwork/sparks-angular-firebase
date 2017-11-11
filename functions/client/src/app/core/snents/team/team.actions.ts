@@ -1,13 +1,13 @@
 import { Action, Store } from '@ngrx/store'
 
-export namespace ProjectActions {
+export namespace TeamActions {
 
-  export const FETCH = '[Project] Fetch'
-  export const FETCH_SUCCESS = '[Project] Fetch Success'
-  export const FETCH_BY = '[Project] Fetch By'
-  export const FETCH_BY_SUCCESS = '[Project] Fetch By Success'
-  export const CREATE = '[Project] Create'
-  export const CREATE_SUCCESS = '[Project] Create Success'
+  export const FETCH = '[Team] Fetch'
+  export const FETCH_SUCCESS = '[Team] Fetch Success'
+  export const FETCH_BY = '[Team] Fetch By'
+  export const FETCH_BY_SUCCESS = '[Team] Fetch By Success'
+  export const CREATE = '[Team] Create'
+  export const CREATE_SUCCESS = '[Team] Create Success'
 
   export class Fetch implements Action {
     readonly type = FETCH

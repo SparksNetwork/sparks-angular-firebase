@@ -6,6 +6,7 @@ import { ItemState, IdxState } from '../../core/snents/ngrx-ents'
 
 import { Project, ProjectService } from '../../core/snents/project'
 import { Opp, OppService } from '../../core/snents/opp'
+import { Team, TeamService } from '../../core/snents/team'
 
 @Injectable()
 export class OrganizeUiStateService {
@@ -21,6 +22,11 @@ export class OrganizeUiStateService {
 
   public opps$: Observable<ItemState<Opp>[]>
   public oppKeys$: Observable<string[]>
+
+  public teams$: Observable<ItemState<Team>[]>
+  public teamKeys$: Observable<string[]>
+
+  public setupStatus$: Observable<string>
 
   public contexts = [
     {
@@ -54,6 +60,7 @@ export class OrganizeUiStateService {
     public store: Store<any>,
     // public teams: ProjectService,
     public opps: OppService,
+    public teams: TeamService,
     public projects: ProjectService,
   ) {
     this.currentUrl$ = this.store.select('routerReducer').select('state')
@@ -79,6 +86,11 @@ export class OrganizeUiStateService {
             .do(opp => console.log('opp', opp))
             .pluck('values')
             .filter(Boolean)
+            .pluck('title')
+        }
+        if ((segs[0] === 'team') && segs[1]) {
+          return this.teams.one(segs[1])
+            .pluck('values')
             .pluck('title')
         }
         return Observable.of('Overview')
@@ -110,6 +122,31 @@ export class OrganizeUiStateService {
       .switchMap(keys => Observable.combineLatest(
         ...keys.map(key => this.opps.one(key))
       ))
+
+    const teamsIndex$ = this.projectKey$
+      .switchMap(key => this.teams.by('projectKey', key))
+
+    this.teamKeys$ = teamsIndex$
+      .pluck('keys')
+      .filter(Boolean)
+
+    this.teams$ =  this.teamKeys$
+      .switchMap(keys => Observable.combineLatest(
+        ...keys.map(key => this.teams.one(key))
+      ))
+
+    this.setupStatus$ = Observable.combineLatest(
+      this.project$,
+      this.opps$,
+      this.teams$,
+      (p, o, t) => {
+        if (t.length > 0) { return 'someJobs' }
+        if (!t.length) { return 'noJobs' }
+        return 'unknown'
+      }
+    )
+
+    this.setupStatus$.subscribe(s => console.log('setup', s))
   }
 
   segmentsForContext$(context: string) {

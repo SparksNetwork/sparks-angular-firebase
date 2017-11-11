@@ -442,102 +442,119 @@
   },
   "team": {
     "KPC1": {
+      "projectKey": "KPC",
       "description": "Single team description shouldn't show",
       "icon": "glyphicon-grain",
       "question": "This question shouldn't show.",
       "title": "Single Team Example"
     },
     "BABP1": {
+      "projectKey": "BABP",
       "description": "Putting it up and then taking it back down",
       "icon": "glyphicon-grain",
       "question": "Can you use power tools and lift heavy things?",
       "title": "Setup and Teardown"
     },
     "BABP2": {
+      "projectKey": "BABP",
       "description": "Serving and keeping it clean.",
       "icon": "glyphicon-grain",
       "question": "What bartending experience do you have?",
       "title": "Wine Bar"
     },
     "BABP3": {
+      "projectKey": "BABP",
       "description": "Helping artists do what they do.",
       "icon": "glyphicon-grain",
       "question": "What experience do you have with sound gear?",
       "title": "Stage Crew"
     },
     "LC1": {
+      "projectKey": "LC",
       "description": "Feed hundreds of dreamers in the most amazing kitchen ever.",
       "icon": "glyphicon-grain",
       "question": "What's the most important thing about working in a commercial kitchen?",
       "title": "Mindful Feeding"
     },
     "LC2": {
+      "projectKey": "LC",
       "description": "Take tickets and give people a big warm welcome!",
       "icon": "glyphicon-sunglasses",
       "question": "What experience do you have handling cash?",
       "title": "Gatekeepers"
     },
     "LC3": {
+      "projectKey": "LC",
       "description": "Help people load on to and off of the shuttles that take them into the event.",
       "icon": "glyphicon-sunglasses",
       "question": "Can you lift bags and ride in the back of a truck?",
       "title": "Shuttleguides"
     },
     "LC4": {
+      "projectKey": "LC",
       "description": "Be the first face that people see and help them get to where they need to go safely.",
       "icon": "glyphicon-sunglasses",
       "question": "What's the most important thing about parking cars?",
       "title": "Autotetris"
     },
     "LC5": {
+      "projectKey": "LC",
       "description": "Work with the team that makes sure we leave the festival grounds better than we found them.",
       "icon": "glyphicon-sunglasses",
       "question": "What does Leave No Trace mean to you?",
       "title": "da Impact Reduction Team"
     },
     "LC6": {
+      "projectKey": "LC",
       "description": "Work the green rooms where the artists prepare before the show.",
       "icon": "glyphicon-sunglasses",
       "question": "What's the most important thing about making artists feel welcome?",
       "title": "Artist Hospitality"
     },
     "LC7": {
+      "projectKey": "LC",
       "description": "Help run power and set up generators.",
       "icon": "glyphicon-sunglasses",
       "question": "What experience do you have with electrical?",
       "title": "Technocrats"
     },
     "LC8": {
+      "projectKey": "LC",
       "description": "Manage the equipment inventory, checking out tools to builders.",
       "icon": "glyphicon-sunglasses",
       "question": "What experience do you have with inventory management?",
       "title": "Boneyard"
     },
     "LC9": {
+      "projectKey": "LC",
       "description": "Help out at the build office in the weeks before the festial.",
       "icon": "glyphicon-grain",
       "question": "How close are you to our build office at 1234 Main Street in Santa Barbara?",
       "title": "Nikki's Elves"
     },
     "LC10": {
+      "projectKey": "LC",
       "description": "Build Beasts description",
       "icon": "glyphicon-sunglasses",
       "question": "What experience do you have with event build?",
       "title": "Build Beasts"
     },
     "LC11": {
+      "projectKey": "LC",
       "description": "Strike Tigers description",
       "icon": "glyphicon-sunglasses",
       "question": "What experience do you have with event strike?",
       "title": "Strike Tigers"
     },
     "SRBC1": {
+      "projectKey": "SRBC",
       "description": "Comb the beach for things that don't belong there.",
       "icon": "glyphicon-sunglasses",
       "question": "Why is it important to keep our beaches clean?",
       "title": "Beachcombers"
     },
     "SRBC2": {
+      "projectKey": "SRBC",
       "description": "Sort the things we collect into landfill and recycle bins",
       "icon": "glyphicon-sunglasses",
       "question": "Do you mind getting dirty?",

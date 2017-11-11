@@ -4,14 +4,15 @@ import { Routes, RouterModule } from '@angular/router'
 import { DummyComponent } from './dummy.component'
 import { DummyOutletComponent } from './dummy-outlet.component'
 
-// import {
-//   RoutedNavComponent,
-//   RoutedHomeOverviewComponent,
-//  } from './routed'
+import {
+  RoutedNavComponent,
+  RoutedHomeOverviewComponent,
+  RoutedStartComponent,
+ } from './routed'
 
-import { RoutedNavComponent } from './routed/routed-nav.component'
-import { RoutedHomeOverviewComponent } from './routed/routed-home-overview.component'
-
+// import { RoutedNavComponent } from './routed/routed-nav.component'
+// import { RoutedHomeOverviewComponent } from './routed/routed-home-overview.component'
+// import { RoutedStartComponent } from './routed/routed-home-'
 // import { HomeComponent } from './home.component';
 // import { ResolveProjectAll } from '../../core/sndomain/project/resolve-project-all.service'
 // import { HomeAllProjectsComponent } from './home-all-projects/home-all-projects.component'
@@ -62,6 +63,10 @@ export function focusRoutesFor(OverviewComponent: any, JobComponent: any, OppCom
 
 export const routes: Routes = [
   {
+    path: 'start-organizing-people',
+    component: RoutedStartComponent,
+  },
+  {
     path: ':projectKey',
     component: RoutedNavComponent,
     children: [
@@ -108,6 +113,7 @@ export class OrganizeRoutingModule { }
 export const routedComponents = [
   RoutedNavComponent,
   RoutedHomeOverviewComponent,
+  RoutedStartComponent,
   DummyComponent,
   DummyOutletComponent,
 ]

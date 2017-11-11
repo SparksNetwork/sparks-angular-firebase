@@ -32,7 +32,7 @@ import {
 import {
   ResolveTeamByOppKey,
   TeamQueryService,
-  // TeamActionService,
+  TeamActionService,
 } from './team'
 
 import {
@@ -101,7 +101,7 @@ import {
     ResolveContribByOppKey,
 
     TeamQueryService,
-    // TeamActionService,
+    TeamActionService,
     ResolveTeamByOppKey,
 
     OppAllowedTeamQueryService,

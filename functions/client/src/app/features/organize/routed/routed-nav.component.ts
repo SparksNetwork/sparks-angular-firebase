@@ -72,7 +72,7 @@ export class RoutedNavComponent {
       .pluck('values')
       .filter(Boolean)
 
-    this.imageUrl$ = this.values$.map((v: any) => v.images[0].imageUrl)
+    this.imageUrl$ = this.values$.map((v: any) => v.images ? v.images[0].imageUrl : '')
     this.title$ = this.values$.pluck('title')
 
     this.loading$ = this.uiState.project$.pluck('loading')

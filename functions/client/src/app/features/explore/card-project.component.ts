@@ -35,7 +35,7 @@ export class CardProjectComponent implements OnInit {
     const values$: Observable<any> = this.project$
       .pluck('values')
       .filter(Boolean)
-    this.imageUrl$ = values$.map(v => v.images[0].imageUrl)
+    this.imageUrl$ = values$.map(v => v.images ? v.images[0].imageUrl : '')
     this.title$ = values$.pluck('title')
   }
 }

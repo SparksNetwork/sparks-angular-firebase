@@ -7,20 +7,17 @@ import { EntState, IdxState } from '../../core/snents/ngrx-ents'
 
 @Component({
   selector: 'explore-header-home',
-  styleUrls: ['./header-home.component.scss'],
   template: `
-<div class='ui container'>
-<h1 class='ui header inverted' style='font-size: 3em'>
-make it happen.
-</h1>
-<button class='ui primary button massive'>
-  start organizing people
-</button>
-</div>
+<snui-header-full>
+  <h1 class='ui header inverted' style='font-size: 2em'>
+  make it happen.
+  </h1>
+  <button class='ui primary button large' [routerLink]='["/organize", "start-organizing-people"]'>
+    start organizing people
+  </button>
+</snui-header-full>
 `
 })
 export class HeaderHomeComponent {
-  @HostBinding('class') klass = 'masthead'
-
   constructor() {}
 }

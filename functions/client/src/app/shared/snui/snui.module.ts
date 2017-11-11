@@ -36,6 +36,11 @@ import {
   RowIconComponent
 } from './row-icon/row-icon.component'
 
+
+import {
+  HeaderFullComponent,
+} from './components'
+
 const COMPONENTS = [
   HeaderSimpleComponent,
   ActionBarComponent,
@@ -57,6 +62,8 @@ const COMPONENTS = [
   SubheadingComponent,
   SeparatorComponent,
   RowIconComponent,
+
+  HeaderFullComponent,
 ]
 
 @NgModule({

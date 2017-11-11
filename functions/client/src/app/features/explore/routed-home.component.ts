@@ -12,9 +12,9 @@ import { EntState, IdxState } from '../../core/snents/ngrx-ents'
   template: `
 <explore-header-home></explore-header-home>
 <div class='ui container'>
-  <h1 class='ui header' style='padding: 1em 0em;'>
+  <h2 class='ui header' style='padding: 1em 0em;'>
     These projects need your help!
-  </h1>
+  </h2>
   <div *ngIf='loading$ | async'>
     <div class='ui huge text loader active'>Loading...</div>
   </div>
