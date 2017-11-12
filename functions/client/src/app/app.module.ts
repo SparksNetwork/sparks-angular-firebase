@@ -12,8 +12,8 @@ import { NgModule } from '@angular/core';
 
 // import { SuiModule } from 'ng2-semantic-ui'
 
-// import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app.routing'
+import { AppPageComponent } from './app.component'
 
 // import { SNAuthModule } from './core/snauth/snauth.module'
 // import { SNDomainModule } from './core/sndomain/sndomain.module'
@@ -34,9 +34,10 @@ import { environment } from '../environments/environment'
 //   }
 // }
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppPageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'sparks-angular-firebase'}),
@@ -46,7 +47,7 @@ import { environment } from '../environments/environment'
     // StoreModule.forRoot({routerReducer}),
     // EffectsModule.forRoot([]),
     // SuiModule,
-    // AppRoutingModule,
+    AppRoutingModule,
     // StoreRouterConnectingModule,
     // SNAuthModule,
     // SNDomainModule,
@@ -57,6 +58,6 @@ import { environment } from '../environments/environment'
   // providers: [
   //   { provide: RouterStateSerializer, useClass: CustomSerializer}
   // ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppPageComponent]
 })
 export class AppModule { }
