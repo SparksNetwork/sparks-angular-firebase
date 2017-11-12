@@ -15,7 +15,13 @@ import { Routes, RouterModule } from '@angular/router';
 // import { PageEmailSignupComponent } from './page-email-signup/page-email-signup.component';
 // import { PageSignupComponent } from './page-signup/page-signup.component';
 
+import { AuthJoinPageComponent } from './components/auth-join-page.component'
+import { AuthSigninPageComponent } from './components/auth-signin-page.component'
+
 export const routedComponents = [
+  AuthJoinPageComponent,
+  AuthSigninPageComponent,
+  // AuthFullPageComponent,
   // PageSigninComponent,
   // PageSignupComponent,
   // PageEmailSignupComponent,
@@ -43,19 +49,22 @@ const routes: Routes = [
   },
   {
     path: ':redirectUrl',
+    // component: AuthFullPageComponent,
     // resolve: [
     //   FirstAuth,
     // ],
     children: [
       {
         path: 'signin',
+        component: AuthSigninPageComponent,
         // component: PageSigninComponent,
         // canActivate: [
         //   RedirectIfAuthed,
         // ]
       },
       {
-        path: 'signup',
+        path: 'join',
+        component: AuthJoinPageComponent,
         // component: PageSignupComponent,
         // canActivate: [
         //   RedirectIfAuthed,
