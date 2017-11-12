@@ -12,6 +12,7 @@ import { Component } from '@angular/core';
   </div>
   <div>
     <h1>signin page</h1>
+    <i class='fa fa-italic'></i>
   </div>
 `
 })

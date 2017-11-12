@@ -47,6 +47,7 @@
     "firebase": "4.6.2",
     "firebase-admin": "5.5.0",
     "firebase-functions": "0.7.3",
+    "font-awesome": "^4.7.0",
     "reflect-metadata": "^0.1.10",
     "rxjs": "5.5.2",
     "winston": "^2.4.0",

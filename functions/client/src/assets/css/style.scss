@@ -1,2 +1,6 @@
 // import stuff from other files
 // import this into any components
+
+$fa-font-path: '../../../../node_modules/font-awesome/fonts';
+
+@import '../../../../node_modules/font-awesome/scss/font-awesome';
