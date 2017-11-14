@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core'
 import { Subject } from 'rxjs/Subject'
 
 import { AuthStateService } from '../auth.state'
-
+import { AuthEmailPasswordInputsComponent } from './auth-email-password-inputs'
 
 @Component({
   selector: 'auth-signin-page',
@@ -22,7 +22,7 @@ import { AuthStateService } from '../auth.state'
 })
 
 export class AuthSigninPageComponent implements OnInit {
-  @ViewChild('inputs') inputs
+  @ViewChild('inputs') inputs: AuthEmailPasswordInputsComponent
   public click$ = new Subject<Boolean>()
 
   constructor(

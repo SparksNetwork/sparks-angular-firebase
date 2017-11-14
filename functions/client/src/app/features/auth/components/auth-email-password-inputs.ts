@@ -5,6 +5,10 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject'
 
 import { AuthStateService } from '../auth.state'
 
+export interface EmailPasswordInputs {
+  email: string,
+  password: string,
+}
 
 @Component({
   selector: 'auth-email-password-inputs',
@@ -18,7 +22,7 @@ export class AuthEmailPasswordInputsComponent {
   public password$ = new BehaviorSubject(null)
 
   @Output() public valid$: Observable<Boolean>
-  @Output() public values$: Observable<{email: string, password: string}>
+  @Output() public values$: Observable<EmailPasswordInputs>
 
   constructor(
   ) {
