@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // import { FirstAuth } from '../../core/snauth/first-auth/first-auth.service'
+import { RedirectToJoinIfNotUser } from '../../core/user/redirect-to-join-if-not-user.guard'
 
 import { OrganizeStartPageComponent } from './components/organize-start-page.component'
 
@@ -13,6 +14,9 @@ const routes: Routes = [
   {
     path: 'start',
     component: OrganizeStartPageComponent,
+    canActivate: [
+      RedirectToJoinIfNotUser,
+    ]
     // resolve: [
     //   FirstAuth,
     // ],

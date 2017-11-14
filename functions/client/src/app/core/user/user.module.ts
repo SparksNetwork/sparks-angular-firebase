@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core'
 
 import { UserService } from './user.service'
 import { RedirectIfUser } from './redirect-if-user.guard'
-import { RedirectIfNotUser } from './redirect-if-not-user.guard'
+import { RedirectToJoinIfNotUser } from './redirect-to-join-if-not-user.guard'
 import { AwaitFirstAuth } from './await-first-auth.resolver'
 
 @NgModule({
@@ -16,7 +16,7 @@ import { AwaitFirstAuth } from './await-first-auth.resolver'
   providers: [
     UserService,
     RedirectIfUser,
-    RedirectIfNotUser,
+    RedirectToJoinIfNotUser,
     AwaitFirstAuth,
   ],
 })

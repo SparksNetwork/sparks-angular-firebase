@@ -6,11 +6,13 @@ import { UserService } from '../../core/user/user.service'
 @Injectable()
 export class AuthStateService {
   public isAuthed$: Observable<boolean>
+  public errorMessage$: Observable<string>
 
   constructor(
     public userService: UserService
   ) {
     this.isAuthed$ = userService.isAuthed$
+    this.errorMessage$ = userService.errorMessage$
   }
 
   public signInWithFacebook() {

@@ -4,7 +4,7 @@ import { Router, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate } from
 import { UserService } from './user.service'
 
 @Injectable()
-export class RedirectIfNotUser implements CanActivate {
+export class RedirectToJoinIfNotUser implements CanActivate {
   constructor(
     public userService: UserService,
     public router: Router,

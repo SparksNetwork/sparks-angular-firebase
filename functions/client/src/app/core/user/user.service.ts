@@ -32,8 +32,8 @@ export class UserService {
   public current$: Observable<User>
   public isAuthed$: Observable<boolean>
 
-  public error = new EventEmitter<AuthError | null>()
-  public errorMessage = new Observable<string | null>()
+  public error$ = new EventEmitter<AuthError | null>()
+  public errorMessage$ = new Observable<string | null>()
 
   private providers = {
     facebook: new FacebookProvider(),
@@ -49,28 +49,28 @@ export class UserService {
     this.current$ = this.afAuth.authState
       .filter(Boolean)
 
-    this.errorMessage = this.error
+    this.errorMessage$ = this.error$
       .map(err => err ? (HUMAN_ERROR_MESSAGES[err.code] || err.message) as string : null)
 
     this.isAuthed$.subscribe(isAuthed => console.log('user.isAuthed$', isAuthed))
 
     this.current$.subscribe(current => console.log('user.current$', current))
 
-    this.error.subscribe(err => {
-      if (err) { console.log('auth error', err) }
-    })
+    this.error$.subscribe(err => console.log('user.error$', err))
+
+    this.errorMessage$.subscribe(eM => console.log('user.errorMessage$', eM))
 
     // this is some super-hacky shit that exposes auth to e2e tests
     window['auth'] = this.afAuth.auth
   }
 
   public signInWithGoogle() {
-    this.error.emit(null)
+    this.error$.emit(null)
     this.afAuth.auth.signInWithRedirect(this.providers.google)
   }
 
   public signInWithFacebook() {
-    this.error.emit(null)
+    this.error$.emit(null)
     this.afAuth.auth.signInWithRedirect(this.providers.facebook)
   }
 
@@ -82,20 +82,20 @@ export class UserService {
    * If the login succedes reload page to be consistent with social login that does a reload. 
    */
   public signInWithEmailAndPassword(email: string, password: string) {
-    this.error.emit(null)
+    this.error$.emit(null)
     this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then(() => location.reload())
-      .catch((err: AuthError) => this.error.emit(err))
+      .catch((err: AuthError) => this.error$.emit(err))
   }
 
   public createWithEmailAndPassword(email: string, password: string, continueURL: string = '/') {
-    this.error.emit(null)
+    this.error$.emit(null)
     this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       // "Domain not whitelisted" if anything else goes; replace localhost with actual host in email action handler
       .then((user: User) => user.sendEmailVerification({url: 'https://localhost' + continueURL}))
       .then(() => this.afAuth.auth.signInWithEmailAndPassword(email, password))
       .then(() => location.reload())
-      .catch((err: AuthError) => this.error.emit(err))
+      .catch((err: AuthError) => this.error$.emit(err))
   }
 
   public signOut() {
@@ -106,12 +106,12 @@ export class UserService {
   public applyActionCode(code: string) {
     return this.afAuth.auth.applyActionCode(code)
       // .then(() => location.reload())
-      .catch((err: AuthError) => this.error.emit(err))
+      .catch((err: AuthError) => this.error$.emit(err))
   }
 
   public signInWithEmailAndPasswordWithoutRedirect(email: string, password: string) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      .catch((err: AuthError) => this.error.emit(err));
+      .catch((err: AuthError) => this.error$.emit(err));
   }
 
   /**
@@ -121,8 +121,8 @@ export class UserService {
    */
   public sendPasswordResetEmail(email: string) {
     return this.afAuth.auth.sendPasswordResetEmail(email)
-      .then(() => { return email; })
-      .catch((err: AuthError) => this.error.emit(err));
+      .then(() => email)
+      .catch((err: AuthError) => this.error$.emit(err));
   }
 
   /**
@@ -132,7 +132,7 @@ export class UserService {
    */
   public verifyPasswordResetCode(code: string) {
     return this.afAuth.auth.verifyPasswordResetCode(code)
-      .catch((err: AuthError) => this.error.emit(err));
+      .catch((err: AuthError) => this.error$.emit(err));
   }
 
   /**
@@ -143,6 +143,6 @@ export class UserService {
    */
   public confirmPasswordReset(code: string, newPassword: string) {
     return this.afAuth.auth.confirmPasswordReset(code, newPassword)
-      .catch((err: AuthError) => this.error.emit(err));
+      .catch((err: AuthError) => this.error$.emit(err));
   }
 }

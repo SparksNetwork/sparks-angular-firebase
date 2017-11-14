@@ -15,6 +15,7 @@ import { AuthEmailPasswordInputsComponent } from './auth-email-password-inputs'
     <h1>Sign In to the Sparks.Network</h1>
     <auth-social-buttons></auth-social-buttons>
     <h4>Or with your email and password</h4>
+    <div *ngIf='state.errorMessage$ | async; let errorMessage'>{{errorMessage}}</div>
     <auth-email-password-inputs #inputs></auth-email-password-inputs>
     <button [disabled]='!(inputs.valid$ | async)' (click)='click$.next()'>sign in</button>
   </div>

@@ -16,7 +16,7 @@ import { Routes, RouterModule } from '@angular/router';
 // import { PageSignupComponent } from './page-signup/page-signup.component';
 
 import { RedirectIfUser } from '../../core/user/redirect-if-user.guard'
-import { RedirectIfNotUser } from '../../core/user/redirect-if-not-user.guard'
+import { RedirectToJoinIfNotUser } from '../../core/user/redirect-to-join-if-not-user.guard'
 
 import { AuthJoinPageComponent } from './components/auth-join-page.component'
 import { AuthSigninPageComponent } from './components/auth-signin-page.component'

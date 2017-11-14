@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { MyProfileHomePageComponent } from './components/my-profile-home-page.component'
 
-import { RedirectIfNotUser } from '../../core/user/redirect-if-not-user.guard'
+import { RedirectToJoinIfNotUser } from '../../core/user/redirect-to-join-if-not-user.guard'
 
 export const routedComponents = [
   MyProfileHomePageComponent,
@@ -14,7 +14,7 @@ const routes: Routes = [
     path: '',
     component: MyProfileHomePageComponent,
     canActivate: [
-      RedirectIfNotUser,
+      RedirectToJoinIfNotUser,
     ]
   }
 ]
