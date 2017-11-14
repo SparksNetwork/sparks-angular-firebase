@@ -11,9 +11,13 @@ import { AuthRoutingModule, routedComponents } from './auth.routing'
 // import { SocialBlockComponent } from './social-block/social-block.component';
 // import { HeaderAuthComponent } from './header-auth/header-auth.component'
 
+import { AuthSocialButtonsComponent } from './components/auth-social-buttons.component'
+import { AuthStateService } from './auth.state'
+
 @NgModule({
   declarations: [
     routedComponents,
+    AuthSocialButtonsComponent,
     // FormEmailPasswordComponent,
     // AlertErrorComponent,
     // FormResetPasswordComponent,
@@ -27,7 +31,9 @@ import { AuthRoutingModule, routedComponents } from './auth.routing'
     // SNUIModule,
     AuthRoutingModule,
   ],
-  providers: [],
+  providers: [
+    AuthStateService,
+  ],
 })
 export class AuthModule { }
 

@@ -36,6 +36,7 @@
     "@angular/platform-server": "5.0.1",
     "@angular/router": "5.0.1",
     "@types/winston": "^2.3.6",
+    "angularfire2": "^5.0.0-rc.3",
     "body-parser": "^1.17.2",
     "class-transformer": "^0.1.8",
     "class-transformer-validator": "^0.4.0",

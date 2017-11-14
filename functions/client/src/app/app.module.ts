@@ -7,10 +7,13 @@ import { NgModule } from '@angular/core';
 // import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 // import { StoreRouterConnectingModule, routerReducer, RouterStateSerializer, RouterAction, RouterNavigationAction } from '@ngrx/router-store'
 // import { RouterStateSnapshot } from '@angular/router'
-// import { AngularFireModule } from 'angularfire2'
-// import { AngularFireDatabaseModule } from 'angularfire2/database'
+import { AngularFireModule } from 'angularfire2'
+import { AngularFireDatabaseModule } from 'angularfire2/database'
+import { AngularFireAuthModule } from 'angularfire2/auth'
 
 // import { SuiModule } from 'ng2-semantic-ui'
+
+import { UserModule } from './core/user/user.module'
 
 import { AppRoutingModule } from './app.routing'
 import { AppPageComponent } from './app.component'
@@ -42,12 +45,14 @@ import { environment } from '../environments/environment'
   imports: [
     BrowserModule.withServerTransition({appId: 'sparks-angular-firebase'}),
     BrowserAnimationsModule,
-    // AngularFireModule.initializeApp(environment.firebase),
-    // AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     // StoreModule.forRoot({routerReducer}),
     // EffectsModule.forRoot([]),
     // SuiModule,
     AppRoutingModule,
+    UserModule,
     // StoreRouterConnectingModule,
     // SNAuthModule,
     // SNDomainModule,

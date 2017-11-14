@@ -15,6 +15,9 @@ import { Routes, RouterModule } from '@angular/router';
 // import { PageEmailSignupComponent } from './page-email-signup/page-email-signup.component';
 // import { PageSignupComponent } from './page-signup/page-signup.component';
 
+import { RedirectIfUser } from '../../core/user/redirect-if-user.guard'
+import { RedirectIfNotUser } from '../../core/user/redirect-if-not-user.guard'
+
 import { AuthJoinPageComponent } from './components/auth-join-page.component'
 import { AuthSigninPageComponent } from './components/auth-signin-page.component'
 
@@ -57,18 +60,16 @@ const routes: Routes = [
       {
         path: 'signin',
         component: AuthSigninPageComponent,
-        // component: PageSigninComponent,
-        // canActivate: [
-        //   RedirectIfAuthed,
-        // ]
+        canActivate: [
+          RedirectIfUser,
+        ]
       },
       {
         path: 'join',
         component: AuthJoinPageComponent,
-        // component: PageSignupComponent,
-        // canActivate: [
-        //   RedirectIfAuthed,
-        // ]
+        canActivate: [
+          RedirectIfUser,
+        ]
       },
       {
         path: 'email-signup',

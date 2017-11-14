@@ -6,13 +6,14 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'auth-full-page',
   template: `
-  <div>
-    <h4>full page pseudo-appbar</h4>
-    <button [routerLink]='["../signin"]'>signin</button>
-  </div>
-  <div>
-    <h1>signin page</h1>
-  </div>
+<div>
+  <a [routerLink]='["/"]'>SN Logo</a>
+  <button [routerLink]='["../signin"]'>sign in</button>
+</div>
+<div>
+  <h1>Join the Sparks.Network</h1>
+  <auth-social-buttons></auth-social-buttons>
+</div>
 `
 })
 
