@@ -1,40 +1,37 @@
-import { Component } from '@angular/core'
+import { Component, OnInit, ViewChild } from '@angular/core'
+import { Subject } from 'rxjs/Subject'
 
 import { AuthStateService } from '../auth.state'
-// import { AuthService } from '../../../core/snauth/auth/auth.service';
-// import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
-  selector: 'auth-full-page',
+  selector: 'auth-signin-page',
   template: `
   <div>
     <a [routerLink]='["/"]'>SN Logo</a>
     <button [routerLink]='["../join"]'>join</button>
   </div>
   <div>
-    <h1>Sign In</h1>
+    <h1>Sign In to the Sparks.Network</h1>
     <auth-social-buttons></auth-social-buttons>
     <h4>Or with your email and password</h4>
-    <input type='text'>
-    <input type='password'>
-    <button>sign in</button>
+    <auth-email-password-inputs #inputs></auth-email-password-inputs>
+    <button [disabled]='!(inputs.valid$ | async)' (click)='click$.next()'>sign in</button>
   </div>
 `
 })
 
-export class AuthSigninPageComponent {
-
-  // public redirectUrl: string;
+export class AuthSigninPageComponent implements OnInit {
+  @ViewChild('inputs') inputs
+  public click$ = new Subject<Boolean>()
 
   constructor(
     public state: AuthStateService,
-    // private auth: AuthService,
-    // private route: ActivatedRoute
-  ) {
-    // this.redirectUrl = route.snapshot.paramMap.get('redirectUrl');
-  }
+  ) {}
 
-  // public signInWithEmailAndPassword(event) {
-    // this.auth.signInWithEmailAndPassword(event.email, event.password);
-  // }
+  public ngOnInit() {
+    this.inputs.values$
+      .sample(this.click$)
+      .subscribe(({email, password}) => this.state.signInWithEmailAndPassword(email, password))
+  }
 }

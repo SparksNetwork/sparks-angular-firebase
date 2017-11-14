@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { MyProfileRoutingModule, routedComponents } from './my-profile.routing'
 
-// import { AppbarStateService } from './appbar.state'
+import { MyProfileStateService } from './my-profile.state'
 
 @NgModule({
   declarations: routedComponents,
@@ -12,7 +12,7 @@ import { MyProfileRoutingModule, routedComponents } from './my-profile.routing'
     MyProfileRoutingModule,
   ],
   providers: [
-    // AppbarStateService,
+    MyProfileStateService,
   ],
 })
 export class MyProfileModule { }

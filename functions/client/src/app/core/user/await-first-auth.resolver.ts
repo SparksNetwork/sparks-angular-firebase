@@ -3,8 +3,6 @@ import { Resolve } from '@angular/router';
 
 import { UserService } from './user.service'
 
-import 'rxjs/add/operator/first'
-
 @Injectable()
 export class AwaitFirstAuth implements Resolve<boolean> {
   constructor(

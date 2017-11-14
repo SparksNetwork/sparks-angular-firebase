@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Subject } from 'rxjs/Subject'
 
-// import { AuthService } from '../../../core/snauth/auth/auth.service';
-// import { ActivatedRoute } from '@angular/router';
+import { AuthStateService } from '../auth.state';
 
 @Component({
   selector: 'auth-full-page',
@@ -13,22 +13,27 @@ import { Component } from '@angular/core';
 <div>
   <h1>Join the Sparks.Network</h1>
   <auth-social-buttons></auth-social-buttons>
+  <button>with your email</button>
+  <div>
+    <auth-email-password-inputs #inputs></auth-email-password-inputs>
+    <button [disabled]='!(inputs.valid$ | async)' (click)='click$.next()'>join</button>
+  </div>
 </div>
 `
 })
 
-export class AuthJoinPageComponent {
-
-  // public redirectUrl: string;
+export class AuthJoinPageComponent implements OnInit {
+  @ViewChild('inputs') inputs
+  public click$ = new Subject<Boolean>()
 
   constructor(
-    // private auth: AuthService,
-    // private route: ActivatedRoute
-  ) {
-    // this.redirectUrl = route.snapshot.paramMap.get('redirectUrl');
+    public state: AuthStateService,
+  ) {}
+
+  public ngOnInit() {
+    this.inputs.values$
+      .sample(this.click$)
+      .subscribe(({email, password}) => this.state.createWithEmailAndPassword(email, password))
   }
 
-  // public signInWithEmailAndPassword(event) {
-    // this.auth.signInWithEmailAndPassword(event.email, event.password);
-  // }
 }

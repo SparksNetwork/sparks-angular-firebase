@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-// import { AuthService } from '../../core/snauth/auth/auth.service';
 import { AppbarStateService } from '../appbar.state'
 
 @Component({
@@ -16,18 +15,13 @@ import { AppbarStateService } from '../appbar.state'
 `
 })
 
-export class AppbarHomePageComponent implements OnInit {
+export class AppbarHomePageComponent {
   public isAuthed: boolean;
 
   constructor(
-    // private auth: AuthService,
     private router: Router,
     public state: AppbarStateService,
-  ) {
-    // this.auth.isAuthed.subscribe(isAuthed => this.isAuthed = isAuthed)
-  }
-
-  ngOnInit() { }
+  ) {}
 
   navigateToSignIn() {
     this.router.navigate(['/auth', this.router.url, 'signin'])

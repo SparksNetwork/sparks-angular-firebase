@@ -4,8 +4,6 @@ import { Observable } from 'rxjs/Observable'
 import * as firebase from 'firebase'
 import { AngularFireAuth } from 'angularfire2/auth'
 
-import 'rxjs/add/operator/map'
-
 export type AuthError = firebase.FirebaseError
 export type User = firebase.User
 
@@ -45,17 +43,18 @@ export class UserService {
   constructor(
     public afAuth: AngularFireAuth
   ) {
+    this.isAuthed$ = this.afAuth.authState
+      .map(Boolean)
+
     this.current$ = this.afAuth.authState
+      .filter(Boolean)
 
     this.errorMessage = this.error
       .map(err => err ? (HUMAN_ERROR_MESSAGES[err.code] || err.message) as string : null)
 
-    this.isAuthed$ = this.afAuth.authState
-      .map(authState => authState ? true : false)
+    this.isAuthed$.subscribe(isAuthed => console.log('user.isAuthed$', isAuthed))
 
-    this.current$.subscribe(authState => {
-      console.log('authState', authState)
-    })
+    this.current$.subscribe(current => console.log('user.current$', current))
 
     this.error.subscribe(err => {
       if (err) { console.log('auth error', err) }

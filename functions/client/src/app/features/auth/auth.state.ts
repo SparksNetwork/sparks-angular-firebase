@@ -25,4 +25,7 @@ export class AuthStateService {
     this.userService.signInWithEmailAndPassword(email, password)
   }
 
+  public createWithEmailAndPassword(email: string, password: string) {
+    this.userService.createWithEmailAndPassword(email, password)
+  }
 }

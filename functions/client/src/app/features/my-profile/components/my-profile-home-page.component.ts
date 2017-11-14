@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
-// import { AuthService } from '../../core/snauth/auth/auth.service';
-// import { AppbarStateService } from '../appbar.state'
-import { UserService } from '../../../core/user/user.service'
+import { MyProfileStateService } from '../my-profile.state'
 
 @Component({
   selector: 'my-profile-home-page',
@@ -10,29 +8,17 @@ import { UserService } from '../../../core/user/user.service'
 <div>
   <h1>My Profile</h1>
   <button (click)='signOut()'>sign out</button>
+  {{ state.user$ | async | json }}
 </div>
 `
 })
 
-export class MyProfileHomePageComponent implements OnInit {
-  // public isAuthed: boolean;
-
+export class MyProfileHomePageComponent {
   constructor(
-    public userService: UserService,
-    // private auth: AuthService,
-    // private router: Router,
-    // public state: AppbarStateService,
-  ) {
-    // this.auth.isAuthed.subscribe(isAuthed => this.isAuthed = isAuthed)
-  }
-
-  ngOnInit() { }
+    public state: MyProfileStateService,
+  ) {}
 
   public signOut() {
-    this.userService.signOut()
+    this.state.signOut()
   }
-  // navigateToSignIn() {
-  //   this.router.navigate(['/auth', this.router.url, 'signin'])
-  // }
-
 }

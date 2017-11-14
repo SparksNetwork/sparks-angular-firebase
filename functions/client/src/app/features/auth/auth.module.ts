@@ -12,12 +12,14 @@ import { AuthRoutingModule, routedComponents } from './auth.routing'
 // import { HeaderAuthComponent } from './header-auth/header-auth.component'
 
 import { AuthSocialButtonsComponent } from './components/auth-social-buttons.component'
+import { AuthEmailPasswordInputsComponent } from './components/auth-email-password-inputs'
 import { AuthStateService } from './auth.state'
 
 @NgModule({
   declarations: [
     routedComponents,
     AuthSocialButtonsComponent,
+    AuthEmailPasswordInputsComponent,
     // FormEmailPasswordComponent,
     // AlertErrorComponent,
     // FormResetPasswordComponent,

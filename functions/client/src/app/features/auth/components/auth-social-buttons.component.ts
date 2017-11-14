@@ -1,13 +1,12 @@
 import { Component, Input } from '@angular/core'
 
-// import { AuthService } from "../../../core/snauth/auth/auth.service";
 import { AuthStateService } from '../auth.state'
 
 @Component({
   selector: 'auth-social-buttons',
   template: `
-<button (click)='signInWithFacebook()'>facebook</button>
-<button (click)='signInWithGoogle()'>google</button>
+<button (click)='signInWithFacebook()'>with facebook</button>
+<button (click)='signInWithGoogle()'>with google</button>
 `
 })
 export class AuthSocialButtonsComponent {

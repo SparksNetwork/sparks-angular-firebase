@@ -3,10 +3,6 @@ import { Router, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate } from
 
 import { UserService } from './user.service'
 
-import 'rxjs/add/operator/do'
-import 'rxjs/add/operator/map'
-import 'rxjs/add/operator/take'
-
 @Injectable()
 export class RedirectIfNotUser implements CanActivate {
   constructor(
