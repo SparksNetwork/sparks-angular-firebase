@@ -1,3 +1,4 @@
+@focus
 Feature: Basic Auth
 
   Background:
@@ -13,6 +14,23 @@ Feature: Basic Auth
     Then I should be on the join page
 
     When I fill out these fields and click "#join #with-email button"
+      | input[type="text"]      | new-user@putsbox.com  |
+      | input[type="password"]  | testtest              |
+
+    Then I should be on "/"
+    And I should see "profile" in "#appbar"
+
+  Scenario: A user with an existing account can login
+    # only way to create an account?
+    Given I'm signed in as a user with the following information:
+      | uid | USER |
+      | email | new-user@putsbox.com |
+      | password | testtest |
+    And I sign out
+
+    When I go to "/"
+    And I click on "#appbar button"
+    And I fill out these fields and click "#signin #with-email button"
       | input[type="text"]      | new-user@putsbox.com  |
       | input[type="password"]  | testtest              |
 
