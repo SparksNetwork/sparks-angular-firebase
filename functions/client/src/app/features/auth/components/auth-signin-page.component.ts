@@ -7,11 +7,11 @@ import { AuthEmailPasswordInputsComponent } from './auth-email-password-inputs'
 @Component({
   selector: 'auth-signin-page',
   template: `
-  <div>
+  <div id='appbar'>
     <a [routerLink]='["/"]'>SN Logo</a>
     <button [routerLink]='["../join"]'>join</button>
   </div>
-  <div>
+  <div id='signin'>
     <h1>Sign In to the Sparks.Network</h1>
     <auth-social-buttons></auth-social-buttons>
     <h4>Or with your email and password</h4>

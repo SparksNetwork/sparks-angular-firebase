@@ -11,11 +11,11 @@ import { AuthEmailPasswordInputsComponent } from './auth-email-password-inputs'
   <a [routerLink]='["/"]'>SN Logo</a>
   <button [routerLink]='["../signin"]'>sign in</button>
 </div>
-<div>
+<div id='join'>
   <h1>Join the Sparks.Network</h1>
   <auth-social-buttons></auth-social-buttons>
   <button>with your email</button>
-  <div>
+  <div id='with-email'>
     <auth-email-password-inputs #inputs></auth-email-password-inputs>
     <button [disabled]='!(inputs.valid$ | async)' (click)='click$.next()'>join</button>
   </div>

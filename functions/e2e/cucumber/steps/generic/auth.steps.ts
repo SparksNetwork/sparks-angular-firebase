@@ -40,10 +40,10 @@ defineSupportCode( ({Given, Then, When, setWorldConstructor}) => {
       .then(() => clickElement('#signin'))
   })
 
-  Then(/^I should be on the signup page$/, () => {
+  Then(/^I should be on the join page$/, () => {
     return Promise.all([
       urlContains('/auth/'),
-      urlContains('/signup'),
+      urlContains('/join'),
     ])
   })
 

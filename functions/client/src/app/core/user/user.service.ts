@@ -53,11 +53,8 @@ export class UserService {
       .map(err => err ? (HUMAN_ERROR_MESSAGES[err.code] || err.message) as string : null)
 
     this.isAuthed$.subscribe(isAuthed => console.log('user.isAuthed$', isAuthed))
-
     this.current$.subscribe(current => console.log('user.current$', current))
-
     this.error$.subscribe(err => console.log('user.error$', err))
-
     this.errorMessage$.subscribe(eM => console.log('user.errorMessage$', eM))
 
     // this is some super-hacky shit that exposes auth to e2e tests

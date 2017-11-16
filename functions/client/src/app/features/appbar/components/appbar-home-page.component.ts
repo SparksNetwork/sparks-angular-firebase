@@ -6,7 +6,7 @@ import { AppbarStateService } from '../appbar.state'
 @Component({
   selector: 'appbar-home-page',
   template: `
-<div>
+<div id='appbar'>
   <a [routerLink]='["/"]'>SN Logo</a>
   <button *ngIf='!(state.isAuthed$ | async)' (click)='navigateToSignIn()'>sign in</button>
   <a *ngIf='state.isAuthed$ | async' [routerLink]='["/my-profile"]'>profile</a>
