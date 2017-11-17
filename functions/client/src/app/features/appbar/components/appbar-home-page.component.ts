@@ -6,12 +6,24 @@ import { AppbarStateService } from '../appbar.state'
 @Component({
   selector: 'appbar-home-page',
   template: `
-<div id='appbar'>
-  <a [routerLink]='["/"]'>SN Logo</a>
-  <button *ngIf='!(state.isAuthed$ | async)' (click)='navigateToSignIn()'>sign in</button>
-  <a *ngIf='state.isAuthed$ | async' [routerLink]='["/my-profile"]'>profile</a>
+<div id='appbar' class='ui fixed borderless menu'>
+  <div class='ui container'>
+    <a class='item' [routerLink]='["/"]'>
+      <img src="assets/img/logo_sparksnetwork.svg" alt="sparks.network"/>
+    </a>
+    <div class='ui right floated item'>
+      <button class='ui minor button' *ngIf='!(state.isAuthed$ | async)' (click)='navigateToSignIn()'>
+        sign in
+      </button>
+      <button class='circular ui icon button' *ngIf='state.isAuthed$ | async' [routerLink]='["/my-profile"]'>
+        <i class='large user outline icon'></i>
+      </button>
+    </div>
+  </div>
 </div>
-<router-outlet></router-outlet>
+<div style='margin-top: 52px'>
+  <router-outlet></router-outlet>
+</div>
 `
 })
 
