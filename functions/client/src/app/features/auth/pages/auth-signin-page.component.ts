@@ -23,7 +23,7 @@ import { AuthActionButtonsComponent } from '../components/auth-action-buttons.co
     <div class='ui message line' *ngIf='state.errorMessage$ | async; let errorMessage'>{{errorMessage}}</div>
     <div id='with-email'>
       <auth-email-password-inputs class='line' #inputs></auth-email-password-inputs>
-      <auth-action-buttons #actions class='line' (cancelRouterLink$)='["/"]' [okDisabled]='!(inputs.valid$ | async)'>
+      <auth-action-buttons #actions class='line' [cancelRouterLink]='["/"]' [okDisabled]='!(inputs.valid$ | async)'>
         sign in
       </auth-action-buttons>
     </div>
