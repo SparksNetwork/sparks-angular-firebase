@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { SuiCollapseModule } from 'ng2-semantic-ui'
+
 // import { SNUIModule } from '../../shared/snui/snui.module'
 import { AuthRoutingModule, routedComponents } from './auth.routing'
 
@@ -35,6 +37,7 @@ import { AuthStateService } from './auth.state'
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    SuiCollapseModule,
     // SNUIModule,
     AuthRoutingModule,
   ],

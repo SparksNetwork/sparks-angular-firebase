@@ -20,7 +20,7 @@ import { AuthEmailPasswordInputsComponent } from '../components/auth-email-passw
     <div class='line strikebehind'>
       <span>Or with your email and password</span>
     </div>
-    <div class='line' *ngIf='state.errorMessage$ | async; let errorMessage'>{{errorMessage}}</div>
+    <div class='ui message line' *ngIf='state.errorMessage$ | async; let errorMessage'>{{errorMessage}}</div>
     <div id='with-email'>
       <auth-email-password-inputs class='line' #inputs></auth-email-password-inputs>
       <div class='line'>

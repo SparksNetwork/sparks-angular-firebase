@@ -13,14 +13,28 @@ import { AuthEmailPasswordInputsComponent } from '../components/auth-email-passw
     sign in
   </button>
 </auth-appbar>
-<div id='join' class='appbar-offset ui container'>
-  <h1>Join the Sparks.Network</h1>
-  <auth-facebook-button class='column'></auth-facebook-button>
-  <auth-google-button class='column'></auth-google-button>
-<button>with your email</button>
-  <div id='with-email'>
-    <auth-email-password-inputs #inputs></auth-email-password-inputs>
-    <button [disabled]='!(inputs.valid$ | async)' (click)='click$.next()'>join</button>
+<div id='join' class='ui container' style='padding-top: 150px; width: 320px;'>
+  <h1 class='ui header inverted line'>Join the Sparks.Network</h1>
+  <div [suiCollapse]='show'>
+    <auth-facebook-button class='line'></auth-facebook-button>
+    <auth-google-button class='line'></auth-google-button>
+    <button (click)='show = !show' class='ui labeled big icon fluid inverted button line'>
+      <i class='mail outline icon'></i>
+      with your email
+    </button>
+</div>
+  <div id='with-email' [suiCollapse]='!show'>
+    <div class='line strikebehind' (click)='show = !show'>
+      <span>With your email</span>
+    </div>
+    <div class='ui message line' *ngIf='state.errorMessage$ | async; let errorMessage'>{{errorMessage}}</div>
+    <auth-email-password-inputs class='line' #inputs></auth-email-password-inputs>
+    <div class='line'>
+      <button (click)='show = !show' class='ui left floated big button inverted minor'>cancel</button>
+      <button class='ui right floated big button primary minor' [disabled]='!(inputs.valid$ | async)' (click)='click$.next()'>
+        join
+      </button>
+    </div>
   </div>
 </div>
 `

@@ -6,7 +6,7 @@ import { AuthStateService } from '../auth.state'
   selector: 'auth-facebook-button',
   styles: [':host { display: block; }'],
   template: `
-<button (click)='signIn()' class='ui labeled big icon fluid button primary social'>
+<button (click)='signIn()' class='ui labeled big icon fluid button primary'>
   <i class='facebook icon'></i>
   with facebook
 </button>
