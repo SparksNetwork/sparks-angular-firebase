@@ -2,19 +2,22 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs/Subject'
 
 import { AuthStateService } from '../auth.state';
-import { AuthEmailPasswordInputsComponent } from './auth-email-password-inputs'
+import { AuthEmailPasswordInputsComponent } from '../components/auth-email-password-inputs'
 
 @Component({
-  selector: 'auth-full-page',
+  selector: 'auth-join-page',
+  styleUrls: ['./auth-join-page.component.scss'],
   template: `
-<div>
-  <a [routerLink]='["/"]'>SN Logo</a>
-  <button [routerLink]='["../signin"]'>sign in</button>
-</div>
-<div id='join'>
+<auth-appbar>
+  <button class='ui inverted minor button' [routerLink]='["../signin"]'>
+    sign in
+  </button>
+</auth-appbar>
+<div id='join' class='appbar-offset ui container'>
   <h1>Join the Sparks.Network</h1>
-  <auth-social-buttons></auth-social-buttons>
-  <button>with your email</button>
+  <auth-facebook-button class='column'></auth-facebook-button>
+  <auth-google-button class='column'></auth-google-button>
+<button>with your email</button>
   <div id='with-email'>
     <auth-email-password-inputs #inputs></auth-email-password-inputs>
     <button [disabled]='!(inputs.valid$ | async)' (click)='click$.next()'>join</button>

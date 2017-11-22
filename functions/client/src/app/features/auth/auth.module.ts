@@ -11,15 +11,20 @@ import { AuthRoutingModule, routedComponents } from './auth.routing'
 // import { SocialBlockComponent } from './social-block/social-block.component';
 // import { HeaderAuthComponent } from './header-auth/header-auth.component'
 
-import { AuthSocialButtonsComponent } from './components/auth-social-buttons.component'
+import { AuthGoogleButtonComponent } from './components/auth-google-button.component'
+import { AuthFacebookButtonComponent } from './components/auth-facebook-button.component'
 import { AuthEmailPasswordInputsComponent } from './components/auth-email-password-inputs'
+import { AuthAppbarComponent } from './components/auth-appbar.component'
+
 import { AuthStateService } from './auth.state'
 
 @NgModule({
   declarations: [
     routedComponents,
-    AuthSocialButtonsComponent,
+    AuthGoogleButtonComponent,
+    AuthFacebookButtonComponent,
     AuthEmailPasswordInputsComponent,
+    AuthAppbarComponent,
     // FormEmailPasswordComponent,
     // AlertErrorComponent,
     // FormResetPasswordComponent,

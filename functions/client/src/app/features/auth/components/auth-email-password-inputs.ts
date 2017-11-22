@@ -12,9 +12,16 @@ export interface EmailPasswordInputs {
 
 @Component({
   selector: 'auth-email-password-inputs',
+  styles: [':host { display: block; }'],
   template: `
-<input (keyup)='email$.next($event.target.value)' type='text'>
-<input (keyup)='password$.next($event.target.value)' type='password'>
+<div class='ui fluid big left icon inverted input line'>
+  <input (keyup)='email$.next($event.target.value)' type='text' placeholder='enter your email'>
+  <i class='mail outline inverted icon'></i>
+</div>
+<div class='ui fluid big left icon inverted input line'>
+  <input (keyup)='password$.next($event.target.value)' type='password' placeholder='enter your password'>
+  <i class='privacy inverted icon'></i>
+</div>
 `
 })
 export class AuthEmailPasswordInputsComponent {

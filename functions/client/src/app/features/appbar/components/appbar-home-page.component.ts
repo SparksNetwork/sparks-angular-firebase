@@ -21,7 +21,7 @@ import { AppbarStateService } from '../appbar.state'
     </div>
   </div>
 </div>
-<div style='margin-top: 52px'>
+<div class='appbar-offset'>
   <router-outlet></router-outlet>
 </div>
 `

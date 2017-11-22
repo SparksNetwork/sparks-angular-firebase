@@ -1,0 +1,44 @@
+.line {
+  margin-bottom: 1rem;
+}
+
+.sn-gradient {
+  background: rgba(191, 30, 89, 1);
+  background: -moz-linear-gradient(45deg, rgba(191, 30, 89, 1) 0%, rgba(128, 107, 173, 1) 59%, rgba(36, 174, 224, 1) 100%);
+  background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(191, 30, 89, 1)), color-stop(59%, rgba(128, 107, 173, 1)), color-stop(100%, rgba(36, 174, 224, 1)));
+  background: -webkit-linear-gradient(45deg, rgba(191, 30, 89, 1) 0%, rgba(128, 107, 173, 1) 59%, rgba(36, 174, 224, 1) 100%);
+  background: -o-linear-gradient(45deg, rgba(191, 30, 89, 1) 0%, rgba(128, 107, 173, 1) 59%, rgba(36, 174, 224, 1) 100%);
+  background: -ms-linear-gradient(45deg, rgba(191, 30, 89, 1) 0%, rgba(128, 107, 173, 1) 59%, rgba(36, 174, 224, 1) 100%);
+  background: linear-gradient(45deg, rgba(191, 30, 89, 1) 0%, rgba(128, 107, 173, 1) 59%, rgba(36, 174, 224, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf1e59', endColorstr='#24aee0', GradientType=1);
+}
+
+.strikebehind {
+  text-align: center;
+  font-size: 16px;
+  letter-spacing: 0.64px;
+  line-height: 20px;
+  text-transform: capitalize;
+  span {
+      color: #FFF;
+      display: inline-block;
+      position: relative;
+      &:before,
+      &:after {
+          content: "";
+          position: absolute;
+          height: 10px;
+          border-bottom: 1px solid white;
+          top: 0;
+          width: 30px;
+      }
+      &:before {
+          right: 100%;
+          margin-right: 15px;
+      }
+      &:after {
+          left: 100%;
+          margin-left: 15px;
+      }
+  }
+}

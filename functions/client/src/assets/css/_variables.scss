@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600');
+$regular_font_family: 'Source Sans Pro', sans-serif;
+// Colors
+$base-color: #92979C;
+$grey: #A8ACB0;
+
+$off-white: #FEFFFF;
+$base-dark: #253039;
+/* card-text, organizedby */
+$base-dark2: #444547;
+
+$color-separator: #e9eaeb;
+$pink: #BF1E58;
+$rouge: #AE3572;
+
+$violetblue: #975394;
+// $summersky: #24ADE0; buttons
+$blue: #24aee0;
+$purple: #806bad;
+$prim: #EACCD8;
+$base-light: lighten( $base-color,
+10%);
+$light-gray: #e3e3e3;
+$twitter-color: #1f88ca;
+$facebook-color: #304ea5;
+$linkedin-color: #1E87BE;
+
+/* New */
+
+@font-face {
+    font-family: 'sparksnetwork';
+    src: url('/assets/fonts/sparksnetwork.eot?7607ua');
+    src: url('/assets/fonts/sparksnetwork.eot?7607ua#iefix') format('embedded-opentype'), url('/assets/fonts/sparksnetwork.ttf?7607ua') format('truetype'), url('/assets/fonts/sparksnetwork.woff?7607ua') format('woff'), url('/assets/fonts/sparksnetwork.svg?7607ua#sparksnetwork') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

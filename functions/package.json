@@ -38,6 +38,7 @@
     "@types/winston": "^2.3.6",
     "angularfire2": "^5.0.0-rc.3",
     "body-parser": "^1.17.2",
+    "bourbon": "^4.3.4",
     "class-transformer": "^0.1.8",
     "class-transformer-validator": "^0.4.0",
     "class-validator": "^0.7.2",

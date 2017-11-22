@@ -18,8 +18,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { RedirectIfUser } from '../../core/user/redirect-if-user.guard'
 import { RedirectToJoinIfNotUser } from '../../core/user/redirect-to-join-if-not-user.guard'
 
-import { AuthJoinPageComponent } from './components/auth-join-page.component'
-import { AuthSigninPageComponent } from './components/auth-signin-page.component'
+import { AuthJoinPageComponent } from './pages/auth-join-page.component'
+import { AuthSigninPageComponent } from './pages/auth-signin-page.component'
 
 export const routedComponents = [
   AuthJoinPageComponent,

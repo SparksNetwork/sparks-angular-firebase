@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common'
+
+import { SnuiModule } from '../../shared/snui/snui.module'
+
 import { ExploreRoutingModule, routedComponents } from './explore.routing'
 
 @NgModule({
@@ -9,6 +12,7 @@ import { ExploreRoutingModule, routedComponents } from './explore.routing'
   imports: [
     CommonModule,
     ExploreRoutingModule,
+    SnuiModule,
   ],
 })
 export class ExploreModule { }
