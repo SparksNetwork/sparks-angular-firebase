@@ -12,7 +12,7 @@ import { AppbarStateService } from '../appbar.state'
       <img src="assets/img/logo_sparksnetwork.svg" alt="sparks.network"/>
     </a>
     <div class='ui right floated item'>
-      <button class='ui minor button' *ngIf='!(state.isAuthed$ | async)' (click)='navigateToSignIn()'>
+      <button class='ui minor right floated button' *ngIf='!(state.isAuthed$ | async)' (click)='navigateToSignIn()'>
         sign in
       </button>
       <button class='circular ui icon button' *ngIf='state.isAuthed$ | async' [routerLink]='["/my-profile"]'>

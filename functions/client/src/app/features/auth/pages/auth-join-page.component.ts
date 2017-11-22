@@ -8,10 +8,8 @@ import { AuthEmailPasswordInputsComponent } from '../components/auth-email-passw
   selector: 'auth-join-page',
   styleUrls: ['./auth-join-page.component.scss'],
   template: `
-<auth-appbar>
-  <button class='ui inverted minor button' [routerLink]='["../signin"]'>
+<auth-appbar [routerLink]='["../signin"]'>
     sign in
-  </button>
 </auth-appbar>
 <div id='join' class='ui container' style='padding-top: 150px; width: 320px;'>
   <h1 class='ui header inverted line'>Join the Sparks.Network</h1>

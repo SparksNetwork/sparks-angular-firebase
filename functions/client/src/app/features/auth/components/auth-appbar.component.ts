@@ -1,4 +1,4 @@
-import { Component, HostBinding } from '@angular/core';
+import { Component, Input, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'auth-appbar',
@@ -8,7 +8,9 @@ import { Component, HostBinding } from '@angular/core';
     <img src="assets/img/logo_sparksnetwork_white.svg" alt="sparks.network"/>
   </a>
   <div class='ui right floated item'>
-    <ng-content></ng-content>
+    <button class='ui inverted minor button' [routerLink]='routerLink'>
+      <ng-content></ng-content>
+    </button>
   </div>
 </div>
 `
@@ -16,6 +18,7 @@ import { Component, HostBinding } from '@angular/core';
 
 export class AuthAppbarComponent {
   @HostBinding('class') klass = 'ui fixed borderless inverted menu'
+  @Input('routerLink') routerLink: string[]
 
   constructor() {}
 }
