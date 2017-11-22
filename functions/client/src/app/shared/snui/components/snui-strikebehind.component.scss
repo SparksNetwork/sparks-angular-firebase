@@ -1,0 +1,30 @@
+:host {
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  letter-spacing: 0.64px;
+  line-height: 20px;
+  text-transform: capitalize;
+  span {
+      color: #FFF;
+      display: inline-block;
+      position: relative;
+      &:before,
+      &:after {
+          content: "";
+          position: absolute;
+          height: 10px;
+          border-bottom: 1px solid white;
+          top: 0;
+          width: 30px;
+      }
+      &:before {
+          right: 100%;
+          margin-right: 15px;
+      }
+      &:after {
+          left: 100%;
+          margin-left: 15px;
+      }
+  }
+}
