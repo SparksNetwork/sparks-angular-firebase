@@ -3,6 +3,12 @@ import { Subject } from 'rxjs/Subject'
 
 import { AuthStateService } from '../auth.state';
 import { AuthEmailPasswordInputsComponent } from '../components/auth-email-password-inputs'
+import { AuthActionButtonsComponent } from '../components/auth-action-buttons.component'
+
+// <button (click)='show = !show' class='ui left floated big button inverted minor'>cancel</button>
+// <button class='ui right floated big button primary minor' [disabled]='!(inputs.valid$ | async)' (click)='click$.next()'>
+//   join
+// </button>
 
 @Component({
   selector: 'auth-join-page',
@@ -27,12 +33,9 @@ import { AuthEmailPasswordInputsComponent } from '../components/auth-email-passw
     </div>
     <div class='ui message line' *ngIf='state.errorMessage$ | async; let errorMessage'>{{errorMessage}}</div>
     <auth-email-password-inputs class='line' #inputs></auth-email-password-inputs>
-    <div class='line'>
-      <button (click)='show = !show' class='ui left floated big button inverted minor'>cancel</button>
-      <button class='ui right floated big button primary minor' [disabled]='!(inputs.valid$ | async)' (click)='click$.next()'>
-        join
-      </button>
-    </div>
+    <auth-action-buttons #actions class='line' (cancelClick$)='show = !show' [okDisabled]='!(inputs.valid$ | async)'>
+      join
+    </auth-action-buttons>
   </div>
 </div>
 `
@@ -40,7 +43,7 @@ import { AuthEmailPasswordInputsComponent } from '../components/auth-email-passw
 
 export class AuthJoinPageComponent implements OnInit {
   @ViewChild('inputs') inputs: AuthEmailPasswordInputsComponent
-  public click$ = new Subject<Boolean>()
+  @ViewChild('actions') actions: AuthActionButtonsComponent
 
   constructor(
     public state: AuthStateService,
@@ -48,7 +51,7 @@ export class AuthJoinPageComponent implements OnInit {
 
   public ngOnInit() {
     this.inputs.values$
-      .sample(this.click$)
+      .sample(this.actions.okClick$)
       .subscribe(({email, password}) => this.state.createWithEmailAndPassword(email, password))
   }
 

@@ -17,6 +17,7 @@ import { AuthGoogleButtonComponent } from './components/auth-google-button.compo
 import { AuthFacebookButtonComponent } from './components/auth-facebook-button.component'
 import { AuthEmailPasswordInputsComponent } from './components/auth-email-password-inputs'
 import { AuthAppbarComponent } from './components/auth-appbar.component'
+import { AuthActionButtonsComponent } from './components/auth-action-buttons.component'
 
 import { AuthStateService } from './auth.state'
 
@@ -27,6 +28,7 @@ import { AuthStateService } from './auth.state'
     AuthFacebookButtonComponent,
     AuthEmailPasswordInputsComponent,
     AuthAppbarComponent,
+    AuthActionButtonsComponent,
     // FormEmailPasswordComponent,
     // AlertErrorComponent,
     // FormResetPasswordComponent,
