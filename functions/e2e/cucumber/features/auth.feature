@@ -13,12 +13,13 @@ Feature: Basic Auth
     When I click on "#appbar button"
     Then I should be on the join page
 
-    When I fill out these fields and click "#join #with-email button"
+    When I click on "button.with-email"
+    And I fill out these fields and click "#join #with-email button.ok"
       | input[type="text"]      | new-user@putsbox.com  |
       | input[type="password"]  | testtest              |
 
     Then I should be on "/"
-    And I should see "profile" in "#appbar"
+    And I should see "" in "#appbar .profile"
 
   Scenario: A user with an existing account can login
     # only way to create an account?
@@ -30,9 +31,9 @@ Feature: Basic Auth
 
     When I go to "/"
     And I click on "#appbar button"
-    And I fill out these fields and click "#signin #with-email button"
+    And I fill out these fields and click "#signin #with-email button.ok"
       | input[type="text"]      | new-user@putsbox.com  |
       | input[type="password"]  | testtest              |
 
     Then I should be on "/"
-    And I should see "profile" in "#appbar"
+    And I should see "" in "#appbar .profile"

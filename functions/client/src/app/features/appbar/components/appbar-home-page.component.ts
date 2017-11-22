@@ -15,7 +15,7 @@ import { AppbarStateService } from '../appbar.state'
       <button class='ui minor right floated button' *ngIf='!(state.isAuthed$ | async)' (click)='navigateToSignIn()'>
         sign in
       </button>
-      <button class='circular ui icon button' *ngIf='state.isAuthed$ | async' [routerLink]='["/my-profile"]'>
+      <button class='profile circular ui icon button' *ngIf='state.isAuthed$ | async' [routerLink]='["/my-profile"]'>
         <i class='large user outline icon'></i>
       </button>
     </div>

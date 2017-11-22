@@ -14,7 +14,7 @@ import { AuthEmailPasswordFormComponent } from '../components/auth-email-passwor
   <div [suiCollapse]='show'>
     <auth-facebook-button class='line'></auth-facebook-button>
     <auth-google-button class='line'></auth-google-button>
-    <button (click)='show = !show' class='ui labeled big icon fluid inverted button line'>
+    <button (click)='show = !show' class='with-email ui labeled big icon fluid inverted button line'>
       <i class='mail outline icon'></i>
       with your email
     </button>
