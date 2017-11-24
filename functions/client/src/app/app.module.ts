@@ -7,13 +7,16 @@ import { NgModule } from '@angular/core';
 // import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 // import { StoreRouterConnectingModule, routerReducer, RouterStateSerializer, RouterAction, RouterNavigationAction } from '@ngrx/router-store'
 // import { RouterStateSnapshot } from '@angular/router'
-// import { AngularFireModule } from 'angularfire2'
-// import { AngularFireDatabaseModule } from 'angularfire2/database'
+import { AngularFireModule } from 'angularfire2'
+import { AngularFireDatabaseModule } from 'angularfire2/database'
+import { AngularFireAuthModule } from 'angularfire2/auth'
 
 // import { SuiModule } from 'ng2-semantic-ui'
 
-// import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { UserModule } from './core/user/user.module'
+
+import { AppRoutingModule } from './app.routing'
+import { AppPageComponent } from './app.component'
 
 // import { SNAuthModule } from './core/snauth/snauth.module'
 // import { SNDomainModule } from './core/sndomain/sndomain.module'
@@ -34,19 +37,29 @@ import { environment } from '../environments/environment'
 //   }
 // }
 
+import 'rxjs/add/operator/first'
+import 'rxjs/add/operator/do'
+import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/take'
+import 'rxjs/add/operator/sample'
+
+import 'rxjs/add/observable/combineLatest'
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppPageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'sparks-angular-firebase'}),
     BrowserAnimationsModule,
-    // AngularFireModule.initializeApp(environment.firebase),
-    // AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     // StoreModule.forRoot({routerReducer}),
     // EffectsModule.forRoot([]),
     // SuiModule,
-    // AppRoutingModule,
+    AppRoutingModule,
+    UserModule,
     // StoreRouterConnectingModule,
     // SNAuthModule,
     // SNDomainModule,
@@ -57,6 +70,6 @@ import { environment } from '../environments/environment'
   // providers: [
   //   { provide: RouterStateSerializer, useClass: CustomSerializer}
   // ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppPageComponent]
 })
 export class AppModule { }

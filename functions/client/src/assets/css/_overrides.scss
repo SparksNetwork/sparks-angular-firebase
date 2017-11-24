@@ -1,0 +1,91 @@
+* {
+  font-family: $regular-font-family !important;
+}
+i.icon {
+  font-family: Icons !important;
+}
+
+.appbar-offset {
+  padding-top: 52px;
+}
+
+.ui.menu.inverted {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.ui.inverted.input input {
+  background: transparent !important;
+  color: white !important;
+  border: 1px solid white !important;
+  // border-color: white !important;
+  text-align: center;
+}
+
+.ui.circular.icon.button {
+  background: transparent !important;
+}
+
+.ui.minor.button {
+  color: $grey;
+  background-color: transparent;
+  border-radius: 7.5px;
+  border: 1px solid $base-color;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.ui.button.inverted {
+  color: white;
+  border: 1px solid white;
+  background: transparent;
+  border: none;
+
+}
+
+.ui.primary.button {
+  color: $violetblue !important;
+  border-radius: 7.5px;
+  border: 1px solid transparent;
+  background: #ffffff;
+  background-clip: padding-box;
+  position: relative;
+  outline: none;
+  
+  &:after {
+    position: absolute;
+    top: -1px;
+    bottom: -1px;
+    left: -1px;
+    right: -1px;
+
+    @include linear-gradient(to bottom, $pink, $purple, $blue);
+    content: '';
+    z-index: -1;
+    border-radius: 7.5px;
+  }
+
+  &:hover,
+  &:active,
+  &:active:hover,
+  &:active:focus,
+  &:focus {
+      opacity: 1;
+      color: transparentize($violetblue, 0.2);
+      background-color: #FFF;
+      &:after {
+          opacity: 0.8;
+      }
+  }
+}
+
+.ui.primary.minor.button[disabled] {
+  // opacity: 0.45 !important;
+  background: white !important;
+  border: 1px solid transparent !important;
+
+  &:after {
+    background: none;
+  }
+}

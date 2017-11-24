@@ -2,6 +2,11 @@
   "compileOnSave": false,
   "files": [
     "./client/src/main.ts",
+    "./client/src/app/features/appbar/appbar.module.ts",
+    "./client/src/app/features/auth/auth.module.ts",
+    "./client/src/app/features/explore/explore.module.ts",    
+    "./client/src/app/features/my-profile/my-profile.module.ts",    
+    "./client/src/app/features/organize/organize.module.ts",    
     "./client/src/polyfills.ts"
   ],
   "compilerOptions": {
