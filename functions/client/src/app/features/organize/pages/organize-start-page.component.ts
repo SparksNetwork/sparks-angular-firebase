@@ -3,6 +3,8 @@ import { Observable } from 'rxjs/Observable'
 
 // import { AuthService } from '../../core/snauth/auth/auth.service';
 // import { AppbarStateService } from '../appbar.state'
+import { Project } from '../../../core/sndomain/project/project.service'
+import { OrganizeStateService } from '../organize.state'
 
 import { SnuiInputDirective } from '../../../shared/snui/directives/snui-input.directive'
 import { SnuiActionButtonsComponent } from '../../../shared/snui/components/snui-action-buttons.component'
@@ -50,10 +52,11 @@ export class OrganizeStartPageComponent implements OnInit {
   @ViewChild('benefitWE', { read: SnuiInputDirective }) benefitWE: SnuiInputDirective
   @ViewChild('actions') actions: SnuiActionButtonsComponent
 
-  public values$: Observable<{title: string, benefit: string}>
+  public values$: Observable<Project>
   public valid$: Observable<boolean>
 
   constructor(
+    public state: OrganizeStateService
   ) {}
 
   ngOnInit() {
@@ -68,7 +71,7 @@ export class OrganizeStartPageComponent implements OnInit {
 
     this.values$
       .sample(this.actions.okClick$)
-      .subscribe(v => console.log(v))
+      .subscribe(v => this.state.createProject(v))
     }
 
 }
