@@ -3,6 +3,7 @@ import { functions, admin } from './firebase-functions-env'
 import * as express from 'express'
 import * as cors from 'cors'
 import { logger } from './logger'
+import { firebaseUserParser } from './firebase-user-parser'
 
 import {
   routeHandler,
@@ -21,7 +22,7 @@ import {
 const app = express();
 app.use(cors({origin: '*'}))
 app.use(logger)
-
+app.use(firebaseUserParser)
 app.use(routeHandler(new ProjectHandler()))
 app.use(routeHandler(new ProfileHandler()))
 app.use(routeHandler(new ApplicationTeamHandler()))

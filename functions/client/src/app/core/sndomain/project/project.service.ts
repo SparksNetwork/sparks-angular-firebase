@@ -5,6 +5,8 @@ import { Store, Action } from '@ngrx/store'
 import { Actions, Effect } from '@ngrx/effects'
 import { AngularFireDatabase } from 'angularfire2/database'
 
+import { UserService } from '../../user/user.service'
+
 import { Project, ProjectItem } from './project.model'
 import { ProjectActions } from './project.actions'
 
@@ -21,8 +23,9 @@ export class ProjectService {
     public actions$: Actions,
     public http: Http,
     public db: AngularFireDatabase,
+    public userService: UserService,
   ) {
-    this.client = new RestClient(http, 'project')
+    this.client = new RestClient(http, 'project', userService.current$)
     this.ents = new EntStore<Project>('project', store,
       ProjectActions.Fetch,
       ProjectActions.FetchSuccess,

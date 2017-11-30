@@ -16,8 +16,8 @@ export class ProjectHandler extends BaseHandler {
     )
   }
 
-  public async post(req, res, next) {
-    console.log('do something extra')
-    return super.post(req, res, next)
-  }
+  // public async post(req, res, next) {
+  //   console.log('do something extra')
+  //   return super.post(req, res, next)
+  // }
 }
