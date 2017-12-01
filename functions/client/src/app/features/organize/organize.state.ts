@@ -19,6 +19,10 @@ export class OrganizeStateService {
 
   public routeSegments$ = this.store.select('routerReducer').select('state').select('segments')
 
+  public focusSegment$ = this.routeSegments$.map(s => s[2])
+  public contextSegment$ = this.routeSegments$.map(s => s[4])
+  public actionSegment$ = this.routeSegments$.map(s => s[5])
+
   public projectKey$ = this.routeSegments$.map(segs => segs[1])
     .filter(Boolean)
 

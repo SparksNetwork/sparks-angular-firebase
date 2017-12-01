@@ -5,12 +5,13 @@ import { OrganizeStateService } from '../organize.state'
 @Component({
   selector: 'organize-nav-page',
   template: `
-<snui-header-full>
-<h1 class='ui header inverted'>{{state.projectTitle$ | async}}</h1>
-</snui-header-full>
-<div>
-{{state.project$ | async | json}}
-</div>
+  <organize-header-full></organize-header-full>
+  <div class='ui container'>
+    <router-outlet></router-outlet>
+  </div>
+  <div>
+  {{state.project$ | async | json}}
+  </div>
 `
 })
 export class OrganizeNavPageComponent {
