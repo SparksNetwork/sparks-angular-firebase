@@ -4,34 +4,32 @@ import { environment } from '../../../../environments/environment'
 import { User } from 'firebase'
 
 export class RestClient {
-  public url: string
 
   constructor(
     public http: Http,
     public ent: string,
     public currentUser$: Observable<User>,
-  ) {
-    this.url = [environment.apiRoot, ent].join('/')
-  }
+  ) {}
 
-  public getAuthHeader(token: string) {
-    const headers = new Headers()
-    headers.append('authorization', `Bearer ${token}`)
-    console.log('headers', headers)
-    return headers
-  }
+  public url = [environment.apiRoot, this.ent].join('/')
+
+  public authToken$ = this.currentUser$
+    .filter(Boolean)
+    .switchMap(user => user.getToken())
+
+  public headers$ = this.authToken$
+    .map(token => {
+      const headers = new Headers()
+      headers.append('authorization', `Bearer ${token}`)
+      return headers
+    })
 
   public create(value) {
     console.log(this.ent, 'create', value)
-    // return this.http.post(this.url, value)
-    //   .do(data => console.log('create response', data.json()))
-
-    return this.currentUser$
-      .filter(Boolean)
-      .switchMap(user => user.getToken())
-      .do(v => console.log('user token', v))
-      .switchMap((token: string) => this.http.post(this.url, value, {headers: this.getAuthHeader(token)}))
-  }
+    return this.headers$
+      .switchMap((headers: Headers) => this.http.post(this.url, value, {headers}))
+      .do(data => console.log('create response', data.json()))
+    }
 
   public replace(key: string, value) {
     console.log(this.ent, 'replace', key, value)

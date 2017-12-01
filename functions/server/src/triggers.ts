@@ -76,6 +76,35 @@ function denormalizers(
   }
 }
 
+console.log('TRIGGERS: exporting')
+
+import { ProfileCollection } from '../../universal/domain/profile'
+import { ProjectCollection } from '../../universal/domain/project'
+const profiles = new ProfileCollection(admin.database())
+const projects = new ProjectCollection(admin.database())
+
+const profileToProjectDenormalizers = denormalizers(
+  profiles,
+  projects,
+  'organizerProfileKey',
+  'organizerProfile'
+)
+export const profileToProjectProfileOnUpdate =
+  functions.database.ref('/profile/{key}')
+    .onUpdate(profileToProjectDenormalizers.onParentChange)
+
+export const profileToProjectProfileOnCreate =
+  functions.database.ref('/profile/{key}')
+    .onCreate(profileToProjectDenormalizers.onParentChange)
+
+export const profileToProjectProjectOnUpdate =
+  functions.database.ref('/project/{key}/organizerProfileKey')
+    .onUpdate(profileToProjectDenormalizers.onChildForeignKeyChange)
+
+export const profileToProjectProjectOnCreate =
+  functions.database.ref('/project/{key}/organizerProfileKey')
+    .onCreate(profileToProjectDenormalizers.onChildForeignKeyChange)
+
 import { TeamCollection } from '../../universal/domain/team'
 import { OppAllowedTeamCollection } from '../../universal/domain/oppAllowedTeam'
 const teams = new TeamCollection(admin.database())
@@ -88,7 +117,6 @@ const teamToOATDenormalizers = denormalizers(
   'team'
 )
 
-console.log('TRIGGERS: exporting')
 export const teamToOATTeamOnUpdate =
   functions.database.ref('/team/{key}')
     .onUpdate(teamToOATDenormalizers.onParentChange)
@@ -105,9 +133,7 @@ export const teamToOATOATOnCreate =
   functions.database.ref('/oppAllowedTeam/{key}/teamKey')
     .onCreate(teamToOATDenormalizers.onChildForeignKeyChange)
 
-import { ProjectCollection } from '../../universal/domain/project'
 import { ApplicationCollection } from '../../universal/domain/application'
-const projects = new ProjectCollection(admin.database())
 const applications = new ApplicationCollection(admin.database())
 
 const projectToApplicationDenormalizers = denormalizers(

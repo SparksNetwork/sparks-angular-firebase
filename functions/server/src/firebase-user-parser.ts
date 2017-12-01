@@ -8,17 +8,14 @@ export function firebaseUserParser(req: Request, res: Response, next: NextFuncti
     res.status(403).send('Unauthorized')
     return
   }
-  console.log('authorizationHeader', typeof authorizationHeader, authorizationHeader)
   const idToken = authorizationHeader.split('Bearer ')[1]
-  console.log('found token', idToken)
   admin.auth().verifyIdToken(idToken)
     .then(decodedToken => {
-      console.log('found user', decodedToken.uid)
       req['uid'] = decodedToken.uid
       next()
     })
     .catch(error => {
-      console.log('unable to decode user token', error)
+      console.error('unable to decode user token', error)
       res.status(403).send('Unauthorized')
     })
 }
