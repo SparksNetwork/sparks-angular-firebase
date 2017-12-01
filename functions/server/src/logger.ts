@@ -2,10 +2,10 @@ import * as expressWinston from 'express-winston'
 import * as winston from 'winston'
 
 if (process.env.NODE_ENV !== 'production') {
-  expressWinston.requestWhitelist = ['url', 'method', 'body']
+  expressWinston.requestWhitelist = ['url', 'method', 'body', 'uid']
   expressWinston.responseWhitelist = ['statusCode', 'body']
 } else {
-  expressWinston.requestWhitelist = ['url', 'method']
+  expressWinston.requestWhitelist = ['url', 'method', 'uid']
   expressWinston.responseWhitelist = ['statusCode']
 }
 

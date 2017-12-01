@@ -13,6 +13,12 @@ defineSupportCode( ({Given, Then, When}) => {
       .then(() => element(by.css(locator)).click())
   })
 
+  When(/^I select the radio button "(.*)"$/, locator => {
+    return browser
+    .wait(EC.presenceOf(element(by.css(locator))))
+    .then(() => element(by.css(locator)).click())
+  })
+
   When(/^I click on the "(.*)" element containing "(.*)"$/, (locator, text) => {
     const finder = element(by.cssContainingText(locator, text))
     return browser

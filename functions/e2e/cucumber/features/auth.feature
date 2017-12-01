@@ -1,4 +1,4 @@
-@focus
+# @focus
 Feature: Basic Auth
 
   Background:

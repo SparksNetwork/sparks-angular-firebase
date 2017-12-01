@@ -17,7 +17,7 @@ export class ProjectHandler extends BaseHandler {
   }
 
   public async post(req, res, next) {
-    console.log('do something extra')
+    req.body['organizerProfileKey'] = req.uid
     return super.post(req, res, next)
   }
 }
