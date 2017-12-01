@@ -19,19 +19,19 @@ import { SnuiActionButtonsComponent } from '../../../shared/snui/components/snui
   <p>What are you organizing people to help with?</p>
   <div class='field'>
     <label>New Project Title</label>
-    <input snuiInput #title type='text' placeholder='Name Your Project'>
+    <input class='title' snuiInput #title type='text' placeholder='Name Your Project'>
   </div>
   <div class='field'>
     <label>Who benefits from this?</label>
     <div class='ui radio checkbox'>
-      <input type='radio' name='benefit' snuiInput #benefitVol value='vol'>
+      <input class='benefit-vol' type='radio' name='benefit' snuiInput #benefitVol value='vol'>
       <label>
         This <b>Volunteer</b> project doesn't provide
         financial benefit to me or another for-profit entity.
       </label>
     </div>
     <div class='ui radio checkbox'>
-      <input type='radio' name='benefit' snuiInput #benefitWE value='we'>
+      <input class='benefit-we' type='radio' name='benefit' snuiInput #benefitWE value='we'>
       <label>
         It's a <b>Work Exchange</b> project that provides
         financial benefit to me or another for-profit entity.
