@@ -45,4 +45,11 @@ defineSupportCode( ({Given, Then, When, setWorldConstructor}) => {
     return addRecord('applicationTeam', values)
   })
 
+  Given(/^a "project" exists organized by the current user with the following values:$/, (table) => {
+    console.log('reading lastUid', shared.lastUid)
+    const values = table.rowsHash()
+    values.organizerProfileKey = shared.lastUid
+    shared.projectKey = addRecord('project', values).key
+  })
+
 })

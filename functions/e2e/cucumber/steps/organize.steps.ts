@@ -12,6 +12,9 @@ defineSupportCode( ({Given, Then, When}) => {
       .then(() => elementContainsText('snui-header-full', projectName))
   })
 
+  When(/^I go to the organize page for the current project$/, () => {
+    return navigateTo(`/organize/${shared.projectKey}`)
+  })
 })
 
 

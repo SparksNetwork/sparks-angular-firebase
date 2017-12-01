@@ -40,7 +40,7 @@ exports.config = {
   frameworkPath: require.resolve('protractor-cucumber-framework'),
 
   specs: [
-    'e2e/cucumber/features/*.feature'
+    'e2e/cucumber/features/**/*.feature'
   ],
 
   cucumberOpts: {
