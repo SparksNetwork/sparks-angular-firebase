@@ -21,3 +21,12 @@ Feature: Organize Team Create
     Given I go to the organize page for the current project
     Then I should be on the organize page for the project "My New Project"
   
+    When I click on ".create-team"
+    Then I should be on the create team page for the project "My New Project"
+
+    When I select the radio button "input.membership-open"
+    And I fill out these fields and click "snui-action-buttons .primary"
+      | form input.title | My New Team |
+
+    Then I should be on the create team page for the project "My New Project"
+    And I should see "My New Team" in ".teams"

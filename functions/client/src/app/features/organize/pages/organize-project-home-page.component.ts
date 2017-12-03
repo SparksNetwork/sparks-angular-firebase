@@ -14,11 +14,11 @@ import { OrganizeStateService } from '../organize.state'
 <div>
 <h3>What jobs do you need done?</h3>
 <div>
-  <a [routerLink]='["../create-team"]'>
+  <a class='create-team' [routerLink]='["../create-team"]'>
     create team
   </a>
 </div>
-<div>
+<div class='teams'>
   {{(state.teamKeys$ | async).length}} Teams
   <organize-team-card *ngFor='let key of (state.teamKeys$ | async)' [key]='key'></organize-team-card>
 </div>
