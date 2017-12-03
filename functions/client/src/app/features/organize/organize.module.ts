@@ -13,6 +13,7 @@ import { OrganizeHeaderStateService } from './components/organize-header.state'
 
 import { DummyComponent } from './dummy.component'
 import { OrganizeHeaderFullComponent } from './components/organize-header-full.component'
+import { OrganizeTeamCardComponent } from './components/organize-team-card.component'
 
 import { reducer } from './organize.reducer'
 
@@ -21,6 +22,7 @@ import { reducer } from './organize.reducer'
     routedComponents,
     DummyComponent,
     OrganizeHeaderFullComponent,
+    OrganizeTeamCardComponent,
   ],
   imports: [
     CommonModule,

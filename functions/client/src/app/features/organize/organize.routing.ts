@@ -7,11 +7,13 @@ import { RedirectToJoinIfNotUser } from '../../core/user/redirect-to-join-if-not
 import { OrganizeStartPageComponent } from './pages/organize-start-page.component'
 import { OrganizeNavPageComponent } from './pages/organize-nav-page.component'
 import { OrganizeProjectHomePageComponent } from './pages/organize-project-home-page.component'
+import { OrganizeProjectHomeCreateTeamPageComponent } from './pages/organize-project-home-create-team-page.component'
 
 export const routedComponents = [
   OrganizeStartPageComponent,
   OrganizeNavPageComponent,
   OrganizeProjectHomePageComponent,
+  OrganizeProjectHomeCreateTeamPageComponent,
 ]
 
 const routes: Routes = [
@@ -49,7 +51,7 @@ const routes: Routes = [
               },
               {
                 path: 'create-team',
-                component: DummyComponent,
+                component: OrganizeProjectHomeCreateTeamPageComponent,
               }
             ]
           }

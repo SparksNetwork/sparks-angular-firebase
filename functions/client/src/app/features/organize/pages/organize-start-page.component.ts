@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable'
 
 // import { AuthService } from '../../core/snauth/auth/auth.service';
 // import { AppbarStateService } from '../appbar.state'
-import { Project } from '../../../core/sndomain/project/project.service'
+import { Project } from '../../../core/sndomain/project'
 import { OrganizeStateService } from '../organize.state'
 
 import { SnuiInputDirective } from '../../../shared/snui/directives/snui-input.directive'
