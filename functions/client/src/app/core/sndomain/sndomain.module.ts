@@ -3,7 +3,8 @@ import { HttpModule } from '@angular/http'
 import { StoreModule } from '@ngrx/store'
 import { EffectsModule } from '@ngrx/effects'
 
-import { ProjectService } from './project/project.service'
+import { ProjectService } from './project'
+import { TeamService } from './team'
 
 import { reducer } from './sndomain.reducer'
 
@@ -13,10 +14,12 @@ import { reducer } from './sndomain.reducer'
     StoreModule.forFeature('sndomain', reducer),
     EffectsModule.forFeature([
       ProjectService,
+      TeamService,
     ])
   ],
   providers: [
     ProjectService,
+    TeamService,
   ],
 })
 export class SnDomainModule { }

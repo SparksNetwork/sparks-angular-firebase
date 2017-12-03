@@ -1,3 +1,4 @@
 export const shared = {
-  lastUid: null
+  lastUid: null,
+  projectKey: null,
 }
