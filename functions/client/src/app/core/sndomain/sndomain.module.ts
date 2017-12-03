@@ -5,6 +5,7 @@ import { EffectsModule } from '@ngrx/effects'
 
 import { ProjectService } from './project'
 import { TeamService } from './team'
+import { OppService } from './opp'
 
 import { reducer } from './sndomain.reducer'
 
@@ -15,11 +16,13 @@ import { reducer } from './sndomain.reducer'
     EffectsModule.forFeature([
       ProjectService,
       TeamService,
+      OppService,
     ])
   ],
   providers: [
     ProjectService,
     TeamService,
+    OppService,
   ],
 })
 export class SnDomainModule { }

@@ -18,6 +18,12 @@ defineSupportCode( ({Given, Then, When}) => {
       .then(() => elementContainsText('snui-header-full', projectName))
   })
 
+  Then(/^I should be on the create opp page for the project "(.*)"$/, {timeout: 10 * 1000}, projectName => {
+    return urlContains('/organize')
+      .then(() => urlContains('/create-opp'))
+      .then(() => elementContainsText('snui-header-full', projectName))
+  })
+
   When(/^I go to the organize page for the current project$/, () => {
     return navigateTo(`/organize/${shared.projectKey}`)
   })
