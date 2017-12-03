@@ -17,6 +17,7 @@ import {
   ApplicationShiftHandler,
   TeamHandler,
   OppAllowedTeamHandler,
+  OppHandler,
 } from './handlers'
 
 const app = express();
@@ -30,6 +31,7 @@ app.use(routeHandler(new ApplicationShiftHandler()))
 app.use(routeHandler(new ApplicationHandler()))
 app.use(routeHandler(new TeamHandler()))
 app.use(routeHandler(new OppAllowedTeamHandler()))
+app.use(routeHandler(new OppHandler()))
 
 console.log('API: exporting')
 export const api = functions.https.onRequest((req, res) => {

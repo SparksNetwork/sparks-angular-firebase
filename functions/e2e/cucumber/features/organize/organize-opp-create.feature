@@ -1,5 +1,5 @@
 @focus
-Feature: Organize Team Create
+Feature: Organize Opp Create
 
   Background:
     Given I've overwritten "/" with "fully-loaded" fixtures
@@ -17,16 +17,15 @@ Feature: Organize Team Create
       | createdOn | 2017-10-11T03:31:57.071Z |
       | title | My New Project |
   
-  Scenario: Adding a team
+  Scenario: Adding an opp
     Given I go to the organize page for the current project
     Then I should be on the organize page for the project "My New Project"
   
-    When I click on ".create-team"
-    Then I should be on the create team page for the project "My New Project"
+    When I click on ".create-opp"
+    Then I should be on the create opp page for the project "My New Project"
 
-    When I select the radio button "input.membership-open"
-    And I fill out these fields and click "snui-action-buttons .primary"
-      | form input.title | My New Team |
+    When I fill out these fields and click "snui-action-buttons .primary"
+      | form input.title | My New Opp |
 
     Then I should be on the organize page for the project "My New Project"
-    And I should see "My New Team" in ".teams"
+    And I should see "My New Opp" in ".opps"

@@ -8,12 +8,14 @@ import { OrganizeStartPageComponent } from './pages/organize-start-page.componen
 import { OrganizeNavPageComponent } from './pages/organize-nav-page.component'
 import { OrganizeProjectHomePageComponent } from './pages/organize-project-home-page.component'
 import { OrganizeProjectHomeCreateTeamPageComponent } from './pages/organize-project-home-create-team-page.component'
+import { OrganizeProjectHomeCreateOppPageComponent } from './pages/organize-project-home-create-opp-page.component'
 
 export const routedComponents = [
   OrganizeStartPageComponent,
   OrganizeNavPageComponent,
   OrganizeProjectHomePageComponent,
   OrganizeProjectHomeCreateTeamPageComponent,
+  OrganizeProjectHomeCreateOppPageComponent,
 ]
 
 const routes: Routes = [
@@ -52,6 +54,10 @@ const routes: Routes = [
               {
                 path: 'create-team',
                 component: OrganizeProjectHomeCreateTeamPageComponent,
+              },
+              {
+                path: 'create-opp',
+                component: OrganizeProjectHomeCreateOppPageComponent,
               }
             ]
           }

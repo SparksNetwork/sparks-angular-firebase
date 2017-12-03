@@ -7,12 +7,15 @@ import { Actions, Effect } from '@ngrx/effects'
 
 import { Project, ProjectItem, ProjectService, ProjectActions } from '../../core/sndomain/project'
 import { Team, TeamService, TeamActions } from '../../core/sndomain/team'
+import { Opp, OppService, OppActions } from '../../core/sndomain/opp'
+
 @Injectable()
 export class OrganizeStateService {
 
   constructor(
     public projectService: ProjectService,
     public teamService: TeamService,
+    public oppService: OppService,
     public actions$: Actions,
     public store: Store<any>,
     public router: Router,
@@ -39,15 +42,21 @@ export class OrganizeStateService {
 
   public teamIndex$ = this.projectKey$
     .switchMap(key => this.teamService.by('projectKey', key))
-
   public teamsLoading$ = this.teamIndex$.map(i => i.loading)
   public teamKeys$ = this.teamIndex$.map(i => i.keys || [])
   public teamsLength$ = this.teamKeys$.map(k => k.length)
 
+  public oppIndex$ = this.projectKey$
+    .switchMap(key => this.oppService.by('projectKey', key))
+  public oppsLoading$ = this.oppIndex$.map(i => i.loading)
+  public oppKeys$ = this.oppIndex$.map(i => i.keys || [])
+  public oppsLength$ = this.oppKeys$.map(k => k.length)
+
   public loading$ = Observable.combineLatest(
     this.projectLoading$,
     this.teamsLoading$,
-    (p, t) => p || t
+    this.oppsLoading$,
+    (p, t, o) => p || t || o
   )
 
   @Effect({dispatch: false}) onProjectCreateSuccess: Observable<Action> =
@@ -61,11 +70,21 @@ export class OrganizeStateService {
       .switchMap(a => this.projectKey$.take(1))
       .do(key => this.router.navigate(['/organize', key]))
 
-  public createProject(v: Project) {
+  @Effect({dispatch: false}) onOppCreateSuccess: Observable<Action> =
+    this.actions$.ofType<OppActions.CreateSuccess>(OppActions.CREATE_SUCCESS)
+      .do(a => console.log('Organize/Effect', a))
+      .switchMap(a => this.projectKey$.take(1))
+      .do(key => this.router.navigate(['/organize', key]))
+
+    public createProject(v: Project) {
     this.projectService.create(v)
   }
 
   public createTeam(v: Team) {
     this.teamService.create(v)
+  }
+
+  public createOpp(v: Opp) {
+    this.oppService.create(v)
   }
 }
