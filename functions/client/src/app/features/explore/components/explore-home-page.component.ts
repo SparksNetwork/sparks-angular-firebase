@@ -1,4 +1,6 @@
 import { Component } from '@angular/core'
+
+import { ExploreStateService } from '../explore.state'
 @Component({
   selector: 'explore-home-page',
   template: `
@@ -8,10 +10,21 @@ import { Component } from '@angular/core'
     start organizing people
   </button>
 </snui-header-full>
+<div class='ui container'>
+  <div class='organized-projects' *ngIf='(state.organizedProjectsLength$ | async) > 0'>
+    <h3>Your Projects</h3>
+    <div class='ui six doubling cards'>
+      <explore-project-card *ngFor='let key of (state.organizedProjectKeys$ | async)' [key]='key'
+        [routerLink]='["organize", key]'
+        ></explore-project-card>
+    </div>
+  </div>
+</div>
 `
 })
 export class ExploreHomePageComponent {
 
   constructor(
+    public state: ExploreStateService
   ) {}
 }
