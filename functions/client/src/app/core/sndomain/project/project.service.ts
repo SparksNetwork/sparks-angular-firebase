@@ -44,8 +44,35 @@ export class ProjectService {
       .switchMap(({payload}) => this.db.object(`/project/${payload}`).snapshotChanges())
       .map(snap => new ProjectActions.FetchSuccess({key: snap.key, values: snap.payload.val()}))
 
+      @Effect() onFetchBy: Observable<Action> =
+      this.actions$.ofType<ProjectActions.FetchBy>(ProjectActions.FETCH_BY)
+        .switchMap(({payload}) =>
+          this.db.list(`/project`,
+            ref => ref.orderByChild(payload.field).equalTo(payload.value)
+          ).snapshotChanges()
+          // .delay(3000)
+          .switchMap(snap => {
+            const idxSuccess = new ProjectActions.FetchBySuccess({
+              field: payload.field,
+              value: payload.value,
+              keys: snap.map(s => s.key)
+            })
+            const itemSuccesses = snap.map(s =>
+              new ProjectActions.FetchSuccess({
+                key: s.key,
+                values: s.payload.val()
+              })
+            )
+            return Observable.from([...itemSuccesses, idxSuccess])
+          })
+        )
+
   public one(key: string): Observable<ProjectItem> {
     return this.ents.one(key)
+  }
+
+  public by(field: string, value: string) {
+    return this.ents.by(field, value)
   }
 
   public create(p: Project) {

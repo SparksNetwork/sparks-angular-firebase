@@ -27,13 +27,11 @@ const HUMAN_ERROR_MESSAGES = {
 
 @Injectable()
 export class UserService {
-  public auth: firebase.auth.Auth
+  // public auth: firebase.auth.Auth
 
-  public current$: Observable<User>
-  public isAuthed$: Observable<boolean>
 
   public error$ = new EventEmitter<AuthError | null>()
-  public errorMessage$ = new Observable<string | null>()
+  // public errorMessage$ = new Observable<string | null>()
 
   private providers = {
     facebook: new FacebookProvider(),
@@ -43,14 +41,12 @@ export class UserService {
   constructor(
     public afAuth: AngularFireAuth
   ) {
-    this.isAuthed$ = this.afAuth.authState
-      .map(Boolean)
+    // this.isAuthed$ = this.afAuth.authState
+    //   .map(Boolean)
 
-    this.current$ = this.afAuth.authState
-      .filter(Boolean)
+    // this.current$ = this.afAuth.authState
+    //   .filter(Boolean)
 
-    this.errorMessage$ = this.error$
-      .map(err => err ? (HUMAN_ERROR_MESSAGES[err.code] || err.message) as string : null)
 
     this.isAuthed$.subscribe(isAuthed => console.log('user.isAuthed$', isAuthed))
     this.current$.subscribe(current => console.log('user.current$', current))
@@ -60,6 +56,18 @@ export class UserService {
     // this is some super-hacky shit that exposes auth to e2e tests
     window['auth'] = this.afAuth.auth
   }
+
+  public current$ = this.afAuth.authState
+    .filter(Boolean)
+
+  public isAuthed$ = this.afAuth.authState
+    .map(Boolean)
+
+  public errorMessage$ = this.error$
+    .map(err => err ? (HUMAN_ERROR_MESSAGES[err.code] || err.message) as string : null)
+
+  public profileKey$ = this.current$
+    .map(u => u.uid)
 
   public signInWithGoogle() {
     this.error$.emit(null)
